@@ -30,7 +30,7 @@ Rectangle {
         drag.axis: Drag.YAxis
         drag.minimumY: 0
         drag.maximumY: camera.height - 50
-        /* Either bring everything fully out or bring everything back in to hiding */
+        /* At end of drage either bring everything fully out or bring everything back in to hiding */
         onReleased: toolbar.y = (toolbar.y <= camera.height * 0.33) ? 0 : camera.height - 50
     }
 }
