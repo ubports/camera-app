@@ -1,8 +1,11 @@
 import QtQuick 1.1
+import "CameraEnums.js" as CameraEnums
 
 Rectangle {
     id: toolbar
     color: "#30000000"
+
+    property Camera camera
 
     Behavior on y { NumberAnimation { duration: 500 } }
 
@@ -16,11 +19,25 @@ Rectangle {
         ToolbarButton {
             anchors.left: parent.left
             source: "assets/record_off.png"
+
+            onClicked: console.log("click")
         }
 
-        ToolbarButton {
+        FlashButton {
             anchors.left: parent.left
-            source: "assets/flash_off.png"
+            state: { switch (camera.flashMode) {
+                case CameraEnums.FlashOff: return "off";
+                case CameraEnums.FlashOn: return "on";
+                case CameraEnums.FlashAuto:
+                default: return "auto";
+            }}
+
+            onClicked: { switch (state) {
+                case "off": camera.flashMode = CameraEnums.FlashOn; break;
+                case "on": camera.flashMode = CameraEnums.FlashAuto; break;
+                case "auto":
+                default: camera.flashMode = CameraEnums.FlashOff; break;
+            }}
         }
     }
 
