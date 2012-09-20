@@ -24,18 +24,23 @@ Rectangle {
 
         FlashButton {
             anchors.left: parent.left
+
+            flashAllowed: !camera.isRecording
+
             state: { switch (camera.flashMode) {
-                case CameraEnums.FlashModeOff: return "off";
+                case CameraEnums.FlashModeOff: return (flashAllowed) ? "off_flash" : "off_torch";
                 case CameraEnums.FlashModeOn: return "on";
-                case CameraEnums.FlashModeAuto:
-                default: return "auto";
+                case CameraEnums.FlashModeTorch: return "torch";
+                case CameraEnums.FlashModeAuto: return "auto";
             }}
 
             onClicked: { switch (state) {
-                case "off": camera.flashMode = CameraEnums.FlashModeOn; break;
+                case "off_torch":
+                case "off_flash": camera.flashMode = (flashAllowed) ? CameraEnums.FlashModeOn :
+                                                                      CameraEnums.FlashModeTorch; break;
                 case "on": camera.flashMode = CameraEnums.FlashModeAuto; break;
-                case "auto":
-                default: camera.flashMode = CameraEnums.FlashModeOff; break;
+                case "auto": camera.flashMode = CameraEnums.FlashModeTorch; break;
+                case "torch": camera.flashMode = CameraEnums.FlashModeOff; break;
             }}
         }
     }

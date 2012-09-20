@@ -17,4 +17,8 @@ Image {
 
     // FIXME: there is not recording API yet so we're making this up.
     property bool isRecording: false
+
+    onIsRecordingChanged: if (isRecording &&
+                              (flashMode == CameraEnums.FlashModeOn || flashMode == CameraEnums.FlashModeAuto))
+                              flashMode = CameraEnums.FlashModeOff
 }

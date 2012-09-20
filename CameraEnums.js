@@ -11,3 +11,4 @@
 var FlashModeOff = "FlashModeOff";
 var FlashModeOn = "FlashModeOn";
 var FlashModeAuto = "FlashModeAuto";
+var FlashModeTorch = "FlashModeTorch";
