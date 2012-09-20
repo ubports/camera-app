@@ -26,17 +26,17 @@ Rectangle {
         FlashButton {
             anchors.left: parent.left
             state: { switch (camera.flashMode) {
-                case CameraEnums.FlashOff: return "off";
-                case CameraEnums.FlashOn: return "on";
-                case CameraEnums.FlashAuto:
+                case CameraEnums.FlashModeOff: return "off";
+                case CameraEnums.FlashModeOn: return "on";
+                case CameraEnums.FlashModeAuto:
                 default: return "auto";
             }}
 
             onClicked: { switch (state) {
-                case "off": camera.flashMode = CameraEnums.FlashOn; break;
-                case "on": camera.flashMode = CameraEnums.FlashAuto; break;
+                case "off": camera.flashMode = CameraEnums.FlashModeOn; break;
+                case "on": camera.flashMode = CameraEnums.FlashModeAuto; break;
                 case "auto":
-                default: camera.flashMode = CameraEnums.FlashOff; break;
+                default: camera.flashMode = CameraEnums.FlashModeOff; break;
             }}
         }
     }
