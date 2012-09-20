@@ -14,4 +14,7 @@ Image {
     fillMode: Image.PreserveAspectCrop
 
     property string flashMode: CameraEnums.FlashModeOff
+
+    // FIXME: there is not recording API yet so we're making this up.
+    property bool isRecording: false
 }

@@ -16,11 +16,10 @@ Rectangle {
         height: childrenRect.height
         spacing: 50
 
-        ToolbarButton {
+        RecordControl {
             anchors.left: parent.left
-            source: "assets/record_off.png"
-
-            onClicked: console.log("click")
+            state: camera.isRecording ? "on" : "off"
+            onClicked: camera.isRecording = !camera.isRecording
         }
 
         FlashButton {
