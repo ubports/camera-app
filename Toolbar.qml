@@ -5,8 +5,8 @@ Item {
     id: toolbar
 
     property Camera camera
+    signal recordClicked()
 
-    Behavior on y { NumberAnimation { duration: 500 } }
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
     Column {
@@ -76,13 +76,4 @@ Item {
             source: "assets/zoom.png"
         }
     }
-
-    states: [
-        State { name: "shown"
-           PropertyChanges { target: toolbar; opacity: 1.0 }
-        },
-        State { name: "hidden"
-           PropertyChanges { target: toolbar; opacity: 0.0 }
-        }
-    ]
 }

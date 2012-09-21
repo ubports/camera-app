@@ -12,7 +12,26 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: toolbar.state = (toolbar.state == "shown") ? "hidden" : "shown"
+            onClicked: {
+                toolbar.opacity = 1.0;
+                ring.x = mouse.x - ring.width * 0.5;
+                ring.y = mouse.y - ring.height * 0.5;
+                ring.opacity = 1.0;
+                // TODO: call the spot focusing API here
+            }
+        }
+
+        FocusRing {
+            id: ring
+            opacity: 0.0
+            onClicked: camera.takeSnapshot()
+        }
+
+        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
+        onSnapshotSuccess: {
+            console.log("snapshot successfully taken"); // TODO: load snapshot and slide it off screen to the right
+            ring.opacity = 0.0
+            toolbar.opacity = 0.0
         }
     }
 
@@ -20,6 +39,6 @@ Rectangle {
         id: toolbar
         anchors.fill: parent
         camera: camera
-        state: "hidden"
+        opacity: 0.0
     }
 }
