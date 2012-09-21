@@ -11,7 +11,7 @@ AbstractButton {
        FIXME: remove it when visual design is complete and we have more visible icons */
     Rectangle {
         anchors.fill: parent
-        color: "#55FFFFFF"
+        color: "#DDFFFFFF"
     }
 
     Image {
