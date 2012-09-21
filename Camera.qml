@@ -1,7 +1,7 @@
 import QtQuick 1.1
 import "CameraEnums.js" as CameraEnums
 
-/* This component is a mock of the real camera comonent, to
+/* This component is a mock of the real camera component with live preview, to
    allow prototyping of the UI even when we don't have actual camera hardware
    It is a QML-ized version of the API described here:
    https://bazaar.launchpad.net/~rocket-scientists/aal%2B/trunk/view/head%3A/compat/camera/camera_compatibility_layer.h

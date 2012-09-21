@@ -1,13 +1,13 @@
 import QtQuick 1.1
 import "CameraEnums.js" as CameraEnums
 
-Rectangle {
+Item {
     id: toolbar
-    color: "#30000000"
 
     property Camera camera
 
     Behavior on y { NumberAnimation { duration: 500 } }
+    Behavior on opacity { NumberAnimation { duration: 500 } }
 
     Column {
         anchors.left: parent.left
@@ -76,4 +76,13 @@ Rectangle {
             source: "assets/zoom.png"
         }
     }
+
+    states: [
+        State { name: "shown"
+           PropertyChanges { target: toolbar; opacity: 1.0 }
+        },
+        State { name: "hidden"
+           PropertyChanges { target: toolbar; opacity: 0.0 }
+        }
+    ]
 }
