@@ -29,10 +29,18 @@ Rectangle {
 
         onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
         onSnapshotSuccess: {
-            console.log("snapshot successfully taken"); // TODO: load snapshot and slide it off screen to the right
+            snapshot.source = imagePath
+            console.log("snapshot successfully taken");
             ring.opacity = 0.0
             toolbar.opacity = 0.0
         }
+    }
+
+    Snapshot {
+        id: snapshot
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        x: 0
     }
 
     Toolbar {
