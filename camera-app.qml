@@ -28,7 +28,7 @@ Rectangle {
         }
 
         ZoomControl {
-            id: zoom
+            id: zoomRight
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             height: parent.width / 2
@@ -39,7 +39,7 @@ Rectangle {
         }
 
         ZoomControl {
-            id: zoom2
+            id: zoomLeft
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             height: parent.width / 2
@@ -47,8 +47,7 @@ Rectangle {
 
             zoomLevels: 10
             zoom: 1
-
-            flipped: true
+            leftHanded: true
         }
 
         onIsRecordingChanged: if (isRecording) ring.opacity = 0.0

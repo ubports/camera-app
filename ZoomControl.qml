@@ -1,23 +1,20 @@
 import QtQuick 1.1
 
+/* This control is by default entirely meant to be right aligned and operated with the right thumb.
+   However setting the leftHanded property to true will allow to anchor it on the left side and operate
+   it via the left thumb. This should be completely transparent in the code since all calculations
+   are done for the right handed case and QT takes care of flipping everything using Item.transform.
+*/
 Item {
-    id: box
+    id: arc
     property int zoomLevels: 10
     property int zoom: 5
-    property bool flipped: false
+    property bool leftHanded: false
 
     property variant center
     center: { return { x: width, y: height } }
-    property double baseAngle
-    baseAngle: {
-        var base = { x: width, y: height };
-        var dpx = base.x - box.center.x;
-        var dpy = base.y - box.center.y;
-        return Math.atan2(dpy, dpx);
-    }
 
     Image {
-        id: arc
         anchors.fill: parent
 
         source: "assets/zoom_arc.svg"
@@ -29,10 +26,15 @@ Item {
         id: handle
         anchors.fill: parent
 
-        // FIXME: the 85 max angle is arbitrary, need a way to properly calculate it
-        // based on the image size.
-        property double maxAngle: 85
         property double angle: 0
+        property double maxAngle: 85 //FIXME: This is arbitrary, need to be calculated according to cursor size
+        property double baseAngle
+        baseAngle: {
+            var base = { x: width, y: height };
+            var dpx = base.x - arc.center.x;
+            var dpy = base.y - arc.center.y;
+            return Math.atan2(dpy, dpx);
+        }
 
         source: "assets/zoom_cursor.svg"
         smooth: true
@@ -45,44 +47,25 @@ Item {
         MouseArea {
             anchors.fill: parent
             property bool dragging: false
-            onPressAndHold: dragging = true
+            onPressed: dragging = true
+            onPositionChanged: if (dragging) {
+                var dragPoint = mapToItem(arc, mouse.x, mouse.y)
+                var dx = dragPoint.x - arc.center.x;
+                var dy = dragPoint.y - arc.center.y;
+                var currentAngle = radToDeg(Math.atan2(dy, dx) - handle.baseAngle) + 180;
+
+                if (currentAngle < 0 || currentAngle > handle.maxAngle) return;
+
+                handle.angle = currentAngle;
+                var level = Math.round(currentAngle * arc.zoomLevels / handle.maxAngle);
+                if (level != arc.zoom) arc.zoom = level;
+            }
             onReleased: dragging = false
-            onPositionChanged: {
-                var drag = mapToItem(box, mouse.x, mouse.y)
-                var dx = drag.x - box.center.x;
-                var dy = drag.y - box.center.y;
-                var a = Math.atan2(dy, dx);
 
-                var angle = radToDeg(a - box.baseAngle) + 180;
-                if (angle >= 0 && angle <= 85) handle.angle = angle;
-
+            function radToDeg(rad) {
+                return (rad * (180 / Math.PI));
             }
         }
-    } 
-
-    function constraintPos(x, y) {
-        var result = limit(x, y);
-        var angle = radToDeg(result.rad) - handle.angle
-        return angle;
-    }
-
-    function limit(x, y) {
-        var dist = distance([x, y], box.center);
-        var radians = Math.atan2((y - box.center[1]), (x - box.center[0]));
-        return {
-            x:       Math.cos(radians) * box.width,
-            y:       Math.sin(radians) * box.width,
-            rad:     radians
-        }
-    }
-
-    function distance(dot1, dot2) {
-        var x1 = dot1[0], y1 = dot1[1], x2 = dot2[0], y2 = dot2[1];
-        return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-    }
-
-    function radToDeg(rad) {
-        return (rad * (180 / Math.PI));
     }
 
     Rotation {
@@ -94,5 +77,5 @@ Item {
         angle:180
     }
 
-    transform: flipped ? flip : null
+    transform: leftHanded ? flip : null
 }
