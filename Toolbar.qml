@@ -6,7 +6,7 @@ Item {
 
     property Camera camera
     signal recordClicked()
-    signal zoomHeld()
+    signal zoomClicked()
 
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
@@ -77,7 +77,7 @@ Item {
             anchors.bottom: parent.bottom
 
             source: "assets/zoom.png"
-            onClicked: zoomHeld()
+            onClicked: zoomClicked()
         }
     }
 }

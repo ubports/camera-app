@@ -8,8 +8,10 @@ import QtQuick 1.1
 Item {
     id: arc
     property int zoomLevels: 10
-    property int zoom: 5
+    property int zoom: 0
     property bool leftHanded: false
+    property bool zooming: false
+    onZoomChanged: if (!zooming) handle.angle = zoom * handle.maxAngle / zoomLevels
 
     property variant center
     center: { return { x: width, y: height } }
@@ -47,8 +49,8 @@ Item {
         MouseArea {
             anchors.fill: parent
             property bool dragging: false
-            onPressed: dragging = true
-            onPositionChanged: if (dragging) {
+            onPressed: arc.zooming = true
+            onPositionChanged: if (arc.zooming) {
                 var dragPoint = mapToItem(arc, mouse.x, mouse.y)
                 var dx = dragPoint.x - arc.center.x;
                 var dy = dragPoint.y - arc.center.y;
@@ -60,7 +62,7 @@ Item {
                 var level = Math.round(currentAngle * arc.zoomLevels / handle.maxAngle);
                 if (level != arc.zoom) arc.zoom = level;
             }
-            onReleased: dragging = false
+            onReleased: arc.zooming = false
 
             function radToDeg(rad) {
                 return (rad * (180 / Math.PI));
@@ -78,4 +80,6 @@ Item {
     }
 
     transform: leftHanded ? flip : null
+
+    Behavior on opacity { NumberAnimation { duration: 500 } }
 }

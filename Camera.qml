@@ -8,7 +8,6 @@ import "CameraEnums.js" as CameraEnums
 */
 
 Image {
-
     source: "dummydata/live_view.jpg"
     sourceSize.width: width
     sourceSize.height: height
@@ -35,4 +34,10 @@ Image {
     onIsRecordingChanged: if (isRecording &&
                               (flashMode == CameraEnums.FlashModeOn || flashMode == CameraEnums.FlashModeAuto))
                               flashMode = CameraEnums.FlashModeOff
+
+    // FIXME: this will need to be reimplemented in terms of the underlying startZoom and stopZoom
+    // functions, when we can query the API and get feedback successful zooming and current zoom level
+    property int zoomLevel: 5
+    property int zoomLevels: 10
+    function startZoom(zoom) { console.log("Zooming to level: " + zoom); zoomLevel = zoom; }
 }

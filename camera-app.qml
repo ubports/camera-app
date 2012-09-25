@@ -17,6 +17,7 @@ Rectangle {
                 ring.x = mouse.x - ring.width * 0.5;
                 ring.y = mouse.y - ring.height * 0.5;
                 ring.opacity = 1.0;
+                zoomRight.opacity = zoomLeft.opacity = 0.0
                 // TODO: call the spot focusing API here
             }
         }
@@ -33,9 +34,12 @@ Rectangle {
             anchors.bottom: parent.bottom
             height: parent.width / 2
             width: height
+            opacity: 0.0
 
-            zoomLevels: 10
-            zoom: 10
+            zoomLevels: camera.zoomLevels
+            onZoomingChanged: if (zooming) { zoomLeft.opacity = 0.0; zoomRight.opacity = 1.0 }
+                              else hideZoom.restart();
+            onZoomChanged: camera.startZoom(zoom)
         }
 
         ZoomControl {
@@ -44,10 +48,13 @@ Rectangle {
             anchors.bottom: parent.bottom
             height: parent.width / 2
             width: height
+            opacity: 0.0
 
-            zoomLevels: 10
-            zoom: 1
             leftHanded: true
+            zoomLevels: camera.zoomLevels
+            onZoomingChanged: if (zooming) { zoomRight.opacity = 0.0; zoomLeft.opacity = 1.0 }
+                              else hideZoom.restart();
+            onZoomChanged: camera.startZoom(zoom)
         }
 
         onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
@@ -66,10 +73,27 @@ Rectangle {
         x: 0
     }
 
+    Binding {
+
+    }
+
     Toolbar {
         id: toolbar
         anchors.fill: parent
         camera: camera
         opacity: 0.0
+        onZoomClicked: {
+            zoomLeft.opacity = zoomRight.opacity = 0.75;
+            console.log(camera.zoomLevel + " " + zoomLeft.zooming)
+            zoomLeft.zoom = zoomRight.zoom = camera.zoomLevel; // set the zoom controls to the current camera zoom level
+            toolbar.opacity = 0.0;
+            ring.opacity = 0.0;
+        }
+
+        Timer {
+            id: hideZoom
+            interval: 5000
+            onTriggered: zoomLeft.opacity = zoomRight.opacity = 0.0;
+        }
     }
 }
