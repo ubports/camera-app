@@ -27,6 +27,30 @@ Rectangle {
             onClicked: camera.takeSnapshot()
         }
 
+        ZoomControl {
+            id: zoom
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            height: parent.width / 2
+            width: height
+
+            zoomLevels: 10
+            zoom: 10
+        }
+
+        ZoomControl {
+            id: zoom2
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
+            height: parent.width / 2
+            width: height
+
+            zoomLevels: 10
+            zoom: 1
+
+            flipped: true
+        }
+
         onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
         onSnapshotSuccess: {
             snapshot.source = imagePath

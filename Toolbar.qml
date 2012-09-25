@@ -6,12 +6,14 @@ Item {
 
     property Camera camera
     signal recordClicked()
+    signal zoomHeld()
 
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
     Column {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: 75
         width: 50
         height: childrenRect.height
         spacing: 50
@@ -48,6 +50,7 @@ Item {
     Column {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: 75
         width: 50
         height: childrenRect.height
         spacing: 50
@@ -74,6 +77,7 @@ Item {
             anchors.bottom: parent.bottom
 
             source: "assets/zoom.png"
+            onClicked: zoomHeld()
         }
     }
 }
