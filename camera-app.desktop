@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Camera
+GenericName=camera-app
+Comment=Camera application
+Exec=camera-app %u
+Terminal=false
+Icon=camera-app
+#MimeType=x-scheme-handler/contact;x-scheme-handler/call
