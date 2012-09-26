@@ -1,0 +1,19 @@
+Source: camera-app
+Section: x11
+Priority: optional
+Maintainer: The Amazi team <phablet@lists.canonical.com>
+XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
+Build-Depends: debhelper (>= 8.0.0),
+               cmake,
+               libqt4-dev,
+               pkg-config
+Standards-Version: 3.9.3
+Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
+
+Package: camera-app
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         qt-components-ubuntu
+Description: An application to take pictures and videos
+  An application to take pictures and videos with the device camera(s)
