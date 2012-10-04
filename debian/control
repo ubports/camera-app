@@ -6,7 +6,9 @@ XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: debhelper (>= 8.0.0),
                cmake,
                qtdeclarative,
-               pkg-config
+               pkg-config,
+               libgl-dev,
+               libgles2-mesa-dev
 Standards-Version: 3.9.3
 Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
 
