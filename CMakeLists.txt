@@ -1,6 +1,15 @@
 project(camera-app)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.9)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
+find_package(Qt5Qml)
+find_package(Qt5Quick)
 
 # Standard install paths
 include(GNUInstallDirs)
@@ -9,12 +18,8 @@ set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/camera-app)
 
 configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 
-find_package(Qt4 REQUIRED)
-find_package(PkgConfig REQUIRED)
-
 include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${QT_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
@@ -27,17 +32,16 @@ set(camera_app_SRCS
     cameraapplication.cpp
     main.cpp)
 
-qt4_wrap_cpp(cameraapplication_MOC_SRCS ${camera_app_HDRS})
 add_executable(${CAMERA_APP}
     ${cameraapplication_MOC_SRCS}
     ${camera_app_SRCS}
     )
 
+qt5_use_modules(${CAMERA_APP} Qml Quick)
+
 target_link_libraries(${CAMERA_APP}
-    ${QT_QTCORE_LIBRARIES}
-    ${QT_QTGUI_LIBRARIES}
-    ${QT_QTNETWORK_LIBRARIES}
-    ${QT_QTDECLARATIVE_LIBRARIES}
+    ${Qt5Qml_LIBRARIES}
+    ${Qt5Quick_LIBRARIES}
     )
 
 install(TARGETS ${CAMERA_APP}

@@ -4,10 +4,8 @@
 #include <QtCore/QUrl>
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
-#include <QtGui/QGraphicsObject>
-#include <QtDeclarative/QDeclarativeComponent>
-#include <QtDeclarative/QDeclarativeContext>
-#include <QtDeclarative/QDeclarativeView>
+#include <QQmlContext>
+#include <QtQuick/QQuickItem>
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
@@ -20,15 +18,15 @@ static void printUsage(const QStringList& arguments)
 }
 
 CameraApplication::CameraApplication(int &argc, char **argv)
-    : QApplication(argc, argv), m_view(0), m_applicationIsReady(false)
+    : QGuiApplication(argc, argv), m_view(0)
 {
 }
 
 bool CameraApplication::setup()
 {
-    m_view = new QDeclarativeView();
+    m_view = new QQuickView();
     QObject::connect(m_view, SIGNAL(statusChanged(QDeclarativeView::Status)), this, SLOT(onViewStatusChanged(QDeclarativeView::Status)));
-    m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
     QUrl source(cameraAppDirectory() + "/camera-app.qml");
@@ -43,22 +41,4 @@ CameraApplication::~CameraApplication()
     if (m_view) {
         delete m_view;
     }
-}
-
-void CameraApplication::onViewStatusChanged(QDeclarativeView::Status status)
-{
-    if (status != QDeclarativeView::Ready) {
-        return;
-    }
-
-    QGraphicsObject *camera = m_view->rootObject();
-    if (camera) {
-        QObject::connect(camera, SIGNAL(applicationReady()), this, SLOT(onApplicationReady()));
-    }
-}
-
-void CameraApplication::onApplicationReady()
-{
-    QObject::disconnect(QObject::sender(), SIGNAL(applicationReady()), this, SLOT(onApplicationReady()));
-    m_applicationIsReady = true;
 }

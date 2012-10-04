@@ -1,4 +1,4 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import "CameraEnums.js" as CameraEnums
 
 /* This component is a mock of the real camera component with live preview, to

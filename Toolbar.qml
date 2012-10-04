@@ -1,4 +1,4 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import "CameraEnums.js" as CameraEnums
 
 Item {
@@ -22,6 +22,7 @@ Item {
             anchors.left: parent.left
             state: camera.isRecording ? "on" : "off"
             onClicked: camera.isRecording = !camera.isRecording
+            enabled: toolbar.opacity > 0.0
         }
 
         FlashButton {
@@ -44,6 +45,7 @@ Item {
                 case "auto": camera.flashMode = CameraEnums.FlashModeTorch; break;
                 case "torch": camera.flashMode = CameraEnums.FlashModeOff; break;
             }}
+            enabled: toolbar.opacity > 0.0
         }
     }
 
@@ -78,6 +80,7 @@ Item {
 
             source: "assets/zoom.png"
             onClicked: zoomClicked()
+            enabled: toolbar.opacity > 0.0
         }
     }
 }

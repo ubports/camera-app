@@ -1,4 +1,4 @@
-import QtQuick 1.1
+import QtQuick 2.0
 
 /* This control is by default entirely meant to be right aligned and operated with the right thumb.
    However setting the leftHanded property to true will allow to anchor it on the left side and operate
@@ -67,6 +67,7 @@ Item {
             function radToDeg(rad) {
                 return (rad * (180 / Math.PI));
             }
+            enabled: arc.opacity > 0.0
         }
     }
 

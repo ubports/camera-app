@@ -18,7 +18,7 @@
  */
 
 // Qt
-#include <QtGui/QApplication>
+#include <QGuiApplication>
 
 // local
 #include "cameraapplication.h"
@@ -26,7 +26,7 @@
 
 int main(int argc, char** argv)
 {
-    QApplication::setApplicationName("Camera App");
+    QGuiApplication::setApplicationName("Camera App");
     CameraApplication application(argc, argv);
 
     if (!application.setup()) {

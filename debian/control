@@ -5,7 +5,7 @@ Maintainer: The Amazi team <phablet@lists.canonical.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: debhelper (>= 8.0.0),
                cmake,
-               libqt4-dev,
+               qtdeclarative,
                pkg-config
 Standards-Version: 3.9.3
 Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app

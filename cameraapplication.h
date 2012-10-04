@@ -20,11 +20,10 @@
 #ifndef CAMERAAPPLICATION_H
 #define CAMERAAPPLICATION_H
 
-#include <QtCore/QObject>
-#include <QtDeclarative/QDeclarativeView>
-#include <QtGui/QApplication>
+#include <QtQuick/QQuickView>
+#include <QGuiApplication>
 
-class CameraApplication : public QApplication
+class CameraApplication : public QGuiApplication
 {
     Q_OBJECT
 
@@ -34,13 +33,8 @@ public:
 
     bool setup();
 
-private Q_SLOTS:
-    void onViewStatusChanged(QDeclarativeView::Status status);
-    void onApplicationReady();
-
 private:
-    QDeclarativeView *m_view;
-    bool m_applicationIsReady;
+    QQuickView *m_view;
 };
 
 #endif // CAMERAAPPLICATION_H

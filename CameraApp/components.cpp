@@ -19,21 +19,11 @@
 
 #include "components.h"
 
-#include <QtDeclarative/QDeclarativeEngine>
-#include <QtDeclarative/qdeclarative.h>
-
-void Components::initializeEngine(QDeclarativeEngine *engine, const char *uri)
-{
-    Q_ASSERT(engine);
-    Q_UNUSED(uri);
-
-    mRootContext = engine->rootContext();
-    Q_ASSERT(mRootContext);
-}
-
 void Components::registerTypes(const char *uri)
 {
-    // @uri TelephonyApp
 }
 
-Q_EXPORT_PLUGIN2(components, Components)
+void Components::initializeEngine(QQmlEngine *engine, const char *uri)
+{
+    QQmlExtensionPlugin::initializeEngine(engine, uri);
+}
