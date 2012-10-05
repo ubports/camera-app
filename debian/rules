@@ -3,6 +3,8 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
+export CMAKE_MODULE_PATH=/opt/qt5/lib/cmake/
+PATH := /opt/qt5/bin:$(PATH)
 
 override_dh_install:
 	dh_install --fail-missing
