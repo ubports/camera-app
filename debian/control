@@ -8,8 +8,7 @@ Build-Depends: debhelper (>= 8.0.0),
                qtdeclarative,
                pkg-config,
                libgl-dev,
-               libgles2-mesa-dev,
-	       qtsvg
+               libgles2-mesa-dev
 Standards-Version: 3.9.3
 Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
 
@@ -17,6 +16,7 @@ Package: camera-app
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         qt-components-ubuntu
+         qt-components-ubuntu,
+	 qtsvg
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
