@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Rectangle {
     id: main
-    width: 400
-    height: 600
+    width: 720
+    height: 1280
     color: "black"
 
     Camera {

@@ -16,6 +16,7 @@ Package: camera-app
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         qt-components-ubuntu
+         qt-components-ubuntu,
+	 qtsvg
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
