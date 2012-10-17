@@ -74,10 +74,7 @@ Item {
             anchors.bottom: parent.bottom
             width: parent.height
             iconSource: "assets/camera.png"
-            onClicked: {
-                camera.lastCaptureId = camera.imageCapture.capture()
-                camera.resetFocus()
-            }
+            onClicked: camera.lastCaptureId = camera.imageCapture.capture()
             enabled: camera.lastCaptureId == 0
         }
 
@@ -89,6 +86,8 @@ Item {
             enabled: toolbar.opacity > 0.0
 
             iconSource: "assets/swap_camera.png"
+
+            onClicked: console.log("Functionality not supported yet")
         }
 
         ToolbarButton {
@@ -99,6 +98,8 @@ Item {
             enabled: toolbar.opacity > 0.0
 
             iconSource: "assets/gallery.png"
+
+            onClicked: console.log("Functionality not supported yet")
         }
     }
 }
