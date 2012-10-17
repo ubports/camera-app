@@ -74,7 +74,10 @@ Item {
             anchors.bottom: parent.bottom
             width: parent.height
             iconSource: "assets/camera.png"
-            onClicked: camera.lastCaptureId = camera.imageCapture.capture()
+            onClicked: {
+                camera.lastCaptureId = camera.imageCapture.capture()
+                camera.resetFocus()
+            }
             enabled: camera.lastCaptureId == 0
         }
 

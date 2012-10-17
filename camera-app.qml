@@ -13,6 +13,8 @@ Rectangle {
         id: camera
         flash.mode: Camera.FlashOff
         captureMode: Camera.CaptureStillImage
+        focus.focusMode: Camera.FocusAuto //TODO: Not sure if Continuous focus is better here
+        focus.focusPointMode: focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto
 
         property int lastCaptureId: 0
 
@@ -27,9 +29,11 @@ Rectangle {
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
                 camera.lastCaptureId = 0;
+                focusRing.opacity = 0.0;
             }
             onImageCaptured: {
                 camera.lastCaptureId = 0;
+                focusRing.opacity = 0.0;
                 snapshot.source = preview;
             }
             onImageSaved: {
@@ -39,25 +43,26 @@ Rectangle {
     }
 
     VideoOutput {
+        id: viewFinder
         anchors.fill: parent
         source: camera
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                toolbar.opacity = 1.0;
-                ring.x = mouse.x - ring.width * 0.5;
-                ring.y = mouse.y - ring.height * 0.5;
-                ring.opacity = 1.0;
-                zoomControl.opacity = 0.0
-                // TODO: call the spot focusing API here
+                focusRing.x = mouse.x - focusRing.width * 0.5;
+                focusRing.y = mouse.y - focusRing.height * 0.5;
+                focusRing.opacity = 1.0;
+                zoomControl.opacity = 0.0;
+
+                var focusPoint = viewFinder.mapPointToItemNormalized(Qt.point(mouse.x, mouse.y));
+                camera.focus.customFocusPoint = focusPoint;
             }
         }
 
         FocusRing {
-            id: ring
+            id: focusRing
             opacity: 0.0
-            onClicked: camera.takeSnapshot()
         }
 
         ZoomControl {
