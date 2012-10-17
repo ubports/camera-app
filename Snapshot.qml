@@ -1,9 +1,6 @@
 import QtQuick 2.0
 
 Item {
-    height: snapshot.paintedHeight
-    width: snapshot.paintedWidth
-
     property alias source: snapshot.source
 
     Rectangle {
@@ -18,10 +15,13 @@ Item {
         id: snapshot
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+        width: parent.width
+        x: 0
 
         asynchronous: true
         opacity: 0.0
         fillMode: Image.PreserveAspectCrop
+        smooth: false
         sourceSize.height: parent.height
 
         Behavior on x {

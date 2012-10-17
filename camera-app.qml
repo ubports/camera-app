@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
 Rectangle {
     id: main
@@ -6,63 +7,90 @@ Rectangle {
     height: 1280
     color: "black"
 
+    Component.onCompleted: camera.start()
+
     Camera {
         id: camera
+        flash.mode: Camera.FlashOff
+        captureMode: Camera.CaptureStillImage
+        focus.focusMode: Camera.FocusAuto //TODO: Not sure if Continuous focus is better here
+        focus.focusPointMode: focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto
+
+        property int lastCaptureId: 0
+
+        /* Use only digital zoom for now as it's what phone cameras mostly use.
+           TODO: if optical zoom is available, maximumZoom should be the combined
+           range of optical and digital zoom and currentZoom should adjust the two
+           transparently based on the value. */
+        property alias currentZoom: camera.digitalZoom
+        property alias maximumZoom: camera.maximumDigitalZoom
+
+        imageCapture {
+            onCaptureFailed: {
+                console.log("Capture failed for request " + requestId + ": " + message);
+                camera.lastCaptureId = 0;
+                focusRing.opacity = 0.0;
+            }
+            onImageCaptured: {
+                camera.lastCaptureId = 0;
+                focusRing.opacity = 0.0;
+                snapshot.source = preview;
+            }
+            onImageSaved: {
+                console.log("Picture saved as " + path)
+            }
+        }
+    }
+
+    VideoOutput {
+        id: viewFinder
         anchors.fill: parent
+        source: camera
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                toolbar.opacity = 1.0;
-                ring.x = mouse.x - ring.width * 0.5;
-                ring.y = mouse.y - ring.height * 0.5;
-                ring.opacity = 1.0;
-                zoomRight.opacity = zoomLeft.opacity = 0.0
-                // TODO: call the spot focusing API here
+                focusRing.x = mouse.x - focusRing.width * 0.5;
+                focusRing.y = mouse.y - focusRing.height * 0.5;
+                focusRing.opacity = 1.0;
+                zoomControl.opacity = 0.0;
+
+                var focusPoint = viewFinder.mapPointToItemNormalized(Qt.point(mouse.x, mouse.y));
+                camera.focus.customFocusPoint = focusPoint;
             }
         }
 
         FocusRing {
-            id: ring
+            id: focusRing
             opacity: 0.0
-            onClicked: camera.takeSnapshot()
         }
 
         ZoomControl {
-            id: zoomRight
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            height: parent.width / 2
-            width: height
-            opacity: 0.0
-
-            zoomLevels: camera.zoomLevels
-            onZoomingChanged: if (zooming) { zoomLeft.opacity = 0.0; zoomRight.opacity = 1.0 }
-                              else hideZoom.restart();
-            onZoomChanged: camera.startZoom(zoom)
-        }
-
-        ZoomControl {
-            id: zoomLeft
+            id: zoomControl
             anchors.left: parent.left
-            anchors.bottom: parent.bottom
-            height: parent.width / 2
-            width: height
+            anchors.right: parent.right
+            anchors.top: parent.top
             opacity: 0.0
 
-            leftHanded: true
-            zoomLevels: camera.zoomLevels
-            onZoomingChanged: if (zooming) { zoomRight.opacity = 0.0; zoomLeft.opacity = 1.0 }
-                              else hideZoom.restart();
-            onZoomChanged: camera.startZoom(zoom)
+            maximumValue: camera.maximumZoom
+            onValueChanged: {
+                hideZoom.restart();
+                camera.currentZoom = value;
+            }
+
+            Timer {
+                id: hideZoom
+                interval: 5000
+                onTriggered: zoomControl.opacity = 0.0;
+            }
         }
 
-        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
-        onSnapshotSuccess: {
-            snapshot.source = imagePath
-            console.log("snapshot successfully taken");
-            ring.opacity = 0.0
-            toolbar.opacity = 0.0
+        StopWatch {
+            anchors.top: zoomControl.bottom
+            anchors.left: parent.left
+            color: "red"
+            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
+            time: camera.videoRecorder.duration / 1000
         }
     }
 
@@ -70,30 +98,26 @@ Rectangle {
         id: snapshot
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+        width: parent.width
         x: 0
     }
 
-    Binding {
-
+    ZoomButton {
+        anchors.bottom: toolbar.top
+        anchors.bottomMargin: 10
+        x: toolbar.width * 0.5 - width * 0.5
+        onClicked: {
+            zoomControl.opacity = 1.0
+            hideZoom.restart()
+        }
     }
 
     Toolbar {
         id: toolbar
-        anchors.fill: parent
-        camera: camera
-        opacity: 0.0
-        onZoomClicked: {
-            zoomLeft.opacity = zoomRight.opacity = 0.75;
-            console.log(camera.zoomLevel + " " + zoomLeft.zooming)
-            zoomLeft.zoom = zoomRight.zoom = camera.zoomLevel; // set the zoom controls to the current camera zoom level
-            toolbar.opacity = 0.0;
-            ring.opacity = 0.0;
-        }
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-        Timer {
-            id: hideZoom
-            interval: 5000
-            onTriggered: zoomLeft.opacity = zoomRight.opacity = 0.0;
-        }
+        camera: camera
     }
 }

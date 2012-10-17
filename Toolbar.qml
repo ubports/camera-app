@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import "CameraEnums.js" as CameraEnums
+import QtMultimedia 5.0
+import Ubuntu.Components 0.1
 
 Item {
     id: toolbar
@@ -8,79 +9,109 @@ Item {
     signal recordClicked()
     signal zoomClicked()
 
+    height: buttons.height + 20
+
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
-    Column {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 75
-        width: 50
-        height: childrenRect.height
-        spacing: 50
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        color: "black"
+        opacity: 0.35
+    }
 
-        RecordControl {
-            anchors.left: parent.left
-            state: camera.isRecording ? "on" : "off"
-            onClicked: camera.isRecording = !camera.isRecording
-            enabled: toolbar.opacity > 0.0
-        }
+    Row {
+        id: buttons
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        property int effectiveWidth: (toolbar.width - spacing * (buttons.children.length - 1))
+                                     - anchors.leftMargin - anchors.rightMargin
+        height: effectiveWidth / buttons.children.length
+        spacing: 10
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
+        anchors.topMargin: 10
 
         FlashButton {
-            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: parent.height
 
+            enabled: toolbar.opacity > 0.0
             flashAllowed: !camera.isRecording
 
-            state: { switch (camera.flashMode) {
-                case CameraEnums.FlashModeOff: return (flashAllowed) ? "off_flash" : "off_torch";
-                case CameraEnums.FlashModeOn: return "on";
-                case CameraEnums.FlashModeTorch: return "torch";
-                case CameraEnums.FlashModeAuto: return "auto";
+            state: { switch (camera.flash.mode) {
+                case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
+                case Camera.FlashOn: return "on";
+                case Camera.FlashTorch: return "torch";
+                case Camera.FlashAuto: return "auto";
             }}
 
             onClicked: { switch (state) {
                 case "off_torch":
-                case "off_flash": camera.flashMode = (flashAllowed) ? CameraEnums.FlashModeOn :
-                                                                      CameraEnums.FlashModeTorch; break;
-                case "on": camera.flashMode = CameraEnums.FlashModeAuto; break;
-                case "auto": camera.flashMode = CameraEnums.FlashModeTorch; break;
-                case "torch": camera.flashMode = CameraEnums.FlashModeOff; break;
+                case "off_flash": camera.flash.mode = (flashAllowed) ? Camera.FlashOn :
+                                                                       Camera.FlashTorch; break;
+                case "on": camera.flash.mode = Camera.FlashAuto; break;
+                case "auto": camera.flash.mode = Camera.FlashTorch; break;
+                case "torch": camera.flash.mode = Camera.FlashOff; break;
             }}
-            enabled: toolbar.opacity > 0.0
-        }
-    }
-
-    Column {
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 75
-        width: 50
-        height: childrenRect.height
-        spacing: 50
-
-        ToolbarButton {
-            anchors.right: parent.right
-            source: "assets/swap_camera.png"
         }
 
         ToolbarButton {
-            anchors.right: parent.right
-            source: "assets/gallery.png"
-        }
-    }
-
-    Item {
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: 50
-
-        ToolbarButton {
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
             anchors.bottom: parent.bottom
+            width: parent.height
 
-            source: "assets/zoom.png"
-            onClicked: zoomClicked()
             enabled: toolbar.opacity > 0.0
+
+            iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_video.png" : "assets/record_picture.png"
+            onClicked: camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+        }
+
+        ToolbarButton {
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: parent.height
+            iconSource: "assets/shoot.png"
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureVideo) {
+                    if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                        camera.videoRecorder.record()
+                    } else {
+                        camera.videoRecorder.stop()
+                        // TODO: there's no event to tell us that the video has been successfully recorder or failed,
+                        // and no preview to slide off anyway. Figure out what to do in this case.
+                    }
+                } else {
+                    camera.lastCaptureId = camera.imageCapture.capture()
+                }
+            }
+            enabled: camera.lastCaptureId == 0
+        }
+
+        ToolbarButton {
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: parent.height
+
+            enabled: toolbar.opacity > 0.0
+
+            iconSource: "assets/swap_camera.png"
+
+            onClicked: console.log("Functionality not supported yet")
+        }
+
+        ToolbarButton {
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: parent.height
+
+            enabled: toolbar.opacity > 0.0
+
+            iconSource: "assets/gallery.png"
+
+            onClicked: console.log("Functionality not supported yet")
         }
     }
 }

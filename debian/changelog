@@ -1,4 +1,4 @@
-camera-app (0.1) UNRELEASED; urgency=low
+camera-app (0.1) quantal; urgency=low
 
   [ Ugo Riboni ]
   * Initial release.
@@ -6,4 +6,4 @@ camera-app (0.1) UNRELEASED; urgency=low
   [ Bill Filler ]
   * clean up of packaging for Qt5 
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 26 Sep 2012 10:53:25 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 17 Oct 2012 19:26:51 +0100
