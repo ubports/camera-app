@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import "CameraEnums.js" as CameraEnums
+import QtMultimedia 5.0
 
 Item {
     id: toolbar
@@ -30,20 +30,20 @@ Item {
 
             flashAllowed: !camera.isRecording
 
-            state: { switch (camera.flashMode) {
-                case CameraEnums.FlashModeOff: return (flashAllowed) ? "off_flash" : "off_torch";
-                case CameraEnums.FlashModeOn: return "on";
-                case CameraEnums.FlashModeTorch: return "torch";
-                case CameraEnums.FlashModeAuto: return "auto";
+            state: { switch (camera.flash.mode) {
+                case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
+                case Camera.FlashOn: return "on";
+                case Camera.FlashTorch: return "torch";
+                case Camera.FlashAuto: return "auto";
             }}
 
             onClicked: { switch (state) {
                 case "off_torch":
-                case "off_flash": camera.flashMode = (flashAllowed) ? CameraEnums.FlashModeOn :
-                                                                      CameraEnums.FlashModeTorch; break;
-                case "on": camera.flashMode = CameraEnums.FlashModeAuto; break;
-                case "auto": camera.flashMode = CameraEnums.FlashModeTorch; break;
-                case "torch": camera.flashMode = CameraEnums.FlashModeOff; break;
+                case "off_flash": camera.flash.mode = (flashAllowed) ? Camera.FlashOn :
+                                                                       Camera.FlashTorch; break;
+                case "on": camera.flash.mode = Camera.FlashAuto; break;
+                case "auto": camera.flash.mode = Camera.FlashTorch; break;
+                case "torch": camera.flash.mode = Camera.FlashOff; break;
             }}
             enabled: toolbar.opacity > 0.0
         }

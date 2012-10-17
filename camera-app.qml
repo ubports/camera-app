@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
 Rectangle {
     id: main
@@ -8,7 +9,19 @@ Rectangle {
 
     Camera {
         id: camera
+        flash.mode: Camera.FlashOff
+
+        /* Use only digital zoom for now as it's what phone cameras mostly use.
+           TODO: if optical zoom is available, maximumZoom should be the combined
+           range of optical and digital zoom and currentZoom should adjust the two
+           transparently based on the value. */
+        property alias currentZoom: camera.digitalZoom
+        property alias maximumZoom: camera.maximumDigitalZoom
+    }
+
+    VideoOutput {
         anchors.fill: parent
+        source: camera
 
         MouseArea {
             anchors.fill: parent
@@ -17,7 +30,7 @@ Rectangle {
                 ring.x = mouse.x - ring.width * 0.5;
                 ring.y = mouse.y - ring.height * 0.5;
                 ring.opacity = 1.0;
-                zoomRight.opacity = zoomLeft.opacity = 0.0
+                zoomControl.opacity = 0.0
                 // TODO: call the spot focusing API here
             }
         }
@@ -29,41 +42,26 @@ Rectangle {
         }
 
         ZoomControl {
-            id: zoomRight
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            height: parent.width / 2
-            width: height
-            opacity: 0.0
-
-            zoomLevels: camera.zoomLevels
-            onZoomingChanged: if (zooming) { zoomLeft.opacity = 0.0; zoomRight.opacity = 1.0 }
-                              else hideZoom.restart();
-            onZoomChanged: camera.startZoom(zoom)
-        }
-
-        ZoomControl {
-            id: zoomLeft
+            id: zoomControl
             anchors.left: parent.left
-            anchors.bottom: parent.bottom
-            height: parent.width / 2
-            width: height
+            anchors.right: parent.right
+            anchors.top: parent.top
             opacity: 0.0
 
-            leftHanded: true
-            zoomLevels: camera.zoomLevels
-            onZoomingChanged: if (zooming) { zoomRight.opacity = 0.0; zoomLeft.opacity = 1.0 }
-                              else hideZoom.restart();
-            onZoomChanged: camera.startZoom(zoom)
+            maximumValue: camera.maximumZoom
+            onValueChanged: {
+                hideZoom.restart();
+                camera.currentZoom = value;
+            }
         }
 
-        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
-        onSnapshotSuccess: {
-            snapshot.source = imagePath
-            console.log("snapshot successfully taken");
-            ring.opacity = 0.0
-            toolbar.opacity = 0.0
-        }
+//        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
+//        onSnapshotSuccess: {
+//            snapshot.source = imagePath
+//            console.log("snapshot successfully taken");
+//            ring.opacity = 0.0
+//            toolbar.opacity = 0.0
+//        }
     }
 
     Snapshot {
@@ -73,19 +71,13 @@ Rectangle {
         x: 0
     }
 
-    Binding {
-
-    }
-
     Toolbar {
         id: toolbar
         anchors.fill: parent
         camera: camera
         opacity: 0.0
         onZoomClicked: {
-            zoomLeft.opacity = zoomRight.opacity = 0.75;
-            console.log(camera.zoomLevel + " " + zoomLeft.zooming)
-            zoomLeft.zoom = zoomRight.zoom = camera.zoomLevel; // set the zoom controls to the current camera zoom level
+            zoomControl.opacity = 1.0;
             toolbar.opacity = 0.0;
             ring.opacity = 0.0;
         }
@@ -93,7 +85,7 @@ Rectangle {
         Timer {
             id: hideZoom
             interval: 5000
-            onTriggered: zoomLeft.opacity = zoomRight.opacity = 0.0;
+            onTriggered: zoomControl.opacity = 0.0;
         }
     }
 }
