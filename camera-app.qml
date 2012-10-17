@@ -14,12 +14,28 @@ Rectangle {
         flash.mode: Camera.FlashOff
         captureMode: Camera.CaptureStillImage
 
+        property int lastCaptureId: 0
+
         /* Use only digital zoom for now as it's what phone cameras mostly use.
            TODO: if optical zoom is available, maximumZoom should be the combined
            range of optical and digital zoom and currentZoom should adjust the two
            transparently based on the value. */
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
+
+        imageCapture {
+            onCaptureFailed: {
+                console.log("Capture failed for request " + requestId + ": " + message);
+                camera.lastCaptureId = 0;
+            }
+            onImageCaptured: {
+                camera.lastCaptureId = 0;
+                snapshot.source = preview;
+            }
+            onImageSaved: {
+                console.log("Picture saved as " + path)
+            }
+        }
     }
 
     VideoOutput {
@@ -69,20 +85,13 @@ Rectangle {
             anchors.left: parent.left
             width: childrenRect.width
         }
-
-//        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
-//        onSnapshotSuccess: {
-//            snapshot.source = imagePath
-//            console.log("snapshot successfully taken");
-//            ring.opacity = 0.0
-//            toolbar.opacity = 0.0
-//        }
     }
 
     Snapshot {
         id: snapshot
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+        width: parent.width
         x: 0
     }
 
