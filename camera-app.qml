@@ -7,9 +7,12 @@ Rectangle {
     height: 600
     color: "black"
 
+    Component.onCompleted: camera.start()
+
     Camera {
         id: camera
         flash.mode: Camera.FlashOff
+        captureMode: Camera.CaptureStillImage
 
         /* Use only digital zoom for now as it's what phone cameras mostly use.
            TODO: if optical zoom is available, maximumZoom should be the combined
@@ -53,6 +56,18 @@ Rectangle {
                 hideZoom.restart();
                 camera.currentZoom = value;
             }
+
+            Timer {
+                id: hideZoom
+                interval: 5000
+                onTriggered: zoomControl.opacity = 0.0;
+            }
+        }
+
+        RecordControl {
+            anchors.top: zoomControl.bottom
+            anchors.left: parent.left
+            width: childrenRect.width
         }
 
 //        onIsRecordingChanged: if (isRecording) ring.opacity = 0.0
@@ -73,19 +88,10 @@ Rectangle {
 
     Toolbar {
         id: toolbar
-        anchors.fill: parent
-        camera: camera
-        opacity: 0.0
-        onZoomClicked: {
-            zoomControl.opacity = 1.0;
-            toolbar.opacity = 0.0;
-            ring.opacity = 0.0;
-        }
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-        Timer {
-            id: hideZoom
-            interval: 5000
-            onTriggered: zoomControl.opacity = 0.0;
-        }
+        camera: camera
     }
 }
