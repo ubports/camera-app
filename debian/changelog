@@ -1,5 +1,9 @@
 camera-app (0.1) UNRELEASED; urgency=low
 
+  [ Ugo Riboni ]
   * Initial release.
+
+  [ Bill Filler ]
+  * clean up of packaging for Qt5 
 
  -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 26 Sep 2012 10:53:25 +0100
