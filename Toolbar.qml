@@ -65,16 +65,28 @@ Item {
 
             enabled: toolbar.opacity > 0.0
 
-            iconSource: camera.isRecording ? "assets/record_on.png" : "assets/record_off.png"
-            onClicked: camera.isRecording = !camera.isRecording
+            iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_video.png" : "assets/record_picture.png"
+            onClicked: camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
         }
 
         ToolbarButton {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: parent.height
-            iconSource: "assets/camera.png"
-            onClicked: camera.lastCaptureId = camera.imageCapture.capture()
+            iconSource: "assets/shoot.png"
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureVideo) {
+                    if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                        camera.videoRecorder.record()
+                    } else {
+                        camera.videoRecorder.stop()
+                        // TODO: there's no event to tell us that the video has been successfully recorder or failed,
+                        // and no preview to slide off anyway. Figure out what to do in this case.
+                    }
+                } else {
+                    camera.lastCaptureId = camera.imageCapture.capture()
+                }
+            }
             enabled: camera.lastCaptureId == 0
         }
 

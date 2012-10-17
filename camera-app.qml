@@ -85,11 +85,12 @@ Rectangle {
             }
         }
 
-        RecordControl {
+        StopWatch {
             anchors.top: zoomControl.bottom
             anchors.left: parent.left
-            width: childrenRect.width
-            opacity: 0.0
+            color: "red"
+            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
+            time: camera.videoRecorder.duration / 1000
         }
     }
 
