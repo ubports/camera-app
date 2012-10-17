@@ -5,4 +5,5 @@ Slider {
     live: true
     minimumValue: 1.0 // No zoom => 1.0 zoom factor
 
+    function formatValue(value) { return "" }
 }

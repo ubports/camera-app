@@ -89,6 +89,7 @@ Rectangle {
             anchors.top: zoomControl.bottom
             anchors.left: parent.left
             width: childrenRect.width
+            opacity: 0.0
         }
     }
 
@@ -98,6 +99,16 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         x: 0
+    }
+
+    ZoomButton {
+        anchors.bottom: toolbar.top
+        anchors.bottomMargin: 10
+        x: toolbar.width * 0.5 - width * 0.5
+        onClicked: {
+            zoomControl.opacity = 1.0
+            hideZoom.restart()
+        }
     }
 
     Toolbar {
