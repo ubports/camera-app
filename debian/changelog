@@ -1,4 +1,4 @@
-camera-app (0.2) UNRELEASED; urgency=low
+camera-app (0.2) quantal; urgency=low
 
   * Adapt to QT camera API and new visual design
 
