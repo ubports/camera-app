@@ -9,7 +9,6 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
-#include <QStandardPaths>
 #include "config.h"
 
 static void printUsage(const QStringList& arguments)
@@ -30,7 +29,6 @@ bool CameraApplication::setup()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
-    m_view->rootContext()->setContextProperty("picturesDirectory", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
     QUrl source(cameraAppDirectory() + "/camera-app.qml");
     m_view->setSource(source);
     m_view->show();

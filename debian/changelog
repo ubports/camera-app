@@ -1,3 +1,9 @@
+camera-app (0.4) quantal; urgency=low
+
+  * revert back to pre-photo viewer integration (bzr rev 29) as it's broken 
+
+ -- Bill Filler <bill.filler@canonical.com>  Fri, 19 Oct 2012 11:43:25 -0400
+
 camera-app (0.3) quantal; urgency=low
 
   * Add the photo viewer
