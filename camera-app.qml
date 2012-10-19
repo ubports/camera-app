@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
+import Qt.labs.folderlistmodel 1.0
+import "PhotoViewer"
 
 Rectangle {
     id: main
@@ -55,7 +57,7 @@ Rectangle {
                 focusRing.opacity = 1.0;
                 zoomControl.opacity = 0.0;
 
-                var focusPoint = viewFinder.mapPointToItemNormalized(Qt.point(mouse.x, mouse.y));
+                var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
                 camera.focus.customFocusPoint = focusPoint;
             }
         }
@@ -119,5 +121,75 @@ Rectangle {
         anchors.right: parent.right
 
         camera: camera
+        onToggleViewerClicked: viewer.x = viewer.onScreen ? main.width : 0
+    }
+
+    PhotoViewer {
+        id: viewer
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        x: parent.width
+        width: parent.width
+
+        model: FolderListModel {
+            folder: picturesDirectory
+            nameFilters: ["*.jpeg", "*.JPEG", "*.jpg", "*.JPG", "*.png", "*.PNG"]
+            showDirs: false
+            sortField: FolderListModel.Time
+        }
+
+        delegate: PhotoComponent {
+            width: viewer.width
+            height: viewer.height
+            source: filePath
+        }
+
+        property bool onScreen: x == 0
+        Behavior on x { NumberAnimation { duration: 500 } }
+
+
+        // We want to overshoot boundaries on the right but not on the left, and when we
+        // are dragging from the left side we want to slide away the entire viewer.
+        // FIXME: the only way i found to do this is with the following hack using a timer to detect
+        // when we've been flicking or dragging for a bit and the contentX is still zero. There may be
+        // a better way.
+        onContentXChanged: if (contentX <= 0) contentX = 0; else viewerSlideOff.stop()
+        onMovingHorizontallyChanged: if (movingHorizontally && contentX == 0) viewerSlideOff.restart()
+        onFlickingHorizontallyChanged: if (flickingHorizontally && contentX == 0) viewerSlideOff.restart()
+        Timer {
+            id: viewerSlideOff
+            onTriggered: viewer.x = main.width
+            interval: 50
+        }
+    }
+
+    MouseArea {
+        id: photoViewerSliderOut
+        anchors.top: parent.top
+        anchors.bottom: toolbar.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        propagateComposedEvents: true
+        property int dragStart: 0
+        property int dragEnd: 0
+        property int dragThreshold: 50
+        onPressed: dragStart = mouse.x
+        onReleased: dragEnd = mouse.x
+        drag {
+            target: viewer
+            axis: Drag.XAxis
+            maximumX: parent.width
+            minimumX: 0
+            filterChildren: true
+            onActiveChanged: {
+                if (!drag.active) {
+                    if (dragStart - dragEnd >= dragThreshold) viewer.x = 0
+                    else viewer.x = main.width
+                }
+            }
+        }
+
+        enabled: !viewer.onScreen
     }
 }

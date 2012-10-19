@@ -6,8 +6,7 @@ Item {
     id: toolbar
 
     property Camera camera
-    signal recordClicked()
-    signal zoomClicked()
+    signal toggleViewerClicked()
 
     height: buttons.height + 20
 
@@ -111,7 +110,7 @@ Item {
 
             iconSource: "assets/gallery.png"
 
-            onClicked: console.log("Functionality not supported yet")
+            onClicked: toggleViewerClicked()
         }
     }
 }
