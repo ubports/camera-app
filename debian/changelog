@@ -1,15 +1,3 @@
-camera-app (0.3) quantal; urgency=low
-
-  * Add the photo viewer
-
- -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 19 Oct 2012 13:22:27 +0100
-
-camera-app (0.2) quantal; urgency=low
-
-  * Adapt to QT camera API and new visual design
-
- -- Ugo Riboni <ugo.riboni@canonical.com>  Thu, 18 Oct 2012 18:07:20 +0100
-
 camera-app (0.1) quantal; urgency=low
 
   [ Ugo Riboni ]
