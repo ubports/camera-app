@@ -1,22 +1,4 @@
-camera-app (0.4) quantal; urgency=low
-
-  * revert back to pre-photo viewer integration (bzr rev 29) as it's broken 
-
- -- Bill Filler <bill.filler@canonical.com>  Fri, 19 Oct 2012 11:43:25 -0400
-
-camera-app (0.3) quantal; urgency=low
-
-  * Add the photo viewer
-
- -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 19 Oct 2012 13:22:27 +0100
-
-camera-app (0.2) quantal; urgency=low
-
-  * Adapt to QT camera API and new visual design
-
- -- Ugo Riboni <ugo.riboni@canonical.com>  Thu, 18 Oct 2012 18:07:20 +0100
-
-camera-app (0.1) quantal; urgency=low
+camera-app (0.1) UNRELEASED; urgency=low
 
   [ Ugo Riboni ]
   * Initial release.
@@ -24,4 +6,4 @@ camera-app (0.1) quantal; urgency=low
   [ Bill Filler ]
   * clean up of packaging for Qt5 
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 17 Oct 2012 19:26:51 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 26 Sep 2012 10:53:25 +0100
