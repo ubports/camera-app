@@ -17,7 +17,8 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          qt-components-ubuntu,
-         cameraplugin-fake,
+         cameraplugin-aal [armel armhf],
+	 cameraplugin-fake [!armel !armhf],
 	 qtsvg
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
