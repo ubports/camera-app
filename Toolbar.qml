@@ -9,37 +9,36 @@ Item {
     signal recordClicked()
     signal zoomClicked()
 
-    height: buttons.height + 20
-
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        color: "black"
-        opacity: 0.35
-    }
+    height: middle.height
+    property int iconWidth: 92
+    property int iconHeight: 76
 
-    Row {
-        id: buttons
-        anchors.top: parent.top
+    BorderImage {
+        id: leftBackground
         anchors.left: parent.left
-        anchors.right: parent.right
-        property int effectiveWidth: (toolbar.width - spacing * (buttons.children.length - 1))
-                                     - anchors.leftMargin - anchors.rightMargin
-        height: effectiveWidth / buttons.children.length
-        spacing: 10
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        anchors.topMargin: 10
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: middle.left
+        source: "assets/toolbar-left.sci"
+
+        property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
 
         FlashButton {
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: parent.height
+            id: flashButton
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: parent.iconSpacing
 
+            iconHeight: toolbar.iconHeight
+            iconWidth: toolbar.iconWidth
             enabled: toolbar.opacity > 0.0
-            flashAllowed: !camera.isRecording
+            flashAllowed: camera.captureMode != Camera.CaptureVideo
+            onFlashAllowedChanged: {
+                if (camera.flash.mode == Camera.FlashOff) camera.flash.mode = Camera.FlashOff
+                else camera.flash.mode = (flashAllowed) ? Camera.FlashAuto : Camera.FlashTorch
+            }
 
             state: { switch (camera.flash.mode) {
                 case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
@@ -59,21 +58,42 @@ Item {
         }
 
         ToolbarButton {
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: parent.height
+            id: recordModeButton
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: flashButton.right
+            anchors.leftMargin: parent.iconSpacing
 
             enabled: toolbar.opacity > 0.0
 
+            iconWidth: toolbar.iconWidth
+            iconHeight: toolbar.iconHeight
             iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_video.png" : "assets/record_picture.png"
-            onClicked: camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
+                camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+            }
         }
+    }
 
-        ToolbarButton {
-            anchors.top: parent.top
+    BorderImage {
+        id: middle
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: shootButton.height + 8
+        source: "assets/toolbar-middle.sci"
+
+        ShootButton {
+            id: shootButton
+            anchors.horizontalCenter: middle.horizontalCenter
             anchors.bottom: parent.bottom
-            width: parent.height
-            iconSource: "assets/shoot.png"
+            anchors.bottomMargin: 4
+            iconWidth: 126
+            iconHeight: 134
+            state: if (camera.captureMode == Camera.CaptureVideo) {
+                       return (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record" : "pulsing"
+                   } else return "camera"
+
             onClicked: {
                 if (camera.captureMode == Camera.CaptureVideo) {
                     if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -89,26 +109,43 @@ Item {
             }
             enabled: camera.lastCaptureId == 0
         }
+    }
+
+    BorderImage {
+        id: rightBackground
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: middle.right
+        source: "assets/toolbar-right.sci"
+
+        property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
 
         ToolbarButton {
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: parent.height
+            id: swapButton
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: galleryButton.left
+            anchors.rightMargin: parent.iconSpacing
 
             enabled: toolbar.opacity > 0.0
 
+            iconWidth: toolbar.iconWidth
+            iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
 
             onClicked: console.log("Functionality not supported yet")
         }
 
         ToolbarButton {
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: parent.height
+            id: galleryButton
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: parent.iconSpacing
 
             enabled: toolbar.opacity > 0.0
 
+            iconWidth: toolbar.iconWidth
+            iconHeight: toolbar.iconHeight
             iconSource: "assets/gallery.png"
 
             onClicked: console.log("Functionality not supported yet")
