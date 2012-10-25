@@ -25,4 +25,3 @@ camera-app (0.1) quantal; urgency=low
   * clean up of packaging for Qt5 
 
  -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 17 Oct 2012 19:26:51 +0100
-
