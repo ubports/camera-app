@@ -4,6 +4,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
+#include <QtCore/QLibrary>
 #include <QQmlContext>
 #include <QtQuick/QQuickItem>
 #include <QtDBus/QDBusInterface>
@@ -14,12 +15,30 @@
 static void printUsage(const QStringList& arguments)
 {
     qDebug() << "usage:"
-             << arguments.at(0).toUtf8().constData();
+             << arguments.at(0).toUtf8().constData()
+             << "[-testability]";
 }
 
 CameraApplication::CameraApplication(int &argc, char **argv)
     : QGuiApplication(argc, argv), m_view(0)
 {
+
+    // The testability driver is only loaded by QApplication but not by QGuiApplication.
+    // However, QApplication depends on QWidget which would add some unneeded overhead => Let's load the testability driver on our own.
+    if (arguments().contains(QLatin1String("-testability"))) {
+        QLibrary testLib(QLatin1String("qttestability"));
+        if (testLib.load()) {
+            typedef void (*TasInitialize)(void);
+            TasInitialize initFunction = (TasInitialize)testLib.resolve("qt_testability_init");
+            if (initFunction) {
+                initFunction();
+            } else {
+                qCritical("Library qttestability resolve failed!");
+            }
+        } else {
+            qCritical("Library qttestability load failed!");
+        }
+    }
 }
 
 bool CameraApplication::setup()

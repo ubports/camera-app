@@ -22,3 +22,11 @@ Depends: ${shlibs:Depends},
 	 qtsvg
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
+
+Package: camera-app-testing
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         camera-app
+Description: Test package for the camera app
+  Autopilot tests for the camera-app package

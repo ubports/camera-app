@@ -64,4 +64,10 @@ install(FILES ${CAMERA_APP}.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
 
+set(TESTING_DIR tests)
+
+install(DIRECTORY ${TESTING_DIR}
+    DESTINATION ${CAMERA_APP_DIR}
+    )
+
 add_subdirectory(CameraApp)
