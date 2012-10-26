@@ -1,3 +1,9 @@
+camera-app (0.5) UNRELEASED; urgency=low
+
+  * Match the toolbar to the latest visual and interaction design
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 26 Oct 2012 09:09:39 +0200
+
 camera-app (0.4) quantal; urgency=low
 
   * revert back to pre-photo viewer integration (bzr rev 29) as it's broken 
