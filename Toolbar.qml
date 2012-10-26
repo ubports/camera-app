@@ -36,10 +36,14 @@ Item {
             iconHeight: toolbar.iconHeight
             iconWidth: toolbar.iconWidth
             enabled: toolbar.opacity > 0.0
+
             flashAllowed: camera.captureMode != Camera.CaptureVideo
+            property variant previousFlashMode: Camera.FlashOff
+
             onFlashAllowedChanged: {
-                if (camera.flash.mode == Camera.FlashOff) camera.flash.mode = Camera.FlashOff
-                else camera.flash.mode = (flashAllowed) ? Camera.FlashAuto : Camera.FlashTorch
+                var previous = camera.flash.mode;
+                camera.flash.mode = previousFlashMode;
+                previousFlashMode = previous;
             }
 
             state: { switch (camera.flash.mode) {
@@ -49,18 +53,19 @@ Item {
                 case Camera.FlashAuto: return "auto";
             }}
 
-            onClicked: { switch (state) {
+            onClicked: switch (state) {
                 case "off_torch":
                 case "off_flash": camera.flash.mode = (flashAllowed) ? Camera.FlashOn :
                                                                        Camera.FlashTorch; break;
                 case "on": camera.flash.mode = Camera.FlashAuto; break;
-                case "auto": camera.flash.mode = Camera.FlashTorch; break;
+                case "auto":
                 case "torch": camera.flash.mode = Camera.FlashOff; break;
-            }}
+            }
         }
 
         ToolbarButton {
             id: recordModeButton
+            objectName: "recordModeButton"
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: flashButton.right
             anchors.leftMargin: parent.iconSpacing
@@ -125,6 +130,7 @@ Item {
 
         ToolbarButton {
             id: swapButton
+            objectName: "swapButton"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: galleryButton.left
             anchors.rightMargin: parent.iconSpacing
@@ -140,6 +146,7 @@ Item {
 
         ToolbarButton {
             id: galleryButton
+            objectName: "galleryButton"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: parent.iconSpacing
