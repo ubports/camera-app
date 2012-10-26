@@ -90,9 +90,9 @@ Item {
             anchors.centerIn: parent
             iconWidth: 126
             iconHeight: 134
-            state: if (camera.captureMode == Camera.CaptureVideo) {
-                       return (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record" : "pulsing"
-                   } else return "camera"
+            state: (camera.captureMode == Camera.CaptureVideo) ?
+                   ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record" : "pulsing") :
+                   "camera"
 
             onClicked: {
                 if (camera.captureMode == Camera.CaptureVideo) {
