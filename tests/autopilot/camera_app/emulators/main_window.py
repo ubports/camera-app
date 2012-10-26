@@ -18,11 +18,11 @@ class MainWindow(object):
       
     def get_exposure_button(self):
         """Returns the button that takes pictures"""
-        return self.get_toolbar().get_children_by_type("QQuickRow")[0].get_children_by_type("Button")[1]
+        return self.app.select_single("ShootButton")
 
     def get_record_control(self):
-        """Returns the record control button of the camera"""
-        return self.get_toolbar().get_children_by_type("QQuickRow")[0].get_children_by_type("Button")[0]
+        """Returns the button that switches between photo and video recording"""
+        return self.app.select_single("ToolbarButton", objectName="recordModeButton")
 
     def get_flash_button(self):
         """Returns the flash control button of the camera"""

@@ -46,6 +46,7 @@ Rectangle {
         id: viewFinder
         anchors.fill: parent
         source: camera
+        orientation: -90
 
         MouseArea {
             anchors.fill: parent
@@ -117,6 +118,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.bottomMargin: 16
+        anchors.leftMargin: 16
+        anchors.rightMargin: 16
 
         camera: camera
     }

@@ -60,7 +60,7 @@ class TestCameraFeatures(CameraAppTestCase):
 
 
     """Tests clicking on the record control and checks if the flash changes 
-    to torch mode and the recording time appears"""
+    to torch off mode and the recording time appears"""
     def test_record_control(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()
@@ -70,10 +70,6 @@ class TestCameraFeatures(CameraAppTestCase):
         stop_watch = self.main_window.get_stop_watch()
         exposure_button = self.main_window.get_exposure_button()
 
-        # Make the toolbar visible by clicking somewhere on the screen
-        self.mouse.move_to_object(camera_window)
-        self.mouse.click()
- 
         # Store the flashlight state
         flashlight_old_state = flash_button.state
 
@@ -101,10 +97,9 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertThat(stop_watch.elapsed, Eventually(Equals("00:02")))
 
         # Now stop the video and check if everything resets itself to previous states
-        self.mouse.click();
+        self.mouse.click()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
-        self.assertEquals(flash_button.state, flashlight_old_state)
 
         # Now start recording a second video and check if everything still works
         self.mouse.click();
@@ -118,14 +113,16 @@ class TestCameraFeatures(CameraAppTestCase):
         # Record video for 2 seconds and check if the stop watch actually works
         self.assertThat(stop_watch.elapsed, Eventually(Equals("00:02")))
 
-        # Now stop the video and check if everything resets itself to previous states
+        # Now stop the video and go back to picture mode and check if everything resets itself to previous states
+        self.mouse.click();
+        self.mouse.move_to_object(record_control)
         self.mouse.click();
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
         self.assertThat(flash_button.state, Eventually(Equals(flashlight_old_state)))
 
 
-    """Tests clicking on the flash button and checks if it cycles the state after exactly 4 clicks"""
+    """Tests clicking on the flash button and checks if it cycles the state after exactly 3 clicks"""
     def test_flash_button(self):
         camera_window = self.main_window.get_camera()
         self.mouse.move_to_object(camera_window)
@@ -136,9 +133,6 @@ class TestCameraFeatures(CameraAppTestCase):
         flash_button_old_state = flash_button.state
 
         self.mouse.move_to_object(flash_button)
-        self.mouse.click();
-        self.assertNotEqual(flash_button_old_state, flash_button.state)
-
         self.mouse.click();
         self.assertNotEqual(flash_button_old_state, flash_button.state)
 
