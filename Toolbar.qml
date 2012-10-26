@@ -21,6 +21,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: middle.left
+        anchors.topMargin: 4
+        anchors.bottomMargin: 4
         source: "assets/toolbar-left.sci"
 
         property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
@@ -80,14 +82,12 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        height: shootButton.height + 8
+        height: shootButton.height + 20
         source: "assets/toolbar-middle.sci"
 
         ShootButton {
             id: shootButton
-            anchors.horizontalCenter: middle.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
+            anchors.centerIn: parent
             iconWidth: 126
             iconHeight: 134
             state: if (camera.captureMode == Camera.CaptureVideo) {
@@ -117,6 +117,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: middle.right
+        anchors.topMargin: 4
+        anchors.bottomMargin: 4
         source: "assets/toolbar-right.sci"
 
         property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
