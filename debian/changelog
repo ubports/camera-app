@@ -1,4 +1,4 @@
-camera-app (0.5) UNRELEASED; urgency=low
+camera-app (0.5) quantal; urgency=low
 
   * Match the toolbar to the latest visual and interaction design
 
