@@ -51,7 +51,8 @@ bool CameraApplication::setup()
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
     m_view->setSource(QUrl::fromLocalFile("camera-app.qml"));
-    m_view->show();
+    if (arguments().contains(QLatin1String("--fullscreen"))) m_view->showFullScreen();
+    else m_view->show();
 
     return true;
 }
