@@ -6,29 +6,52 @@ ToolbarButton {
     states: [
         State { name: "camera"
             PropertyChanges { target: button; iconSource: "assets/shoot.png" }
-            PropertyChanges { target: button; opacity: 1.0 }
-            PropertyChanges { target: pulseTimer; running: false }
+            PropertyChanges { target: recordOn; opacity: 0.0 }
+            PropertyChanges { target: pulseAnimation; running: false }
         },
-        State { name: "record"
-            PropertyChanges { target: button; iconSource: "assets/record_on.png" }
-            PropertyChanges { target: button; opacity: 1.0 }
-            PropertyChanges { target: pulseTimer; running: false }
+        State { name: "record_off"
+            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+            PropertyChanges { target: recordOn; opacity: 0.0 }
+            PropertyChanges { target: pulseAnimation; running: false }
         },
-        State { name: "pulsing"
-            PropertyChanges { target: button; iconSource: "assets/record_on.png" }
-            PropertyChanges { target: pulseTimer; running: true }
+        State { name: "record_on"
+            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+            PropertyChanges { target: recordOn; opacity: 1.0 }
+            PropertyChanges { target: pulseAnimation; running: true }
         }
     ]
 
-    Behavior on opacity { NumberAnimation { duration: button.pulsePeriod; easing: Easing.InOutExpo } }
+    property int pulsePeriod: 750
 
-    property int pulsePeriod: 500
+    Image {
+        id: recordOn
+        anchors.fill: parent
+        source: "assets/record_on.png"
+        Behavior on opacity { NumberAnimation { duration: pulsePeriod } }
+    }
 
-    Timer {
-        id: pulseTimer
-        interval: button.pulsePeriod
-        repeat: true
-        triggeredOnStart: true
-        onTriggered: button.opacity = (button.opacity == 0.0) ? 1.0 : 0.0
+    Image {
+        id: pulse
+        anchors.fill: parent
+        source: "assets/record_on_pulse.png"
+        opacity: 0.0
+
+        SequentialAnimation on opacity  {
+            id: pulseAnimation
+            loops: Animation.Infinite
+            alwaysRunToEnd: true
+            running: false
+
+            PropertyAnimation {
+                from: 0
+                to: 1.0
+                duration: pulsePeriod
+            }
+            PropertyAnimation {
+                from: 1.0
+                to: 0
+                duration: pulsePeriod
+            }
+        }
     }
 }

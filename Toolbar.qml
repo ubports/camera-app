@@ -96,7 +96,7 @@ Item {
             iconWidth: 126
             iconHeight: 134
             state: (camera.captureMode == Camera.CaptureVideo) ?
-                   ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record" : "pulsing") :
+                   ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
 
             onClicked: {
