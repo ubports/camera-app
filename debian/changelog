@@ -1,5 +1,6 @@
 camera-app (0.6) UNRELEASED; urgency=low
 
+  * Use the most recent focus ring asset
   * While recording pulse the recording icon
 
  -- Ugo Riboni <ugo.riboni@canonical.com>  Tue, 30 Oct 2012 11:18:27 +0100
