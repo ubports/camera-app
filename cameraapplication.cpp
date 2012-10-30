@@ -48,8 +48,8 @@ bool CameraApplication::setup()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
-    QUrl source(cameraAppDirectory() + "/camera-app.qml");
-    m_view->setSource(source);
+    m_view->rootContext()->setBaseUrl(cameraAppDirectory());
+    m_view->setSource(QUrl("camera-app.qml"));
     m_view->show();
 
     return true;
