@@ -4,8 +4,8 @@ import QtMultimedia 5.0
 
 Rectangle {
     id: main
-    width: units.dp(360)
-    height: units.dp(640)
+    width: units.gu(45)
+    height: units.gu(80)
     color: "black"
 
     Component.onCompleted: camera.start()
@@ -64,8 +64,8 @@ Rectangle {
 
         FocusRing {
             id: focusRing
-            height: units.dp(100)
-            width: units.dp(100)
+            height: units.gu(13)
+            width: units.gu(13)
             opacity: 0.0
         }
 
@@ -108,7 +108,7 @@ Rectangle {
 
     ZoomButton {
         anchors.bottom: toolbar.top
-        anchors.bottomMargin: units.dp(5)
+        anchors.bottomMargin: units.gu(0.5)
         x: toolbar.width * 0.5 - width * 0.5
         onClicked: {
             zoomControl.opacity = 1.0
@@ -121,9 +121,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottomMargin: units.dp(8)
-        anchors.leftMargin: units.dp(8)
-        anchors.rightMargin: units.dp(8)
+        anchors.bottomMargin: units.gu(1)
+        anchors.leftMargin: units.gu(1)
+        anchors.rightMargin: units.gu(1)
 
         camera: camera
     }

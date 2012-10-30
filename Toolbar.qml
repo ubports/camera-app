@@ -12,8 +12,8 @@ Item {
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
     height: middle.height
-    property int iconWidth: units.dp(46)
-    property int iconHeight: units.dp(38)
+    property int iconWidth: units.gu(6)
+    property int iconHeight: units.gu(5)
 
     BorderImage {
         id: leftBackground
@@ -87,14 +87,14 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        height: shootButton.height + units.dp(10)
+        height: shootButton.height + units.gu(1)
         source: "assets/toolbar-middle.sci"
 
         ShootButton {
             id: shootButton
             anchors.centerIn: parent
-            iconWidth: units.dp(63)
-            iconHeight: units.dp(67)
+            iconWidth: units.gu(8)
+            iconHeight: units.gu(8)
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"

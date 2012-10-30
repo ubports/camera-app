@@ -2,8 +2,8 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 
 AbstractButton {
-    width: text.paintedWidth + units.dp(5)
-    height: text.paintedHeight + units.dp(5)
+    width: text.paintedWidth + units.gu(0.5)
+    height: text.paintedHeight + units.gu(0.5)
 
     Rectangle {
         anchors.fill: parent
