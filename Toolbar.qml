@@ -49,14 +49,14 @@ Item {
             state: { switch (camera.flash.mode) {
                 case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
                 case Camera.FlashOn: return "on";
-                case Camera.FlashTorch: return "torch";
+                case Camera.FlashVideoLight: return "torch";
                 case Camera.FlashAuto: return "auto";
             }}
 
             onClicked: switch (state) {
                 case "off_torch":
                 case "off_flash": camera.flash.mode = (flashAllowed) ? Camera.FlashOn :
-                                                                       Camera.FlashTorch; break;
+                                                                       Camera.FlashVideoLight; break;
                 case "on": camera.flash.mode = Camera.FlashAuto; break;
                 case "auto":
                 case "torch": camera.flash.mode = Camera.FlashOff; break;
