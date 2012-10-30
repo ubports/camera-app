@@ -63,6 +63,8 @@ Rectangle {
 
         FocusRing {
             id: focusRing
+            height: 200
+            width: 200
             opacity: 0.0
         }
 
