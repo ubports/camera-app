@@ -2,8 +2,8 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 
 AbstractButton {
-    width: text.paintedWidth + 10
-    height: text.paintedHeight + 10
+    width: text.paintedWidth + units.dp(5)
+    height: text.paintedHeight + units.dp(5)
 
     Rectangle {
         anchors.fill: parent
@@ -14,8 +14,8 @@ AbstractButton {
     TextCustom {
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.topMargin: 5
-        anchors.leftMargin: 5
+        anchors.topMargin: units.dp(2)
+        anchors.leftMargin: units.dp(2)
 
         id: text
         fontSize: "medium"

@@ -1,10 +1,11 @@
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 import QtMultimedia 5.0
 
 Rectangle {
     id: main
-    width: 720
-    height: 1280
+    width: units.dp(360)
+    height: units.dp(640)
     color: "black"
 
     Component.onCompleted: camera.start()
@@ -63,8 +64,8 @@ Rectangle {
 
         FocusRing {
             id: focusRing
-            height: 200
-            width: 200
+            height: units.dp(100)
+            width: units.dp(100)
             opacity: 0.0
         }
 
@@ -107,7 +108,7 @@ Rectangle {
 
     ZoomButton {
         anchors.bottom: toolbar.top
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: units.dp(5)
         x: toolbar.width * 0.5 - width * 0.5
         onClicked: {
             zoomControl.opacity = 1.0
@@ -120,9 +121,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottomMargin: 16
-        anchors.leftMargin: 16
-        anchors.rightMargin: 16
+        anchors.bottomMargin: units.dp(8)
+        anchors.leftMargin: units.dp(8)
+        anchors.rightMargin: units.dp(8)
 
         camera: camera
     }
