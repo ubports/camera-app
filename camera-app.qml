@@ -56,13 +56,15 @@ Rectangle {
                 focusRing.opacity = 1.0;
                 zoomControl.opacity = 0.0;
 
-                var focusPoint = viewFinder.mapPointToItemNormalized(Qt.point(mouse.x, mouse.y));
+                var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
                 camera.focus.customFocusPoint = focusPoint;
             }
         }
 
         FocusRing {
             id: focusRing
+            height: 200
+            width: 200
             opacity: 0.0
         }
 
