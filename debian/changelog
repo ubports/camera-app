@@ -1,3 +1,9 @@
+camera-app (0.6) UNRELEASED; urgency=low
+
+  * Use the most recent focus ring asset
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Tue, 30 Oct 2012 11:04:09 +0100
+
 camera-app (0.5) quantal; urgency=low
 
   * Match the toolbar to the latest visual and interaction design
