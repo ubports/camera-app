@@ -29,9 +29,9 @@ inline bool isRunningInstalled() {
 
 inline QString cameraAppDirectory() {
     if (isRunningInstalled()) {
-        return QString("@CMAKE_INSTALL_PREFIX@/@CAMERA_APP_DIR@");
+        return QString("@CMAKE_INSTALL_PREFIX@/@CAMERA_APP_DIR@/");
     } else {
-        return QString("@CMAKE_SOURCE_DIR@");
+        return QString("@CMAKE_SOURCE_DIR@/");
     }
 }
 

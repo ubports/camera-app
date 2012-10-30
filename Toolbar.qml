@@ -12,8 +12,8 @@ Item {
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
     height: middle.height
-    property int iconWidth: 92
-    property int iconHeight: 76
+    property int iconWidth: units.gu(6)
+    property int iconHeight: units.gu(5)
 
     BorderImage {
         id: leftBackground
@@ -21,8 +21,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: middle.left
-        anchors.topMargin: 4
-        anchors.bottomMargin: 4
+        anchors.topMargin: units.dp(2)
+        anchors.bottomMargin: units.dp(2)
         source: "assets/toolbar-left.sci"
 
         property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
@@ -87,14 +87,14 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        height: shootButton.height + 20
+        height: shootButton.height + units.gu(1)
         source: "assets/toolbar-middle.sci"
 
         ShootButton {
             id: shootButton
             anchors.centerIn: parent
-            iconWidth: 126
-            iconHeight: 134
+            iconWidth: units.gu(8)
+            iconHeight: units.gu(8)
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -122,8 +122,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: middle.right
-        anchors.topMargin: 4
-        anchors.bottomMargin: 4
+        anchors.topMargin: units.dp(2)
+        anchors.bottomMargin: units.dp(2)
         source: "assets/toolbar-right.sci"
 
         property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3

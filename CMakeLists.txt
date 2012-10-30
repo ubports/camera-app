@@ -48,7 +48,7 @@ install(TARGETS ${CAMERA_APP}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
-file(GLOB QML_JS_FILES *.qml *.js)
+file(GLOB QML_JS_FILES *.qml *.js resources_unit)
 
 install(FILES ${QML_JS_FILES}
     DESTINATION ${CAMERA_APP_DIR}

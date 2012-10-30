@@ -6,6 +6,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QQmlContext>
+#include <QQmlEngine>
 #include <QtQuick/QQuickItem>
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
@@ -48,9 +49,10 @@ bool CameraApplication::setup()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
-    QUrl source(cameraAppDirectory() + "/camera-app.qml");
-    m_view->setSource(source);
-    m_view->show();
+    m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
+    m_view->setSource(QUrl::fromLocalFile("camera-app.qml"));
+    if (arguments().contains(QLatin1String("--fullscreen"))) m_view->showFullScreen();
+    else m_view->show();
 
     return true;
 }
