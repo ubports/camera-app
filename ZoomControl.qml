@@ -14,6 +14,7 @@ Item {
         width: minusIcon.width
         height: minusIcon.height
         onClicked: slider.value = Math.max(value - zoom.zoomStep, slider.minimumValue)
+        onPressedChanged: if (pressed) minusTimer.restart(); else minusTimer.stop();
 
         Image {
             id: minusIcon
@@ -21,6 +22,13 @@ Item {
             source: "assets/zoom_minus.png"
             sourceSize.height: units.gu(2)
             smooth: true
+        }
+
+        Timer {
+            id: minusTimer
+            interval: 40
+            repeat: true
+            onTriggered: slider.value = Math.max(value - zoom.zoomStep, slider.minimumValue)
         }
     }
 
@@ -52,6 +60,7 @@ Item {
         width: plusIcon.width
         height: plusIcon.height
         onClicked: slider.value = Math.min(value + zoom.zoomStep, slider.maximumValue)
+        onPressedChanged: if (pressed) plusTimer.restart(); else plusTimer.stop();
 
         Image {
             id: plusIcon
@@ -59,6 +68,13 @@ Item {
             source: "assets/zoom_plus.png"
             sourceSize.height: units.gu(2)
             smooth: true
+        }
+
+        Timer {
+            id: plusTimer
+            interval: 40
+            repeat: true
+            onTriggered: slider.value = Math.min(value + zoom.zoomStep, slider.maximumValue)
         }
     }
 }
