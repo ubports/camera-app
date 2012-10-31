@@ -55,7 +55,6 @@ Rectangle {
                 focusRing.x = mouse.x - focusRing.width * 0.5;
                 focusRing.y = mouse.y - focusRing.height * 0.5;
                 focusRing.opacity = 1.0;
-                zoomControl.opacity = 0.0;
 
                 var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
                 camera.focus.customFocusPoint = focusPoint;
@@ -69,28 +68,8 @@ Rectangle {
             opacity: 0.0
         }
 
-        ZoomControl {
-            id: zoomControl
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            opacity: 0.0
-
-            maximumValue: camera.maximumZoom
-            onValueChanged: {
-                hideZoom.restart();
-                camera.currentZoom = value;
-            }
-
-            Timer {
-                id: hideZoom
-                interval: 5000
-                onTriggered: zoomControl.opacity = 0.0;
-            }
-        }
-
         StopWatch {
-            anchors.top: zoomControl.bottom
+            anchors.top: parent.top
             anchors.left: parent.left
             color: "red"
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
@@ -106,14 +85,21 @@ Rectangle {
         x: 0
     }
 
-    ZoomButton {
+    ZoomControl {
+        id: zoomControl
+        anchors.left: parent.left
+        anchors.leftMargin: units.gu(0.75)
+        anchors.rightMargin: units.gu(0.75)
+        anchors.right: parent.right
         anchors.bottom: toolbar.top
         anchors.bottomMargin: units.gu(0.5)
-        x: toolbar.width * 0.5 - width * 0.5
-        onClicked: {
-            zoomControl.opacity = 1.0
-            hideZoom.restart()
-        }
+        maximumValue: camera.maximumZoom
+        height: units.gu(4.5)
+
+        // Create a two way binding between the zoom control value and the actual camera zoom,
+        // so that they can stay in sync when the zoom is changed from the UI or from the hardware
+        Binding { target: zoomControl; property: "value"; value: camera.currentZoom }
+        Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
     }
 
     Toolbar {
