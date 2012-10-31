@@ -88,13 +88,13 @@ Rectangle {
     ZoomControl {
         id: zoomControl
         anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
+        anchors.leftMargin: units.gu(0.75)
+        anchors.rightMargin: units.gu(0.75)
         anchors.right: parent.right
         anchors.bottom: toolbar.top
         anchors.bottomMargin: units.gu(0.5)
         maximumValue: camera.maximumZoom
-        height: units.gu(1.5)
+        height: units.gu(4.5)
 
         // Create a two way binding between the zoom control value and the actual camera zoom,
         // so that they can stay in sync when the zoom is changed from the UI or from the hardware

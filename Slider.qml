@@ -52,8 +52,8 @@ AbstractButton {
 
     MouseArea {
         id: dragHandle
-        anchors.top: background.top
-        anchors.bottom: background.bottom
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.left: thumb.left
         anchors.right: thumb.right
         drag {

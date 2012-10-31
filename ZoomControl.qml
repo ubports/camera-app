@@ -19,7 +19,7 @@ Item {
             id: minusIcon
             anchors.centerIn: parent
             source: "assets/zoom_minus.png"
-            sourceSize.height: 33
+            sourceSize.height: units.gu(2)
             smooth: true
         }
     }
@@ -40,7 +40,7 @@ Item {
 
         thumbDelegate: Image {
             source: Qt.resolvedUrl("assets/zoom_point.png")
-            height: 16
+            height: units.gu(1.5)
             width: height
         }
     }
@@ -57,7 +57,7 @@ Item {
             id: plusIcon
             anchors.centerIn: parent
             source: "assets/zoom_plus.png"
-            sourceSize.height: 33
+            sourceSize.height: units.gu(2)
             smooth: true
         }
     }
