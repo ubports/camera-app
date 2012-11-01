@@ -49,18 +49,6 @@ Rectangle {
         source: camera
         orientation: -90
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                focusRing.x = mouse.x - focusRing.width * 0.5;
-                focusRing.y = mouse.y - focusRing.height * 0.5;
-                focusRing.opacity = 1.0;
-
-                var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
-                camera.focus.customFocusPoint = focusPoint;
-            }
-        }
-
         FocusRing {
             id: focusRing
             height: units.gu(13)
@@ -83,6 +71,21 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         x: 0
+    }
+
+    MouseArea {
+        anchors.top: viewFinder.top
+        anchors.bottom: zoomControl.top
+        anchors.left: viewFinder.left
+        anchors.right: viewFinder.right
+        onClicked: {
+            focusRing.x = mouse.x - focusRing.width * 0.5;
+            focusRing.y = mouse.y - focusRing.height * 0.5;
+            focusRing.opacity = 1.0;
+
+            var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
+            camera.focus.customFocusPoint = focusPoint;
+        }
     }
 
     ZoomControl {
