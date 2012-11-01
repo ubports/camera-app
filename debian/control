@@ -16,7 +16,7 @@ Package: camera-app
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         qt-components-ubuntu (= 0.15),
+         qt-components-ubuntu,
          cameraplugin-aal [armel armhf],
 	 cameraplugin-fake [!armel !armhf],
 	 qtsvg
