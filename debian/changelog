@@ -1,3 +1,9 @@
+camera-app (0.7) quantal; urgency=low
+
+  * new release 
+
+ -- Bill Filler <bill.filler@canonical.com>  Mon, 05 Nov 2012 12:55:24 -0500
+
 camera-app (0.6) quantal; urgency=low
 
   * Use the most recent focus ring asset
