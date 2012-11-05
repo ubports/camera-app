@@ -67,10 +67,10 @@ Rectangle {
 
     Snapshot {
         id: snapshot
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: parent.width
-        x: 0
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parent.height
+        y: 0
     }
 
     MouseArea {
