@@ -37,7 +37,7 @@ Item {
             opacity: 0.0
             fillMode: Image.PreserveAspectCrop
             smooth: false
-            sourceSize.height: parent.height
+            sourceSize.height: parent.width
 
             onStatusChanged: if (status == Image.Ready) {
                 opacity = 1.0
