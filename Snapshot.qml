@@ -12,32 +12,36 @@ Item {
         anchors.fill: parent
     }
 
-    Image {
-        id: snapshot
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: parent.width
-        x: 0
+    Item {
+        id: container
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height:parent.height
+        y: 0
 
-        asynchronous: true
-        opacity: 0.0
-        fillMode: Image.PreserveAspectCrop
-        smooth: false
-        sourceSize.height: parent.height
-
-        Behavior on x {
+        Behavior on y {
             SequentialAnimation {
                 NumberAnimation { duration: 800 }
                 PropertyAction { target: snapshot; property: "opacity"; value: 0.0 }
-                PropertyAction { target: snapshot; property: "source"; value: "" }
-                PropertyAction { target: snapshot; property: "x"; value: 0 }
+                PropertyAction { target: snapshot; property: "source"; value: ""}
+                PropertyAction { target: container; property: "y"; value: 0 }
             }
         }
 
-        onStatusChanged: {
-            if (status == Image.Ready) {
+        Image {
+            id: snapshot
+            anchors.centerIn: parent
+            rotation: 90
+
+            asynchronous: true
+            opacity: 0.0
+            fillMode: Image.PreserveAspectCrop
+            smooth: false
+            sourceSize.height: parent.width
+
+            onStatusChanged: if (status == Image.Ready) {
                 opacity = 1.0
-                x = parent.width
+                parent.y = parent.height
             }
         }
     }

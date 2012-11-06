@@ -1,3 +1,10 @@
+camera-app (0.8) UNRELEASED; urgency=low
+
+  * Slide the preview to the bottom and rotate it to match what we get
+    from the AAL plugin.
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Mon, 05 Nov 2012 13:39:35 +0100
+
 camera-app (0.7) quantal; urgency=low
 
   * new release 
