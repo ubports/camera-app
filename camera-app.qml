@@ -4,7 +4,7 @@ import QtMultimedia 5.0
 
 Rectangle {
     id: main
-    width: units.gu(45)
+    width: units.gu(40)
     height: units.gu(80)
     color: "black"
 
