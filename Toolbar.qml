@@ -52,7 +52,7 @@ Item {
                 onActiveCameraIndexChanged: {
                     if (advancedCameraSettings.activeCameraIndex == 1) {
                         camera.flash.mode = Camera.FlashOff;
-                        previousFlashMode = Camera.FlashOff;
+                        flashButton.previousFlashMode = Camera.FlashOff;
                     }
                 }
             }
