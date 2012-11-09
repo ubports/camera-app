@@ -47,6 +47,16 @@ Item {
                 previousFlashMode = previous;
             }
 
+            Connections {
+                target: advancedCameraSettings
+                onActiveCameraIndexChanged: {
+                    if (advancedCameraSettings.activeCameraIndex == 1) {
+                        camera.flash.mode = Camera.FlashOff;
+                        previousFlashMode = Camera.FlashOff;
+                    }
+                }
+            }
+
             state: { switch (camera.flash.mode) {
                 case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
                 case Camera.FlashOn: return "on";
