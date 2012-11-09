@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 0.1
+import CameraApp 0.1
 
 Item {
     id: toolbar
@@ -141,7 +142,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
 
-            onClicked: console.log("Functionality not supported yet")
+            onClicked: advancedCameraSettings.activeCameraIndex = (advancedCameraSettings.activeCameraIndex === 0) ? 1 : 0
         }
 
         ToolbarButton {

@@ -8,7 +8,10 @@ Rectangle {
     height: units.gu(80)
     color: "black"
 
-    Component.onCompleted: camera.start()
+    Component.onCompleted: {
+        advancedCameraSettings.camera = camera;
+        camera.start();
+    }
 
     Camera {
         id: camera

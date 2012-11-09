@@ -17,13 +17,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QtQuick>
 #include "components.h"
+#include "advancedcamerasettings.h"
 
 void Components::registerTypes(const char *uri)
 {
+    qmlRegisterUncreatableType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings",
+        "Please access this singleton via the context property advancedCameraSettings.");
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     QQmlExtensionPlugin::initializeEngine(engine, uri);
+    engine->rootContext()->setContextProperty("advancedCameraSettings",
+        &AdvancedCameraSettings::instance());
 }
