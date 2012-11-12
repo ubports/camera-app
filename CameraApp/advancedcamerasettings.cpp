@@ -84,8 +84,8 @@ void AdvancedCameraSettings::setCamera(QObject *camera)
         if (selector) {
             m_deviceSelector = selector;
             m_camera = camera;
-            Q_EMIT cameraChanged();
             m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
+            Q_EMIT cameraChanged();
         }
     }
 }
@@ -94,9 +94,9 @@ void AdvancedCameraSettings::setActiveCameraIndex(int index)
 {
     if (index != m_activeCameraIndex) {
         m_activeCameraIndex = index;
-        Q_EMIT activeCameraIndexChanged();
         if (m_deviceSelector) {
             m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
         }
+        Q_EMIT activeCameraIndexChanged();
     }
 }
