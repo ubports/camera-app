@@ -52,6 +52,7 @@ AbstractButton {
 
     MouseArea {
         id: dragHandle
+        objectName: "dragHandle"
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: thumb.left
