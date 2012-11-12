@@ -23,13 +23,10 @@
 
 void Components::registerTypes(const char *uri)
 {
-    qmlRegisterUncreatableType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings",
-        "Please access this singleton via the context property advancedCameraSettings.");
+    qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     QQmlExtensionPlugin::initializeEngine(engine, uri);
-    engine->rootContext()->setContextProperty("advancedCameraSettings",
-        &AdvancedCameraSettings::instance());
 }

@@ -24,12 +24,6 @@
 #include <QMediaService>
 #include <QVideoDeviceSelectorControl>
 
-AdvancedCameraSettings& AdvancedCameraSettings::instance()
-{
-    static AdvancedCameraSettings instance;
-    return instance;
-}
-
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
     m_activeCameraIndex(0),

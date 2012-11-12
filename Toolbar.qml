@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 0.1
-import CameraApp 0.1
 
 Item {
     id: toolbar
@@ -48,9 +47,9 @@ Item {
             }
 
             Connections {
-                target: advancedCameraSettings
+                target: camera.advanced
                 onActiveCameraIndexChanged: {
-                    if (advancedCameraSettings.activeCameraIndex == 1) {
+                    if (camera.advanced.activeCameraIndex == 1) {
                         camera.flash.mode = Camera.FlashOff;
                         flashButton.previousFlashMode = Camera.FlashOff;
                     }
@@ -152,7 +151,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
 
-            onClicked: advancedCameraSettings.activeCameraIndex = (advancedCameraSettings.activeCameraIndex === 0) ? 1 : 0
+            onClicked: camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0
         }
 
         ToolbarButton {

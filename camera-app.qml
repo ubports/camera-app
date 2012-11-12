@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import QtMultimedia 5.0
+import CameraApp 0.1
 
 Rectangle {
     id: main
@@ -8,10 +9,7 @@ Rectangle {
     height: units.gu(80)
     color: "black"
 
-    Component.onCompleted: {
-        advancedCameraSettings.camera = camera;
-        camera.start();
-    }
+    Component.onCompleted: camera.start();
 
     Camera {
         id: camera
@@ -21,6 +19,9 @@ Rectangle {
         focus.focusPointMode: focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto
 
         property int lastCaptureId: 0
+        property AdvancedCameraSettings advanced: AdvancedCameraSettings {
+            camera: camera
+        }
 
         /* Use only digital zoom for now as it's what phone cameras mostly use.
            TODO: if optical zoom is available, maximumZoom should be the combined

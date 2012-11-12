@@ -32,7 +32,7 @@ class AdvancedCameraSettings : public QObject
                 NOTIFY activeCameraIndexChanged)
 
 public:
-    static AdvancedCameraSettings& instance();
+    explicit AdvancedCameraSettings(QObject *parent = 0);
     QObject* camera() const;
     int activeCameraIndex() const;
     void setCamera(QObject* camera);
@@ -43,7 +43,6 @@ Q_SIGNALS:
     void activeCameraIndexChanged();
 
 private:
-    explicit AdvancedCameraSettings(QObject *parent = 0);
     QVideoDeviceSelectorControl* selectorFromCamera(QObject *camera) const;
 
     QObject* m_camera;
