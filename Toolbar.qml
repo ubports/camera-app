@@ -46,6 +46,16 @@ Item {
                 previousFlashMode = previous;
             }
 
+            Connections {
+                target: camera.advanced
+                onActiveCameraIndexChanged: {
+                    if (camera.advanced.activeCameraIndex == 1) {
+                        camera.flash.mode = Camera.FlashOff;
+                        flashButton.previousFlashMode = Camera.FlashOff;
+                    }
+                }
+            }
+
             state: { switch (camera.flash.mode) {
                 case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
                 case Camera.FlashOn: return "on";
@@ -141,7 +151,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
 
-            onClicked: console.log("Functionality not supported yet")
+            onClicked: camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0
         }
 
         ToolbarButton {

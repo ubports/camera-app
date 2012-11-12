@@ -2,19 +2,22 @@
 
 set(plugin_SRCS
     components.cpp
+    advancedcamerasettings.cpp
     )
 
 set(plugin_HDRS
     components.h
+    advancedcamerasettings.h
     )
 
 add_library(camera-qml SHARED ${plugin_SRCS} ${plugin_HDRS})
 
-qt5_use_modules(camera-qml Qml Quick)
+qt5_use_modules(camera-qml Qml Quick Multimedia)
 
 target_link_libraries(camera-qml
     ${Qt5Qml_LIBRARIES}
     ${Qt5Quick_LIBRARIES}
+    ${Qt5Multimedia_LIBRARIES}
     )
 
 

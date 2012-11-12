@@ -17,10 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QtQuick>
 #include "components.h"
+#include "advancedcamerasettings.h"
 
 void Components::registerTypes(const char *uri)
 {
+    qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)
