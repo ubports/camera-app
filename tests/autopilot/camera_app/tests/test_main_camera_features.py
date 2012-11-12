@@ -143,7 +143,7 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertEqual(flash_button_old_state, flash_button.state)
 
 
-    """Tests the zoom slider - This isn't a real test yet but rather a try to use the autopilot with gestures"""
+    """Tests the zoom slider"""
     def test_zoom(self):
         camera_window = self.main_window.get_camera()
         zoom_control = self.main_window.get_zoom_control()
