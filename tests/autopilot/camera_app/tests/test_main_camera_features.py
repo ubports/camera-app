@@ -143,18 +143,15 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertEqual(flash_button_old_state, flash_button.state)
 
 
-    """Tests the zoom slider - This isn't a real test yet but rather a try to use the autopilot with gestures"""
+    """Tests the zoom slider"""
     def test_zoom(self):
         camera_window = self.main_window.get_camera()
-
-        zoom_button = self.main_window.get_zoom_button()
-        self.mouse.move_to_object(zoom_button)
-        self.mouse.click()
-        
         zoom_control = self.main_window.get_zoom_control()
-        self.mouse.move(zoom_control.globalRect[0] + 20, zoom_control.globalRect[1] + 20)
 
+        zoom_button = self.main_window.get_zoom_slider_button()
+        self.mouse.move_to_object(zoom_button)
+        
         self.mouse.press()
-        self.mouse.move(camera_window.globalRect[0] + camera_window.width, self.mouse.y)
+        self.mouse.move(self.mouse.x + camera_window.width, self.mouse.y)
         self.mouse.release()
-        self.assertEqual(zoom_control.value, 2.0)
+        self.assertEqual(zoom_control.value, 6.0)

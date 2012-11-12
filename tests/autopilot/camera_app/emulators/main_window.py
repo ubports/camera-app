@@ -36,10 +36,10 @@ class MainWindow(object):
         """Returns the toolbar that holds the flash and record button"""
         return self.app.select_single("Toolbar")
 
-    def get_zoom_button(self):
-        """Returns the zoom button"""
-        return self.app.select_single("TextCustom", text="ZOOM")
-
     def get_zoom_control(self):
-        """Returns the left zoom control"""
+        """Returns the whole left control"""
         return self.app.select_single("ZoomControl")
+
+    def get_zoom_slider_button(self):
+        """Returns the zoom slider button"""
+        return self.app.select_single("QQuickMouseArea", objectName="dragHandle")
