@@ -42,11 +42,11 @@ class TestCameraFeatures(CameraAppTestCase):
         # The focus ring should be invisible in the beginning
         self.assertEquals(focus_ring.opacity, 0.0)
 
-        self.mouse.move_to_object(camera_window)
+        center_click_coords = [camera_window.globalRect[2] / 2 + camera_window.globalRect[0], camera_window.globalRect[3] / 2 + camera_window.globalRect[1]]
+        self.mouse.move(center_click_coords[0], center_click_coords[1])
         self.mouse.click()
 
         # The focus ring sould be visible and centered to the mouse click coords now
-        center_click_coords = [camera_window.globalRect[2] / 2 + camera_window.globalRect[0], camera_window.globalRect[3] / 2 + camera_window.globalRect[1]]
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, center_click_coords)
@@ -82,7 +82,7 @@ class TestCameraFeatures(CameraAppTestCase):
         self.mouse.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
-        self.assertEquals(flash_button.state, "off_torch")
+        self.assertThat(flash_button.state, Eventually(Equals("off_torch")))
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
@@ -105,7 +105,7 @@ class TestCameraFeatures(CameraAppTestCase):
         self.mouse.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
-        self.assertEquals(flash_button.state, "off_torch")
+        self.assertThat(flash_button.state, Eventually(Equals("off_torch")))
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
