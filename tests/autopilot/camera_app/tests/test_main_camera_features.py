@@ -70,8 +70,9 @@ class TestCameraFeatures(CameraAppTestCase):
         stop_watch = self.main_window.get_stop_watch()
         exposure_button = self.main_window.get_exposure_button()
 
-        # Store the flashlight state
-        flashlight_old_state = flash_button.state
+        # Store the torch mode and the flash state
+        flashlight_old_state = flash_button.flashState
+        torchmode_old_state = flash_button.torchMode
 
         # Click the record button to toggle photo/video mode
         self.mouse.move_to_object(record_control)
@@ -82,7 +83,8 @@ class TestCameraFeatures(CameraAppTestCase):
         self.mouse.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
-        self.assertThat(flash_button.state, Eventually(Equals("off_torch")))
+        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
+        self.assertThat(flash_button.torchMode, Eventually(Equals(True)))
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
@@ -105,7 +107,8 @@ class TestCameraFeatures(CameraAppTestCase):
         self.mouse.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
-        self.assertThat(flash_button.state, Eventually(Equals("off_torch")))
+        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
+        self.assertThat(flash_button.torchMode, Eventually(Equals(True)))
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
@@ -119,7 +122,8 @@ class TestCameraFeatures(CameraAppTestCase):
         self.mouse.click();
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
-        self.assertThat(flash_button.state, Eventually(Equals(flashlight_old_state)))
+        self.assertThat(flash_button.flashState, Eventually(Equals(flashlight_old_state)))
+        self.assertThat(flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
 
 
     """Tests clicking on the flash button and checks if it cycles the state after exactly 3 clicks"""
@@ -130,17 +134,17 @@ class TestCameraFeatures(CameraAppTestCase):
 
         flash_button = self.main_window.get_flash_button()
 
-        flash_button_old_state = flash_button.state
+        flash_button_old_state = flash_button.flashState
 
         self.mouse.move_to_object(flash_button)
         self.mouse.click();
-        self.assertNotEqual(flash_button_old_state, flash_button.state)
+        self.assertNotEqual(flash_button_old_state, flash_button.flashState)
 
         self.mouse.click();
-        self.assertNotEqual(flash_button_old_state, flash_button.state)
+        self.assertNotEqual(flash_button_old_state, flash_button.flashState)
 
         self.mouse.click();
-        self.assertEqual(flash_button_old_state, flash_button.state)
+        self.assertEqual(flash_button_old_state, flash_button.flashState)
 
 
     """Tests the zoom slider"""
