@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "constants.js" as Const
 
 Item {
     id: button
@@ -39,14 +40,26 @@ Item {
     transitions: [
         Transition { from: "flash"; to: "torch";
             SequentialAnimation {
-                NumberAnimation { target: flash; property: "opacity"; duration: 500 }
-                NumberAnimation { target: torch; property: "opacity"; duration: 500 }
+                NumberAnimation {
+                    target: flash; property: "opacity";
+                    duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+                }
+                NumberAnimation {
+                    target: torch; property: "opacity";
+                    duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+                }
             }
         },
         Transition { from: "torch"; to: "flash";
             SequentialAnimation {
-                NumberAnimation { target: torch; property: "opacity"; duration: 500 }
-                NumberAnimation { target: flash; property: "opacity"; duration: 500 }
+                NumberAnimation {
+                    target: torch; property: "opacity";
+                    duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+                }
+                NumberAnimation {
+                    target: flash; property: "opacity";
+                    duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+                }
             }
         }
     ]

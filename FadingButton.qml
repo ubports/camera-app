@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import "constants.js" as Const
 
 AbstractButton {
     id: button
@@ -18,14 +19,22 @@ AbstractButton {
     Image {
         id: icon1
         anchors.fill: parent
-        Behavior on opacity { NumberAnimation { duration: 500 } }
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+            }
+        }
     }
 
     Image {
         id: icon2
         anchors.fill: parent
         opacity: 0.0
-        Behavior on opacity { NumberAnimation { duration: 500 } }
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Const.iconFadeDuration; easing.type: Easing.InOutQuad
+            }
+        }
     }
 
     Connections {
