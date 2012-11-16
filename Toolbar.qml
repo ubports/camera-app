@@ -33,18 +33,9 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: parent.iconSpacing
 
-            iconHeight: toolbar.iconHeight
-            iconWidth: toolbar.iconWidth
+            height: toolbar.iconHeight
+            width: toolbar.iconWidth
             enabled: toolbar.opacity > 0.0
-
-            flashAllowed: camera.captureMode != Camera.CaptureVideo
-            property variant previousFlashMode: Camera.FlashOff
-
-            onFlashAllowedChanged: {
-                var previous = camera.flash.mode;
-                camera.flash.mode = previousFlashMode;
-                previousFlashMode = previous;
-            }
 
             Connections {
                 target: camera.advanced
@@ -56,24 +47,30 @@ Item {
                 }
             }
 
-            state: { switch (camera.flash.mode) {
-                case Camera.FlashOff: return (flashAllowed) ? "off_flash" : "off_torch";
-                case Camera.FlashOn: return "on";
-                case Camera.FlashVideoLight: return "torch";
+            torchMode: camera.captureMode == Camera.CaptureVideo
+            flashState: { switch (camera.flash.mode) {
+                case Camera.FlashOff: return "off"
                 case Camera.FlashAuto: return "auto";
+                case Camera.FlashOn:
+                case Camera.FlashVideoLight: return "on";
             }}
 
-            onClicked: switch (state) {
-                case "off_torch":
-                case "off_flash": camera.flash.mode = (flashAllowed) ? Camera.FlashOn :
-                                                                       Camera.FlashVideoLight; break;
-                case "on": camera.flash.mode = Camera.FlashAuto; break;
-                case "auto":
-                case "torch": camera.flash.mode = Camera.FlashOff; break;
+            onClicked: {
+                if (torchMode) flashState = (flashState == "on") ? "off" : "on"
+                else flashState = (flashState == "off") ? "on" :
+                                  ((flashState == "on") ? "auto" : "off")
+            }
+
+            property variant previousFlashMode: Camera.FlashOff
+
+            onTorchModeChanged: {
+                var previous = camera.flash.mode;
+                camera.flash.mode = previousFlashMode;
+                previousFlashMode = previous;
             }
         }
 
-        ToolbarButton {
+        FadingButton {
             id: recordModeButton
             objectName: "recordModeButton"
             anchors.verticalCenter: parent.verticalCenter
@@ -82,8 +79,8 @@ Item {
 
             enabled: toolbar.opacity > 0.0
 
-            iconWidth: toolbar.iconWidth
-            iconHeight: toolbar.iconHeight
+            width: toolbar.iconWidth
+            height: toolbar.iconHeight
             iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_video.png" : "assets/record_picture.png"
             onClicked: {
                 if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
