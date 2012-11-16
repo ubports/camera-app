@@ -49,16 +49,21 @@ Item {
 
             torchMode: camera.captureMode == Camera.CaptureVideo
             flashState: { switch (camera.flash.mode) {
-                case Camera.FlashOff: return "off"
                 case Camera.FlashAuto: return "auto";
                 case Camera.FlashOn:
                 case Camera.FlashVideoLight: return "on";
+                case Camera.FlashOff:
+                default: return "off"
             }}
 
             onClicked: {
-                if (torchMode) flashState = (flashState == "on") ? "off" : "on"
-                else flashState = (flashState == "off") ? "on" :
-                                  ((flashState == "on") ? "auto" : "off")
+                if (torchMode) {
+                    camera.flash.mode = (flashState == "on") ?
+                                        Camera.FlashOff : Camera.FlashVideoLight;
+                } else {
+                    camera.flash.mode = (flashState == "off") ? Camera.FlashOn :
+                                        ((flashState == "on") ? Camera.FlashAuto : Camera.FlashOff);
+                }
             }
 
             property variant previousFlashMode: Camera.FlashOff
