@@ -1,8 +1,8 @@
-camera-app (1.0) UNRELEASED; urgency=low
+camera-app (1.0) quantal; urgency=low
 
   * Update the flash and record mode button to fade between states
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 16 Nov 2012 13:05:34 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 16 Nov 2012 19:20:58 +0100
 
 camera-app (0.9) quantal; urgency=low
 
