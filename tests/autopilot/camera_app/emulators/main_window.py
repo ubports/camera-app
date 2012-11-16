@@ -22,7 +22,7 @@ class MainWindow(object):
 
     def get_record_control(self):
         """Returns the button that switches between photo and video recording"""
-        return self.app.select_single("ToolbarButton", objectName="recordModeButton")
+        return self.app.select_single("FadingButton", objectName="recordModeButton")
 
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
