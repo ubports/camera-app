@@ -13,7 +13,7 @@ Item {
         anchors.fill: parent
         iconSource: (flashState == "off") ? "assets/flash_off.png" :
                     ((flashState == "on") ? "assets/flash_on.png" : "assets/flash_auto.png")
-        onClicked: { console.log("clicked flash"); button.clicked() }
+        onClicked: button.clicked()
         enabled: !torchMode
     }
 
@@ -22,7 +22,7 @@ Item {
         anchors.fill: parent
         iconSource: (flashState == "on") ? "assets/torch_on.png" : "assets/torch_off.png"
         enabled: torchMode
-        onClicked: { console.log("clicked torch"); button.clicked() }
+        onClicked: button.clicked()
     }
 
     states: [
