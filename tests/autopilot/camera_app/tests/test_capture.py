@@ -9,36 +9,40 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals
+from testtools.matchers import Equals, NotEquals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
 import time
+import os
+from os import path
 
-
-class TestCameraFeatures(CameraAppTestCase):
+class TestCapture(CameraAppTestCase):
     """Tests the main camera features"""
 
     """ This is needed to wait for the application to start.
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
-        super(TestCameraFeatures, self).setUp()
+        super(TestCapture, self).setUp()
         self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
-    """ Ignore this for now... I'll fix and comment it, or remove it if not needed"""
     def tearDown(self):
-#        self.keyboard.press_and_release("Alt+F4")
-#        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(False)))
-        super(TestCameraFeatures, self).tearDown()
+        super(TestCapture, self).tearDown()
 
-    """Of course, first thing we do is taking a picture"""
+    """Test taking a picture"""
     def test_take_picture(self):
         camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
-        
+        pictures_dir = path.expanduser("~/Pictures")
+
+        # Remove all pictures from ~/Pictures that match our pattern
+        files = [ f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir,f))]
+        for f in files:
+            os.remove(path.join(pictures_dir, f))
+
         # The focus ring should be invisible in the beginning
         self.assertEquals(focus_ring.opacity, 0.0)
 
@@ -58,10 +62,13 @@ class TestCameraFeatures(CameraAppTestCase):
         # All the ui elements should be invisible again
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
+        # Check that only one picture with the right name pattern is actually there
+        files = [ f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir,f))]
+        self.assertEquals(len(files), 1)
 
     """Tests clicking on the record control and checks if the flash changes 
     to torch off mode and the recording time appears"""
-    def test_record_control(self):
+    def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()
         toolbar = self.main_window.get_toolbar()
@@ -88,15 +95,10 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
-
-        # Record video for 2 seconds and check if the stop watch actually works
-        # Now, ideally this should be used as in that case we check if the time actually works.
-        #time.sleep(2)
-        #self.assertThat(stop_watch.elapsed, Equals("00:02"))
-        
-        # However, the camera app seems to start a bit delayed (which might be also true for real hardware)
-        # so we just check if the counter reaches 00:02 at some point (max. 10s)
-        self.assertThat(stop_watch.elapsed, Eventually(Equals("00:02")))
+        # Record video for 2 seconds and check if the stop watch actually runs.
+        # Since the timer is not precise we don't check the actual time, just that it
+        # is not counting zero anymore.
+        self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and check if everything resets itself to previous states
         self.mouse.click()
@@ -112,9 +114,8 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
         self.assertEquals(stop_watch.elapsed, "00:00")
 
-
         # Record video for 2 seconds and check if the stop watch actually works
-        self.assertThat(stop_watch.elapsed, Eventually(Equals("00:02")))
+        self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and go back to picture mode and check if everything resets itself to previous states
         self.mouse.click();
@@ -124,38 +125,3 @@ class TestCameraFeatures(CameraAppTestCase):
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
         self.assertThat(flash_button.flashState, Eventually(Equals(flashlight_old_state)))
         self.assertThat(flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
-
-
-    """Tests clicking on the flash button and checks if it cycles the state after exactly 3 clicks"""
-    def test_flash_button(self):
-        camera_window = self.main_window.get_camera()
-        self.mouse.move_to_object(camera_window)
-        self.mouse.click()
-
-        flash_button = self.main_window.get_flash_button()
-
-        flash_button_old_state = flash_button.flashState
-
-        self.mouse.move_to_object(flash_button)
-        self.mouse.click();
-        self.assertNotEqual(flash_button_old_state, flash_button.flashState)
-
-        self.mouse.click();
-        self.assertNotEqual(flash_button_old_state, flash_button.flashState)
-
-        self.mouse.click();
-        self.assertEqual(flash_button_old_state, flash_button.flashState)
-
-
-    """Tests the zoom slider"""
-    def test_zoom(self):
-        camera_window = self.main_window.get_camera()
-        zoom_control = self.main_window.get_zoom_control()
-
-        zoom_button = self.main_window.get_zoom_slider_button()
-        self.mouse.move_to_object(zoom_button)
-        
-        self.mouse.press()
-        self.mouse.move(self.mouse.x + camera_window.width, self.mouse.y)
-        self.mouse.release()
-        self.assertEqual(zoom_control.value, 6.0)
