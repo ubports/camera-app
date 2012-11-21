@@ -69,6 +69,7 @@ class TestCapture(CameraAppTestCase):
             if len(files) == 1:
                 one_picture_on_disk = True
                 break
+            time.sleep(1)
         self.assertEquals(one_picture_on_disk, True)
 
     """Tests clicking on the record control and checks if the flash changes 
