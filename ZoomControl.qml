@@ -9,6 +9,7 @@ Item {
 
     SDK.AbstractButton {
         id: minus
+        objectName: "zoomMinus"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         width: minusIcon.width
@@ -34,6 +35,7 @@ Item {
 
     Slider {
         id: slider
+        objectName: "zoomSlider"
         anchors.left: minus.right
         anchors.right: plus.left
         anchors.verticalCenter: parent.verticalCenter
@@ -56,6 +58,7 @@ Item {
 
     SDK.AbstractButton {
         id: plus
+        objectName: "zoomPlus"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         width: plusIcon.width
