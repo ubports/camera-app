@@ -9,7 +9,7 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
@@ -83,16 +83,17 @@ class TestCameraZoom(CameraAppTestCase):
         self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
 
         # Test that minus moves to some non-maximum value
-        # and that plus goes back to the maximum
+        # and that plus goes back up
         self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
         self.mouse.move_to_object(minus)
         self.mouse.click()
         self.assertThat(zoom_control.value, Eventually(NotEquals(6.0)))
 
+        value_after_minus = zoom_control.value
+
         self.mouse.move_to_object(plus)
-        self.mouse.press()
-        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
-        self.mouse.release()
+        self.mouse.click()
+        self.assertThat(zoom_control.value, Eventually(GreaterThan(value_after_minus)))
 
         # Test that keeping the minus button pressed eventually reaches min zoom
         self.mouse.move_to_object(minus)
