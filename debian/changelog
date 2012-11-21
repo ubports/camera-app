@@ -1,3 +1,9 @@
+camera-app (1.1) UNRELEASED; urgency=low
+
+  * Add more tests and split them into separate files
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 21 Nov 2012 11:23:47 +0100
+
 camera-app (1.0) quantal; urgency=low
 
   * Update the flash and record mode button to fade between states
