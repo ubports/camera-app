@@ -90,8 +90,9 @@ class TestCameraZoom(CameraAppTestCase):
         self.assertThat(zoom_control.value, Eventually(NotEquals(6.0)))
 
         self.mouse.move_to_object(plus)
-        self.mouse.click()
+        self.mouse.press()
         self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
+        self.mouse.release()
 
         # Test that keeping the minus button pressed eventually reaches min zoom
         self.mouse.move_to_object(minus)
