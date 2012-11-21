@@ -63,8 +63,14 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Check that only one picture with the right name pattern is actually there
-        files = [ f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir,f))]
-        self.assertEquals(len(files), 1)
+        one_picture_on_disk = False
+        for i in range(0, 10):
+            files = [ f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir,f))]
+            if len(files) == 1:
+                one_picture_on_disk = True
+                break
+            time.sleep(1)
+        self.assertEquals(one_picture_on_disk, True)
 
     """Tests clicking on the record control and checks if the flash changes 
     to torch off mode and the recording time appears"""
