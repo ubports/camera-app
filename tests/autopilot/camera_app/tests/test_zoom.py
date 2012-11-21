@@ -39,13 +39,13 @@ class TestCameraZoom(CameraAppTestCase):
         self.mouse.press()
         self.mouse.move(self.mouse.x + zoom_control.width, self.mouse.y)
         self.mouse.release()
-        self.assertEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
 
         self.mouse.move_to_object(zoom_button)
         self.mouse.press()
         self.mouse.move(zoom_control.x, self.mouse.y)
         self.mouse.release()
-        self.assertEqual(zoom_control.value, 1.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
     """Tests the plus and minus buttons"""
     def test_plus_minus(self):
@@ -54,21 +54,21 @@ class TestCameraZoom(CameraAppTestCase):
         minus = self.main_window.get_zoom_minus()
 
         # Test that minus when at minimum zoom does nothing
-        self.assertEqual(zoom_control.value, 1.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
         self.mouse.move_to_object(minus)
         self.mouse.click()
-        self.assertEqual(zoom_control.value, 1.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
         # Test that plus moves to some non-minimum value
         # and that minus goes back to the minimum
         self.assertEqual(zoom_control.value, 1.0)
         self.mouse.move_to_object(plus)
         self.mouse.click()
-        self.assertNotEqual(zoom_control.value, 1.0)
+        self.assertThat(zoom_control.value, Eventually(NotEquals(1.0)))
 
         self.mouse.move_to_object(minus)
         self.mouse.click()
-        self.assertEqual(zoom_control.value, 1.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
         # Test that keeping the plus button pressed eventually reaches max zoom
         self.mouse.move_to_object(plus)
@@ -77,21 +77,21 @@ class TestCameraZoom(CameraAppTestCase):
         self.mouse.release()
 
         # Test that plus when at maximum zoom does nothing
-        self.assertEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
         self.mouse.move_to_object(plus)
         self.mouse.click()
-        self.assertEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
 
         # Test that minus moves to some non-maximum value
         # and that plus goes back to the maximum
-        self.assertEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
         self.mouse.move_to_object(minus)
         self.mouse.click()
-        self.assertNotEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(NotEquals(6.0)))
 
         self.mouse.move_to_object(plus)
         self.mouse.click()
-        self.assertEqual(zoom_control.value, 6.0)
+        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
 
         # Test that keeping the minus button pressed eventually reaches min zoom
         self.mouse.move_to_object(minus)
