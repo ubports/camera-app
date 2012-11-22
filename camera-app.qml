@@ -18,7 +18,6 @@ Rectangle {
         focus.focusMode: Camera.FocusAuto //TODO: Not sure if Continuous focus is better here
         focus.focusPointMode: focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto
 
-        property int lastCaptureId: 0
         property AdvancedCameraSettings advanced: AdvancedCameraSettings {
             camera: camera
         }
@@ -33,11 +32,9 @@ Rectangle {
         imageCapture {
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
-                camera.lastCaptureId = 0;
                 focusRing.opacity = 0.0;
             }
             onImageCaptured: {
-                camera.lastCaptureId = 0;
                 focusRing.opacity = 0.0;
                 snapshot.source = preview;
             }
@@ -119,5 +116,6 @@ Rectangle {
         anchors.rightMargin: units.gu(1)
 
         camera: camera
+        canCapture: camera.imageCapture.ready && !snapshot.sliding
     }
 }
