@@ -3,6 +3,7 @@ import Ubuntu.Components 0.1
 
 Item {
     property alias source: snapshot.source
+    property alias sliding: sliding.running
 
     Rectangle {
         id: shade
@@ -21,6 +22,7 @@ Item {
 
         Behavior on y {
             SequentialAnimation {
+                id: sliding
                 NumberAnimation { duration: 800 }
                 PropertyAction { target: snapshot; property: "opacity"; value: 0.0 }
                 PropertyAction { target: snapshot; property: "source"; value: ""}

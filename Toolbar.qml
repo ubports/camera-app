@@ -14,6 +14,7 @@ Item {
     height: middle.height
     property int iconWidth: units.gu(6)
     property int iconHeight: units.gu(5)
+    property bool canCapture
 
     BorderImage {
         id: leftBackground
@@ -121,10 +122,11 @@ Item {
                         // and no preview to slide off anyway. Figure out what to do in this case.
                     }
                 } else {
-                    camera.lastCaptureId = camera.imageCapture.capture()
+                    camera.imageCapture.capture()
                 }
             }
-            enabled: camera.lastCaptureId == 0
+            enabled: toolbar.canCapture
+            opacity: enabled ? 1.0 : 0.5
         }
     }
 

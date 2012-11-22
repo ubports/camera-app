@@ -131,3 +131,17 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
         self.assertThat(flash_button.flashState, Eventually(Equals(flashlight_old_state)))
         self.assertThat(flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
+
+    """Test that the shoot button gets disabled for a while then re-enabled after shooting"""
+    def test_shoot_button_disable(self):
+        exposure_button = self.main_window.get_exposure_button()
+
+        # The focus ring should be invisible in the beginning
+        self.assertEquals(exposure_button.enabled, True)
+
+        # Now take the picture! (Give it a little time to animate)
+        self.mouse.move_to_object(exposure_button)
+        self.mouse.click()
+
+        self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
