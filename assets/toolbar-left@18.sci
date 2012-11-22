@@ -1,6 +1,6 @@
-source: toolbar-right.png
-border.right: 80
-border.left: 0
+source: toolbar-left@18.png
+border.left: 80
+border.right: 0
 border.top: 30
 border.bottom: 30
 horizontalTileMode: Stretch

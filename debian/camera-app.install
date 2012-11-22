@@ -2,6 +2,5 @@ usr/bin/camera-app
 usr/share/applications/camera-app.desktop
 usr/share/camera-app/*.qml
 usr/share/camera-app/*.js
-usr/share/camera-app/resources_unit
 usr/share/camera-app/assets/*
 opt/qt5/imports/*
