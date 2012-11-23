@@ -30,7 +30,7 @@ class CameraAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
     def launch_test_local(self):
         self.app = self.launch_test_application(
             "qmlscene",
-            "-testability",
+            "-testability", "-I", "../..", "-I", "../../../../tavastia/modules",
             "../../camera-app.qml")
 
     def launch_test_installed(self):

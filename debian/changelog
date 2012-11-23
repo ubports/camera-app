@@ -1,8 +1,8 @@
-camera-app (1.1) UNRELEASED; urgency=low
+camera-app (1.1) quantal; urgency=low
 
   * Add more tests and split them into separate files
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 21 Nov 2012 11:23:47 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Fri, 23 Nov 2012 17:10:51 +0100
 
 camera-app (1.0) quantal; urgency=low
 
