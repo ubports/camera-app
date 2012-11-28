@@ -25,7 +25,7 @@ Depends: ${shlibs:Depends},
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
 
-Package: camera-app-testing
+Package: camera-app-autopilot
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
