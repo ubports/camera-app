@@ -66,8 +66,11 @@ install(FILES ${CAMERA_APP}.desktop
 
 set(AUTOPILOT_DIR tests/autopilot/camera_app)
 
+execute_process(COMMAND python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
+    OUTPUT_VARIABLE PYTHON_PACKAGE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+
 install(DIRECTORY ${AUTOPILOT_DIR}
-    DESTINATION /usr/lib/python2.7/dist-packages/
+    DESTINATION ${PYTHON_PACKAGE_DIR}
     )
 
 add_subdirectory(CameraApp)
