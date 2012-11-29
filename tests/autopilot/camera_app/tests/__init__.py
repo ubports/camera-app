@@ -36,7 +36,7 @@ class CameraAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
     def launch_test_installed(self):
         self.app = self.launch_test_application(
            "camera-app",
-           "-testability")
+           "--fullscreen")
 
     @property
     def main_window(self):
