@@ -64,10 +64,13 @@ install(FILES ${CAMERA_APP}.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
 
-set(TESTING_DIR tests)
+set(AUTOPILOT_DIR tests/autopilot/camera_app)
 
-install(DIRECTORY ${TESTING_DIR}
-    DESTINATION ${CAMERA_APP_DIR}
+execute_process(COMMAND python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
+    OUTPUT_VARIABLE PYTHON_PACKAGE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+install(DIRECTORY ${AUTOPILOT_DIR}
+    DESTINATION ${PYTHON_PACKAGE_DIR}
     )
 
 add_subdirectory(CameraApp)
