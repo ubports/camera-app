@@ -35,15 +35,18 @@ class TestCameraZoom(CameraAppTestCase):
 
         zoom_button = self.main_window.get_zoom_slider_button()
 
-        self.pointing_device.move_to_object(zoom_button)
-        self.pointing_device.press()
-        self.pointing_device.move(self.mouse.x + zoom_control.width, self.mouse.y)
-        self.pointing_device.release()
-        self.assertThat(zoom_control.value, Eventually(Equals(6.0)))
+        zoom_button_center_x = zoom_button.globalRect[0] + zoom_button.globalRect[2] / 2
+        zoom_button_center_y = zoom_button.globalRect[1] + zoom_button.globalRect[3] / 2
 
         self.pointing_device.move_to_object(zoom_button)
         self.pointing_device.press()
-        self.pointing_device.move(zoom_control.x, self.mouse.y)
+        self.pointing_device.move(zoom_button_center_x + zoom_control.width, zoom_button_center_y)
+        self.pointing_device.release()
+        self.assertThat(zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
+
+        self.pointing_device.move_to_object(zoom_button)
+        self.pointing_device.press()
+        self.pointing_device.move(zoom_control.x, zoom_button_center_y)
         self.pointing_device.release()
         self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
