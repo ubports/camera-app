@@ -36,17 +36,17 @@ class TestCameraFlash(CameraAppTestCase):
         self.assertThat(flash_button.flashState, Equals("off"))
         self.assertThat(flash_button.torchMode, Equals(False))
 
-        self.mouse.move_to_object(flash_button)
+        self.pointing_device.move_to_object(flash_button)
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("on")))
         self.assertThat(flash_button.torchMode, Equals(False))
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("auto")))
         self.assertThat(flash_button.torchMode, Equals(False))
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
         self.assertThat(flash_button.torchMode, Equals(False))
 
@@ -54,20 +54,20 @@ class TestCameraFlash(CameraAppTestCase):
     def test_cycle_torch(self):
         flash_button = self.main_window.get_flash_button()
         record_button = self.main_window.get_record_control()
-        self.mouse.move_to_object(record_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(record_button)
+        self.pointing_device.click()
 
         #ensure initial state
         self.assertThat(flash_button.flashState, Equals("off"))
         self.assertThat(flash_button.torchMode, Equals(True))
 
-        self.mouse.move_to_object(flash_button)
+        self.pointing_device.move_to_object(flash_button)
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("on")))
         self.assertThat(flash_button.torchMode, Equals(True))
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
         self.assertThat(flash_button.torchMode, Equals(True))
 
@@ -79,34 +79,34 @@ class TestCameraFlash(CameraAppTestCase):
 
         # Change flash mode, then switch to camera, then back to flash and verify
         # that previous state is preserved
-        self.mouse.move_to_object(flash_button)
-        self.mouse.click()
-        self.mouse.click()
+        self.pointing_device.move_to_object(flash_button)
+        self.pointing_device.click()
+        self.pointing_device.click()
         old_flash_state = flash_button.flashState
 
-        self.mouse.move_to_object(record_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(record_button)
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
         self.assertThat(flash_button.torchMode, Equals(True))
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals(old_flash_state)))
         self.assertThat(flash_button.torchMode, Equals(False))
 
         # Now test the same thing in the opposite way, seeing if torch state is preserved
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
         self.assertThat(flash_button.torchMode, Equals(True))
 
-        self.mouse.move_to_object(flash_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(flash_button)
+        self.pointing_device.click()
         old_torch_state = flash_button.flashState
 
-        self.mouse.move_to_object(record_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(record_button)
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals(old_flash_state)))
         self.assertThat(flash_button.torchMode, Equals(False))
 
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertThat(flash_button.flashState, Eventually(Equals(old_torch_state)))
         self.assertThat(flash_button.torchMode, Equals(True))

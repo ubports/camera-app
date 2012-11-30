@@ -14,6 +14,7 @@ from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
+import unittest
 import time
 import os
 from os import path
@@ -47,17 +48,20 @@ class TestCapture(CameraAppTestCase):
         self.assertEquals(focus_ring.opacity, 0.0)
 
         center_click_coords = [camera_window.globalRect[2] / 2 + camera_window.globalRect[0], camera_window.globalRect[3] / 2 + camera_window.globalRect[1]]
-        self.mouse.move(center_click_coords[0], center_click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(center_click_coords[0], center_click_coords[1])
+        self.pointing_device.click()
 
         # The focus ring sould be visible and centered to the mouse click coords now
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, center_click_coords)
 
+        # Wait for the camera to have finished focusing (the exposure button gets enabled when ready)
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+
         # Now take the picture! (Give it a little time to animate)
-        self.mouse.move_to_object(exposure_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
 
         # All the ui elements should be invisible again
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
@@ -74,6 +78,7 @@ class TestCapture(CameraAppTestCase):
 
     """Tests clicking on the record control and checks if the flash changes 
     to torch off mode and the recording time appears"""
+    @unittest.skipIf(os.path.isfile('/system/usr/idc/autopilot-finger.idc'), 'recording not available on device yet')
     def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()
@@ -88,12 +93,12 @@ class TestCapture(CameraAppTestCase):
         torchmode_old_state = flash_button.torchMode
 
         # Click the record button to toggle photo/video mode
-        self.mouse.move_to_object(record_control)
-        self.mouse.click();
+        self.pointing_device.move_to_object(record_control)
+        self.pointing_device.click();
 
         # Click the exposure button to start recording
-        self.mouse.move_to_object(exposure_button)
-        self.mouse.click();
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
@@ -107,12 +112,12 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and check if everything resets itself to previous states
-        self.mouse.click()
+        self.pointing_device.click()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
 
         # Now start recording a second video and check if everything still works
-        self.mouse.click();
+        self.pointing_device.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
@@ -124,9 +129,9 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and go back to picture mode and check if everything resets itself to previous states
-        self.mouse.click();
-        self.mouse.move_to_object(record_control)
-        self.mouse.click();
+        self.pointing_device.click();
+        self.pointing_device.move_to_object(record_control)
+        self.pointing_device.click();
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
         self.assertThat(flash_button.flashState, Eventually(Equals(flashlight_old_state)))
@@ -140,8 +145,8 @@ class TestCapture(CameraAppTestCase):
         self.assertEquals(exposure_button.enabled, True)
 
         # Now take the picture! (Give it a little time to animate)
-        self.mouse.move_to_object(exposure_button)
-        self.mouse.click()
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
 
         self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
