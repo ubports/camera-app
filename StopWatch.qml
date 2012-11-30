@@ -17,7 +17,7 @@ Item {
         return text;
     }
 
-    TextCustom {
+    Label {
         id: count
 
         anchors.centerIn: parent
