@@ -78,7 +78,7 @@ class TestCapture(CameraAppTestCase):
 
     """Tests clicking on the record control and checks if the flash changes 
     to torch off mode and the recording time appears"""
-    @unittest.skipIf(os.path.isfile('/system/usr/idc/autopilot-finger.idc'), 'recording not available on device yet')
+    @unittest.skipIf(CameraAppTestCase.running_on_device(), 'recording not available on device yet')
     def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()

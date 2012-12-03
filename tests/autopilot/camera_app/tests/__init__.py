@@ -34,9 +34,17 @@ class CameraAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
             "../../camera-app.qml")
 
     def launch_test_installed(self):
-        self.app = self.launch_test_application(
-           "camera-app",
-           "--fullscreen")
+        if self.running_on_device():
+            self.app = self.launch_test_application(
+               "camera-app",
+               "--fullscreen")
+        else:
+            self.app = self.launch_test_application(
+               "camera-app")
+
+    @staticmethod
+    def running_on_device():
+        return os.path.isfile('/system/usr/idc/autopilot-finger.idc')
 
     @property
     def main_window(self):
