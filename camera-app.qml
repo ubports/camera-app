@@ -44,6 +44,11 @@ Rectangle {
         }
     }
 
+    Connections {
+        target: Qt.application
+        onActiveChanged: (Qt.application.active) ? camera.start() : camera.stop()
+    }
+
     VideoOutput {
         id: viewFinder
         anchors.fill: parent
