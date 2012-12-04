@@ -1,3 +1,9 @@
+camera-app (1.3) UNRELEASED; urgency=low
+
+  * Swap the on and off icons for the torch so they work properly
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Tue, 04 Dec 2012 17:18:10 +0000
+
 camera-app (1.2) quantal; urgency=low
 
   [ Ugo Riboni ]
