@@ -51,7 +51,8 @@ ToolbarButton {
         id: pulse
         anchors.fill: parent
         source: "assets/record_on_pulse.png"
-        opacity: 0.0
+        opacity: 1.0
+        visible: button.state != "camera"
 
         SequentialAnimation on opacity  {
             id: pulseAnimation
@@ -60,13 +61,13 @@ ToolbarButton {
             running: false
 
             PropertyAnimation {
-                from: 0
-                to: 1.0
+                from: 1.0
+                to: 0.0
                 duration: pulsePeriod
             }
             PropertyAnimation {
-                from: 1.0
-                to: 0
+                from: 0.0
+                to: 1.0
                 duration: pulsePeriod
             }
         }
