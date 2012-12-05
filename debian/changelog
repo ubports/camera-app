@@ -1,3 +1,9 @@
+camera-app (1.4) UNRELEASED; urgency=low
+
+  * Speed up the shoot animation and remove the white flash
+
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 05 Dec 2012 18:36:45 +0000
+
 camera-app (1.3) quantal; urgency=low
 
   [ Ugo Riboni ]
