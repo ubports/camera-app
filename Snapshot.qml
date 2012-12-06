@@ -21,13 +21,6 @@ Item {
     property alias source: snapshot.source
     property alias sliding: shoot.running
 
-    Rectangle {
-        id: shade
-        color: "white"
-        opacity: 0.0
-        anchors.fill: parent
-    }
-
     Item {
         id: container
         anchors.left: parent.left
@@ -52,17 +45,19 @@ Item {
 
     SequentialAnimation {
         id: shoot
-        NumberAnimation { target: shade; property: "opacity"; to: 0.75;
-                          duration: 200; easing.type: Easing.OutQuad }
-        PropertyAction { target: shade; property: "opacity"; value: 0.0 }
-        SequentialAnimation {
-            id: sliding
-            PropertyAction { target: snapshot; property: "opacity"; value: 1.0 }
-            NumberAnimation { target: container; property: "y"; to: container.parent.height; duration: 800 }
-            PropertyAction { target: snapshot; property: "opacity"; value: 0.0 }
-            PropertyAction { target: snapshot; property: "source"; value: ""}
-            PropertyAction { target: container; property: "y"; value: 0 }
+        PropertyAction { target: snapshot; property: "opacity"; value: 1.0 }
+        ParallelAnimation {
+            NumberAnimation { target: container; property: "y";
+                              to: container.parent.height; duration: 500; easing.type: Easing.InCubic }
+            SequentialAnimation {
+                PauseAnimation { duration: 0 }
+                NumberAnimation { target: snapshot; property: "opacity";
+                                  to: 0.0; duration: 500; easing.type: Easing.InCubic }
+            }
         }
-    }
 
+        PropertyAction { target: snapshot; property: "opacity"; value: 0.0 }
+        PropertyAction { target: snapshot; property: "source"; value: ""}
+        PropertyAction { target: container; property: "y"; value: 0 }
+    }
 }
