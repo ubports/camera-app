@@ -1,5 +1,6 @@
 camera-app (1.4) UNRELEASED; urgency=low
 
+  * Fade out the focus ring after a timeout
   * Swap the camera and video icons (LP: #1086923)
   * Speed up the shoot animation and remove the white flash
 
