@@ -1,6 +1,9 @@
 camera-app (1.4) UNRELEASED; urgency=low
 
   * The inactive record icon should be a red dot (LP: #1086928)
+  * Fade out the focus ring after a timeout
+  * Swap the camera and video icons (LP: #1086923)
+  * Speed up the shoot animation and remove the white flash
 
  -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 05 Dec 2012 19:04:03 +0000
 
