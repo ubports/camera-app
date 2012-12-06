@@ -103,7 +103,7 @@ Item {
 
             width: toolbar.iconWidth
             height: toolbar.iconHeight
-            iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_video.png" : "assets/record_picture.png"
+            iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_picture.png" : "assets/record_video.png"
             onClicked: {
                 if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
                 camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo

@@ -104,9 +104,16 @@ Rectangle {
             focusRing.x = mouse.x - focusRing.width * 0.5;
             focusRing.y = mouse.y - focusRing.height * 0.5;
             focusRing.opacity = 1.0;
+            focusRingTimeout.restart()
 
             var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
             camera.focus.customFocusPoint = focusPoint;
+        }
+
+        Timer {
+            id: focusRingTimeout
+            interval: 2000
+            onTriggered: focusRing.opacity = 0.0
         }
     }
 
