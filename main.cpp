@@ -24,14 +24,19 @@
 #include "cameraapplication.h"
 #include "config.h"
 
+#include <QDebug>
+
 int main(int argc, char** argv)
 {
     unsetenv("QML_FORCE_THREADED_RENDERER");
     unsetenv("QML_FIXED_ANIMATION_STEP");
-    setenv("UITK_THEME_FILE", "theme/default.qmltheme", TRUE);
 
     QGuiApplication::setApplicationName("Camera App");
     CameraApplication application(argc, argv);
+
+    QString themeDir(cameraAppDirectory() + "theme/default.qmltheme");
+    qDebug() << themeDir;
+    setenv("UITK_THEME_PATH", themeDir.toUtf8(), TRUE);
 
     if (!application.setup()) {
         return 0;

@@ -60,6 +60,12 @@ install(DIRECTORY ${ASSETS_DIR}
     DESTINATION ${CAMERA_APP_DIR}
     )
 
+set(THEME_DIR theme)
+
+install(DIRECTORY ${THEME_DIR}
+    DESTINATION ${CAMERA_APP_DIR}
+    )
+
 install(FILES ${CAMERA_APP}.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
