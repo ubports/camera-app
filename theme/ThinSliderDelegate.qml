@@ -60,10 +60,7 @@ Item {
         y: backgroundShape.y + thumbSpacing
         width: itemStyle.thumbWidth
         height: itemStyle.thumbHeight
-        anchors {
-            verticalCenter: backgroundShape.verticalCenter
-            verticalCenterOffset: units.dp(1)
-        }
+        anchors.verticalCenter: backgroundShape.verticalCenter
         source: itemStyle.thumbImage
     }
 
