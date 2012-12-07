@@ -33,10 +33,10 @@ Item {
     id: main
     anchors.fill: parent
 
-    property real normalizedValue: MathUtils.clamp((value - item.minimumValue) /
+    property real normalizedValue: MathUtils.clamp((item.__liveValue - item.minimumValue) /
                                                      (item.maximumValue - item.minimumValue),
                                                      0.0, 1.0)
-    property real thumbSpacing: StyleUtils.itemStyleProperty("thumbSpacing", 0.0)
+    property real thumbSpacing: itemStyle.thumbSpacing
     property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
     property real thumbWidth: thumbShape.width - thumbSpacing
 
@@ -48,8 +48,8 @@ Item {
             right: parent.right
             verticalCenter: parent.verticalCenter
         }
-        source: StyleUtils.itemStyleProperty("backgroundImage")
-        height: StyleUtils.itemStyleProperty("backgroundImageHeight", sourceSize.height)
+        source: itemStyle.backgroundImage
+        height: sourceSize.height
     }
 
     Image {
@@ -58,13 +58,13 @@ Item {
 
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         y: backgroundShape.y + thumbSpacing
-        width: StyleUtils.itemStyleProperty("thumbWidth", sourceSize.width)
-        height: StyleUtils.itemStyleProperty("thumbHeight", sourceSize.height)
+        width: itemStyle.thumbWidth
+        height: itemStyle.thumbHeight
         anchors {
             verticalCenter: backgroundShape.verticalCenter
             verticalCenterOffset: units.dp(1)
         }
-        source: StyleUtils.itemStyleProperty("thumbImage")
+        source: itemStyle.thumbImage
     }
 
     // set item's implicitHeight to the thumbShape's height
