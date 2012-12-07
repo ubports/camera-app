@@ -49,27 +49,16 @@ Item {
         }
     }
 
-    Slider {
+    SDK.Slider {
         id: slider
-        objectName: "zoomSlider"
+        SDK.ItemStyle.class: "thin-slider"
         anchors.left: minus.right
         anchors.right: plus.left
         anchors.verticalCenter: parent.verticalCenter
-        height: zoom.height
-
         live: true
         minimumValue: 1.0 // No zoom => 1.0 zoom factor
         value: minimumValue
-
-        backgroundDelegate: Image {
-            source: Qt.resolvedUrl("assets/zoom_bar.png")
-        }
-
-        thumbDelegate: Image {
-            source: Qt.resolvedUrl("assets/zoom_point.png")
-            height: units.gu(1.5)
-            width: height
-        }
+        function formatValue(v) { "" } //return Number(v.toFixed(2)).toLocaleString(Qt.locale()) }
     }
 
     SDK.AbstractButton {
