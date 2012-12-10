@@ -24,6 +24,8 @@
 #include "cameraapplication.h"
 #include "config.h"
 
+#include <QDebug>
+
 int main(int argc, char** argv)
 {
     unsetenv("QML_FORCE_THREADED_RENDERER");
@@ -31,6 +33,9 @@ int main(int argc, char** argv)
 
     QGuiApplication::setApplicationName("Camera App");
     CameraApplication application(argc, argv);
+
+    QString themeDir(cameraAppDirectory() + "theme/default.qmltheme");
+    setenv("UITK_THEME_FILE", themeDir.toUtf8(), TRUE);
 
     if (!application.setup()) {
         return 0;

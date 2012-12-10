@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 0.1 as SDK
+import Ubuntu.Components 0.1// as SDK
 
 Item {
     id: zoom
@@ -23,7 +23,7 @@ Item {
     property alias value: slider.value
     property real zoomStep: (slider.maximumValue - slider.minimumValue) / 20
 
-    SDK.AbstractButton {
+    AbstractButton {
         id: minus
         objectName: "zoomMinus"
         anchors.left: parent.left
@@ -51,28 +51,17 @@ Item {
 
     Slider {
         id: slider
-        objectName: "zoomSlider"
+        ItemStyle.class: "thin-slider"
         anchors.left: minus.right
         anchors.right: plus.left
         anchors.verticalCenter: parent.verticalCenter
-        height: zoom.height
-
         live: true
         minimumValue: 1.0 // No zoom => 1.0 zoom factor
         value: minimumValue
-
-        backgroundDelegate: Image {
-            source: Qt.resolvedUrl("assets/zoom_bar.png")
-        }
-
-        thumbDelegate: Image {
-            source: Qt.resolvedUrl("assets/zoom_point.png")
-            height: units.gu(1.5)
-            width: height
-        }
+        height: slider.implicitHeight + units.gu(4)
     }
 
-    SDK.AbstractButton {
+    AbstractButton {
         id: plus
         objectName: "zoomPlus"
         anchors.right: parent.right
