@@ -33,16 +33,16 @@ Item {
     id: main
     anchors.fill: parent
 
-    property real normalizedValue: MathUtils.clamp((item.__liveValue - item.minimumValue) /
-                                                     (item.maximumValue - item.minimumValue),
-                                                     0.0, 1.0)
+    property Item bar: backgroundShape
+    property Item thumb: thumbShape
+
+    property real normalizedValue: SliderUtils.normalizedValue()
     property real thumbSpacing: itemStyle.thumbSpacing
     property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
     property real thumbWidth: thumbShape.width - thumbSpacing
 
     Image {
         id: backgroundShape
-        Component.onCompleted: item.__background = backgroundShape
         anchors {
             left: parent.left
             right: parent.right
@@ -54,7 +54,6 @@ Item {
 
     Image {
         id: thumbShape
-        Component.onCompleted: item.__thumb = thumbShape
 
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         y: backgroundShape.y + thumbSpacing
