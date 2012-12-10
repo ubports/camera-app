@@ -35,7 +35,6 @@ int main(int argc, char** argv)
     CameraApplication application(argc, argv);
 
     QString themeDir(cameraAppDirectory() + "theme/default.qmltheme");
-    qDebug() << themeDir;
     setenv("UITK_THEME_FILE", themeDir.toUtf8(), TRUE);
 
     if (!application.setup()) {
