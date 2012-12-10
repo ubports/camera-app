@@ -42,7 +42,7 @@ class MainWindow(object):
 
     def get_zoom_slider_button(self):
         """Returns the zoom slider button"""
-        return self.app.select_single("QQuickMouseArea", objectName="dragHandle")
+        return self.app.select_single("QQuickImage", objectName="sliderThumb")
 
     def get_zoom_plus(self):
         """Returns the zoom plus button"""

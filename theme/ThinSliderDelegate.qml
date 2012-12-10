@@ -54,6 +54,7 @@ Item {
 
     Image {
         id: thumbShape
+        objectName: "sliderThumb"
 
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         y: backgroundShape.y + thumbSpacing
