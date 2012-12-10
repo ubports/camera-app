@@ -59,6 +59,7 @@ Item {
         live: true
         minimumValue: 1.0 // No zoom => 1.0 zoom factor
         value: minimumValue
+        height: slider.implicitHeight + units.gu(4)
     }
 
     AbstractButton {
