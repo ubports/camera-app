@@ -36,7 +36,7 @@ Item {
     property Item bar: backgroundShape
     property Item thumb: thumbShape
 
-    property real normalizedValue: SliderUtils.normalizedValue()
+    property real normalizedValue: SliderUtils.normalizedValue(item)
     property real thumbSpacing: itemStyle.thumbSpacing
     property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
     property real thumbWidth: thumbShape.width - thumbSpacing
@@ -64,6 +64,7 @@ Item {
     }
 
     // set item's implicitHeight to the thumbShape's height
+    // this can also control the default sensing area
     Binding {
         target: item
         property: "implicitHeight"

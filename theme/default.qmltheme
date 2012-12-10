@@ -1,5 +1,5 @@
 @import url(system:Ambiance/qmltheme/default.qmltheme);
-@qml-import(theme 0.1, .);
+@qml-import(theme 0.1, ..);
 
 @qml-mapping(.thin-slider, , ThinSliderDelegate);
 .thin-slider {
