@@ -1,8 +1,12 @@
-camera-app (1.4) UNRELEASED; urgency=low
+camera-app (1.4) quantal; urgency=low
 
+  * The inactive record icon should be a red dot (LP: #1086928)
+  * Fade out the focus ring after a timeout
+  * Swap the camera and video icons (LP: #1086923)
   * Speed up the shoot animation and remove the white flash
+  * Launch the gallery app when pressing the gallery button
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 05 Dec 2012 18:36:45 +0000
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Thu, 06 Dec 2012 19:59:11 +0000
 
 camera-app (1.3) quantal; urgency=low
 
