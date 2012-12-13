@@ -71,13 +71,6 @@ Rectangle {
         source: camera
         orientation: -90
 
-        FocusRing {
-            id: focusRing
-            height: units.gu(13)
-            width: units.gu(13)
-            opacity: 0.0
-        }
-
         StopWatch {
             anchors.top: parent.top
             anchors.left: parent.left
@@ -85,6 +78,13 @@ Rectangle {
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
             time: camera.videoRecorder.duration / 1000
         }
+    }
+
+    FocusRing {
+        id: focusRing
+        height: units.gu(13)
+        width: units.gu(13)
+        opacity: 0.0
     }
 
     Snapshot {
@@ -96,18 +96,30 @@ Rectangle {
     }
 
     MouseArea {
+        id: area
         anchors.top: viewFinder.top
         anchors.bottom: zoomControl.top
         anchors.left: viewFinder.left
         anchors.right: viewFinder.right
-        onClicked: {
+
+        onPressed: {
             focusRing.x = mouse.x - focusRing.width * 0.5;
             focusRing.y = mouse.y - focusRing.height * 0.5;
             focusRing.opacity = 1.0;
-            focusRingTimeout.restart()
+        }
 
+        onReleased: {
+            focusRingTimeout.restart()
             var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
             camera.focus.customFocusPoint = focusPoint;
+        }
+
+        drag {
+            target: focusRing
+            minimumY: viewFinder.y - focusRing.height / 2
+            maximumY: zoomControl.y - focusRing.height / 2
+            minimumX: viewFinder.x - focusRing.width / 2
+            maximumX: viewFinder.x + viewFinder.width - focusRing.width / 2
         }
 
         Timer {
