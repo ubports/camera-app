@@ -9,7 +9,7 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
@@ -172,4 +172,4 @@ class TestCapture(CameraAppTestCase):
         self.pointing_device.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
 
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
-        self.assertEquals(focus_ring_center, drag_end_coords)
+        self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))
