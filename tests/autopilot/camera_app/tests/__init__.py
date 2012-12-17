@@ -29,9 +29,7 @@ class CameraAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
 
     def launch_test_local(self):
         self.app = self.launch_test_application(
-            "qmlscene",
-            "-I", "../..",
-            "../../camera-app.qml")
+            "../../camera-app")
 
     def launch_test_installed(self):
         if self.running_on_device():
