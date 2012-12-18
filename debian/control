@@ -23,7 +23,7 @@ Depends: ${shlibs:Depends},
 	 cameraplugin-fake [!armel !armhf],
 	 qtsvg,
          qtmultimedia,
-         qthybris
+         qthybris [armel armhf]
 Description: An application to take pictures and videos
   An application to take pictures and videos with the device camera(s)
 
