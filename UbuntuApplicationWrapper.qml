@@ -20,6 +20,6 @@ import Ubuntu.Application 0.1
 Item {
     function switchToGalleryApplication() {
         console.log("Launching the gallery application.");
-        ApplicationManager.focusFavoriteApplication(ApplicationManager.GalleryApplication, "");
+        ApplicationManager.focusFavoriteApplication(ApplicationManager.GalleryApplication);
     }
 }
