@@ -27,12 +27,41 @@
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
     m_activeCameraIndex(0),
+    m_cameraObject(0),
     m_camera(0),
-    m_deviceSelector(0)
+    m_deviceSelector(0),
+    m_viewFinderControl(0)
 {
 }
 
-QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QObject *cameraObject) const
+QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera *camera) const
+{
+    if (camera == 0) {
+        return 0;
+    }
+
+    QMediaService *service = camera->service();
+    if (service == 0) {
+        qWarning() << "Camera has no Mediaservice";
+        return 0;
+    }
+
+    QMediaControl *control = service->requestControl(QVideoDeviceSelectorControl_iid);
+    if (control == 0) {
+        qWarning() << "No device select support";
+        return 0;
+    }
+
+    QVideoDeviceSelectorControl *selector = qobject_cast<QVideoDeviceSelectorControl*>(control);
+    if (selector == 0) {
+        qWarning() << "No video device select support";
+        return 0;
+    }
+
+    return selector;
+}
+
+QCamera* AdvancedCameraSettings::cameraFromCameraObject(QObject* cameraObject) const
 {
     QVariant cameraVariant = cameraObject->property("mediaObject");
     if (!cameraVariant.isValid()) {
@@ -41,25 +70,34 @@ QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QObject 
     }
 
     QCamera *camera = qvariant_cast<QCamera*>(cameraVariant);
-    if (!camera) {
+    if (camera == 0) {
         qWarning() << "No valid camera passed";
         return 0;
     }
 
+    return camera;
+}
+
+QCameraViewfinderSettingsControl* AdvancedCameraSettings::viewfinderFromCamera(QCamera *camera) const
+{
+    if (camera == 0) {
+        return 0;
+    }
+
     QMediaService *service = camera->service();
-    if (!service) {
+    if (service == 0) {
         qWarning() << "Camera has no Mediaservice";
         return 0;
     }
 
-    QMediaControl *control = service->requestControl(QVideoDeviceSelectorControl_iid);
-    if (!control) {
+    QMediaControl *control = service->requestControl(QCameraViewfinderSettingsControl_iid);
+    if (control == 0) {
         qWarning() << "No device select support";
         return 0;
     }
 
-    QVideoDeviceSelectorControl *selector = qobject_cast<QVideoDeviceSelectorControl*>(control);
-    if (!selector) {
+    QCameraViewfinderSettingsControl *selector = qobject_cast<QCameraViewfinderSettingsControl*>(control);
+    if (selector == 0) {
         qWarning() << "No video device select support";
         return 0;
     }
@@ -69,7 +107,7 @@ QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QObject 
 
 QObject* AdvancedCameraSettings::camera() const
 {
-    return m_camera;
+    return m_cameraObject;
 }
 
 int AdvancedCameraSettings::activeCameraIndex() const
@@ -77,16 +115,34 @@ int AdvancedCameraSettings::activeCameraIndex() const
     return m_activeCameraIndex;
 }
 
-void AdvancedCameraSettings::setCamera(QObject *camera)
+void AdvancedCameraSettings::setCamera(QObject *cameraObject)
 {
-    if (camera != m_camera) {
-        QVideoDeviceSelectorControl* selector = selectorFromCamera(camera);
-        if (selector) {
-            m_deviceSelector = selector;
-            m_camera = camera;
-            m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
-            Q_EMIT cameraChanged();
+    if (cameraObject != m_cameraObject) {
+        m_cameraObject = cameraObject;
+
+        if (m_camera != 0) {
+            this->disconnect(m_camera, SIGNAL(stateChanged(QCamera::State)));
         }
+        QCamera* camera = cameraFromCameraObject(cameraObject);
+        m_camera = camera;
+        if (m_camera != 0) {
+            this->connect(m_camera, SIGNAL(stateChanged(QCamera::State)),
+                          SIGNAL(resolutionChanged()));
+        }
+
+        QVideoDeviceSelectorControl* selector = selectorFromCamera(m_camera);
+        m_deviceSelector = selector;
+        if (selector) {
+            m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
+
+            QCameraViewfinderSettingsControl* viewfinder = viewfinderFromCamera(m_camera);
+            if (viewfinder) {
+                m_viewFinderControl = viewfinder;
+                resolutionChanged();
+            }
+        }
+
+        Q_EMIT cameraChanged();
     }
 }
 
@@ -98,5 +154,18 @@ void AdvancedCameraSettings::setActiveCameraIndex(int index)
             m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
         }
         Q_EMIT activeCameraIndexChanged();
+        Q_EMIT resolutionChanged();
     }
+}
+
+QSize AdvancedCameraSettings::resolution() const
+{
+    if (m_viewFinderControl != 0) {
+        QVariant result = m_viewFinderControl->viewfinderParameter(QCameraViewfinderSettingsControl::Resolution);
+        if (result.isValid()) {
+            return result.toSize();
+        }
+    }
+
+    return QSize();
 }
