@@ -72,6 +72,13 @@ Rectangle {
         width: parent.width
         height: parent.height
         source: camera
+
+        /* This rotation need to be applied since the camera hardware in the
+           Galaxy Nexus phone is mounted at an angle inside the device, so the video
+           feed is rotated too.
+           FIXME: This should come from a system configuration option so that we
+           don't have to have a different codebase for each different device we want
+           to run on */
         orientation: -90
 
         StopWatch {
