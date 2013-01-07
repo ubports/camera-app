@@ -18,8 +18,8 @@ import QtQuick 2.0
 import Ubuntu.Application 0.1
 
 Item {
-    function switchToGalleryApplication(argument) {
-        console.log("Launching the gallery application with argument: " + argument)
-        applicationManager.focusFavoriteApplication(ApplicationManager.Gallery, argument);
+    function switchToGalleryApplication() {
+        console.log("Launching the gallery application.");
+        ApplicationManager.focusFavoriteApplication(ApplicationManager.GalleryApplication);
     }
 }
