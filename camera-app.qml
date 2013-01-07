@@ -67,7 +67,10 @@ Rectangle {
 
     VideoOutput {
         id: viewFinder
-        anchors.fill: parent
+        x: 0
+        y: viewFinderImage.y * -1
+        width: parent.width
+        height: parent.height
         source: camera
         orientation: -90
 
@@ -78,6 +81,63 @@ Rectangle {
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
             time: camera.videoRecorder.duration / 1000
         }
+
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled down (but not up) to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+         */
+        Item {
+            id: viewFinderImage
+            property int realWidth: Math.abs(viewFinder.orientation) == 90 ?
+                                    camera.advanced.resolution.height : camera.advanced.resolution.width
+            property int realHeight: Math.abs(viewFinder.orientation) == 90 ?
+                                     camera.advanced.resolution.width : camera.advanced.resolution.height
+            property bool isScaled: realWidth > realHeight ? (realWidth > parent.width) :
+                                                             (realHeight > parent.height)
+            property real scaleFactor: realWidth > realHeight ? parent.width / realWidth :
+                                                                parent.height / realHeight
+            width: isScaled ? realWidth * scaleFactor : realWidth
+            height: isScaled ? realHeight * scaleFactor : realHeight
+            anchors.centerIn: parent
+
+            MouseArea {
+                id: area
+                anchors.top: viewFinderImage.top
+                anchors.left: viewFinderImage.left
+                anchors.right: viewFinderImage.right
+                height: Math.min(zoomControl.y, viewFinderImage.height)
+
+                onPressed: {
+                    focusRing.x = mouse.x - focusRing.width * 0.5;
+                    focusRing.y = mouse.y - focusRing.height * 0.5;
+                    focusRing.opacity = 1.0;
+                }
+
+                onReleased: {
+                    focusRingTimeout.restart()
+                    var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
+                    camera.focus.customFocusPoint = focusPoint;
+                }
+
+                drag {
+                    target: focusRing
+                    minimumY: area.y - focusRing.height / 2
+                    maximumY: area.y + area.height - focusRing.height / 2
+                    minimumX: area.x - focusRing.width / 2
+                    maximumX: area.x + area.width - focusRing.width / 2
+                }
+
+                Timer {
+                    id: focusRingTimeout
+                    interval: 2000
+                    onTriggered: focusRing.opacity = 0.0
+                }
+            }
+
+        }
+
     }
 
     FocusRing {
@@ -93,40 +153,6 @@ Rectangle {
         anchors.right: parent.right
         height: parent.height
         y: 0
-    }
-
-    MouseArea {
-        id: area
-        anchors.top: viewFinder.top
-        anchors.bottom: zoomControl.top
-        anchors.left: viewFinder.left
-        anchors.right: viewFinder.right
-
-        onPressed: {
-            focusRing.x = mouse.x - focusRing.width * 0.5;
-            focusRing.y = mouse.y - focusRing.height * 0.5;
-            focusRing.opacity = 1.0;
-        }
-
-        onReleased: {
-            focusRingTimeout.restart()
-            var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
-            camera.focus.customFocusPoint = focusPoint;
-        }
-
-        drag {
-            target: focusRing
-            minimumY: viewFinder.y - focusRing.height / 2
-            maximumY: zoomControl.y - focusRing.height / 2
-            minimumX: viewFinder.x - focusRing.width / 2
-            maximumX: viewFinder.x + viewFinder.width - focusRing.width / 2
-        }
-
-        Timer {
-            id: focusRingTimeout
-            interval: 2000
-            onTriggered: focusRing.opacity = 0.0
-        }
     }
 
     ZoomControl {
