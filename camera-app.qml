@@ -136,8 +136,15 @@ Rectangle {
                 }
             }
 
+            Snapshot {
+                id: snapshot
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height
+                y: 0
+                orientation: viewFinder.orientation
+            }
         }
-
     }
 
     FocusRing {
@@ -145,14 +152,6 @@ Rectangle {
         height: units.gu(13)
         width: units.gu(13)
         opacity: 0.0
-    }
-
-    Snapshot {
-        id: snapshot
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: parent.height
-        y: 0
     }
 
     ZoomControl {
