@@ -23,7 +23,7 @@ Rectangle {
     id: main
     width: units.gu(40)
     height: units.gu(80)
-    color: "black"
+    color: "#252423"
 
     Component.onCompleted: camera.start();
 
