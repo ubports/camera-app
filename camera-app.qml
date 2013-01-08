@@ -91,23 +91,19 @@ Rectangle {
 
         /* Convenience item tracking the real position and size of the real video feed.
            Having this helps since these values depend on a lot of rules:
-           - the feed is automatically scaled down (but not up) to fit the viewfinder
+           - the feed is automatically scaled to fit the viewfinder
            - the viewfinder might apply a rotation to the feed, depending on device orientation
            - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
          */
-        Item {
+        ViewFinderImage {
             id: viewFinderImage
-            property int realWidth: Math.abs(viewFinder.orientation) == 90 ?
-                                    camera.advanced.resolution.height : camera.advanced.resolution.width
-            property int realHeight: Math.abs(viewFinder.orientation) == 90 ?
-                                     camera.advanced.resolution.width : camera.advanced.resolution.height
-            property bool isScaled: realWidth > realHeight ? (realWidth > parent.width) :
-                                                             (realHeight > parent.height)
-            property real scaleFactor: realWidth > realHeight ? parent.width / realWidth :
-                                                                parent.height / realHeight
-            width: isScaled ? realWidth * scaleFactor : realWidth
-            height: isScaled ? realHeight * scaleFactor : realHeight
             anchors.centerIn: parent
+
+            cameraResolution: camera.advanced.resolution
+            viewFinderHeight: viewFinder.height
+            viewFinderWidth: viewFinder.width
+            viewFinderOrientation: viewFinder.orientation
 
             MouseArea {
                 id: area
