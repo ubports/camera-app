@@ -16,11 +16,11 @@ TestCase {
         compare(stopWatch.elapsed, "00:05", "Time not calculated correctly")
     }
 
-/*    function test_time_invalid() {
-        stopWatch.time = -123
-        compare(stopWatch.elapsed, "00:00", "Time not calculated correctly")
+    function test_time_negative() {
+        stopWatch.time = -1234
+        compare(stopWatch.elapsed, "-20:34", "Time not calculated correctly")
     }
-*/
+
     StopWatch {
         id: stopWatch
     }
