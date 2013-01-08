@@ -11,6 +11,7 @@ Build-Depends: debhelper (>= 8.0.0),
                libgl-dev,
                libgles2-mesa-dev,
                python2.7,
+               qt-components-ubuntu,
 Standards-Version: 3.9.3
 Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
 
