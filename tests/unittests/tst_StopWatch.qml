@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtTest 1.0
 import "../../"
+import "../../.." //Needed for out of source build
 
 TestCase {
     name: "StopWatch"
@@ -15,6 +16,11 @@ TestCase {
         compare(stopWatch.elapsed, "00:05", "Time not calculated correctly")
     }
 
+/*    function test_time_invalid() {
+        stopWatch.time = -123
+        compare(stopWatch.elapsed, "00:00", "Time not calculated correctly")
+    }
+*/
     StopWatch {
         id: stopWatch
     }
