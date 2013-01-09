@@ -55,3 +55,7 @@ class MainWindow(object):
     def get_viewfinder_image(self):
         """Returns the viewfinder image tracker"""
         return self.app.select_single("ViewFinderImage")
+
+    def get_swap_camera_button(self):
+        """Returns the button that switches between front and back cameras"""
+        return self.app.select_single("ToolbarButton", objectName="swapButton")
