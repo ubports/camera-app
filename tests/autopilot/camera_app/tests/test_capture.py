@@ -33,8 +33,6 @@ class TestCapture(CameraAppTestCase):
 
     """Test taking a picture"""
     def test_take_picture(self):
-        camera_window = self.main_window.get_camera()
-        focus_ring = self.main_window.get_focus_ring()
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
         pictures_dir = path.expanduser("~/Pictures")
@@ -44,27 +42,12 @@ class TestCapture(CameraAppTestCase):
         for f in files:
             os.remove(path.join(pictures_dir, f))
 
-        # The focus ring should be invisible in the beginning
-        self.assertEquals(focus_ring.opacity, 0.0)
-
-        center_click_coords = [camera_window.globalRect[2] / 2 + camera_window.globalRect[0], camera_window.globalRect[3] / 2 + camera_window.globalRect[1]]
-        self.pointing_device.move(center_click_coords[0], center_click_coords[1])
-        self.pointing_device.click()
-
-        # The focus ring sould be visible and centered to the mouse click coords now
-        focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
-        self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
-        self.assertEquals(focus_ring_center, center_click_coords)
-
         # Wait for the camera to have finished focusing (the exposure button gets enabled when ready)
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Now take the picture! (Give it a little time to animate)
         self.pointing_device.move_to_object(exposure_button)
         self.pointing_device.click()
-
-        # All the ui elements should be invisible again
-        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Check that only one picture with the right name pattern is actually there
         one_picture_on_disk = False
@@ -150,26 +133,3 @@ class TestCapture(CameraAppTestCase):
 
         self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
-
-
-    def test_move_focus_ring(self):        
-        camera_window = self.main_window.get_camera()
-        focus_ring = self.main_window.get_focus_ring()
-
-        # The focus ring should be invisible in the beginning
-        self.assertEquals(focus_ring.opacity, 0.0)
-
-        center_click_coords = [camera_window.globalRect[2] / 2 + camera_window.globalRect[0], camera_window.globalRect[3] / 2 + camera_window.globalRect[1]]
-        self.pointing_device.move(center_click_coords[0], center_click_coords[1])
-        self.pointing_device.click()
-
-        # The focus ring sould be visible and centered to the mouse click coords now
-        focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
-        self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
-        self.assertEquals(focus_ring_center, center_click_coords)
-
-        drag_end_coords = [focus_ring_center[0], focus_ring_center[1] + 200]
-        self.pointing_device.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
-
-        focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
-        self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))

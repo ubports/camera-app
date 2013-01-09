@@ -51,3 +51,7 @@ class MainWindow(object):
     def get_zoom_minus(self):
         """Returns the zoom minus button"""
         return self.app.select_single("AbstractButton", objectName="zoomMinus")
+
+    def get_viewfinder_image(self):
+        """Returns the viewfinder image tracker"""
+        return self.app.select_single("ViewFinderImage")
