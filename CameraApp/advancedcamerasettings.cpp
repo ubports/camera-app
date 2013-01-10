@@ -34,7 +34,7 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
 {
 }
 
-QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera *camera) const
+QMediaControl* AdvancedCameraSettings::mediaControlFromCamera(QCamera *camera, const char* iid) const
 {
     if (camera == 0) {
         return 0;
@@ -46,9 +46,18 @@ QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera 
         return 0;
     }
 
-    QMediaControl *control = service->requestControl(QVideoDeviceSelectorControl_iid);
+    QMediaControl *control = service->requestControl(iid);
     if (control == 0) {
-        qWarning() << "No device select support";
+        qWarning() << "No media control support for" << iid;
+        return 0;
+    }
+
+}
+
+QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QVideoDeviceSelectorControl_iid);
+    if (control == 0) {
         return 0;
     }
 
@@ -80,19 +89,8 @@ QCamera* AdvancedCameraSettings::cameraFromCameraObject(QObject* cameraObject) c
 
 QCameraViewfinderSettingsControl* AdvancedCameraSettings::viewfinderFromCamera(QCamera *camera) const
 {
-    if (camera == 0) {
-        return 0;
-    }
-
-    QMediaService *service = camera->service();
-    if (service == 0) {
-        qWarning() << "Camera has no Mediaservice";
-        return 0;
-    }
-
-    QMediaControl *control = service->requestControl(QCameraViewfinderSettingsControl_iid);
+    QMediaControl *control = mediaControlFromCamera(camera, QCameraViewfinderSettingsControl_iid);
     if (control == 0) {
-        qWarning() << "No device select support";
         return 0;
     }
 
