@@ -34,6 +34,23 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
 {
 }
 
+QCamera* AdvancedCameraSettings::cameraFromCameraObject(QObject* cameraObject) const
+{
+    QVariant cameraVariant = cameraObject->property("mediaObject");
+    if (!cameraVariant.isValid()) {
+        qWarning() << "No valid mediaObject";
+        return 0;
+    }
+
+    QCamera *camera = qvariant_cast<QCamera*>(cameraVariant);
+    if (camera == 0) {
+        qWarning() << "No valid camera passed";
+        return 0;
+    }
+
+    return camera;
+}
+
 QMediaControl* AdvancedCameraSettings::mediaControlFromCamera(QCamera *camera, const char* iid) const
 {
     if (camera == 0) {
@@ -68,23 +85,6 @@ QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera 
     }
 
     return selector;
-}
-
-QCamera* AdvancedCameraSettings::cameraFromCameraObject(QObject* cameraObject) const
-{
-    QVariant cameraVariant = cameraObject->property("mediaObject");
-    if (!cameraVariant.isValid()) {
-        qWarning() << "No valid mediaObject";
-        return 0;
-    }
-
-    QCamera *camera = qvariant_cast<QCamera*>(cameraVariant);
-    if (camera == 0) {
-        qWarning() << "No valid camera passed";
-        return 0;
-    }
-
-    return camera;
 }
 
 QCameraViewfinderSettingsControl* AdvancedCameraSettings::viewfinderFromCamera(QCamera *camera) const
