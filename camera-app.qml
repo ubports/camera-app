@@ -113,14 +113,16 @@ Rectangle {
                 height: Math.min(zoomControl.y, viewFinderGeometry.height)
 
                 onPressed: {
-                    focusRing.x = mouse.x - focusRing.width * 0.5;
-                    focusRing.y = mouse.y - focusRing.height * 0.5;
+                    var mousePosition = main.mapFromItem(area, mouse.x, mouse.y);
+                    focusRing.x = mousePosition.x - focusRing.width * 0.5;
+                    focusRing.y = mousePosition.y - focusRing.height * 0.5;
                     focusRing.opacity = 1.0;
                 }
 
                 onReleased: {
                     focusRingTimeout.restart()
-                    var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
+                    var mousePositionForFocus = viewFinder.mapFromItem(area, mouse.x, mouse.y)
+                    var focusPoint = viewFinder.mapPointToSourceNormalized(mousePositionForFocus);
                     camera.focus.customFocusPoint = focusPoint;
                 }
 
