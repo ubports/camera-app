@@ -68,7 +68,7 @@ Rectangle {
     VideoOutput {
         id: viewFinder
         x: 0
-        y: viewFinderImage.y * -1
+        y: viewFinderGeometry.y * -1
         width: parent.width
         height: parent.height
         source: camera
@@ -96,8 +96,8 @@ Rectangle {
            - the resolution and aspect ratio of the feed changes depending on the active camera
            The item is also separated in a component so it can be unit tested.
          */
-        ViewFinderImage {
-            id: viewFinderImage
+        ViewFinderGeometry {
+            id: viewFinderGeometry
             anchors.centerIn: parent
 
             cameraResolution: camera.advanced.resolution
@@ -107,10 +107,10 @@ Rectangle {
 
             MouseArea {
                 id: area
-                anchors.top: viewFinderImage.top
-                anchors.left: viewFinderImage.left
-                anchors.right: viewFinderImage.right
-                height: Math.min(zoomControl.y, viewFinderImage.height)
+                anchors.top: viewFinderGeometry.top
+                anchors.left: viewFinderGeometry.left
+                anchors.right: viewFinderGeometry.right
+                height: Math.min(zoomControl.y, viewFinderGeometry.height)
 
                 onPressed: {
                     focusRing.x = mouse.x - focusRing.width * 0.5;

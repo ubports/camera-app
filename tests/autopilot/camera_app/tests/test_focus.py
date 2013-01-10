@@ -34,7 +34,7 @@ class TestFocus(CameraAppTestCase):
         camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
         toolbar = self.main_window.get_toolbar()
-        feed = self.main_window.get_viewfinder_image()
+        feed = self.main_window.get_viewfinder_geometry()
         switch_cameras = self.main_window.get_swap_camera_button()
         exposure_button = self.main_window.get_exposure_button()
 
@@ -77,7 +77,7 @@ class TestFocus(CameraAppTestCase):
         camera_window = self.main_window.get_camera()
         toolbar = self.main_window.get_toolbar()
         zoom = self.main_window.get_zoom_control()
-        feed = self.main_window.get_viewfinder_image()
+        feed = self.main_window.get_viewfinder_geometry()
         focus_ring = self.main_window.get_focus_ring()
         switch_cameras = self.main_window.get_swap_camera_button()
         exposure_button = self.main_window.get_exposure_button()
@@ -115,7 +115,7 @@ class TestFocus(CameraAppTestCase):
     def test_move_focus_ring(self):
         camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
-        feed = self.main_window.get_viewfinder_image()
+        feed = self.main_window.get_viewfinder_geometry()
         switch_cameras = self.main_window.get_swap_camera_button()
         exposure_button = self.main_window.get_exposure_button()
 
