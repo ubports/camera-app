@@ -80,7 +80,7 @@ QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera 
 
     QVideoDeviceSelectorControl *selector = qobject_cast<QVideoDeviceSelectorControl*>(control);
     if (selector == 0) {
-        qWarning() << "No video device select support";
+        qWarning() << "No video device selector support";
         return 0;
     }
 
@@ -96,7 +96,7 @@ QCameraViewfinderSettingsControl* AdvancedCameraSettings::viewfinderFromCamera(Q
 
     QCameraViewfinderSettingsControl *selector = qobject_cast<QCameraViewfinderSettingsControl*>(control);
     if (selector == 0) {
-        qWarning() << "No video device select support";
+        qWarning() << "No viewfinder settings support";
         return 0;
     }
 
