@@ -121,8 +121,7 @@ Rectangle {
 
                 onReleased: {
                     focusRingTimeout.restart()
-                    var mousePositionForFocus = viewFinder.mapFromItem(area, mouse.x, mouse.y)
-                    var focusPoint = viewFinder.mapPointToSourceNormalized(mousePositionForFocus);
+                    var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
                     camera.focus.customFocusPoint = focusPoint;
                 }
 
