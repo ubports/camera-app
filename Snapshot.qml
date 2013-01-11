@@ -18,8 +18,10 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 
 Item {
+    id: snapshotRoot
     property alias source: snapshot.source
     property alias sliding: shoot.running
+    property int orientation
 
     Item {
         id: container
@@ -31,13 +33,14 @@ Item {
         Image {
             id: snapshot
             anchors.centerIn: parent
-            rotation: 90
+            rotation: snapshotRoot.orientation * -1
 
             asynchronous: true
             opacity: 0.0
-            fillMode: Image.PreserveAspectCrop
+            fillMode: Image.PreserveAspectFit
             smooth: false
             sourceSize.height: parent.width
+            height: parent.width
 
             onStatusChanged: if (status == Image.Ready) shoot.restart()
         }

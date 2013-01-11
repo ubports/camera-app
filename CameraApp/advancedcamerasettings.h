@@ -23,6 +23,8 @@
 #include <QObject>
 #include <QCamera>
 #include <QVideoDeviceSelectorControl>
+#include <QCameraViewfinderSettingsControl>
+#include <QMediaControl>
 
 class AdvancedCameraSettings : public QObject
 {
@@ -30,6 +32,7 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (QObject* camera READ camera WRITE setCamera NOTIFY cameraChanged)
     Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
                 NOTIFY activeCameraIndexChanged)
+    Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
 
 public:
     explicit AdvancedCameraSettings(QObject *parent = 0);
@@ -37,17 +40,24 @@ public:
     int activeCameraIndex() const;
     void setCamera(QObject* camera);
     void setActiveCameraIndex(int index);
+    QSize resolution() const;
 
 Q_SIGNALS:
     void cameraChanged();
     void activeCameraIndexChanged();
+    void resolutionChanged();
 
 private:
-    QVideoDeviceSelectorControl* selectorFromCamera(QObject *camera) const;
+    QVideoDeviceSelectorControl* selectorFromCamera(QCamera *camera) const;
+    QCameraViewfinderSettingsControl* viewfinderFromCamera(QCamera *camera) const;
+    QCamera* cameraFromCameraObject(QObject* cameraObject) const;
+    QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
 
-    QObject* m_camera;
+    QObject* m_cameraObject;
+    QCamera* m_camera;
     QVideoDeviceSelectorControl* m_deviceSelector;
     int m_activeCameraIndex;
+    QCameraViewfinderSettingsControl* m_viewFinderControl;
 };
 
 #endif // ADVANCEDCAMERASETTINGS_H

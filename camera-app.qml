@@ -23,7 +23,7 @@ Rectangle {
     id: main
     width: units.gu(40)
     height: units.gu(80)
-    color: "black"
+    color: "#252423"
 
     Component.onCompleted: camera.start();
 
@@ -67,8 +67,18 @@ Rectangle {
 
     VideoOutput {
         id: viewFinder
-        anchors.fill: parent
+        x: 0
+        y: viewFinderGeometry.y * -1
+        width: parent.width
+        height: parent.height
         source: camera
+
+        /* This rotation need to be applied since the camera hardware in the
+           Galaxy Nexus phone is mounted at an angle inside the device, so the video
+           feed is rotated too.
+           FIXME: This should come from a system configuration option so that we
+           don't have to have a different codebase for each different device we want
+           to run on */
         orientation: -90
 
         StopWatch {
@@ -78,6 +88,67 @@ Rectangle {
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
             time: camera.videoRecorder.duration / 1000
         }
+
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
+         */
+        ViewFinderGeometry {
+            id: viewFinderGeometry
+            anchors.centerIn: parent
+
+            cameraResolution: camera.advanced.resolution
+            viewFinderHeight: viewFinder.height
+            viewFinderWidth: viewFinder.width
+            viewFinderOrientation: viewFinder.orientation
+
+            MouseArea {
+                id: area
+                anchors.top: viewFinderGeometry.top
+                anchors.left: viewFinderGeometry.left
+                anchors.right: viewFinderGeometry.right
+                height: Math.min(zoomControl.y, viewFinderGeometry.height)
+
+                onPressed: {
+                    var mousePosition = main.mapFromItem(area, mouse.x, mouse.y);
+                    focusRing.x = mousePosition.x - focusRing.width * 0.5;
+                    focusRing.y = mousePosition.y - focusRing.height * 0.5;
+                    focusRing.opacity = 1.0;
+                }
+
+                onReleased: {
+                    focusRingTimeout.restart()
+                    var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
+                    camera.focus.customFocusPoint = focusPoint;
+                }
+
+                drag {
+                    target: focusRing
+                    minimumY: area.y - focusRing.height / 2
+                    maximumY: area.y + area.height - focusRing.height / 2
+                    minimumX: area.x - focusRing.width / 2
+                    maximumX: area.x + area.width - focusRing.width / 2
+                }
+
+                Timer {
+                    id: focusRingTimeout
+                    interval: 2000
+                    onTriggered: focusRing.opacity = 0.0
+                }
+            }
+
+            Snapshot {
+                id: snapshot
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height
+                y: 0
+                orientation: viewFinder.orientation
+            }
+        }
     }
 
     FocusRing {
@@ -85,48 +156,6 @@ Rectangle {
         height: units.gu(13)
         width: units.gu(13)
         opacity: 0.0
-    }
-
-    Snapshot {
-        id: snapshot
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: parent.height
-        y: 0
-    }
-
-    MouseArea {
-        id: area
-        anchors.top: viewFinder.top
-        anchors.bottom: zoomControl.top
-        anchors.left: viewFinder.left
-        anchors.right: viewFinder.right
-
-        onPressed: {
-            focusRing.x = mouse.x - focusRing.width * 0.5;
-            focusRing.y = mouse.y - focusRing.height * 0.5;
-            focusRing.opacity = 1.0;
-        }
-
-        onReleased: {
-            focusRingTimeout.restart()
-            var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
-            camera.focus.customFocusPoint = focusPoint;
-        }
-
-        drag {
-            target: focusRing
-            minimumY: viewFinder.y - focusRing.height / 2
-            maximumY: zoomControl.y - focusRing.height / 2
-            minimumX: viewFinder.x - focusRing.width / 2
-            maximumX: viewFinder.x + viewFinder.width - focusRing.width / 2
-        }
-
-        Timer {
-            id: focusRingTimeout
-            interval: 2000
-            onTriggered: focusRing.opacity = 0.0
-        }
     }
 
     ZoomControl {
