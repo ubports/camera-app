@@ -1,6 +1,7 @@
 camera-app (1.8) UNRELEASED; urgency=low
 
   * Align viewfinder feed to the top (LP: #1091153)
+  * Fix build for Qt5 final
 
  -- Ugo Riboni <ugo.riboni@canonical.com>  Mon, 07 Jan 2013 12:39:00 +0100
 
