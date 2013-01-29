@@ -1,4 +1,4 @@
-camera-app (1.9) quantal; urgency=low
+camera-app (2.1) quantal; urgency=low
 
   * set new env var to disable multi-threaded rendering on camera 
 
