@@ -1,3 +1,9 @@
+camera-app (1.9) quantal; urgency=low
+
+  * set new env var to disable multi-threaded rendering on camera 
+
+ -- Bill Filler <bill.filler@canonical.com>  Tue, 29 Jan 2013 17:20:04 -0500
+
 camera-app (1.8) quantal; urgency=low
 
   * Align viewfinder feed to the top (LP: #1091153)

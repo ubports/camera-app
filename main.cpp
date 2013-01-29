@@ -28,9 +28,7 @@
 
 int main(int argc, char** argv)
 {
-    unsetenv("QML_FORCE_THREADED_RENDERER");
-    unsetenv("QML_FIXED_ANIMATION_STEP");
-
+    setenv("QML_BAD_GUI_RENDER_LOOP", "1", 1);
     QGuiApplication::setApplicationName("Camera App");
     CameraApplication application(argc, argv);
 
