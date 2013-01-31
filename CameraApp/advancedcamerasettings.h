@@ -21,10 +21,10 @@
 #define ADVANCEDCAMERASETTINGS_H
 
 #include <QObject>
-#include <QCamera>
-#include <QVideoDeviceSelectorControl>
-#include <QCameraViewfinderSettingsControl>
-#include <QMediaControl>
+#include <QtMultimedia/QCamera>
+#include <QtMultimedia/QVideoDeviceSelectorControl>
+#include <QtMultimedia/QCameraViewfinderSettingsControl>
+#include <QtMultimedia/QMediaControl>
 
 class AdvancedCameraSettings : public QObject
 {

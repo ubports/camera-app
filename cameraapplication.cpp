@@ -63,7 +63,7 @@ bool CameraApplication::setup()
     m_view = new QQuickView();
     QObject::connect(m_view, SIGNAL(statusChanged(QDeclarativeView::Status)), this, SLOT(onViewStatusChanged(QDeclarativeView::Status)));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->setWindowTitle("Camera");
+    m_view->setTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
     m_view->setSource(QUrl::fromLocalFile("camera-app.qml"));

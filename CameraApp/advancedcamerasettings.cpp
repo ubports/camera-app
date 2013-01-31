@@ -19,10 +19,10 @@
 
 #include "advancedcamerasettings.h"
 
-#include <QCamera>
 #include <QDebug>
-#include <QMediaService>
-#include <QVideoDeviceSelectorControl>
+#include <QtMultimedia/QCamera>
+#include <QtMultimedia/QMediaService>
+#include <QtMultimedia/QVideoDeviceSelectorControl>
 
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),

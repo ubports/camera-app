@@ -5,8 +5,11 @@ Maintainer: The Amazi team <phablet@lists.canonical.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: debhelper (>= 8.0.0),
                cmake,
-               qtdeclarative,
-	       qtmultimedia,
+               qtbase5-dev,
+               qtmultimedia5-dev,
+	       qtdeclarative5-dev,
+	       qtdeclarative5-qtquick2-plugin,
+               qtdeclarative5-test-plugin,
                pkg-config,
                libgl-dev,
                libgles2-mesa-dev,
@@ -21,17 +24,17 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          qt-components-ubuntu,
          cameraplugin-aal [armel armhf],
-	 cameraplugin-fake [!armel !armhf],
-	 qtsvg,
-         qtmultimedia,
+         cameraplugin-fake [!armel !armhf],
+         libqt5multimedia5,
          qthybris [armel armhf]
-Description: An application to take pictures and videos
-  An application to take pictures and videos with the device camera(s)
+Description: Takes pictures and videos
+ An application to take pictures and videos with the device camera(s)
 
 Package: camera-app-autopilot
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
+         python-support (>= 0.90),
          camera-app
 Description: Test package for the camera app
-  Autopilot tests for the camera-app package
+ Autopilot tests for the camera-app package

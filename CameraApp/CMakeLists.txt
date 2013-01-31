@@ -12,8 +12,6 @@ set(plugin_HDRS
 
 add_library(camera-qml SHARED ${plugin_SRCS} ${plugin_HDRS})
 
-qt5_use_modules(camera-qml Qml Quick Multimedia)
-
 target_link_libraries(camera-qml
     ${Qt5Qml_LIBRARIES}
     ${Qt5Quick_LIBRARIES}
@@ -30,7 +28,7 @@ function(QUERY_QMAKE VAR RESULT)
     set(${RESULT} ${output} PARENT_SCOPE) 
   endif(NOT return_code) 
 endfunction(QUERY_QMAKE) 
-query_qmake(QT_INSTALL_IMPORTS QT_IMPORTS_DIR)
+query_qmake(QT_INSTALL_QML QT_IMPORTS_DIR)
 
 
 set(PLUGIN_DIR ${QT_IMPORTS_DIR}/CameraApp)
