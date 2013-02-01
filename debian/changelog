@@ -1,3 +1,9 @@
+camera-app (2.2) quantal; urgency=low
+
+  * Remove qthybris
+
+ -- Ricardo Mendoza <ricardo.mendoza@canonical.com>  Thu, 31 Jan 2013 21:07:40 -0430
+
 camera-app (2.1) quantal; urgency=low
 
   * set new env var to disable multi-threaded rendering on camera 
