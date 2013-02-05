@@ -26,6 +26,8 @@ Depends: ${shlibs:Depends},
          cameraplugin-aal [armel armhf],
          cameraplugin-fake [!armel !armhf],
          libqt5multimedia5,
+         libqt5declarative5-qtmultimedia-plugin,
+         qtdeclarative5-qtquick2-plugin,
 Description: Takes pictures and videos
  An application to take pictures and videos with the device camera(s)
 
@@ -34,6 +36,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-support (>= 0.90),
-         camera-app
+         camera-app,
+         libautopilot-qt,
 Description: Test package for the camera app
  Autopilot tests for the camera-app package
