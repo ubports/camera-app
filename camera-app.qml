@@ -18,6 +18,7 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 import QtMultimedia 5.0
 import CameraApp 0.1
+import QtSensors 5.0
 
 Rectangle {
     id: main
@@ -26,6 +27,11 @@ Rectangle {
     color: "#252423"
 
     Component.onCompleted: camera.start();
+
+    OrientationHelper {
+        id: device
+        root: main
+    }
 
     Camera {
         id: camera
@@ -158,33 +164,61 @@ Rectangle {
         opacity: 0.0
     }
 
-    ZoomControl {
-        id: zoomControl
-        anchors.left: parent.left
-        anchors.leftMargin: units.gu(0.75)
-        anchors.rightMargin: units.gu(0.75)
-        anchors.right: parent.right
-        anchors.bottom: toolbar.top
-        anchors.bottomMargin: units.gu(0.5)
-        maximumValue: camera.maximumZoom
-        height: units.gu(4.5)
+    Item {
+        id: controlsArea
+        anchors.centerIn: parent
 
-        // Create a two way binding between the zoom control value and the actual camera zoom,
-        // so that they can stay in sync when the zoom is changed from the UI or from the hardware
-        Binding { target: zoomControl; property: "value"; value: camera.currentZoom }
-        Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
-    }
+        height: (device.naturalOrientation == "portrait") ? parent.height : parent.width
+        width: (device.naturalOrientation == "portrait") ? parent.width : parent.height
 
-    Toolbar {
-        id: toolbar
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottomMargin: units.gu(1)
-        anchors.leftMargin: units.gu(1)
-        anchors.rightMargin: units.gu(1)
+        rotation: device.naturalOrientation == "landscape" ?
+                      ((device.isInverted) ? 90 : -90) :
+                      (!device.isLandscape ? (device.isInverted ? 180 : 0) :
+                                             (device.isInverted ? 0 : 180))
 
-        camera: camera
-        canCapture: camera.imageCapture.ready && !snapshot.sliding
+        ZoomControl {
+            id: zoomControl
+            maximumValue: camera.maximumZoom
+            height: units.gu(4.5)
+
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: units.gu(0.75)
+            anchors.rightMargin: units.gu(0.75)
+            anchors.bottomMargin: units.gu(0.5)
+            anchors.topMargin: units.gu(0.5)
+
+            state: device.isLandscape ? "split" : "joined"
+            states: [
+                State { name: "joined"
+                    AnchorChanges { target: zoomControl; anchors.bottom: toolbar.top }
+                },
+                State { name: "split"
+                    AnchorChanges { target: zoomControl; anchors.top: parent.top }
+                }
+            ]
+
+            // Create a two way binding between the zoom control value and the actual camera zoom,
+            // so that they can stay in sync when the zoom is changed from the UI or from the hardware
+            Binding { target: zoomControl; property: "value"; value: camera.currentZoom }
+            Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
+
+            iconsRotation: device.rotationAngle - controlsArea.rotation
+        }
+
+        Toolbar {
+            id: toolbar
+
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottomMargin: units.gu(1)
+            anchors.leftMargin: units.gu(1)
+            anchors.rightMargin: units.gu(1)
+
+            camera: camera
+            canCapture: camera.imageCapture.ready && !snapshot.sliding
+            iconsRotation: device.rotationAngle - controlsArea.rotation
+        }
     }
 }

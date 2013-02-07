@@ -22,6 +22,8 @@ Item {
     id: toolbar
 
     property Camera camera
+    property int iconsRotation
+
     signal recordClicked()
     signal zoomClicked()
 
@@ -53,6 +55,7 @@ Item {
             height: toolbar.iconHeight
             width: toolbar.iconWidth
             enabled: toolbar.opacity > 0.0
+            rotation: iconsRotation
 
             Connections {
                 target: camera.advanced
@@ -98,6 +101,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: flashButton.right
             anchors.leftMargin: parent.iconSpacing
+            rotation: iconsRotation
 
             enabled: toolbar.opacity > 0.0
 
@@ -164,6 +168,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: galleryButton.left
             anchors.rightMargin: parent.iconSpacing
+            rotation: iconsRotation
 
             enabled: toolbar.opacity > 0.0
 
@@ -180,6 +185,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: parent.iconSpacing
+            rotation: iconsRotation
 
             enabled: toolbar.opacity > 0.0
 
