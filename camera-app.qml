@@ -171,8 +171,10 @@ Rectangle {
         height: (device.naturalOrientation == "portrait") ? parent.height : parent.width
         width: (device.naturalOrientation == "portrait") ? parent.width : parent.height
 
-        rotation: (device.naturalOrientation == "landscape" ? -90 : 0) +
-                  (device.isInverted ? 180 : 0)
+        rotation: device.naturalOrientation == "landscape" ?
+                      ((device.isInverted) ? 90 : -90) :
+                      (!device.isLandscape ? (device.isInverted ? 180 : 0) :
+                                             (device.isInverted ? 0 : 180))
 
         ZoomControl {
             id: zoomControl
@@ -217,26 +219,6 @@ Rectangle {
             camera: camera
             canCapture: camera.imageCapture.ready && !snapshot.sliding
             iconsRotation: device.rotationAngle - controlsArea.rotation
-        }
-    }
-
-    Label {
-        anchors.top: parent.top
-        anchors.left: parent.left
-        id: lab
-        text: {
-            var t = ""
-            switch (device.sensor.lastNonFlatReading) {
-            case OrientationReading.TopUp: t = "top up"; break;
-            case OrientationReading.TopDown: t = "bottom up"; break;
-            case OrientationReading.LeftUp: t = "left up"; break;
-            case OrientationReading.RightUp: t = "right up"; break;
-            default: t = "top up";
-            }
-
-            t += " -> " + ((device.isLandscape) ? "landscape" : "portrait");
-            t += " -> " + ((device.isInverted) ? "inverted" : "upright");
-            t += " -> " + controlsArea.rotation
         }
     }
 }
