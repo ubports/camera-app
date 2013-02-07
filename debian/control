@@ -3,7 +3,7 @@ Section: x11
 Priority: optional
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
-Build-Depends: debhelper (>= 8.0.0),
+Build-Depends: debhelper (>= 9.0.0),
                cmake,
                qtbase5-dev,
                qtmultimedia5-dev,
@@ -16,7 +16,7 @@ Build-Depends: debhelper (>= 8.0.0),
                qt-components-ubuntu,
                python2.7,
 Standards-Version: 3.9.3
-Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
+Vcs-Bzr: lp:camera-app
 
 Package: camera-app
 Architecture: any
@@ -28,7 +28,7 @@ Depends: ${shlibs:Depends},
          libqt5multimedia5,
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-qtquick2-plugin,
-Description: Takes pictures and videos
+Description: Camera application
  An application to take pictures and videos with the device camera(s)
 
 Package: camera-app-autopilot
