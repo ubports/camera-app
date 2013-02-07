@@ -1,8 +1,8 @@
-camera-app (2.3) UNRELEASED; urgency=low
+camera-app (2.3) quantal; urgency=low
 
   * Adjust position and rotation of controls to match orientation
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Thu, 07 Feb 2013 13:23:01 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Thu, 07 Feb 2013 20:12:01 +0100
 
 camera-app (2.2) quantal; urgency=low
 
