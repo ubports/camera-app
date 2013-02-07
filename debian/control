@@ -1,7 +1,7 @@
 Source: camera-app
 Section: x11
 Priority: optional
-Maintainer: The Amazi team <phablet@lists.canonical.com>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: debhelper (>= 8.0.0),
                cmake,
@@ -13,8 +13,8 @@ Build-Depends: debhelper (>= 8.0.0),
                pkg-config,
                libgl-dev,
                libgles2-mesa-dev,
-               python2.7,
                qt-components-ubuntu,
+               python2.7,
 Standards-Version: 3.9.3
 Vcs-Bzr: https://code.launchpad.net/~amanzi-team/barrydale/camera-app
 
@@ -32,11 +32,11 @@ Description: Takes pictures and videos
  An application to take pictures and videos with the device camera(s)
 
 Package: camera-app-autopilot
-Architecture: any
+Architecture: all
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-support (>= 0.90),
-         camera-app,
+         camera-app (= ${source:Version}),
          libautopilot-qt,
 Description: Test package for the camera app
  Autopilot tests for the camera-app package
