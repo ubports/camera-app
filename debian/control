@@ -23,7 +23,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          qt-components-ubuntu,
-	 libhud-qt-qml,
+         libhud-qt-qml,
          cameraplugin-aal [armel armhf],
          cameraplugin-fake [!armel !armhf],
          libqt5multimedia5,
