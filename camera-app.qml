@@ -16,6 +16,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import Ubuntu.HUD 0.1 as HUD
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtSensors 5.0
@@ -25,6 +26,13 @@ Rectangle {
     width: units.gu(40)
     height: units.gu(80)
     color: "#252423"
+
+    HUD.HUD {
+        applicationIdentifier: "camera-app"
+        HUD.Context {
+            toolbar.quitAction.onTriggered: Qt.quit()
+        }
+    }
 
     Component.onCompleted: camera.start();
 
