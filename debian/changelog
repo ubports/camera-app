@@ -1,8 +1,8 @@
-camera-app (2.4) UNRELEASED; urgency=low
+camera-app (2.4) quantal; urgency=low
 
   * Update dependencies to include qtsensors
 
- -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 13 Feb 2013 14:58:10 +0100
+ -- Ugo Riboni <ugo.riboni@canonical.com>  Wed, 13 Feb 2013 19:25:29 +0100
 
 camera-app (2.3) quantal; urgency=low
 
