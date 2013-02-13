@@ -29,6 +29,7 @@ Depends: ${shlibs:Depends},
          libqt5multimedia5,
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-qtquick2-plugin,
+         libqt5sensors5,
 Description: Camera application
  An application to take pictures and videos with the device camera(s)
 
