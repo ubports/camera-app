@@ -1,3 +1,9 @@
+camera-app (2.5) quantal; urgency=low
+
+  * Add HUD dummy Actions.
+
+ -- Antti Kaijanmäki <antti.kaijanmaki@canonical.com>  Fri, 15 Feb 2013 20:53:05 +0200
+
 camera-app (2.4) quantal; urgency=low
 
   * Update dependencies to include qtsensors
