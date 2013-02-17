@@ -31,6 +31,27 @@ Rectangle {
         applicationIdentifier: "camera-app"
         HUD.Context {
             toolbar.quitAction.onTriggered: Qt.quit()
+
+            HUD.Action {
+                label: "Flash"
+                keywords: "Light;Dark"
+            }
+            HUD.Action {
+                label: "Flip Camera"
+                keywords: "Front Facing;Back Facing"
+            }
+            HUD.Action {
+                label: "Shutter"
+                keywords: "Take a Photo;Snap;Record"
+            }
+            HUD.Action {
+                label: "Mode"
+                keywords: "Stills;Video"
+            }
+            HUD.Action {
+                label: "White Balance"
+                keywords: "Lighting Condition;Day;Cloudy;Inside"
+            }
         }
     }
 
