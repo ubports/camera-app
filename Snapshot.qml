@@ -39,8 +39,10 @@ Item {
             opacity: 0.0
             fillMode: Image.PreserveAspectFit
             smooth: false
-            sourceSize.height: parent.width
-            height: parent.width
+            width: device.naturalOrientation === "portrait" ? viewFinderGeometry.height :  viewFinderGeometry.width
+            height: device.naturalOrientation === "portrait" ? viewFinderGeometry.width : viewFinderGeometry.height
+            sourceSize.width: width
+            sourceSize.height: height
 
             onStatusChanged: if (status == Image.Ready) shoot.restart()
         }

@@ -93,7 +93,7 @@ Rectangle {
            FIXME: This should come from a system configuration option so that we
            don't have to have a different codebase for each different device we want
            to run on */
-        orientation: -90
+        orientation: device.naturalOrientation === "portrait"  ? -90 : 0
 
         StopWatch {
             anchors.top: parent.top
