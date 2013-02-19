@@ -144,7 +144,7 @@ Item {
                 } else {
                     var orientation = 90
                     if (device.isLandscape)
-                        orientation = 0
+                        orientation = 180
                     if (device.isInverted)
                         orientation += 180
                     camera.imageCapture.setMetadata("Orientation", orientation)
