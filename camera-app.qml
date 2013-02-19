@@ -82,7 +82,7 @@ Rectangle {
     VideoOutput {
         id: viewFinder
         x: 0
-        y: viewFinderGeometry.y * -1
+        y: device.naturalOrientation === "portrait" ? viewFinderGeometry.y * -1 : 0
         width: parent.width
         height: parent.height
         source: camera
