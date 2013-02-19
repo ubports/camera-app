@@ -81,7 +81,11 @@ Rectangle {
 
     VideoOutput {
         id: viewFinder
-        x: 0
+
+        property bool centerViewfinder: (device.naturalOrientation === "portrait" && device.isLandscape) ||
+                                        (device.naturalOrientation === "landscape" && !device.isLandscape)
+
+        x: centerViewFinder ? viewFinderGeometry.x * -1 : 0
         y: device.naturalOrientation === "portrait" ? viewFinderGeometry.y * -1 : 0
         width: parent.width
         height: parent.height
