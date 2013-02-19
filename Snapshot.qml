@@ -22,6 +22,8 @@ Item {
     property alias source: snapshot.source
     property alias sliding: shoot.running
     property int orientation
+    property ViewFinderGeometry geometry
+    property bool deviceDefaultIsPortrait: true
 
     Item {
         id: container
@@ -39,8 +41,10 @@ Item {
             opacity: 0.0
             fillMode: Image.PreserveAspectFit
             smooth: false
-            sourceSize.height: parent.width
-            height: parent.width
+            width: deviceDefaultIsPortrait ? geometry.height :  geometry.width
+            height: deviceDefaultIsPortrait ? geometry.width : geometry.height
+            sourceSize.width: width
+            sourceSize.height: height
 
             onStatusChanged: if (status == Image.Ready) shoot.restart()
         }

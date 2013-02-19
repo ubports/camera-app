@@ -102,8 +102,14 @@ Rectangle {
 
     VideoOutput {
         id: viewFinder
-        x: 0
-        y: viewFinderGeometry.y * -1
+
+        property bool shouldBeCentered: device.isLandscape
+        property real anchoredY: viewFinderGeometry.y * (device.isInverted ? +1 : -1)
+        property real anchoredX: viewFinderGeometry.x * (device.isInverted ? +1 : -1)
+
+        x: viewFinder.shouldBeCentered ? 0 : viewFinder.anchoredX
+        y: viewFinder.shouldBeCentered || device.naturalOrientation === "landscape" ?
+           0 : viewFinder.anchoredY
         width: parent.width
         height: parent.height
         source: camera
@@ -114,7 +120,7 @@ Rectangle {
            FIXME: This should come from a system configuration option so that we
            don't have to have a different codebase for each different device we want
            to run on */
-        orientation: -90
+        orientation: device.naturalOrientation === "portrait"  ? -90 : 0
 
         StopWatch {
             anchors.top: parent.top
@@ -182,6 +188,8 @@ Rectangle {
                 height: parent.height
                 y: 0
                 orientation: viewFinder.orientation
+                geometry: viewFinderGeometry
+                deviceDefaultIsPortrait: device.naturalOrientation === "portrait"
             }
         }
     }
