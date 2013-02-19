@@ -1,3 +1,10 @@
+camera-app (2.5) quantal; urgency=low
+
+  * Fix orientation for the tablet (LP: #1104407)
+  * Add HUD dummy actions (LP: #1125656)
+
+ -- Guenter Schwann <guenter.schwann@canonical.com>  Tue, 19 Feb 2013 22:07:29 +0100
+
 camera-app (2.4) quantal; urgency=low
 
   * Update dependencies to include qtsensors
