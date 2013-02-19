@@ -22,6 +22,8 @@ Item {
     property alias source: snapshot.source
     property alias sliding: shoot.running
     property int orientation
+    property ViewFinderGeometry geometry
+    property bool deviceDefaultIsPortrait: true
 
     Item {
         id: container
@@ -39,8 +41,8 @@ Item {
             opacity: 0.0
             fillMode: Image.PreserveAspectFit
             smooth: false
-            width: device.naturalOrientation === "portrait" ? viewFinderGeometry.height :  viewFinderGeometry.width
-            height: device.naturalOrientation === "portrait" ? viewFinderGeometry.width : viewFinderGeometry.height
+            width: deviceDefaultIsPortrait ? geometry.height :  geometry.width
+            height: deviceDefaultIsPortrait ? geometry.width : geometry.height
             sourceSize.width: width
             sourceSize.height: height
 

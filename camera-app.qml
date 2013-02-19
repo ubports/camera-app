@@ -161,6 +161,8 @@ Rectangle {
                 height: parent.height
                 y: 0
                 orientation: viewFinder.orientation
+                geometry: viewFinderGeometry
+                deviceDefaultIsPortrait: device.naturalOrientation === "portrait"
             }
         }
     }
