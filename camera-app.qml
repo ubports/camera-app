@@ -82,11 +82,13 @@ Rectangle {
     VideoOutput {
         id: viewFinder
 
-        property bool centerViewfinder: (device.naturalOrientation === "portrait" && device.isLandscape) ||
-                                        (device.naturalOrientation === "landscape" && !device.isLandscape)
+        property bool shouldBeCentered: device.isLandscape
+        property real anchoredY: viewFinderGeometry.y * (device.isInverted ? +1 : -1)
+        property real anchoredX: viewFinderGeometry.x * (device.isInverted ? +1 : -1)
 
-        x: centerViewFinder ? viewFinderGeometry.x * -1 : 0
-        y: device.naturalOrientation === "portrait" ? viewFinderGeometry.y * -1 : 0
+        x: viewFinder.shouldBeCentered ? 0 : viewFinder.anchoredX
+        y: viewFinder.shouldBeCentered || device.naturalOrientation === "landscape" ?
+           0 : viewFinder.anchoredY
         width: parent.width
         height: parent.height
         source: camera
