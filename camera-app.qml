@@ -23,6 +23,7 @@ import QtSensors 5.0
 
 Rectangle {
     id: main
+    objectName: "main"
     width: units.gu(40)
     height: units.gu(80)
     color: "#252423"
