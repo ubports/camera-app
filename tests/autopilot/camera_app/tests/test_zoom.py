@@ -30,7 +30,6 @@ class TestCameraZoom(CameraAppTestCase):
 
     """Tests the zoom slider"""
     def test_slider(self):
-        camera_window = self.main_window.get_camera()
         zoom_control = self.main_window.get_zoom_control()
 
         zoom_button = self.main_window.get_zoom_slider_button()

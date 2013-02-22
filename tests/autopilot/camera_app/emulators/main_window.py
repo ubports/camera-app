@@ -17,7 +17,7 @@ class MainWindow(object):
 
     def get_camera(self):
         """Returns the whole camera screen."""
-        return self.app.select_single("QQuickRootItem").get_children_by_type("QQuickRectangle")[0]
+        return self.app.select_single("Rectangle", objectName="main")
 
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
