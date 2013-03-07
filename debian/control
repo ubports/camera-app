@@ -41,5 +41,6 @@ Depends: ${shlibs:Depends},
          camera-app (= ${source:Version}),
          libautopilot-qt,
          libqt5widgets5,
+         libqt5test5,
 Description: Test package for the camera app
  Autopilot tests for the camera-app package
