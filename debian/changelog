@@ -1,3 +1,9 @@
+camera-app (2.6) quantal; urgency=low
+
+  * Release new package version with Qt multithreaded rendering enabled.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 14 Mar 2013 12:58:17 -0400
+
 camera-app (2.5) quantal; urgency=low
 
   * Fix orientation for the tablet (LP: #1104407)
