@@ -1,3 +1,9 @@
+camera-app (2.7) quantal; urgency=low
+
+  * Release new package version with Qt 5.0.1 support.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 22 Mar 2013 09:40:25 -0400
+
 camera-app (2.6) quantal; urgency=low
 
   * Release new package version with Qt multithreaded rendering enabled.
