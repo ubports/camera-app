@@ -25,7 +25,6 @@ Package: camera-app
 Architecture: any
 Depends: cameraplugin-aal [armel armhf],
          cameraplugin-fake [!armel !armhf],
-         libc6,
          libhud-qt-qml,
          libqt5declarative5-qtmultimedia-plugin,
          libqt5multimedia5,
@@ -33,6 +32,7 @@ Depends: cameraplugin-aal [armel armhf],
          qt-components-ubuntu,
          qtdeclarative5-qtquick2-plugin,
          ${misc:Depends},
+         ${shlibs:Depends},
 Description: Camera application
  An application to take pictures and videos with the device camera(s)
 
@@ -44,5 +44,6 @@ Depends: camera-app (= ${source:Version}),
          libqt5widgets5,
          python-support (>= 0.90),
          ${misc:Depends},
+         ${shlibs:Depends},
 Description: Test package for the camera app
  Autopilot tests for the camera-app package
