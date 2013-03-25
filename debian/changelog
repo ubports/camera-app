@@ -1,4 +1,4 @@
-camera-app (2.7-0phablet1) quantal; urgency=low
+camera-app (2.7.1) quantal; urgency=low
 
   * Changing packaging dependencies to work with raring
 
