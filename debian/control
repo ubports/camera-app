@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9.0.0),
                libgl-dev,
                libgles2-mesa-dev,
                qt-components-ubuntu,
-               python2.7,
+               python,
 Standards-Version: 3.9.3
 Vcs-Bzr: lp:camera-app
 

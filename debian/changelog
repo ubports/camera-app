@@ -1,3 +1,9 @@
+camera-app (2.7-0phablet1) quantal; urgency=low
+
+  * Changing packaging dependencies to work with raring
+
+ -- Sergio Schvezov <sergio.schvezov@canonical.com>  Mon, 25 Mar 2013 18:10:05 -0300
+
 camera-app (2.7) quantal; urgency=low
 
   * Release new package version with Qt 5.0.1 support.
