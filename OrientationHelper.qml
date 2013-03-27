@@ -19,7 +19,6 @@ import QtQuick.Window 2.0
 
 // We must use Item element because Screen component does not works with QtObject
 Item {
-    property variant currentOrientation: Screen.orientation
     property string naturalOrientation: Screen.primaryOrientation == Qt.LandscapeOrientation ? "landscape" : "portrait"
 
     /* Is the device currently rotated to be in lanscape orientation ? */
@@ -33,9 +32,6 @@ Item {
     /* The rotation angle in 90 degrees increments with respect to the device being in its
        default position */
     property int rotationAngle: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
-    onCurrentOrientationChanged: {
-        rotationAngle = Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
-    }
 
     visible: false
 }

@@ -24,8 +24,8 @@ import QtQuick.Window 2.0
 Rectangle {
     id: main
     objectName: "main"
-    width: units.gu(40)
-    height: units.gu(80)
+    width: device.naturalOrientation == "portrait" ? units.gu(40) : units.gu(80)
+    height: device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40)
     color: "#252423"
 
     HUD.HUD {
