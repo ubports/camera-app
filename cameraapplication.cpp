@@ -30,6 +30,7 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
+#include <QScreen>
 #include "config.h"
 
 static void printUsage(const QStringList& arguments)
@@ -63,6 +64,11 @@ CameraApplication::CameraApplication(int &argc, char **argv)
 
 bool CameraApplication::setup()
 {
+    QGuiApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation |
+                Qt::LandscapeOrientation |
+                Qt::InvertedPortraitOrientation |
+                Qt::InvertedLandscapeOrientation);
+
     m_view = new QQuickView();
     QObject::connect(m_view, SIGNAL(statusChanged(QDeclarativeView::Status)), this, SLOT(onViewStatusChanged(QDeclarativeView::Status)));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);

@@ -19,7 +19,7 @@ import Ubuntu.Components 0.1
 import Ubuntu.HUD 0.1 as HUD
 import QtMultimedia 5.0
 import CameraApp 0.1
-import QtSensors 5.0
+import QtQuick.Window 2.0
 
 Rectangle {
     id: main
@@ -60,7 +60,6 @@ Rectangle {
 
     OrientationHelper {
         id: device
-        root: main
     }
 
     Camera {
@@ -149,10 +148,38 @@ Rectangle {
 
             MouseArea {
                 id: area
-                anchors.top: viewFinderGeometry.top
+
+                state: device.isLandscape ? "split" : "joined"
                 anchors.left: viewFinderGeometry.left
                 anchors.right: viewFinderGeometry.right
-                height: Math.min(zoomControl.y, viewFinderGeometry.height)
+
+                states: [
+                    State {
+                        name: "joined"
+                        PropertyChanges {
+                            target: area
+                            height: zoomControl.y
+                            width: -1
+                            x: 0
+                        }
+                        AnchorChanges {
+                            target: area;
+                            anchors.top: viewFinderGeometry.top
+                        }
+                    },
+                    State {
+                        name: "split"
+                        PropertyChanges {
+                            target: area
+                            y: zoomControl.height
+                            height: viewFinderGeometry.height - zoomControl.height - toolbar.height
+                        }
+                        AnchorChanges {
+                            target: area;
+                            anchors.top: undefined
+                        }
+                    }
+                ]
 
                 onPressed: {
                     var mousePosition = main.mapFromItem(area, mouse.x, mouse.y);
