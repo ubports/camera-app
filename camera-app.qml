@@ -159,8 +159,6 @@ Rectangle {
                         PropertyChanges {
                             target: area
                             height: zoomControl.y
-                            width: -1
-                            x: 0
                         }
                         AnchorChanges {
                             target: area;
@@ -171,7 +169,7 @@ Rectangle {
                         name: "split"
                         PropertyChanges {
                             target: area
-                            y: zoomControl.height
+                            y: device.isInverted ?  zoomControl.height : toolbar.height
                             height: viewFinderGeometry.height - zoomControl.height - toolbar.height
                         }
                         AnchorChanges {
