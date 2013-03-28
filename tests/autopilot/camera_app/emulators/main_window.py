@@ -4,6 +4,7 @@
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
+import math
 
 class MainWindow(object):
     """An emulator class that makes it easy to interact with the camera-app."""
@@ -66,3 +67,13 @@ class MainWindow(object):
     def get_swap_camera_button(self):
         """Returns the button that switches between front and back cameras"""
         return self.app.select_single("ToolbarButton", objectName="swapButton")
+
+    def get_orientation(self):
+        controls = self.app.select_single("Item", objectName="controlsArea")
+        if controls:
+            if math.fabs(controls.rotation) == 90:
+                return 'landscape'
+            else:
+                return 'portrait'
+        return ''
+        
