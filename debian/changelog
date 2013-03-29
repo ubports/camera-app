@@ -1,3 +1,11 @@
+camera-app (2.8) quantal; urgency=low
+
+  [Renato Filho]
+  * Replaced Sensors API in favor of Screen component.
+  * Fixed controls layout during the landscape orientation. 
+
+ -- Bill Filler <bill.filler@canonical.com>  Fri, 29 Mar 2013 11:03:05 -0400
+
 camera-app (2.7.1) quantal; urgency=low
 
   * Changing packaging dependencies to work with raring
