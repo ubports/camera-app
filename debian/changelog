@@ -1,3 +1,9 @@
+camera-app (2.8.1) quantal; urgency=low
+
+  * Add X-Ubuntu-Touch field into desktop files.
+
+ -- Ying-Chun Liu (PaulLiu) <paul.liu@canonical.com>  Tue, 02 Apr 2013 22:25:14 +0800
+
 camera-app (2.8) quantal; urgency=low
 
   [Renato Filho]
