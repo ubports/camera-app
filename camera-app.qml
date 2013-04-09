@@ -19,13 +19,13 @@ import Ubuntu.Components 0.1
 import Ubuntu.HUD 0.1 as HUD
 import QtMultimedia 5.0
 import CameraApp 0.1
-import QtSensors 5.0
+import QtQuick.Window 2.0
 
 Rectangle {
     id: main
     objectName: "main"
-    width: units.gu(40)
-    height: units.gu(80)
+    width: device.naturalOrientation == "portrait" ? units.gu(40) : units.gu(80)
+    height: device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40)
     color: "#252423"
 
     HUD.HUD {
@@ -60,7 +60,6 @@ Rectangle {
 
     OrientationHelper {
         id: device
-        root: main
     }
 
     Camera {
@@ -149,10 +148,36 @@ Rectangle {
 
             MouseArea {
                 id: area
-                anchors.top: viewFinderGeometry.top
+
+                state: device.isLandscape ? "split" : "joined"
                 anchors.left: viewFinderGeometry.left
                 anchors.right: viewFinderGeometry.right
-                height: Math.min(zoomControl.y, viewFinderGeometry.height)
+
+                states: [
+                    State {
+                        name: "joined"
+                        PropertyChanges {
+                            target: area
+                            height: zoomControl.y
+                        }
+                        AnchorChanges {
+                            target: area;
+                            anchors.top: viewFinderGeometry.top
+                        }
+                    },
+                    State {
+                        name: "split"
+                        PropertyChanges {
+                            target: area
+                            y: device.isInverted ?  zoomControl.height : toolbar.height
+                            height: viewFinderGeometry.height - zoomControl.height - toolbar.height
+                        }
+                        AnchorChanges {
+                            target: area;
+                            anchors.top: undefined
+                        }
+                    }
+                ]
 
                 onPressed: {
                     var mousePosition = main.mapFromItem(area, mouse.x, mouse.y);

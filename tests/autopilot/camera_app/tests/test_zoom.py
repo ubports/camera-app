@@ -37,13 +37,21 @@ class TestCameraZoom(CameraAppTestCase):
         zoom_button_center_x = zoom_button.globalRect[0] + zoom_button.globalRect[2] / 2
         zoom_button_center_y = zoom_button.globalRect[1] + zoom_button.globalRect[3] / 2
 
-        self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x + zoom_control.width, zoom_button_center_y)
+        if self.main_window.get_orientation() == "portrait":
+            self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x + zoom_control.width, zoom_button_center_y)
+        else:
+            self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x, zoom_button_center_y - zoom_control.width)
+
         self.assertThat(zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
 
         zoom_button_center_x = zoom_button.globalRect[0] + zoom_button.globalRect[2] / 2
         zoom_button_center_y = zoom_button.globalRect[1] + zoom_button.globalRect[3] / 2
 
-        self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x - zoom_control.width, zoom_button_center_y)
+        if self.main_window.get_orientation() == "portrait":
+            self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x - zoom_control.width, zoom_button_center_y)
+        else:
+            self.pointing_device.drag(zoom_button_center_x, zoom_button_center_y, zoom_button_center_x, zoom_button_center_y + zoom_control.width)
+        
         self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
     """Tests the plus and minus buttons"""

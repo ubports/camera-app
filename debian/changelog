@@ -1,8 +1,34 @@
-camera-app (2.7-0ubuntu1) UNRELEASED; urgency=low
+camera-app (2.8.1-0ubuntu1) UNRELEASED; urgency=low
 
   * Minor packaging fixes.
 
- -- Robert Bruce Park <robert.park@canonical.com>  Fri, 15 Mar 2013 21:54:26 -0700
+ -- Robert Bruce Park <robert.park@canonical.com>  Tue, 09 Apr 2013 13:45:03 -0700
+
+camera-app (2.8.1) quantal; urgency=low
+
+  * Add X-Ubuntu-Touch field into desktop files.
+
+ -- Ying-Chun Liu (PaulLiu) <paul.liu@canonical.com>  Tue, 02 Apr 2013 22:25:14 +0800
+
+camera-app (2.8) quantal; urgency=low
+
+  [Renato Filho]
+  * Replaced Sensors API in favor of Screen component.
+  * Fixed controls layout during the landscape orientation.
+
+ -- Bill Filler <bill.filler@canonical.com>  Fri, 29 Mar 2013 11:03:05 -0400
+
+camera-app (2.7.1) quantal; urgency=low
+
+  * Changing packaging dependencies to work with raring
+
+ -- Sergio Schvezov <sergio.schvezov@canonical.com>  Mon, 25 Mar 2013 18:10:05 -0300
+
+camera-app (2.7) quantal; urgency=low
+
+  * Release new package version with Qt 5.0.1 support.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 22 Mar 2013 09:40:25 -0400
 
 camera-app (2.6) quantal; urgency=low
 
