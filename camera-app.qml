@@ -146,12 +146,21 @@ Rectangle {
             viewFinderWidth: viewFinder.width
             viewFinderOrientation: viewFinder.orientation
 
-            MouseArea {
+            Item {
+                id: itemScale
+                visible: false
+            }
+
+            PinchArea {
                 id: area
 
                 state: device.isLandscape ? "split" : "joined"
                 anchors.left: viewFinderGeometry.left
                 anchors.right: viewFinderGeometry.right
+
+                pinch.minimumScale: 0.0
+                pinch.maximumScale: camera.maximumZoom
+                pinch.target: itemScale
 
                 states: [
                     State {
@@ -179,31 +188,50 @@ Rectangle {
                     }
                 ]
 
-                onPressed: {
-                    var mousePosition = main.mapFromItem(area, mouse.x, mouse.y);
-                    focusRing.x = mousePosition.x - focusRing.width * 0.5;
-                    focusRing.y = mousePosition.y - focusRing.height * 0.5;
-                    focusRing.opacity = 1.0;
+                onPinchStarted: {
+                    focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
                 }
 
-                onReleased: {
-                    focusRingTimeout.restart()
-                    var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y));
+                onPinchFinished: {
+                    focusRing.restartTimeout()
+                    var center = pinch.center
+                    var focusPoint = viewFinder.mapPointToSourceNormalized(pinch.center);
                     camera.focus.customFocusPoint = focusPoint;
                 }
 
-                drag {
-                    target: focusRing
-                    minimumY: area.y - focusRing.height / 2
-                    maximumY: area.y + area.height - focusRing.height / 2
-                    minimumX: area.x - focusRing.width / 2
-                    maximumX: area.x + area.width - focusRing.width / 2
+                onPinchUpdated: {
+                    focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
+                    camera.currentZoom = itemScale.scale
                 }
 
-                Timer {
-                    id: focusRingTimeout
-                    interval: 2000
-                    onTriggered: focusRing.opacity = 0.0
+                MouseArea {
+                    id: mouseArea
+
+                    anchors.fill: parent
+
+                    onPressed: {
+                        if (!area.pinch.active)
+                            focusRing.center = main.mapFromItem(area, mouse.x, mouse.y);
+                    }
+
+                    onReleased:  {
+                        if (!area.pinch.active) {
+                            var center = pinch.center
+                            var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y))
+
+                            focusRing.restartTimeout()
+                            camera.focus.customFocusPoint = focusPoint;
+                        }
+                    }
+
+                    drag {
+                        target: focusRing
+                        minimumY: area.y - focusRing.height / 2
+                        maximumY: area.y + area.height - focusRing.height / 2
+                        minimumX: area.x - focusRing.width / 2
+                        maximumX: area.x + area.width - focusRing.width / 2
+                    }
+
                 }
             }
 
@@ -224,7 +252,7 @@ Rectangle {
         id: focusRing
         height: units.gu(13)
         width: units.gu(13)
-        opacity: 0.0
+        opacity: 0.0       
     }
 
     Item {
