@@ -1,3 +1,9 @@
+camera-app (2.9) quantal; urgency=low
+
+  * Implemented pinch to zoom.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Mon, 15 Apr 2013 10:39:23 -0300
+
 camera-app (2.8.1) quantal; urgency=low
 
   * Add X-Ubuntu-Touch field into desktop files.
