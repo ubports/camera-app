@@ -25,7 +25,6 @@ Architecture: any
 Depends: cameraplugin-aal [armel armhf],
          cameraplugin-fake [!armel !armhf],
          libhud-qt-qml,
-         libqt5declarative5-qtmultimedia-plugin,
          libqt5multimedia5,
          qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-qtquick2-plugin,
