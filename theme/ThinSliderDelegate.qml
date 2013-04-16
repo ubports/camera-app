@@ -37,9 +37,13 @@ Item {
     property Item thumb: thumbShape
 
     property real normalizedValue: SliderUtils.normalizedValue(item)
-    property real thumbSpacing: itemStyle.thumbSpacing
+    property real thumbSpacing
     property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
     property real thumbWidth: thumbShape.width - thumbSpacing
+    property real thumbHeight
+
+    property string backgroundImage
+    property string thumbImage
 
     Image {
         id: backgroundShape
@@ -48,7 +52,7 @@ Item {
             right: parent.right
             verticalCenter: parent.verticalCenter
         }
-        source: itemStyle.backgroundImage
+        source: backgroundImage
         height: sourceSize.height
     }
 
@@ -58,10 +62,10 @@ Item {
 
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         y: backgroundShape.y + thumbSpacing
-        width: itemStyle.thumbWidth
-        height: itemStyle.thumbHeight
+        width: thumbWidth
+        height: thumbHeight
         anchors.verticalCenter: backgroundShape.verticalCenter
-        source: itemStyle.thumbImage
+        source: thumbImage
     }
 
     // set item's implicitHeight to the thumbShape's height
