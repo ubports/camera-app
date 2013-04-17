@@ -16,7 +16,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import Ubuntu.HUD 0.1 as HUD
+import Ubuntu.HUD 1.0 as HUD
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtQuick.Window 2.0
@@ -31,8 +31,9 @@ Rectangle {
     HUD.HUD {
         applicationIdentifier: "camera-app"
         HUD.Context {
-            toolbar.quitAction.onTriggered: Qt.quit()
-
+            HUD.QuitAction {
+                onTriggered: Qt.quit()
+            }
             HUD.Action {
                 label: "Flash"
                 keywords: "Light;Dark"
@@ -252,7 +253,7 @@ Rectangle {
         id: focusRing
         height: units.gu(13)
         width: units.gu(13)
-        opacity: 0.0       
+        opacity: 0.0
     }
 
     Item {

@@ -1,6 +1,7 @@
 camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
 
   * Minor packaging fixes.
+  * Ported from HUD 0.1 to 1.0.
 
  -- Robert Bruce Park <robert.park@canonical.com>  Mon, 15 Apr 2013 09:32:07 -0700
 
