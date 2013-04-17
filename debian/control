@@ -22,7 +22,7 @@ Homepage: https://launchpad.net/camera-app
 Vcs-Bzr: https://code.launchpad.net/~phablet-team/camera-app/trunk
 
 Package: camera-app
-Architecture: any
+Architecture: i386 amd64 armhf
 Depends: cameraplugin-aal [armel armhf],
          cameraplugin-fake [!armel !armhf],
          libhud-qt-qml,
@@ -42,7 +42,6 @@ Depends: camera-app (= ${source:Version}),
          libautopilot-qt,
          libqt5test5,
          libqt5widgets5,
-         python-support (>= 0.90),
          ${misc:Depends},
          ${shlibs:Depends},
 Description: Test package for the camera app
