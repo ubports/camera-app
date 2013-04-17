@@ -1,7 +1,7 @@
+/usr/lib/*/qt5/qml/*
 usr/bin/camera-app
 usr/share/applications/camera-app.desktop
-usr/share/camera-app/*.qml
 usr/share/camera-app/*.js
+usr/share/camera-app/*.qml
 usr/share/camera-app/assets/*
 usr/share/camera-app/theme/*
-/usr/lib/*/qt5/qml/*
