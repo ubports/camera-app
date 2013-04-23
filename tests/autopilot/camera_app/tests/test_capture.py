@@ -46,8 +46,8 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Now take the picture! (Give it a little time to animate)
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click()
+        self.mouse.move_to_object(exposure_button)
+        self.mouse.click()
 
         # Check that only one picture with the right name pattern is actually there
         one_picture_on_disk = False
@@ -59,7 +59,7 @@ class TestCapture(CameraAppTestCase):
             time.sleep(1)
         self.assertEquals(one_picture_on_disk, True)
 
-    """Tests clicking on the record control and checks if the flash changes 
+    """Tests clicking on the record control and checks if the flash changes
     to torch off mode and the recording time appears"""
     @unittest.skipIf(CameraAppTestCase.running_on_device(), 'recording not available on device yet')
     def test_record_video(self):
@@ -76,8 +76,8 @@ class TestCapture(CameraAppTestCase):
         torchmode_old_state = flash_button.torchMode
 
         # Click the record button to toggle photo/video mode
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click();
+        self.mouse.move_to_object(record_control)
+        self.mouse.click();
 
         # Has the flash changed to be a torch ?
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
@@ -89,8 +89,8 @@ class TestCapture(CameraAppTestCase):
         self.assertEquals(stop_watch.elapsed, "00:00")
 
         # Click the exposure button to start recording
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click();
+        self.mouse.move_to_object(exposure_button)
+        self.mouse.click();
 
         # Record video for 2 seconds and check if the stop watch actually runs and
         # is visible.
@@ -100,12 +100,12 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and check if everything resets itself to previous states
-        self.pointing_device.click()
+        self.mouse.click()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
 
         # Now start recording a second video and check if everything still works
-        self.pointing_device.click();
+        self.mouse.click();
 
         # Has the flash changed to be a torch, is the stop watch visible and set to 00:00?
         self.assertThat(flash_button.flashState, Eventually(Equals("off")))
@@ -117,9 +117,9 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
 
         # Now stop the video and go back to picture mode and check if everything resets itself to previous states
-        self.pointing_device.click();
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click();
+        self.mouse.click();
+        self.mouse.move_to_object(record_control)
+        self.mouse.click();
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
         self.assertThat(flash_button.flashState, Eventually(Equals(flashlight_old_state)))
@@ -133,8 +133,8 @@ class TestCapture(CameraAppTestCase):
         self.assertEquals(exposure_button.enabled, True)
 
         # Now take the picture! (Give it a little time to animate)
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click()
+        self.mouse.move_to_object(exposure_button)
+        self.mouse.click()
 
         self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))

@@ -34,7 +34,6 @@ Rectangle {
             HUD.QuitAction {
                 onTriggered: Qt.quit()
             }
-
             HUD.Action {
                 label: "Flash"
                 keywords: "Light;Dark"
@@ -254,7 +253,7 @@ Rectangle {
         id: focusRing
         height: units.gu(13)
         width: units.gu(13)
-        opacity: 0.0       
+        opacity: 0.0
     }
 
     Item {
