@@ -1,6 +1,11 @@
 camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
 
+  [ Robert Bruce Park ]
   * Minor packaging fixes.
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * debian/control:
+    - Change build dependency from python2.7 to python
 
  -- Robert Bruce Park <robert.park@canonical.com>  Mon, 15 Apr 2013 09:32:07 -0700
 
