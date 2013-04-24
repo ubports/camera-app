@@ -7,7 +7,10 @@ camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
   * debian/control:
     - Change build dependency from python2.7 to python
 
- -- Robert Bruce Park <robert.park@canonical.com>  Mon, 15 Apr 2013 09:32:07 -0700
+  [ Didier Roche ]
+  * Automatic snapshot from revision 117 (bootstrap)
+
+ -- Didier Roche <didrocks@ubuntu.com>  Wed, 24 Apr 2013 08:37:48 +0200
 
 camera-app (2.9) quantal; urgency=low
 
