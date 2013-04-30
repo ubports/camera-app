@@ -59,7 +59,7 @@ Rectangle {
 
     Component.onCompleted: camera.start();
 
-    OrientationHelper {
+    DeviceOrientation {
         id: device
     }
 

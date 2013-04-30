@@ -27,7 +27,7 @@ Item {
 
     /* Is the device currently rotated upside down ? */
     property bool isInverted: Screen.orientation == Qt.InvertedLandscapeOrientation ||
-                              Screen.orientation == Qt.InvertedPortraitOrientationn
+                              Screen.orientation == Qt.InvertedPortraitOrientation
 
     /* The rotation angle in 90 degrees increments with respect to the device being in its
        default position */
