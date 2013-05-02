@@ -36,7 +36,7 @@ Description: Camera application
  An application to take pictures and videos with the device camera(s)
 
 Package: camera-app-autopilot
-# arechitexture is not "all", as we set the fake plugin as dependency
+# architecture is not "all", as we set the fake plugin as dependency
 Architecture: i386 amd64 armhf
 Depends: camera-app (= ${source:Version}),
          cameraplugin-fake [!armel !armhf],

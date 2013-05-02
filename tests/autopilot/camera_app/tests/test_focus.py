@@ -43,8 +43,8 @@ class TestFocus(CameraAppTestCase):
 
         # Click in the center of the viewfinder area
         click_coords = [feed.globalRect[2] / 2 + feed.globalRect[0], feed.globalRect[3] / 2 + feed.globalRect[1]]
-        self.mouse.move(click_coords[0], click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(click_coords[0], click_coords[1])
+        self.pointing_device.click()
 
         # The focus ring sould be visible and centered to the mouse click coords now
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
@@ -55,14 +55,14 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Switch cameras, wait for camera to settle, and try again
-        self.mouse.move_to_object(switch_cameras)
-        self.mouse.click()
+        self.pointing_device.move_to_object(switch_cameras)
+        self.pointing_device.click()
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
         click_coords = [feed.globalRect[2] / 2 + feed.globalRect[0], feed.globalRect[3] / 2 + feed.globalRect[1]]
-        self.mouse.move(click_coords[0], click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(click_coords[0], click_coords[1])
+        self.pointing_device.click()
 
         # The focus ring sould be visible and centered to the mouse click coords now
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
@@ -87,28 +87,28 @@ class TestFocus(CameraAppTestCase):
 
         # Click at the bottom of the window below the toolbar. It should never focus there.
         click_coords = [toolbar.globalRect[2] / 2 + toolbar.globalRect[0], toolbar.globalRect[1] + toolbar.globalRect[3] + 2]
-        self.mouse.move(click_coords[0], click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(click_coords[0], click_coords[1])
+        self.pointing_device.click()
         self.assertEquals(focus_ring.opacity, 0.0)
 
         # Check if there's a gap between the viewfinder feed and the zoom control.
         # If there is, test that focusing there won't show the focus ring.
         if zoom.y > feed.height: # Feed is aligned to the top of the window
             click_coords = [zoom.globalRect[2] / 2 + zoom.globalRect[0], zoom.globalRect[1] - 2]
-            self.mouse.move(click_coords[0], click_coords[1])
-            self.mouse.click()
+            self.pointing_device.move(click_coords[0], click_coords[1])
+            self.pointing_device.click()
             self.assertEquals(focus_ring.opacity, 0.0)
 
         # Switch cameras, wait for camera to settle, and try again
-        self.mouse.move_to_object(switch_cameras)
-        self.mouse.click()
+        self.pointing_device.move_to_object(switch_cameras)
+        self.pointing_device.click()
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Maybe we will have the gap when we switch the camera, test it again
         if zoom.y > feed.height:
             click_coords = [zoom.globalRect[2] / 2 + zoom.globalRect[0], zoom.globalRect[1] - 2]
-            self.mouse.move(click_coords[0], click_coords[1])
-            self.mouse.click()
+            self.pointing_device.move(click_coords[0], click_coords[1])
+            self.pointing_device.click()
             self.assertEquals(focus_ring.opacity, 0.0)
 
     """Tests dragging the focus ring"""
@@ -124,8 +124,8 @@ class TestFocus(CameraAppTestCase):
 
         # Focus to the center of the viewfinder feed
         center_click_coords = [feed.globalRect[2] / 2 + feed.globalRect[0], feed.globalRect[3] / 2 + feed.globalRect[1]]
-        self.mouse.move(center_click_coords[0], center_click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(center_click_coords[0], center_click_coords[1])
+        self.pointing_device.click()
 
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
@@ -133,26 +133,26 @@ class TestFocus(CameraAppTestCase):
 
         # Now drag it halfway across the feed, verify that it has moved there
         drag_end_coords = [focus_ring_center[0] + feed.globalRect[2] / 4, focus_ring_center[1] + feed.globalRect[3] / 4]
-        self.mouse.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
+        self.pointing_device.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
 
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))
 
         # Switch cameras, wait for camera to settle, and try again
-        self.mouse.move_to_object(switch_cameras)
-        self.mouse.click()
+        self.pointing_device.move_to_object(switch_cameras)
+        self.pointing_device.click()
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         center_click_coords = [feed.globalRect[2] / 2 + feed.globalRect[0], feed.globalRect[3] / 2 + feed.globalRect[1]]
-        self.mouse.move(center_click_coords[0], center_click_coords[1])
-        self.mouse.click()
+        self.pointing_device.move(center_click_coords[0], center_click_coords[1])
+        self.pointing_device.click()
 
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, center_click_coords)
 
         drag_end_coords = [focus_ring_center[0] + feed.globalRect[2] / 4, focus_ring_center[1] + feed.globalRect[3] / 4]
-        self.mouse.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
+        self.pointing_device.drag(focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
 
         focus_ring_center = [focus_ring.globalRect[2] / 2 + focus_ring.globalRect[0], focus_ring.globalRect[3] / 2 + focus_ring.globalRect[1]]
         self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))
