@@ -24,7 +24,6 @@ Vcs-Bzr: https://code.launchpad.net/~phablet-team/camera-app/trunk
 Package: camera-app
 Architecture: i386 amd64 armhf
 Depends: cameraplugin-aal [armel armhf],
-         cameraplugin-fake [!armel !armhf],
          qtdeclarative5-hud1.0,
          libqt5multimedia5,
          qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
@@ -37,8 +36,10 @@ Description: Camera application
  An application to take pictures and videos with the device camera(s)
 
 Package: camera-app-autopilot
-Architecture: all
+# architecture is not "all", as we set the fake plugin as dependency
+Architecture: i386 amd64 armhf
 Depends: camera-app (= ${source:Version}),
+         cameraplugin-fake [!armel !armhf],
          libautopilot-qt,
          libqt5test5,
          libqt5widgets5,

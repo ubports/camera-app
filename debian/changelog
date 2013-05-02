@@ -10,6 +10,9 @@ camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
   [ Didier Roche ]
   * Automatic snapshot from revision 117 (bootstrap)
 
+  [ Guenter Schwann ]
+  * Depend on cameraplugin-fake package for the test package only
+
  -- Didier Roche <didrocks@ubuntu.com>  Wed, 24 Apr 2013 08:37:48 +0200
 
 camera-app (2.9) quantal; urgency=low
