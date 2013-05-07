@@ -9,8 +9,9 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
+from autopilot.platform import model
+from testtools.matchers import Equals, NotEquals, GreaterThan
 
 from camera_app.tests import CameraAppTestCase
 
@@ -61,7 +62,7 @@ class TestCapture(CameraAppTestCase):
 
     """Tests clicking on the record control and checks if the flash changes
     to torch off mode and the recording time appears"""
-    @unittest.skipIf(CameraAppTestCase.running_on_device(), 'recording not available on device yet')
+    @unittest.skipIf(model() != 'Desktop', 'recording not available on device yet')
     def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()
