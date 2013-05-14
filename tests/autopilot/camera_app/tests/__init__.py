@@ -31,7 +31,7 @@ class CameraAppTestCase(AutopilotTestCase):
         ('with touch', dict(input_device_class=Touch))
         ]
 
-    local_location = "../../src/camera-app"
+    local_location = "../../camera-app"
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
