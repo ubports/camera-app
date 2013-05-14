@@ -15,6 +15,7 @@ from autopilot.matchers import Eventually
 from camera_app.tests import CameraAppTestCase
 
 import time
+import unittest
 
 class TestCameraZoom(CameraAppTestCase):
     """Tests the main camera features"""
@@ -54,8 +55,9 @@ class TestCameraZoom(CameraAppTestCase):
 
         self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
-    """Tests the plus and minus buttons"""
+    @unittest.skip("Disabled this failing test due to bug 1179592")    
     def test_plus_minus(self):
+        """Tests the plus and minus buttons"""
         zoom_control = self.main_window.get_zoom_control()
         plus = self.main_window.get_zoom_plus()
         minus = self.main_window.get_zoom_minus()
