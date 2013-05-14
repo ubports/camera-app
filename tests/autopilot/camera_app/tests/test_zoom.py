@@ -55,7 +55,7 @@ class TestCameraZoom(CameraAppTestCase):
 
         self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
 
-    @unittest.skip("Disabled this failing test due to a big in the app")    
+    @unittest.skip("Disabled this failing test due to a bug in the app")    
     def test_plus_minus(self):
         """Tests the plus and minus buttons"""
         zoom_control = self.main_window.get_zoom_control()
