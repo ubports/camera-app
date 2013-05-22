@@ -1,4 +1,4 @@
-camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
+camera-app (2.9.1daily13.05.22ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Robert Bruce Park ]
   * Minor packaging fixes.
@@ -13,7 +13,35 @@ camera-app (2.9.1-0ubuntu1) UNRELEASED; urgency=low
   [ Guenter Schwann ]
   * Depend on cameraplugin-fake package for the test package only
 
- -- Didier Roche <didrocks@ubuntu.com>  Wed, 24 Apr 2013 08:37:48 +0200
+  [ Kaleo ]
+  * Fixed name collision with Ubuntu UI Toolkit's new class
+    OrientationHelper.
+
+  [ Ugo Riboni ]
+  * Adapt the slider delegate to use the new SDK automatic styling.
+  * Fix a typo preventing proper rotation in one case and make the app
+    starts fullscreen again.
+
+  [ Omer Akram ]
+  * replaced 'mouse' with 'pointing_device' so that tests work on touch
+    as well.
+  * port autopilot tests to 1.3 and also make these tests platform
+    aware.
+  * disable failing autopilot test so that we could get autopilot
+    enabled in jenkins.
+  * fix local install location which got ruined in the ap-1.3 port.
+
+  [ Robert Bruce Park ]
+  * Port from HUD 0.1 to 1.0.
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * libhud-qt-qml has been renamed to qtdeclarative5-hud1.0. Also,
+    switch code to use HUD 1.0.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 130 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 22 May 2013 04:26:36 +0000
 
 camera-app (2.9) quantal; urgency=low
 
