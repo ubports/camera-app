@@ -49,8 +49,7 @@ class TestFocus(CameraAppTestCase):
 
         # The focus ring sould be visible and centered to the mouse click
         # coords now
-        x, y, h, w = focus_ring.globalRect
-        focus_ring_center = [x + (h / 2), y + (w / 2)]
+        focus_ring_center = self.get_center(focus_ring)
 
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, click_coords)
@@ -69,7 +68,7 @@ class TestFocus(CameraAppTestCase):
 
         # The focus ring sould be visible and centered to the mouse
         # click coords now
-        focus_ring_center = [x + (h / 2), y + (w / 2)]
+        focus_ring_center = self.get_center(focus_ring)
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, click_coords)
 
