@@ -66,7 +66,8 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
-        self.pointing_device.move_to_object(feed)
+        click_coords =[feed.globalRect[2] / 2 + feed.globalRect[0], feed.globalRect[3] / 2 + feed.globalRect[1]]
+        self.pointing_device.move(click_coords[0], click_coords[1])
         self.pointing_device.click()
 
         # The focus ring sould be visible and centered to the mouse
