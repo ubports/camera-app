@@ -11,7 +11,6 @@ from __future__ import absolute_import
 
 from autopilot.matchers import Eventually
 from autopilot.platform import model
-from testtools import skipIf
 from testtools.matchers import Equals, NotEquals, GreaterThan
 
 from camera_app.tests import CameraAppTestCase
@@ -22,7 +21,6 @@ import os
 from os import path
 
 
-@skipIf(model() == 'Nexus 7', 'Camera does not yet work on Nexus 7')
 class TestCapture(CameraAppTestCase):
     """Tests the main camera features"""
 

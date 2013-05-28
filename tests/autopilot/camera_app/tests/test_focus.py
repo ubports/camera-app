@@ -9,10 +9,8 @@
 
 from __future__ import absolute_import
 
-from autopilot.matchers import Eventually
-from autopilot.platform import model
-from testtools import skipIf
 from testtools.matchers import Equals, NotEquals, GreaterThan
+from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
@@ -20,7 +18,6 @@ import unittest
 import time
 
 
-@skipIf(model() == 'Nexus 7', 'Camera does not yet work on Nexus 7')
 class TestFocus(CameraAppTestCase):
     """Tests the focus"""
 
