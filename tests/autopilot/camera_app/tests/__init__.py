@@ -18,18 +18,19 @@ from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
 
+
 class CameraAppTestCase(AutopilotTestCase):
 
-    """A common test case class that provides several useful methods for camera-app tests."""
+    """A common test case class that provides several useful methods
+    for camera-app tests.
 
+    """
     if model() == 'Desktop':
         scenarios = [
-        ('with mouse', dict(input_device_class=Mouse))
-        ]
+        ('with mouse', dict(input_device_class=Mouse))]
     else:
         scenarios = [
-        ('with touch', dict(input_device_class=Touch))
-        ]
+        ('with touch', dict(input_device_class=Touch))]
 
     local_location = "../../camera-app"
 
@@ -56,7 +57,10 @@ class CameraAppTestCase(AutopilotTestCase):
                 "--desktop_file_hint=/usr/share/applications/camera-app.desktop",
                 app_type='qt')
 
+    def get_center(self, object_proxy):
+        x, y, w, h = object_proxy.globalRect
+        return [x + (w / 2), y + (h / 2)]
+
     @property
     def main_window(self):
         return MainWindow(self.app)
-
