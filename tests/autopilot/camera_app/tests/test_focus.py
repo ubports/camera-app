@@ -50,7 +50,6 @@ class TestFocus(CameraAppTestCase):
         # The focus ring sould be visible and centered to the mouse click
         # coords now
         focus_ring_center = self.get_center(focus_ring)
-
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, click_coords)
 
@@ -78,9 +77,7 @@ class TestFocus(CameraAppTestCase):
 
     def test_focus_invalid(self):
         """Tests clicking outside of the viewfinder image area, where it should
-        not focus
-
-        """
+        not focus."""
         camera_window = self.main_window.get_camera()
         toolbar = self.main_window.get_toolbar()
         zoom = self.main_window.get_zoom_control()
@@ -141,17 +138,16 @@ class TestFocus(CameraAppTestCase):
         center_click_coords = list(self.pointing_device.position())
 
         focus_ring_center = self.get_center(focus_ring)
-
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, center_click_coords)
 
         # Now drag it halfway across the feed, verify that it has moved there
-        drag_end_coords = [focus_ring_center[0] / 2, focus_ring_center[1] / 2]
-        self.pointing_device.drag(
-            focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
+        tx = focus_ring_center[0]
+        ty = focus_ring_center[1]
+        self.pointing_device.drag(tx, ty, tx / 2, ty / 2)
 
         focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))
+        self.assertThat(focus_ring_center[1], GreaterThan(ty / 2 - 2))
 
         # Switch cameras, wait for camera to settle, and try again
         self.pointing_device.move_to_object(switch_cameras)
@@ -166,9 +162,9 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(focus_ring.opacity, Eventually(Equals(1.0)))
         self.assertEquals(focus_ring_center, center_click_coords)
 
-        drag_end_coords = [focus_ring_center[0] / 2, focus_ring_center[1] / 2]
-        self.pointing_device.drag(
-            focus_ring_center[0], focus_ring_center[1], drag_end_coords[0], drag_end_coords[1])
+        tx = focus_ring_center[0]
+        ty = focus_ring_center[1]
+        self.pointing_device.drag(tx, ty, tx / 2, ty / 2)
 
         focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring_center[1], GreaterThan(drag_end_coords[1] - 2))
+        self.assertThat(focus_ring_center[1], GreaterThan(ty / 2 - 2))
