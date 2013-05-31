@@ -1,3 +1,15 @@
+camera-app (2.9.1daily13.05.31ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * make the camera-app tests pep8 compliant, improves tests for
+    readability and re-usability of code, skip few tests on the Nexus 7
+    as camera does not work on it yet.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 132 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 31 May 2013 05:14:32 +0000
+
 camera-app (2.9.1daily13.05.22ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Robert Bruce Park ]
