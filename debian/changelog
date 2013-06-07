@@ -1,3 +1,38 @@
+camera-app (2.9.1daily13.06.07-0ubuntu1) saucy; urgency=low
+
+  [ Kaleo ]
+  * Fixed name collision with Ubuntu UI Toolkit's new class
+    OrientationHelper.
+
+  [ Ugo Riboni ]
+  * Adapt the slider delegate to use the new SDK automatic styling.
+  * Fix a typo preventing proper rotation in one case and make the app
+    starts fullscreen again.
+
+  [ Omer Akram ]
+  * replaced 'mouse' with 'pointing_device' so that tests work on touch
+    as well.
+  * port autopilot tests to 1.3 and also make these tests platform
+    aware.
+  * disable failing autopilot test so that we could get autopilot
+    enabled in jenkins.
+  * fix local install location which got ruined in the ap-1.3 port.
+  * make the camera-app tests pep8 compliant, improves tests for
+    readability and re-usability of code, skip few tests on the Nexus 7
+    as camera does not work on it yet.
+
+  [ Robert Bruce Park ]
+  * Port from HUD 0.1 to 1.0.
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * libhud-qt-qml has been renamed to qtdeclarative5-hud1.0. Also,
+    switch code to use HUD 1.0.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 133
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 07 Jun 2013 04:01:59 +0000
+
 camera-app (2.9.1daily13.05.31ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Omer Akram ]
