@@ -76,6 +76,7 @@ install(FILES ${CAMERA_APP}.desktop
     )
 
 add_subdirectory(CameraApp)
+add_subdirectory(po)
 
 enable_testing()
 add_subdirectory(tests)

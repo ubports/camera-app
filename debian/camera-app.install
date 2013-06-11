@@ -5,3 +5,4 @@ usr/share/camera-app/*.js
 usr/share/camera-app/*.qml
 usr/share/camera-app/assets/*
 usr/share/camera-app/theme/*
+usr/share/locale/*/LC_MESSAGES/camera-app.mo
