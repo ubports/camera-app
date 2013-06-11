@@ -78,12 +78,18 @@ class TestCameraFlash(CameraAppTestCase):
     def test_remember_state(self):
         flash_button = self.main_window.get_flash_button()
         record_button = self.main_window.get_record_control()
+        initial_flash_state = flash_button.flashState
 
         # Change flash mode, then switch to camera, then back to flash
         # and verify that previous state is preserved
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
+        self.assertThat(
+            flash_button.flashState, Eventually(NotEquals(initial_flash_state)))
+        second_flash_state = flash_button.flashState
         self.pointing_device.click()
+        self.assertThat(
+            flash_button.flashState, Eventually(NotEquals(second_flash_state)))
         old_flash_state = flash_button.flashState
 
         self.pointing_device.move_to_object(record_button)
