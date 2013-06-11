@@ -35,29 +35,32 @@ Rectangle {
                 onTriggered: Qt.quit()
             }
             HUD.Action {
-                label: "Flash"
-                keywords: "Light;Dark"
+                label: i18n.tr("Flash")
+                keywords: i18n.tr("Light;Dark")
             }
             HUD.Action {
-                label: "Flip Camera"
-                keywords: "Front Facing;Back Facing"
+                label: i18n.tr("Flip Camera")
+                keywords: i18n.tr("Front Facing;Back Facing")
             }
             HUD.Action {
-                label: "Shutter"
-                keywords: "Take a Photo;Snap;Record"
+                label: i18n.tr("Shutter")
+                keywords: i18n.tr("Take a Photo;Snap;Record")
             }
             HUD.Action {
-                label: "Mode"
-                keywords: "Stills;Video"
+                label: i18n.tr("Mode")
+                keywords: i18n.tr("Stills;Video")
             }
             HUD.Action {
-                label: "White Balance"
-                keywords: "Lighting Condition;Day;Cloudy;Inside"
+                label: i18n.tr("White Balance")
+                keywords: i18n.tr("Lighting Condition;Day;Cloudy;Inside")
             }
         }
     }
 
-    Component.onCompleted: camera.start();
+    Component.onCompleted: {
+        i18n.domain = "camera-app";
+        camera.start();
+    }
 
     DeviceOrientation {
         id: device

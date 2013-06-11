@@ -1,10 +1,11 @@
 [Desktop Entry]
 Type=Application
-Name=Camera
+Name=tr("Camera")
 GenericName=camera-app
-Comment=Camera application
+Comment=tr("Camera application")
 Exec=camera-app --fullscreen %u
 Terminal=false
 Icon=camera-app
 #MimeType=x-scheme-handler/contact;x-scheme-handler/call
 X-Ubuntu-Touch=true
+X-Ubuntu-Gettext-Domain=camera-app
