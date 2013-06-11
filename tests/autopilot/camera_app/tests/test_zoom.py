@@ -36,10 +36,10 @@ class TestCameraZoom(CameraAppTestCase):
         zoom_control = self.main_window.get_zoom_control()
         zoom_button = self.main_window.get_zoom_slider_button()
 
-        x, y, h, w = zoom_button.globalRect
+        x, y, w, h = zoom_button.globalRect
 
-        tx = x + (h / 2)
-        ty = y + (w / 2)
+        tx = x + (w / 2)
+        ty = y + (h / 2)
 
         if self.main_window.get_orientation() == "portrait":
             self.pointing_device.drag(tx, ty, (tx + zoom_control.width), ty)
@@ -49,8 +49,8 @@ class TestCameraZoom(CameraAppTestCase):
         self.assertThat(
             zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
 
-        tx = x + (h / 2)
-        ty = y + (w / 2)
+        tx = x + (w / 2)
+        ty = y + (h / 2)
 
         if self.main_window.get_orientation() == "portrait":
             self.pointing_device.drag(tx, ty, (tx - zoom_control.width), ty)
