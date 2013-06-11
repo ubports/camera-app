@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Camera
+Name=tr("Camera")
 GenericName=camera-app
-Comment=Camera application
+Comment=tr("Camera application")
 Exec=camera-app --fullscreen %u
 Terminal=false
 Icon=camera-app

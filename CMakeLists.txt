@@ -71,11 +71,29 @@ install(DIRECTORY ${THEME_DIR}
     DESTINATION ${CAMERA_APP_DIR}
     )
 
-install(FILES ${CAMERA_APP}.desktop
+set(DESKTOP_FILE camera-app.desktop)
+file(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE})
+file(STRINGS ${DESKTOP_FILE}.in DESKTOP_FILE_CONTENTS)
+foreach(LINE ${DESKTOP_FILE_CONTENTS})
+    string(REGEX REPLACE "tr\\\(\"(.*)\"\\\)" "\\1" LINE "${LINE}")
+    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} "${LINE}\n")
+endforeach(LINE)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
 
 add_subdirectory(CameraApp)
+
+file(GLOB_RECURSE I18N_SRC_FILES
+     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+     **.qml **.desktop.in)
+list(SORT I18N_SRC_FILES)
+
+# for dh_translations to extract the domain
+# (regarding syntax consistency, see http://pad.lv/1181187)
+set (GETTEXT_PACKAGE "camera-app")
+
 add_subdirectory(po)
 
 enable_testing()

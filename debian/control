@@ -16,6 +16,7 @@ Build-Depends: cmake,
                qtdeclarative5-ubuntu-ui-toolkit-plugin,
                qtmultimedia5-dev,
                gettext,
+               dh-translations,
 Standards-Version: 3.9.4
 Homepage: https://launchpad.net/camera-app
 # If you aren't a member of ~phablet-team but need to upload packaging changes,

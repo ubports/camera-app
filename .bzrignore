@@ -11,6 +11,5 @@ tests/unittests/tst_CachingProviderTests
 Testing/
 *.cbp
 po/*.gmo
-
-
+*.desktop
 

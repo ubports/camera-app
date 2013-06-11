@@ -18,6 +18,14 @@ msgstr ""
 "X-Generator: Launchpad (build 16660)\n"
 "Language: it\n"
 
+#: camera-app.desktop.in:3
+msgid "Camera"
+msgstr "Macchina Fotografica"
+
+#: camera-app.desktop.in:5
+msgid "Camera application"
+msgstr "Applicazione per Foto e Video"
+
 #: camera-app.qml:38
 msgid "Flash"
 msgstr "Flash"
