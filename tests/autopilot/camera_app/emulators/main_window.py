@@ -69,11 +69,9 @@ class MainWindow(object):
         return self.app.select_single("ToolbarButton", objectName="swapButton")
 
     def get_orientation(self):
-        controls = self.app.select_single("Item", objectName="controlsArea")
-        if controls:
-            if math.fabs(controls.rotation) == 90:
-                return 'landscape'
-            else:
-                return 'portrait'
-        return ''
+        orientation = self.app.select_single("DeviceOrientation")
+        if orientation.isLandscape is True:
+            return 'landscape'
+        else:
+            return 'portrait'
         
