@@ -5,8 +5,7 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: cmake,
                debhelper (>= 9),
-               libgl-dev,
-               libgles2-mesa-dev,
+               libgles2-mesa-dev | libgl-dev,
                pkg-config,
                python,
                qtbase5-dev,
@@ -24,7 +23,7 @@ Homepage: https://launchpad.net/camera-app
 Vcs-Bzr: https://code.launchpad.net/~phablet-team/camera-app/trunk
 
 Package: camera-app
-Architecture: i386 amd64 armhf
+Architecture: any
 Depends: cameraplugin-aal [armel armhf],
          qtdeclarative5-hud1.0,
          libqt5multimedia5,
@@ -40,7 +39,7 @@ Description: Camera application
 Package: camera-app-autopilot
 # architecture is not "all", as we set the fake plugin as dependency
 Architecture: i386 amd64 armhf
-Depends: camera-app (= ${source:Version}),
+Depends: camera-app (>= ${binary:Version}),
          cameraplugin-fake [!armel !armhf],
          libautopilot-qt,
          libqt5test5,
