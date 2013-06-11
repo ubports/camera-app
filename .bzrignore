@@ -1,0 +1,16 @@
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeFiles
+*.cmake
+Makefile
+src/NotesApp/Plugins/config.h
+moc_*.cpp
+*_automoc.cpp
+*.moc
+tests/unittests/tst_CachingProviderTests
+Testing/
+*.cbp
+po/*.gmo
+
+
+
