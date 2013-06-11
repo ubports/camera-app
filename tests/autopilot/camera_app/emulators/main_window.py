@@ -70,7 +70,7 @@ class MainWindow(object):
 
     def get_orientation(self):
         orientation = self.app.select_single("DeviceOrientation")
-        if orientation.isLandscape is True:
+        if orientation.isLandscape == True:
             return 'landscape'
         else:
             return 'portrait'
