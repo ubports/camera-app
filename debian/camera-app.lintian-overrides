@@ -1,0 +1,4 @@
+camera-app: binary-without-manpage usr/bin/camera-app
+camera-app: pkg-has-shlibs-control-file-but-no-actual-shared-libs
+camera-app: postinst-has-useless-call-to-ldconfig
+camera-app: postrm-has-useless-call-to-ldconfig
