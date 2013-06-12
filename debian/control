@@ -5,8 +5,8 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ugo Riboni <ugo.riboni@canonical.com>
 Build-Depends: cmake,
                debhelper (>= 9),
-               libgl-dev,
-               libgles2-mesa-dev,
+               libgl1-mesa-dev | libgl1-dev,
+               libgles2-mesa-dev | libgles2-dev,
                pkg-config,
                python,
                qtbase5-dev,
