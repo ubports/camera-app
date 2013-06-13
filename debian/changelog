@@ -1,3 +1,28 @@
+camera-app (2.9.1daily13.06.13-0ubuntu1) saucy; urgency=low
+
+  [ Ricardo Salveti de Araujo ]
+  * debian/control: should depend on mesa gl/gles headers as first
+    option .
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 140
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 13 Jun 2013 04:07:58 +0000
+
+camera-app (2.9.1daily13.06.12-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Allow the application to be translated and add one initial
+    translation.
+
+  [ Omer Akram ]
+  * fixes a slider related failing test on the touch devices.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 138
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 12 Jun 2013 04:04:21 +0000
+
 camera-app (2.9.1daily13.06.11-0ubuntu1) saucy; urgency=low
 
   [ Ugo Riboni ]
