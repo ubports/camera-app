@@ -1,67 +1,66 @@
-# Italian translations for camera-app package.
-# Copyright (C) 2013 THE camera-app'S COPYRIGHT HOLDER
+# French translation for camera-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
-# Ugo <ugo.riboni@canonical.com>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-06-13 10:40+0000\n"
-"Last-Translator: Milo Casagrande <milo.casagrande@gmail.com>\n"
-"Language-Team: Italian\n"
+"PO-Revision-Date: 2013-06-14 00:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-06-14 07:05+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
-"Language: it\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Fotocamera"
+msgstr ""
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Applicazione per foto e video"
+msgstr ""
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Flash"
+msgstr ""
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Luminoso;Buio"
+msgstr ""
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Ruota fotocamera"
+msgstr ""
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "Fronte;Retro"
+msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Scatta"
+msgstr ""
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Scatta una foto;Registra"
+msgstr ""
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Modalità"
+msgstr ""
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Foto;Video"
+msgstr ""
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Bilanciamento bianco"
+msgstr ""
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Illuminazione;Luce naturale;Nuvoloso;Interno"
+msgstr ""
