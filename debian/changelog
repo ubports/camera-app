@@ -1,3 +1,13 @@
+camera-app (2.9.1daily13.06.17-0ubuntu1) saucy; urgency=low
+
+  [ Robert Bruce Park ]
+  * Fix lintian warnings.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 146
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 17 Jun 2013 04:35:57 +0000
+
 camera-app (2.9.1daily13.06.13-0ubuntu1) saucy; urgency=low
 
   [ Ricardo Salveti de Araujo ]
