@@ -133,8 +133,20 @@ Item {
                    "camera"
 
             onClicked: {
+                var orientation = 90
+                if (device.isLandscape) {
+                    if (device.naturalOrientation === "portrait") {
+                        orientation = 180
+                    } else {
+                        orientation = 0
+                    }
+                }
+                if (device.isInverted)
+                    orientation += 180
+
                 if (camera.captureMode == Camera.CaptureVideo) {
                     if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                        camera.videoRecorder.setMetadata("Orientation", orientation)
                         camera.videoRecorder.record()
                     } else {
                         camera.videoRecorder.stop()
@@ -142,16 +154,6 @@ Item {
                         // and no preview to slide off anyway. Figure out what to do in this case.
                     }
                 } else {
-                    var orientation = 90
-                    if (device.isLandscape) {
-                        if (device.naturalOrientation === "portrait") {
-                           orientation = 180
-                        } else {
-                            orientation = 0
-                        }
-                    }
-                    if (device.isInverted)
-                        orientation += 180
                     camera.imageCapture.setMetadata("Orientation", orientation)
                     camera.imageCapture.capture()
                 }
