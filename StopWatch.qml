@@ -24,8 +24,8 @@ Item {
     property alias color: count.color
     property alias labelRotation: count.rotation
 
-    height: labelRotation % 180 === 0 ? d.totalLabelHeight : d.totalLabelWidth
-    width: labelRotation % 180  === 0 ? d.totalLabelWidth : d.totalLabelHeight
+    height: labelRotation % 180 === 0 ? intern.totalLabelHeight : intern.totalLabelWidth
+    width: labelRotation % 180  === 0 ? intern.totalLabelWidth : intern.totalLabelHeight
 
     // FIXME: define all properties in one block
 
@@ -47,13 +47,13 @@ Item {
             var divisor_for_seconds = divisor_for_minutes % 60;
             var seconds = String(Math.ceil(divisor_for_seconds));
 
-            return "%1%2:%3".arg(prefix).arg(d.pad(minutes, 2)).arg(d.pad(seconds, 2));
+            return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
         }
         fontSize: "large"
     }
 
     QtObject {
-        id: d
+        id: intern
 
         property int totalLabelHeight: count.paintedHeight + 8 * 2
         property int totalLabelWidth: count.paintedWidth + 22 * 2
