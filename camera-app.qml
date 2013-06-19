@@ -126,14 +126,6 @@ Rectangle {
            to run on */
         orientation: device.naturalOrientation === "portrait"  ? -90 : 0
 
-        StopWatch {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            color: "red"
-            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
-            time: camera.videoRecorder.duration / 1000
-        }
-
         /* Convenience item tracking the real position and size of the real video feed.
            Having this helps since these values depend on a lot of rules:
            - the feed is automatically scaled to fit the viewfinder
@@ -271,6 +263,26 @@ Rectangle {
                       (!device.isLandscape ? (device.isInverted ? 180 : 0) :
                                              (device.isInverted ? 0 : 180))
 
+        state: device.isLandscape ? "split" : "joined"
+        states: [
+            State { name: "joined"
+                AnchorChanges { target: zoomControl; anchors.bottom: toolbar.top }
+                AnchorChanges {
+                    target: stopWatch
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                }
+            },
+            State { name: "split"
+                AnchorChanges { target: zoomControl; anchors.top: parent.top }
+                AnchorChanges {
+                    target: stopWatch
+                    anchors.top: zoomControl.bottom
+                    anchors.left: zoomControl.left
+                }
+            }
+        ]
+
         ZoomControl {
             id: zoomControl
             maximumValue: camera.maximumZoom
@@ -282,16 +294,6 @@ Rectangle {
             anchors.rightMargin: units.gu(0.75)
             anchors.bottomMargin: units.gu(0.5)
             anchors.topMargin: units.gu(0.5)
-
-            state: device.isLandscape ? "split" : "joined"
-            states: [
-                State { name: "joined"
-                    AnchorChanges { target: zoomControl; anchors.bottom: toolbar.top }
-                },
-                State { name: "split"
-                    AnchorChanges { target: zoomControl; anchors.top: parent.top }
-                }
-            ]
 
             // Create a two way binding between the zoom control value and the actual camera zoom,
             // so that they can stay in sync when the zoom is changed from the UI or from the hardware
@@ -314,6 +316,15 @@ Rectangle {
             camera: camera
             canCapture: camera.imageCapture.ready && !snapshot.sliding
             iconsRotation: device.rotationAngle - controlsArea.rotation
+        }
+
+        StopWatch {
+            id: stopWatch
+            color: "red"
+            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
+            time: camera.videoRecorder.duration / 1000
+            labelRotation: device.rotationAngle - controlsArea.rotation
+
         }
     }
 }
