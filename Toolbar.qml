@@ -173,7 +173,7 @@ Item {
 
         property int iconSpacing: (width - toolbar.iconWidth * children.length) / 3
 
-        ToolbarButton {
+        CameraToolbarButton {
             id: swapButton
             objectName: "swapButton"
             anchors.verticalCenter: parent.verticalCenter
@@ -190,7 +190,7 @@ Item {
             onClicked: camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0
         }
 
-        ToolbarButton {
+        CameraToolbarButton {
             id: galleryButton
             objectName: "galleryButton"
             anchors.verticalCenter: parent.verticalCenter
