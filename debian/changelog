@@ -1,3 +1,14 @@
+camera-app (2.9.1daily13.06.21-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Fix clash of component name.
+  * Set orientation for videos.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 152
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 21 Jun 2013 04:03:27 +0000
+
 camera-app (2.9.1daily13.06.17-0ubuntu1) saucy; urgency=low
 
   [ Robert Bruce Park ]
