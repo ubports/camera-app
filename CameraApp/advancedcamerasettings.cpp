@@ -21,6 +21,7 @@
 
 #include <QDebug>
 #include <QtMultimedia/QCamera>
+#include <QtMultimedia/QCameraControl>
 #include <QtMultimedia/QMediaService>
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 
@@ -103,6 +104,22 @@ QCameraViewfinderSettingsControl* AdvancedCameraSettings::viewfinderFromCamera(Q
     return selector;
 }
 
+QCameraControl *AdvancedCameraSettings::camcontrolFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QCameraControl_iid);
+    if (control == 0) {
+        return 0;
+    }
+
+    QCameraControl *camControl = qobject_cast<QCameraControl*>(control);
+    if (camControl == 0) {
+        qWarning() << "No viewfinder settings support";
+        return 0;
+    }
+
+    return camControl;
+}
+
 QObject* AdvancedCameraSettings::camera() const
 {
     return m_cameraObject;
@@ -137,6 +154,13 @@ void AdvancedCameraSettings::setCamera(QObject *cameraObject)
             if (viewfinder) {
                 m_viewFinderControl = viewfinder;
                 resolutionChanged();
+            }
+
+            QCameraControl* cameraControl = camcontrolFromCamera(m_camera);
+            if (cameraControl) {
+                QObject::connect(cameraControl,
+                                 SIGNAL(captureModeChanged(QCamera::CaptureModes)),
+                                 this, SIGNAL(resolutionChanged()));
             }
         }
 

@@ -26,6 +26,8 @@
 #include <QtMultimedia/QCameraViewfinderSettingsControl>
 #include <QtMultimedia/QMediaControl>
 
+class QCameraControl;
+
 class AdvancedCameraSettings : public QObject
 {
     Q_OBJECT
@@ -50,6 +52,7 @@ Q_SIGNALS:
 private:
     QVideoDeviceSelectorControl* selectorFromCamera(QCamera *camera) const;
     QCameraViewfinderSettingsControl* viewfinderFromCamera(QCamera *camera) const;
+    QCameraControl *camcontrolFromCamera(QCamera *camera) const;
     QCamera* cameraFromCameraObject(QObject* cameraObject) const;
     QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
 
