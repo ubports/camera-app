@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-06-13 21:33+0000\n"
+"PO-Revision-Date: 2013-06-20 09:17+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-06-14 07:05+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2013-06-21 06:07+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -27,7 +27,7 @@ msgstr "تطبيق الكاميرا"
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "وميض الفلاش"
+msgstr "الوميض"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
