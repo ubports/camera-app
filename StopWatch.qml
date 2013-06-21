@@ -22,16 +22,12 @@ Item {
     property alias elapsed: count.text
     property alias fontSize: count.fontSize
     property alias color: count.color
+    property alias labelRotation: count.rotation
 
-    height: count.paintedHeight + 8 * 2
-    width: count.paintedWidth + 22 * 2
+    height: labelRotation % 180 === 0 ? intern.totalLabelHeight : intern.totalLabelWidth
+    width: labelRotation % 180  === 0 ? intern.totalLabelWidth : intern.totalLabelHeight
 
     // FIXME: define all properties in one block
-
-    function pad(text, length) {
-        while (text.length < length) text = '0' + text;
-        return text;
-    }
 
     Label {
         id: count
@@ -51,8 +47,20 @@ Item {
             var divisor_for_seconds = divisor_for_minutes % 60;
             var seconds = String(Math.ceil(divisor_for_seconds));
 
-            return "%1%2:%3".arg(prefix).arg(pad(minutes, 2)).arg(pad(seconds, 2));
+            return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
         }
         fontSize: "large"
+    }
+
+    QtObject {
+        id: intern
+
+        property int totalLabelHeight: count.paintedHeight + 8 * 2
+        property int totalLabelWidth: count.paintedWidth + 22 * 2
+
+        function pad(text, length) {
+            while (text.length < length) text = '0' + text;
+            return text;
+        }
     }
 }
