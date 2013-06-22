@@ -1,3 +1,16 @@
+camera-app (2.9.1daily13.06.22-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Show video recording duration correctly on all orientations (LP:
+    #1191940). (LP: #1191940)
+  * Update viewfinder resolution when the capture mode changes. (LP:
+    #1191946)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 156
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Sat, 22 Jun 2013 04:02:12 +0000
+
 camera-app (2.9.1daily13.06.21-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
