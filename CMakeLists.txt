@@ -65,8 +65,6 @@ install(DIRECTORY ${ASSETS_DIR}
     DESTINATION ${CAMERA_APP_DIR}
     )
 
-set(THEME_DIR theme)
-
 install(DIRECTORY ${THEME_DIR}
     DESTINATION ${CAMERA_APP_DIR}
     )
