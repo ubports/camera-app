@@ -53,7 +53,7 @@ Item {
 
     Slider {
         id: slider
-        ItemStyle.class: "thin-slider"
+        style: ThinSliderStyle {}
         anchors.left: minus.right
         anchors.right: plus.left
         anchors.verticalCenter: parent.verticalCenter

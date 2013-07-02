@@ -36,14 +36,14 @@ Item {
     property Item bar: backgroundShape
     property Item thumb: thumbShape
 
-    property real normalizedValue: SliderUtils.normalizedValue(item)
-    property real thumbSpacing
+    property real normalizedValue: SliderUtils.normalizedValue(styledItem)
+    property real thumbSpacing: 0.0
     property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
-    property real thumbWidth: thumbShape.width - thumbSpacing
-    property real thumbHeight
+    property real thumbWidth: units.gu(1.5)
+    property real thumbHeight: units.gu(1.5)
 
-    property string backgroundImage
-    property string thumbImage
+    property string backgroundImage: "assets/zoom_bar@18.png"
+    property string thumbImage: "assets/zoom_point@18.png"
 
     Image {
         id: backgroundShape
@@ -68,10 +68,10 @@ Item {
         source: thumbImage
     }
 
-    // set item's implicitHeight to the thumbShape's height
+    // set styledItem's implicitHeight to the thumbShape's height
     // this can also control the default sensing area
     Binding {
-        target: item
+        target: styledItem
         property: "implicitHeight"
         value: thumbShape.height + 2.0 * thumbSpacing
     }
