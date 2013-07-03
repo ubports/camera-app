@@ -1,3 +1,22 @@
+camera-app (2.9.1+13.10.20130703-0ubuntu1) saucy; urgency=low
+
+  [ Kaleo ]
+  * Adapted slider to newer and simpler toolkit's theming
+    infrastructure. The ItemStyle attached property has been removed and
+    widgets now have a 'style' property equivalent to what
+    ItemStyle.delegate was providing. The Ubuntu UI Toolkit merge
+    request containing that change is:
+    https://code.launchpad.net/~fboucault/ubuntu-ui-
+    toolkit/simple_theming/+merge/171645 It will be merged in the
+    morning so that the fixes for this app can be merged in the same
+    day. For testing, armhf packages of the toolkit are available at:
+    http://people.canonical.com/~kaleo/sdk_simple_theming/ .
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 161
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 03 Jul 2013 04:46:06 +0000
+
 camera-app (2.9.1daily13.06.22-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
