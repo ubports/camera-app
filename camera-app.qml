@@ -94,8 +94,17 @@ Rectangle {
                 snapshot.source = preview;
             }
             onImageSaved: {
+                application.increaseTodaysPhotoMetrics();
                 console.log("Picture saved as " + path)
             }
+        }
+
+        videoRecorder {
+            onRecorderStateChanged: {
+                if (videoRecorder.recorderState === CameraRecorder.StoppedState)
+                    application.increaseTodaysVideoMetrics()
+            }
+
         }
     }
 
