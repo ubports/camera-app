@@ -15,6 +15,7 @@ Build-Depends: cmake,
                qtdeclarative5-test-plugin,
                qtdeclarative5-ubuntu-ui-toolkit-plugin,
                qtmultimedia5-dev,
+               libusermetricsinput1-dev,
                gettext,
                dh-translations,
 Standards-Version: 3.9.4

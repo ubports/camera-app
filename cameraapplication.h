@@ -23,6 +23,9 @@
 #include <QtQuick/QQuickView>
 #include <QGuiApplication>
 
+class QDate;
+class QSettings;
+
 class CameraApplication : public QGuiApplication
 {
     Q_OBJECT
@@ -33,8 +36,16 @@ public:
 
     bool setup();
 
+    Q_INVOKABLE void increaseTodaysPhotoMetrics();
+    Q_INVOKABLE void increaseTodaysVideoMetrics();
+
 private:
+    void clearOldStatictics();
+    QDate dateOfKey(const QString& key) const;
+    QString keyForToday(const QString& medium);
+
     QQuickView *m_view;
+    QSettings *m_settings;
 };
 
 #endif // CAMERAAPPLICATION_H
