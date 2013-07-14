@@ -1,0 +1,66 @@
+# Chinese (Traditional) translation for camera-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-07-11 11:18+0200\n"
+"PO-Revision-Date: 2013-07-13 15:46+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-07-14 06:00+0000\n"
+"X-Generator: Launchpad (build 16696)\n"
+
+#: camera-app.desktop.in:3
+msgid "Camera"
+msgstr "相機"
+
+#: camera-app.desktop.in:5
+msgid "Camera application"
+msgstr "相機應用程式"
+
+#: camera-app.qml:38
+msgid "Flash"
+msgstr "閃光"
+
+#: camera-app.qml:39
+msgid "Light;Dark"
+msgstr "亮;暗"
+
+#: camera-app.qml:42
+msgid "Flip Camera"
+msgstr "翻轉相機"
+
+#: camera-app.qml:43
+msgid "Front Facing;Back Facing"
+msgstr "前面;背面"
+
+#: camera-app.qml:46
+msgid "Shutter"
+msgstr "快門"
+
+#: camera-app.qml:47
+msgid "Take a Photo;Snap;Record"
+msgstr "照相;快照;錄影"
+
+#: camera-app.qml:50
+msgid "Mode"
+msgstr "模式"
+
+#: camera-app.qml:51
+msgid "Stills;Video"
+msgstr "靜止圖像;影片"
+
+#: camera-app.qml:54
+msgid "White Balance"
+msgstr "白平衡"
+
+#: camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "光照情況;日光;陰天;室內"
