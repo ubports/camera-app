@@ -24,7 +24,6 @@
 #include <QGuiApplication>
 
 class QDate;
-class QSettings;
 
 class CameraApplication : public QGuiApplication
 {
@@ -40,12 +39,7 @@ public:
     Q_INVOKABLE void increaseTodaysVideoMetrics();
 
 private:
-    void clearOldStatictics();
-    QDate dateOfKey(const QString& key) const;
-    QString keyForToday(const QString& medium);
-
     QQuickView *m_view;
-    QSettings *m_settings;
 };
 
 #endif // CAMERAAPPLICATION_H
