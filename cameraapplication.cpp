@@ -28,18 +28,14 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QScreen>
-#include <QSettings>
 
 #include <libusermetricsinput/MetricManager.h>
 
 #include "config.h"
 
 const QString APP_ID = QString("camera-app");
-const int MAX_STATISTICS_DAYS = 10;
 const QString PHOTO_STATISTICS_ID = QString("camera-photos");
 const QString VIDEO_STATISTICS_ID = QString("camera-videos");
-const QString PHOTO_KEY_SUFFIX = QString("Photos");
-const QString VIDEO_KEY_SUFFIX = QString("Videos");
 
 using namespace UserMetricsInput;
 
@@ -51,7 +47,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 CameraApplication::CameraApplication(int &argc, char **argv)
-    : QGuiApplication(argc, argv),m_view(0), m_settings(0)
+    : QGuiApplication(argc, argv),m_view(0)
 {
 
     // The testability driver is only loaded by QApplication but not by QGuiApplication.
@@ -70,14 +66,10 @@ CameraApplication::CameraApplication(int &argc, char **argv)
             qCritical("Library qttestability load failed!");
         }
     }
-
-    m_settings = new QSettings("ubuntu", APP_ID, this);
 }
 
 CameraApplication::~CameraApplication()
 {
-    clearOldStatictics();
-
     if (m_view) {
         delete m_view;
     }
@@ -105,84 +97,24 @@ bool CameraApplication::setup()
 
 /*!
  * \brief CameraApplication::increaseTodaysPhotoMetrics increase the number of
- * Photos taken pictures today. Or reset it to 1 if it's a new day.
- * And update the data in the MetricManager
+ * Photos taken pictures today in the MetricManager
  */
 void CameraApplication::increaseTodaysPhotoMetrics()
 {
     MetricManagerPtr manager(MetricManager::getInstance());
     MetricPtr metric(manager->add(PHOTO_STATISTICS_ID, "<b>%1</b> photos captured today",
                         "No photo captured today", APP_ID));
-    MetricUpdatePtr update(metric->update());
-
-    QString todayPhotoKey = keyForToday(PHOTO_KEY_SUFFIX);
-    int todaysPhotoNumber = m_settings->value(todayPhotoKey, 0).toInt();
-    ++todaysPhotoNumber;
-    m_settings->setValue(todayPhotoKey, todaysPhotoNumber);
-
-    update->addData(todaysPhotoNumber);
+    metric->increment();
 }
 
 /*!
  * \brief CameraApplication::increaseTodaysVideoMetrics increase the number of
- * Videos taken pictures today. Or reset it to 1 if it's a new day.
- * And update the data in the MetricManager
+ * Videos taken pictures today in the MetricManager
  */
 void CameraApplication::increaseTodaysVideoMetrics()
 {
     MetricManagerPtr manager(MetricManager::getInstance());
-    MetricPtr metric(manager->add(VIDEO_STATISTICS_ID, "<b>%1</b> photos captured today",
-                        "No photo captured today", APP_ID));
-    MetricUpdatePtr update(metric->update());
-
-    QString todayVideoKey = keyForToday(VIDEO_KEY_SUFFIX);
-    int todaysVideoNumber = m_settings->value(todayVideoKey, 0).toInt();
-    ++todaysVideoNumber;
-    m_settings->setValue(todayVideoKey, todaysVideoNumber);
-
-    update->addData(todaysVideoNumber);
-}
-
-/*!
- * \brief CameraApplication::clearOldStatictics removes all statistics that is
- * older then some days
- */
-void CameraApplication::clearOldStatictics()
-{
-    QStringList allKeys = m_settings->allKeys();
-    foreach (const QString& key, allKeys) {
-        if (key.endsWith(PHOTO_KEY_SUFFIX) || key.endsWith(VIDEO_KEY_SUFFIX)) {
-            QDate date = dateOfKey(key);
-            if (date.isValid() && date.daysTo(QDate::currentDate()) > MAX_STATISTICS_DAYS) {
-                m_settings->remove(key);
-            }
-        }
-    }
-}
-
-/*!
- * \brief CameraApplication::keyForToday generates the key for the statistics
- * for today, for given medium (use Photos or Videos)
- * \param medium
- * \return key conaining the current day and the medium (photo/video)
- */
-QString CameraApplication::keyForToday(const QString &medium)
-{
-    if (medium != PHOTO_KEY_SUFFIX && medium != VIDEO_KEY_SUFFIX)
-        return QString();
-
-    return QDate::currentDate().toString(Qt::ISODate) + medium;
-}
-
-/*!
- * \brief CameraApplication::dateOfKey returns the date of the key, used for
- * storing the number of photos/videos captured at one day
- * \param key
- * \return date of the key. Or an invalid date if the key is not a statistics key
- */
-QDate CameraApplication::dateOfKey(const QString &key) const
-{
-    QString dateString = key;
-    dateString.chop(6);
-    return QDate::fromString(dateString, Qt::ISODate);
+    MetricPtr metric(manager->add(VIDEO_STATISTICS_ID, "<b>%1</b> videos captured today",
+                        "No video captured today", APP_ID));
+    metric->increment();
 }
