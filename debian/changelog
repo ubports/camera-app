@@ -1,3 +1,13 @@
+camera-app (2.9.1+13.10.20130718-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Use simpler MetricManager API for less code.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 170
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 18 Jul 2013 07:12:46 +0000
+
 camera-app (2.9.1+13.10.20130708-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
