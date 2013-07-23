@@ -221,7 +221,6 @@ Rectangle {
 
                     onReleased:  {
                         if (!area.pinch.active) {
-                            var center = pinch.center
                             var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y))
 
                             focusRing.restartTimeout()
