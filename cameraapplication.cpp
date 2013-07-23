@@ -102,8 +102,8 @@ bool CameraApplication::setup()
 void CameraApplication::increaseTodaysPhotoMetrics()
 {
     MetricManagerPtr manager(MetricManager::getInstance());
-    MetricPtr metric(manager->add(PHOTO_STATISTICS_ID, "<b>%1</b> photos captured today",
-                        "No photo captured today", APP_ID));
+    MetricPtr metric(manager->add(PHOTO_STATISTICS_ID, "<b>%1</b> photos taken today",
+                        "No photos taken today", APP_ID));
     metric->increment();
 }
 
@@ -114,7 +114,7 @@ void CameraApplication::increaseTodaysPhotoMetrics()
 void CameraApplication::increaseTodaysVideoMetrics()
 {
     MetricManagerPtr manager(MetricManager::getInstance());
-    MetricPtr metric(manager->add(VIDEO_STATISTICS_ID, "<b>%1</b> videos captured today",
-                        "No video captured today", APP_ID));
+    MetricPtr metric(manager->add(VIDEO_STATISTICS_ID, "<b>%1</b> videos recorded today",
+                        "No videos recorded today", APP_ID));
     metric->increment();
 }
