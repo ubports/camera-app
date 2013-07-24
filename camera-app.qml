@@ -304,6 +304,8 @@ Rectangle {
             anchors.bottomMargin: units.gu(0.5)
             anchors.topMargin: units.gu(0.5)
 
+            visible: camera.maximumZoom > 1
+
             // Create a two way binding between the zoom control value and the actual camera zoom,
             // so that they can stay in sync when the zoom is changed from the UI or from the hardware
             Binding { target: zoomControl; property: "value"; value: camera.currentZoom }
