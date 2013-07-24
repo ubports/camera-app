@@ -1,3 +1,16 @@
+camera-app (2.9.1+13.10.20130724-0ubuntu1) saucy; urgency=low
+
+  [ Pete Woods ]
+  * Change the infographic text as per design request.
+
+  [ Guenter Schwann ]
+  * Fix tap to focus.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 174
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 24 Jul 2013 04:03:50 +0000
+
 camera-app (2.9.1+13.10.20130718-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
