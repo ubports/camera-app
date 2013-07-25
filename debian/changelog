@@ -1,3 +1,14 @@
+camera-app (2.9.1+13.10.20130725-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Don't show the zoom bar, when zooming is not possible. (LP:
+    #1191088)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 177
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 25 Jul 2013 06:40:01 +0000
+
 camera-app (2.9.1+13.10.20130724-0ubuntu1) saucy; urgency=low
 
   [ Pete Woods ]
