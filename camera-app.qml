@@ -278,15 +278,15 @@ Rectangle {
                 AnchorChanges {
                     target: stopWatch
                     anchors.top: parent.top
-                    anchors.left: parent.left
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
             },
             State { name: "split"
                 AnchorChanges { target: zoomControl; anchors.top: parent.top }
                 AnchorChanges {
                     target: stopWatch
-                    anchors.top: zoomControl.bottom
-                    anchors.left: zoomControl.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
         ]
@@ -333,9 +333,8 @@ Rectangle {
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
             time: camera.videoRecorder.duration / 1000
             labelRotation: device.rotationAngle - controlsArea.rotation
-            anchors.top: parent.top
             anchors.topMargin: units.gu(2)
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.rightMargin: units.gu(2)
         }
     }
 }
