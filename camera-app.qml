@@ -300,8 +300,8 @@ Rectangle {
             anchors.right: parent.right
             anchors.leftMargin: units.gu(0.75)
             anchors.rightMargin: units.gu(0.75)
-            anchors.bottomMargin: units.gu(0.5)
-            anchors.topMargin: units.gu(0.5)
+            anchors.bottomMargin: controlsArea.state == "split" ? units.gu(3.25) : units.gu(0.5)
+            anchors.topMargin: controlsArea.state == "split" ? units.gu(3.25) : units.gu(0.5)
 
             visible: camera.maximumZoom > 1
 
