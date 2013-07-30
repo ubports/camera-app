@@ -21,7 +21,6 @@ Item {
     property int time: 0
     property alias elapsed: count.text
     property alias fontSize: count.fontSize
-    property alias color: count.color
     property alias labelRotation: count.rotation
 
     height: labelRotation % 180 === 0 ? intern.totalLabelHeight : intern.totalLabelWidth
@@ -34,8 +33,22 @@ Item {
 
         anchors.centerIn: parent
         color: "white"
-        // FIXME: factor into a named function
-        text: {
+        fontSize: "medium"
+        text: intern.formattedTime()
+    }
+
+    QtObject {
+        id: intern
+
+        property int totalLabelHeight: count.paintedHeight + 8 * 2
+        property int totalLabelWidth: count.paintedWidth + 22 * 2
+
+        function pad(text, length) {
+            while (text.length < length) text = '0' + text;
+            return text;
+        }
+
+        function formattedTime() {
             var prefix = ""
             if (time < 0) {
                 prefix = "-";
@@ -48,19 +61,6 @@ Item {
             var seconds = String(Math.ceil(divisor_for_seconds));
 
             return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
-        }
-        fontSize: "large"
-    }
-
-    QtObject {
-        id: intern
-
-        property int totalLabelHeight: count.paintedHeight + 8 * 2
-        property int totalLabelWidth: count.paintedWidth + 22 * 2
-
-        function pad(text, length) {
-            while (text.length < length) text = '0' + text;
-            return text;
         }
     }
 }
