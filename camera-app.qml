@@ -330,11 +330,12 @@ Rectangle {
 
         StopWatch {
             id: stopWatch
-            color: "red"
             opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
             time: camera.videoRecorder.duration / 1000
             labelRotation: device.rotationAngle - controlsArea.rotation
-
+            anchors.top: parent.top
+            anchors.topMargin: units.gu(2)
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 }

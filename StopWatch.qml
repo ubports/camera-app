@@ -21,7 +21,6 @@ Item {
     property int time: 0
     property alias elapsed: count.text
     property alias fontSize: count.fontSize
-    property alias color: count.color
     property alias labelRotation: count.rotation
 
     height: labelRotation % 180 === 0 ? intern.totalLabelHeight : intern.totalLabelWidth
@@ -49,7 +48,7 @@ Item {
 
             return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
         }
-        fontSize: "large"
+        fontSize: "medium"
     }
 
     QtObject {
