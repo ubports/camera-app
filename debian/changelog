@@ -1,3 +1,17 @@
+camera-app (2.9.1+13.10.20130731-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Change the license of assets to CC instead of GPL3. (LP: #1194916)
+  * Align the camera app recording time counter as specified by design.
+    (LP: #1193257)
+  * The margin of the zoom bar center line and toolbar center of
+    symmetry are now the same when in landscape mode. (LP: #1122036)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 181
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 31 Jul 2013 04:01:54 +0000
+
 camera-app (2.9.1+13.10.20130725-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
