@@ -41,7 +41,7 @@ class TestFocus(CameraAppTestCase):
         exposure_button = self.main_window.get_exposure_button()
 
         # The focus ring should be invisible in the beginning
-        self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         self.pointing_device.move_to_object(feed)
         self.pointing_device.click()
@@ -87,7 +87,7 @@ class TestFocus(CameraAppTestCase):
         exposure_button = self.main_window.get_exposure_button()
 
         # The focus ring should be invisible in the beginning
-        self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         x, y, h, w = toolbar.globalRect
         tx = x + (h / 2)
@@ -96,7 +96,7 @@ class TestFocus(CameraAppTestCase):
         # focus there.
         self.pointing_device.move(tx, ty)
         self.pointing_device.click()
-        self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Check if there's a gap between the viewfinder feed and the zoom
         # control. If there is, test that focusing there won't show the focus
@@ -106,7 +106,7 @@ class TestFocus(CameraAppTestCase):
             click_coords = [x + (h / 2), y - 2]
             self.pointing_device.move(click_coords[0], click_coords[1])
             self.pointing_device.click()
-            self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Switch cameras, wait for camera to settle, and try again
         self.pointing_device.move_to_object(switch_cameras)
@@ -119,7 +119,7 @@ class TestFocus(CameraAppTestCase):
             click_coords = [x + (h / 2), y - 2]
             self.pointing_device.move(click_coords[0], click_coords[1])
             self.pointing_device.click()
-            self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
     """Tests dragging the focus ring"""
     def test_move_focus_ring(self):
@@ -130,7 +130,7 @@ class TestFocus(CameraAppTestCase):
         exposure_button = self.main_window.get_exposure_button()
 
         # The focus ring should be invisible in the beginning
-        self.assertEquals(focus_ring.opacity, 0.0)
+        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         # Focus to the center of the viewfinder feed
         self.pointing_device.move_to_object(feed)
