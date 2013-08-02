@@ -1,3 +1,14 @@
+camera-app (2.9.1+13.10.20130802-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Use Eventually for testing the focus ring opacity for 0.0. (LP:
+    #1206822)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 183
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 02 Aug 2013 04:41:55 +0000
+
 camera-app (2.9.1+13.10.20130731-0ubuntu1) saucy; urgency=low
 
   [ Ugo Riboni ]
