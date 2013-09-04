@@ -31,11 +31,6 @@ Rectangle {
     UnityActions.ActionManager {
         actions: [
             UnityActions.Action {
-                text: i18n.tr("Quit")
-                keywords: i18n.tr("Exit")
-                onTriggered: Qt.quit()
-            },
-            UnityActions.Action {
                 text: i18n.tr("Flash")
                 keywords: i18n.tr("Light;Dark")
                 onTriggered: toolbar.switchFlashMode()
