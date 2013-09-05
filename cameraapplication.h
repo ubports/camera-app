@@ -22,6 +22,7 @@
 
 #include <QtQuick/QQuickView>
 #include <QGuiApplication>
+#include <libusermetricsinput/MetricManager.h>
 
 class QDate;
 
@@ -39,7 +40,11 @@ public:
     Q_INVOKABLE void increaseTodaysVideoMetrics();
 
 private:
-    QQuickView *m_view;
+    QScopedPointer<QQuickView> m_view;
+
+    UserMetricsInput::MetricManagerPtr m_metricManager;
+    UserMetricsInput::MetricPtr m_photoMetric;
+    UserMetricsInput::MetricPtr m_videoMetric;
 };
 
 #endif // CAMERAAPPLICATION_H
