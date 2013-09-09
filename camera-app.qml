@@ -16,7 +16,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import Ubuntu.HUD 1.0 as HUD
+import Ubuntu.Unity.Action 1.0 as UnityActions
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtQuick.Window 2.0
@@ -28,33 +28,33 @@ Rectangle {
     height: device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40)
     color: "#252423"
 
-    HUD.HUD {
-        applicationIdentifier: "camera-app"
-        HUD.Context {
-            HUD.QuitAction {
-                onTriggered: Qt.quit()
-            }
-            HUD.Action {
-                label: i18n.tr("Flash")
+    UnityActions.ActionManager {
+        actions: [
+            UnityActions.Action {
+                text: i18n.tr("Flash")
                 keywords: i18n.tr("Light;Dark")
-            }
-            HUD.Action {
-                label: i18n.tr("Flip Camera")
+                onTriggered: toolbar.switchFlashMode()
+            },
+            UnityActions.Action {
+                text: i18n.tr("Flip Camera")
                 keywords: i18n.tr("Front Facing;Back Facing")
-            }
-            HUD.Action {
-                label: i18n.tr("Shutter")
+                onTriggered: toolbar.switchCamera()
+            },
+            UnityActions.Action {
+                text: i18n.tr("Shutter")
                 keywords: i18n.tr("Take a Photo;Snap;Record")
-            }
-            HUD.Action {
-                label: i18n.tr("Mode")
+                onTriggered: toolbar.shoot()
+            },
+            UnityActions.Action {
+                text: i18n.tr("Mode")
                 keywords: i18n.tr("Stills;Video")
-            }
-            HUD.Action {
-                label: i18n.tr("White Balance")
+                onTriggered: toolbar.changeRecordMode()
+            },
+            UnityActions.Action {
+                text: i18n.tr("White Balance")
                 keywords: i18n.tr("Lighting Condition;Day;Cloudy;Inside")
             }
-        }
+        ]
     }
 
     Component.onCompleted: {

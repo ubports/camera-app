@@ -27,7 +27,6 @@ Vcs-Bzr: https://code.launchpad.net/~phablet-team/camera-app/trunk
 Package: camera-app
 Architecture: any
 Depends: cameraplugin-aal [armel armhf],
-         qtdeclarative5-hud1.0,
          libqt5multimedia5,
          qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-qtquick2-plugin,

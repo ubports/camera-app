@@ -34,6 +34,53 @@ Item {
     property int iconHeight: units.gu(5)
     property bool canCapture
 
+    function shoot() {
+        var orientation = 90
+        if (device.isLandscape) {
+            if (device.naturalOrientation === "portrait") {
+                orientation = 180
+            } else {
+                orientation = 0
+            }
+        }
+        if (device.isInverted)
+            orientation += 180
+
+        if (camera.captureMode == Camera.CaptureVideo) {
+            if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
+                camera.videoRecorder.setMetadata("Orientation", orientation)
+                camera.videoRecorder.record()
+            } else {
+                camera.videoRecorder.stop()
+                // TODO: there's no event to tell us that the video has been successfully recorder or failed,
+                // and no preview to slide off anyway. Figure out what to do in this case.
+            }
+        } else {
+            camera.imageCapture.setMetadata("Orientation", orientation)
+            camera.imageCapture.capture()
+        }
+    }
+
+    function switchCamera() {
+        camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0
+    }
+
+    function switchFlashMode() {
+        if (flashButton.torchMode) {
+            camera.flash.mode = (flashButton.flashState == "on") ?
+                                Camera.FlashOff : Camera.FlashVideoLight;
+        } else {
+            camera.flash.mode = (flashButton.flashState == "off") ? Camera.FlashOn :
+                                ((flashButton.flashState == "on") ? Camera.FlashAuto : Camera.FlashOff);
+        }
+    }
+
+    function changeRecordMode() {
+        if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
+        camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+    }
+
+
     BorderImage {
         id: leftBackground
         anchors.left: parent.left
@@ -76,15 +123,7 @@ Item {
                 default: return "off"
             }}
 
-            onClicked: {
-                if (torchMode) {
-                    camera.flash.mode = (flashState == "on") ?
-                                        Camera.FlashOff : Camera.FlashVideoLight;
-                } else {
-                    camera.flash.mode = (flashState == "off") ? Camera.FlashOn :
-                                        ((flashState == "on") ? Camera.FlashAuto : Camera.FlashOff);
-                }
-            }
+            onClicked: toolbar.switchFlashMode()
 
             property variant previousFlashMode: Camera.FlashOff
 
@@ -108,10 +147,7 @@ Item {
             width: toolbar.iconWidth
             height: toolbar.iconHeight
             iconSource: camera.captureMode == Camera.CaptureVideo ? "assets/record_picture.png" : "assets/record_video.png"
-            onClicked: {
-                if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
-                camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
-            }
+            onClicked: toolbar.changeRecordMode()
         }
     }
 
@@ -132,32 +168,7 @@ Item {
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
 
-            onClicked: {
-                var orientation = 90
-                if (device.isLandscape) {
-                    if (device.naturalOrientation === "portrait") {
-                        orientation = 180
-                    } else {
-                        orientation = 0
-                    }
-                }
-                if (device.isInverted)
-                    orientation += 180
-
-                if (camera.captureMode == Camera.CaptureVideo) {
-                    if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
-                        camera.videoRecorder.setMetadata("Orientation", orientation)
-                        camera.videoRecorder.record()
-                    } else {
-                        camera.videoRecorder.stop()
-                        // TODO: there's no event to tell us that the video has been successfully recorder or failed,
-                        // and no preview to slide off anyway. Figure out what to do in this case.
-                    }
-                } else {
-                    camera.imageCapture.setMetadata("Orientation", orientation)
-                    camera.imageCapture.capture()
-                }
-            }
+            onClicked: toolbar.shoot()
             enabled: toolbar.canCapture
             opacity: enabled ? 1.0 : 0.5
         }
@@ -189,7 +200,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
 
-            onClicked: camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0
+            onClicked: toolbar.switchCamera()
         }
 
         CameraToolbarButton {
