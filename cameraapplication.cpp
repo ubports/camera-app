@@ -29,8 +29,6 @@
 #include <QQmlEngine>
 #include <QScreen>
 
-#include <libusermetricsinput/MetricManager.h>
-
 #include "config.h"
 
 const QString APP_ID = QString("camera-app");
@@ -47,7 +45,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 CameraApplication::CameraApplication(int &argc, char **argv)
-    : QGuiApplication(argc, argv),m_view(0)
+    : QGuiApplication(argc, argv), m_metricManager(MetricManager::getInstance())
 {
 
     // The testability driver is only loaded by QApplication but not by QGuiApplication.
@@ -66,13 +64,15 @@ CameraApplication::CameraApplication(int &argc, char **argv)
             qCritical("Library qttestability load failed!");
         }
     }
+
+    m_photoMetric = m_metricManager->add(MetricParameters(PHOTO_STATISTICS_ID).formatString("<b>%1</b> photos taken today").emptyDataString(
+                    "No photos taken today").textDomain(APP_ID).minimum(0.0));
+    m_videoMetric = m_metricManager->add(MetricParameters(VIDEO_STATISTICS_ID).formatString("<b>%1</b> videos recorded today").emptyDataString(
+                    "No videos recorded today").textDomain(APP_ID).minimum(0.0));
 }
 
 CameraApplication::~CameraApplication()
 {
-    if (m_view) {
-        delete m_view;
-    }
 }
 
 bool CameraApplication::setup()
@@ -82,7 +82,7 @@ bool CameraApplication::setup()
                 Qt::InvertedPortraitOrientation |
                 Qt::InvertedLandscapeOrientation);
 
-    m_view = new QQuickView();
+    m_view.reset(new QQuickView());
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
@@ -101,10 +101,7 @@ bool CameraApplication::setup()
  */
 void CameraApplication::increaseTodaysPhotoMetrics()
 {
-    MetricManagerPtr manager(MetricManager::getInstance());
-    MetricPtr metric(manager->add(PHOTO_STATISTICS_ID, "<b>%1</b> photos taken today",
-                        "No photos taken today", APP_ID));
-    metric->increment();
+    m_photoMetric->increment();
 }
 
 /*!
@@ -113,8 +110,5 @@ void CameraApplication::increaseTodaysPhotoMetrics()
  */
 void CameraApplication::increaseTodaysVideoMetrics()
 {
-    MetricManagerPtr manager(MetricManager::getInstance());
-    MetricPtr metric(manager->add(VIDEO_STATISTICS_ID, "<b>%1</b> videos recorded today",
-                        "No videos recorded today", APP_ID));
-    metric->increment();
+    m_videoMetric->increment();
 }
