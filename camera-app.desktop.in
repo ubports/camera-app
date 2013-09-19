@@ -9,3 +9,4 @@ Icon=camera-app
 #MimeType=x-scheme-handler/contact;x-scheme-handler/call
 X-Ubuntu-Touch=true
 X-Ubuntu-Gettext-Domain=camera-app
+X-Ubuntu-Single-Instance=true
