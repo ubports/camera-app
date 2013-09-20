@@ -139,20 +139,21 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(
             flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
 
-#    """Test that the shoot button gets disabled for a while then re-enabled
-#    after shooting"""
-#    def test_shoot_button_disable(self):
-#        exposure_button = self.main_window.get_exposure_button()
-#
-#        # The focus ring should be invisible in the beginning
-#        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
-#
-#        # Now take the picture! (Give it a little time to animate)
-#        self.pointing_device.move_to_object(exposure_button)
-#        self.pointing_device.click()
-#
-#        # autopilot might check this too late, so the exposure_button.enabled
-#        # is True again already before the first check
-#        # enable that test once autopilot can handle it
-#        self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
-#        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+    """Test that the shoot button gets disabled for a while then re-enabled
+    after shooting"""
+    @unittest.skip("Disabled this failing test due race condition)
+    def test_shoot_button_disable(self):
+        exposure_button = self.main_window.get_exposure_button()
+
+        # The focus ring should be invisible in the beginning
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+
+        # Now take the picture! (Give it a little time to animate)
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
+
+        # autopilot might check this too late, so the exposure_button.enabled
+        # is True again already before the first check
+        # enable that test once autopilot can handle it
+        self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
