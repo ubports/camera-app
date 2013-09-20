@@ -141,7 +141,7 @@ class TestCapture(CameraAppTestCase):
 
     """Test that the shoot button gets disabled for a while then re-enabled
     after shooting"""
-    @unittest.skip("Disabled this failing test due race condition)
+    @unittest.skip("Disabled this test due race condition see bug 1227373")
     def test_shoot_button_disable(self):
         exposure_button = self.main_window.get_exposure_button()
 
@@ -154,6 +154,5 @@ class TestCapture(CameraAppTestCase):
 
         # autopilot might check this too late, so the exposure_button.enabled
         # is True again already before the first check
-        # enable that test once autopilot can handle it
         self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
