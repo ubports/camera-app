@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-07-02 12:16+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-09-19 23:02+0000\n"
+"Last-Translator: Joachim Johansson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-09-17 05:19+0000\n"
+"X-Launchpad-Export-Date: 2013-09-20 06:02+0000\n"
 "X-Generator: Launchpad (build 16765)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr ""
+msgstr "Blixt"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr ""
+msgstr "Slutare"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
@@ -51,15 +51,15 @@ msgstr ""
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr ""
+msgstr "Läge"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr ""
+msgstr "Stillbild;Film"
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr ""
+msgstr "Vitbalans"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
