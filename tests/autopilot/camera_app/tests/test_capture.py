@@ -64,6 +64,9 @@ class TestCapture(CameraAppTestCase):
             time.sleep(1)
         self.assertEquals(one_picture_on_disk, True)
 
+        # check that the camera is able to capture another photo
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+
     """Tests clicking on the record control and checks if the flash changes
     to torch off mode and the recording time appears"""
     @unittest.skipIf(model() != 'Desktop', 'recording not available on device yet')
@@ -136,17 +139,20 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(
             flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
 
-    """Test that the shoot button gets disabled for a while then re-enabled
-    after shooting"""
-    def test_shoot_button_disable(self):
-        exposure_button = self.main_window.get_exposure_button()
-
-        # The focus ring should be invisible in the beginning
-        self.assertEquals(exposure_button.enabled, True)
-
-        # Now take the picture! (Give it a little time to animate)
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click()
-
-        self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
-        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+#    """Test that the shoot button gets disabled for a while then re-enabled
+#    after shooting"""
+#    def test_shoot_button_disable(self):
+#        exposure_button = self.main_window.get_exposure_button()
+#
+#        # The focus ring should be invisible in the beginning
+#        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+#
+#        # Now take the picture! (Give it a little time to animate)
+#        self.pointing_device.move_to_object(exposure_button)
+#        self.pointing_device.click()
+#
+#        # autopilot might check this too late, so the exposure_button.enabled
+#        # is True again already before the first check
+#        # enable that test once autopilot can handle it
+#        self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
+#        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
