@@ -20,6 +20,7 @@ import Ubuntu.Unity.Action 1.0 as UnityActions
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtQuick.Window 2.0
+import UserMetrics 0.1
 
 Rectangle {
     id: main
@@ -94,7 +95,7 @@ Rectangle {
                 snapshot.source = preview;
             }
             onImageSaved: {
-                application.increaseTodaysPhotoMetrics();
+                metricPhotos.increment()
                 console.log("Picture saved as " + path)
             }
         }
@@ -102,7 +103,7 @@ Rectangle {
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState)
-                    application.increaseTodaysVideoMetrics()
+                    metricVideos.increment()
             }
 
         }
@@ -336,5 +337,21 @@ Rectangle {
             anchors.topMargin: units.gu(2)
             anchors.rightMargin: units.gu(2)
         }
+    }
+
+    Metric {
+        id: metricPhotos
+        name: "camera-photos"
+        format: "<b>%1</b> photos taken today"
+        emptyFormat: "No photos taken today"
+        domain: "camera-app"
+    }
+
+    Metric {
+        id: metricVideos
+        name: "camera-videos"
+        format: "<b>%1</b> videos recorded today"
+        emptyFormat: "No videos recorded today"
+        domain: "camera-app"
     }
 }

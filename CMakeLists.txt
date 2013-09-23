@@ -12,9 +12,6 @@ find_package(Qt5Qml)
 find_package(Qt5Quick)
 find_package(Qt5Multimedia)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(UserMetrics REQUIRED libusermetricsinput-1)
-
 # Standard install paths
 include(GNUInstallDirs)
 
@@ -28,7 +25,6 @@ include_directories(
     ${Qt5Core_INCLUDE_DIRS}
     ${Qt5Quick_INCLUDE_DIRS}
     ${Qt5Multimedia_INCLUDE_DIRS}
-    ${UserMetrics_INCLUDE_DIRS}
     )
 
 set(CAMERA_APP camera-app)
@@ -49,7 +45,6 @@ target_link_libraries(${CAMERA_APP}
     ${Qt5Core_LIBRARIES}
     ${Qt5Quick_LIBRARIES}
     ${Qt5Multimedia_LIBRARIES}
-    ${UserMetrics_LIBRARIES}
     )
 
 install(TARGETS ${CAMERA_APP}

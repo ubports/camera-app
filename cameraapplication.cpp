@@ -31,12 +31,6 @@
 
 #include "config.h"
 
-const QString APP_ID = QString("camera-app");
-const QString PHOTO_STATISTICS_ID = QString("camera-photos");
-const QString VIDEO_STATISTICS_ID = QString("camera-videos");
-
-using namespace UserMetricsInput;
-
 static void printUsage(const QStringList& arguments)
 {
     qDebug() << "usage:"
@@ -45,7 +39,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 CameraApplication::CameraApplication(int &argc, char **argv)
-    : QGuiApplication(argc, argv), m_metricManager(MetricManager::getInstance())
+    : QGuiApplication(argc, argv)
 {
 
     // The testability driver is only loaded by QApplication but not by QGuiApplication.
@@ -64,11 +58,6 @@ CameraApplication::CameraApplication(int &argc, char **argv)
             qCritical("Library qttestability load failed!");
         }
     }
-
-    m_photoMetric = m_metricManager->add(MetricParameters(PHOTO_STATISTICS_ID).formatString("<b>%1</b> photos taken today").emptyDataString(
-                    "No photos taken today").textDomain(APP_ID).minimum(0.0));
-    m_videoMetric = m_metricManager->add(MetricParameters(VIDEO_STATISTICS_ID).formatString("<b>%1</b> videos recorded today").emptyDataString(
-                    "No videos recorded today").textDomain(APP_ID).minimum(0.0));
 }
 
 CameraApplication::~CameraApplication()
@@ -93,22 +82,4 @@ bool CameraApplication::setup()
     else m_view->show();
 
     return true;
-}
-
-/*!
- * \brief CameraApplication::increaseTodaysPhotoMetrics increase the number of
- * Photos taken pictures today in the MetricManager
- */
-void CameraApplication::increaseTodaysPhotoMetrics()
-{
-    m_photoMetric->increment();
-}
-
-/*!
- * \brief CameraApplication::increaseTodaysVideoMetrics increase the number of
- * Videos taken pictures today in the MetricManager
- */
-void CameraApplication::increaseTodaysVideoMetrics()
-{
-    m_videoMetric->increment();
 }
