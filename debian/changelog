@@ -1,3 +1,14 @@
+camera-app (2.9.1+13.10.20130923-0ubuntu1) saucy; urgency=low
+
+  [ Guenter Schwann ]
+  * Disable test_shoot_button_disable(9 as it is unstable because of a
+    race condition. (LP: #1227373)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 198
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 23 Sep 2013 07:49:28 +0000
+
 camera-app (2.9.1+13.10.20130919.2-0ubuntu1) saucy; urgency=low
 
   [ Pete Woods ]
