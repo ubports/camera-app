@@ -22,7 +22,7 @@
 #include <QtCore/QDir>
 
 inline bool isClick() {
-    static bool click = (QString("@CLICK_MODE@") != QString("off"));
+    static bool click = (QString("@CLICK_TAG@") == QString("click"));
     return click;
 }
 
