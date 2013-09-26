@@ -12,4 +12,4 @@ click build package
 
 This package can be installed by running:
 
-pkcon install-local com.ubuntu.notes_*.click
+pkcon install-local com.ubuntu.camera_*.click
