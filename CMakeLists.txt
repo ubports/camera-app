@@ -18,7 +18,22 @@ pkg_check_modules(UserMetrics REQUIRED libusermetricsinput-1)
 # Standard install paths
 include(GNUInstallDirs)
 
-set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/camera-app)
+option(INSTALL_TESTS "Install the tests on make install" on)
+option(CLICK_MODE "Installs to a contained location" off)
+
+if(CLICK_MODE)
+    set(CAMERA_APP camera)
+    set(CMAKE_INSTALL_PREFIX /)
+    set(CAMERA_APP_DIR /)
+    set(CMAKE_INSTALL_BINDIR /)
+    set(PLUGIN_BASE lib/${CMAKE_LIBRARY_ARCHITECTURE})
+    set(PLUGIN_DIR ${PLUGIN_BASE}/CameraApp)
+    set(DESKTOP_EXEC "./${CAMERA_APP}")
+else(CLICK_MODE)
+    set(CAMERA_APP camera-app)
+    set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/${CAMERA_APP})
+    set(DESKTOP_EXEC ${CAMERA_APP})
+endif(CLICK_MODE)
 
 configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 
@@ -30,8 +45,6 @@ include_directories(
     ${Qt5Multimedia_INCLUDE_DIRS}
     ${UserMetrics_INCLUDE_DIRS}
     )
-
-set(CAMERA_APP camera-app)
 
 set(camera_app_HDRS
     cameraapplication.h)
@@ -79,6 +92,8 @@ file(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE})
 file(STRINGS ${DESKTOP_FILE}.in DESKTOP_FILE_CONTENTS)
 foreach(LINE ${DESKTOP_FILE_CONTENTS})
     string(REGEX REPLACE "tr\\\(\"(.*)\"\\\)" "\\1" LINE "${LINE}")
+    string(REGEX REPLACE "\@DESKTOP_EXEC\@" 
+        "${DESKTOP_EXEC}" LINE "${LINE}")
     file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} "${LINE}\n")
 endforeach(LINE)
 
@@ -87,6 +102,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
     )
 
 add_subdirectory(CameraApp)
+add_subdirectory(click)
 
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}

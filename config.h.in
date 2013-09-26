@@ -21,6 +21,11 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 
+inline bool isClick() {
+    static bool click = (QString("@CLICK_MODE@") != QString("off"));
+    return click;
+}
+
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
                              QDir(("@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@")).canonicalPath());
@@ -28,10 +33,24 @@ inline bool isRunningInstalled() {
 }
 
 inline QString cameraAppDirectory() {
-    if (isRunningInstalled()) {
+    if (isClick()) {
+        return QDir::currentPath();
+    } else if (isRunningInstalled()) {
         return QString("@CMAKE_INSTALL_PREFIX@/@CAMERA_APP_DIR@/");
     } else {
         return QString("@CMAKE_SOURCE_DIR@/");
     }
 }
 
+inline QString cameraAppImportDirectory() {
+    return QDir::currentPath() + "/@PLUGIN_BASE@";
+}
+
+inline QString sourceQml() {
+    static QString qmlFile("camera-app.qml");
+    if (isClick()) {
+        return QDir::currentPath() + "/" + qmlFile;
+    } else {
+        return qmlFile;
+    }
+}

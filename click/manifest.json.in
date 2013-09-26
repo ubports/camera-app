@@ -1,0 +1,21 @@
+{
+    "description": 
+        "An application to take pictures and videos with the device cameras",
+    "framework": "ubuntu-sdk-13.10", 
+    "architecture": "armhf",
+    "hooks": {
+        "camera": {
+            "apparmor": "camera-apparmor.json", 
+            "desktop": "@CMAKE_INSTALL_DATADIR@/applications/@DESKTOP_FILE@"
+        }
+    }, 
+    "icon": "camera-app",
+    "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
+    "name": "com.ubuntu.camera", 
+    "title": "Camera", 
+    "version": "2.9.1",
+    "x-source": {
+        "vcs-bzr": "lp:camera-app", 
+        "vcs-bzr-revno": "@BZR_REVNO@"
+    }
+}

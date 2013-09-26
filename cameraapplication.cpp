@@ -87,8 +87,13 @@ bool CameraApplication::setup()
     m_view->setTitle("Camera");
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
+    if (isClick()) {
+        m_view->engine()->addImportPath(cameraAppImportDirectory());
+        qDebug() << "Import path added" << cameraAppImportDirectory();
+    }
+    qDebug() << "Camera app directory" << cameraAppDirectory();
     QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
-    m_view->setSource(QUrl::fromLocalFile("camera-app.qml"));
+    m_view->setSource(QUrl::fromLocalFile(sourceQml()));
     if (arguments().contains(QLatin1String("--fullscreen"))) m_view->showFullScreen();
     else m_view->show();
 
