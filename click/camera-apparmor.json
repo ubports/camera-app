@@ -1,0 +1,7 @@
+{
+    "policy_groups": ["picture_files",
+                      "camera",
+                      "audio"
+                      ], 
+    "policy_version": 1.0
+}
