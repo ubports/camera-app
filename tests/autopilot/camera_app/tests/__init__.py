@@ -33,14 +33,17 @@ class CameraAppTestCase(AutopilotTestCase):
         ('with touch', dict(input_device_class=Touch))]
 
     local_location = "../../camera-app"
+    deb_location = '/usr/bin/camera-app'
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
         if os.path.exists(self.local_location):
             self.launch_test_local()
-        else:
+        elif os.path.exists(self.deb_location):
             self.launch_test_installed()
+        else:
+            self.launch_click_installed()
 
     def launch_test_local(self):
         self.app = self.launch_test_application(
@@ -56,6 +59,10 @@ class CameraAppTestCase(AutopilotTestCase):
                 "--fullscreen",
                 "--desktop_file_hint=/usr/share/applications/camera-app.desktop",
                 app_type='qt')
+
+    def launch_click_installed(self):
+        self.app = self.launch_click_package(
+            "com.ubuntu.camera")
 
     def get_center(self, object_proxy):
         x, y, w, h = object_proxy.globalRect
