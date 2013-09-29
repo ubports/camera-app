@@ -1,4 +1,4 @@
-# Spanish translation for camera-app
+# Slovenian translation for camera-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-09-28 09:44+0000\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2013-09-28 10:01+0000\n"
+"Last-Translator: Damir Jerovšek <Unknown>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,48 +19,48 @@ msgstr ""
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Cámara"
+msgstr "Fotoaparat"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Aplicación Cámara"
+msgstr "Program za fotoaparat"
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Flash"
+msgstr "Bliskavica"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Claro;Oscuro"
+msgstr "Svetlo;Temno"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Voltear cámara"
+msgstr "Obrni fotoaparat"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "Frontal;Trasera"
+msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Disparador"
+msgstr "Zaslonka"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Tomar una foto;Capturar;Grabar"
+msgstr ""
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Modo"
+msgstr "Način"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Foto;Vídeo"
+msgstr ""
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Balance de blancos"
+msgstr "Ravnovesje beline"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Iluminación;Día;Nublado;Interior"
+msgstr "Svetlobni pogoji;Dan;Oblačno;Znotraj"
