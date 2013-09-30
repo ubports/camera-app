@@ -1,3 +1,16 @@
+camera-app (2.9.1+13.10.20130930.4-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Use the new QML bindings to send metrics via libusermetrics.
+
+  [ Sergio Schvezov ]
+  * Click build support.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 203
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 30 Sep 2013 21:44:47 +0000
+
 camera-app (2.9.1+13.10.20130923-0ubuntu1) saucy; urgency=low
 
   [ Guenter Schwann ]
