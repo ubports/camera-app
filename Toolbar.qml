@@ -217,25 +217,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/gallery.png"
 
-            /* We can't import Ubuntu.Application directly because it is
-               available only on the devices, and the import will fail on desktop.
-               So we load it in a Loader and switch applications only if it
-               loads successfully. */
-            Loader {
-                id: wrapper
-                source: "UbuntuApplicationWrapper.qml"
-            }
-            onClicked: {
-                if (wrapper.status != Loader.Ready) {
-                    console.log("Switching between applications is not supported on this platform.");
-                } else {
-                    console.log("Switching to the gallery application")
-                    wrapper.item.switchToGalleryApplication()
-                }
-            }
-
+            onClicked: Qt.openUrlExternally("application:///gallery-app.desktop")
         }
-
-
     }
 }
