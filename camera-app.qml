@@ -345,6 +345,7 @@ Rectangle {
         format: "<b>%1</b> photos taken today"
         emptyFormat: "No photos taken today"
         domain: "camera-app"
+        minimum: 0.0
     }
 
     Metric {
@@ -353,5 +354,6 @@ Rectangle {
         format: "<b>%1</b> videos recorded today"
         emptyFormat: "No videos recorded today"
         domain: "camera-app"
+        minimum: 0.0
     }
 }
