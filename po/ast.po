@@ -1,4 +1,4 @@
-# Polish translation for camera-app
+# Asturian translation for camera-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-10-03 06:15+0000\n"
-"Last-Translator: GTriderXC <gtriderxc@yahoo.com>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"PO-Revision-Date: 2013-10-03 08:56+0000\n"
+"Last-Translator: ivarela <ivarela@ubuntu.com>\n"
+"Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,48 +19,48 @@ msgstr ""
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Aparat"
+msgstr "Cámara"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Aplikacja aparatu"
+msgstr "Aplicación Cámara"
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Lampa błyskowa"
+msgstr "Flash"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Jasno;Ciemno"
+msgstr "Claro;Escuro"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Odwróć aparat"
+msgstr "Voltiar cámara"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "Na przodzie;Z tyłu"
+msgstr "Frontal;Trasera"
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Migawka"
+msgstr "Disparador"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Zrób zdjęcie;Pstryknij;Nagraj"
+msgstr "Tomar una semeya;Capturar;Grabar"
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Tryb"
+msgstr "Mou"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Wstrzymanie;Wideo"
+msgstr "Semeya;Videu"
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Balans bieli"
+msgstr "Balance del Blancu"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Warunki oświetlenia;Dzień;Pochmurno;Wewnątrz"
+msgstr "Illuminación;Día;Nubláu;Interior"
