@@ -50,6 +50,7 @@ Rectangle {
                 text: i18n.tr("Mode")
                 keywords: i18n.tr("Stills;Video")
                 onTriggered: toolbar.changeRecordMode()
+                enabled: false
             },
             UnityActions.Action {
                 text: i18n.tr("White Balance")
