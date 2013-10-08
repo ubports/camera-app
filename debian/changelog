@@ -1,3 +1,20 @@
+camera-app (2.9.1+13.10.20131008-0ubuntu1) saucy; urgency=low
+
+  [ Pete Woods ]
+  * Set the minimum value for the camera infographic (fix regression in
+    r200). (LP: #1214309)
+
+  [ Ted Gould ]
+  * Adding single instance marker to the desktop file.
+
+  [ Ugo Riboni ]
+  * Launch the gallery app using the URL dispatcher. (LP: #1229291)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 210
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 08 Oct 2013 05:25:24 +0000
+
 camera-app (2.9.1+13.10.20130930.4-0ubuntu1) saucy; urgency=low
 
   [ Ugo Riboni ]
