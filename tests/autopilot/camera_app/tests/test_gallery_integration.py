@@ -31,7 +31,7 @@ class TestGalleryIntegration(CameraAppTestCase):
 
     def tearDown(self):
         super(TestGalleryIntegration, self).tearDown()
-        subprocess.check_call(["pkill", "gallery-app"])
+        os.system("pkill gallery-app")
 
     def _restart_unity8_in_testability(self):
         """Adds an upstart override for unity8 and restarts it in
