@@ -13,7 +13,7 @@
     "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
     "name": "com.ubuntu.camera", 
     "title": "Camera", 
-    "version": "2.9.1",
+    "version": "2.9.1.@BZR_REVNO@",
     "x-source": {
         "vcs-bzr": "lp:camera-app", 
         "vcs-bzr-revno": "@BZR_REVNO@"
