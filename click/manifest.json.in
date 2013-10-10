@@ -15,7 +15,7 @@
     "title": "Camera", 
     "version": "2.9.1.@BZR_REVNO@",
     "x-source": {
-        "vcs-bzr": "lp:camera-app", 
+        "vcs-bzr": "@BZR_SOURCE@", 
         "vcs-bzr-revno": "@BZR_REVNO@"
     }
 }
