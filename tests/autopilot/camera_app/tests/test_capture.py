@@ -12,7 +12,6 @@ from __future__ import absolute_import
 from autopilot.matchers import Eventually
 from autopilot.platform import model
 from testtools.matchers import Equals, NotEquals, GreaterThan
-from testtools import skipIf
 
 from camera_app.tests import CameraAppTestCase
 
@@ -36,7 +35,7 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
-    @skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_take_picture(self):
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
