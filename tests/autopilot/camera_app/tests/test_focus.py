@@ -9,9 +9,10 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
-
+from autopilot.platform import model
+from testtools.matchers import Equals, NotEquals, GreaterThan
+from testtools import skipIf
 from camera_app.tests import CameraAppTestCase
 
 import unittest
