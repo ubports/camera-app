@@ -44,7 +44,8 @@ CameraApplication::CameraApplication(int &argc, char **argv)
 
     // The testability driver is only loaded by QApplication but not by QGuiApplication.
     // However, QApplication depends on QWidget which would add some unneeded overhead => Let's load the testability driver on our own.
-    if (arguments().contains(QLatin1String("-testability"))) {
+    if (arguments().contains(QLatin1String("-testability")) ||
+        qgetenv("QT_LOAD_TESTABILITY") == "1") {
         QLibrary testLib(QLatin1String("qttestability"));
         if (testLib.load()) {
             typedef void (*TasInitialize)(void);
