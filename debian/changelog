@@ -1,3 +1,16 @@
+camera-app (2.9.1+13.10.20131011-0ubuntu1) saucy; urgency=low
+
+  [ Bill Filler ]
+  * skip invalid tests on maguro/mir
+  * Center the viewfinder in more cases fixes LP: #1179503 (LP:
+    #1179503)
+  * Disable the video switch as the feature is not working for v1.0
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 217
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 11 Oct 2013 09:20:29 +0000
+
 camera-app (2.9.1+13.10.20131008-0ubuntu1) saucy; urgency=low
 
   [ Pete Woods ]
