@@ -35,6 +35,7 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_take_picture(self):
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()

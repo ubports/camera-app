@@ -9,9 +9,9 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
-
+from autopilot.platform import model
+from testtools.matchers import Equals, NotEquals, GreaterThan
 from camera_app.tests import CameraAppTestCase
 
 import unittest
@@ -32,6 +32,7 @@ class TestFocus(CameraAppTestCase):
         super(TestFocus, self).tearDown()
 
     """Test focusing in an area where we know the picture is"""
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_focus_valid_and_disappear(self):
         camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
@@ -75,6 +76,7 @@ class TestFocus(CameraAppTestCase):
         # After some seconds the focus ring should fade out
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_focus_invalid(self):
         """Tests clicking outside of the viewfinder image area, where it should
         not focus."""
@@ -122,6 +124,7 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
     """Tests dragging the focus ring"""
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_move_focus_ring(self):
         camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
