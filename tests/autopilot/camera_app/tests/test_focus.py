@@ -34,7 +34,6 @@ class TestFocus(CameraAppTestCase):
     """Test focusing in an area where we know the picture is"""
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_focus_valid_and_disappear(self):
-        camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
         toolbar = self.main_window.get_toolbar()
         feed = self.main_window.get_viewfinder_geometry()
@@ -80,7 +79,6 @@ class TestFocus(CameraAppTestCase):
     def test_focus_invalid(self):
         """Tests clicking outside of the viewfinder image area, where it should
         not focus."""
-        camera_window = self.main_window.get_camera()
         toolbar = self.main_window.get_toolbar()
         zoom = self.main_window.get_zoom_control()
         feed = self.main_window.get_viewfinder_geometry()
@@ -126,7 +124,6 @@ class TestFocus(CameraAppTestCase):
     """Tests dragging the focus ring"""
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_move_focus_ring(self):
-        camera_window = self.main_window.get_camera()
         focus_ring = self.main_window.get_focus_ring()
         feed = self.main_window.get_viewfinder_geometry()
         switch_cameras = self.main_window.get_swap_camera_button()
