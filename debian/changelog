@@ -1,3 +1,15 @@
+camera-app (2.9.1+14.04.20131106-0ubuntu1) trusty; urgency=low
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * Make camera-app autopilot tests passing on 1.4 - we remove the
+    main_window.get_camera() element as it is broken and not used at all
+    during tests
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 224
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 06 Nov 2013 15:13:17 +0000
+
 camera-app (2.9.1+13.10.20131011-0ubuntu1) saucy; urgency=low
 
   [ Bill Filler ]
