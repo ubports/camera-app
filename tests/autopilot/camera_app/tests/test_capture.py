@@ -35,6 +35,7 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_take_picture(self):
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
@@ -69,7 +70,7 @@ class TestCapture(CameraAppTestCase):
 
     """Tests clicking on the record control and checks if the flash changes
     to torch off mode and the recording time appears"""
-    @unittest.skipIf(model() != 'Desktop', 'recording not available on device yet')
+    @unittest.skip('Video recording not working for V1.0')
     def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()

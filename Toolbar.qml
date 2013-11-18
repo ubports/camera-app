@@ -142,7 +142,9 @@ Item {
             anchors.leftMargin: parent.iconSpacing
             rotation: iconsRotation
 
-            enabled: toolbar.opacity > 0.0
+            // Disabled the video recording button for V1.0 since the feature is broken
+            enabled: false
+            opacity: 0.5
 
             width: toolbar.iconWidth
             height: toolbar.iconHeight

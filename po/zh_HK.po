@@ -1,4 +1,4 @@
-# Finnish translation for camera-app
+# Chinese (Hong Kong) translation for camera-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
@@ -8,59 +8,59 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-06-13 08:50+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2013-10-20 05:01+0000\n"
+"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
+"Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-14 06:31+0000\n"
+"X-Launchpad-Export-Date: 2013-11-14 06:32+0000\n"
 "X-Generator: Launchpad (build 16820)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Kamera"
+msgstr "相機"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Kamerasovellus"
+msgstr "相機程式"
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Salama"
+msgstr "閃光燈"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Light;Dark;Vaalea;Tumma"
+msgstr "亮;暗"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Vaihda kameraa"
+msgstr "翻轉相機"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "Front Facing;Back Facing;Etukamera;Takakamera"
+msgstr "前面;背面"
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Suljin"
+msgstr "快門"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Take a Photo;Snap;Record;Ota kuva;Nauhoita"
+msgstr "照相;快照;錄影"
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Tila"
+msgstr "模式"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Stills;Video;Valokuva;Video"
+msgstr "靜止圖像;影片"
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Valkotasapaino"
+msgstr "白平衡"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Lighting Condition;Day;Cloudy;Inside;Valaisu;Päivä;Pilvinen;Sisä"
+msgstr "光照情況;日光;陰天;室內"

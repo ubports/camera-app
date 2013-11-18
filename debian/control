@@ -46,7 +46,7 @@ Package: camera-app-autopilot
 Architecture: i386 amd64 armhf
 Depends: camera-app (>= ${binary:Version}),
          cameraplugin-fake [!armel !armhf],
-         libautopilot-qt,
+         libautopilot-qt (>= 1.4),
          libqt5test5,
          libqt5widgets5,
          unity8-autopilot,

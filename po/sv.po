@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-09-19 23:02+0000\n"
+"PO-Revision-Date: 2013-10-10 21:53+0000\n"
 "Last-Translator: Joachim Johansson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-09-20 06:02+0000\n"
-"X-Generator: Launchpad (build 16765)\n"
+"X-Launchpad-Export-Date: 2013-11-14 06:31+0000\n"
+"X-Generator: Launchpad (build 16820)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -31,15 +31,15 @@ msgstr "Blixt"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr ""
+msgstr "Ljust;Mörkt"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr ""
+msgstr "Vänd kameran"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Framåtvänd;Bakåtvänd"
 
 #: camera-app.qml:46
 msgid "Shutter"
@@ -63,4 +63,4 @@ msgstr "Vitbalans"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Ljusförhållande;Dagsljus;Molnigt;Inomhus"
