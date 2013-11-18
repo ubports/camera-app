@@ -7,8 +7,6 @@
 
 """Tests for the Camera App zoom"""
 
-from __future__ import absolute_import
-
 from testtools.matchers import Equals, NotEquals, GreaterThan, LessThan
 from autopilot.matchers import Eventually
 

@@ -7,8 +7,6 @@
 
 """Tests for the Camera App flash"""
 
-from __future__ import absolute_import
-
 from testtools.matchers import Equals, NotEquals
 from autopilot.matchers import Eventually
 
