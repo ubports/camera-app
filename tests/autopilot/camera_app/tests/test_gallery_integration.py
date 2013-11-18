@@ -35,14 +35,13 @@ class TestGalleryIntegration(CameraAppTestCase):
         pid = helpers._get_unity_pid()
         return get_proxy_object_for_existing_process(pid)
 
-    def get_current_focused_appid(self):
-        return self.select_single("Shell").currentFocusedAppId
+    def get_current_focused_appid(self, unity8):
+        return unity8.select_single("Shell").currentFocusedAppId
 
     def test_gallery_button_opens_gallery(self):
         gallery_button = self.main_window.get_gallery_button()
         unity8 = self.get_unity8_proxy_object()
-        current_focused_app = unity8.get_current_focused_appid()
+        current_focused_app = self.get_current_focused_appid(unity8)
 
         self.pointing_device.click_object(gallery_button)
-
         self.assertThat(current_focused_app, Eventually(Equals("gallery-app")))
