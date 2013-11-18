@@ -60,7 +60,7 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
-        click_coords =[int(feed.globalRect[2] / 2 + feed.globalRect[0]), int(feed.globalRect[3] / 2 + feed.globalRect[1])]
+        click_coords =[feed.globalRect[2] // 2 + feed.globalRect[0], feed.globalRect[3] // 2 + feed.globalRect[1]]
         self.pointing_device.move(click_coords[0], click_coords[1])
         self.pointing_device.click()
 
