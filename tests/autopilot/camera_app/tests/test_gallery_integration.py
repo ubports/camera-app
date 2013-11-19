@@ -28,8 +28,8 @@ class TestGalleryIntegration(CameraAppTestCase):
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
-        super(TestGalleryIntegration, self).tearDown()
         os.system("pkill gallery-app")
+        super(TestGalleryIntegration, self).tearDown()
 
     def get_unity8_proxy_object(self):
         pid = helpers._get_unity_pid()
