@@ -49,6 +49,7 @@ Depends: camera-app (>= ${binary:Version}),
          libautopilot-qt (>= 1.4),
          libqt5test5,
          libqt5widgets5,
+         unity8-autopilot,
          ${misc:Depends},
          ${shlibs:Depends},
 Description: Test package for the camera app

@@ -71,3 +71,7 @@ class MainWindow(object):
         else:
             return 'portrait'
         
+    def get_gallery_button(self):
+        """Returns the gallery button on the camera toolbar."""
+        return self.app.select_single(
+            "CameraToolbarButton", objectName="galleryButton")
