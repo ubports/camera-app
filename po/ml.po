@@ -1,0 +1,66 @@
+# Malayalam translation for camera-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-07-11 11:18+0200\n"
+"PO-Revision-Date: 2013-11-22 04:27+0000\n"
+"Last-Translator: STyM Alfazz <Unknown>\n"
+"Language-Team: Malayalam <ml@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-11-22 06:03+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+
+#: camera-app.desktop.in:3
+msgid "Camera"
+msgstr "ക്യാമറ"
+
+#: camera-app.desktop.in:5
+msgid "Camera application"
+msgstr "ക്യാമറ പ്രയോഗം"
+
+#: camera-app.qml:38
+msgid "Flash"
+msgstr "ഫ്ലാഷ്"
+
+#: camera-app.qml:39
+msgid "Light;Dark"
+msgstr "തെളിഞ്ഞത്;ഇരുണ്ടത്"
+
+#: camera-app.qml:42
+msgid "Flip Camera"
+msgstr ""
+
+#: camera-app.qml:43
+msgid "Front Facing;Back Facing"
+msgstr ""
+
+#: camera-app.qml:46
+msgid "Shutter"
+msgstr "ഷട്ടര്‍"
+
+#: camera-app.qml:47
+msgid "Take a Photo;Snap;Record"
+msgstr ""
+
+#: camera-app.qml:50
+msgid "Mode"
+msgstr ""
+
+#: camera-app.qml:51
+msgid "Stills;Video"
+msgstr "നിശ്ചല ചിത്രങ്ങള്‍;ചലച്ചിത്രം"
+
+#: camera-app.qml:54
+msgid "White Balance"
+msgstr ""
+
+#: camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr ""
