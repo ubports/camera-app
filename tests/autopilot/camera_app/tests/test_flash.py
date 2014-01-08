@@ -7,14 +7,13 @@
 
 """Tests for the Camera App flash"""
 
-from __future__ import absolute_import
-
 from testtools.matchers import Equals, NotEquals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
 import time
+import unittest
 
 
 class TestCameraFlash(CameraAppTestCase):
@@ -53,11 +52,11 @@ class TestCameraFlash(CameraAppTestCase):
         self.assertThat(flash_button.torchMode, Equals(False))
 
     """Test that torch modes cycles properly"""
+    @unittest.skip('Video recording not working for V1.0')
     def test_cycle_torch(self):
         flash_button = self.main_window.get_flash_button()
         record_button = self.main_window.get_record_control()
-        self.pointing_device.move_to_object(record_button)
-        self.pointing_device.click()
+        self.pointing_device.click_object(record_button)
 
         #ensure initial state
         self.assertThat(flash_button.flashState, Equals("off"))
@@ -75,6 +74,7 @@ class TestCameraFlash(CameraAppTestCase):
 
     """When switching between video and picture the previous flash state
        should be preserved"""
+    @unittest.skip('Video recording not working for V1.0')
     def test_remember_state(self):
         flash_button = self.main_window.get_flash_button()
         record_button = self.main_window.get_record_control()

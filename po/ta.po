@@ -1,4 +1,4 @@
-# Finnish translation for camera-app
+# Tamil translation for camera-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-06-13 08:50+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2013-10-25 06:43+0000\n"
+"Last-Translator: Thangamani Arun - தங்கமணி அருண் <thangam.arunx@gmail.com>\n"
+"Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,48 +19,48 @@ msgstr ""
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Kamera"
+msgstr "புகைப்பட கருவி"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Kamerasovellus"
+msgstr "புகைப்பட கருவி பயன்பாடு"
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Salama"
+msgstr "மின்ஒளி"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Light;Dark;Vaalea;Tumma"
+msgstr "லேசானா; இருண்ட"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Vaihda kameraa"
+msgstr "புகைப்பட கருவியை திருப்பு"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "Front Facing;Back Facing;Etukamera;Takakamera"
+msgstr "முன் நாேக்கிய; பின் நாேக்கிய"
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Suljin"
+msgstr "திரை"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Take a Photo;Snap;Record;Ota kuva;Nauhoita"
+msgstr "படம் பிடி;படம் எடு; பட பதிவுசெய்"
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Tila"
+msgstr "பாங்கு"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Stills;Video;Valokuva;Video"
+msgstr "புகைப்படங்கள்; வீடியோ"
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Valkotasapaino"
+msgstr "வெள்ளை சமன்"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Lighting Condition;Day;Cloudy;Inside;Valaisu;Päivä;Pilvinen;Sisä"
+msgstr "வெளிச்ச நிலை; பகல் நேர; மேகமூட்ட; உள்ளே"
