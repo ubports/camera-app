@@ -220,7 +220,7 @@ Item {
             iconSource: "assets/gallery.png"
 
             // TODO: this need to change when gallery becomes a click app.
-            onClicked: Qt.openUrlExternally("application:///gallery-app.desktop")
+            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
         }
     }
 }
