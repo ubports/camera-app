@@ -9,8 +9,7 @@ from __future__ import absolute_import
 
 from autopilot.introspection import get_proxy_object_for_existing_process
 from autopilot.matchers import Eventually
-from autopilot.platform import model
-from testtools import skipIf
+from testtools import skip
 from testtools.matchers import Equals
 
 from camera_app.tests import CameraAppTestCase
@@ -19,7 +18,7 @@ from unity8 import process_helpers as helpers
 import os
 
 
-@skipIf(model() == 'Desktop', "Phablet only")
+@skip("Waiting on transition to click")
 class TestGalleryIntegration(CameraAppTestCase):
 
     def setUp(self):
