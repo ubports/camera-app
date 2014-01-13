@@ -9,7 +9,7 @@
             "desktop": "@CMAKE_INSTALL_DATADIR@/applications/@DESKTOP_FILE@"
         }
     }, 
-    "icon": "camera-app",
+    "icon": "@CAMERA_ICON@",
     "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
     "name": "com.ubuntu.camera", 
     "title": "Camera", 
