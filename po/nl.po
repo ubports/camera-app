@@ -1,16 +1,16 @@
-# Catalan translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Dutch translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2014-01-14 11:59+0000\n"
-"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
-"Language-Team: Catalan <ca@li.org>\n"
+"PO-Revision-Date: 2014-01-14 21:36+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,23 +19,23 @@ msgstr ""
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Càmera"
+msgstr ""
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Aplicació de càmera"
+msgstr ""
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "Flaix"
+msgstr ""
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "Clar;Fosc"
+msgstr ""
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "Gira la càmera"
+msgstr ""
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
@@ -43,24 +43,24 @@ msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr "Disparador"
+msgstr ""
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "Fés una foto;Captura;Grava"
+msgstr ""
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "Mode"
+msgstr ""
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "Imatge estàtica;Vídeo"
+msgstr ""
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "Balanç de blancs"
+msgstr ""
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
+msgstr ""
