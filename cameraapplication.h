@@ -28,12 +28,13 @@ class QDate;
 class CameraApplication : public QGuiApplication
 {
     Q_OBJECT
+    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
     virtual ~CameraApplication();
-
     bool setup();
+    bool isDesktopMode() const;
 
 private:
     QScopedPointer<QQuickView> m_view;

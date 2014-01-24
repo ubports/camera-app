@@ -101,7 +101,7 @@ Item {
 
             height: toolbar.iconHeight
             width: toolbar.iconWidth
-            enabled: toolbar.opacity > 0.0
+            enabled: !application.desktopMode && toolbar.opacity > 0.0
             rotation: iconsRotation
 
             Connections {
@@ -143,7 +143,7 @@ Item {
             rotation: iconsRotation
 
             // Disabled the video recording button for V1.0 since the feature is broken
-            enabled: false
+            enabled: application.desktopMode
             opacity: 0.5
 
             width: toolbar.iconWidth
@@ -195,9 +195,7 @@ Item {
             anchors.right: galleryButton.left
             anchors.rightMargin: parent.iconSpacing
             rotation: iconsRotation
-
-            enabled: toolbar.opacity > 0.0
-
+            enabled: !application.desktopMode && toolbar.opacity > 0.0
             iconWidth: toolbar.iconWidth
             iconHeight: toolbar.iconHeight
             iconSource: "assets/swap_camera.png"
