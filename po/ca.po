@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-06-12 16:21+0000\n"
-"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"PO-Revision-Date: 2014-01-14 11:59+0000\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-14 06:31+0000\n"
-"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2014-01-15 06:22+0000\n"
+"X-Generator: Launchpad (build 16890)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -23,7 +23,7 @@ msgstr "Càmera"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr ""
+msgstr "Aplicació de càmera"
 
 #: camera-app.qml:38
 msgid "Flash"
@@ -31,11 +31,11 @@ msgstr "Flaix"
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr ""
+msgstr "Clar;Fosc"
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr ""
+msgstr "Gira la càmera"
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
@@ -43,11 +43,11 @@ msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
-msgstr ""
+msgstr "Disparador"
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Fés una foto;Captura;Grava"
 
 #: camera-app.qml:50
 msgid "Mode"
@@ -55,12 +55,12 @@ msgstr "Mode"
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr ""
+msgstr "Imatge estàtica;Vídeo"
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr ""
+msgstr "Balanç de blancs"
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
