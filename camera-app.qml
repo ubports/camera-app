@@ -25,8 +25,8 @@ import UserMetrics 0.1
 Rectangle {
     id: main
     objectName: "main"
-    width: device.naturalOrientation == "portrait" ? units.gu(40) : units.gu(80)
-    height: device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40)
+    width: application.desktopMode ? units.gu(120) : (device.naturalOrientation == "portrait" ? units.gu(40) : units.gu(80))
+    height: application.desktopMode ? units.gu(60) : (device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40))
     color: "#252423"
 
     UnityActions.ActionManager {
@@ -73,7 +73,7 @@ Rectangle {
         flash.mode: Camera.FlashOff
         captureMode: Camera.CaptureStillImage
         focus.focusMode: Camera.FocusAuto //TODO: Not sure if Continuous focus is better here
-        focus.focusPointMode: focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto
+        focus.focusPointMode: application.desktopMode ? Camera.FocusPointAuto : (focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto)
 
         property AdvancedCameraSettings advanced: AdvancedCameraSettings {
             camera: camera
@@ -112,7 +112,12 @@ Rectangle {
 
     Connections {
         target: Qt.application
-        onActiveChanged: (Qt.application.active) ? camera.start() : camera.stop()
+        onActiveChanged: {
+            if (Qt.application.active)
+                camera.start()
+            else if (!application.desktopMode)
+                camera.stop()
+        }
     }
 
     VideoOutput {
@@ -198,19 +203,24 @@ Rectangle {
                 ]
 
                 onPinchStarted: {
-                    focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
+                    if (!application.desktopMode)
+                        focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
                 }
 
                 onPinchFinished: {
-                    focusRing.restartTimeout()
-                    var center = pinch.center
-                    var focusPoint = viewFinder.mapPointToSourceNormalized(pinch.center);
-                    camera.focus.customFocusPoint = focusPoint;
+                    if (!application.desktopMode) {
+                        focusRing.restartTimeout()
+                        var center = pinch.center
+                        var focusPoint = viewFinder.mapPointToSourceNormalized(pinch.center);
+                        camera.focus.customFocusPoint = focusPoint;
+                    }
                 }
 
                 onPinchUpdated: {
-                    focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
-                    camera.currentZoom = itemScale.scale
+                    if (!application.desktopMode) {
+                        focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
+                        camera.currentZoom = itemScale.scale
+                    }
                 }
 
                 MouseArea {
@@ -219,12 +229,12 @@ Rectangle {
                     anchors.fill: parent
 
                     onPressed: {
-                        if (!area.pinch.active)
+                        if (!application.desktopMode && !area.pinch.active)
                             focusRing.center = main.mapFromItem(area, mouse.x, mouse.y);
                     }
 
                     onReleased:  {
-                        if (!area.pinch.active) {
+                        if (!application.desktopMode && !area.pinch.active) {
                             var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y))
 
                             focusRing.restartTimeout()
@@ -233,7 +243,7 @@ Rectangle {
                     }
 
                     drag {
-                        target: focusRing
+                        target: application.desktopMode ? "" : focusRing
                         minimumY: area.y - focusRing.height / 2
                         maximumY: area.y + area.height - focusRing.height / 2
                         minimumX: area.x - focusRing.width / 2
