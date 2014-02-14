@@ -1,3 +1,10 @@
+camera-app (2.9.1+14.04.20140214-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * skip integration test until it's reworked to be more reliable
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 14 Feb 2014 23:40:23 +0000
+
 camera-app (2.9.1+14.04.20140213-0ubuntu1) trusty; urgency=low
 
   [ Bill Filler ]
