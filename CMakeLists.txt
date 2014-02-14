@@ -104,6 +104,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
 
 add_subdirectory(CameraApp)
 add_subdirectory(click)
+add_subdirectory(desktop)
 
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}

@@ -65,6 +65,12 @@ CameraApplication::~CameraApplication()
 {
 }
 
+bool CameraApplication::isDesktopMode() const
+{
+  return (qEnvironmentVariableIsSet("DESKTOP_MODE") && (qgetenv("DESKTOP_MODE") == "1"));
+}
+
+
 bool CameraApplication::setup()
 {
     QGuiApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation |
@@ -84,8 +90,12 @@ bool CameraApplication::setup()
     qDebug() << "Camera app directory" << cameraAppDirectory();
     QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
     m_view->setSource(QUrl::fromLocalFile(sourceQml()));
-    if (arguments().contains(QLatin1String("--fullscreen"))) m_view->showFullScreen();
-    else m_view->show();
+
+    //run fullscreen if specified at command line or not in DESKTOP_MODE (i.e. on a device)
+    if (arguments().contains(QLatin1String("--fullscreen")) || !isDesktopMode()) 
+      m_view->showFullScreen();
+    else 
+      m_view->show();
 
     return true;
 }
