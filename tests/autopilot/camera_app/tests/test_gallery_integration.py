@@ -15,6 +15,7 @@ from testtools.matchers import Equals
 
 from camera_app.tests import CameraAppTestCase
 from unity8 import process_helpers as helpers
+from unittest import skip
 
 import os
 
@@ -38,6 +39,7 @@ class TestGalleryIntegration(CameraAppTestCase):
     def get_current_focused_appid(self, unity8):
         return unity8.select_single("Shell").currentFocusedAppId
 
+    @skip("Temporarily skip as test is unreliable")
     def test_gallery_button_opens_gallery(self):
         gallery_button = self.main_window.get_gallery_button()
         unity8 = self.get_unity8_proxy_object()
