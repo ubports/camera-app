@@ -1,3 +1,13 @@
+camera-app (2.9.1+14.04.20140306-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * click support
+
+  [ Sergio Schvezov ]
+  * click support
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 06 Mar 2014 16:42:20 +0000
+
 camera-app (2.9.1+14.04.20140214-0ubuntu1) trusty; urgency=low
 
   [ Bill Filler ]
