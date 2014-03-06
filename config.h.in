@@ -22,8 +22,11 @@
 #include <QtCore/QDir>
 
 inline bool isClick() {
-    static bool click = (QString("@CLICK_TAG@") == QString("click"));
-    return click;
+#ifdef CLICK_MODE
+    return true;
+#else
+    return false;
+#endif
 }
 
 inline bool isRunningInstalled() {

@@ -1,7 +1,8 @@
 {
     "policy_groups": ["picture_files",
                       "camera",
-                      "audio"
+                      "audio",
+                      "usermetrics"
                       ], 
     "policy_version": 1.0
 }

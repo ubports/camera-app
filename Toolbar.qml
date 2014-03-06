@@ -219,7 +219,7 @@ Item {
             iconHeight: toolbar.iconHeight
             iconSource: "assets/gallery.png"
 
-            onClicked: Qt.openUrlExternally("application:///gallery-app.desktop")
+            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
         }
     }
 }
