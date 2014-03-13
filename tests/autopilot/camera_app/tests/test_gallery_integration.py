@@ -5,8 +5,6 @@
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
-from __future__ import absolute_import
-
 from autopilot.introspection import get_proxy_object_for_existing_process
 from autopilot.matchers import Eventually
 from testtools import skip
@@ -14,7 +12,6 @@ from testtools.matchers import Equals
 
 from camera_app.tests import CameraAppTestCase
 from unity8 import process_helpers as helpers
-from unittest import skip
 
 import os
 

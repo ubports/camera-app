@@ -9,14 +9,13 @@
 
 from autopilot.matchers import Eventually
 from autopilot.platform import model
-from testtools.matchers import Equals, NotEquals, GreaterThan
+from testtools.matchers import Equals, NotEquals
 
 from camera_app.tests import CameraAppTestCase
 
 import unittest
 import time
 import os
-from os import path
 
 
 class TestCapture(CameraAppTestCase):
@@ -37,12 +36,16 @@ class TestCapture(CameraAppTestCase):
     def test_take_picture(self):
         toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
-        pictures_dir = path.expanduser("~/Pictures")
+        pictures_dir = os.path.expanduser("~/Pictures")
 
         # Remove all pictures from ~/Pictures that match our pattern
-        files = [f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir, f))]
+        files = [
+            f for f in os.listdir(pictures_dir)
+            if f[0:5] == "image" and
+                os.path.isfile(os.path.join(pictures_dir, f))
+            ]
         for f in files:
-            os.remove(path.join(pictures_dir, f))
+            os.remove(os.path.join(pictures_dir, f))
 
         # Wait for the camera to have finished focusing
         # (the exposure button gets enabled when ready)
@@ -56,7 +59,11 @@ class TestCapture(CameraAppTestCase):
         # is actually there
         one_picture_on_disk = False
         for i in range(0, 10):
-            files = [f for f in os.listdir(pictures_dir) if f[0:5] == "image" and path.isfile(path.join(pictures_dir, f))]
+            files = [
+                f for f in os.listdir(pictures_dir)
+                if f[0:5] == "image" and
+                    os.path.isfile(os.path.join(pictures_dir, f))
+                ]
             if len(files) == 1:
                 one_picture_on_disk = True
                 break

@@ -12,7 +12,6 @@ from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
-import time
 import unittest
 
 
