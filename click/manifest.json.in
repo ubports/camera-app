@@ -1,7 +1,7 @@
 {
     "description": 
         "An application to take pictures and videos with the device cameras",
-    "framework": "ubuntu-sdk-13.10", 
+    "framework": "ubuntu-sdk-14.04-dev1", 
     "architecture": "armhf",
     "hooks": {
         "camera": {
