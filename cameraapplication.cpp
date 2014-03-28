@@ -28,6 +28,7 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QScreen>
+#include <QtGui/QGuiApplication>
 
 #include "config.h"
 
@@ -67,7 +68,11 @@ CameraApplication::~CameraApplication()
 
 bool CameraApplication::isDesktopMode() const
 {
-  return (qEnvironmentVariableIsSet("DESKTOP_MODE") && (qgetenv("DESKTOP_MODE") == "1"));
+  // Assume that platformName (QtUbuntu) with ubuntu
+  // in name means it's running on device
+  // TODO: replace this check with SDK call for formfactor
+  QString platform = QGuiApplication::platformName();
+  return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
 }
 
 
