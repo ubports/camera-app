@@ -16,7 +16,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import Ubuntu.Unity.Action 1.0 as UnityActions
+import Ubuntu.Unity.Action 1.1 as UnityActions
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtQuick.Window 2.0
@@ -57,6 +57,10 @@ Rectangle {
                 keywords: i18n.tr("Lighting Condition;Day;Cloudy;Inside")
             }
         ]
+
+        onQuit: {
+            Qt.quit()
+        }
     }
 
     Component.onCompleted: {
