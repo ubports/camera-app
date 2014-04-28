@@ -11,6 +11,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5Qml)
 find_package(Qt5Quick)
 find_package(Qt5Multimedia)
+find_package(Qt5Gui)
 
 # Standard install paths
 include(GNUInstallDirs)
@@ -47,6 +48,7 @@ include_directories(
     ${Qt5Core_INCLUDE_DIRS}
     ${Qt5Quick_INCLUDE_DIRS}
     ${Qt5Multimedia_INCLUDE_DIRS}
+    ${Qt5Gui_INCLUDE_DIRS}
     )
 
 set(camera_app_HDRS
@@ -65,6 +67,7 @@ target_link_libraries(${CAMERA_APP}
     ${Qt5Core_LIBRARIES}
     ${Qt5Quick_LIBRARIES}
     ${Qt5Multimedia_LIBRARIES}
+    ${Qt5Gui_LIBRARIES}
     )
 
 install(TARGETS ${CAMERA_APP}

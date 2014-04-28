@@ -1,3 +1,24 @@
+camera-app (2.9.1+14.04.20140331-0ubuntu2) trusty; urgency=medium
+
+  * Alternatively depend on the OpenGLES version of
+    qtdeclarative5-qtmultimedia-plugin and
+    qtdeclarative5-ubuntu-ui-toolkit-plugin
+
+ -- Ricardo Salveti de Araujo <ricardo.salveti@canonical.com>  Mon, 14 Apr 2014 15:59:16 -0300
+
+camera-app (2.9.1+14.04.20140331-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * updated framework version
+  * change check for desktopMode to use platform name rather than env
+    var
+
+  [ Pete Woods ]
+  * Handle the HUD quit signal This change is only necessary for apps
+    that don't use the UITK MainView (LP: #1269409)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 31 Mar 2014 16:39:21 +0000
+
 camera-app (2.9.1+14.04.20140307-0ubuntu1) trusty; urgency=low
 
   * New rebuild forced

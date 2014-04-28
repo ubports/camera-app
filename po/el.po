@@ -1,45 +1,45 @@
-# Lao translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Greek translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2013-10-03 07:55+0000\n"
-"Last-Translator: Anousak <anousak@gmail.com>\n"
-"Language-Team: Lao <lo@li.org>\n"
+"PO-Revision-Date: 2014-04-25 13:25+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 08:25+0000\n"
+"X-Launchpad-Export-Date: 2014-04-26 07:11+0000\n"
 "X-Generator: Launchpad (build 16985)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "ກ້ອງ"
+msgstr ""
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "ໂປຣເເກຣມກ້ອງ"
+msgstr ""
 
 #: camera-app.qml:38
 msgid "Flash"
-msgstr "ເເຟລດຊ໌"
+msgstr ""
 
 #: camera-app.qml:39
 msgid "Light;Dark"
-msgstr "ເເສງ;ມຶດ"
+msgstr ""
 
 #: camera-app.qml:42
 msgid "Flip Camera"
-msgstr "ປີ້ນກ້ອງ"
+msgstr ""
 
 #: camera-app.qml:43
 msgid "Front Facing;Back Facing"
-msgstr "ທາງຫນ້າ;ທາງຫຼັງ"
+msgstr ""
 
 #: camera-app.qml:46
 msgid "Shutter"
@@ -47,20 +47,20 @@ msgstr ""
 
 #: camera-app.qml:47
 msgid "Take a Photo;Snap;Record"
-msgstr "ທ່າຍຮູບ;ສະເເນບ;ອັດ"
+msgstr ""
 
 #: camera-app.qml:50
 msgid "Mode"
-msgstr "ຮູບແບບ"
+msgstr ""
 
 #: camera-app.qml:51
 msgid "Stills;Video"
-msgstr "ຈື້ງ;ວີດິໂອ"
+msgstr ""
 
 #: camera-app.qml:54
 msgid "White Balance"
-msgstr "ດຸນດ່ຽງສີຂາວ"
+msgstr ""
 
 #: camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "ເງື່ອນໄຂໄຟ;ມື້;ຄຸ້ນເມກ;ຂ້າງໃນ"
+msgstr ""
