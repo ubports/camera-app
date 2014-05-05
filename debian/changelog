@@ -1,3 +1,12 @@
+camera-app (2.9.1+14.10.20140505-0ubuntu1) utopic; urgency=low
+
+  [ Barry Warsaw ]
+  * Port emulators to Python 2/3.   * Port autopilot tests to Python 3.
+      * d/control: Add explicit dependency on python3-autopilot. Bump
+    Standards-Version to 3.9.5. (LP: #1313930)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 05 May 2014 14:57:18 +0000
+
 camera-app (2.9.1+14.04.20140331-0ubuntu2) trusty; urgency=medium
 
   * Alternatively depend on the OpenGLES version of
