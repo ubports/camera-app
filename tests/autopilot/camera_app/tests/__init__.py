@@ -7,14 +7,11 @@
 
 """Camera-app autopilot tests."""
 
-from os import remove
-import os.path
+import os
 
 from autopilot.input import Mouse, Touch, Pointer
-from autopilot.matchers import Eventually
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
-from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
 
@@ -66,7 +63,7 @@ class CameraAppTestCase(AutopilotTestCase):
 
     def get_center(self, object_proxy):
         x, y, w, h = object_proxy.globalRect
-        return [x + (w / 2), y + (h / 2)]
+        return [x + (w // 2), y + (h // 2)]
 
     @property
     def main_window(self):

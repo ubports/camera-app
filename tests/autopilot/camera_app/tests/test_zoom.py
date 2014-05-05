@@ -12,7 +12,6 @@ from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
-import time
 import unittest
 
 
@@ -36,8 +35,8 @@ class TestCameraZoom(CameraAppTestCase):
 
         x, y, w, h = zoom_button.globalRect
 
-        tx = x + (w / 2)
-        ty = y + (h / 2)
+        tx = x + (w // 2)
+        ty = y + (h // 2)
 
         if self.main_window.get_orientation() == "portrait":
             self.pointing_device.drag(tx, ty, (tx + zoom_control.width), ty)
@@ -47,8 +46,8 @@ class TestCameraZoom(CameraAppTestCase):
         self.assertThat(
             zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
 
-        tx = x + (w / 2)
-        ty = y + (h / 2)
+        tx = x + (w // 2)
+        ty = y + (h // 2)
 
         if self.main_window.get_orientation() == "portrait":
             self.pointing_device.drag(tx, ty, (tx - zoom_control.width), ty)

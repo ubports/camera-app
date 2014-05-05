@@ -4,7 +4,6 @@
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
-import math
 
 class MainWindow(object):
     """An emulator class that makes it easy to interact with the camera-app."""
@@ -19,7 +18,7 @@ class MainWindow(object):
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
         return self.app.wait_select_single("FocusRing")
-      
+
     def get_exposure_button(self):
         """Returns the button that takes pictures"""
         return self.app.wait_select_single("ShootButton")
@@ -66,11 +65,11 @@ class MainWindow(object):
 
     def get_orientation(self):
         orientation = self.app.wait_select_single("DeviceOrientation")
-        if orientation.isLandscape == True:
+        if orientation.isLandscape:
             return 'landscape'
         else:
             return 'portrait'
-        
+
     def get_gallery_button(self):
         """Returns the gallery button on the camera toolbar."""
         return self.app.select_single(

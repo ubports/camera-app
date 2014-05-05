@@ -9,11 +9,10 @@
 
 from autopilot.matchers import Eventually
 from autopilot.platform import model
-from testtools.matchers import Equals, NotEquals, GreaterThan
+from testtools.matchers import Equals, GreaterThan
 from camera_app.tests import CameraAppTestCase
 
 import unittest
-import time
 
 
 class TestFocus(CameraAppTestCase):
@@ -60,7 +59,8 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
-        click_coords =[feed.globalRect[2] // 2 + feed.globalRect[0], feed.globalRect[3] // 2 + feed.globalRect[1]]
+        click_coords = [feed.globalRect[2] // 2 + feed.globalRect[0],
+                        feed.globalRect[3] // 2 + feed.globalRect[1]]
         self.pointing_device.move(click_coords[0], click_coords[1])
         self.pointing_device.click()
 
@@ -88,7 +88,7 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
         x, y, h, w = toolbar.globalRect
-        tx = x + (h / 2)
+        tx = x + (h // 2)
         ty = y + (w + 2)
         # Click at the bottom of the window below the toolbar. It should never
         # focus there.
@@ -101,7 +101,7 @@ class TestFocus(CameraAppTestCase):
         #ring.
         if zoom.y > feed.height: # Feed is aligned to the top of the window
             x, y, h, w = zoom.globalRect
-            click_coords = [x + (h / 2), y - 2]
+            click_coords = [x + (h // 2), y - 2]
             self.pointing_device.move(click_coords[0], click_coords[1])
             self.pointing_device.click()
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
@@ -114,7 +114,7 @@ class TestFocus(CameraAppTestCase):
         # Maybe we will have the gap when we switch the camera, test it again
         if zoom.y > feed.height:
             x, y, h, w = zoom.globalRect
-            click_coords = [x + (h / 2), y - 2]
+            click_coords = [x + (h // 2), y - 2]
             self.pointing_device.move(click_coords[0], click_coords[1])
             self.pointing_device.click()
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
@@ -142,10 +142,10 @@ class TestFocus(CameraAppTestCase):
         # Now drag it halfway across the feed, verify that it has moved there
         tx = focus_ring_center[0]
         ty = focus_ring_center[1]
-        self.pointing_device.drag(tx, ty, tx / 2, ty / 2)
+        self.pointing_device.drag(tx, ty, tx // 2, ty // 2)
 
         focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring_center[1], GreaterThan(ty / 2 - 2))
+        self.assertThat(focus_ring_center[1], GreaterThan(ty // 2 - 2))
 
         # Switch cameras, wait for camera to settle, and try again
         self.pointing_device.move_to_object(switch_cameras)
@@ -162,7 +162,7 @@ class TestFocus(CameraAppTestCase):
 
         tx = focus_ring_center[0]
         ty = focus_ring_center[1]
-        self.pointing_device.drag(tx, ty, tx / 2, ty / 2)
+        self.pointing_device.drag(tx, ty, tx // 2, ty // 2)
 
         focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring_center[1], GreaterThan(ty / 2 - 2))
+        self.assertThat(focus_ring_center[1], GreaterThan(ty // 2 - 2))
