@@ -19,6 +19,6 @@
         "vcs-bzr-revno": "@BZR_REVNO@"
     }
     "x-test": {
-        "autopilot": "@AUTOPILOT_DIR@",
+        "autopilot": "@AUTOPILOT_DIR@"
     }
 }
