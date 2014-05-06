@@ -20,6 +20,7 @@ option(INSTALL_TESTS "Install the tests on make install" on)
 option(CLICK_MODE "Installs to a contained location" off)
 
 set(CAMERA_APP camera-app)
+set(AUTOPILOT_DIR camera_app)
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
