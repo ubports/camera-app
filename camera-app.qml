@@ -155,6 +155,14 @@ Rectangle {
            - the resolution and aspect ratio of the feed changes depending on the active camera
            The item is also separated in a component so it can be unit tested.
          */
+
+        transform: Rotation {
+            origin.x: viewFinder.width / 2
+            origin.y: viewFinder.height / 2
+            axis.x: 0; axis.y: 1; axis.z: 0
+            angle: application.desktopMode ? 180 : 0
+        }
+
         ViewFinderGeometry {
             id: viewFinderGeometry
             anchors.centerIn: parent
