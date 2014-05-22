@@ -367,8 +367,8 @@ Rectangle {
     Metric {
         id: metricPhotos
         name: "camera-photos"
-        format: "<b>%1</b> photos taken today"
-        emptyFormat: "No photos taken today"
+        format: i18n.tr("<b>%1</b> photos taken today")
+        emptyFormat: i18n.tr("No photos taken today")
         domain: "camera-app"
         minimum: 0.0
     }
@@ -376,8 +376,8 @@ Rectangle {
     Metric {
         id: metricVideos
         name: "camera-videos"
-        format: "<b>%1</b> videos recorded today"
-        emptyFormat: "No videos recorded today"
+        format: i18n.tr("<b>%1</b> videos recorded today")
+        emptyFormat: i18n.tr("No videos recorded today")
         domain: "camera-app"
         minimum: 0.0
     }
