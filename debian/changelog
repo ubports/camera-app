@@ -1,3 +1,14 @@
+camera-app (2.9.1+14.10.20140522-0ubuntu1) utopic; urgency=low
+
+  [ Sergio Schvezov ]
+  * Correct click manifest for python3.
+
+  [ David Planella ]
+  * Internationalize the metrics strings (LP: #1320435)
+  * Update the translations template with the new strings (LP: #1320437)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 22 May 2014 21:39:53 +0000
+
 camera-app (2.9.1+14.10.20140508-0ubuntu2) utopic; urgency=medium
 
   * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
