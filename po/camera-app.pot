@@ -1,13 +1,14 @@
 # Ubuntu camera app translation.
-# Copyright 2013 Canonical Ltd.
+# Copyright 2014 Canonical Ltd.
 # This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-11 11:18+0200\n"
+"POT-Creation-Date: 2014-05-17 09:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,27 +25,27 @@ msgstr ""
 msgid "Camera application"
 msgstr ""
 
-#: camera-app.qml:38
+#: camera-app.qml:35
 msgid "Flash"
 msgstr ""
 
-#: camera-app.qml:39
+#: camera-app.qml:36
 msgid "Light;Dark"
 msgstr ""
 
-#: camera-app.qml:42
+#: camera-app.qml:40
 msgid "Flip Camera"
 msgstr ""
 
-#: camera-app.qml:43
+#: camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr ""
 
-#: camera-app.qml:46
+#: camera-app.qml:45
 msgid "Shutter"
 msgstr ""
 
-#: camera-app.qml:47
+#: camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr ""
 
@@ -56,10 +57,28 @@ msgstr ""
 msgid "Stills;Video"
 msgstr ""
 
-#: camera-app.qml:54
+#: camera-app.qml:56
 msgid "White Balance"
 msgstr ""
 
-#: camera-app.qml:55
+#: camera-app.qml:57
 msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr ""
+
+#: camera-app.qml:370
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr ""
+
+#: camera-app.qml:371
+msgid "No photos taken today"
+msgstr ""
+
+#: camera-app.qml:379
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr ""
+
+#: camera-app.qml:380
+msgid "No videos recorded today"
 msgstr ""
