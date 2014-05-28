@@ -1,3 +1,13 @@
+camera-app (2.9.1+14.10.20140528-0ubuntu1) utopic; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Olivier Tilloy ]
+  * No change rebuild to pick up the latest translation updates.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 28 May 2014 10:17:43 +0000
+
 camera-app (2.9.1+14.10.20140522-0ubuntu1) utopic; urgency=low
 
   [ Sergio Schvezov ]
