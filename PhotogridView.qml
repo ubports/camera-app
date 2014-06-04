@@ -1,0 +1,75 @@
+/*
+ * Copyright 2014 Canonical Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import QtQuick 2.2
+import Ubuntu.Components 1.0
+
+Item {
+    id: photogridView
+
+    property int itemsPerRow: 3
+    property var model
+    
+    GridView {
+        anchors.fill: parent
+        
+        Component.onCompleted: {
+            // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
+            // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
+            var scaleFactor = units.gridUnit / 8;
+            maximumFlickVelocity = maximumFlickVelocity * scaleFactor;
+            flickDeceleration = flickDeceleration * scaleFactor;
+        }
+        
+        cellWidth: width / photogridView.itemsPerRow
+        cellHeight: cellWidth
+        
+        model: photogridView.model
+        delegate: Item {
+            id: cellDelegate
+            
+            width: GridView.view.cellWidth
+            height: GridView.view.cellHeight
+            
+            Image {
+                id: thumbnail
+                property real margin: units.dp(2)
+                anchors {
+                    top: parent.top
+                    topMargin: index < photogridView.itemsPerRow ? 0 : margin/2
+                    bottom: parent.bottom
+                    bottomMargin: margin/2
+                    left: parent.left
+                    leftMargin: index % photogridView.itemsPerRow == 0 ? 0 : margin/2
+                    right: parent.right
+                    rightMargin: index % photogridView.itemsPerRow == photogridView.itemsPerRow - 1 ? 0 : margin/2
+                }
+                
+                asynchronous: true
+                cache: false
+                // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly
+                source: fileURL
+                sourceSize {
+                    width: width
+                    height: height
+                }
+                fillMode: Image.PreserveAspectCrop
+                opacity: status == Image.Ready ? 1.0 : 0.0
+                Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+            }            
+        }
+    }
+}

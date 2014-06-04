@@ -24,6 +24,7 @@
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
+#include <QtCore/QStandardPaths>
 #include <QDate>
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -103,4 +104,9 @@ bool CameraApplication::setup()
       m_view->show();
 
     return true;
+}
+
+QString CameraApplication::mediaLocation() const
+{
+    return QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
 }

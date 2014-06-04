@@ -79,6 +79,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 
 file(GLOB QML_JS_FILES *.qml *.js)
 
+# make the files visible on qtcreator
+add_custom_target(QML_JS_TARGET ALL SOURCES ${QML_JS_FILES})
+
 install(FILES ${QML_JS_FILES}
     DESTINATION ${CAMERA_APP_DIR}
     )
@@ -104,6 +107,9 @@ endforeach(LINE)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
+    )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
+    DESTINATION /
     )
 
 add_subdirectory(CameraApp)

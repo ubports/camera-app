@@ -15,61 +15,63 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 0.1
+import Ubuntu.Components 1.0
 
-CameraToolbarButton {
+ImageButton {
     id: button
 
-    states: [
-        State { name: "camera"
-            PropertyChanges { target: button; iconSource: "assets/shoot.png" }
-            PropertyChanges { target: recordOn; opacity: 0.0 }
-            PropertyChanges { target: pulseAnimation; running: false }
-        },
-        State { name: "record_off"
-            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
-            PropertyChanges { target: recordOn; opacity: 0.0 }
-            PropertyChanges { target: pulseAnimation; running: false }
-        },
-        State { name: "record_on"
-            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
-            PropertyChanges { target: recordOn; opacity: 1.0 }
-            PropertyChanges { target: pulseAnimation; running: true }
-        }
-    ]
+    iconSource: "assets/shutter_stills.png"
 
-    property int pulsePeriod: 750
+//    states: [
+//        State { name: "camera"
+//            PropertyChanges { target: button; iconSource: "assets/shoot.png" }
+//            PropertyChanges { target: recordOn; opacity: 0.0 }
+//            PropertyChanges { target: pulseAnimation; running: false }
+//        },
+//        State { name: "record_off"
+//            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+//            PropertyChanges { target: recordOn; opacity: 0.0 }
+//            PropertyChanges { target: pulseAnimation; running: false }
+//        },
+//        State { name: "record_on"
+//            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+//            PropertyChanges { target: recordOn; opacity: 1.0 }
+//            PropertyChanges { target: pulseAnimation; running: true }
+//        }
+//    ]
 
-    Image {
-        id: recordOn
-        anchors.fill: parent
-        source: "assets/record_on.png"
-        Behavior on opacity { NumberAnimation { duration: pulsePeriod } }
-    }
+//    property int pulsePeriod: 750
 
-    Image {
-        id: pulse
-        anchors.fill: parent
-        source: "assets/record_on_pulse.png"
-        opacity: 1.0
-        visible: button.state != "camera"
+//    Image {
+//        id: recordOn
+//        anchors.fill: parent
+//        source: "assets/record_on.png"
+//        Behavior on opacity { NumberAnimation { duration: pulsePeriod } }
+//    }
 
-        SequentialAnimation on opacity  {
-            id: pulseAnimation
-            loops: Animation.Infinite
-            alwaysRunToEnd: true
-            running: false
+//    Image {
+//        id: pulse
+//        anchors.fill: parent
+//        source: "assets/record_on_pulse.png"
+//        opacity: 1.0
+//        visible: button.state != "camera"
 
-            PropertyAnimation {
-                from: 1.0
-                to: 0.0
-                duration: pulsePeriod
-            }
-            PropertyAnimation {
-                from: 0.0
-                to: 1.0
-                duration: pulsePeriod
-            }
-        }
-    }
+//        SequentialAnimation on opacity  {
+//            id: pulseAnimation
+//            loops: Animation.Infinite
+//            alwaysRunToEnd: true
+//            running: false
+
+//            PropertyAnimation {
+//                from: 1.0
+//                to: 0.0
+//                duration: pulsePeriod
+//            }
+//            PropertyAnimation {
+//                from: 0.0
+//                to: 1.0
+//                duration: pulsePeriod
+//            }
+//        }
+//    }
 }

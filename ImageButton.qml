@@ -14,6 +14,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.pragma library
+import QtQuick 2.0
+import Ubuntu.Components 1.0
 
-var iconFadeDuration = 300;
+AbstractButton {
+    property alias iconWidth: icon.width
+    property alias iconHeight: icon.height
+    property alias iconSource: icon.source
+
+    width: icon.width
+    height: icon.height
+
+    Image {
+        id: icon
+        anchors.centerIn: parent
+    }
+}
+

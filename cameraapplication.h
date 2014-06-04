@@ -29,12 +29,14 @@ class CameraApplication : public QGuiApplication
 {
     Q_OBJECT
     Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
+    Q_PROPERTY(QString mediaLocation READ mediaLocation CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
     virtual ~CameraApplication();
     bool setup();
     bool isDesktopMode() const;
+    QString mediaLocation() const;
 
 private:
     QScopedPointer<QQuickView> m_view;

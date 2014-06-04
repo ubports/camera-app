@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Canonical Ltd.
+ * Copyright 2014 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,18 +15,30 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 0.1
+import Ubuntu.Components 1.0
 
 AbstractButton {
-    property alias iconWidth: icon.width
-    property alias iconHeight: icon.height
-    property alias iconSource: icon.source
+    id: button
 
-    width: icon.paintedWidth
-    height: icon.paintedHeight
+    property alias iconName: icon.name
+
+    width: units.gu(5)
+    height: width
 
     Image {
+        anchors.fill: parent
+        source: "assets/ubuntu_shape.svg"
+        opacity: button.pressed ? 0.7 : 0.3
+        sourceSize.width: width
+        sourceSize.height: height
+    }
+
+    Icon {
         id: icon
+        anchors {
+            fill: parent
+            margins: units.gu(1)
+        }
+        color: "white"
     }
 }
-
