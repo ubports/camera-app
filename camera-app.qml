@@ -18,7 +18,6 @@ import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
-import Qt.labs.folderlistmodel 2.1
 
 Rectangle {
     id: main
@@ -78,19 +77,35 @@ Rectangle {
 //        onAtXEndChanged: print("ATXEND", atXEnd)
 //        onAtXBeginningChanged: print("ATXBEGINNING", atXBeginning)
 
+        Component.onCompleted: {
+            // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
+            // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
+            var scaleFactor = units.gridUnit / 8;
+            maximumFlickVelocity = maximumFlickVelocity * scaleFactor / 2;
+            flickDeceleration = flickDeceleration * scaleFactor / 2;
+        }
+
         property bool settling: false
+        property bool switching: false
+        property real settleVelocity: units.dp(5000)
 
         function settle() {
             settling = true;
             var velocity;
             if (horizontalVelocity < 0 || (horizontalVelocity == 0 && visibleArea.xPosition <= 0.25)) {
                 // FIXME: compute velocity better to ensure it reaches rest position (maybe in a constant time)
-                velocity = units.dp(5000);
+                velocity = settleVelocity;
             } else {
-                velocity = -units.dp(5000);
+                velocity = -settleVelocity;
             }
 
             flick(velocity, 0);
+        }
+
+        function switchToViewFinder() {
+            cancelFlick();
+            switching = true;
+            flick(settleVelocity, 0);
         }
 
         onMovementEnded: {
@@ -100,7 +115,7 @@ Rectangle {
 
         onFlickStarted: {
             // cancel user triggered flicks
-            if (!settling) {
+            if (!settling && !switching) {
                 cancelFlick();
             }
         }
@@ -108,8 +123,13 @@ Rectangle {
         onFlickingHorizontallyChanged: {
             // use flickingHorizontallyChanged instead of flickEnded because flickEnded
             // is not called when a flick is interrupted by the user
-            if (!flickingHorizontally && settling) {
-                settling = false;
+            if (!flickingHorizontally) {
+                if (settling) {
+                    settling = false;
+                }
+                if (switching) {
+                    switching = true;
+                }
             }
         }
 
@@ -142,7 +162,7 @@ Rectangle {
                 width: viewSwitcher.width
                 height: viewSwitcher.height
 //                visible: !viewSwitcher.atXBeginning
-
+                onExit: viewSwitcher.switchToViewFinder()
             }
         }
     }
