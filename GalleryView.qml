@@ -22,6 +22,7 @@ import QtQuick.Layouts 1.1
 Item {
     id: galleryView
 
+    signal exit
     property var model: FolderListModel {
         folder: application.mediaLocation
         nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG" ]
@@ -108,19 +109,19 @@ Item {
                     top: parent.top
                     bottom: parent.bottom
                 }
-                width: units.gu(6)
+                width: units.gu(8)
+                iconHeight: units.gu(3)
+                iconWidth: iconHeight
                 iconName: "back"
+                iconColor: Theme.palette.normal.foregroundText
+                onClicked: galleryView.exit()
             }
 
             Label {
                 text: i18n.tr("Photo Roll")
                 fontSize: "x-large"
-                color: "white"
+                color: Theme.palette.normal.foregroundText
                 Layout.fillWidth: true
-//                Layout.minimumWidth: 50
-//                Layout.preferredWidth: 100
-//                Layout.maximumWidth: 300
-//                Layout.minimumHeight: 150
             }
 
             ImageButton {
