@@ -24,6 +24,7 @@ Item {
 
     property bool overlayVisible: true
     property bool touchAcquired: bottomEdge.pressed
+    signal photoTaken
 
     DeviceOrientation {
         id: device
@@ -65,6 +66,7 @@ Item {
                 snapshot.source = preview;
             }
             onImageSaved: {
+                viewFinderView.photoTaken();
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }

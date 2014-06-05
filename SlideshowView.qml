@@ -22,7 +22,12 @@ Item {
 
     property var model
 
+    function showLastPhotoTaken() {
+        listView.positionViewAtBeginning();
+    }
+
     ListView {
+        id: listView
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
             // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration

@@ -156,6 +156,7 @@ Rectangle {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
 //                visible: !viewSwitcher.atXEnd
+                onPhotoTaken: galleryView.showLastPhotoTaken();
             }
 
             GalleryView {

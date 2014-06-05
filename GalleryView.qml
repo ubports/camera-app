@@ -32,6 +32,11 @@ Item {
         showDirs: false
     }
 
+    function showLastPhotoTaken() {
+        header.gridMode = false;
+        slideshowView.showLastPhotoTaken();
+    }
+
     SlideshowView {
         id: slideshowView
         anchors.fill: parent
