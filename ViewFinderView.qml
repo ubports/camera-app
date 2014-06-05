@@ -24,6 +24,7 @@ Item {
 
     property bool overlayVisible: true
     property bool touchAcquired: bottomEdge.pressed
+    property bool inView
     signal photoTaken
 
     DeviceOrientation {

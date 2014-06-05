@@ -75,8 +75,6 @@ Rectangle {
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
         interactive: !viewFinderView.touchAcquired
-//        onAtXEndChanged: print("ATXEND", atXEnd)
-//        onAtXBeginningChanged: print("ATXBEGINNING", atXBeginning)
 
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
@@ -147,7 +145,6 @@ Rectangle {
                 top: parent.top
                 bottom: parent.bottom
             }
-//            width: viewFinder View.width + galleryView.width
             spacing: units.gu(1)
 
             ViewFinderView {
@@ -155,7 +152,7 @@ Rectangle {
                 width: viewSwitcher.width
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
-//                visible: !viewSwitcher.atXEnd
+                inView: !viewSwitcher.atXEnd
                 onPhotoTaken: galleryView.showLastPhotoTaken();
             }
 
@@ -163,7 +160,7 @@ Rectangle {
                 id: galleryView
                 width: viewSwitcher.width
                 height: viewSwitcher.height
-//                visible: !viewSwitcher.atXBeginning
+                inView: !viewSwitcher.atXBeginning
                 onExit: viewSwitcher.switchToViewFinder()
             }
         }

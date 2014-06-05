@@ -17,12 +17,12 @@
 import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Qt.labs.folderlistmodel 2.1
-import QtQuick.Layouts 1.1
 
 Item {
     id: galleryView
 
     signal exit
+    property bool inView
     property var model: FolderListModel {
         folder: application.mediaLocation
         nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG" ]
@@ -52,6 +52,19 @@ Item {
         onPhotoClicked: {
             slideshowView.showPhotoAtIndex(index);
             header.gridMode = false;
+        }
+    }
+
+    onInViewChanged: if (inView) {
+                         header.show();
+                     }
+
+    MouseArea {
+        id: interactionDetector
+        anchors.fill: parent
+        onPressed: {
+            mouse.accepted = false;
+            header.show();
         }
     }
 
@@ -92,77 +105,7 @@ Item {
         }
     ]
 
-    Item {
+    GalleryViewHeader {
         id: header
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-        height: units.gu(7)
-
-        property bool gridMode: false
-
-        Rectangle {
-            anchors.fill: parent
-            color: "black"
-            opacity: 0.6
-        }
-
-        RowLayout {
-            anchors.fill: parent
-            spacing: 0
-
-            IconButton {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                }
-                width: units.gu(8)
-                iconHeight: units.gu(3)
-                iconWidth: iconHeight
-                iconName: "back"
-                iconColor: Theme.palette.normal.foregroundText
-                onClicked: galleryView.exit()
-            }
-
-            Label {
-                text: i18n.tr("Photo Roll")
-                fontSize: "x-large"
-                color: Theme.palette.normal.foregroundText
-                Layout.fillWidth: true
-            }
-
-            ImageButton {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                }
-                width: units.gu(6)
-                iconSource: "assets/gridview.png"
-                onClicked: {
-                    if (!header.gridMode) {
-                        // position grid view so that the current photo in slideshow view is visible
-                        photogridView.showPhotoAtIndex(slideshowView.currentIndex);
-                    }
-
-                    header.gridMode = !header.gridMode
-                }
-//            IconButton {
-//                iconName: "view-grid-symbolic"
-            }
-
-            ImageButton {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                }
-                width: units.gu(6)
-                iconSource: "assets/options.png"
-//            IconButton {
-//                iconName: "contextual-menu"
-            }
-        }
     }
-
 }
