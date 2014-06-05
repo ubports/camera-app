@@ -69,7 +69,7 @@ Item {
             iconColor: Theme.palette.normal.foregroundText
             onClicked: galleryView.exit()
         }
-        
+
         Label {
             text: i18n.tr("Photo Roll")
             fontSize: "x-large"
@@ -105,6 +105,15 @@ Item {
             iconSource: "assets/options.png"
             //            IconButton {
             //                iconName: "contextual-menu"
+        }
+    }
+
+    MouseArea {
+        id: interactionDetector
+        anchors.fill: parent
+        onPressed: {
+            mouse.accepted = false;
+            autohideTimer.restart();
         }
     }
 }
