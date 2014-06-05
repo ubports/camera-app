@@ -22,7 +22,8 @@ Item {
 
     property int itemsPerRow: 3
     property var model
-    
+    signal photoClicked(int index)
+
     GridView {
         anchors.fill: parent
         
@@ -43,7 +44,7 @@ Item {
             
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
-            
+
             Image {
                 id: thumbnail
                 property real margin: units.dp(2)
@@ -69,7 +70,12 @@ Item {
                 fillMode: Image.PreserveAspectCrop
                 opacity: status == Image.Ready ? 1.0 : 0.0
                 Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
-            }            
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: photogridView.photoClicked(index)
+            }
         }
     }
 }

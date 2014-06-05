@@ -22,6 +22,10 @@ Item {
 
     property var model
 
+    function showPhotoAtIndex(index) {
+        listView.positionViewAtIndex(index, ListView.Contain);
+    }
+
     function showLastPhotoTaken() {
         listView.positionViewAtBeginning();
     }

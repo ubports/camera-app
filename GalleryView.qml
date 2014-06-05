@@ -49,6 +49,10 @@ Item {
         anchors.fill: parent
         model: galleryView.model
         visible: opacity != 0.0
+        onPhotoClicked: {
+            slideshowView.showPhotoAtIndex(index);
+            header.gridMode = false;
+        }
     }
 
     state: header.gridMode ? "GRID" : "SLIDESHOW"
