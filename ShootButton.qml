@@ -17,11 +17,24 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.0
 
-ImageButton {
+Item {
     id: button
 
-    iconSource: "assets/shutter_stills.png"
+    signal clicked()
 
+    width: icon.width
+    height: icon.height
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: button.clicked()
+    }
+
+    Image {
+        id: icon
+        anchors.centerIn: parent
+        source: "assets/shutter_stills.png"
+    }
 //    states: [
 //        State { name: "camera"
 //            PropertyChanges { target: button; iconSource: "assets/shoot.png" }
