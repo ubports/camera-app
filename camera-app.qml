@@ -74,6 +74,7 @@ Rectangle {
         boundsBehavior: Flickable.StopAtBounds
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
+        interactive: !viewFinderView.touchAcquired
 //        onAtXEndChanged: print("ATXEND", atXEnd)
 //        onAtXBeginningChanged: print("ATXBEGINNING", atXBeginning)
 

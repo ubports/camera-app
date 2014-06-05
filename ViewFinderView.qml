@@ -21,8 +21,9 @@ import CameraApp 0.1
 
 Item {
     id: viewFinderView
-    
+
     property bool overlayVisible: true
+    property bool touchAcquired: bottomEdge.pressed
 
     DeviceOrientation {
         id: device
