@@ -88,7 +88,7 @@ Item {
     transitions: [
         Transition {
             to: "*"
-             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
+            UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
 
@@ -140,7 +140,14 @@ Item {
                 }
                 width: units.gu(6)
                 iconSource: "assets/gridview.png"
-                onClicked: header.gridMode = !header.gridMode
+                onClicked: {
+                    if (!header.gridMode) {
+                        // position grid view so that the current photo in slideshow view is visible
+                        photogridView.showPhotoAtIndex(slideshowView.currentIndex);
+                    }
+
+                    header.gridMode = !header.gridMode
+                }
 //            IconButton {
 //                iconName: "view-grid-symbolic"
             }

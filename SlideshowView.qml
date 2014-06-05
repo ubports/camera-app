@@ -21,6 +21,7 @@ Item {
     id: slideshowView
 
     property var model
+    property int currentIndex: listView.currentIndex
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -46,6 +47,7 @@ Item {
         snapMode: ListView.SnapOneItem
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
+        highlightRangeMode: ListView.StrictlyEnforceRange
         spacing: units.gu(1)
 
         delegate: Item {

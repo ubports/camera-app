@@ -24,7 +24,12 @@ Item {
     property var model
     signal photoClicked(int index)
 
+    function showPhotoAtIndex(index) {
+        gridView.positionViewAtIndex(index, GridView.Center);
+    }
+
     GridView {
+        id: gridView
         anchors.fill: parent
         
         Component.onCompleted: {
