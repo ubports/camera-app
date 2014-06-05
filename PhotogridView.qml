@@ -23,6 +23,8 @@ Item {
     property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
+    signal showHeader
+    signal hideHeader
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -42,7 +44,24 @@ Item {
         
         cellWidth: width / photogridView.itemsPerRow
         cellHeight: cellWidth
-        
+
+        property bool headerNeedsUpdate: false
+        onMovingVerticallyChanged: {
+            if (movingVertically) {
+                headerNeedsUpdate = true;
+            }
+        }
+        onVerticalVelocityChanged: {
+            if (headerNeedsUpdate) {
+                if (verticalVelocity < 0) {
+                    photogridView.showHeader();
+                } else {
+                    photogridView.hideHeader();
+                }
+                headerNeedsUpdate = false;
+            }
+        }
+
         model: photogridView.model
         delegate: Item {
             id: cellDelegate

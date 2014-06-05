@@ -22,6 +22,8 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
+    signal showHeader
+    signal hideHeader
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -49,6 +51,7 @@ Item {
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
         spacing: units.gu(1)
+        onMovingChanged: if (moving) slideshowView.showHeader();
 
         delegate: Item {
             width: ListView.view.width
@@ -63,7 +66,6 @@ Item {
             Image {
                 id: image
                 anchors.fill: parent
-//                scale:
                 asynchronous: true
                 cache: false
                 // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly

@@ -42,6 +42,8 @@ Item {
         anchors.fill: parent
         model: galleryView.model
         visible: opacity != 0.0
+        onShowHeader: header.show();
+        onHideHeader: header.hide();
     }
 
     PhotogridView {
@@ -53,6 +55,8 @@ Item {
             slideshowView.showPhotoAtIndex(index);
             header.gridMode = false;
         }
+        onShowHeader: header.show();
+        onHideHeader: header.hide();
     }
 
     onInViewChanged: if (inView) {
