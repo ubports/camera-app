@@ -23,8 +23,7 @@ Item {
     property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
-    signal showHeader
-    signal hideHeader
+    property real headerHeight
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -33,6 +32,13 @@ Item {
     GridView {
         id: gridView
         anchors.fill: parent
+        // FIXME: prevent the header from overlapping the beginning of the grid
+        // when Qt 5.3 is landed, use property 'displayMarginBeginning' instead
+        // cf. http://qt-project.org/doc/qt-5/qml-qtquick-gridview.html#displayMarginBeginning-prop
+        header: Item {
+            width: gridView.width
+            height: headerHeight
+        }
         
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
@@ -41,26 +47,9 @@ Item {
             maximumFlickVelocity = maximumFlickVelocity * scaleFactor;
             flickDeceleration = flickDeceleration * scaleFactor;
         }
-        
+
         cellWidth: width / photogridView.itemsPerRow
         cellHeight: cellWidth
-
-        property bool headerNeedsUpdate: false
-        onMovingVerticallyChanged: {
-            if (movingVertically) {
-                headerNeedsUpdate = true;
-            }
-        }
-        onVerticalVelocityChanged: {
-            if (headerNeedsUpdate) {
-                if (verticalVelocity < 0) {
-                    photogridView.showHeader();
-                } else {
-                    photogridView.hideHeader();
-                }
-                headerNeedsUpdate = false;
-            }
-        }
 
         model: photogridView.model
         delegate: Item {

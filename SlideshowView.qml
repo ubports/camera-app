@@ -22,8 +22,7 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    signal showHeader
-    signal hideHeader
+    signal toggleHeader
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -51,7 +50,6 @@ Item {
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
         spacing: units.gu(1)
-        onMovingChanged: if (moving) slideshowView.showHeader();
 
         delegate: Item {
             width: ListView.view.width
@@ -77,6 +75,16 @@ Item {
                 fillMode: Image.PreserveAspectFit
                 opacity: status == Image.Ready ? 1.0 : 0.0
                 Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+            }
+        }
+
+
+        MouseArea {
+            id: interactionDetector
+            anchors.fill: parent
+            onClicked: {
+                slideshowView.toggleHeader();
+                mouse.accepted = false;
             }
         }
     }

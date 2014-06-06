@@ -33,18 +33,11 @@ Item {
     property bool shown: true
 
     function show() {
-        autohideTimer.restart();
         shown = true;
     }
 
-    function hide() {
-        shown = false;
-    }
-
-    Timer {
-        id: autohideTimer
-        interval: 2000
-        onTriggered: header.hide()
+    function toggle() {
+        shown = !shown;
     }
 
     Rectangle {
@@ -52,11 +45,11 @@ Item {
         color: "black"
         opacity: 0.6
     }
-    
+
     RowLayout {
         anchors.fill: parent
         spacing: 0
-        
+
         IconButton {
             anchors {
                 top: parent.top
@@ -76,7 +69,7 @@ Item {
             color: Theme.palette.normal.foregroundText
             Layout.fillWidth: true
         }
-        
+
         ImageButton {
             anchors {
                 top: parent.top
@@ -95,7 +88,7 @@ Item {
             //            IconButton {
             //                iconName: "view-grid-symbolic"
         }
-        
+
         ImageButton {
             anchors {
                 top: parent.top
@@ -105,15 +98,6 @@ Item {
             iconSource: "assets/options.png"
             //            IconButton {
             //                iconName: "contextual-menu"
-        }
-    }
-
-    MouseArea {
-        id: interactionDetector
-        anchors.fill: parent
-        onPressed: {
-            mouse.accepted = false;
-            autohideTimer.restart();
         }
     }
 }

@@ -42,35 +42,24 @@ Item {
         anchors.fill: parent
         model: galleryView.model
         visible: opacity != 0.0
-        onShowHeader: header.show();
-        onHideHeader: header.hide();
+        onToggleHeader: header.toggle();
     }
 
     PhotogridView {
         id: photogridView
         anchors.fill: parent
+        headerHeight: header.height
         model: galleryView.model
         visible: opacity != 0.0
         onPhotoClicked: {
             slideshowView.showPhotoAtIndex(index);
             header.gridMode = false;
         }
-        onShowHeader: header.show();
-        onHideHeader: header.hide();
     }
 
     onInViewChanged: if (inView) {
                          header.show();
                      }
-
-    MouseArea {
-        id: interactionDetector
-        anchors.fill: parent
-        onPressed: {
-            mouse.accepted = false;
-            header.show();
-        }
-    }
 
     state: header.gridMode ? "GRID" : "SLIDESHOW"
     states: [
