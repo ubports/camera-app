@@ -344,57 +344,7 @@ Item {
             }
         }
     }
-    
-    //    Flipable {
-    //        id: viewFinderSwitcher
-    //        anchors.fill: parent
-    
-    //        front: viewFinder
-    //        back: ShaderEffectSource {
-    //            id: viewFinderGrab
-    //            width: viewFinder.width
-    //            height: viewFinder.height
-    //            live: false
-    //            sourceItem: viewFinder
-    //        }
-    
-    //        transform: [
-    //            Scale {
-    //                id: viewFinderSwitcherScale
-    //                origin.x: viewFinderSwitcher.width/2
-    //                origin.y: viewFinderSwitcher.height/2
-    //                xScale: 1
-    //                yScale: xScale
-    //            },
-    //            Rotation {
-    //                id: viewFinderSwitcherRotation
-    //                origin.x: viewFinderSwitcher.width/2
-    //                origin.y: viewFinderSwitcher.height/2
-    //                axis.x: 0; axis.y: 1; axis.z: 0
-    //                angle: 0
-    //            }
-    //        ]
-    
-    
-    //        SequentialAnimation {
-    //            id: viewFinderSwitcherAnimation
-    
-    //            ParallelAnimation {
-    //                SequentialAnimation {
-    //                    UbuntuNumberAnimation {target: viewFinderSwitcherScale; property: "xScale"; from: 1.0; to: 0.8; duration: UbuntuAnimation.BriskDuration * 6; easing: UbuntuAnimation.StandardEasing}
-    //                    UbuntuNumberAnimation {target: viewFinderSwitcherScale; property: "xScale"; from: 0.8; to: 1.0; duration: UbuntuAnimation.BriskDuration * 6; easing: UbuntuAnimation.StandardEasingReverse}
-    //                }
-    //                UbuntuNumberAnimation {
-    //                    target: viewFinderSwitcherRotation
-    //                    property: "angle"
-    //                    from: 180
-    //                    to: 0
-    //                    duration: UbuntuAnimation.BriskDuration * 2 * 6
-    //                }
-    //            }
-    //        }
-    //    }
-    
+
     FocusRing {
         id: focusRing
         height: units.gu(13)
