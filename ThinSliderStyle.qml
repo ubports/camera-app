@@ -45,6 +45,9 @@ Item {
     property string backgroundImage: "assets/zoom_bar@18.png"
     property string thumbImage: "assets/zoom_point@18.png"
 
+    implicitHeight: thumbShape.height + 2.0 * thumbSpacing + units.gu(2)
+    implicitWidth: backgroundShape.width
+
     Image {
         id: backgroundShape
         anchors {
@@ -66,13 +69,5 @@ Item {
         height: thumbHeight
         anchors.verticalCenter: backgroundShape.verticalCenter
         source: thumbImage
-    }
-
-    // set styledItem's implicitHeight to the thumbShape's height
-    // this can also control the default sensing area
-    Binding {
-        target: styledItem
-        property: "implicitHeight"
-        value: thumbShape.height + 2.0 * thumbSpacing
     }
 }

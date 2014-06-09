@@ -15,79 +15,64 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 1.0// as SDK
+import Ubuntu.Components 1.0
 
 Item {
-    id: zoom
+    id: zoomControl
+    property alias minimumValue: slider.minimumValue
     property alias maximumValue: slider.maximumValue
     property alias value: slider.value
-    property real zoomStep: (slider.maximumValue - slider.minimumValue) / 20
-    property int iconsRotation
 
-    AbstractButton {
-        id: minus
-        objectName: "zoomMinus"
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
-        width: minusIcon.width
-        height: minusIcon.height
-        onClicked: slider.value = Math.max(value - zoom.zoomStep, slider.minimumValue)
-        onPressedChanged: if (pressed) minusTimer.restart(); else minusTimer.stop();
-        rotation: iconsRotation
+    function show() {
+        zoomAutoHide.restart();
+        shown = true;
+    }
 
-        Image {
-            id: minusIcon
-            anchors.centerIn: parent
-            source: "assets/zoom_minus.png"
-            sourceSize.height: units.gu(2)
-            smooth: true
+    property bool shown: false
+    visible: opacity != 0.0
+    opacity: shown ? 1.0 : 0.0
+    layer.enabled: fadeAnimation.running
+    Behavior on opacity { UbuntuNumberAnimation {id: fadeAnimation} }
+
+    Timer {
+        id: zoomAutoHide
+        interval: 2000
+        onTriggered: {
+            zoomControl.shown = false;
         }
+    }
 
-        Timer {
-            id: minusTimer
-            interval: 40
-            repeat: true
-            onTriggered: slider.value = Math.max(value - zoom.zoomStep, slider.minimumValue)
+    implicitHeight: slider.height
+
+    Image {
+        id: minusIcon
+        anchors {
+            left: parent.left
+            verticalCenter: parent.verticalCenter
         }
+        source: "assets/zoom_minus.png"
     }
 
     Slider {
         id: slider
         style: ThinSliderStyle {}
-        anchors.left: minus.right
-        anchors.right: plus.left
-        anchors.verticalCenter: parent.verticalCenter
+        anchors {
+            left: minusIcon.right
+            right: plusIcon.left
+        }
+
         live: true
         minimumValue: 1.0 // No zoom => 1.0 zoom factor
         value: minimumValue
-        height: slider.implicitHeight + units.gu(4)
     }
 
-    AbstractButton {
-        id: plus
-        objectName: "zoomPlus"
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        width: plusIcon.width
-        height: plusIcon.height
-        onClicked: slider.value = Math.min(value + zoom.zoomStep, slider.maximumValue)
-        onPressedChanged: if (pressed) plusTimer.restart(); else plusTimer.stop();
-        rotation: iconsRotation
-
-        Image {
-            id: plusIcon
-            anchors.centerIn: parent
-            source: "assets/zoom_plus.png"
-            sourceSize.height: units.gu(2)
-            smooth: true
+    Image {
+        id: plusIcon
+        anchors {
+            right: parent.right
+            verticalCenter: parent.verticalCenter
         }
-
-        Timer {
-            id: plusTimer
-            interval: 40
-            repeat: true
-            onTriggered: slider.value = Math.min(value + zoom.zoomStep, slider.maximumValue)
-        }
+        source: "assets/zoom_plus.png"
     }
 }
 

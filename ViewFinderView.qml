@@ -23,14 +23,14 @@ Item {
     id: viewFinderView
 
     property bool overlayVisible: true
-    property bool touchAcquired: bottomEdge.pressed
+    property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property bool inView
     signal photoTaken
 
     DeviceOrientation {
         id: device
     }
-    
+
     Camera {
         id: camera
         flash.mode: Camera.FlashOff
@@ -551,8 +551,7 @@ Item {
                 if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
                 camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
             }
-            
-            
+
             CircleButton {
                 id: recordModeButton
                 objectName: "recordModeButton"
@@ -595,8 +594,55 @@ Item {
                 iconName: "camera-flip"
                 onClicked: controls.switchCamera()
             }
+
+
+            PinchArea {
+                id: zoomPinchArea
+                anchors {
+                    top: parent.top
+                    bottom: shootButton.top
+                    bottomMargin: units.gu(1)
+                    left: parent.left
+                    right: parent.right
+                }
+
+                property real initialZoom
+                property real minimumScale: 0.3
+                property real maximumScale: 3.0
+                property bool active: false
+
+                onPinchStarted: {
+                    active = true;
+                    initialZoom = zoomControl.value;
+                    zoomControl.show();
+                }
+                onPinchUpdated: {
+                    zoomControl.show();
+                    var scaleFactor = MathUtils.projectValue(pinch.scale, 1.0, maximumScale, 0.0, zoomControl.maximumValue);
+                    zoomControl.value = MathUtils.clamp(initialZoom + scaleFactor, zoomControl.minimumValue, zoomControl.maximumValue);
+                }
+                onPinchFinished: {
+                    active = false;
+                }
+            }
+
+            ZoomControl {
+                id: zoomControl
+
+                anchors {
+                    bottom: shootButton.top
+                    bottomMargin: units.gu(2)
+                    left: parent.left
+                    right: parent.right
+                    leftMargin: recordModeButton.x
+                    rightMargin: parent.width - (swapButton.x + swapButton.width)
+                }
+                maximumValue: camera.maximumZoom
+
+                Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
+            }
         }
-        
+
         Item {
             id: options
             
@@ -710,28 +756,6 @@ Item {
 //                }
 //            }
 //        ]
-
-//        ZoomControl {
-//            id: zoomControl
-//            maximumValue: camera.maximumZoom
-//            height: units.gu(4.5)
-
-//            anchors.left: parent.left
-//            anchors.right: parent.right
-//            anchors.leftMargin: units.gu(0.75)
-//            anchors.rightMargin: units.gu(0.75)
-//            anchors.bottomMargin: controlsArea.state == "split" ? units.gu(3.25) : units.gu(0.5)
-//            anchors.topMargin: controlsArea.state == "split" ? units.gu(3.25) : units.gu(0.5)
-
-//            visible: camera.maximumZoom > 1
-
-//            // Create a two way binding between the zoom control value and the actual camera zoom,
-//            // so that they can stay in sync when the zoom is changed from the UI or from the hardware
-//            Binding { target: zoomControl; property: "value"; value: camera.currentZoom }
-//            Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
-
-//            iconsRotation: device.rotationAngle - controlsArea.rotation
-//        }
 
 //        Toolbar {
 //            id: toolbar
