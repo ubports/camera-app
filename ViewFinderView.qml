@@ -492,6 +492,20 @@ Item {
                 onPinchFinished: {
                     active = false;
                 }
+
+
+                MouseArea {
+                    id: manualFocusMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        camera.manualFocus(mouse.x, mouse.y);
+                        mouse.accepted = false;
+                    }
+                    // FIXME: calling 'isFocusPointModeSupported' fails with
+                    // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
+                    //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
+                    enabled: !application.desktopMode
+                }
             }
 
             ZoomControl {
@@ -508,26 +522,6 @@ Item {
                 maximumValue: camera.maximumZoom
 
                 Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
-            }
-
-            MouseArea {
-                id: manualFocusMouseArea
-                anchors {
-                    top: parent.top
-                    bottom: shootButton.top
-                    bottomMargin: units.gu(1)
-                    left: parent.left
-                    right: parent.right
-                }
-                onPressed: {
-                    camera.manualFocus(mouse.x, mouse.y);
-                    mouse.accepted = false;
-                }
-                // FIXME: calling 'isFocusPointModeSupported' fails with
-                // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
-                //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
-                enabled: !application.desktopMode
-                preventStealing: true
             }
 
             FocusRing {
