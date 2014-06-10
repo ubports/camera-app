@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Canonical, Ltd.
+ * Copyright (C) 2014 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,25 +18,36 @@ import QtQuick 2.0
 import Ubuntu.Components 1.0
 
 Image {
-    property var center
+    id: focusRing
+
+    property point center
+    function show() {
+        hideTimer.restart();
+        rotationAnimation.restart();
+        opacity = 1.0;
+    }
+
+    x: center.x - width / 2.0
+    y: center.y - height / 2.0
+    width: units.gu(11)
+    height: units.gu(11)
     source: "assets/focus_ring.png"
 
-    Behavior on opacity { NumberAnimation { duration: 500 } }
-    onCenterChanged: {
-        x = center.x - focusRing.width * 0.5
-        y = center.y - focusRing.height * 0.5
-        opacity = 1.0
-        restartTimeout()
-    }
-
-    function restartTimeout()
-    {
-        focusRingTimeout.restart()
-    }
+    opacity: 0.0
+    Behavior on opacity { UbuntuNumberAnimation {} }
 
     Timer {
-        id: focusRingTimeout
-        interval: 2000
-        onTriggered: focusRing.opacity = 0.0
+        id: hideTimer
+        interval: 1000
+        onTriggered: focusRing.opacity = 0.0;
+    }
+
+    UbuntuNumberAnimation {
+        id: rotationAnimation
+        target: focusRing
+        property: "rotation"
+        from: 0
+        to: 90
+        duration: UbuntuAnimation.SleepyDuration
     }
 }

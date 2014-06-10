@@ -35,13 +35,35 @@ Item {
         id: camera
         flash.mode: Camera.FlashOff
         captureMode: Camera.CaptureStillImage
-        focus.focusMode: Camera.FocusAuto //TODO: Not sure if Continuous focus is better here
-        focus.focusPointMode: application.desktopMode ? Camera.FocusPointAuto : (focusRing.opacity > 0 ? Camera.FocusPointCustom : Camera.FocusPointAuto)
-        
+
+        function manualFocus(x, y) {
+            focusRing.center = Qt.point(x, y);
+            focusRing.show();
+            autoFocusTimer.restart();
+            focus.focusMode = Camera.FocusAuto;
+            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(focusRing.center);
+            focus.focusPointMode = Camera.FocusPointCustom;
+        }
+
+        function autoFocus() {
+            focus.focusMode = Camera.FocusContinuous;
+            focus.focusPointMode = Camera.FocusPointAuto;
+        }
+
+        property var autoFocusTimer: Timer {
+            interval: 5000
+            onTriggered: camera.autoFocus();
+        }
+
+        focus {
+            focusMode: Camera.FocusContinuous
+            focusPointMode: Camera.FocusPointAuto
+        }
+
         property AdvancedCameraSettings advanced: AdvancedCameraSettings {
             camera: camera
         }
-        
+
         Component.onCompleted: camera.start();
         
         /* Use only digital zoom for now as it's what phone cameras mostly use.
@@ -59,11 +81,9 @@ Item {
         imageCapture {
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
-                focusRing.opacity = 0.0;
             }
             onImageCaptured: {
                 print("CAPTURED")
-                focusRing.opacity = 0.0;
                 snapshot.source = preview;
             }
             onImageSaved: {
@@ -102,7 +122,7 @@ Item {
                 camera.stop()
         }
     }
-    
+
     Item {
         id: viewFinderSwitcher
         anchors.fill: parent
@@ -189,10 +209,6 @@ Item {
             width: parent.width
             height: parent.height
             source: camera
-            //            opacity: viewFinderSwitcherRotation.angle <= 90 ? 1.0 : 0.0
-            //            visible: viewFinderSwitcherRotation.angle <= 90
-            //            onOpacityChanged: print("viewFinder OPACITY", opacity)
-            
             
             /* This rotation need to be applied since the camera hardware in the
                    Galaxy Nexus phone is mounted at an angle inside the device, so the video
@@ -216,110 +232,17 @@ Item {
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: application.desktopMode ? 180 : 0
             }
-            
+
             ViewFinderGeometry {
                 id: viewFinderGeometry
                 anchors.centerIn: parent
-                
+
                 cameraResolution: camera.advanced.resolution
                 viewFinderHeight: viewFinder.height
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
-                
-                Item {
-                    id: itemScale
-                    visible: false
-                }
-                
-                //            PinchArea {
-                //                id: area
-                
-                //                state: device.isLandscape ? "split" : "joined"
-                //                anchors.left: viewFinderGeometry.left
-                //                anchors.right: viewFinderGeometry.right
-                
-                //                pinch.minimumScale: 0.0
-                //                pinch.maximumScale: camera.maximumZoom
-                //                pinch.target: itemScale
-                
-                //                states: [
-                //                    State {
-                //                        name: "joined"
-                //                        PropertyChanges {
-                //                            target: area
-                //                            height: zoomControl.y
-                //                        }
-                //                        AnchorChanges {
-                //                            target: area;
-                //                            anchors.top: viewFinderGeometry.top
-                //                        }
-                //                    },
-                //                    State {
-                //                        name: "split"
-                //                        PropertyChanges {
-                //                            target: area
-                //                            y: device.isInverted ?  zoomControl.height : toolbar.height
-                //                            height: viewFinderGeometry.height - zoomControl.height - toolbar.height
-                //                        }
-                //                        AnchorChanges {
-                //                            target: area;
-                //                            anchors.top: undefined
-                //                        }
-                //                    }
-                //                ]
-                
-                //                onPinchStarted: {
-                //                    if (!application.desktopMode)
-                //                        focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
-                //                }
-                
-                //                onPinchFinished: {
-                //                    if (!application.desktopMode) {
-                //                        focusRing.restartTimeout()
-                //                        var center = pinch.center
-                //                        var focusPoint = viewFinder.mapPointToSourceNormalized(pinch.center);
-                //                        camera.focus.customFocusPoint = focusPoint;
-                //                    }
-                //                }
-                
-                //                onPinchUpdated: {
-                //                    if (!application.desktopMode) {
-                //                        focusRing.center = main.mapFromItem(area, pinch.center.x, pinch.center.y);
-                //                        camera.currentZoom = itemScale.scale
-                //                    }
-                //                }
-                
-                //                MouseArea {
-                //                    id: mouseArea
-                
-                //                    anchors.fill: parent
-                
-                //                    onPressed: {
-                //                        if (!application.desktopMode && !area.pinch.active)
-                //                            focusRing.center = main.mapFromItem(area, mouse.x, mouse.y);
-                //                    }
-                
-                //                    onReleased:  {
-                //                        if (!application.desktopMode && !area.pinch.active) {
-                //                            var focusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(mouse.x, mouse.y))
-                
-                //                            focusRing.restartTimeout()
-                //                            camera.focus.customFocusPoint = focusPoint;
-                //                        }
-                //                    }
-                
-                //                    drag {
-                //                        target: application.desktopMode ? "" : focusRing
-                //                        minimumY: area.y - focusRing.height / 2
-                //                        maximumY: area.y + area.height - focusRing.height / 2
-                //                        minimumX: area.x - focusRing.width / 2
-                //                        maximumX: area.x + area.width - focusRing.width / 2
-                //                    }
-                
-                //                }
-                //            }
             }
-            
+
             Rectangle {
                 id: shootFeedback
                 anchors.fill: parent
@@ -345,13 +268,6 @@ Item {
         }
     }
 
-    FocusRing {
-        id: focusRing
-        height: units.gu(13)
-        width: units.gu(13)
-        opacity: 0.0
-    }
-    
     Item {
         id: overlay
         anchors.fill: parent
@@ -590,6 +506,30 @@ Item {
                 maximumValue: camera.maximumZoom
 
                 Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
+            }
+
+            MouseArea {
+                id: manualFocusMouseArea
+                anchors {
+                    top: parent.top
+                    bottom: shootButton.top
+                    bottomMargin: units.gu(1)
+                    left: parent.left
+                    right: parent.right
+                }
+                onPressed: {
+                    camera.manualFocus(mouse.x, mouse.y);
+                    mouse.accepted = false;
+                }
+                // FIXME: calling 'isFocusPointModeSupported' fails with
+                // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
+                //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
+                enabled: !application.desktopMode
+                preventStealing: true
+            }
+
+            FocusRing {
+                id: focusRing
             }
         }
 
