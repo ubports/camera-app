@@ -31,6 +31,7 @@ Item {
 
     property bool gridMode: false
     property bool shown: true
+    signal exit
 
     function show() {
         shown = true;
@@ -60,7 +61,7 @@ Item {
             iconWidth: iconHeight
             iconName: "back"
             iconColor: Theme.palette.normal.foregroundText
-            onClicked: galleryView.exit()
+            onClicked: header.exit()
         }
 
         Label {

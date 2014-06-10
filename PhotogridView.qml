@@ -29,6 +29,9 @@ Item {
         gridView.positionViewAtIndex(index, GridView.Center);
     }
 
+    function exit() {
+    }
+
     GridView {
         id: gridView
         anchors.fill: parent

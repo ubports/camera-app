@@ -37,6 +37,11 @@ Item {
         slideshowView.showLastPhotoTaken();
     }
 
+    onExit: {
+        slideshowView.exit();
+        photogridView.exit();
+    }
+
     SlideshowView {
         id: slideshowView
         anchors.fill: parent
@@ -100,5 +105,6 @@ Item {
 
     GalleryViewHeader {
         id: header
+        onExit: galleryView.exit()
     }
 }
