@@ -23,6 +23,9 @@
 
 void Components::registerTypes(const char *uri)
 {
+   Q_ASSERT(uri == QLatin1String("CameraApp"));
+
+    // @uri CameraApp
     qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
 }
 

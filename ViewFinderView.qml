@@ -299,15 +299,17 @@ Item {
 
                 Image {
                     anchors {
-                        fill: parent
-                        bottomMargin: -height/2
+                        left: parent.left
+                        right: parent.right
+                        top: parent.top
                     }
+                    height: parent.height * 2
                     opacity: 0.3
                     source: "assets/ubuntu_shape.svg"
                     sourceSize.width: width
                     sourceSize.height: height
                 }
-                
+
                 Row {
                     id: indicators
                     
