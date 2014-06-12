@@ -1,10 +1,6 @@
 /*
  * Copyright (C) 2014 Canonical, Ltd.
  *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
- *  Florian Boucault <florian.boucault@canonical.com>
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -18,21 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtQuick>
-#include "components.h"
-#include "advancedcamerasettings.h"
 #include "fileoperations.h"
+#include <QtCore/QFile>
 
-void Components::registerTypes(const char *uri)
+FileOperations::FileOperations(QObject *parent) :
+    QObject(parent)
 {
-   Q_ASSERT(uri == QLatin1String("CameraApp"));
-
-    // @uri CameraApp
-    qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
-    qmlRegisterType<FileOperations>(uri, 0, 1, "FileOperations");
 }
 
-void Components::initializeEngine(QQmlEngine *engine, const char *uri)
+bool FileOperations::remove(const QString & fileName) const
 {
-    QQmlExtensionPlugin::initializeEngine(engine, uri);
+    return QFile::remove(fileName);
 }

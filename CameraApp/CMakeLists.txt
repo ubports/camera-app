@@ -3,11 +3,13 @@
 set(plugin_SRCS
     components.cpp
     advancedcamerasettings.cpp
+    fileoperations.cpp
     )
 
 set(plugin_HDRS
     components.h
     advancedcamerasettings.h
+    fileoperations.h
     )
 
 add_library(camera-qml SHARED ${plugin_SRCS} ${plugin_HDRS})

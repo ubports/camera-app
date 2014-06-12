@@ -31,6 +31,7 @@ Item {
 
     property bool gridMode: false
     property bool shown: true
+    property alias actions: actionsDrawer.actions
     signal exit
 
     function show() {
@@ -97,8 +98,86 @@ Item {
             }
             width: units.gu(6)
             iconSource: "assets/options.png"
+            visible: actionsDrawer.actions.length > 0
             //            IconButton {
             //                iconName: "contextual-menu"
+            onClicked: actionsDrawer.opened = !actionsDrawer.opened
+        }
+    }
+
+    Item {
+        id: actionsDrawer
+
+        anchors {
+            top: parent.bottom
+            right: parent.right
+        }
+        width: units.gu(20)
+        height: childrenRect.height
+        clip: actionsColumn.y != 0
+
+        function close() {
+            opened = false;
+        }
+
+        property bool opened: false
+        property list<Action> actions
+
+        InverseMouseArea {
+            onPressed: actionsDrawer.close();
+            enabled: actionsDrawer.opened
+        }
+
+        Column {
+            id: actionsColumn
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
+            y: actionsDrawer.opened ? 0 : -height
+            Behavior on y { UbuntuNumberAnimation {} }
+
+            Repeater {
+                model: actionsDrawer.actions
+                delegate: AbstractButton {
+                    anchors {
+                        left: actionsColumn.left
+                        right: actionsColumn.right
+                    }
+                    height: units.gu(6)
+
+                    action: modelData
+                    onClicked: actionsDrawer.close()
+
+                    Rectangle {
+                        anchors.fill: parent
+                        color: Qt.rgba(0.0, 0.0, 0.0, 0.6)
+                    }
+
+                    Label {
+                        id: label
+                        anchors {
+                            left: parent.left
+                            leftMargin: units.gu(2)
+                            verticalCenter: parent.verticalCenter
+                        }
+                        text: model.text
+                        color: Theme.palette.normal.foregroundText
+                    }
+
+                    Icon {
+                        anchors {
+                            right: parent.right
+                            rightMargin: units.gu(2)
+                            verticalCenter: parent.verticalCenter
+                        }
+                        width: height
+                        height: label.paintedHeight
+                        color: Theme.palette.normal.foregroundText
+                        name: model.iconName
+                    }
+                }
+            }
         }
     }
 }

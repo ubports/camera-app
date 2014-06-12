@@ -16,13 +16,32 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.0
+import Ubuntu.Components.ListItems 1.0 as ListItems
+import Ubuntu.Components.Popups 1.0
+import Ubuntu.OnlineAccounts 0.1
+import Ubuntu.OnlineAccounts.Client 0.1
+import Ubuntu.Components.Extras 0.1
+import CameraApp 0.1
 
 Item {
     id: slideshowView
 
     property var model
     property int currentIndex: listView.currentIndex
+    property string currentFilePath: slideshowView.model.get(slideshowView.currentIndex, "filePath")
     signal toggleHeader
+    property list<Action> actions: [
+                Action {
+                    text: i18n.tr("Share")
+                    iconName: "share"
+                    onTriggered: PopupUtils.open(accountsPopoverComponent)
+                },
+                Action {
+                    text: i18n.tr("Delete")
+                    iconName: "delete"
+                    onTriggered: PopupUtils.open(deleteDialogComponent)
+                }
+            ]
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -144,4 +163,140 @@ Item {
             }
         }
     }
+
+
+    Component {
+        id: sharePopoverComponent
+
+        Popover {
+            id: sharePopover
+
+            property string fileToShare: sharePopover.fileToShare
+            property string userAccountId: sharePopover.userAccountId
+
+            Share {
+                anchors {
+                    left: parent.left
+                    top: parent.top
+                    right: parent.right
+                }
+                height: units.gu(40)
+                fileToShare: sharePopover.fileToShare
+                userAccountId: sharePopover.userAccountId
+                onUploadCompleted: PopupUtils.close(sharePopover);
+                onCanceled: PopupUtils.close(sharePopover);
+            }
+        }
+    }
+
+    Component {
+        id: accountsPopoverComponent
+
+        Popover {
+            id: accountsPopover
+
+            AccountServiceModel {
+                id: accounts
+                serviceType: "sharing"
+            }
+
+            ProviderModel {
+                id: providers
+                applicationId: "camera-app"
+            }
+
+            Setup {
+                id: accountsSetup
+                // FIXME: workaround lack of 'applicationId' property in earlier versions of the API
+                // code should simply be: applicationId: providers.applicationId
+                Component.onCompleted: if (accountsSetup.hasOwnProperty("applicationId")) {
+                                           accountsSetup.applicationId = providers.applicationId;
+                                       }
+            }
+
+            Column {
+                id: providersList
+                visible: accounts.count == 0
+                anchors {
+                    left: parent.left
+                    top: parent.top
+                    right: parent.right
+                }
+
+                ListItems.Standard {
+                    text: i18n.tr("Select sharing account to setup:")
+                }
+
+                Repeater {
+                    model: providers
+                    delegate: ListItems.Standard {
+                        text: model.displayName
+                        iconName: model.iconName
+
+                        onClicked: {
+                            accountsSetup.providerId = providerId;
+                            accountsSetup.exec();
+                        }
+                    }
+                }
+            }
+
+            Column {
+                id: accountsList
+                visible: accounts.count != 0
+                anchors {
+                    left: parent.left
+                    top: parent.top
+                    right: parent.right
+                }
+                Repeater {
+                    model: accounts
+                    delegate: ListItems.Standard {
+                        Account {
+                            id: account
+                            objectHandle: model.accountHandle
+                        }
+
+                        text: account.provider.displayName
+                        iconName: account.provider.iconName
+
+                        onClicked: {
+                            PopupUtils.close(accountsPopover);
+                            PopupUtils.open(sharePopoverComponent, null, {"fileToShare": slideshowView.currentFilePath,
+                                                                          "userAccountId": account.accountId});
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: deleteDialogComponent
+
+        Dialog {
+            id: deleteDialog
+
+            title: i18n.tr("Delete media?")
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            Button {
+                text: i18n.tr("Cancel")
+                color: UbuntuColors.warmGrey
+                onClicked: PopupUtils.close(deleteDialog)
+            }
+            Button {
+                text: i18n.tr("Delete")
+                color: UbuntuColors.orange
+                onClicked: {
+                    fileOperations.remove(slideshowView.currentFilePath);
+                    PopupUtils.close(deleteDialog);
+                }
+            }
+        }
+    }
+
 }

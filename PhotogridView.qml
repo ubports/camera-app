@@ -24,6 +24,7 @@ Item {
     property var model
     signal photoClicked(int index)
     property real headerHeight
+    property list<Action> actions
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);

@@ -23,6 +23,7 @@ Item {
 
     signal exit
     property bool inView
+    property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FolderListModel {
         folder: application.mediaLocation
         nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG" ]
@@ -106,5 +107,6 @@ Item {
     GalleryViewHeader {
         id: header
         onExit: galleryView.exit()
+        actions: currentView.actions
     }
 }
