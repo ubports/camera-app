@@ -143,8 +143,7 @@ Item {
             anchors.leftMargin: parent.iconSpacing
             rotation: iconsRotation
 
-            // Disabled the video recording button for V1.0 since the feature is broken, leave it enabled for desktopMode
-            enabled: application.desktopMode
+            enabled: toolbar.canCapture
             opacity: 0.5
 
             width: toolbar.iconWidth
