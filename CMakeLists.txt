@@ -13,6 +13,9 @@ find_package(Qt5Quick)
 find_package(Qt5Multimedia)
 find_package(Qt5Gui)
 
+find_program(INTLTOOL_MERGE intltool-merge)
+find_program(INTLTOOL_EXTRACT intltool-extract)
+
 # Standard install paths
 include(GNUInstallDirs)
 
@@ -21,6 +24,7 @@ option(CLICK_MODE "Installs to a contained location" off)
 
 set(CAMERA_APP camera-app)
 set(AUTOPILOT_DIR camera_app)
+set(DESKTOP_FILE camera-app.desktop)
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
@@ -93,14 +97,11 @@ install(DIRECTORY ${THEME_DIR}
     DESTINATION ${CAMERA_APP_DIR}
     )
 
-set(DESKTOP_FILE camera-app.desktop)
-file(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE})
-file(STRINGS ${DESKTOP_FILE}.in DESKTOP_FILE_CONTENTS)
-foreach(LINE ${DESKTOP_FILE_CONTENTS})
-    string(REGEX REPLACE "tr\\\(\"(.*)\"\\\)" "\\1" LINE "${LINE}")
-    string(CONFIGURE "${LINE}" LINE)
-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} "${LINE}\n")
-endforeach(LINE)
+configure_file(${DESKTOP_FILE}.in.in ${DESKTOP_FILE}.in)
+add_custom_target(${DESKTOP_FILE} ALL
+         COMMENT "Merging translations into ${DESKTOP_FILE}"
+         COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${DESKTOP_FILE}.in ${DESKTOP_FILE} >/dev/null
+        )
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
@@ -112,7 +113,8 @@ add_subdirectory(desktop)
 
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-     **.qml **.desktop.in)
+     **.qml)
+list(APPEND I18N_SRC_FILES ${DESKTOP_FILE}.in.in)
 list(SORT I18N_SRC_FILES)
 
 # for dh_translations to extract the domain
