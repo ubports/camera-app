@@ -46,8 +46,15 @@ Item {
     }
 
     Connections {
-        target: camera
-        onCameraStateChanged: camera.flash.mode = settings.flashMode
+        target: camera.imageCapture
+        onReadyChanged: {
+            if (camera.imageCapture.ready) {
+                // FIXME: this is a workaround: simply setting
+                // camera.flash.mode to the settings value does not have any effect
+                camera.flash.mode = Camera.FlashOff;
+                camera.flash.mode = settings.flashMode;
+            }
+        }
     }
 
     Panel {
