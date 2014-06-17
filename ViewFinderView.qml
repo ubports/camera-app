@@ -41,7 +41,7 @@ Item {
             viewFinderOverlay.showFocusRing(x, y);
             autoFocusTimer.restart();
             focus.focusMode = Camera.FocusAuto;
-            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(focusRing.center);
+            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y));
             focus.focusPointMode = Camera.FocusPointCustom;
         }
 
