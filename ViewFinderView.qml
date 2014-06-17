@@ -38,8 +38,7 @@ Item {
         captureMode: Camera.CaptureStillImage
 
         function manualFocus(x, y) {
-            focusRing.center = Qt.point(x, y);
-            focusRing.show();
+            viewFinderOverlay.showFocusRing(x, y);
             autoFocusTimer.restart();
             focus.focusMode = Camera.FocusAuto;
             focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(focusRing.center);

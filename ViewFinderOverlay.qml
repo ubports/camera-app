@@ -26,6 +26,11 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
 
+    function showFocusRing(x, y) {
+        focusRing.center = Qt.point(x, y);
+        focusRing.show();
+    }
+
     QtObject {
         id: settings
 
