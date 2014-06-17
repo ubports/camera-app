@@ -24,6 +24,7 @@
 #include <QtMultimedia/QCameraControl>
 #include <QtMultimedia/QMediaService>
 #include <QtMultimedia/QVideoDeviceSelectorControl>
+#include <QtMultimedia/QCameraFlashControl>
 
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
@@ -113,11 +114,23 @@ QCameraControl *AdvancedCameraSettings::camcontrolFromCamera(QCamera *camera) co
 
     QCameraControl *camControl = qobject_cast<QCameraControl*>(control);
     if (camControl == 0) {
-        qWarning() << "No viewfinder settings support";
+        qWarning() << "No camera control support";
         return 0;
     }
 
     return camControl;
+}
+
+QCameraFlashControl *AdvancedCameraSettings::flashControlFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QCameraFlashControl_iid);
+    QCameraFlashControl *flashControl = qobject_cast<QCameraFlashControl*>(control);
+
+    if (flashControl == 0) {
+        qWarning() << "No flash control support";
+    }
+
+    return flashControl;
 }
 
 QObject* AdvancedCameraSettings::camera() const
@@ -142,29 +155,42 @@ void AdvancedCameraSettings::setCamera(QObject *cameraObject)
         m_camera = camera;
         if (m_camera != 0) {
             this->connect(m_camera, SIGNAL(stateChanged(QCamera::State)),
-                          SIGNAL(resolutionChanged()));
-        }
-
-        QVideoDeviceSelectorControl* selector = selectorFromCamera(m_camera);
-        m_deviceSelector = selector;
-        if (selector) {
-            m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
-
-            QCameraViewfinderSettingsControl* viewfinder = viewfinderFromCamera(m_camera);
-            if (viewfinder) {
-                m_viewFinderControl = viewfinder;
-                resolutionChanged();
+                          SLOT(onCameraStateChanged()));
+            if (m_camera->state() == QCamera::LoadedState || m_camera->state() == QCamera::ActiveState) {
+                readCapabilities();
             }
 
-            QCameraControl* cameraControl = camcontrolFromCamera(m_camera);
-            if (cameraControl) {
-                QObject::connect(cameraControl,
-                                 SIGNAL(captureModeChanged(QCamera::CaptureModes)),
-                                 this, SIGNAL(resolutionChanged()));
+            QVideoDeviceSelectorControl* selector = selectorFromCamera(m_camera);
+            m_deviceSelector = selector;
+            if (selector) {
+                m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
             }
         }
 
         Q_EMIT cameraChanged();
+    }
+}
+
+void AdvancedCameraSettings::readCapabilities()
+{
+    m_viewFinderControl = viewfinderFromCamera(m_camera);
+    m_cameraControl = camcontrolFromCamera(m_camera);
+    if (m_cameraControl) {
+        QObject::connect(m_cameraControl,
+                         SIGNAL(captureModeChanged(QCamera::CaptureModes)),
+                         this, SIGNAL(resolutionChanged()));
+    }
+
+    m_cameraFlashControl = flashControlFromCamera(m_camera);
+
+    Q_EMIT resolutionChanged();
+    Q_EMIT hasFlashChanged();
+}
+
+void AdvancedCameraSettings::onCameraStateChanged()
+{
+    if (m_camera->state() == QCamera::LoadedState || m_camera->state() == QCamera::ActiveState) {
+        readCapabilities();
     }
 }
 
@@ -177,6 +203,7 @@ void AdvancedCameraSettings::setActiveCameraIndex(int index)
         }
         Q_EMIT activeCameraIndexChanged();
         Q_EMIT resolutionChanged();
+        Q_EMIT hasFlashChanged();
     }
 }
 
@@ -190,4 +217,15 @@ QSize AdvancedCameraSettings::resolution() const
     }
 
     return QSize();
+}
+
+bool AdvancedCameraSettings::hasFlash() const
+{
+    if (m_cameraFlashControl) {
+        return m_cameraFlashControl->isFlashModeSupported(QCameraExposure::FlashAuto)
+            && m_cameraFlashControl->isFlashModeSupported(QCameraExposure::FlashOff)
+            && m_cameraFlashControl->isFlashModeSupported(QCameraExposure::FlashOn);
+    } else {
+        return false;
+    }
 }

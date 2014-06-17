@@ -27,6 +27,7 @@
 #include <QtMultimedia/QMediaControl>
 
 class QCameraControl;
+class QCameraFlashControl;
 
 class AdvancedCameraSettings : public QObject
 {
@@ -35,6 +36,7 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
                 NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
+    Q_PROPERTY (bool hasFlash READ hasFlash NOTIFY hasFlashChanged)
 
 public:
     explicit AdvancedCameraSettings(QObject *parent = 0);
@@ -43,16 +45,23 @@ public:
     void setCamera(QObject* camera);
     void setActiveCameraIndex(int index);
     QSize resolution() const;
+    bool hasFlash() const;
+    void readCapabilities();
 
 Q_SIGNALS:
     void cameraChanged();
     void activeCameraIndexChanged();
     void resolutionChanged();
+    void hasFlashChanged();
+
+private Q_SLOTS:
+    void onCameraStateChanged();
 
 private:
     QVideoDeviceSelectorControl* selectorFromCamera(QCamera *camera) const;
     QCameraViewfinderSettingsControl* viewfinderFromCamera(QCamera *camera) const;
     QCameraControl *camcontrolFromCamera(QCamera *camera) const;
+    QCameraFlashControl* flashControlFromCamera(QCamera* camera) const;
     QCamera* cameraFromCameraObject(QObject* cameraObject) const;
     QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
 
@@ -61,6 +70,9 @@ private:
     QVideoDeviceSelectorControl* m_deviceSelector;
     int m_activeCameraIndex;
     QCameraViewfinderSettingsControl* m_viewFinderControl;
+    QCameraControl* m_cameraControl;
+    QCameraFlashControl* m_cameraFlashControl;
+
 };
 
 #endif // ADVANCEDCAMERASETTINGS_H

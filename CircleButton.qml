@@ -21,6 +21,8 @@ AbstractButton {
     id: button
 
     property alias iconName: icon.name
+    property bool on: true
+    property string label: ""
 
     width: units.gu(5)
     height: width
@@ -40,5 +42,19 @@ AbstractButton {
             margins: units.gu(1)
         }
         color: "white"
+        opacity: button.on ? 1.0 : 0.5
+        visible: label === ""
+    }
+
+    Label {
+        anchors {
+            centerIn: parent
+        }
+        font.weight: Font.Light
+        fontSize: "small"
+        color: "white"
+        text: label
+        opacity: button.on ? 1.0 : 0.5
+        visible: label !== ""
     }
 }
