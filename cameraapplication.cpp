@@ -25,6 +25,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QtCore/QStandardPaths>
+#include <QtCore/QDir>
 #include <QDate>
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -108,5 +109,8 @@ bool CameraApplication::setup()
 
 QString CameraApplication::mediaLocation() const
 {
-    return QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
+    QString location = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0) + "/camera";
+    QDir dir;
+    dir.mkpath(location);
+    return location;
 }

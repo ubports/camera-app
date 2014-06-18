@@ -241,7 +241,7 @@ Item {
                 }
             } else {
                 camera.imageCapture.setMetadata("Orientation", orientation)
-                camera.imageCapture.capture()
+                camera.imageCapture.captureToLocation(application.mediaLocation)
             }
         }
 
