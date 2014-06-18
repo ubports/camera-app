@@ -62,9 +62,7 @@ Item {
         }
 
         Component.onCompleted: {
-            print("FLASH INIT", flash.mode)
             camera.start();
-            print("FLASH INIT2", flash.mode)
         }
         
         /* Use only digital zoom for now as it's what phone cameras mostly use.

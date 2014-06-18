@@ -26,7 +26,15 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    property string currentFilePath: slideshowView.model.get(slideshowView.currentIndex, "filePath")
+    property string currentFilePath: {
+        var filePath = slideshowView.model.get(slideshowView.currentIndex, "filePath")
+        if (filePath) {
+            return filePath;
+        } else {
+            return "";
+        }
+    }
+
     signal toggleHeader
     property list<Action> actions: [
                 Action {
@@ -50,7 +58,9 @@ Item {
     }
 
     function exit() {
-        listView.currentItem.zoomOut();
+        if (listView.currentItem) {
+            listView.currentItem.zoomOut();
+        }
     }
 
     ListView {
