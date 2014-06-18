@@ -138,7 +138,7 @@ Item {
                 angle: 180
             }
         }
-        
+
         transform: [
             Scale {
                 id: viewFinderSwitcherScale

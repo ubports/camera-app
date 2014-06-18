@@ -74,7 +74,7 @@ Item {
         }
 
         anchors.fill: parent
-        model: slideshowView.model
+        model: slideshowView.visible ? slideshowView.model : null
         orientation: ListView.Horizontal
         snapMode: ListView.SnapOneItem
         boundsBehavior: Flickable.StopAtBounds

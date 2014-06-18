@@ -55,7 +55,7 @@ Item {
         cellWidth: width / photogridView.itemsPerRow
         cellHeight: cellWidth
 
-        model: photogridView.model
+        model: photogridView.visible ? photogridView.model : null
         delegate: Item {
             id: cellDelegate
             
@@ -75,7 +75,7 @@ Item {
                     right: parent.right
                     rightMargin: index % photogridView.itemsPerRow == photogridView.itemsPerRow - 1 ? 0 : margin/2
                 }
-                
+
                 asynchronous: true
                 cache: false
                 // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly
