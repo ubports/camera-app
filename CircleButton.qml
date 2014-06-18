@@ -14,7 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 
 AbstractButton {
@@ -44,6 +45,14 @@ AbstractButton {
         color: "white"
         opacity: button.on ? 1.0 : 0.5
         visible: label === ""
+        rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+        Behavior on rotation {
+            RotationAnimator {
+                duration: UbuntuAnimation.BriskDuration
+                easing: UbuntuAnimation.StandardEasing
+                direction: RotationAnimator.Shortest
+            }
+        }
     }
 
     Label {
@@ -56,5 +65,13 @@ AbstractButton {
         text: label
         opacity: button.on ? 1.0 : 0.5
         visible: label !== ""
+        rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+        Behavior on rotation {
+            RotationAnimator {
+                duration: UbuntuAnimation.BriskDuration
+                easing: UbuntuAnimation.StandardEasing
+                direction: RotationAnimator.Shortest
+            }
+        }
     }
 }

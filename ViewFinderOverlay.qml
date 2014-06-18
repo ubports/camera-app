@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 import QtMultimedia 5.0
 import CameraApp 0.1
@@ -224,16 +225,9 @@ Item {
             camera.captureInProgress = true;
             shootFeedback.start();
 
-            var orientation = 90
-            if (device.isLandscape) {
-                if (device.naturalOrientation === "portrait") {
-                    orientation = 180
-                } else {
-                    orientation = 0
-                }
-            }
-            if (device.isInverted) {
-                orientation += 180
+            var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+            if (Screen.primaryOrientation == Qt.PortraitOrientation) {
+                orientation += 90;
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
@@ -320,6 +314,14 @@ Item {
             }
 
             onClicked: controls.shoot()
+            rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+            Behavior on rotation {
+                RotationAnimator {
+                    duration: UbuntuAnimation.BriskDuration
+                    easing: UbuntuAnimation.StandardEasing
+                    direction: RotationAnimator.Shortest
+                }
+            }
         }
 
         CircleButton {
@@ -548,61 +550,4 @@ Item {
             }
         }
     }
-
-//    Item {
-//        id: controlsArea
-//        anchors.centerIn: parent
-
-//        height: (device.naturalOrientation == "portrait") ? parent.height : parent.width
-//        width: (device.naturalOrientation == "portrait") ? parent.width : parent.height
-
-//        rotation: device.naturalOrientation == "landscape" ?
-//                      ((device.isInverted) ? 90 : -90) :
-//                      (!device.isLandscape ? (device.isInverted ? 180 : 0) :
-//                                             (device.isInverted ? 0 : 180))
-
-//        state: device.isLandscape ? "split" : "joined"
-//        states: [
-//            State { name: "joined"
-//                AnchorChanges { target: zoomControl; anchors.bottom: toolbar.top }
-//                AnchorChanges {
-//                    target: stopWatch
-//                    anchors.top: parent.top
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                }
-//            },
-//            State { name: "split"
-//                AnchorChanges { target: zoomControl; anchors.top: parent.top }
-//                AnchorChanges {
-//                    target: stopWatch
-//                    anchors.right: parent.right
-//                    anchors.verticalCenter: parent.verticalCenter
-//                }
-//            }
-//        ]
-
-//        Toolbar {
-//            id: toolbar
-
-//            anchors.bottom: parent.bottom
-//            anchors.left: parent.left
-//            anchors.right: parent.right
-//            anchors.bottomMargin: units.gu(1)
-//            anchors.leftMargin: units.gu(1)
-//            anchors.rightMargin: units.gu(1)
-
-//            camera: camera
-//            canCapture: camera.imageCapture.ready && !snapshot.sliding
-//            iconsRotation: device.rotationAngle - controlsArea.rotation
-//        }
-
-//        StopWatch {
-//            id: stopWatch
-//            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
-//            time: camera.videoRecorder.duration / 1000
-//            labelRotation: device.rotationAngle - controlsArea.rotation
-//            anchors.topMargin: units.gu(2)
-//            anchors.rightMargin: units.gu(2)
-//        }
-//    }
 }

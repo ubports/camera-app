@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
@@ -24,8 +25,8 @@ Rectangle {
     objectName: "main"
     width: units.gu(40)
     height: units.gu(71)
-//    width: application.desktopMode ? units.gu(120) : (device.naturalOrientation == "portrait" ? units.gu(40) : units.gu(80))
-//    height: application.desktopMode ? units.gu(60) : (device.naturalOrientation == "portrait" ? units.gu(80) : units.gu(40))
+//    width: application.desktopMode ? units.gu(120) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(40) : units.gu(80))
+//    height: application.desktopMode ? units.gu(60) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(80) : units.gu(40))
     color: "black"
 
     UnityActions.ActionManager {

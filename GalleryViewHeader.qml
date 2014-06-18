@@ -26,6 +26,8 @@ Item {
     }
     y: shown ? 0 : -height
     Behavior on y { UbuntuNumberAnimation {} }
+    opacity: shown ? 1.0 : 0.0
+    Behavior on opacity { UbuntuNumberAnimation {} }
 
     height: units.gu(7)
 

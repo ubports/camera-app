@@ -43,23 +43,33 @@ Item {
         photogridView.exit();
     }
 
-    SlideshowView {
-        id: slideshowView
-        anchors.fill: parent
-        model: galleryView.model
-        visible: opacity != 0.0
-        onToggleHeader: header.toggle();
-    }
+    OrientationHelper {
+        visible: inView
 
-    PhotogridView {
-        id: photogridView
-        anchors.fill: parent
-        headerHeight: header.height
-        model: galleryView.model
-        visible: opacity != 0.0
-        onPhotoClicked: {
-            slideshowView.showPhotoAtIndex(index);
-            header.gridMode = false;
+        SlideshowView {
+            id: slideshowView
+            anchors.fill: parent
+            model: galleryView.model
+            visible: opacity != 0.0
+            onToggleHeader: header.toggle();
+        }
+
+        PhotogridView {
+            id: photogridView
+            anchors.fill: parent
+            headerHeight: header.height
+            model: galleryView.model
+            visible: opacity != 0.0
+            onPhotoClicked: {
+                slideshowView.showPhotoAtIndex(index);
+                header.gridMode = false;
+            }
+        }
+
+        GalleryViewHeader {
+            id: header
+            onExit: galleryView.exit()
+            actions: currentView.actions
         }
     }
 
@@ -103,10 +113,4 @@ Item {
             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
-
-    GalleryViewHeader {
-        id: header
-        onExit: galleryView.exit()
-        actions: currentView.actions
-    }
 }

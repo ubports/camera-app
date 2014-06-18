@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 import QtMultimedia 5.0
 import CameraApp 0.1
@@ -28,10 +29,6 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired
     property bool inView
     signal photoTaken
-
-    DeviceOrientation {
-        id: device
-    }
 
     Camera {
         id: camera
@@ -209,7 +206,7 @@ Item {
                    FIXME: This should come from a system configuration option so that we
                    don't have to have a different codebase for each different device we want
                    to run on */
-            orientation: device.naturalOrientation === "portrait"  ? -90 : 0
+            orientation: Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0
             
             /* Convenience item tracking the real position and size of the real video feed.
                    Having this helps since these values depend on a lot of rules:
@@ -282,6 +279,6 @@ Item {
         anchors.fill: parent
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: device.naturalOrientation === "portrait"
+        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
     }
 }

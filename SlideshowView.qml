@@ -71,6 +71,7 @@ Item {
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
         spacing: units.gu(1)
+        property real maxDimension: Math.max(width, height)
 
         delegate: Item {
             function zoomIn(centerX, centerY) {
@@ -121,8 +122,8 @@ Item {
                         // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly
                         source: fileURL
                         sourceSize {
-                            width: flickable.width
-                            height: flickable.height
+                            width: listView.maxDimension
+                            height: listView.maxDimension
                         }
                         fillMode: Image.PreserveAspectFit
                         opacity: status == Image.Ready ? 1.0 : 0.0
