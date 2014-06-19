@@ -76,7 +76,6 @@ Item {
         anchors.fill: parent
         model: slideshowView.model
         orientation: ListView.Horizontal
-        snapMode: ListView.SnapOneItem
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
