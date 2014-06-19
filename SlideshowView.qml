@@ -90,9 +90,11 @@ Item {
             }
 
             function zoomOut() {
-                flickable.scaleCenterX = flickable.contentX / flickable.width / (flickable.sizeScale - 1);
-                flickable.scaleCenterY = flickable.contentY / flickable.height / (flickable.sizeScale - 1);
-                flickable.sizeScale = 1.0;
+                if (flickable.sizeScale != 1.0) {
+                    flickable.scaleCenterX = flickable.contentX / flickable.width / (flickable.sizeScale - 1);
+                    flickable.scaleCenterY = flickable.contentY / flickable.height / (flickable.sizeScale - 1);
+                    flickable.sizeScale = 1.0;
+                }
             }
 
             width: ListView.view.width
@@ -113,8 +115,8 @@ Item {
                 contentY: (sizeScale - 1) * scaleCenterY * height
 
                 property real sizeScale: 1.0
-                property real scaleCenterX
-                property real scaleCenterY
+                property real scaleCenterX: 0.0
+                property real scaleCenterY: 0.0
                 Behavior on sizeScale { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
 
                 Item {
