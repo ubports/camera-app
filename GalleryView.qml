@@ -32,9 +32,10 @@ Item {
         sortReversed: true
         showDirs: false
     }
+    property bool gridMode: false
 
     function showLastPhotoTaken() {
-        header.gridMode = false;
+        galleryView.gridMode = false;
         slideshowView.showLastPhotoTaken();
     }
 
@@ -62,7 +63,7 @@ Item {
             visible: opacity != 0.0
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
-                header.gridMode = false;
+                galleryView.gridMode = false;
             }
         }
 
@@ -70,6 +71,14 @@ Item {
             id: header
             onExit: galleryView.exit()
             actions: currentView.actions
+            onToggleViews: {
+                if (!galleryView.gridMode) {
+                    // position grid view so that the current photo in slideshow view is visible
+                    photogridView.showPhotoAtIndex(slideshowView.currentIndex);
+                }
+
+                galleryView.gridMode = !galleryView.gridMode
+            }
         }
     }
 
@@ -77,7 +86,7 @@ Item {
                          header.show();
                      }
 
-    state: header.gridMode ? "GRID" : "SLIDESHOW"
+    state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
     states: [
         State {
             name: "SLIDESHOW"

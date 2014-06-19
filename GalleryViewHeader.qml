@@ -31,10 +31,10 @@ Item {
 
     height: units.gu(7)
 
-    property bool gridMode: false
     property bool shown: true
     property alias actions: actionsDrawer.actions
     signal exit
+    signal toggleViews
 
     function show() {
         shown = true;
@@ -81,14 +81,7 @@ Item {
             }
             width: units.gu(6)
             iconSource: "assets/gridview.png"
-            onClicked: {
-                if (!header.gridMode) {
-                    // position grid view so that the current photo in slideshow view is visible
-                    photogridView.showPhotoAtIndex(slideshowView.currentIndex);
-                }
-                
-                header.gridMode = !header.gridMode
-            }
+            onClicked: header.toggleViews()
             //            IconButton {
             //                iconName: "view-grid-symbolic"
         }
