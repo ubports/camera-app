@@ -88,6 +88,7 @@ bool CameraApplication::setup()
     m_view.reset(new QQuickView());
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Camera");
+    m_view->setColor("black");
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
     if (isClick()) {

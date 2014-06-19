@@ -20,14 +20,13 @@ import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 
-Rectangle {
+Item {
     id: main
     objectName: "main"
     width: units.gu(40)
     height: units.gu(71)
 //    width: application.desktopMode ? units.gu(120) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(40) : units.gu(80))
 //    height: application.desktopMode ? units.gu(60) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(80) : units.gu(40))
-    color: "black"
 
     UnityActions.ActionManager {
         actions: [
