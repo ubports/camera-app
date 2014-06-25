@@ -143,8 +143,8 @@ Item {
             anchors.leftMargin: parent.iconSpacing
             rotation: iconsRotation
 
-            enabled: toolbar.canCapture
-            opacity: 0.5
+            enabled: camera.canCapture
+            opacity: enabled ? 1.0 : 0.5
 
             width: toolbar.iconWidth
             height: toolbar.iconHeight
