@@ -428,22 +428,17 @@ Item {
 
             Repeater {
                 model: bottomEdge.options
-                delegate: CircleButton {
-                    id: optionsButton
-
-                    property var model: modelData
-
-                    iconName: model.isToggle ? model.icon : model.get(model.selectedIndex).icon
-                    onClicked: optionValueSelector.toggle(model, optionsButton)
-                    on: model.isToggle ? model.get(model.selectedIndex).value : true
-                    visible: model.available
-                    label: model.label
+                delegate: OptionButton {
+                    id: optionButton
+                    model: modelData
+                    onClicked: optionValueSelector.toggle(model, optionButton)
                 }
             }
         }
 
         Column {
             id: optionValueSelector
+            objectName: "optionValueSelector"
             anchors {
                 bottom: optionsGrid.top
                 bottomMargin: units.gu(2)
@@ -493,60 +488,16 @@ Item {
             Repeater {
                 id: optionsRepeater
 
-                delegate: AbstractButton {
-                    id: optionDelegate
-
+                delegate: OptionValueButton {
                     anchors {
                         right: optionValueSelector.right
                         left: optionValueSelector.left
                     }
-                    height: units.gu(5)
-
-                    property bool selected: optionsRepeater.model.selectedIndex == index
+                    label: model.label
+                    iconName: model.icon
+                    selected: optionsRepeater.model.selectedIndex == index
+                    isLast: index === optionsRepeater.count - 1
                     onClicked: settings[optionsRepeater.model.settingsProperty] = optionsRepeater.model.get(index).value
-
-                    Icon {
-                        id: icon
-                        anchors {
-                            top: parent.top
-                            bottom: parent.bottom
-                            left: parent.left
-                            topMargin: units.gu(1)
-                            bottomMargin: units.gu(1)
-                            leftMargin: units.gu(1)
-                        }
-                        width: height
-                        color: "white"
-                        opacity: optionDelegate.selected ? 1.0 : 0.5
-                        name: model.icon
-                    }
-
-                    Label {
-                        id: label
-                        anchors {
-                            left: model.icon != "" ? icon.right : parent.left
-                            leftMargin: units.gu(2)
-                            right: parent.right
-                            rightMargin: units.gu(2)
-                            verticalCenter: parent.verticalCenter
-                        }
-
-                        color: "white"
-                        opacity: optionDelegate.selected ? 1.0 : 0.5
-                        text: model.label
-                    }
-
-                    Rectangle {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            bottom: parent.bottom
-                        }
-                        height: units.dp(1)
-                        color: "white"
-                        opacity: 0.5
-                        visible: index !== optionsRepeater.count - 1
-                    }
                 }
             }
         }
