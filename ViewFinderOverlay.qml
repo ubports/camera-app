@@ -313,6 +313,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
+            enabled: camera.imageCapture.ready
             onClicked: controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {

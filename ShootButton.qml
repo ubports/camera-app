@@ -18,16 +18,17 @@ import QtQuick 2.0
 import Ubuntu.Components 1.0
 
 Item {
-    id: button
+    id: shootButton
 
     signal clicked()
 
     width: icon.width
     height: icon.height
+    opacity: enabled ? 1.0 : 0.5
 
     MouseArea {
         anchors.fill: parent
-        onClicked: button.clicked()
+        onClicked: shootButton.clicked()
     }
 
     Image {
@@ -37,17 +38,17 @@ Item {
     }
 //    states: [
 //        State { name: "camera"
-//            PropertyChanges { target: button; iconSource: "assets/shoot.png" }
+//            PropertyChanges { target: shootButton; iconSource: "assets/shoot.png" }
 //            PropertyChanges { target: recordOn; opacity: 0.0 }
 //            PropertyChanges { target: pulseAnimation; running: false }
 //        },
 //        State { name: "record_off"
-//            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+//            PropertyChanges { target: shootButton; iconSource: "assets/record_off.png" }
 //            PropertyChanges { target: recordOn; opacity: 0.0 }
 //            PropertyChanges { target: pulseAnimation; running: false }
 //        },
 //        State { name: "record_on"
-//            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
+//            PropertyChanges { target: shootButton; iconSource: "assets/record_off.png" }
 //            PropertyChanges { target: recordOn; opacity: 1.0 }
 //            PropertyChanges { target: pulseAnimation; running: true }
 //        }
@@ -67,7 +68,7 @@ Item {
 //        anchors.fill: parent
 //        source: "assets/record_on_pulse.png"
 //        opacity: 1.0
-//        visible: button.state != "camera"
+//        visible: shootButton.state != "camera"
 
 //        SequentialAnimation on opacity  {
 //            id: pulseAnimation
