@@ -17,6 +17,18 @@ class MainWindow(object):
         """Get the main QML view"""
         return self.app.wait_select_single("QQuickView")
 
+    def get_root(self):
+        """Returns the root QML Item"""
+        return self.app.wait_select_single(objectName="main")
+
+    def get_viewfinder(self):
+        """Returns the viewfinder view"""
+        return self.app.wait_select_single("ViewFinderView")
+
+    def get_gallery(self):
+        """Returns the gallery view"""
+        return self.app.wait_select_single("GalleryView")
+
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
         return self.app.wait_select_single("FocusRing")

@@ -55,6 +55,7 @@ Item {
         spacing: 0
 
         IconButton {
+            objectName: "backButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -75,6 +76,7 @@ Item {
         }
 
         ImageButton {
+            objectName: "viewToggleButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -87,6 +89,7 @@ Item {
         }
 
         ImageButton {
+            objectName: "additionalActionsButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
