@@ -1,21 +1,21 @@
 # Uyghur translation for camera-app
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# Gheyret Kenji <gheyret@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2014-02-09 06:09+0000\n"
-"Last-Translator: omarjan <bahadiromar@outlook.com>\n"
-"Language-Team: Uyghur <ug@li.org>\n"
+"POT-Creation-Date: 2014-05-17 09:51+0200\n"
+"PO-Revision-Date: 2014-06-11 23:07+0000\n"
+"Last-Translator: Gheyret T.Kenji <Unknown>\n"
+"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-13 06:29+0000\n"
-"X-Generator: Launchpad (build 17002)\n"
+"X-Launchpad-Export-Date: 2014-06-12 06:33+0000\n"
+"X-Generator: Launchpad (build 17041)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -25,29 +25,29 @@ msgstr "كامېرا"
 msgid "Camera application"
 msgstr "كامېرا پروگراممىسى"
 
-#: camera-app.qml:38
+#: camera-app.qml:35
 msgid "Flash"
-msgstr "فىلەش(Flash)"
+msgstr "چاقماق لامپا"
 
-#: camera-app.qml:39
+#: camera-app.qml:36
 msgid "Light;Dark"
 msgstr "يورۇق؛قاراڭغۇ"
 
-#: camera-app.qml:42
+#: camera-app.qml:40
 msgid "Flip Camera"
-msgstr "كامىرا ئايلاندۇر"
+msgstr "كامېرا ئايلاندۇر"
 
-#: camera-app.qml:43
+#: camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "ئالدى ؛ئارقا"
 
-#: camera-app.qml:46
+#: camera-app.qml:45
 msgid "Shutter"
-msgstr "زاتۇر"
+msgstr "زاتور"
 
-#: camera-app.qml:47
+#: camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
-msgstr "بىر پارچە سۇرەت تارت؛سۈرەت تارت؛خاتىرلە"
+msgstr "بىر پارچە سۈرەت تارت؛سۈرەت تارت؛خاتىرىلە"
 
 #: camera-app.qml:50
 msgid "Mode"
@@ -57,10 +57,28 @@ msgstr "ھالىتى"
 msgid "Stills;Video"
 msgstr "جىم؛سىن"
 
-#: camera-app.qml:54
+#: camera-app.qml:56
 msgid "White Balance"
 msgstr "ئاق تەڭپۇڭلۇق"
 
-#: camera-app.qml:55
+#: camera-app.qml:57
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "يورۇتۇش شارائىتى؛ كۈندۈز؛ بۇلۇتلۇق؛ ئۆي ئىچى"
+
+#: camera-app.qml:370
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "بۈگۈن <b>%1</b> دانە سۈرەت تارتىلدى"
+
+#: camera-app.qml:371
+msgid "No photos taken today"
+msgstr "بۈگۈن بىرمۇ سۈرەت تارتىلمىدى"
+
+#: camera-app.qml:379
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "بۈگۈن <b>%1</b> دانە سىن ئېلىندى"
+
+#: camera-app.qml:380
+msgid "No videos recorded today"
+msgstr "بۈگۈن بىرمۇ سىن ئېلىنمىدى"

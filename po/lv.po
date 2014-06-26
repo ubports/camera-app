@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-11 11:18+0200\n"
-"PO-Revision-Date: 2014-01-18 16:43+0000\n"
+"POT-Creation-Date: 2014-05-17 09:51+0200\n"
+"PO-Revision-Date: 2014-05-31 14:53+0000\n"
 "Last-Translator: Jānis-Marks Gailis <jeanmarc.gailis@gmail.com>\n"
 "Language-Team: Latvian <lv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-13 06:29+0000\n"
-"X-Generator: Launchpad (build 17002)\n"
+"X-Launchpad-Export-Date: 2014-06-01 05:56+0000\n"
+"X-Generator: Launchpad (build 17031)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -25,27 +25,27 @@ msgstr "Fotokamera"
 msgid "Camera application"
 msgstr "Applikācija Fotokamera"
 
-#: camera-app.qml:38
+#: camera-app.qml:35
 msgid "Flash"
 msgstr "Zibspuldze"
 
-#: camera-app.qml:39
+#: camera-app.qml:36
 msgid "Light;Dark"
 msgstr "Gaišs;Tumšs"
 
-#: camera-app.qml:42
+#: camera-app.qml:40
 msgid "Flip Camera"
 msgstr "Spiest pogu"
 
-#: camera-app.qml:43
+#: camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "Uz priekšu vērsta;Atpakaļ vērsta"
 
-#: camera-app.qml:46
+#: camera-app.qml:45
 msgid "Shutter"
 msgstr "Slēdzis"
 
-#: camera-app.qml:47
+#: camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr "Fotogrāfēt;Knipsēt;Ierakstīt"
 
@@ -57,10 +57,28 @@ msgstr "Režīms"
 msgid "Stills;Video"
 msgstr "Kadri;Video"
 
-#: camera-app.qml:54
+#: camera-app.qml:56
 msgid "White Balance"
 msgstr "Baltās krāsas balanss"
 
-#: camera-app.qml:55
+#: camera-app.qml:57
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Gaismas apstākļi;Diena;Mākoņains;Iekšā"
+
+#: camera-app.qml:370
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "<b>%1</b> foto uzņemtas šodien"
+
+#: camera-app.qml:371
+msgid "No photos taken today"
+msgstr "Nav šodien uzņemtu foto"
+
+#: camera-app.qml:379
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "<b>%1</b> video ierakstītas šodien"
+
+#: camera-app.qml:380
+msgid "No videos recorded today"
+msgstr "Nav šodien uzņemtu video"

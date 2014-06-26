@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-07-11 11:18+0200\n"
+"POT-Creation-Date: 2014-05-17 09:51+0200\n"
 "PO-Revision-Date: 2013-10-09 11:12+0000\n"
 "Last-Translator: Pyae Sone <Unknown>\n"
 "Language-Team: Burmese <my@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-13 06:29+0000\n"
-"X-Generator: Launchpad (build 17002)\n"
+"X-Launchpad-Export-Date: 2014-05-24 06:48+0000\n"
+"X-Generator: Launchpad (build 17017)\n"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -25,27 +25,27 @@ msgstr "ကင်မရာ"
 msgid "Camera application"
 msgstr "ကင်မရာ application"
 
-#: camera-app.qml:38
+#: camera-app.qml:35
 msgid "Flash"
 msgstr "Flash"
 
-#: camera-app.qml:39
+#: camera-app.qml:36
 msgid "Light;Dark"
 msgstr "အလင်း;အမှောင်"
 
-#: camera-app.qml:42
+#: camera-app.qml:40
 msgid "Flip Camera"
 msgstr ""
 
-#: camera-app.qml:43
+#: camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "အရှေ့သို့မျက်နှာမှုလျက်;အနောက်သို့မျက်နှာမှုလျက်"
 
-#: camera-app.qml:46
+#: camera-app.qml:45
 msgid "Shutter"
 msgstr ""
 
-#: camera-app.qml:47
+#: camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr "ဓာတ်ပုံတစ်ပုံရိုက်မည်;ဖျက်ခနဲ;မှတ်တမ်းယူမည်"
 
@@ -57,10 +57,28 @@ msgstr "စနစ်"
 msgid "Stills;Video"
 msgstr ""
 
-#: camera-app.qml:54
+#: camera-app.qml:56
 msgid "White Balance"
 msgstr ""
 
-#: camera-app.qml:55
+#: camera-app.qml:57
 msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr ""
+
+#: camera-app.qml:370
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr ""
+
+#: camera-app.qml:371
+msgid "No photos taken today"
+msgstr ""
+
+#: camera-app.qml:379
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr ""
+
+#: camera-app.qml:380
+msgid "No videos recorded today"
 msgstr ""
