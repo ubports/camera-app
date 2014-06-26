@@ -246,7 +246,6 @@ Item {
         }
 
         function completeCapture() {
-            print("COMPLETE CAPTURE")
             viewFinderOverlay.visible = true;
             snapshot.startOutAnimation();
             camera.captureInProgress = false;
@@ -264,7 +263,6 @@ Item {
         }
 
         function completeSwitch() {
-            print("COMPLETE SWITCH")
             viewFinderSwitcherAnimation.restart();
             camera.switchInProgress = false;
         }
@@ -277,7 +275,6 @@ Item {
         Connections {
             target: camera.imageCapture
             onReadyChanged: {
-                print("READY", camera.imageCapture.ready)
                 if (camera.imageCapture.ready) {
                     if (camera.captureInProgress) {
                         controls.completeCapture();
