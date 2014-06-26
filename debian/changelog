@@ -1,3 +1,9 @@
+camera-app (3.0.0-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New release
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Thu, 26 Jun 2014 11:33:05 +0200
+
 camera-app (2.9.1+14.10.20140508-0ubuntu2) utopic; urgency=medium
 
   * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
