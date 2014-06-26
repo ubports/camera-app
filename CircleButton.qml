@@ -43,7 +43,7 @@ AbstractButton {
             margins: units.gu(1)
         }
         color: "white"
-        opacity: button.on ? 1.0 : 0.5
+        opacity: button.on ? (button.enabled ? 1.0 : 0.3): 0.5
         visible: label === ""
         rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
         Behavior on rotation {
@@ -63,7 +63,7 @@ AbstractButton {
         fontSize: "small"
         color: "white"
         text: label
-        opacity: button.on ? 1.0 : 0.5
+        opacity: button.on ? (button.enabled ? 1.0 : 0.3): 0.5
         visible: label !== ""
         rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
         Behavior on rotation {

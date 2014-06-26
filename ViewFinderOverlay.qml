@@ -78,7 +78,7 @@ Item {
                 property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
-                property bool available: true
+                property bool available: false
 
                 ListElement {
                     icon: ""
@@ -125,7 +125,7 @@ Item {
                 property string label: "HDR"
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
-                property bool available: true
+                property bool available: false
 
                 ListElement {
                     icon: ""
@@ -298,6 +298,7 @@ Item {
 
             iconName: "camcorder"
             onClicked: controls.changeRecordMode()
+            enabled: false
         }
 
         ShootButton {
