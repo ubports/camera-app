@@ -156,9 +156,7 @@ void AdvancedCameraSettings::setCamera(QObject *cameraObject)
         if (m_camera != 0) {
             this->connect(m_camera, SIGNAL(stateChanged(QCamera::State)),
                           SLOT(onCameraStateChanged()));
-            if (m_camera->state() == QCamera::LoadedState || m_camera->state() == QCamera::ActiveState) {
-                readCapabilities();
-            }
+            onCameraStateChanged();
 
             QVideoDeviceSelectorControl* selector = selectorFromCamera(m_camera);
             m_deviceSelector = selector;
