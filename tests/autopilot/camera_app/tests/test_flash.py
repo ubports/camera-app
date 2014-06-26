@@ -30,25 +30,31 @@ class TestCameraFlash(CameraAppTestCase):
 
     """Test that flash modes cycle properly"""
     def test_cycle_flash(self):
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        option_value_selector = self.main_window.get_option_value_selector()
 
-        #ensure initial state
-        self.assertThat(flash_button.flashState, Equals("off"))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        # ensure initial state
+        self.assertThat(flash_button.iconName, Equals("flash-auto"))
 
+        # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
-
         self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("on")))
-        self.assertThat(flash_button.torchMode, Equals(False))
 
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("auto")))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
 
+        # set flash to "on"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        self.assertThat(flash_button.iconName, Equals("flash-on"))
+
+        # set flash to "off"
+        option = self.main_window.get_option_value_button("Off")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("flash-off"))
 
     """Test that torch modes cycles properly"""
     @unittest.skip('Video recording not working for V1.0')

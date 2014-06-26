@@ -34,11 +34,10 @@ class TestCapture(CameraAppTestCase):
     """Test taking a picture"""
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
     def test_take_picture(self):
-        toolbar = self.main_window.get_toolbar()
         exposure_button = self.main_window.get_exposure_button()
-        pictures_dir = os.path.expanduser("~/Pictures")
+        pictures_dir = os.path.expanduser("~/Pictures/camera")
 
-        # Remove all pictures from ~/Pictures that match our pattern
+        # Remove all pictures from pictures_dir that match our pattern
         files = [
             f for f in os.listdir(pictures_dir)
             if f[0:5] == "image" and
@@ -79,7 +78,6 @@ class TestCapture(CameraAppTestCase):
     def test_record_video(self):
         # Get all the elements
         camera_window = self.main_window.get_camera()
-        toolbar = self.main_window.get_toolbar()
         record_control = self.main_window.get_record_control()
         flash_button = self.main_window.get_flash_button()
         stop_watch = self.main_window.get_stop_watch()

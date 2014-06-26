@@ -1,9 +1,11 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2013 Canonical
+# Copyright 2014 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
+
+from camera_app.emulators.panel import Panel
 
 class MainWindow(object):
     """An emulator class that makes it easy to interact with the camera-app."""
@@ -27,33 +29,26 @@ class MainWindow(object):
         """Returns the button that switches between photo and video recording"""
         return self.app.wait_select_single("FadingButton", objectName="recordModeButton")
 
+    def get_option_button(self, settingsProperty):
+        """Returns the option button that corresponds to the setting stored in settingsProperty"""
+        optionButtons = self.app.select_many("OptionButton")
+        return next(button for button in optionButtons if button.settingsProperty == settingsProperty)
+
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
-        return self.app.wait_select_single("FlashButton")
+        return self.get_option_button("flashMode")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")
 
-    def get_toolbar(self):
-        """Returns the toolbar that holds the flash and record button"""
-        return self.app.wait_select_single("Toolbar")
-
     def get_zoom_control(self):
         """Returns the whole left control"""
         return self.app.wait_select_single("ZoomControl")
 
-    def get_zoom_slider_button(self):
-        """Returns the zoom slider button"""
-        return self.app.wait_select_single("QQuickImage", objectName="sliderThumb")
-
-    def get_zoom_plus(self):
-        """Returns the zoom plus button"""
-        return self.app.wait_select_single("AbstractButton", objectName="zoomPlus")
-
-    def get_zoom_minus(self):
-        """Returns the zoom minus button"""
-        return self.app.wait_select_single("AbstractButton", objectName="zoomMinus")
+    def get_zoom_slider(self):
+        """Returns the zoom slider"""
+        return self.get_zoom_control().wait_select_single("Slider")
 
     def get_viewfinder_geometry(self):
         """Returns the viewfinder geometry tracker"""
@@ -61,16 +56,18 @@ class MainWindow(object):
 
     def get_swap_camera_button(self):
         """Returns the button that switches between front and back cameras"""
-        return self.app.wait_select_single("CameraToolbarButton", objectName="swapButton")
+        return self.app.wait_select_single("CircleButton", objectName="swapButton")
 
-    def get_orientation(self):
-        orientation = self.app.wait_select_single("DeviceOrientation")
-        if orientation.isLandscape:
-            return 'landscape'
-        else:
-            return 'portrait'
+    def get_bottom_edge(self):
+        """Returns the bottom edge panel"""
+        return self.app.wait_select_single(Panel)
 
-    def get_gallery_button(self):
-        """Returns the gallery button on the camera toolbar."""
-        return self.app.select_single(
-            "CameraToolbarButton", objectName="galleryButton")
+    def get_option_value_selector(self):
+        """Returns the option value selector"""
+        return self.app.wait_select_single(objectName="optionValueSelector")
+
+    def get_option_value_button(self, label):
+        """Returns the button corresponding to an option with the given label of the option value selector"""
+        selector = self.get_option_value_selector()
+        optionButtons = selector.select_many("OptionValueButton")
+        return next(button for button in optionButtons if button.label == label)
