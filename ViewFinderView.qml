@@ -73,16 +73,12 @@ Item {
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool captureInProgress: false
         property bool switchInProgress: false
-        onCameraStateChanged: print("STATE", cameraState)
-        onCameraStatusChanged: print("STATUS", cameraStatus)
-        onAvailabilityChanged: print("AVAIL", availability)
         
         imageCapture {
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
             onImageCaptured: {
-                print("CAPTURED")
                 snapshot.source = preview;
             }
             onImageSaved: {
@@ -121,7 +117,6 @@ Item {
             sourceItem: viewFinder
 
             onScheduledUpdateCompleted: {
-                print("SCHEDULE UPDATE COMPLETED")
                 if (camera.switchInProgress) {
                     // FIXME: hack to make viewFinder invisible
                     // 'viewFinder.visible = false' prevents the camera switching
