@@ -3,7 +3,7 @@ execute_process(COMMAND python3 -c "from distutils.sysconfig import get_python_l
 
 if(INSTALL_TESTS)
 message(WARNING ${PYTHON_PACKAGE_DIR})
-#install(DIRECTORY ${AUTOPILOT_DIR}
-#    DESTINATION ${PYTHON_PACKAGE_DIR}
-#    )
+install(DIRECTORY ${AUTOPILOT_DIR}
+    DESTINATION ${PYTHON_PACKAGE_DIR}
+    )
 endif(INSTALL_TESTS)
