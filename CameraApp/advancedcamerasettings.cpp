@@ -32,7 +32,8 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_cameraObject(0),
     m_camera(0),
     m_deviceSelector(0),
-    m_viewFinderControl(0)
+    m_viewFinderControl(0),
+    m_cameraFlashControl(0)
 {
 }
 
