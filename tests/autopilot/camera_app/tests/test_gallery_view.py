@@ -35,7 +35,7 @@ class TestCameraGalleryView(CameraAppTestCase):
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        self.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
+        self.pointing_device.drag(tx, ty, (tx - main_view.width), ty)
 
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
