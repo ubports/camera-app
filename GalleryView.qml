@@ -82,9 +82,11 @@ Item {
         }
     }
 
-    onInViewChanged: if (inView) {
-                         header.show();
-                     }
+    onInViewChanged: {
+        if (inView) {
+           header.show();
+        }
+    }
 
     state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
     states: [
