@@ -89,6 +89,12 @@ Item {
         }
     }
 
+    Label {
+        anchors.centerIn: parent
+        visible: model.count === 0
+        text: i18n.tr("No media available.")
+    }
+
     state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
     states: [
         State {
