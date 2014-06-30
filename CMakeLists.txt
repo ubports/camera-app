@@ -108,9 +108,6 @@ endforeach(LINE)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
-    DESTINATION /
-    )
 
 add_subdirectory(CameraApp)
 add_subdirectory(click)
