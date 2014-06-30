@@ -29,7 +29,7 @@ class TestFocus(CameraAppTestCase):
         super(TestFocus, self).tearDown()
 
     """Test focusing in an area where we know the picture is"""
-    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_valid_and_disappear(self):
         focus_ring = self.main_window.get_focus_ring()
         feed = self.main_window.get_viewfinder_geometry()
@@ -72,7 +72,7 @@ class TestFocus(CameraAppTestCase):
         # After some seconds the focus ring should fade out
         self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
 
-    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_invalid(self):
         """Tests clicking outside of the viewfinder image area, where it should
         not focus."""
@@ -97,7 +97,7 @@ class TestFocus(CameraAppTestCase):
         # Check if there's a gap between the viewfinder feed and the zoom
         # control. If there is, test that focusing there won't show the focus
         #ring.
-        if zoom.y > feed.height: # Feed is aligned to the top of the window
+        if zoom.y > feed.height:  # Feed is aligned to the top of the window
             x, y, h, w = zoom.globalRect
             click_coords = [x + (h // 2), y - 2]
             self.pointing_device.move(click_coords[0], click_coords[1])

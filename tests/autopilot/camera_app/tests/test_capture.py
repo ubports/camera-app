@@ -32,7 +32,7 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
-    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir enabled on maguro')
+    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_take_picture(self):
         exposure_button = self.main_window.get_exposure_button()
         pictures_dir = os.path.expanduser("~/Pictures/camera")
@@ -41,8 +41,8 @@ class TestCapture(CameraAppTestCase):
         files = [
             f for f in os.listdir(pictures_dir)
             if f[0:5] == "image" and
-                os.path.isfile(os.path.join(pictures_dir, f))
-            ]
+            os.path.isfile(os.path.join(pictures_dir, f))
+        ]
         for f in files:
             os.remove(os.path.join(pictures_dir, f))
 
@@ -61,8 +61,8 @@ class TestCapture(CameraAppTestCase):
             files = [
                 f for f in os.listdir(pictures_dir)
                 if f[0:5] == "image" and
-                    os.path.isfile(os.path.join(pictures_dir, f))
-                ]
+                os.path.isfile(os.path.join(pictures_dir, f))
+            ]
             if len(files) == 1:
                 one_picture_on_disk = True
                 break

@@ -42,7 +42,8 @@ class TestCameraFlash(CameraAppTestCase):
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
 
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(option_value_selector.visible,
+                        Eventually(Equals(True)))
 
         # set flash to "on"
         option = self.main_window.get_option_value_button("On")
@@ -89,8 +90,8 @@ class TestCameraFlash(CameraAppTestCase):
         # and verify that previous state is preserved
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(NotEquals(initial_flash_state)))
+        self.assertThat(flash_button.flashState,
+                        Eventually(NotEquals(initial_flash_state)))
         second_flash_state = flash_button.flashState
         self.pointing_device.click()
         self.assertThat(

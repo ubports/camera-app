@@ -53,7 +53,6 @@ class TestCameraZoom(CameraAppTestCase):
         self.assertThat(
             zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
 
-
     """Tests the zoom slider to zoom out"""
     @unittest.skip("Temporarily disabled as it fails")
     def test_slider_zoom_out(self):

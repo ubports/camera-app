@@ -7,6 +7,7 @@
 
 from camera_app.emulators.panel import Panel
 
+
 class MainWindow(object):
     """An emulator class that makes it easy to interact with the camera-app."""
 
@@ -38,13 +39,17 @@ class MainWindow(object):
         return self.app.wait_select_single("ShootButton")
 
     def get_record_control(self):
-        """Returns the button that switches between photo and video recording"""
-        return self.app.wait_select_single("FadingButton", objectName="recordModeButton")
+        """Returns the button that toggles between photo and video recording"""
+        return self.app.wait_select_single("FadingButton",
+                                           objectName="recordModeButton")
 
     def get_option_button(self, settingsProperty):
-        """Returns the option button that corresponds to the setting stored in settingsProperty"""
+        """Returns the option button that corresponds to the setting stored
+           in settingsProperty
+        """
         optionButtons = self.app.select_many("OptionButton")
-        return next(button for button in optionButtons if button.settingsProperty == settingsProperty)
+        return next(button for button in optionButtons
+                    if button.settingsProperty == settingsProperty)
 
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
@@ -68,7 +73,8 @@ class MainWindow(object):
 
     def get_swap_camera_button(self):
         """Returns the button that switches between front and back cameras"""
-        return self.app.wait_select_single("CircleButton", objectName="swapButton")
+        return self.app.wait_select_single("CircleButton",
+                                           objectName="swapButton")
 
     def get_bottom_edge(self):
         """Returns the bottom edge panel"""
@@ -79,7 +85,10 @@ class MainWindow(object):
         return self.app.wait_select_single(objectName="optionValueSelector")
 
     def get_option_value_button(self, label):
-        """Returns the button corresponding to an option with the given label of the option value selector"""
+        """Returns the button corresponding to an option with the given label
+           of the option value selector
+        """
         selector = self.get_option_value_selector()
         optionButtons = selector.select_many("OptionValueButton")
-        return next(button for button in optionButtons if button.label == label)
+        return next(button for button in optionButtons
+                    if button.label == label)

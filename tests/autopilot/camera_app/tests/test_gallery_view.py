@@ -37,7 +37,6 @@ class TestCameraGalleryView(CameraAppTestCase):
 
         self.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
 
-
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
         viewfinder = self.main_window.get_viewfinder()
@@ -55,7 +54,6 @@ class TestCameraGalleryView(CameraAppTestCase):
         self.assertThat(viewfinder.inView, Eventually(Equals(True)))
         self.assertThat(gallery.inView, Eventually(Equals(False)))
 
-
     """Tests toggling between grid and slideshow views"""
     def test_toggling_view_type(self):
         self.swipe_to_gallery()
@@ -67,8 +65,8 @@ class TestCameraGalleryView(CameraAppTestCase):
         self.assertThat(slideshow_view.visible, Eventually(Equals(True)))
         self.assertThat(photogrid_view.visible, Eventually(Equals(False)))
 
-        toggle_button = gallery.wait_select_single(objectName="viewToggleButton")
-        self.pointing_device.move_to_object(toggle_button)
+        button = gallery.wait_select_single(objectName="viewToggleButton")
+        self.pointing_device.move_to_object(button)
         self.pointing_device.click()
 
         slideshow_view = gallery.wait_select_single("SlideshowView")
