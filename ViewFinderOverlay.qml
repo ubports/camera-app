@@ -379,7 +379,6 @@ Item {
                 // FIXME: calling 'isFocusPointModeSupported' fails with
                 // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
                 //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
-                enabled: !application.desktopMode
             }
         }
 
