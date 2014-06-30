@@ -67,6 +67,7 @@ Item {
             }
         }
 
+        // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
             onExit: galleryView.exit()
