@@ -37,17 +37,17 @@ Item {
 
     signal toggleHeader
     property list<Action> actions: [
-                Action {
-                    text: i18n.tr("Share")
-                    iconName: "share"
-                    onTriggered: PopupUtils.open(sharePopoverComponent)
-                },
-                Action {
-                    text: i18n.tr("Delete")
-                    iconName: "delete"
-                    onTriggered: PopupUtils.open(deleteDialogComponent)
-                }
-            ]
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            onTriggered: PopupUtils.open(sharePopoverComponent)
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: PopupUtils.open(deleteDialogComponent)
+        }
+    ]
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
