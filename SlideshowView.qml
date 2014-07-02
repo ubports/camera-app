@@ -177,10 +177,6 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         slideshowView.toggleHeader();
-                        if (media.isVideo) {
-                            Qt.openUrlExternally(fileURL);
-                        }
-
                         mouse.accepted = false;
                     }
                     onDoubleClicked: {
@@ -192,6 +188,18 @@ Item {
                             zoomIn(mouse.x, mouse.y);
                         } else {
                             zoomOut();
+                        }
+                    }
+                }
+
+                MouseArea {
+                    anchors.centerIn: parent
+                    width: units.gu(10)
+                    height: units.gu(10)
+                    enabled: media.isVideo
+                    onClicked: {
+                        if (media.isVideo) {
+                            Qt.openUrlExternally(fileURL);
                         }
                     }
                 }
