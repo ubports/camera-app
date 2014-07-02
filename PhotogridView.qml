@@ -16,6 +16,7 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.0
+import Ubuntu.Thumbnailer 0.1
 
 Item {
     id: photogridView
@@ -62,6 +63,13 @@ Item {
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
 
+
+            function endsWith(string, suffix) {
+                return string.indexOf(suffix, string.length - suffix.length) !== -1;
+            }
+
+            property bool isVideo: endsWith(fileURL.toString(), ".mp4")
+
             Image {
                 id: thumbnail
                 property real margin: units.dp(2)
@@ -78,8 +86,7 @@ Item {
                 
                 asynchronous: true
                 cache: false
-                // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly
-                source: fileURL
+                source: "image://thumbnailer/" + fileURL.toString().substr(7)
                 sourceSize {
                     width: width
                     height: height
@@ -87,6 +94,16 @@ Item {
                 fillMode: Image.PreserveAspectCrop
                 opacity: status == Image.Ready ? 1.0 : 0.0
                 Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+            }
+
+            Icon {
+                width: units.gu(3)
+                height: units.gu(3)
+                anchors.centerIn: parent
+                name: "media-playback-start"
+                color: "white"
+                opacity: 0.8
+                visible: isVideo
             }
 
             MouseArea {

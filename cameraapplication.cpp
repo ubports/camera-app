@@ -108,9 +108,17 @@ bool CameraApplication::setup()
     return true;
 }
 
-QString CameraApplication::mediaLocation() const
+QString CameraApplication::picturesLocation() const
 {
     QString location = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0) + "/camera";
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::videosLocation() const
+{
+    QString location = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation).at(0);
     QDir dir;
     dir.mkpath(location);
     return location;

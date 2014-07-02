@@ -27,4 +27,5 @@ CircleButton {
     on: model.isToggle ? model.get(model.selectedIndex).value : true
     enabled: model.available
     label: model.label
+    visible: model.visible
 }

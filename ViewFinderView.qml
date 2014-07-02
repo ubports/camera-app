@@ -90,20 +90,25 @@ Item {
         
         videoRecorder {
             onRecorderStateChanged: {
-                if (videoRecorder.recorderState === CameraRecorder.StoppedState)
+                if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
+                    viewFinderOverlay.controls.completeCapture();
+                }
             }
-            
         }
     }
-    
+
     Connections {
         target: Qt.application
         onActiveChanged: {
-            if (Qt.application.active)
+            if (Qt.application.active) {
                 camera.start()
-            else if (!application.desktopMode)
+            } else if (!application.desktopMode) {
+                if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                    camera.videoRecorder.stop();
+                }
                 camera.stop()
+            }
         }
     }
 
@@ -225,28 +230,28 @@ Item {
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
             }
+        }
 
-            Rectangle {
-                id: shootFeedback
-                anchors.fill: parent
-                color: "white"
-                visible: opacity != 0.0
-                opacity: 0.0
-                
-                function start() {
-                    shootFeedback.opacity = 1.0;
-                    viewFinderOverlay.visible = false;
-                    shootFeedbackAnimation.restart();
-                }
-                
-                OpacityAnimator {
-                    id: shootFeedbackAnimation
-                    target: shootFeedback
-                    from: 1.0
-                    to: 0.0
-                    duration: 50
-                    easing: UbuntuAnimation.StandardEasing
-                }
+        Rectangle {
+            id: shootFeedback
+            anchors.fill: parent
+            color: "white"
+            visible: opacity != 0.0
+            opacity: 0.0
+
+            function start() {
+                shootFeedback.opacity = 1.0;
+                viewFinderOverlay.visible = false;
+                shootFeedbackAnimation.restart();
+            }
+
+            OpacityAnimator {
+                id: shootFeedbackAnimation
+                target: shootFeedback
+                from: 1.0
+                to: 0.0
+                duration: 50
+                easing: UbuntuAnimation.StandardEasing
             }
         }
     }

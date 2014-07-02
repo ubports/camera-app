@@ -26,6 +26,7 @@ Item {
     property Camera camera
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
+    property var controls: controls
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -38,12 +39,21 @@ Item {
         property int flashMode: Camera.FlashAuto
         property bool gpsEnabled: false
         property bool hdrEnabled: false
+        property int videoFlashMode: Camera.FlashOff
     }
 
     Binding {
         target: camera.flash
         property: "mode"
         value: settings.flashMode
+        when: camera.captureMode == Camera.CaptureStillImage
+    }
+
+    Binding {
+        target: camera.flash
+        property: "mode"
+        value: settings.videoFlashMode
+        when: camera.captureMode == Camera.CaptureVideo
     }
 
     Connections {
@@ -79,6 +89,7 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
                 property bool available: false
+                property bool visible: true
 
                 ListElement {
                     icon: ""
@@ -100,6 +111,7 @@ Item {
                 property bool isToggle: false
                 property int selectedIndex: bottomEdge.indexForValue(flashOptionsModel, settings.flashMode)
                 property bool available: camera.advanced.hasFlash
+                property bool visible: camera.captureMode == Camera.CaptureStillImage
 
                 ListElement {
                     icon: "flash-on"
@@ -118,6 +130,28 @@ Item {
                 }
             },
             ListModel {
+                id: videoFlashOptionsModel
+
+                property string settingsProperty: "videoFlashMode"
+                property string icon: ""
+                property string label: ""
+                property bool isToggle: false
+                property int selectedIndex: bottomEdge.indexForValue(videoFlashOptionsModel, settings.videoFlashMode)
+                property bool available: camera.advanced.hasFlash
+                property bool visible: camera.captureMode == Camera.CaptureVideo
+
+                ListElement {
+                    icon: "torch-on"
+                    label: "On"
+                    value: Camera.FlashVideoLight
+                }
+                ListElement {
+                    icon: "torch-off"
+                    label: "Off"
+                    value: Camera.FlashOff
+                }
+            },
+            ListModel {
                 id: hdrOptionsModel
 
                 property string settingsProperty: "hdrEnabled"
@@ -126,6 +160,7 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: false
+                property bool visible: true
 
                 ListElement {
                     icon: ""
@@ -201,7 +236,7 @@ Item {
                         color: "white"
                         opacity: 0.5
                         name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                        visible: modelData.available ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
+                        visible: modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
                     }
                 }
             }
@@ -223,7 +258,6 @@ Item {
 
         function shoot() {
             camera.captureInProgress = true;
-            shootFeedback.start();
 
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
@@ -232,22 +266,25 @@ Item {
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
-                    camera.videoRecorder.setMetadata("Orientation", orientation)
-                    camera.videoRecorder.record()
+                    camera.videoRecorder.setMetadata("Orientation", orientation);
+                    camera.videoRecorder.record();
                 } else {
-                    camera.videoRecorder.stop()
-                    // TODO: there's no event to tell us that the video has been successfully recorder or failed,
-                    // and no preview to slide off anyway. Figure out what to do in this case.
+                    camera.videoRecorder.stop();
+                    // TODO: there's no event to tell us that the video has been successfully recorder or failed
                 }
             } else {
-                camera.imageCapture.setMetadata("Orientation", orientation)
-                camera.imageCapture.captureToLocation(application.mediaLocation)
+                shootFeedback.start();
+                camera.imageCapture.setMetadata("Orientation", orientation);
+                camera.imageCapture.captureToLocation(application.picturesLocation);
             }
         }
 
         function completeCapture() {
             viewFinderOverlay.visible = true;
-            snapshot.startOutAnimation();
+            // FIXME: no snapshot is available for videos
+            if (camera.captureMode != Camera.CaptureVideo) {
+                snapshot.startOutAnimation();
+            }
             camera.captureInProgress = false;
         }
 
@@ -296,9 +333,8 @@ Item {
                 bottomMargin: units.gu(6)
             }
 
-            iconName: "camcorder"
+            iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
-            enabled: false
         }
 
         ShootButton {
@@ -312,6 +348,9 @@ Item {
             }
 
             enabled: camera.imageCapture.ready
+            state: (camera.captureMode == Camera.CaptureVideo) ?
+                   ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
+                   "camera"
             onClicked: controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
@@ -396,6 +435,20 @@ Item {
             maximumValue: camera.maximumZoom
 
             Binding { target: camera; property: "currentZoom"; value: zoomControl.value }
+        }
+
+        StopWatch {
+            id: stopWatch
+
+            anchors {
+                top: parent.top
+                topMargin: units.gu(6)
+                horizontalCenter: parent.horizontalCenter
+            }
+            opacity: camera.videoRecorder.recorderState == CameraRecorder.StoppedState ? 0.0 : 1.0
+            Behavior on opacity { UbuntuNumberAnimation {} }
+            visible: opacity != 0
+            time: camera.videoRecorder.duration / 1000
         }
 
         FocusRing {

@@ -19,6 +19,7 @@ import Ubuntu.Components 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItems
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
+import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
 
 Item {
@@ -125,13 +126,18 @@ Item {
                     width: flickable.width * flickable.sizeScale
                     height: flickable.height * flickable.sizeScale
 
+                    function endsWith(string, suffix) {
+                        return string.indexOf(suffix, string.length - suffix.length) !== -1;
+                    }
+
+                    property bool isVideo: endsWith(fileURL.toString(), ".mp4")
+
                     Image {
                         id: image
                         anchors.fill: parent
                         asynchronous: true
                         cache: false
-                        // FIXME: should use the thumbnailer instead of loading the full image and downscaling on the fly
-                        source: fileURL
+                        source: "image://thumbnailer/" + fileURL.toString().substr(7)
                         sourceSize {
                             width: listView.maxDimension
                             height: listView.maxDimension
@@ -156,13 +162,31 @@ Item {
                     }
                 }
 
+                Icon {
+                    width: units.gu(5)
+                    height: units.gu(5)
+                    anchors.centerIn: parent
+                    name: "media-playback-start"
+                    color: "white"
+                    opacity: 0.8
+                    visible: media.isVideo
+                }
+
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
                         slideshowView.toggleHeader();
+                        if (media.isVideo) {
+                            Qt.openUrlExternally(fileURL);
+                        }
+
                         mouse.accepted = false;
                     }
                     onDoubleClicked: {
+                        if (media.isVideo) {
+                            return;
+                        }
+
                         if (flickable.sizeScale == 1.0) {
                             zoomIn(mouse.x, mouse.y);
                         } else {

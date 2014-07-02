@@ -72,33 +72,21 @@ class TestCapture(CameraAppTestCase):
         # check that the camera is able to capture another photo
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
-    """Tests clicking on the record control and checks if the flash changes
-    to torch off mode and the recording time appears"""
-    @unittest.skip('Video recording not working for V1.0')
+    """Tests clicking on the record control and checks if the recording time appears"""
     def test_record_video(self):
         # Get all the elements
-        camera_window = self.main_window.get_camera()
         record_control = self.main_window.get_record_control()
-        flash_button = self.main_window.get_flash_button()
         stop_watch = self.main_window.get_stop_watch()
         exposure_button = self.main_window.get_exposure_button()
-
-        # Store the torch mode and the flash state
-        flashlight_old_state = flash_button.flashState
-        torchmode_old_state = flash_button.torchMode
 
         # Click the record button to toggle photo/video mode
         self.pointing_device.move_to_object(record_control)
         self.pointing_device.click()
 
-        # Has the flash changed to be a torch ?
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Eventually(Equals(True)))
-
         # Before recording the stop watch should read zero recording time
         # and not be visible anyway.
         self.assertThat(stop_watch.opacity, Equals(0.0))
-        self.assertEquals(stop_watch.elapsed, "00:00")
+        self.assertEquals(stop_watch.label, "00:00")
 
         # Click the exposure button to start recording
         self.pointing_device.move_to_object(exposure_button)
@@ -109,7 +97,7 @@ class TestCapture(CameraAppTestCase):
         # Since the timer is not precise we don't check the actual time,
         # just that it is not counting zero anymore.
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
-        self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
+        self.assertThat(stop_watch.label, Eventually(NotEquals("00:00")))
 
         # Now stop the video and check if everything resets itself to
         # previous states.
@@ -121,15 +109,12 @@ class TestCapture(CameraAppTestCase):
         # still works
         self.pointing_device.click()
 
-        # Has the flash changed to be a torch, is the stop watch visible
-        # and set to 00:00?
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Eventually(Equals(True)))
+        # Is the stop watch visible and set to 00:00?
+        self.assertEquals(stop_watch.label, "00:00")
         self.assertThat(stop_watch.opacity, Eventually(Equals(1.0)))
-        self.assertEquals(stop_watch.elapsed, "00:00")
 
         # Record video for 2 seconds and check if the stop watch actually works
-        self.assertThat(stop_watch.elapsed, Eventually(NotEquals("00:00")))
+        self.assertThat(stop_watch.label, Eventually(NotEquals("00:00")))
 
         # Now stop the video and go back to picture mode and check if
         # everything resets itself to previous states
@@ -138,10 +123,6 @@ class TestCapture(CameraAppTestCase):
         self.pointing_device.click()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
-        self.assertThat(
-            flash_button.flashState, Eventually(Equals(flashlight_old_state)))
-        self.assertThat(
-            flash_button.torchMode, Eventually(Equals(torchmode_old_state)))
 
     """Test that the shoot button gets disabled for a while then re-enabled
     after shooting"""

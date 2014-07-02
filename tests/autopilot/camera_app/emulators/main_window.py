@@ -40,7 +40,7 @@ class MainWindow(object):
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
-        return self.app.wait_select_single("FadingButton",
+        return self.app.wait_select_single("CircleButton",
                                            objectName="recordModeButton")
 
     def get_option_button(self, settingsProperty):
@@ -54,6 +54,10 @@ class MainWindow(object):
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
         return self.get_option_button("flashMode")
+
+    def get_video_flash_button(self):
+        """Returns the flash control button of the camera"""
+        return self.get_option_button("videoFlashMode")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""

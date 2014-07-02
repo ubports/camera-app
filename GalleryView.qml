@@ -16,7 +16,7 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.0
-import Qt.labs.folderlistmodel 2.1
+import CameraApp 0.1
 
 Item {
     id: galleryView
@@ -24,14 +24,11 @@ Item {
     signal exit
     property bool inView
     property Item currentView: state == "GRID" ? photogridView : slideshowView
-    property var model: FolderListModel {
-        folder: application.mediaLocation
-        nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG" ]
-        showOnlyReadable: true
-        sortField: FolderListModel.LastModified
-        sortReversed: true
-        showDirs: false
+    property var model: FoldersModel {
+        folders: [application.picturesLocation, application.videosLocation]
+        nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG", "*.mp4" ]
     }
+
     property bool gridMode: false
 
     function showLastPhotoTaken() {

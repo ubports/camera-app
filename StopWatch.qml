@@ -14,34 +14,68 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 
 Item {
     property int time: 0
-    property alias elapsed: count.text
-    property alias fontSize: count.fontSize
-    property alias labelRotation: count.rotation
+    property alias label: countLabel.text
 
-    height: labelRotation % 180 === 0 ? intern.totalLabelHeight : intern.totalLabelWidth
-    width: labelRotation % 180  === 0 ? intern.totalLabelWidth : intern.totalLabelHeight
+    width: content.childrenRect.width + content.anchors.leftMargin + content.anchors.rightMargin
+    height: content.childrenRect.height + units.gu(1.5)
 
-    // FIXME: define all properties in one block
+    rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+    Behavior on rotation {
+        RotationAnimator {
+            duration: UbuntuAnimation.BriskDuration
+            easing: UbuntuAnimation.StandardEasing
+            direction: RotationAnimator.Shortest
+        }
+    }
 
-    Label {
-        id: count
+    BorderImage {
+        id: background
 
-        anchors.centerIn: parent
-        color: "white"
-        fontSize: "medium"
-        text: intern.formattedTime()
+        anchors.fill: parent
+        source: "assets/ubuntu_shape.sci"
+        opacity: 0.3
+    }
+
+    Row {
+        id: content
+
+        anchors {
+            left: parent.left
+            leftMargin: units.gu(1)
+            right: parent.right
+            rightMargin: units.gu(2)
+            verticalCenter: parent.verticalCenter
+        }
+        height: childrenRect.height
+        spacing: units.gu(1.5)
+
+        Rectangle {
+            anchors.verticalCenter: countLabel.verticalCenter
+            radius: units.gu(2)
+            width: radius
+            height: radius
+            color: "#AE1623"
+        }
+
+        Label {
+            id: countLabel
+
+            color: "white"
+            fontSize: "large"
+            style: Text.Raised
+            styleColor: "black"
+            text: intern.formattedTime()
+        }
     }
 
     QtObject {
         id: intern
-
-        property int totalLabelHeight: count.paintedHeight + 8 * 2
-        property int totalLabelWidth: count.paintedWidth + 22 * 2
 
         function pad(text, length) {
             while (text.length < length) text = '0' + text;
