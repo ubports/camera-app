@@ -32,7 +32,7 @@ class TestCameraGalleryView(CameraAppTestCase):
         main_view = self.main_window.get_root()
         x, y, w, h = main_view.globalRect
 
-        tx = x + (w // 2)
+        tx = x + (w - 2)
         ty = y + (h // 2)
 
         self.pointing_device.drag(tx, ty, (tx - main_view.width), ty)
