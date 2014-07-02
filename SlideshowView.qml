@@ -80,6 +80,7 @@ Item {
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
+        snapMode: ListView.SnapOneItem
         spacing: units.gu(1)
         property real maxDimension: Math.max(width, height)
 
