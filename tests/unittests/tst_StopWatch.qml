@@ -25,17 +25,17 @@ TestCase {
 
     function test_time_format_calc() {
         stopWatch.time = 1234
-        compare(stopWatch.elapsed, "20:34", "Time not calculated correctly")
+        compare(stopWatch.label, "20:34", "Time not calculated correctly")
     }
 
     function test_time_format_pad() {
         stopWatch.time = 5
-        compare(stopWatch.elapsed, "00:05", "Time not calculated correctly")
+        compare(stopWatch.label, "00:05", "Time not calculated correctly")
     }
 
     function test_time_negative() {
         stopWatch.time = -1234
-        compare(stopWatch.elapsed, "-20:34", "Time not calculated correctly")
+        compare(stopWatch.label, "-20:34", "Time not calculated correctly")
     }
 
     StopWatch {
