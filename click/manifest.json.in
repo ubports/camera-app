@@ -6,6 +6,7 @@
     "hooks": {
         "camera": {
             "apparmor": "camera-apparmor.json", 
+            "content-hub": "camera-content.json",
             "desktop": "@CMAKE_INSTALL_DATADIR@/applications/@DESKTOP_FILE@"
         }
     }, 
