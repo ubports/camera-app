@@ -90,6 +90,7 @@ class TestCapture(CameraAppTestCase):
 
         # Click the exposure button to start recording
         self.pointing_device.move_to_object(exposure_button)
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
         self.pointing_device.click()
 
         # Record video for 2 seconds and check if the stop watch actually
