@@ -138,7 +138,7 @@ Item {
                         anchors.fill: parent
                         asynchronous: true
                         cache: false
-                        source: "image://thumbnailer/" + fileURL.toString().substr(7)
+                        source: "image://thumbnailer/" + fileURL.toString()
                         sourceSize {
                             width: listView.maxDimension
                             height: listView.maxDimension
