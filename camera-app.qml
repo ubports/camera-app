@@ -87,7 +87,7 @@ Item {
         function settle() {
             settling = true;
             var velocity;
-            if (horizontalVelocity < 0 || (horizontalVelocity == 0 && visibleArea.xPosition <= 0.25)) {
+            if (horizontalVelocity < 0 || visibleArea.xPosition <= 0.05 || (horizontalVelocity == 0 && visibleArea.xPosition <= 0.25)) {
                 // FIXME: compute velocity better to ensure it reaches rest position (maybe in a constant time)
                 velocity = settleVelocity;
             } else {
