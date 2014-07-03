@@ -1,3 +1,10 @@
+camera-app (3.0.0+14.10.20140703.2-0ubuntu1) utopic; urgency=low
+
+  [ Bill Filler ]
+  * add content_exchange_source policy for apparmor
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 03 Jul 2014 16:43:19 +0000
+
 camera-app (3.0.0+14.10.20140703.1-0ubuntu1) utopic; urgency=medium
 
   [ Florian Boucault ]
