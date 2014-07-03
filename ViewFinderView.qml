@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired
     property bool inView
     signal photoTaken
+    signal videoShot
 
     Camera {
         id: camera
@@ -93,6 +94,7 @@ Item {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
                     viewFinderOverlay.controls.completeCapture();
+                    viewFinderView.videoShot();
                 }
             }
         }

@@ -150,6 +150,7 @@ Item {
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
                 onPhotoTaken: galleryView.showLastPhotoTaken();
+                onVideoShot: galleryView.showLastPhotoTaken();
             }
 
             GalleryView {
