@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Ubuntu.Components 0.1
+import QtQuick 2.2
+import Ubuntu.Components 1.0
 
 Item {
     id: snapshotRoot
@@ -25,12 +25,18 @@ Item {
     property ViewFinderGeometry geometry
     property bool deviceDefaultIsPortrait: true
 
+    function startOutAnimation() {
+        shoot.restart()
+    }
+
     Item {
         id: container
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height:parent.height
-        y: 0
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
+        width: parent.width
+        visible: false
 
         Image {
             id: snapshot
@@ -38,33 +44,34 @@ Item {
             rotation: snapshotRoot.orientation * -1
 
             asynchronous: true
-            opacity: 0.0
             fillMode: Image.PreserveAspectFit
             smooth: false
-            width: deviceDefaultIsPortrait ? geometry.height :  geometry.width
+            width: deviceDefaultIsPortrait ? geometry.height : geometry.width
             height: deviceDefaultIsPortrait ? geometry.width : geometry.height
             sourceSize.width: width
             sourceSize.height: height
+        }
 
-            onStatusChanged: if (status == Image.Ready) shoot.restart()
+        Image {
+            id: shadow
+
+            property bool rotated: (snapshot.rotation % 180) != 0
+            height: rotated ? snapshot.width : snapshot.height
+            width: units.gu(2)
+            x: (container.width - (rotated ? snapshot.height : snapshot.width)) / 2 - width
+            source: "assets/shadow.png"
+            fillMode: Image.Stretch
         }
     }
 
     SequentialAnimation {
         id: shoot
-        PropertyAction { target: snapshot; property: "opacity"; value: 1.0 }
-        ParallelAnimation {
-            NumberAnimation { target: container; property: "y";
-                              to: container.parent.height; duration: 500; easing.type: Easing.InCubic }
-            SequentialAnimation {
-                PauseAnimation { duration: 0 }
-                NumberAnimation { target: snapshot; property: "opacity";
-                                  to: 0.0; duration: 500; easing.type: Easing.InCubic }
-            }
-        }
 
-        PropertyAction { target: snapshot; property: "opacity"; value: 0.0 }
+        PropertyAction { target: container; property: "visible"; value: true }
+        PauseAnimation { duration: 150 }
+        XAnimator { target: container; to: container.width + shadow.width; duration: UbuntuAnimation.BriskDuration; easing: UbuntuAnimation.StandardEasing}
         PropertyAction { target: snapshot; property: "source"; value: ""}
-        PropertyAction { target: container; property: "y"; value: 0 }
+        PropertyAction { target: container; property: "visible"; value: false }
+        PropertyAction { target: container; property: "x"; value: 0 }
     }
 }

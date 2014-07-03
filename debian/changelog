@@ -1,3 +1,14 @@
+camera-app (3.0.0-0ubuntu1) UNRELEASED; urgency=medium
+
+  * Redesign of the entire user interface.
+  * Viewfinder now extensible with options screen available from the bottom edge
+  * Add in-app pictures gallery
+  * Cleaner visuals, more animations
+  * Move photos under a subfolder: ~/Pictures/camera
+  * Re-disable camera recording, UI for that is coming later
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Thu, 26 Jun 2014 11:33:05 +0200
+
 camera-app (2.9.1+14.10.20140701-0ubuntu1) utopic; urgency=low
 
   [ Michał Sawicz ]

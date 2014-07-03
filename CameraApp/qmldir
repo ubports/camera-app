@@ -1,1 +1,2 @@
+module CameraApp
 plugin camera-qml

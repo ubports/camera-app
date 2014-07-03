@@ -3,7 +3,9 @@
                       "video_files",
                       "camera",
                       "audio",
-                      "usermetrics"
+                      "video",
+                      "usermetrics",
+                      "content_exchange"
                       ], 
     "policy_version": 1.2
 }

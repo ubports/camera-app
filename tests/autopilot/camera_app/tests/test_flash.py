@@ -30,94 +30,63 @@ class TestCameraFlash(CameraAppTestCase):
 
     """Test that flash modes cycle properly"""
     def test_cycle_flash(self):
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        option_value_selector = self.main_window.get_option_value_selector()
 
-        #ensure initial state
-        self.assertThat(flash_button.flashState, Equals("off"))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        # ensure initial state
+        self.assertThat(flash_button.iconName, Equals("flash-auto"))
 
-        self.pointing_device.move_to_object(flash_button)
-
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("on")))
-        self.assertThat(flash_button.torchMode, Equals(False))
-
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("auto")))
-        self.assertThat(flash_button.torchMode, Equals(False))
-
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Equals(False))
-
-    """Test that torch modes cycles properly"""
-    @unittest.skip('Video recording not working for V1.0')
-    def test_cycle_torch(self):
-        flash_button = self.main_window.get_flash_button()
-        record_button = self.main_window.get_record_control()
-        self.pointing_device.click_object(record_button)
-
-        #ensure initial state
-        self.assertThat(flash_button.flashState, Equals("off"))
-        self.assertThat(flash_button.torchMode, Equals(True))
-
-        self.pointing_device.move_to_object(flash_button)
-
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("on")))
-        self.assertThat(flash_button.torchMode, Equals(True))
-
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Equals(True))
-
-    """When switching between video and picture the previous flash state
-       should be preserved"""
-    @unittest.skip('Video recording not working for V1.0')
-    def test_remember_state(self):
-        flash_button = self.main_window.get_flash_button()
-        record_button = self.main_window.get_record_control()
-        initial_flash_state = flash_button.flashState
-
-        # Change flash mode, then switch to camera, then back to flash
-        # and verify that previous state is preserved
+        # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(NotEquals(initial_flash_state)))
-        second_flash_state = flash_button.flashState
-        self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(NotEquals(second_flash_state)))
-        old_flash_state = flash_button.flashState
 
-        self.pointing_device.move_to_object(record_button)
-        self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Equals(True))
+        self.assertThat(option_value_selector.visible,
+                        Eventually(Equals(True)))
 
+        # set flash to "on"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(Equals(old_flash_state)))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        self.assertThat(flash_button.iconName, Equals("flash-on"))
 
-        # Now test the same thing in the opposite way, seeing if torch state
-        # is preserved
+        # set flash to "off"
+        option = self.main_window.get_option_value_button("Off")
+        self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.flashState, Eventually(Equals("off")))
-        self.assertThat(flash_button.torchMode, Equals(True))
+        self.assertThat(flash_button.iconName, Equals("flash-off"))
 
+    """Test that video flash modes cycles properly"""
+    def test_cycle_video_flash(self):
+        # Click the record button to toggle photo/video mode
+        record_control = self.main_window.get_record_control()
+        self.pointing_device.move_to_object(record_control)
+        self.pointing_device.click()
+
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+        flash_button = self.main_window.get_video_flash_button()
+        option_value_selector = self.main_window.get_option_value_selector()
+
+        # ensure initial state
+        self.assertThat(flash_button.iconName, Equals("torch-off"))
+
+        # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-        old_torch_state = flash_button.flashState
 
-        self.pointing_device.move_to_object(record_button)
-        self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(Equals(old_flash_state)))
-        self.assertThat(flash_button.torchMode, Equals(False))
+        self.assertThat(option_value_selector.visible,
+                        Eventually(Equals(True)))
 
+        # set flash to "on"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(
-            flash_button.flashState, Eventually(Equals(old_torch_state)))
-        self.assertThat(flash_button.torchMode, Equals(True))
+        self.assertThat(flash_button.iconName, Equals("torch-on"))
+
+        # set flash to "off"
+        option = self.main_window.get_option_value_button("Off")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("torch-off"))
