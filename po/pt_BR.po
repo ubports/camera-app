@@ -7,15 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-05-17 09:51+0200\n"
+"POT-Creation-Date: 2014-06-30 04:29-0300\n"
 "PO-Revision-Date: 2013-06-14 14:45+0000\n"
 "Last-Translator: Rafael Neri <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-03 06:06+0000\n"
-"X-Generator: Launchpad (build 17082)\n"
+"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
+"X-Generator: Launchpad (build 17086)\n"
+
+#: GalleryView.qml:95
+msgid "No media available."
+msgstr ""
+
+#: GalleryViewHeader.qml:72
+msgid "Photo Roll"
+msgstr ""
+
+#: SlideshowView.qml:41
+msgid "Share"
+msgstr ""
+
+#: SlideshowView.qml:46 SlideshowView.qml:235
+msgid "Delete"
+msgstr ""
+
+#: SlideshowView.qml:223
+msgid "Delete media?"
+msgstr ""
+
+#: SlideshowView.qml:230
+msgid "Cancel"
+msgstr ""
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -25,60 +49,60 @@ msgstr "Câmera"
 msgid "Camera application"
 msgstr "Aplicativo da câmera"
 
-#: camera-app.qml:35
+#: camera-app.qml:34
 msgid "Flash"
 msgstr "Flash"
 
-#: camera-app.qml:36
+#: camera-app.qml:35
 msgid "Light;Dark"
 msgstr "Claro;Escuro"
 
-#: camera-app.qml:40
+#: camera-app.qml:38
 msgid "Flip Camera"
 msgstr "Flip da câmera"
 
-#: camera-app.qml:41
+#: camera-app.qml:39
 msgid "Front Facing;Back Facing"
 msgstr "De frente;De costa"
 
-#: camera-app.qml:45
+#: camera-app.qml:42
 msgid "Shutter"
 msgstr "Obturador"
 
-#: camera-app.qml:46
+#: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
 msgstr "Tirar uma foto;Tirar;Gravar"
 
-#: camera-app.qml:50
+#: camera-app.qml:46
 msgid "Mode"
 msgstr "Modo"
 
-#: camera-app.qml:51
+#: camera-app.qml:47
 msgid "Stills;Video"
 msgstr "Fotografias;Vídeos"
 
-#: camera-app.qml:56
+#: camera-app.qml:51
 msgid "White Balance"
 msgstr "Balanceamento de branco"
 
-#: camera-app.qml:57
+#: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Condição de luz;Dia; Nublado;No interior de algo"
 
-#: camera-app.qml:370
+#: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: camera-app.qml:371
+#: camera-app.qml:170
 msgid "No photos taken today"
 msgstr ""
 
-#: camera-app.qml:379
+#: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: camera-app.qml:380
+#: camera-app.qml:179
 msgid "No videos recorded today"
 msgstr ""
