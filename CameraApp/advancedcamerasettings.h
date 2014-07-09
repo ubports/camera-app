@@ -24,6 +24,7 @@
 #include <QtMultimedia/QCamera>
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 #include <QtMultimedia/QCameraViewfinderSettingsControl>
+#include <QtMultimedia/QCameraExposureControl>
 #include <QtMultimedia/QMediaControl>
 
 class QCameraControl;
@@ -37,6 +38,8 @@ class AdvancedCameraSettings : public QObject
                 NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
     Q_PROPERTY (bool hasFlash READ hasFlash NOTIFY hasFlashChanged)
+    Q_PROPERTY (bool hdrEnabled READ hdrEnabled WRITE setHdrEnabled NOTIFY hdrEnabledChanged)
+    Q_PROPERTY (bool hasHdr READ hasHdr NOTIFY hasHdrChanged)
 
 public:
     explicit AdvancedCameraSettings(QObject *parent = 0);
@@ -46,6 +49,9 @@ public:
     void setActiveCameraIndex(int index);
     QSize resolution() const;
     bool hasFlash() const;
+    bool hasHdr() const;
+    bool hdrEnabled() const;
+    void setHdrEnabled(bool enabled);
     void readCapabilities();
 
 Q_SIGNALS:
@@ -53,15 +59,19 @@ Q_SIGNALS:
     void activeCameraIndexChanged();
     void resolutionChanged();
     void hasFlashChanged();
+    void hasHdrChanged();
+    void hdrEnabledChanged();
 
 private Q_SLOTS:
     void onCameraStateChanged();
+    void onExposureValueChanged(int parameter);
 
 private:
     QVideoDeviceSelectorControl* selectorFromCamera(QCamera *camera) const;
     QCameraViewfinderSettingsControl* viewfinderFromCamera(QCamera *camera) const;
     QCameraControl *camcontrolFromCamera(QCamera *camera) const;
     QCameraFlashControl* flashControlFromCamera(QCamera* camera) const;
+    QCameraExposureControl* exposureControlFromCamera(QCamera *camera) const;
     QCamera* cameraFromCameraObject(QObject* cameraObject) const;
     QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
 
@@ -72,6 +82,7 @@ private:
     QCameraViewfinderSettingsControl* m_viewFinderControl;
     QCameraControl* m_cameraControl;
     QCameraFlashControl* m_cameraFlashControl;
+    QCameraExposureControl* m_cameraExposureControl;
 
 };
 
