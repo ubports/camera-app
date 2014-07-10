@@ -27,6 +27,9 @@
 #include <QtMultimedia/QCameraFlashControl>
 #include <QtMultimedia/QCameraExposureControl>
 
+// Definition of this enum value is duplicated in qtubuntu-camera
+static const QCameraExposure::ExposureMode ExposureHdr = static_cast<QCameraExposure::ExposureMode>(QCameraExposure::ExposureModeVendor + 1);
+
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
     m_activeCameraIndex(0),
@@ -259,7 +262,7 @@ bool AdvancedCameraSettings::hasHdr() const
         bool continuous;
         if (m_cameraExposureControl->isParameterSupported(QCameraExposureControl::ExposureMode)) {
             QVariantList range = m_cameraExposureControl->supportedParameterRange(QCameraExposureControl::ExposureMode, &continuous);
-            return range.contains(QVariant::fromValue(QCameraExposure::ExposureModeVendor));
+            return range.contains(QVariant::fromValue(ExposureHdr));
         }
     } else {
         return false;
@@ -270,7 +273,7 @@ bool AdvancedCameraSettings::hdrEnabled() const
 {
     if (m_cameraExposureControl) {
         QVariant exposureMode = m_cameraExposureControl->actualValue(QCameraExposureControl::ExposureMode);
-        return exposureMode.value<QCameraExposure::ExposureMode>() == QCameraExposure::ExposureModeVendor;
+        return exposureMode.value<QCameraExposure::ExposureMode>() == ExposureHdr;
     } else {
         return false;
     }
@@ -279,7 +282,7 @@ bool AdvancedCameraSettings::hdrEnabled() const
 void AdvancedCameraSettings::setHdrEnabled(bool enabled)
 {
     if (m_cameraExposureControl) {
-        QVariant exposureMode = enabled ? QVariant::fromValue(QCameraExposure::ExposureModeVendor)
+        QVariant exposureMode = enabled ? QVariant::fromValue(ExposureHdr)
                                         : QVariant::fromValue(QCameraExposure::ExposureAuto);
         m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
     }
