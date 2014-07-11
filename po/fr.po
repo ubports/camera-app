@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-05-23 18:43+0000\n"
+"PO-Revision-Date: 2014-07-10 12:11+0000\n"
 "Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-07-11 06:11+0000\n"
+"X-Generator: Launchpad (build 17111)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "Aucun média disponible."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Défilement des photos"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "Partager"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "Supprimer le média ?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
