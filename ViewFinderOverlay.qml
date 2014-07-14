@@ -56,6 +56,12 @@ Item {
         when: camera.captureMode == Camera.CaptureVideo
     }
 
+    Binding {
+        target: camera.advanced
+        property: "hdrEnabled"
+        value: settings.hdrEnabled
+    }
+
     Connections {
         target: camera.imageCapture
         onReadyChanged: {
@@ -155,11 +161,11 @@ Item {
                 id: hdrOptionsModel
 
                 property string settingsProperty: "hdrEnabled"
-                property string icon: "import-image"
+                property string icon: ""
                 property string label: "HDR"
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
-                property bool available: false
+                property bool available: camera.advanced.hasHdr
                 property bool visible: true
 
                 ListElement {
@@ -225,7 +231,7 @@ Item {
 
                 Repeater {
                     model: bottomEdge.options
-                    delegate: Icon {
+                    delegate: Item {
                         anchors {
                             top: parent.top
                             topMargin: units.gu(0.5)
@@ -233,10 +239,26 @@ Item {
                             bottomMargin: units.gu(0.5)
                         }
                         width: units.gu(2)
-                        color: "white"
-                        opacity: 0.5
-                        name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
                         visible: modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
+                        opacity: 0.5
+
+                        Icon {
+                            id: indicatorIcon
+                            anchors.fill: parent
+                            color: "white"
+                            name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
+                            visible: name !== ""
+                        }
+
+                        Label {
+                            id: indicatorLabel
+                            anchors.fill: parent
+                            fontSize: "xx-small"
+                            color: "white"
+                            text: modelData.label
+                            verticalAlignment: Text.AlignVCenter
+                            visible: indicatorIcon.name === ""
+                        }
                     }
                 }
             }
