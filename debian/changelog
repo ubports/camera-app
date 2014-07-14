@@ -1,3 +1,14 @@
+camera-app (3.0.0+14.10.20140714-0ubuntu1) utopic; urgency=low
+
+  [ Benjamin Zeller ]
+  * Fix project files to correctly run on the device from QtCreator
+
+  [ Florian Boucault ]
+  * Enabled HDR feature: linked it up to backend (qtubuntu-camera).
+    fixed up overlay UI for icon less options .
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 14 Jul 2014 14:02:04 +0000
+
 camera-app (3.0.0+14.10.20140703.2-0ubuntu1) utopic; urgency=low
 
   [ Bill Filler ]
