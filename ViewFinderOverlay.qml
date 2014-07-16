@@ -18,6 +18,7 @@ import QtQuick 2.2
 import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 import QtMultimedia 5.0
+import QtPositioning 5.2
 import CameraApp 0.1
 
 Item {
@@ -88,7 +89,7 @@ Item {
                 property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
-                property bool available: false
+                property bool available: true
                 property bool visible: true
 
                 ListElement {
@@ -275,6 +276,15 @@ Item {
             } else {
                 shootFeedback.start();
                 camera.imageCapture.setMetadata("Orientation", orientation);
+                if (settings.gpsEnabled && positionSource.valid
+                        && positionSource.position.latitudeValid
+                        && positionSource.position.longitudeValid) {
+                    camera.imageCapture.setMetadata("GPSLatitude", positionSource.position.coordinate.latitude);
+                    camera.imageCapture.setMetadata("GPSLongitude", positionSource.position.coordinate.longitude);
+                    camera.imageCapture.setMetadata("GPSAltitude", positionSource.position.coordinate.altitude);
+                    camera.imageCapture.setMetadata("GPSTimeStamp", positionSource.position.timestamp);
+                    camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
+                }
                 camera.imageCapture.captureToLocation(application.picturesLocation);
             }
         }
@@ -307,6 +317,12 @@ Item {
         function changeRecordMode() {
             if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+        }
+
+        PositionSource {
+            id: positionSource
+            updateInterval: 1000
+            active: settings.gpsEnabled
         }
 
         Connections {

@@ -6,7 +6,8 @@
                       "video",
                       "usermetrics",
                       "content_exchange",
-                      "content_exchange_source"
+                      "content_exchange_source",
+                      "location"
                       ], 
     "policy_version": 1.2
 }
