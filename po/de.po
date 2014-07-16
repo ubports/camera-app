@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2013-06-13 17:02+0000\n"
-"Last-Translator: Hendrik Knackstedt <Unknown>\n"
+"PO-Revision-Date: 2014-07-15 13:14+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-07-16 07:25+0000\n"
+"X-Generator: Launchpad (build 17112)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "Keine Medien verfügbar."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Fotoliste"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "Lösche Medium?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -92,17 +92,17 @@ msgstr "Belichtung;Tag,Wolkig;Drinnen"
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "<b>%1</b> Fotos von heute"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "Keine Fotos von heute"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> Videos von heute"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Keine Videos von heute"
