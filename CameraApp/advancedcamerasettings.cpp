@@ -25,6 +25,10 @@
 #include <QtMultimedia/QMediaService>
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 #include <QtMultimedia/QCameraFlashControl>
+#include <QtMultimedia/QCameraExposureControl>
+
+// Definition of this enum value is duplicated in qtubuntu-camera
+static const QCameraExposure::ExposureMode ExposureHdr = static_cast<QCameraExposure::ExposureMode>(QCameraExposure::ExposureModeVendor + 1);
 
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
@@ -33,7 +37,8 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_camera(0),
     m_deviceSelector(0),
     m_viewFinderControl(0),
-    m_cameraFlashControl(0)
+    m_cameraFlashControl(0),
+    m_cameraExposureControl(0)
 {
 }
 
@@ -134,6 +139,19 @@ QCameraFlashControl *AdvancedCameraSettings::flashControlFromCamera(QCamera *cam
     return flashControl;
 }
 
+QCameraExposureControl* AdvancedCameraSettings::exposureControlFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QCameraExposureControl_iid);
+    QCameraExposureControl *exposureControl = qobject_cast<QCameraExposureControl*>(control);
+
+    if (exposureControl == 0) {
+        qWarning() << "No exposure control support";
+    }
+
+    return exposureControl;
+}
+
+
 QObject* AdvancedCameraSettings::camera() const
 {
     return m_cameraObject;
@@ -181,9 +199,18 @@ void AdvancedCameraSettings::readCapabilities()
     }
 
     m_cameraFlashControl = flashControlFromCamera(m_camera);
+    m_cameraExposureControl = exposureControlFromCamera(m_camera);
+
+    if (m_cameraExposureControl) {
+        QObject::connect(m_cameraExposureControl,
+                         SIGNAL(actualValueChanged(int)),
+                         this, SLOT(onExposureValueChanged(int)));
+    }
 
     Q_EMIT resolutionChanged();
     Q_EMIT hasFlashChanged();
+    Q_EMIT hasHdrChanged();
+    Q_EMIT hdrEnabledChanged();
 }
 
 void AdvancedCameraSettings::onCameraStateChanged()
@@ -226,5 +253,44 @@ bool AdvancedCameraSettings::hasFlash() const
             && m_cameraFlashControl->isFlashModeSupported(QCameraExposure::FlashOn);
     } else {
         return false;
+    }
+}
+
+bool AdvancedCameraSettings::hasHdr() const
+{
+    if (m_cameraExposureControl) {
+        bool continuous;
+        if (m_cameraExposureControl->isParameterSupported(QCameraExposureControl::ExposureMode)) {
+            QVariantList range = m_cameraExposureControl->supportedParameterRange(QCameraExposureControl::ExposureMode, &continuous);
+            return range.contains(QVariant::fromValue(ExposureHdr));
+        }
+    } else {
+        return false;
+    }
+}
+
+bool AdvancedCameraSettings::hdrEnabled() const
+{
+    if (m_cameraExposureControl) {
+        QVariant exposureMode = m_cameraExposureControl->actualValue(QCameraExposureControl::ExposureMode);
+        return exposureMode.value<QCameraExposure::ExposureMode>() == ExposureHdr;
+    } else {
+        return false;
+    }
+}
+
+void AdvancedCameraSettings::setHdrEnabled(bool enabled)
+{
+    if (m_cameraExposureControl) {
+        QVariant exposureMode = enabled ? QVariant::fromValue(ExposureHdr)
+                                        : QVariant::fromValue(QCameraExposure::ExposureAuto);
+        m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
+    }
+}
+
+void AdvancedCameraSettings::onExposureValueChanged(int parameter)
+{
+    if (parameter == QCameraExposureControl::ExposureMode) {
+        Q_EMIT hdrEnabledChanged();
     }
 }

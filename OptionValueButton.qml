@@ -40,6 +40,7 @@ AbstractButton {
         width: height
         color: "white"
         opacity: optionValueButton.selected ? 1.0 : 0.5
+        visible: name !== ""
     }
 
     Label {

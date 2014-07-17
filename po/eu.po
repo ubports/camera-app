@@ -1,16 +1,16 @@
-# Hebrew translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Basque translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-15 13:39+0000\n"
-"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <he@li.org>\n"
+"PO-Revision-Date: 2014-07-16 22:05+0000\n"
+"Last-Translator: Ibai Oihanguren Sala <Unknown>\n"
+"Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,90 +19,90 @@ msgstr ""
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr "אין מדיה זמינה."
+msgstr ""
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr "סרט צילום"
+msgstr ""
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr "שיתוף"
+msgstr "Partekatu"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr "מחיקה"
+msgstr "Ezabatu"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr "האם למחוק את המדיה?"
+msgstr ""
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr "ביטול"
+msgstr "Utzi"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "מצלמה"
+msgstr "Kamera"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "יישום מצלמה"
+msgstr "Kamera-aplikazioa"
 
 #: camera-app.qml:34
 msgid "Flash"
-msgstr "מבזק"
+msgstr "Flasha"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr "בהיר;כהה"
+msgstr "Argia;Iluna"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
-msgstr "היפוך המצלמה"
+msgstr ""
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr "קדמית;אחורית"
+msgstr ""
 
 #: camera-app.qml:42
 msgid "Shutter"
-msgstr "צמצם"
+msgstr "Obturadorea"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr "צילום תמונה;צילום מסך;הקלטה"
+msgstr "Atera argazkia;Kapturatu;Grabatu"
 
 #: camera-app.qml:46
 msgid "Mode"
-msgstr "מצב"
+msgstr "Modua"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr "תמונה;וידאו"
+msgstr "Finkoak;Bideoa"
 
 #: camera-app.qml:51
 msgid "White Balance"
-msgstr "איזון צבע לבן"
+msgstr "Zuri-balantzea"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "תנאי תאורה;יום;מעונן;בחוץ"
+msgstr "Argiztapenaren egoera;Egunez;Lainotuta;Barruan"
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> תמונות צולמו היום"
+msgstr "<b>%1</b> argazki atera dira gaur"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr "לא צולמו תמונות היום"
+msgstr "Gaur ez da argazkirik atera"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> סרטונים הוקלטו היום"
+msgstr "<b>%1</b> bideo grabatu dira gaur"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr "לא הוקלטו סרטונים היום"
+msgstr "Gaur ez da bideorik grabatu"
