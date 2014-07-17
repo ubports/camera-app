@@ -18,6 +18,7 @@ import QtQuick 2.2
 import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 import QtMultimedia 5.0
+import QtPositioning 5.2
 import CameraApp 0.1
 
 Item {
@@ -94,7 +95,7 @@ Item {
                 property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
-                property bool available: false
+                property bool available: true
                 property bool visible: true
 
                 ListElement {
@@ -297,6 +298,17 @@ Item {
             } else {
                 shootFeedback.start();
                 camera.imageCapture.setMetadata("Orientation", orientation);
+                var position = positionSource.position;
+                if (settings.gpsEnabled && positionSource.valid
+                        && position.latitudeValid
+                        && position.longitudeValid
+                        && position.altitudeValid) {
+                    camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
+                    camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
+                    camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
+                    camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
+                    camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
+                }
                 camera.imageCapture.captureToLocation(application.picturesLocation);
             }
         }
@@ -329,6 +341,12 @@ Item {
         function changeRecordMode() {
             if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+        }
+
+        PositionSource {
+            id: positionSource
+            updateInterval: 1000
+            active: settings.gpsEnabled
         }
 
         Connections {
