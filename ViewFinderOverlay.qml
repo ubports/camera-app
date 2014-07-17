@@ -298,13 +298,15 @@ Item {
             } else {
                 shootFeedback.start();
                 camera.imageCapture.setMetadata("Orientation", orientation);
+                var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
-                        && positionSource.position.latitudeValid
-                        && positionSource.position.longitudeValid) {
-                    camera.imageCapture.setMetadata("GPSLatitude", positionSource.position.coordinate.latitude);
-                    camera.imageCapture.setMetadata("GPSLongitude", positionSource.position.coordinate.longitude);
-                    camera.imageCapture.setMetadata("GPSAltitude", positionSource.position.coordinate.altitude);
-                    camera.imageCapture.setMetadata("GPSTimeStamp", positionSource.position.timestamp);
+                        && position.latitudeValid
+                        && position.longitudeValid
+                        && position.altitudeValid) {
+                    camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
+                    camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
+                    camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
+                    camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
                 }
                 camera.imageCapture.captureToLocation(application.picturesLocation);
