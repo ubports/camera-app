@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-10 21:53+0000\n"
-"Last-Translator: Alan Pope ㋛ <alan@ubuntu.com>\n"
+"PO-Revision-Date: 2014-07-17 17:00+0000\n"
+"Last-Translator: Anthony Harrington <untaintableangel@ubuntu.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-11 06:11+0000\n"
-"X-Generator: Launchpad (build 17111)\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:24+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
@@ -92,7 +92,7 @@ msgstr "Lighting Condition;Day;Cloudy;Inside"
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> photos taken today"
+msgstr "photos taken today: <b>%1</b>"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
@@ -101,7 +101,7 @@ msgstr "No photos taken today"
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> videos recorded today"
+msgstr "videos recorded today: <b>%1</b>"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"

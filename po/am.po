@@ -1,4 +1,4 @@
-# Dutch translation for camera-app
+# Amharic translation for camera-app
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-17 20:11+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"PO-Revision-Date: 2014-07-18 00:35+0000\n"
+"Last-Translator: samson <Unknown>\n"
+"Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr "Geen media beschikbaar."
+msgstr ""
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
@@ -27,39 +27,39 @@ msgstr ""
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr "Delen"
+msgstr "ማካፈያ"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "ማጥፊያ"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr "Media verwijderen?"
+msgstr ""
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "መሰረዣ"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Camera"
+msgstr "ካሜራ"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Camera-toepassing"
+msgstr ""
 
 #: camera-app.qml:34
 msgid "Flash"
-msgstr ""
+msgstr "ፍላሽ"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr "Licht;Donker"
+msgstr ""
 
 #: camera-app.qml:38
 msgid "Flip Camera"
-msgstr "Camera omdraaien"
+msgstr ""
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: camera-app.qml:46
 msgid "Mode"
-msgstr "Modus"
+msgstr "ዘዴ"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
@@ -83,26 +83,26 @@ msgstr ""
 
 #: camera-app.qml:51
 msgid "White Balance"
-msgstr "Witbalans"
+msgstr ""
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Belichtingsomstandigheden;Overdag;Bewolkt;Binnen"
+msgstr ""
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "Er zijn vandaag <b>%1</b> foto's genomen"
+msgstr "<b>%1</b> ዛሬ የተነሱ ፎቶዎች"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr "Er zijn vandaag geen foto's genomen"
+msgstr "ዛሬ ፎቶ አላነሱም"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "Er zijn vandaag <b>%1</b> video's opgenomen"
+msgstr ""
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr "Er zijn vandaag geen video's opgenomen"
+msgstr ""
