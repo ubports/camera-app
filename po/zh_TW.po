@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2013-07-13 15:46+0000\n"
+"PO-Revision-Date: 2014-07-17 19:55+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:24+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "沒有可用的媒體。"
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "相片膠卷"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "刪除"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "要刪除媒體？"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -55,7 +55,7 @@ msgstr "閃光"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr "亮;暗"
+msgstr "Light;Dark;亮;暗"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
@@ -71,7 +71,7 @@ msgstr "快門"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr "照相;快照;錄影"
+msgstr "Take a Photo;Snap;Record;照相;快照;錄影"
 
 #: camera-app.qml:46
 msgid "Mode"
@@ -87,22 +87,22 @@ msgstr "白平衡"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "光照情況;日光;陰天;室內"
+msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "今日已拍攝 <b>%1</b> 張相片"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "今日尚未拍攝相片"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "今日已錄製 <b>%1</b> 卷影片"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "今日尚未錄製影片"

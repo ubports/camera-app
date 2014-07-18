@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-01-15 12:09+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2014-07-17 23:31+0000\n"
+"Last-Translator: Cristiana Pinheiro <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-07-18 05:24+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
@@ -23,15 +23,15 @@ msgstr ""
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Rolo da câmara"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "Partilhar"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "Apagar"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
@@ -39,11 +39,11 @@ msgstr ""
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr ""
+msgstr "Câmara"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
@@ -51,11 +51,11 @@ msgstr ""
 
 #: camera-app.qml:34
 msgid "Flash"
-msgstr ""
+msgstr "Flash"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr ""
+msgstr "Claro;Escuro"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: camera-app.qml:46
 msgid "Mode"
-msgstr ""
+msgstr "Modo"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
@@ -83,26 +83,26 @@ msgstr ""
 
 #: camera-app.qml:51
 msgid "White Balance"
-msgstr ""
+msgstr "Equilíbrio de brancos"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Condição de luminosidade;Dia;Nublado;Interior"
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "<b>%1</b> fotografias tiradas hoje"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "Nenhuma fotografia tirada hoje"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> videos gravados hoje"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Nenhum video gravado hoje"
