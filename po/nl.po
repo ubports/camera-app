@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-17 20:11+0000\n"
+"PO-Revision-Date: 2014-07-18 18:32+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-18 05:24+0000\n"
+"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: GalleryView.qml:95
@@ -23,7 +23,7 @@ msgstr "Geen media beschikbaar."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Fotorol"
 
 #: SlideshowView.qml:41
 msgid "Share"
@@ -51,7 +51,7 @@ msgstr "Camera-toepassing"
 
 #: camera-app.qml:34
 msgid "Flash"
-msgstr ""
+msgstr "Flitsen"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
@@ -63,15 +63,15 @@ msgstr "Camera omdraaien"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Voorkant;Achterkant"
 
 #: camera-app.qml:42
 msgid "Shutter"
-msgstr ""
+msgstr "Sluiter"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Foto nemen;Klikken;Opnemen"
 
 #: camera-app.qml:46
 msgid "Mode"
@@ -79,7 +79,7 @@ msgstr "Modus"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr ""
+msgstr "Stillen;Video"
 
 #: camera-app.qml:51
 msgid "White Balance"
@@ -92,17 +92,17 @@ msgstr "Belichtingsomstandigheden;Overdag;Bewolkt;Binnen"
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "Er zijn vandaag <b>%1</b> foto's genomen"
+msgstr "<b>%1</b> foto's genomen vandaag"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr "Er zijn vandaag geen foto's genomen"
+msgstr "Geen foto's genomen vandaag"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "Er zijn vandaag <b>%1</b> video's opgenomen"
+msgstr "<b>%1</b> video's opgenomen vandaag"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr "Er zijn vandaag geen video's opgenomen"
+msgstr "Geen video's opgenomen vandaag"
