@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2013-10-11 04:10+0000\n"
+"PO-Revision-Date: 2014-07-22 02:39+0000\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <km@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-07-22 07:14+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "មិនមាន​មេឌៀ"
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "បណ្ដុំ​រូបថត"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "ចែក​រំលែក"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "លុប"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "លុប​មេឌៀ?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "បោះ​បង់"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -92,17 +92,17 @@ msgstr "លក្ខខណ្ឌ​ពន្លឺ;ថ្ងៃ;ពពក;ខា
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "រូបថត <b>%1</b> បាន​ថត​នៅ​ថ្ងៃ​នេះ"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "មិន​មាន​រូបថត​បាន​ថត​នៅ​ថ្ងៃ​នេះ"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "វីដេអូ <b>%1</b> បាន​ថត​នៅ​ថ្ងៃ​នេះ"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "មិន​មាន​វីដេអូ​បាន​ថត​នៅ​ថ្ងៃ​នេះ"
