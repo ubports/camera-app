@@ -1,29 +1,33 @@
+# translation of po_camera-app-is.po to icelandic
+# translation of po_camera-app-is to Icelandic
 # Icelandic translation for camera-app
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# Sveinn í Felli <sv1@fellsnet.is>, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: camera-app\n"
+"Project-Id-Version: po_camera-app-is\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-18 11:09+0000\n"
+"PO-Revision-Date: 2014-07-23 05:46+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic <is@li.org>\n"
+"Language-Team: icelandic <translation-team-is@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
+"X-Launchpad-Export-Date: 2014-07-23 06:58+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
+"Language: is\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "Engir miðlar tiltækir."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Filmurúlla"
 
 #: SlideshowView.qml:41
 msgid "Share"
@@ -35,7 +39,7 @@ msgstr "Eyða"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "Eyða miðli?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
@@ -47,7 +51,7 @@ msgstr "Myndavél"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr ""
+msgstr "Myndavélarforrit"
 
 #: camera-app.qml:34
 msgid "Flash"
@@ -55,15 +59,15 @@ msgstr "Leifturljós"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr ""
+msgstr "Ljóst;Dökkt"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
-msgstr ""
+msgstr "Snúa myndavél"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Framhlið;Bakhlið"
 
 #: camera-app.qml:42
 msgid "Shutter"
@@ -71,7 +75,7 @@ msgstr "Lokari"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Taka ljósmynd;Smella;Upptaka"
 
 #: camera-app.qml:46
 msgid "Mode"
@@ -79,7 +83,7 @@ msgstr "Hamur"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr ""
+msgstr "Kyrrmynd;Myndskeið"
 
 #: camera-app.qml:51
 msgid "White Balance"
@@ -87,7 +91,7 @@ msgstr "Hvítvægi"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Lýsing;Dagsbirta;Skýjað;Innanhúss"
 
 #: camera-app.qml:169
 #, qt-format
@@ -101,8 +105,8 @@ msgstr "Engar myndir teknar í dag"
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> myndskeið tekin upp í dag"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Engin myndskeið tekin upp í dag"
