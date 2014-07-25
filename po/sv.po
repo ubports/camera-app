@@ -1,21 +1,22 @@
 # Swedish translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Copyright © 2013-2014 Rosetta Contributors and Canonical Ltd 2013-2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# Josef Andersson <josef.andersson@fripost.org>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-18 18:53+0000\n"
-"Last-Translator: Gunnar Hjalmarsson <Unknown>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2014-07-24 13:54+0000\n"
+"Last-Translator: Josef Andersson <Unknown>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
+"X-Launchpad-Export-Date: 2014-07-25 07:50+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
+"Language: sv\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
@@ -101,8 +102,8 @@ msgstr "Inga foton tagna idag"
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> videoklipp tagna idag"
+msgstr "<b>%1</b> filmklipp tagna idag"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr "Inga videoklipp tagna idag"
+msgstr "Inga filmklipp tagna idag"
