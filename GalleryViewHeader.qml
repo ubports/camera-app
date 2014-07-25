@@ -33,6 +33,7 @@ Item {
 
     property bool shown: true
     property alias actions: actionsDrawer.actions
+    property bool gridMode: false
     signal exit
     signal toggleViews
 
@@ -61,8 +62,6 @@ Item {
                 bottom: parent.bottom
             }
             width: units.gu(8)
-            iconHeight: units.gu(3)
-            iconWidth: iconHeight
             iconName: "back"
             iconColor: Theme.palette.normal.foregroundText
             onClicked: header.exit()
@@ -75,30 +74,24 @@ Item {
             Layout.fillWidth: true
         }
 
-        ImageButton {
+        IconButton {
             objectName: "viewToggleButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
             }
-            width: units.gu(6)
-            iconSource: "assets/gridview.png"
+            iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
-            //            IconButton {
-            //                iconName: "view-grid-symbolic"
         }
 
-        ImageButton {
+        IconButton {
             objectName: "additionalActionsButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
             }
-            width: units.gu(6)
-            iconSource: "assets/options.png"
+            iconName: "contextual-menu"
             visible: actionsDrawer.actions.length > 0
-            //            IconButton {
-            //                iconName: "contextual-menu"
             onClicked: actionsDrawer.opened = !actionsDrawer.opened
         }
     }
@@ -138,6 +131,7 @@ Item {
             Repeater {
                 model: actionsDrawer.actions
                 delegate: AbstractButton {
+                    id: actionButton
                     anchors {
                         left: actionsColumn.left
                         right: actionsColumn.right
@@ -149,7 +143,7 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        color: Qt.rgba(0.0, 0.0, 0.0, 0.6)
+                        color: actionButton.pressed ? Qt.rgba(1.0, 1.0, 1.0, 0.3) : Qt.rgba(0.0, 0.0, 0.0, 0.6)
                     }
 
                     Label {

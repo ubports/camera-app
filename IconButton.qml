@@ -18,20 +18,25 @@ import QtQuick 2.0
 import Ubuntu.Components 1.0
 
 AbstractButton {
-    property alias iconWidth: icon.width
-    property alias iconHeight: icon.height
+    id: button
+
     property alias iconName: icon.name
     property alias iconColor: icon.color
 
-    width: units.gu(4)
-    height: units.gu(4)
+    width: units.gu(5)
+    height: width
+
+    Rectangle {
+        anchors.fill: parent
+        color: Qt.rgba(1.0, 1.0, 1.0, 0.3)
+        visible: button.pressed
+    }
 
     Icon {
         id: icon
         anchors.centerIn: parent
-        width: parent.width
-        height: parent.height
+        width: units.gu(2.5)
+        height: width
         color: "white"
     }
 }
-
