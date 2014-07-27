@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-18 00:35+0000\n"
+"PO-Revision-Date: 2014-07-26 23:04+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
-"X-Generator: Launchpad (build 17114)\n"
+"X-Launchpad-Export-Date: 2014-07-27 06:29+0000\n"
+"X-Generator: Launchpad (build 17131)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "ምንም መገናኛ አልተገኘም"
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "የ ፎቶ ጥቅል"
 
 #: SlideshowView.qml:41
 msgid "Share"
@@ -35,7 +35,7 @@ msgstr "ማጥፊያ"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "መገናኛውን ላጥፋው?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
@@ -47,7 +47,7 @@ msgstr "ካሜራ"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr ""
+msgstr "የ ካሜራ መተግበሪያ"
 
 #: camera-app.qml:34
 msgid "Flash"
@@ -55,7 +55,7 @@ msgstr "ፍላሽ"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr ""
+msgstr "ብርሀን፡ጨለማ"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
@@ -101,8 +101,8 @@ msgstr "ዛሬ ፎቶ አላነሱም"
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> ዘሬ የተቀረጸ ቪዲዮ"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "ዘሬ የተቀረጸ ቪዲዮ የለም"
