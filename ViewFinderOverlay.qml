@@ -75,6 +75,12 @@ Item {
         }
     }
 
+    MouseArea {
+        id: bottomEdgeClose
+        anchors.fill: parent
+        onClicked: bottomEdge.close()
+    }
+
     Panel {
         id: bottomEdge
         anchors {
