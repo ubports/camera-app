@@ -72,6 +72,7 @@ Item {
             text: i18n.tr("Photo Roll")
             fontSize: "x-large"
             color: Theme.palette.normal.foregroundText
+            elide: Text.ElideRight
             Layout.fillWidth: true
         }
 
