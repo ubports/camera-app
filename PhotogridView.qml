@@ -17,6 +17,8 @@
 import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Thumbnailer 0.1
+import Ubuntu.Content 0.1
+import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
     id: photogridView
@@ -63,12 +65,7 @@ Item {
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
 
-
-            function endsWith(string, suffix) {
-                return string.indexOf(suffix, string.length - suffix.length) !== -1;
-            }
-
-            property bool isVideo: endsWith(fileURL.toString(), ".mp4")
+            property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
 
             Image {
                 id: thumbnail

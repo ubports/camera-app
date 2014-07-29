@@ -21,20 +21,15 @@ import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
+import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
     id: slideshowView
 
     property var model
     property int currentIndex: listView.currentIndex
-    property string currentFilePath: {
-        var filePath = slideshowView.model.get(slideshowView.currentIndex, "filePath")
-        if (filePath) {
-            return filePath;
-        } else {
-            return "";
-        }
-    }
+    property string currentFilePath: slideshowView.model.get(slideshowView.currentIndex, "filePath")
+    property string currentFileType: slideshowView.model.get(slideshowView.currentIndex, "fileType")
 
     signal toggleHeader
     property list<Action> actions: [
@@ -127,11 +122,7 @@ Item {
                     width: flickable.width * flickable.sizeScale
                     height: flickable.height * flickable.sizeScale
 
-                    function endsWith(string, suffix) {
-                        return string.indexOf(suffix, string.length - suffix.length) !== -1;
-                    }
-
-                    property bool isVideo: endsWith(fileURL.toString(), ".mp4")
+                    property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
 
                     Image {
                         id: image
@@ -231,7 +222,7 @@ Item {
                 // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
                 // FIXME: ContentPeerPicker should not be visible: false by default
                 visible: true
-                contentType: ContentType.Pictures
+                contentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.currentFileType)
                 handler: ContentHandler.Share
 
                 onPeerSelected: {
