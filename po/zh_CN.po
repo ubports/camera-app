@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-27 15:54+0000\n"
-"Last-Translator: Aron Xu <Unknown>\n"
+"PO-Revision-Date: 2014-07-29 02:26+0000\n"
+"Last-Translator: Luo Lei <luolei@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-28 06:41+0000\n"
+"X-Launchpad-Export-Date: 2014-07-29 06:46+0000\n"
 "X-Generator: Launchpad (build 17131)\n"
 
 #: GalleryView.qml:95
@@ -23,11 +23,11 @@ msgstr ""
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr ""
+msgstr "Photo Roll"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
