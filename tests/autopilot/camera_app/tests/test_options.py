@@ -7,26 +7,21 @@
 
 """Tests for the Camera App options overlay"""
 
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
-import unittest
-
-
-class TestCameraFlash(CameraAppTestCase):
+class TestCameraOptions(CameraAppTestCase):
     """Tests the options overlay"""
 
     """ This is needed to wait for the application to start.
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
-        super(TestCameraFlash, self).setUp()
+        super(TestCameraOptions, self).setUp()
+        # FIXME: this should be in parent class
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraFlash, self).tearDown()
 
     """Test that the options overlay closes properly by tapping"""
     def test_overlay_tap_to_close(self):
