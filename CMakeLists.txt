@@ -83,9 +83,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 
 file(GLOB QML_JS_FILES *.qml *.js)
 
-# make the files visible on qtcreator
-add_custom_target(QML_JS_TARGET ALL SOURCES ${QML_JS_FILES})
-
 install(FILES ${QML_JS_FILES}
     DESTINATION ${CAMERA_APP_DIR}
     )
@@ -108,6 +105,10 @@ foreach(LINE ${DESKTOP_FILE_CONTENTS})
     string(CONFIGURE "${LINE}" LINE)
     file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} "${LINE}\n")
 endforeach(LINE)
+
+# make non compiled files visible in qtcreator
+file(GLOB_RECURSE NON_COMPILED_FILES *.qml *.js *.py *.svg *.png *.in *.json *.desktop *.pot qmldir)
+add_custom_target(NON_COMPILED_TARGET ALL SOURCES ${NON_COMPILED_FILES})
 
 if(CLICK_MODE)
 
