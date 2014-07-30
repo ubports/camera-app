@@ -69,6 +69,7 @@ Item {
             id: header
             onExit: galleryView.exit()
             actions: currentView.actions
+            gridMode: galleryView.gridMode
             onToggleViews: {
                 if (!galleryView.gridMode) {
                     // position grid view so that the current photo in slideshow view is visible
