@@ -28,7 +28,7 @@
 
 int main(int argc, char** argv)
 {
-    QGuiApplication::setApplicationName("Camera App");
+    QGuiApplication::setApplicationName("camera");
     CameraApplication application(argc, argv);
 
     if (!application.setup()) {
