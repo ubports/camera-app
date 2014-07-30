@@ -16,7 +16,7 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
@@ -41,6 +41,8 @@ Item {
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
+
+        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
     }
 
     Binding {
@@ -413,6 +415,7 @@ Item {
                 bottomMargin: units.gu(6)
             }
 
+            enabled: !camera.switchInProgress
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }

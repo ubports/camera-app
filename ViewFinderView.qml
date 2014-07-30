@@ -16,7 +16,7 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
@@ -34,6 +34,7 @@ Item {
     Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
+        StateSaver.properties: "captureMode"
 
         function manualFocus(x, y) {
             viewFinderOverlay.showFocusRing(x, y);
@@ -59,7 +60,9 @@ Item {
         }
 
         property AdvancedCameraSettings advanced: AdvancedCameraSettings {
+            id: advancedCamera
             camera: camera
+            StateSaver.properties: "activeCameraIndex"
         }
 
         Component.onCompleted: {

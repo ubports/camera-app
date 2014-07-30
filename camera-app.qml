@@ -137,6 +137,7 @@ Item {
         }
 
         Row {
+            id: viewsRow
             anchors {
                 top: parent.top
                 bottom: parent.bottom
