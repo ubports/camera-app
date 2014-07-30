@@ -93,6 +93,7 @@ QHash<int, QByteArray> FoldersModel::roleNames() const
     roles[FileNameRole] = "fileName";
     roles[FilePathRole] = "filePath";
     roles[FileUrlRole] = "fileURL";
+    roles[FileTypeRole] = "fileType";
     return roles;
 }
 
@@ -106,16 +107,20 @@ QVariant FoldersModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
+    QFileInfo item = m_fileInfoList.at(index.row());
     switch (role)
     {
         case FileNameRole:
-            return m_fileInfoList.at(index.row()).fileName();
+            return item.fileName();
             break;
         case FilePathRole:
-            return m_fileInfoList.at(index.row()).filePath();
+            return item.filePath();
             break;
         case FileUrlRole:
-            return QUrl::fromLocalFile(m_fileInfoList.at(index.row()).filePath());
+            return QUrl::fromLocalFile(item.filePath());
+            break;
+        case FileTypeRole:
+            return m_mimeDatabase.mimeTypeForFile(item.fileName()).name();
             break;
         default:
             break;
@@ -129,15 +134,9 @@ int FoldersModel::rowCount(const QModelIndex& parent) const
     return m_fileInfoList.count();
 }
 
-QVariant FoldersModel::get(int index, QString role) const
+QVariant FoldersModel::get(int row, QString role) const
 {
-    Q_UNUSED(role)
-
-    if (index < 0 || index >= m_fileInfoList.count()) {
-        return QVariant();
-    }
-
-    return QVariant::fromValue(m_fileInfoList.at(index).absoluteFilePath());
+    return data(index(row), roleNames().key(role.toUtf8()));
 }
 
 void FoldersModel::directoryChanged(const QString &directoryPath)

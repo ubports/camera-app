@@ -21,6 +21,7 @@
 #include <QtCore/QAbstractListModel>
 #include <QtCore/QFileInfo>
 #include <QtCore/QFileSystemWatcher>
+#include <QtCore/QMimeDatabase>
 
 class FoldersModel : public QAbstractListModel
 {
@@ -32,7 +33,8 @@ public:
     enum Roles {
         FileNameRole = Qt::UserRole + 1,
         FilePathRole = Qt::UserRole + 2,
-        FileUrlRole = Qt::UserRole + 3
+        FileUrlRole = Qt::UserRole + 3,
+        FileTypeRole = Qt::UserRole + 4
     };
 
     explicit FoldersModel(QObject *parent = 0);
@@ -48,7 +50,7 @@ public:
     QHash<int, QByteArray> roleNames() const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
-    Q_INVOKABLE QVariant get(int index, QString role) const;
+    Q_INVOKABLE QVariant get(int row, QString role) const;
 
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
@@ -62,6 +64,7 @@ private:
     QStringList m_nameFilters;
     QFileInfoList m_fileInfoList;
     QFileSystemWatcher* m_watcher;
+    QMimeDatabase m_mimeDatabase;
 };
 
 #endif // FOLDERSMODEL_H
