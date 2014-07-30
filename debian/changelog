@@ -1,3 +1,25 @@
+camera-app (3.0.0+14.10.20140730-0ubuntu1) utopic; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Save state of viewfinder: preserve back/front mode, picture/video
+    mode, flash, HDR and location settings. (LP: #1344274)
+  * Photo roll: Added feedback upon pressed. Use icons from theme
+    instead of custom PNGs .
+  * Exit the options overlay upon tapping anywhere outside the buttons.
+    It used to work relying on the behaviour of the toolkit's Panel but
+    it recently changed under our feet (rev 1000.119.19 from lp:ubuntu-
+    ui-toolkit). (LP: #1348643)
+  * Make sure all files are visible in QtCreator. No need for
+    qmlproject.
+  * Photo roll: elide header title. (LP: #1348645)
+  * Sharing: make content type dynamic. (LP: #1337587)
+  * Save videos in a subfolder of ~/Videos (LP: #1337594)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 30 Jul 2014 19:30:55 +0000
+
 camera-app (3.0.0+14.10.20140717-0ubuntu1) utopic; urgency=low
 
   [ CI bot ]
