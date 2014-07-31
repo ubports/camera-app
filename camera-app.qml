@@ -155,7 +155,7 @@ Item {
                 onPhotoTaken: {
                     if (main.contentExportMode) {
                         // FIXME: ask user if photo is good before
-                        main.exportContent(path);
+                        main.exportContent([path]);
                     } else {
                         galleryView.showLastPhotoTaken();
                     }
@@ -177,10 +177,16 @@ Item {
     property var transfer: null
     property var transferContentType: ContentType.Pictures
 
-    function exportContent(url) {
+    function exportContent(urls) {
         if (!main.transfer) return;
-        var item = contentItemComponent.createObject(main.transfer, {"url": url});
-        main.transfer.items = [item];
+
+        var item;
+        var items = [];
+        for (var i=0; i<urls.length; i++) {
+            item = contentItemComponent.createObject(main.transfer, {"url": urls[i]});
+            items.push(item);
+        }
+        main.transfer.items = items;
         main.transfer.state = ContentTransfer.Charged;
         main.transfer = null;
     }

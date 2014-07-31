@@ -20,7 +20,8 @@
 #include <QtCore/QDateTime>
 
 FoldersModel::FoldersModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractListModel(parent),
+    m_singleSelectionOnly(true)
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
@@ -56,6 +57,23 @@ QList<int> FoldersModel::selectedFiles() const
 {
     return m_selectedFiles.values();
 }
+
+bool FoldersModel::singleSelectionOnly() const
+{
+    return m_singleSelectionOnly;
+}
+
+void FoldersModel::setSingleSelectionOnly(bool singleSelectionOnly)
+{
+    if (singleSelectionOnly != m_singleSelectionOnly) {
+        if (singleSelectionOnly && m_selectedFiles.count() > 1) {
+            clearSelection();
+        }
+        m_singleSelectionOnly = singleSelectionOnly;
+        Q_EMIT singleSelectionOnlyChanged();
+    }
+}
+
 
 void FoldersModel::updateFileInfoList()
 {
@@ -162,18 +180,19 @@ void FoldersModel::directoryChanged(const QString &directoryPath)
 
 void FoldersModel::toggleSelected(int row)
 {
-    int previouslySelected = m_selectedFiles.isEmpty() ? -1 : m_selectedFiles.values().first();
-
     if (m_selectedFiles.contains(row)) {
         m_selectedFiles.remove(row);
     } else {
-        // only support single item selection for now
+        if (m_singleSelectionOnly) {
+            int previouslySelected = m_selectedFiles.isEmpty() ? -1 : m_selectedFiles.values().first();
+            if (previouslySelected != -1) {
+                m_selectedFiles.remove(previouslySelected);
+                Q_EMIT dataChanged(index(previouslySelected), index(previouslySelected));
+            }
+        }
         m_selectedFiles.insert(row);
     }
 
-    if (previouslySelected != -1 && previouslySelected != row) {
-        Q_EMIT dataChanged(index(previouslySelected), index(previouslySelected));
-    }
     Q_EMIT dataChanged(index(row), index(row));
     Q_EMIT selectedFilesChanged();
 }

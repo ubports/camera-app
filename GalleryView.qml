@@ -16,6 +16,7 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.0
+import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -29,6 +30,7 @@ Item {
         folders: [application.picturesLocation, application.videosLocation]
         typeFilters: !main.contentExportMode ? [ "image", "video" ]
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
+        singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
     }
 
     property bool gridMode: false
@@ -86,9 +88,13 @@ Item {
                 galleryView.gridMode = !galleryView.gridMode
             }
             onValidationClicked: {
-                var fileURL = model.get(model.selectedFiles[0], "fileURL");
+                var selection = model.selectedFiles;
+                var urls = [];
+                for (var i=0; i<selection.length; i++) {
+                    urls.push(model.get(selection[i], "fileURL"));
+                }
                 model.clearSelection();
-                main.exportContent(fileURL);
+                main.exportContent(urls);
             }
         }
     }
