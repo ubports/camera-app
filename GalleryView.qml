@@ -17,6 +17,7 @@
 import QtQuick 2.2
 import Ubuntu.Components 1.0
 import CameraApp 0.1
+import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
     id: galleryView
@@ -26,7 +27,8 @@ Item {
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
         folders: [application.picturesLocation, application.videosLocation]
-        nameFilters: [ "*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG", "*.mp4" ]
+        typeFilters: !main.contentExportMode ? [ "image", "video" ]
+                                              : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
     }
 
     property bool gridMode: false
@@ -59,8 +61,12 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             onPhotoClicked: {
-                slideshowView.showPhotoAtIndex(index);
-                galleryView.gridMode = false;
+                if (main.contentExportMode) {
+                    model.toggleSelected(index);
+                } else {
+                    slideshowView.showPhotoAtIndex(index);
+                    galleryView.gridMode = false;
+                }
             }
         }
 
@@ -69,7 +75,8 @@ Item {
             id: header
             onExit: galleryView.exit()
             actions: currentView.actions
-            gridMode: galleryView.gridMode
+            gridMode: galleryView.gridMode || main.contentExportMode
+            validationVisible: main.contentExportMode && model.selectedFiles.length > 0
             onToggleViews: {
                 if (!galleryView.gridMode) {
                     // position grid view so that the current photo in slideshow view is visible
@@ -77,6 +84,11 @@ Item {
                 }
 
                 galleryView.gridMode = !galleryView.gridMode
+            }
+            onValidationClicked: {
+                var fileURL = model.get(model.selectedFiles[0], "fileURL");
+                model.clearSelection();
+                main.exportContent(fileURL);
             }
         }
     }
@@ -93,7 +105,7 @@ Item {
         text: i18n.tr("No media available.")
     }
 
-    state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
+    state: galleryView.gridMode || main.contentExportMode ? "GRID" : "SLIDESHOW"
     states: [
         State {
             name: "SLIDESHOW"

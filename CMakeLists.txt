@@ -120,6 +120,8 @@ if(CLICK_MODE)
             DESTINATION ${CMAKE_INSTALL_PREFIX})
     install(FILES camera-apparmor.json
             DESTINATION ${CMAKE_INSTALL_PREFIX})
+    install(FILES camera-contenthub.json
+            DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 else(CLICK_MODE)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}

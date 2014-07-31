@@ -123,3 +123,11 @@ QString CameraApplication::videosLocation() const
     dir.mkpath(location);
     return location;
 }
+
+QString CameraApplication::temporaryLocation() const
+{
+    QString location = QStandardPaths::standardLocations(QStandardPaths::TempLocation).at(0);
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}

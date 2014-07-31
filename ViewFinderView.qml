@@ -28,7 +28,8 @@ Item {
     property bool optionValueSelectorVisible: false
     property bool touchAcquired: viewFinderOverlay.touchAcquired
     property bool inView
-    signal photoTaken
+    property alias captureMode: camera.captureMode
+    signal photoTaken(string path)
     signal videoShot
 
     Camera {
@@ -86,7 +87,7 @@ Item {
                 snapshot.source = preview;
             }
             onImageSaved: {
-                viewFinderView.photoTaken();
+                viewFinderView.photoTaken(path);
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }

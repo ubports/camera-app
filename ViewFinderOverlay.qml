@@ -304,7 +304,9 @@ Item {
                     // TODO: there's no event to tell us that the video has been successfully recorder or failed
                 }
             } else {
-                shootFeedback.start();
+                if (!main.contentExportMode) {
+                    shootFeedback.start();
+                }
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
@@ -317,14 +319,18 @@ Item {
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
                 }
-                camera.imageCapture.captureToLocation(application.picturesLocation);
+                if (main.contentExportMode) {
+                    camera.imageCapture.captureToLocation(application.temporaryLocation);
+                } else {
+                    camera.imageCapture.captureToLocation(application.picturesLocation);
+                }
             }
         }
 
         function completeCapture() {
             viewFinderOverlay.visible = true;
             // FIXME: no snapshot is available for videos
-            if (camera.captureMode != Camera.CaptureVideo) {
+            if (camera.captureMode != Camera.CaptureVideo && !main.contentExportMode) {
                 snapshot.startOutAnimation();
             }
             camera.captureInProgress = false;
@@ -383,6 +389,7 @@ Item {
 
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
+            enabled: !main.contentExportMode
         }
 
         ShootButton {

@@ -16,9 +16,11 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
+import Ubuntu.Content 0.1
 
 Item {
     id: main
@@ -150,7 +152,14 @@ Item {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
-                onPhotoTaken: galleryView.showLastPhotoTaken();
+                onPhotoTaken: {
+                    if (main.contentExportMode) {
+                        // FIXME: ask user if photo is good before
+                        main.exportContent(path);
+                    } else {
+                        galleryView.showLastPhotoTaken();
+                    }
+                }
                 onVideoShot: galleryView.showLastPhotoTaken();
             }
 
@@ -164,6 +173,35 @@ Item {
         }
     }
 
+    property bool contentExportMode: transfer !== null
+    property var transfer: null
+    property var transferContentType: ContentType.Pictures
+
+    function exportContent(url) {
+        if (!main.transfer) return;
+        var item = contentItemComponent.createObject(main.transfer, {"url": url});
+        main.transfer.items = [item];
+        main.transfer.state = ContentTransfer.Charged;
+        main.transfer = null;
+    }
+
+    Component {
+        id: contentItemComponent
+        ContentItem {
+        }
+    }
+
+    Connections {
+        target: ContentHub
+        onExportRequested: {
+            if (transferContentType === ContentType.Videos) {
+                viewFinderView.captureMode = Camera.CaptureVideo;
+            } else {
+                viewFinderView.captureMode = Camera.CaptureStillImage;
+            }
+            main.transfer = transfer;
+        }
+    }
 
     Metric {
         id: metricPhotos

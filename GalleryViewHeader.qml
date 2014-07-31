@@ -34,8 +34,10 @@ Item {
     property bool shown: true
     property alias actions: actionsDrawer.actions
     property bool gridMode: false
+    property bool validationVisible
     signal exit
     signal toggleViews
+    signal validationClicked
 
     function show() {
         shown = true;
@@ -83,6 +85,7 @@ Item {
             }
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
+            visible: !main.contentExportMode
         }
 
         IconButton {
@@ -94,6 +97,17 @@ Item {
             iconName: "contextual-menu"
             visible: actionsDrawer.actions.length > 0
             onClicked: actionsDrawer.opened = !actionsDrawer.opened
+        }
+
+        IconButton {
+            objectName: "validationButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            iconName: "ok"
+            onClicked: header.validationClicked()
+            visible: header.validationVisible
         }
     }
 
