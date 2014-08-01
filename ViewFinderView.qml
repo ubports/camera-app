@@ -29,7 +29,7 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired
     property bool inView
     property alias captureMode: camera.captureMode
-    signal photoTaken(string path)
+    signal photoTaken
     signal videoShot
 
     Camera {
@@ -76,7 +76,6 @@ Item {
                transparently based on the value. */
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
-        property bool captureInProgress: false
         property bool switchInProgress: false
         
         imageCapture {
@@ -87,7 +86,14 @@ Item {
                 snapshot.source = preview;
             }
             onImageSaved: {
-                viewFinderView.photoTaken(path);
+                viewFinderOverlay.visible = true;
+                if (main.contentExportMode) {
+                    // FIXME: ask user if photo is good before
+                    main.exportContent([path]);
+                } else {
+                    snapshot.startOutAnimation();
+                }
+                viewFinderView.photoTaken();
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -97,7 +103,7 @@ Item {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.controls.completeCapture();
+                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot();
                 }
             }

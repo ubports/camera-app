@@ -288,8 +288,6 @@ Item {
         enabled: visible
 
         function shoot() {
-            camera.captureInProgress = true;
-
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
                 orientation += 90;
@@ -327,15 +325,6 @@ Item {
             }
         }
 
-        function completeCapture() {
-            viewFinderOverlay.visible = true;
-            // FIXME: no snapshot is available for videos
-            if (camera.captureMode != Camera.CaptureVideo && !main.contentExportMode) {
-                snapshot.startOutAnimation();
-            }
-            camera.captureInProgress = false;
-        }
-
         function switchCamera() {
             camera.switchInProgress = true;
             //                viewFinderGrab.sourceItem = viewFinder;
@@ -367,9 +356,7 @@ Item {
             target: camera.imageCapture
             onReadyChanged: {
                 if (camera.imageCapture.ready) {
-                    if (camera.captureInProgress) {
-                        controls.completeCapture();
-                    } else if (camera.switchInProgress) {
+                    if (camera.switchInProgress) {
                         controls.completeSwitch();
                     }
                 }

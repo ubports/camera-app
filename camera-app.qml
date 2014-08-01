@@ -152,14 +152,7 @@ Item {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
-                onPhotoTaken: {
-                    if (main.contentExportMode) {
-                        // FIXME: ask user if photo is good before
-                        main.exportContent([path]);
-                    } else {
-                        galleryView.showLastPhotoTaken();
-                    }
-                }
+                onPhotoTaken: galleryView.showLastPhotoTaken();
                 onVideoShot: galleryView.showLastPhotoTaken();
             }
 
