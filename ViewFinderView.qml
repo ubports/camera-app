@@ -86,11 +86,10 @@ Item {
                 snapshot.source = preview;
             }
             onImageSaved: {
-                viewFinderOverlay.visible = true;
                 if (main.contentExportMode) {
-                    // FIXME: ask user if photo is good before
-                    main.exportContent([path]);
+                    viewFinderExportConfirmation.confirmExport(path);
                 } else {
+                    viewFinderOverlay.visible = true;
                     snapshot.startOutAnimation();
                 }
                 viewFinderView.photoTaken();
@@ -290,5 +289,11 @@ Item {
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+    }
+
+    ViewFinderExportConfirmation {
+        id: viewFinderExportConfirmation
+        anchors.fill: parent
+        snapshot: snapshot
     }
 }

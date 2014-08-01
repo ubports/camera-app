@@ -29,6 +29,8 @@ Item {
         shoot.restart()
     }
 
+    visible: false
+
     Item {
         id: container
         anchors {
@@ -36,7 +38,6 @@ Item {
             bottom: parent.bottom
         }
         width: parent.width
-        visible: false
 
         Image {
             id: snapshot
@@ -67,11 +68,11 @@ Item {
     SequentialAnimation {
         id: shoot
 
-        PropertyAction { target: container; property: "visible"; value: true }
+        PropertyAction { target: snapshotRoot; property: "visible"; value: true }
         PauseAnimation { duration: 150 }
         XAnimator { target: container; to: container.width + shadow.width; duration: UbuntuAnimation.BriskDuration; easing: UbuntuAnimation.StandardEasing}
         PropertyAction { target: snapshot; property: "source"; value: ""}
-        PropertyAction { target: container; property: "visible"; value: false }
+        PropertyAction { target: snapshotRoot; property: "visible"; value: false }
         PropertyAction { target: container; property: "x"; value: 0 }
     }
 }

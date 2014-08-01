@@ -184,6 +184,11 @@ Item {
         main.transfer = null;
     }
 
+    function cancelExport() {
+        main.transfer.state = ContentTransfer.Aborted;
+        main.transfer = null;
+    }
+
     Component {
         id: contentItemComponent
         ContentItem {
