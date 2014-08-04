@@ -110,7 +110,11 @@ bool CameraApplication::setup()
 
 QString CameraApplication::picturesLocation() const
 {
-    QString location = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0) + "/" + QCoreApplication::applicationName();
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
     QDir dir;
     dir.mkpath(location);
     return location;
@@ -118,7 +122,11 @@ QString CameraApplication::picturesLocation() const
 
 QString CameraApplication::videosLocation() const
 {
-    QString location = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation).at(0) + "/" + QCoreApplication::applicationName();
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
     QDir dir;
     dir.mkpath(location);
     return location;
@@ -126,7 +134,11 @@ QString CameraApplication::videosLocation() const
 
 QString CameraApplication::temporaryLocation() const
 {
-    QString location = QStandardPaths::standardLocations(QStandardPaths::TempLocation).at(0);
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::TempLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0);
     QDir dir;
     dir.mkpath(location);
     return location;
