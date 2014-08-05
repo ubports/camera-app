@@ -30,7 +30,6 @@ Item {
     }
 
     function hide() {
-        mediaPath = "";
         viewFinderOverlay.visible = true;
         snapshot.source = "";
         snapshot.visible = false;
