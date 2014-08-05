@@ -288,8 +288,6 @@ Item {
         enabled: visible
 
         function shoot() {
-            camera.captureInProgress = true;
-
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
                 orientation += 90;
@@ -304,7 +302,9 @@ Item {
                     // TODO: there's no event to tell us that the video has been successfully recorder or failed
                 }
             } else {
-                shootFeedback.start();
+                if (!main.contentExportMode) {
+                    shootFeedback.start();
+                }
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
@@ -317,17 +317,12 @@ Item {
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
                 }
-                camera.imageCapture.captureToLocation(application.picturesLocation);
+                if (main.contentExportMode) {
+                    camera.imageCapture.captureToLocation(application.temporaryLocation);
+                } else {
+                    camera.imageCapture.captureToLocation(application.picturesLocation);
+                }
             }
-        }
-
-        function completeCapture() {
-            viewFinderOverlay.visible = true;
-            // FIXME: no snapshot is available for videos
-            if (camera.captureMode != Camera.CaptureVideo) {
-                snapshot.startOutAnimation();
-            }
-            camera.captureInProgress = false;
         }
 
         function switchCamera() {
@@ -361,9 +356,7 @@ Item {
             target: camera.imageCapture
             onReadyChanged: {
                 if (camera.imageCapture.ready) {
-                    if (camera.captureInProgress) {
-                        controls.completeCapture();
-                    } else if (camera.switchInProgress) {
+                    if (camera.switchInProgress) {
                         controls.completeSwitch();
                     }
                 }
@@ -383,6 +376,7 @@ Item {
 
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
+            enabled: !main.contentExportMode
         }
 
         ShootButton {

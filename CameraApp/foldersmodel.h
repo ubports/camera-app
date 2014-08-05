@@ -22,27 +22,34 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QMimeDatabase>
+#include <QtCore/QSet>
 
 class FoldersModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY (QStringList folders READ folders WRITE setFolders NOTIFY foldersChanged)
-    Q_PROPERTY (QStringList nameFilters READ nameFilters WRITE setNameFilters NOTIFY nameFiltersChanged)
+    Q_PROPERTY (QStringList typeFilters READ typeFilters WRITE setTypeFilters NOTIFY typeFiltersChanged)
+    Q_PROPERTY (QList<int> selectedFiles READ selectedFiles NOTIFY selectedFilesChanged)
+    Q_PROPERTY (bool singleSelectionOnly READ singleSelectionOnly WRITE setSingleSelectionOnly NOTIFY singleSelectionOnlyChanged)
 
 public:
     enum Roles {
         FileNameRole = Qt::UserRole + 1,
         FilePathRole = Qt::UserRole + 2,
         FileUrlRole = Qt::UserRole + 3,
-        FileTypeRole = Qt::UserRole + 4
+        FileTypeRole = Qt::UserRole + 4,
+        SelectedRole = Qt::UserRole + 5
     };
 
     explicit FoldersModel(QObject *parent = 0);
 
     QStringList folders() const;
     void setFolders(const QStringList& folders);
-    QStringList nameFilters() const;
-    void setNameFilters(const QStringList& nameFilters);
+    QStringList typeFilters() const;
+    void setTypeFilters(const QStringList& typeFilters);
+    QList<int> selectedFiles() const;
+    bool singleSelectionOnly() const;
+    void setSingleSelectionOnly(bool singleSelectionOnly);
 
     void updateFileInfoList();
     void insertFileInfo(const QFileInfo& newFileInfo);
@@ -51,20 +58,26 @@ public:
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
     Q_INVOKABLE QVariant get(int row, QString role) const;
+    Q_INVOKABLE void toggleSelected(int row);
+    Q_INVOKABLE void clearSelection();
 
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
 
 Q_SIGNALS:
     void foldersChanged();
-    void nameFiltersChanged();
+    void typeFiltersChanged();
+    void selectedFilesChanged();
+    void singleSelectionOnlyChanged();
 
 private:
     QStringList m_folders;
-    QStringList m_nameFilters;
+    QStringList m_typeFilters;
     QFileInfoList m_fileInfoList;
     QFileSystemWatcher* m_watcher;
     QMimeDatabase m_mimeDatabase;
+    QSet<int> m_selectedFiles;
+    bool m_singleSelectionOnly;
 };
 
 #endif // FOLDERSMODEL_H

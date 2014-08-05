@@ -20,7 +20,8 @@
 #include <QtCore/QDateTime>
 
 FoldersModel::FoldersModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractListModel(parent),
+    m_singleSelectionOnly(true)
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
@@ -40,31 +41,60 @@ void FoldersModel::setFolders(const QStringList& folders)
     Q_EMIT foldersChanged();
 }
 
-QStringList FoldersModel::nameFilters() const
+QStringList FoldersModel::typeFilters() const
 {
-    return m_nameFilters;
+    return m_typeFilters;
 }
 
-void FoldersModel::setNameFilters(const QStringList& nameFilters)
+void FoldersModel::setTypeFilters(const QStringList& typeFilters)
 {
-    m_nameFilters = nameFilters;
+    m_typeFilters = typeFilters;
     updateFileInfoList();
-    Q_EMIT nameFiltersChanged();
+    Q_EMIT typeFiltersChanged();
 }
+
+QList<int> FoldersModel::selectedFiles() const
+{
+    return m_selectedFiles.values();
+}
+
+bool FoldersModel::singleSelectionOnly() const
+{
+    return m_singleSelectionOnly;
+}
+
+void FoldersModel::setSingleSelectionOnly(bool singleSelectionOnly)
+{
+    if (singleSelectionOnly != m_singleSelectionOnly) {
+        if (singleSelectionOnly && m_selectedFiles.count() > 1) {
+            clearSelection();
+        }
+        m_singleSelectionOnly = singleSelectionOnly;
+        Q_EMIT singleSelectionOnlyChanged();
+    }
+}
+
 
 void FoldersModel::updateFileInfoList()
 {
     m_fileInfoList.clear();
     Q_FOREACH (QString folder, m_folders) {
         QDir currentDir(folder);
-        QFileInfoList fileInfoList = currentDir.entryInfoList(m_nameFilters,
-                                                              QDir::Files | QDir::Readable,
+        QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
                                                               QDir::Time | QDir::Reversed);
         Q_FOREACH (QFileInfo fileInfo, fileInfoList) {
-            insertFileInfo(fileInfo);
+            QString type = m_mimeDatabase.mimeTypeForFile(fileInfo).name();
+            Q_FOREACH (QString filterType, m_typeFilters) {
+                if (type.startsWith(filterType)) {
+                    insertFileInfo(fileInfo);
+                    break;
+                }
+            }
         }
     }
     endResetModel();
+    m_selectedFiles.clear();
+    Q_EMIT selectedFilesChanged();
 }
 
 bool moreRecentThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
@@ -94,6 +124,7 @@ QHash<int, QByteArray> FoldersModel::roleNames() const
     roles[FilePathRole] = "filePath";
     roles[FileUrlRole] = "fileURL";
     roles[FileTypeRole] = "fileType";
+    roles[SelectedRole] = "selected";
     return roles;
 }
 
@@ -120,7 +151,10 @@ QVariant FoldersModel::data(const QModelIndex& index, int role) const
             return QUrl::fromLocalFile(item.filePath());
             break;
         case FileTypeRole:
-            return m_mimeDatabase.mimeTypeForFile(item.fileName()).name();
+            return m_mimeDatabase.mimeTypeForFile(item).name();
+            break;
+        case SelectedRole:
+            return m_selectedFiles.contains(index.row());
             break;
         default:
             break;
@@ -142,4 +176,32 @@ QVariant FoldersModel::get(int row, QString role) const
 void FoldersModel::directoryChanged(const QString &directoryPath)
 {
     updateFileInfoList();
+}
+
+void FoldersModel::toggleSelected(int row)
+{
+    if (m_selectedFiles.contains(row)) {
+        m_selectedFiles.remove(row);
+    } else {
+        if (m_singleSelectionOnly) {
+            int previouslySelected = m_selectedFiles.isEmpty() ? -1 : m_selectedFiles.values().first();
+            if (previouslySelected != -1) {
+                m_selectedFiles.remove(previouslySelected);
+                Q_EMIT dataChanged(index(previouslySelected), index(previouslySelected));
+            }
+        }
+        m_selectedFiles.insert(row);
+    }
+
+    Q_EMIT dataChanged(index(row), index(row));
+    Q_EMIT selectedFilesChanged();
+}
+
+void FoldersModel::clearSelection()
+{
+    Q_FOREACH (int selectedFile, m_selectedFiles) {
+        m_selectedFiles.remove(selectedFile);
+        Q_EMIT dataChanged(index(selectedFile), index(selectedFile));
+    }
+    Q_EMIT selectedFilesChanged();
 }

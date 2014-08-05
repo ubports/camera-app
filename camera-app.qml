@@ -16,9 +16,11 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
+import Ubuntu.Content 0.1
 
 Item {
     id: main
@@ -164,6 +166,46 @@ Item {
         }
     }
 
+    property bool contentExportMode: transfer !== null
+    property var transfer: null
+    property var transferContentType: ContentType.Pictures
+
+    function exportContent(urls) {
+        if (!main.transfer) return;
+
+        var item;
+        var items = [];
+        for (var i=0; i<urls.length; i++) {
+            item = contentItemComponent.createObject(main.transfer, {"url": urls[i]});
+            items.push(item);
+        }
+        main.transfer.items = items;
+        main.transfer.state = ContentTransfer.Charged;
+        main.transfer = null;
+    }
+
+    function cancelExport() {
+        main.transfer.state = ContentTransfer.Aborted;
+        main.transfer = null;
+    }
+
+    Component {
+        id: contentItemComponent
+        ContentItem {
+        }
+    }
+
+    Connections {
+        target: ContentHub
+        onExportRequested: {
+            if (transferContentType === ContentType.Videos) {
+                viewFinderView.captureMode = Camera.CaptureVideo;
+            } else {
+                viewFinderView.captureMode = Camera.CaptureStillImage;
+            }
+            main.transfer = transfer;
+        }
+    }
 
     Metric {
         id: metricPhotos

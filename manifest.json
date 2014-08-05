@@ -5,7 +5,8 @@
     "hooks": {
         "camera": {
             "apparmor": "camera-apparmor.json",
-            "desktop": "@DESKTOP_FILE@"
+            "desktop": "@DESKTOP_FILE@",
+            "content-hub": "camera-contenthub.json"
         }
     },
     "icon": "@CAMERA_ICON@",

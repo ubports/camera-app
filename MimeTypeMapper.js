@@ -16,22 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+.pragma library
+.import Ubuntu.Content 0.1 as UbuntuContent
+
 function startsWith(string, prefix) {
     return string.indexOf(prefix) === 0;
 }
 
 function mimeTypeToContentType(mimeType) {
     if(startsWith(mimeType, "image")) {
-        return ContentType.Pictures;
+        return UbuntuContent.ContentType.Pictures;
     } else if(startsWith(mimeType, "audio")) {
-        return ContentType.Music;
+        return UbuntuContent.ContentType.Music;
     } else if(startsWith(mimeType, "video")) {
-        return ContentType.Videos;
+        return UbuntuContent.ContentType.Videos;
     } else if(startsWith(mimeType, "text/x-vcard")) {
-        return ContentType.Contacts;
+        return UbuntuContent.ContentType.Contacts;
     } else if(startsWith(mimeType, "text")) {
-        return ContentType.Documents;
+        return UbuntuContent.ContentType.Documents;
     } else {
-        return ContentType.Unknown;
+        return UbuntuContent.ContentType.Unknown;
+    }
+}
+
+function contentTypeToMimeType(contentType) {
+    if (contentType === UbuntuContent.ContentType.Pictures) {
+        return "image";
+    } else if (contentType === UbuntuContent.ContentType.Videos) {
+        return "video";
     }
 }

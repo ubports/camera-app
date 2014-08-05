@@ -28,6 +28,7 @@ Item {
     property bool optionValueSelectorVisible: false
     property bool touchAcquired: viewFinderOverlay.touchAcquired
     property bool inView
+    property alias captureMode: camera.captureMode
     signal photoTaken
     signal videoShot
 
@@ -75,7 +76,6 @@ Item {
                transparently based on the value. */
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
-        property bool captureInProgress: false
         property bool switchInProgress: false
         
         imageCapture {
@@ -86,6 +86,12 @@ Item {
                 snapshot.source = preview;
             }
             onImageSaved: {
+                if (main.contentExportMode) {
+                    viewFinderExportConfirmation.confirmExport(path);
+                } else {
+                    viewFinderOverlay.visible = true;
+                    snapshot.startOutAnimation();
+                }
                 viewFinderView.photoTaken();
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
@@ -96,7 +102,7 @@ Item {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.controls.completeCapture();
+                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot();
                 }
             }
@@ -283,5 +289,11 @@ Item {
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+    }
+
+    ViewFinderExportConfirmation {
+        id: viewFinderExportConfirmation
+        anchors.fill: parent
+        snapshot: snapshot
     }
 }

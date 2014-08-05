@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.2
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.1
 import Ubuntu.Thumbnailer 0.1
 import Ubuntu.Content 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
@@ -101,6 +101,13 @@ Item {
                 color: "white"
                 opacity: 0.8
                 visible: isVideo
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                color: UbuntuColors.blue
+                opacity: 0.4
+                visible: selected
             }
 
             MouseArea {
