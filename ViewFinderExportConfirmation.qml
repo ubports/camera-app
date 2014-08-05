@@ -24,12 +24,15 @@ Item {
     property Snapshot snapshot
 
     function confirmExport(path) {
+        viewFinder.visible = false;
+        viewFinderOverlay.visible = false;
         mediaPath = path;
         snapshot.visible = true;
         visible = true;
     }
 
     function hide() {
+        viewFinder.visible = true;
         viewFinderOverlay.visible = true;
         snapshot.source = "";
         snapshot.visible = false;
