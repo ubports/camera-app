@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-01-18 06:37+0000\n"
-"Last-Translator: Akira Nakagawa <matyapiro31@gmail.com>\n"
+"PO-Revision-Date: 2014-08-06 01:50+0000\n"
+"Last-Translator: Mitsuya Shibata <mty.shibata@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-04 06:27+0000\n"
-"X-Generator: Launchpad (build 17086)\n"
+"X-Launchpad-Export-Date: 2014-08-06 06:52+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
@@ -59,7 +59,7 @@ msgstr ""
 
 #: camera-app.qml:38
 msgid "Flip Camera"
-msgstr ""
+msgstr "カメラを反転"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
@@ -101,7 +101,7 @@ msgstr ""
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "本日は<b>%1</b>件の動画を撮影しました"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
