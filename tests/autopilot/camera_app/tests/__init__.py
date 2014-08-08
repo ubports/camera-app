@@ -35,6 +35,7 @@ class CameraAppTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
+        os.environ['TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING'] = '1'
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):
