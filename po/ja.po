@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-08-06 01:50+0000\n"
+"PO-Revision-Date: 2014-08-07 23:51+0000\n"
 "Last-Translator: Mitsuya Shibata <mty.shibata@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-07 06:24+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-08-08 06:59+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "利用可能なメディアがありません。"
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
@@ -27,19 +27,19 @@ msgstr ""
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "共有"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "データを削除しますか？"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -55,7 +55,7 @@ msgstr "フラッシュ"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr ""
+msgstr "Light;Dark;明るく;暗く"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
@@ -63,7 +63,7 @@ msgstr "カメラを反転"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Front Facing;Back Facing;前面カメラ;背面カメラ"
 
 #: camera-app.qml:42
 msgid "Shutter"
@@ -71,7 +71,7 @@ msgstr "シャッター"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Take a Photo;Snap;Record;写真;撮影;録画"
 
 #: camera-app.qml:46
 msgid "Mode"
@@ -79,7 +79,7 @@ msgstr "モード"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr ""
+msgstr "Still;Video;写真;動画"
 
 #: camera-app.qml:51
 msgid "White Balance"
@@ -87,16 +87,16 @@ msgstr "ホワイトバランス"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Lighting Condition;Day;Cloudy;Inside;照明状態;晴天;くもり;室内"
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "本日は<b>%1</b>枚の写真を撮影しました"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "本日は何も撮影していません"
 
 #: camera-app.qml:178
 #, qt-format
@@ -105,4 +105,4 @@ msgstr "本日は<b>%1</b>件の動画を撮影しました"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "本日は何も録画していません"
