@@ -1,3 +1,12 @@
+camera-app (3.0.0+14.10.20140808-0ubuntu1) utopic; urgency=low
+
+  [ Brendan Donegan ]
+  * Setting TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING
+    prevents the location request dialog from popping up, so as not to
+    break the Autopilot tests.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 08 Aug 2014 14:58:17 +0000
+
 camera-app (3.0.0+14.10.20140805-0ubuntu1) utopic; urgency=low
 
   [ CI bot ]
