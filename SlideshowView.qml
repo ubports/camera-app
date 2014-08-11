@@ -30,6 +30,7 @@ Item {
     property int currentIndex: listView.currentIndex
     property string currentFilePath: slideshowView.model.get(slideshowView.currentIndex, "filePath")
     property string currentFileType: slideshowView.model.get(slideshowView.currentIndex, "fileType")
+    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress : false
 
     signal toggleHeader
     property list<Action> actions: [
@@ -77,13 +78,17 @@ Item {
         highlightRangeMode: ListView.StrictlyEnforceRange
         snapMode: ListView.SnapOneItem
         spacing: units.gu(1)
+        interactive: currentItem ? !currentItem.pinchInProgress : true
         property real maxDimension: Math.max(width, height)
 
         delegate: Item {
-            function zoomIn(centerX, centerY) {
-                flickable.scaleCenterX = centerX / flickable.width;
-                flickable.scaleCenterY = centerY / flickable.height;
-                flickable.sizeScale = 3.0;
+            id: delegate
+            property bool pinchInProgress: zoomPinchArea.active
+
+            function zoomIn(centerX, centerY, factor) {
+                flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);
+                flickable.scaleCenterY = centerY / (flickable.sizeScale * flickable.height);
+                flickable.sizeScale = factor;
             }
 
             function zoomOut() {
@@ -103,94 +108,130 @@ Item {
                 running: image.status != Image.Ready
             }
 
-            Flickable {
-                id: flickable
+            PinchArea {
+                id: zoomPinchArea
                 anchors.fill: parent
-                contentWidth: media.width
-                contentHeight: media.height
-                contentX: (sizeScale - 1) * scaleCenterX * width
-                contentY: (sizeScale - 1) * scaleCenterY * height
 
-                property real sizeScale: 1.0
-                property real scaleCenterX: 0.0
-                property real scaleCenterY: 0.0
-                Behavior on sizeScale { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+                property real initialZoom
+                property real maximumScale: 3.0
+                property real minimumZoom: 1.0
+                property real maximumZoom: 3.0
+                property bool active: false
+                property var center
 
-                Item {
-                    id: media
-
-                    width: flickable.width * flickable.sizeScale
-                    height: flickable.height * flickable.sizeScale
-
-                    property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
-
-                    Image {
-                        id: image
-                        anchors.fill: parent
-                        asynchronous: true
-                        cache: false
-                        source: "image://thumbnailer/" + fileURL.toString()
-                        sourceSize {
-                            width: listView.maxDimension
-                            height: listView.maxDimension
-                        }
-                        fillMode: Image.PreserveAspectFit
-                        opacity: status == Image.Ready ? 1.0 : 0.0
-                        Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
-
-                    }
-
-                    Image {
-                        id: highResolutionImage
-                        anchors.fill: parent
-                        asynchronous: true
-                        cache: false
-                        source: flickable.sizeScale > 1.0 ? fileURL : ""
-                        sourceSize {
-                            width: width
-                            height: height
-                        }
-                        fillMode: Image.PreserveAspectFit
-                    }
+                onPinchStarted: {
+                    active = true;
+                    initialZoom = flickable.sizeScale;
+                    center = zoomPinchArea.mapToItem(media, pinch.startCenter.x, pinch.startCenter.y);
+                    zoomIn(center.x, center.y, initialZoom);
+                }
+                onPinchUpdated: {
+                    var zoomFactor = MathUtils.clamp(initialZoom * pinch.scale, minimumZoom, maximumZoom);
+                    flickable.sizeScale = zoomFactor;
+                }
+                onPinchFinished: {
+                    active = false;
                 }
 
-                Icon {
-                    width: units.gu(5)
-                    height: units.gu(5)
-                    anchors.centerIn: parent
-                    name: "media-playback-start"
-                    color: "white"
-                    opacity: 0.8
-                    visible: media.isVideo
-                }
-
-                MouseArea {
+                Flickable {
+                    id: flickable
                     anchors.fill: parent
-                    onClicked: {
-                        slideshowView.toggleHeader();
-                        mouse.accepted = false;
+                    contentWidth: media.width
+                    contentHeight: media.height
+                    contentX: (sizeScale - 1) * scaleCenterX * width
+                    contentY: (sizeScale - 1) * scaleCenterY * height
+                    interactive: !delegate.pinchInProgress
+
+                    property real sizeScale: 1.0
+                    property real scaleCenterX: 0.0
+                    property real scaleCenterY: 0.0
+                    Behavior on sizeScale {
+                        enabled: !delegate.pinchInProgress
+                        UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}
                     }
-                    onDoubleClicked: {
-                        if (media.isVideo) {
-                            return;
+                    Behavior on scaleCenterX {
+                        UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}
+                    }
+                    Behavior on scaleCenterY {
+                        UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}
+                    }
+
+                    Item {
+                        id: media
+
+                        width: flickable.width * flickable.sizeScale
+                        height: flickable.height * flickable.sizeScale
+
+                        property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
+
+                        Image {
+                            id: image
+                            anchors.fill: parent
+                            asynchronous: true
+                            cache: false
+                            source: "image://thumbnailer/" + fileURL.toString()
+                            sourceSize {
+                                width: listView.maxDimension
+                                height: listView.maxDimension
+                            }
+                            fillMode: Image.PreserveAspectFit
+                            opacity: status == Image.Ready ? 1.0 : 0.0
+                            Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+
                         }
 
-                        if (flickable.sizeScale == 1.0) {
-                            zoomIn(mouse.x, mouse.y);
-                        } else {
-                            zoomOut();
+                        Image {
+                            id: highResolutionImage
+                            anchors.fill: parent
+                            asynchronous: true
+                            cache: false
+                            source: flickable.sizeScale > 1.0 ? fileURL : ""
+                            sourceSize {
+                                width: width
+                                height: height
+                            }
+                            fillMode: Image.PreserveAspectFit
                         }
                     }
-                }
 
-                MouseArea {
-                    anchors.centerIn: parent
-                    width: units.gu(10)
-                    height: units.gu(10)
-                    enabled: media.isVideo
-                    onClicked: {
-                        if (media.isVideo) {
-                            Qt.openUrlExternally(fileURL);
+                    Icon {
+                        width: units.gu(5)
+                        height: units.gu(5)
+                        anchors.centerIn: parent
+                        name: "media-playback-start"
+                        color: "white"
+                        opacity: 0.8
+                        visible: media.isVideo
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            slideshowView.toggleHeader();
+                            mouse.accepted = false;
+                        }
+                        onDoubleClicked: {
+                            if (media.isVideo) {
+                                return;
+                            }
+
+                            if (flickable.sizeScale < zoomPinchArea.maximumZoom) {
+                                zoomIn(mouse.x, mouse.y, zoomPinchArea.maximumZoom);
+                            } else {
+                                zoomOut();
+                            }
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.centerIn: parent
+                        width: units.gu(10)
+                        height: units.gu(10)
+                        enabled: media.isVideo
+                        onClicked: {
+                            if (media.isVideo) {
+                                Qt.openUrlExternally(fileURL);
+                            }
                         }
                     }
                 }
