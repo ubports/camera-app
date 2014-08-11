@@ -164,18 +164,22 @@ Item {
                     Label {
                         id: label
                         anchors {
-                            left: parent.left
+                            left: icon.right
                             leftMargin: units.gu(2)
+                            right: parent.right
+                            rightMargin: units.gu(2)
                             verticalCenter: parent.verticalCenter
                         }
                         text: model.text
+                        elide: Text.ElideRight
                         color: Theme.palette.normal.foregroundText
                     }
 
                     Icon {
+                        id: icon
                         anchors {
-                            right: parent.right
-                            rightMargin: units.gu(2)
+                            left: parent.left
+                            leftMargin: units.gu(2)
                             verticalCenter: parent.verticalCenter
                         }
                         width: height
