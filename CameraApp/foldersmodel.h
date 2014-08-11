@@ -63,6 +63,7 @@ public:
 
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
+    void fileChanged(const QString &directoryPath);
 
 Q_SIGNALS:
     void foldersChanged();
