@@ -28,8 +28,6 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    property string currentFilePath: slideshowView.model.get(slideshowView.currentIndex, "filePath")
-    property string currentFileType: slideshowView.model.get(slideshowView.currentIndex, "fileType")
 
     signal toggleHeader
     property list<Action> actions: [
@@ -215,19 +213,22 @@ Item {
 
             ContentItem {
                 id: contentItem
-                url: slideshowView.currentFilePath
             }
 
             ContentPeerPicker {
                 // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
                 // FIXME: ContentPeerPicker should not be visible: false by default
                 visible: true
-                contentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.currentFileType)
+                Component.onCompleted: {
+                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
+                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
+                }
                 handler: ContentHandler.Share
 
                 onPeerSelected: {
                     var transfer = peer.request();
                     if (transfer.state === ContentTransfer.InProgress) {
+                        contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
                         transfer.items = [ contentItem ];
                         transfer.state = ContentTransfer.Charged;
                     }
@@ -259,7 +260,8 @@ Item {
                 text: i18n.tr("Delete")
                 color: UbuntuColors.orange
                 onClicked: {
-                    fileOperations.remove(slideshowView.currentFilePath);
+                    var currentFilePath = slideshowView.model.get(slideshowView.currentIndex, "filePath");
+                    fileOperations.remove(currentFilePath);
                     PopupUtils.close(deleteDialog);
                 }
             }
