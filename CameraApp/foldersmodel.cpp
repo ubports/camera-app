@@ -18,7 +18,6 @@
 #include <QtCore/QDir>
 #include <QtCore/QUrl>
 #include <QtCore/QDateTime>
-#include <QDebug>
 
 FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
@@ -178,13 +177,11 @@ QVariant FoldersModel::get(int row, QString role) const
 
 void FoldersModel::directoryChanged(const QString &directoryPath)
 {
-    qDebug() << "FoldersModel::directoryChanged" << directoryPath;
     updateFileInfoList();
 }
 
 void FoldersModel::fileChanged(const QString &filePath)
 {
-    qDebug() << "FoldersModel::fileChanged" << filePath;
     updateFileInfoList();
 }
 
