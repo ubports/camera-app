@@ -135,7 +135,7 @@ add_subdirectory(desktop)
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
      **.qml)
-list(APPEND I18N_SRC_FILES ${DESKTOP_FILE}.in.in)
+list(APPEND I18N_SRC_FILES po/${DESKTOP_FILE}.in.in.h)
 list(SORT I18N_SRC_FILES)
 
 # for dh_translations to extract the domain
