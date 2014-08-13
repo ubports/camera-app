@@ -1,3 +1,10 @@
+camera-app (3.0.0+14.10.20140813-0ubuntu1) utopic; urgency=low
+
+  [ Ken VanDine ]
+  * Updated depends for qtdeclarative5-ubuntu-content1 package rename
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 13 Aug 2014 14:52:01 +0000
+
 camera-app (3.0.0+14.10.20140808-0ubuntu1) utopic; urgency=low
 
   [ Brendan Donegan ]
