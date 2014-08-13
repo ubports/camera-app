@@ -24,6 +24,8 @@
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QDir>
 #include <QDate>
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -86,6 +88,7 @@ bool CameraApplication::setup()
     m_view.reset(new QQuickView());
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Camera");
+    m_view->setColor("black");
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
     if (isClick()) {
@@ -103,4 +106,40 @@ bool CameraApplication::setup()
       m_view->show();
 
     return true;
+}
+
+QString CameraApplication::picturesLocation() const
+{
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::videosLocation() const
+{
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::temporaryLocation() const
+{
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::TempLocation);
+    if (locations.isEmpty()) {
+        return QString();
+    }
+    QString location = locations.at(0);
+    QDir dir;
+    dir.mkpath(location);
+    return location;
 }

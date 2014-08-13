@@ -7,15 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-05-17 09:51+0200\n"
-"PO-Revision-Date: 2014-06-11 23:07+0000\n"
+"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"PO-Revision-Date: 2014-07-22 02:44+0000\n"
 "Last-Translator: Gheyret T.Kenji <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-06-12 06:33+0000\n"
-"X-Generator: Launchpad (build 17041)\n"
+"X-Launchpad-Export-Date: 2014-07-23 06:58+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
+
+#: GalleryView.qml:95
+msgid "No media available."
+msgstr "ئىشلەتكىلى بولىدىغان ۋاسىتە يوق"
+
+#: GalleryViewHeader.qml:72
+msgid "Photo Roll"
+msgstr "سۈرەت يۆگىمى"
+
+#: SlideshowView.qml:41
+msgid "Share"
+msgstr "ھەمبەھىرلە"
+
+#: SlideshowView.qml:46 SlideshowView.qml:235
+msgid "Delete"
+msgstr "ئۆچۈر"
+
+#: SlideshowView.qml:223
+msgid "Delete media?"
+msgstr "ۋاسىتىنى ئۆچۈرسۇنمۇ؟"
+
+#: SlideshowView.qml:230
+msgid "Cancel"
+msgstr "ئەمەلدىن قالدۇر"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -25,60 +49,60 @@ msgstr "كامېرا"
 msgid "Camera application"
 msgstr "كامېرا پروگراممىسى"
 
-#: camera-app.qml:35
+#: camera-app.qml:34
 msgid "Flash"
 msgstr "چاقماق لامپا"
 
-#: camera-app.qml:36
+#: camera-app.qml:35
 msgid "Light;Dark"
 msgstr "يورۇق؛قاراڭغۇ"
 
-#: camera-app.qml:40
+#: camera-app.qml:38
 msgid "Flip Camera"
 msgstr "كامېرا ئايلاندۇر"
 
-#: camera-app.qml:41
+#: camera-app.qml:39
 msgid "Front Facing;Back Facing"
 msgstr "ئالدى ؛ئارقا"
 
-#: camera-app.qml:45
+#: camera-app.qml:42
 msgid "Shutter"
 msgstr "زاتور"
 
-#: camera-app.qml:46
+#: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
 msgstr "بىر پارچە سۈرەت تارت؛سۈرەت تارت؛خاتىرىلە"
 
-#: camera-app.qml:50
+#: camera-app.qml:46
 msgid "Mode"
 msgstr "ھالىتى"
 
-#: camera-app.qml:51
+#: camera-app.qml:47
 msgid "Stills;Video"
 msgstr "جىم؛سىن"
 
-#: camera-app.qml:56
+#: camera-app.qml:51
 msgid "White Balance"
 msgstr "ئاق تەڭپۇڭلۇق"
 
-#: camera-app.qml:57
+#: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "يورۇتۇش شارائىتى؛ كۈندۈز؛ بۇلۇتلۇق؛ ئۆي ئىچى"
 
-#: camera-app.qml:370
+#: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "بۈگۈن <b>%1</b> دانە سۈرەت تارتىلدى"
 
-#: camera-app.qml:371
+#: camera-app.qml:170
 msgid "No photos taken today"
 msgstr "بۈگۈن بىرمۇ سۈرەت تارتىلمىدى"
 
-#: camera-app.qml:379
+#: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "بۈگۈن <b>%1</b> دانە سىن ئېلىندى"
 
-#: camera-app.qml:380
+#: camera-app.qml:179
 msgid "No videos recorded today"
 msgstr "بۈگۈن بىرمۇ سىن ئېلىنمىدى"

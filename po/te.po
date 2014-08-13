@@ -7,78 +7,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-05-17 09:51+0200\n"
-"PO-Revision-Date: 2013-11-29 15:20+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"PO-Revision-Date: 2014-07-21 13:44+0000\n"
+"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <te@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-24 06:49+0000\n"
-"X-Generator: Launchpad (build 17017)\n"
+"X-Launchpad-Export-Date: 2014-07-22 07:14+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
+
+#: GalleryView.qml:95
+msgid "No media available."
+msgstr "ఏ మాధ్యమం అందుబాటులోలేదు"
+
+#: GalleryViewHeader.qml:72
+msgid "Photo Roll"
+msgstr ""
+
+#: SlideshowView.qml:41
+msgid "Share"
+msgstr "పంచుకోండి"
+
+#: SlideshowView.qml:46 SlideshowView.qml:235
+msgid "Delete"
+msgstr "తొలగించు"
+
+#: SlideshowView.qml:223
+msgid "Delete media?"
+msgstr "మాధ్యమాన్ని తొలగించాలా?"
+
+#: SlideshowView.qml:230
+msgid "Cancel"
+msgstr "రద్దుచేయి"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr ""
+msgstr "కెమేరా"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr ""
+msgstr "కెమేరా అనువర్తనం"
+
+#: camera-app.qml:34
+msgid "Flash"
+msgstr "ఫ్లాష్"
 
 #: camera-app.qml:35
-msgid "Flash"
-msgstr ""
-
-#: camera-app.qml:36
 msgid "Light;Dark"
 msgstr ""
 
-#: camera-app.qml:40
+#: camera-app.qml:38
 msgid "Flip Camera"
-msgstr ""
+msgstr "కెమేరా తిరగవేయి"
 
-#: camera-app.qml:41
+#: camera-app.qml:39
 msgid "Front Facing;Back Facing"
 msgstr ""
 
-#: camera-app.qml:45
+#: camera-app.qml:42
 msgid "Shutter"
-msgstr ""
+msgstr "షట్టర్"
 
-#: camera-app.qml:46
+#: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
 msgstr ""
 
-#: camera-app.qml:50
+#: camera-app.qml:46
 msgid "Mode"
-msgstr ""
+msgstr "రీతి"
 
-#: camera-app.qml:51
+#: camera-app.qml:47
 msgid "Stills;Video"
 msgstr ""
 
-#: camera-app.qml:56
+#: camera-app.qml:51
 msgid "White Balance"
-msgstr ""
+msgstr "తెలుపు సమతుల్యత"
 
-#: camera-app.qml:57
+#: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "వెలుతురు పరిస్థితి;పగలు; మబ్బులు;లోపల"
 
-#: camera-app.qml:370
+#: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: camera-app.qml:371
+#: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "నేడు ఏ ఛాయాచిత్రాలు తీయలేదు"
 
-#: camera-app.qml:379
+#: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: camera-app.qml:380
+#: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "నేడు ఏ దృశ్యకాలు తీయలేదు"

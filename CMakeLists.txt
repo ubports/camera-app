@@ -36,11 +36,15 @@ if(CLICK_MODE)
     set(PLUGIN_BASE lib/${CMAKE_LIBRARY_ARCHITECTURE})
     set(PLUGIN_DIR ${PLUGIN_BASE}/CameraApp)
     set(DESKTOP_EXEC "./${CAMERA_APP}")
-	set(CAMERA_ICON "${CMAKE_INSTALL_DATADIR}/icons/camera-app.svg")
-	install(FILES camera-app.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
+  	set(CAMERA_ICON "${CMAKE_INSTALL_DATADIR}/icons/camera-app.svg")
+  	install(FILES camera-app.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
     add_definitions("-DCLICK_MODE=1")
+
+    if(NOT BZR_REVNO)
+        set(BZR_REVNO "latest")
+    endif(NOT BZR_REVNO)
 else(CLICK_MODE)
-	set(CAMERA_ICON "camera-app")
+    set(CAMERA_ICON "camera-app")
     set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/${CAMERA_APP})
     set(DESKTOP_EXEC ${CAMERA_APP})
 endif(CLICK_MODE)
@@ -103,12 +107,29 @@ add_custom_target(${DESKTOP_FILE} ALL
          COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${DESKTOP_FILE}.in ${DESKTOP_FILE} >/dev/null
         )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
-    )
+# make non compiled files visible in qtcreator
+file(GLOB_RECURSE NON_COMPILED_FILES *.qml *.js *.py *.svg *.png *.in *.json *.desktop *.pot qmldir)
+add_custom_target(NON_COMPILED_TARGET ALL SOURCES ${NON_COMPILED_FILES})
+
+if(CLICK_MODE)
+
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
+        DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+    configure_file(manifest.json ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json
+            DESTINATION ${CMAKE_INSTALL_PREFIX})
+    install(FILES camera-apparmor.json
+            DESTINATION ${CMAKE_INSTALL_PREFIX})
+    install(FILES camera-contenthub.json
+            DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+else(CLICK_MODE)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+endif(CLICK_MODE)
 
 add_subdirectory(CameraApp)
-add_subdirectory(click)
 add_subdirectory(desktop)
 
 file(GLOB_RECURSE I18N_SRC_FILES

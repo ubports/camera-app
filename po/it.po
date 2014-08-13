@@ -7,16 +7,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-17 09:51+0200\n"
-"PO-Revision-Date: 2014-05-27 11:28+0000\n"
+"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"PO-Revision-Date: 2014-07-18 15:15+0000\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-28 05:52+0000\n"
-"X-Generator: Launchpad (build 17017)\n"
+"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 "Language: it\n"
+
+#: GalleryView.qml:95
+msgid "No media available."
+msgstr "Nessun contenuto disponibile."
+
+#: GalleryViewHeader.qml:72
+msgid "Photo Roll"
+msgstr "Rullino"
+
+#: SlideshowView.qml:41
+msgid "Share"
+msgstr "Condividi"
+
+#: SlideshowView.qml:46 SlideshowView.qml:235
+msgid "Delete"
+msgstr "Elimina"
+
+#: SlideshowView.qml:223
+msgid "Delete media?"
+msgstr "Eliminare contenuto multimediale?"
+
+#: SlideshowView.qml:230
+msgid "Cancel"
+msgstr "Annulla"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -26,60 +50,60 @@ msgstr "Fotocamera"
 msgid "Camera application"
 msgstr "Applicazione per foto e video"
 
-#: camera-app.qml:35
+#: camera-app.qml:34
 msgid "Flash"
 msgstr "Flash"
 
-#: camera-app.qml:36
+#: camera-app.qml:35
 msgid "Light;Dark"
 msgstr "Luminoso;Buio"
 
-#: camera-app.qml:40
+#: camera-app.qml:38
 msgid "Flip Camera"
 msgstr "Ruota fotocamera"
 
-#: camera-app.qml:41
+#: camera-app.qml:39
 msgid "Front Facing;Back Facing"
 msgstr "Fronte;Retro"
 
-#: camera-app.qml:45
+#: camera-app.qml:42
 msgid "Shutter"
 msgstr "Scatta"
 
-#: camera-app.qml:46
+#: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
 msgstr "Scatta una foto;Registra"
 
-#: camera-app.qml:50
+#: camera-app.qml:46
 msgid "Mode"
 msgstr "Modalità"
 
-#: camera-app.qml:51
+#: camera-app.qml:47
 msgid "Stills;Video"
 msgstr "Foto;Video"
 
-#: camera-app.qml:56
+#: camera-app.qml:51
 msgid "White Balance"
 msgstr "Bilanciamento bianco"
 
-#: camera-app.qml:57
+#: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Illuminazione;Luce naturale;Nuvoloso;Interno"
 
-#: camera-app.qml:370
+#: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "<b>%1</b> foto scattate oggi"
 
-#: camera-app.qml:371
+#: camera-app.qml:170
 msgid "No photos taken today"
 msgstr "Nessuna foto scattata oggi"
 
-#: camera-app.qml:379
+#: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "<b>%1</b> video registrati oggi"
 
-#: camera-app.qml:380
+#: camera-app.qml:179
 msgid "No videos recorded today"
 msgstr "Nessun video registrato oggi"

@@ -15,61 +15,40 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 0.1
+import Ubuntu.Components 1.0
 
-CameraToolbarButton {
-    id: button
+Item {
+    id: shootButton
+
+    signal clicked()
+
+    width: icon.width
+    height: icon.height
+    opacity: enabled ? 1.0 : 0.5
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: shootButton.clicked()
+    }
+
+    Image {
+        id: icon
+        anchors.centerIn: parent
+    }
 
     states: [
-        State { name: "camera"
-            PropertyChanges { target: button; iconSource: "assets/shoot.png" }
-            PropertyChanges { target: recordOn; opacity: 0.0 }
-            PropertyChanges { target: pulseAnimation; running: false }
+        State {
+            name: "camera"
+            PropertyChanges { target: icon; source: "assets/shutter_stills.png" }
         },
-        State { name: "record_off"
-            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
-            PropertyChanges { target: recordOn; opacity: 0.0 }
-            PropertyChanges { target: pulseAnimation; running: false }
+        State {
+            name: "record_off"
+            PropertyChanges { target: icon; source: "assets/record_video.png" }
+
         },
-        State { name: "record_on"
-            PropertyChanges { target: button; iconSource: "assets/record_off.png" }
-            PropertyChanges { target: recordOn; opacity: 1.0 }
-            PropertyChanges { target: pulseAnimation; running: true }
+        State {
+            name: "record_on"
+            PropertyChanges { target: icon; source: "assets/record_video_stop.png" }
         }
     ]
-
-    property int pulsePeriod: 750
-
-    Image {
-        id: recordOn
-        anchors.fill: parent
-        source: "assets/record_on.png"
-        Behavior on opacity { NumberAnimation { duration: pulsePeriod } }
-    }
-
-    Image {
-        id: pulse
-        anchors.fill: parent
-        source: "assets/record_on_pulse.png"
-        opacity: 1.0
-        visible: button.state != "camera"
-
-        SequentialAnimation on opacity  {
-            id: pulseAnimation
-            loops: Animation.Infinite
-            alwaysRunToEnd: true
-            running: false
-
-            PropertyAnimation {
-                from: 1.0
-                to: 0.0
-                duration: pulsePeriod
-            }
-            PropertyAnimation {
-                from: 0.0
-                to: 1.0
-                duration: pulsePeriod
-            }
-        }
-    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Canonical Ltd.
+ * Copyright 2014 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.0
-import Ubuntu.Components 0.1
+import Ubuntu.Components 1.0
 
 /*
   This delegate is styled using the following properties:
@@ -45,6 +45,9 @@ Item {
     property string backgroundImage: "assets/zoom_bar@18.png"
     property string thumbImage: "assets/zoom_point@18.png"
 
+    implicitHeight: thumbShape.height + 2.0 * thumbSpacing + units.gu(2)
+    implicitWidth: backgroundShape.width
+
     Image {
         id: backgroundShape
         anchors {
@@ -66,13 +69,5 @@ Item {
         height: thumbHeight
         anchors.verticalCenter: backgroundShape.verticalCenter
         source: thumbImage
-    }
-
-    // set styledItem's implicitHeight to the thumbShape's height
-    // this can also control the default sensing area
-    Binding {
-        target: styledItem
-        property: "implicitHeight"
-        value: thumbShape.height + 2.0 * thumbSpacing
     }
 }

@@ -1,3 +1,114 @@
+camera-app (3.0.0+14.10.20140808-0ubuntu1) utopic; urgency=low
+
+  [ Brendan Donegan ]
+  * Setting TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING
+    prevents the location request dialog from popping up, so as not to
+    break the Autopilot tests.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 08 Aug 2014 14:58:17 +0000
+
+camera-app (3.0.0+14.10.20140805-0ubuntu1) utopic; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Added export mode so that other apps can request pictures from the
+    camera app. (LP: #1311409)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 05 Aug 2014 16:11:11 +0000
+
+camera-app (3.0.0+14.10.20140730-0ubuntu1) utopic; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Save state of viewfinder: preserve back/front mode, picture/video
+    mode, flash, HDR and location settings. (LP: #1344274)
+  * Photo roll: Added feedback upon pressed. Use icons from theme
+    instead of custom PNGs .
+  * Exit the options overlay upon tapping anywhere outside the buttons.
+    It used to work relying on the behaviour of the toolkit's Panel but
+    it recently changed under our feet (rev 1000.119.19 from lp:ubuntu-
+    ui-toolkit). (LP: #1348643)
+  * Make sure all files are visible in QtCreator. No need for
+    qmlproject.
+  * Photo roll: elide header title. (LP: #1348645)
+  * Sharing: make content type dynamic. (LP: #1337587)
+  * Save videos in a subfolder of ~/Videos (LP: #1337594)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 30 Jul 2014 19:30:55 +0000
+
+camera-app (3.0.0+14.10.20140717-0ubuntu1) utopic; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Enable GPS location saving into EXIF photo's metadata.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 17 Jul 2014 19:13:15 +0000
+
+camera-app (3.0.0+14.10.20140714-0ubuntu1) utopic; urgency=low
+
+  [ Benjamin Zeller ]
+  * Fix project files to correctly run on the device from QtCreator
+
+  [ Florian Boucault ]
+  * Enabled HDR feature: linked it up to backend (qtubuntu-camera).
+    fixed up overlay UI for icon less options .
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 14 Jul 2014 14:02:04 +0000
+
+camera-app (3.0.0+14.10.20140703.2-0ubuntu1) utopic; urgency=low
+
+  [ Bill Filler ]
+  * add content_exchange_source policy for apparmor
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 03 Jul 2014 16:43:19 +0000
+
+camera-app (3.0.0+14.10.20140703.1-0ubuntu1) utopic; urgency=medium
+
+  [ Florian Boucault ]
+  * Redesign of the entire user interface.
+  * Viewfinder now extensible with options screen available from the bottom edge
+  * Add in-app pictures gallery
+  * Cleaner visuals, more animations
+  * Move photos under a subfolder: ~/Pictures/camera
+  * Re-disable camera recording, UI for that is coming later
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 03 Jul 2014 13:37:39 +0000
+
+camera-app (2.9.1+14.10.20140701-0ubuntu1) utopic; urgency=low
+
+  [ Michał Sawicz ]
+  * New icon from suru theme.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 01 Jul 2014 07:28:19 +0000
+
+camera-app (2.9.1+14.10.20140626-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Update the app_armor policy groups and framework verion so that the
+    camera-app can continue to write snapshots and video files to
+    ~/Pictures and ~/Videos respectively
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 26 Jun 2014 23:09:57 +0000
+
+camera-app (2.9.1+14.10.20140625.1-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Re-enable camera recording since it's working again in libhybris
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 25 Jun 2014 17:37:08 +0000
+
 camera-app (2.9.1+14.10.20140528-0ubuntu1) utopic; urgency=low
 
   [ Ubuntu daily release ]

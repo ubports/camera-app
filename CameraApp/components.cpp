@@ -1,8 +1,9 @@
 /*
- * Copyright (C) 2012 Canonical, Ltd.
+ * Copyright (C) 2014 Canonical, Ltd.
  *
  * Authors:
  *  Ugo Riboni <ugo.riboni@canonical.com>
+ *  Florian Boucault <florian.boucault@canonical.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,10 +21,17 @@
 #include <QtQuick>
 #include "components.h"
 #include "advancedcamerasettings.h"
+#include "fileoperations.h"
+#include "foldersmodel.h"
 
 void Components::registerTypes(const char *uri)
 {
+   Q_ASSERT(uri == QLatin1String("CameraApp"));
+
+    // @uri CameraApp
     qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
+    qmlRegisterType<FileOperations>(uri, 0, 1, "FileOperations");
+    qmlRegisterType<FoldersModel>(uri, 0, 1, "FoldersModel");
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)

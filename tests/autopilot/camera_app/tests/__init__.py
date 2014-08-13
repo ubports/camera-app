@@ -14,6 +14,8 @@ from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
 from camera_app.emulators.main_window import MainWindow
+from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
+from camera_app.emulators.panel import Panel
 
 
 class CameraAppTestCase(AutopilotTestCase):
@@ -23,11 +25,9 @@ class CameraAppTestCase(AutopilotTestCase):
 
     """
     if model() == 'Desktop':
-        scenarios = [
-        ('with mouse', dict(input_device_class=Mouse))]
+        scenarios = [('with mouse', dict(input_device_class=Mouse))]
     else:
-        scenarios = [
-        ('with touch', dict(input_device_class=Touch))]
+        scenarios = [('with touch', dict(input_device_class=Touch))]
 
     local_location = "../../camera-app"
     deb_location = '/usr/bin/camera-app'
@@ -35,6 +35,7 @@ class CameraAppTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
+        os.environ['TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING'] = '1'
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):
@@ -44,22 +45,26 @@ class CameraAppTestCase(AutopilotTestCase):
 
     def launch_test_local(self):
         self.app = self.launch_test_application(
-            self.local_location)
+            self.local_location,
+            emulator_base=CameraCustomProxyObjectBase)
 
     def launch_test_installed(self):
         if model() == 'Desktop':
             self.app = self.launch_test_application(
-                "camera-app")
+                "camera-app",
+                emulator_base=CameraCustomProxyObjectBase)
         else:
             self.app = self.launch_test_application(
                 "camera-app",
                 "--fullscreen",
                 "--desktop_file_hint=/usr/share/applications/camera-app.desktop",
-                app_type='qt')
+                app_type='qt',
+                emulator_base=CameraCustomProxyObjectBase)
 
     def launch_click_installed(self):
         self.app = self.launch_click_package(
-            "com.ubuntu.camera")
+            "com.ubuntu.camera",
+            emulator_base=CameraCustomProxyObjectBase)
 
     def get_center(self, object_proxy):
         x, y, w, h = object_proxy.globalRect
