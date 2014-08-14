@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 15:10+0200\n"
+"POT-Creation-Date: 2014-08-14 09:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,84 +17,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: GalleryView.qml:111
+#: ../GalleryView.qml:111
 msgid "No media available."
 msgstr ""
 
-#: GalleryViewHeader.qml:73
+#: ../GalleryViewHeader.qml:73
 msgid "Photo Roll"
 msgstr ""
 
-#: SlideshowView.qml:37
+#: ../SlideshowView.qml:37
 msgid "Share"
 msgstr ""
 
-#: SlideshowView.qml:42 SlideshowView.qml:259
+#: ../SlideshowView.qml:42 ../SlideshowView.qml:259
 msgid "Delete"
 msgstr ""
 
-#: SlideshowView.qml:247
+#: ../SlideshowView.qml:247
 msgid "Delete media?"
 msgstr ""
 
-#: SlideshowView.qml:254
+#: ../SlideshowView.qml:254
 msgid "Cancel"
 msgstr ""
 
-#: camera-app.qml:36
+#: ../camera-app.qml:36
 msgid "Flash"
 msgstr ""
 
-#: camera-app.qml:37
+#: ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr ""
 
-#: camera-app.qml:40
+#: ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr ""
 
-#: camera-app.qml:41
+#: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr ""
 
-#: camera-app.qml:44
+#: ../camera-app.qml:44
 msgid "Shutter"
 msgstr ""
 
-#: camera-app.qml:45
+#: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr ""
 
-#: camera-app.qml:48
+#: ../camera-app.qml:48
 msgid "Mode"
 msgstr ""
 
-#: camera-app.qml:49
+#: ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr ""
 
-#: camera-app.qml:53
+#: ../camera-app.qml:53
 msgid "White Balance"
 msgstr ""
 
-#: camera-app.qml:54
+#: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr ""
 
-#: camera-app.qml:213
+#: ../camera-app.qml:213
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: camera-app.qml:214
+#: ../camera-app.qml:214
 msgid "No photos taken today"
 msgstr ""
 
-#: camera-app.qml:222
+#: ../camera-app.qml:222
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: camera-app.qml:223
+#: ../camera-app.qml:223
 msgid "No videos recorded today"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
 msgstr ""
