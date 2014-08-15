@@ -1,3 +1,15 @@
+camera-app (3.0.0+14.10.20140815.1-0ubuntu1) utopic; urgency=low
+
+  [ Florian Boucault ]
+  * Fix deleting action not working in some common conditions by
+    computing file path at the right moment. Applied same fix to sharing
+    action. (LP: #1350956)
+
+  [ Brendan Donegan ]
+  * Finally remove location prompts during testing
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 15 Aug 2014 21:45:34 +0000
+
 camera-app (3.0.0+14.10.20140814-0ubuntu1) utopic; urgency=low
 
   [ Florian Boucault ]
