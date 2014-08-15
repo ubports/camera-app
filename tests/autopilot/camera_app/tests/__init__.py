@@ -8,6 +8,7 @@
 """Camera-app autopilot tests."""
 
 import os
+import subprocess
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
@@ -32,10 +33,25 @@ class CameraAppTestCase(AutopilotTestCase):
     local_location = "../../camera-app"
     deb_location = '/usr/bin/camera-app'
 
+    def _set_location_service_testing(self, test_mode):
+        test = "true" if test_mode else "false"
+        try:
+            subprocess.check_call(
+                'sudo setprop custom.location.testing {}'.format(test),
+                shell=True)
+            subprocess.check_call(
+                "sudo restart ubuntu-location-service && "
+                "restart ubuntu-location-service-trust-stored",
+                shell=True)
+        except subprocess.CalledProcessError:
+            print("Unable to start location service in testing mode "
+                  "tests may fail as a result.")
+
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
-        os.environ['TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING'] = '1'
+        self._set_location_service_testing(True)
+        self.addCleanup(self._set_location_service_testing, False)
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):
