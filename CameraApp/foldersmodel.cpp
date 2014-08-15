@@ -25,6 +25,7 @@ FoldersModel::FoldersModel(QObject *parent) :
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
+    connect(m_watcher, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
 }
 
 QStringList FoldersModel::folders() const
@@ -83,6 +84,7 @@ void FoldersModel::updateFileInfoList()
         QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
                                                               QDir::Time | QDir::Reversed);
         Q_FOREACH (QFileInfo fileInfo, fileInfoList) {
+            m_watcher->addPath(fileInfo.absoluteFilePath());
             QString type = m_mimeDatabase.mimeTypeForFile(fileInfo).name();
             Q_FOREACH (QString filterType, m_typeFilters) {
                 if (type.startsWith(filterType)) {
@@ -174,6 +176,11 @@ QVariant FoldersModel::get(int row, QString role) const
 }
 
 void FoldersModel::directoryChanged(const QString &directoryPath)
+{
+    updateFileInfoList();
+}
+
+void FoldersModel::fileChanged(const QString &filePath)
 {
     updateFileInfoList();
 }
