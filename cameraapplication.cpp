@@ -150,7 +150,9 @@ QString CameraApplication::removableStorageLocation() const
     QStringList dirs = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
     if (dirs.size() > 0) {
-        return QString("/media/phablet/" + dirs.at(0));
+        QString location = "/media/phablet/" + dirs.at(0) + "/Pictures";
+        dir.mkpath(location);
+        return location;
     } else {
         return QString();
     }
