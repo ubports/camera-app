@@ -143,3 +143,15 @@ QString CameraApplication::temporaryLocation() const
     dir.mkpath(location);
     return location;
 }
+
+QString CameraApplication::removableStorageLocation() const
+{
+    QDir dir("/media/phablet/");
+    QStringList dirs = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+
+    if (dirs.size() > 0) {
+        return QString("/media/phablet/" + dirs.at(0));
+    } else {
+        return QString();
+    }
+}

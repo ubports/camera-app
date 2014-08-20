@@ -32,6 +32,7 @@ class CameraApplication : public QGuiApplication
     Q_PROPERTY(QString picturesLocation READ picturesLocation CONSTANT)
     Q_PROPERTY(QString videosLocation READ videosLocation CONSTANT)
     Q_PROPERTY(QString temporaryLocation READ temporaryLocation CONSTANT)
+    Q_PROPERTY(QString removableStorageLocation READ removableStorageLocation CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
@@ -41,6 +42,7 @@ public:
     QString picturesLocation() const;
     QString videosLocation() const;
     QString temporaryLocation() const;
+    QString removableStorageLocation() const;
 
 private:
     QScopedPointer<QQuickView> m_view;
