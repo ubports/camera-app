@@ -57,6 +57,8 @@ Item {
         }
         source: backgroundImage
         height: sourceSize.height
+        asynchronous: true
+        cache: false
     }
 
     Image {
@@ -69,5 +71,7 @@ Item {
         height: thumbHeight
         anchors.verticalCenter: backgroundShape.verticalCenter
         source: thumbImage
+        asynchronous: true
+        cache: false
     }
 }

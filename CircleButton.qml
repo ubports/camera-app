@@ -34,6 +34,8 @@ AbstractButton {
         opacity: button.pressed ? 0.7 : 0.3
         sourceSize.width: width
         sourceSize.height: height
+        cache: true
+        asynchronous: true
     }
 
     Icon {

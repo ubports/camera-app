@@ -40,6 +40,8 @@ Item {
         anchors.fill: parent
         source: "assets/ubuntu_shape.sci"
         opacity: 0.3
+        asynchronous: true
+        cache: false
     }
 
     Row {

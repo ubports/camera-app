@@ -34,6 +34,8 @@ Item {
     Image {
         id: icon
         anchors.centerIn: parent
+        asynchronous: true
+        cache: false
     }
 
     states: [

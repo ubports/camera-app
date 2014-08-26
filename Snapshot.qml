@@ -45,6 +45,7 @@ Item {
             rotation: snapshotRoot.orientation * -1
 
             asynchronous: true
+            cache: false
             fillMode: Image.PreserveAspectFit
             smooth: false
             width: deviceDefaultIsPortrait ? geometry.height : geometry.width
@@ -62,6 +63,8 @@ Item {
             x: (container.width - (rotated ? snapshot.height : snapshot.width)) / 2 - width
             source: "assets/shadow.png"
             fillMode: Image.Stretch
+            asynchronous: true
+            cache: false
         }
     }
 

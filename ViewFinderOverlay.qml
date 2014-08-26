@@ -225,6 +225,7 @@ Item {
                 sourceSize.width: width
                 sourceSize.height: height
                 cache: false
+                asynchronous: true
                 visible: indicators.visibleChildren.length > 1
             }
 
