@@ -91,7 +91,7 @@ Item {
             bottom: parent.bottom
         }
         height: units.gu(9)
-        onOpenedChanged: optionsOverlay.closeValueSelector()
+        onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
 
         property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
         property list<ListModel> options: [
@@ -500,14 +500,21 @@ Item {
         }
     }
 
-    OptionsOverlay {
-        id: optionsOverlay
-
+    Loader {
+        id: optionsOverlayLoader
         anchors {
             left: parent.left
             right: parent.right
             top: controls.bottom
         }
-        options: bottomEdge.options
+        asynchronous: true
+        source: "OptionsOverlay.qml"
+
+        Binding {
+            target: optionsOverlayLoader.item
+            property: "options"
+            value: bottomEdge.options
+            when: optionsOverlayLoader.item
+        }
     }
 }
