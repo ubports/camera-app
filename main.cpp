@@ -19,12 +19,15 @@
 
 // Qt
 #include <QGuiApplication>
+#include <QtQml/QQmlDebuggingEnabler>
 
 // local
 #include "cameraapplication.h"
 #include "config.h"
 
 #include <QDebug>
+
+static QQmlDebuggingEnabler debuggingEnabler(false);
 
 int main(int argc, char** argv)
 {
