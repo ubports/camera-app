@@ -274,7 +274,7 @@ Item {
         visible: radius !== 0
     }
 
-    ViewFinderOverlay {
+    ViewFinderOverlayLoader {
         id: viewFinderOverlay
 
         anchors.fill: parent
