@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.2
+import Ubuntu.Components 1.1
 
 Loader {
     id: loader
@@ -27,13 +28,8 @@ Loader {
         loader.item.showFocusRing(x, y);
     }
 
-    Binding {
-        target: loader.item
-        property: "camera"
-        value: loader.camera
-        when: loader.item
-    }
-
-    source: "ViewFinderOverlay.qml"
     asynchronous: true
+    Component.onCompleted: {
+        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });
+    }
 }

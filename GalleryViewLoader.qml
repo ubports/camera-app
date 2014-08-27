@@ -17,27 +17,22 @@
 import QtQuick 2.2
 
 Loader {
-    id: galleryViewLoader
+    id: loader
 
     signal exit
     property bool inView
-    property bool touchAcquired: galleryViewLoader.item ? galleryViewLoader.item.touchAcquired : false
+    property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
 
     function showLastPhotoTaken() {
-        galleryViewLoader.item.showLastPhotoTaken();
+        loader.item.showLastPhotoTaken();
     }
 
-    source: "GalleryView.qml"
     asynchronous: true
 
-    Binding {
-        target: galleryViewLoader.item
-        property: "inView"
-        value: galleryViewLoader.inView
-        when: galleryViewLoader.item
+    Component.onCompleted: {
+        loader.setSource("GalleryView.qml", { "inView": Qt.binding(function() { return loader.inView }) });
     }
-
     onLoaded: {
-        galleryViewLoader.item.exit.connect(exit);
+        loader.item.exit.connect(exit);
     }
 }
