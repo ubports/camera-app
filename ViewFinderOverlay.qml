@@ -508,13 +508,10 @@ Item {
             top: controls.bottom
         }
         asynchronous: true
-        source: "OptionsOverlay.qml"
-
-        Binding {
-            target: optionsOverlayLoader.item
-            property: "options"
-            value: bottomEdge.options
-            when: optionsOverlayLoader.item
+        sourceComponent: Component {
+            OptionsOverlay {
+                options: bottomEdge.options
+            }
         }
     }
 }
