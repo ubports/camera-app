@@ -279,7 +279,7 @@ Item {
 
         anchors.fill: parent
         camera: camera
-        opacity: overlayVisible ? 1.0 : 0.0
+        opacity: status == Loader.Ready && overlayVisible ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
     }
     
