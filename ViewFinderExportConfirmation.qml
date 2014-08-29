@@ -41,54 +41,62 @@ Item {
 
     visible: false
 
-    CircleButton {
-        id: retryButton
-        objectName: "retryButton"
+    Loader {
+        anchors.fill: parent
+        asynchronous: true
+        sourceComponent: Component {
+            Item {
+                CircleButton {
+                    id: retryButton
+                    objectName: "retryButton"
 
-        anchors {
-            right: validateButton.left
-            rightMargin: units.gu(7.5)
-            bottom: parent.bottom
-            bottomMargin: units.gu(6)
-        }
+                    anchors {
+                        right: validateButton.left
+                        rightMargin: units.gu(7.5)
+                        bottom: parent.bottom
+                        bottomMargin: units.gu(6)
+                    }
 
-        iconName: "reload"
-        onClicked: hide()
-    }
+                    iconName: "reload"
+                    onClicked: viewFinderExportConfirmation.hide()
+                }
 
-    CircleButton {
-        id: validateButton
-        objectName: "validateButton"
+                CircleButton {
+                    id: validateButton
+                    objectName: "validateButton"
 
-        width: units.gu(8)
-        anchors {
-            bottom: parent.bottom
-            bottomMargin: units.gu(5)
-            horizontalCenter: parent.horizontalCenter
-        }
+                    width: units.gu(8)
+                    anchors {
+                        bottom: parent.bottom
+                        bottomMargin: units.gu(5)
+                        horizontalCenter: parent.horizontalCenter
+                    }
 
-        iconName: "ok"
-        onClicked: {
-            hide();
-            main.exportContent([mediaPath]);
-        }
-    }
+                    iconName: "ok"
+                    onClicked: {
+                        viewFinderExportConfirmation.hide();
+                        main.exportContent([mediaPath]);
+                    }
+                }
 
-    CircleButton {
-        id: cancelButton
-        objectName: "cancelButton"
+                CircleButton {
+                    id: cancelButton
+                    objectName: "cancelButton"
 
-        anchors {
-            left: validateButton.right
-            leftMargin: units.gu(7.5)
-            bottom: parent.bottom
-            bottomMargin: units.gu(6)
-        }
+                    anchors {
+                        left: validateButton.right
+                        leftMargin: units.gu(7.5)
+                        bottom: parent.bottom
+                        bottomMargin: units.gu(6)
+                    }
 
-        iconName: "close"
-        onClicked: {
-            hide();
-            main.cancelExport();
+                    iconName: "close"
+                    onClicked: {
+                        viewFinderExportConfirmation.hide();
+                        main.cancelExport();
+                    }
+                }
+            }
         }
     }
 }

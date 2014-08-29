@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2012 Canonical, Ltd.
- *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
+ * Copyright 2014 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,27 +14,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Qt
-#include <QGuiApplication>
-#include <QtQml/QQmlDebuggingEnabler>
+import QtQuick 2.2
 
-// local
-#include "cameraapplication.h"
-#include "config.h"
+Loader {
+    id: loader
 
-#include <QDebug>
+    signal exit
+    property bool inView
+    property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
 
-static QQmlDebuggingEnabler debuggingEnabler(false);
-
-int main(int argc, char** argv)
-{
-    QGuiApplication::setApplicationName("camera");
-    CameraApplication application(argc, argv);
-
-    if (!application.setup()) {
-        return 0;
+    function showLastPhotoTaken() {
+        loader.item.showLastPhotoTaken();
     }
 
-    return application.exec();
-}
+    asynchronous: true
 
+    Component.onCompleted: {
+        loader.setSource("GalleryView.qml", { "inView": Qt.binding(function() { return loader.inView }) });
+    }
+    onLoaded: {
+        loader.item.exit.connect(exit);
+    }
+}

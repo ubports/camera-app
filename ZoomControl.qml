@@ -51,6 +51,8 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         source: "assets/zoom_minus.png"
+        asynchronous: true
+        cache: false
     }
 
     Slider {
@@ -73,6 +75,8 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         source: "assets/zoom_plus.png"
+        asynchronous: true
+        cache: false
     }
 }
 

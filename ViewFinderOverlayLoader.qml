@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2012 Canonical, Ltd.
- *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
+ * Copyright 2014 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,27 +14,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Qt
-#include <QGuiApplication>
-#include <QtQml/QQmlDebuggingEnabler>
+import QtQuick 2.2
 
-// local
-#include "cameraapplication.h"
-#include "config.h"
+Loader {
+    id: loader
 
-#include <QDebug>
+    property var camera
+    property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
+    property real revealProgress: loader.item ? loader.item.revealProgress : 0
 
-static QQmlDebuggingEnabler debuggingEnabler(false);
-
-int main(int argc, char** argv)
-{
-    QGuiApplication::setApplicationName("camera");
-    CameraApplication application(argc, argv);
-
-    if (!application.setup()) {
-        return 0;
+    function showFocusRing(x, y) {
+        loader.item.showFocusRing(x, y);
     }
 
-    return application.exec();
+    asynchronous: true
+    Component.onCompleted: {
+        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });
+    }
 }
-

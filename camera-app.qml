@@ -156,7 +156,7 @@ Item {
                 onVideoShot: galleryView.showLastPhotoTaken();
             }
 
-            GalleryView {
+            GalleryViewLoader {
                 id: galleryView
                 width: viewSwitcher.width
                 height: viewSwitcher.height
