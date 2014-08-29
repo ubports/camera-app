@@ -8,7 +8,6 @@
 """Camera-app autopilot tests."""
 
 import os
-import subprocess
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
@@ -17,7 +16,7 @@ from autopilot.testcase import AutopilotTestCase
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 from camera_app.emulators.panel import Panel
-
+from camera_app.helpers import set_location_service_testing
 
 class CameraAppTestCase(AutopilotTestCase):
 
@@ -33,25 +32,11 @@ class CameraAppTestCase(AutopilotTestCase):
     local_location = "../../camera-app"
     deb_location = '/usr/bin/camera-app'
 
-    def _set_location_service_testing(self, test_mode):
-        test = "true" if test_mode else "false"
-        try:
-            subprocess.check_call(
-                'sudo setprop custom.location.testing {}'.format(test),
-                shell=True)
-            subprocess.check_call(
-                "sudo restart ubuntu-location-service && "
-                "restart ubuntu-location-service-trust-stored",
-                shell=True)
-        except subprocess.CalledProcessError:
-            print("Unable to start location service in testing mode "
-                  "tests may fail as a result.")
-
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
-        self._set_location_service_testing(True)
-        self.addCleanup(self._set_location_service_testing, False)
+        set_location_service_testing(True)
+        self.addCleanup(set_location_service_testing, False)
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):
