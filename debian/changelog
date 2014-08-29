@@ -1,3 +1,27 @@
+camera-app (3.0.0+14.10.20140829-0ubuntu1) utopic; urgency=low
+
+  [ Brendan Donegan ]
+  * Finally remove location prompts during testing
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Sergio Schvezov ]
+  * Fix cross building with click chroot
+
+  [ Florian Boucault ]
+  * Significantly faster startup. (LP: #1325001)
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Pawel Stolowski ]
+  * Added X-Ubuntu-Default-Department-ID key to the desktop file. This
+    is required by click scope to support departments for preinstalled
+    applications.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 29 Aug 2014 02:28:40 +0000
+
 camera-app (3.0.0+14.10.20140815.1-0ubuntu1) utopic; urgency=low
 
   [ Florian Boucault ]
