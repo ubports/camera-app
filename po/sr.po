@@ -1,0 +1,108 @@
+# Serbian translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"PO-Revision-Date: 2014-08-29 11:05+0000\n"
+"Last-Translator: Данило Шеган <Unknown>\n"
+"Language-Team: Serbian <sr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-08-30 07:33+0000\n"
+"X-Generator: Launchpad (build 17176)\n"
+
+#: GalleryView.qml:95
+msgid "No media available."
+msgstr "Нема снимака."
+
+#: GalleryViewHeader.qml:72
+msgid "Photo Roll"
+msgstr "Преглед снимака"
+
+#: SlideshowView.qml:41
+msgid "Share"
+msgstr "Подели"
+
+#: SlideshowView.qml:46 SlideshowView.qml:235
+msgid "Delete"
+msgstr "Обриши"
+
+#: SlideshowView.qml:223
+msgid "Delete media?"
+msgstr "Обрисати снимак?"
+
+#: SlideshowView.qml:230
+msgid "Cancel"
+msgstr "Откажи"
+
+#: camera-app.desktop.in:3
+msgid "Camera"
+msgstr "Камера"
+
+#: camera-app.desktop.in:5
+msgid "Camera application"
+msgstr "Програм за камеру"
+
+#: camera-app.qml:34
+msgid "Flash"
+msgstr "Блиц"
+
+#: camera-app.qml:35
+msgid "Light;Dark"
+msgstr "Светло;Тамно"
+
+#: camera-app.qml:38
+msgid "Flip Camera"
+msgstr "Изврни снимак"
+
+#: camera-app.qml:39
+msgid "Front Facing;Back Facing"
+msgstr "Предња;Задња"
+
+#: camera-app.qml:42
+msgid "Shutter"
+msgstr "Бленда"
+
+#: camera-app.qml:43
+msgid "Take a Photo;Snap;Record"
+msgstr "Сликај;Фотографиши;Сними"
+
+#: camera-app.qml:46
+msgid "Mode"
+msgstr "Режим"
+
+#: camera-app.qml:47
+msgid "Stills;Video"
+msgstr "Слике;Видео"
+
+#: camera-app.qml:51
+msgid "White Balance"
+msgstr "Равнотежа беле"
+
+#: camera-app.qml:52
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "Светлосни услови;Дан;Облачно;Унутра"
+
+#: camera-app.qml:169
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "Данас је усликано <b>%1</b> фотографија"
+
+#: camera-app.qml:170
+msgid "No photos taken today"
+msgstr "Нема данас усликаних фотографија"
+
+#: camera-app.qml:178
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "Данас је снимљено <b>%1</b> видеа"
+
+#: camera-app.qml:179
+msgid "No videos recorded today"
+msgstr "Данас нема снимљених видеа"
