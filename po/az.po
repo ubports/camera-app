@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2013-11-20 10:58+0000\n"
-"Last-Translator: Emin Mastizada <emin25@ovi.com>\n"
+"PO-Revision-Date: 2014-08-31 15:32+0000\n"
+"Last-Translator: Nicat Məmmədov <n1c4t97@gmail.com>\n"
 "Language-Team: Azerbaijani <az@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-23 07:12+0000\n"
-"X-Generator: Launchpad (build 17163)\n"
+"X-Launchpad-Export-Date: 2014-09-01 07:30+0000\n"
+"X-Generator: Launchpad (build 17176)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr ""
+msgstr "Mövcud media yoxdu."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
@@ -27,19 +27,19 @@ msgstr ""
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr ""
+msgstr "Paylaş"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr ""
+msgstr "Media silinsin?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr ""
+msgstr "İmtina"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
@@ -47,7 +47,7 @@ msgstr "Kamera"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Kamera proqramı"
+msgstr "Kamera tәtbiqetmәsi"
 
 #: camera-app.qml:34
 msgid "Flash"
@@ -63,11 +63,11 @@ msgstr "Kameranı Çevir"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr "Ön Üz;Arxa Üz"
+msgstr "Ön Kamera;Arxa Kamera"
 
 #: camera-app.qml:42
 msgid "Shutter"
-msgstr "Çəkim"
+msgstr "Obyektivin sürgüsü"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
@@ -75,11 +75,11 @@ msgstr "Şəkil Şək;Qap;Yaz"
 
 #: camera-app.qml:46
 msgid "Mode"
-msgstr "Mod"
+msgstr "Rejim"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr "Kadrlar"
+msgstr ""
 
 #: camera-app.qml:51
 msgid "White Balance"
@@ -92,17 +92,17 @@ msgstr "İşıqlandırma şərti;Gündüz;Buludlu;Qapalı yer"
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "Bu gün <b>%1</b> şәkil çәkilib"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr ""
+msgstr "Bu gün şәkil çәkilmәyib"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "Bu gün <b>%1</b> video çәkilib"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Bu gün video çәkilmәyib"
