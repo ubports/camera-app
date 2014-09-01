@@ -1,4 +1,4 @@
-/usr/lib/*/camera-app/qml/*
+/usr/lib/*/camera-app/*
 usr/bin/camera-app
 usr/share/applications/camera-app.desktop
 usr/share/camera-app/*.qml
