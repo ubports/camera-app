@@ -25,6 +25,7 @@ Item {
 
     signal exit
     property bool inView
+    property bool touchAcquired: slideshowView.touchAcquired
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
         folders: [application.picturesLocation, application.videosLocation]

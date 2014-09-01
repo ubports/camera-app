@@ -16,7 +16,7 @@ from autopilot.testcase import AutopilotTestCase
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 from camera_app.emulators.panel import Panel
-
+from camera_app.helpers import set_location_service_testing
 
 class CameraAppTestCase(AutopilotTestCase):
 
@@ -35,7 +35,8 @@ class CameraAppTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
-        os.environ['TRUST_STORE_PERMISSION_MANAGER_IS_RUNNING_UNDER_TESTING'] = '1'
+        set_location_service_testing(True)
+        self.addCleanup(set_location_service_testing, False)
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):

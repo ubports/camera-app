@@ -1,3 +1,57 @@
+camera-app (3.0.0+14.10.20140829-0ubuntu1) utopic; urgency=low
+
+  [ Brendan Donegan ]
+  * Finally remove location prompts during testing
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Sergio Schvezov ]
+  * Fix cross building with click chroot
+
+  [ Florian Boucault ]
+  * Significantly faster startup. (LP: #1325001)
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Pawel Stolowski ]
+  * Added X-Ubuntu-Default-Department-ID key to the desktop file. This
+    is required by click scope to support departments for preinstalled
+    applications.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 29 Aug 2014 02:28:40 +0000
+
+camera-app (3.0.0+14.10.20140815.1-0ubuntu1) utopic; urgency=low
+
+  [ Florian Boucault ]
+  * Fix deleting action not working in some common conditions by
+    computing file path at the right moment. Applied same fix to sharing
+    action. (LP: #1350956)
+
+  [ Brendan Donegan ]
+  * Finally remove location prompts during testing
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 15 Aug 2014 21:45:34 +0000
+
+camera-app (3.0.0+14.10.20140814-0ubuntu1) utopic; urgency=low
+
+  [ Florian Boucault ]
+  * Photo roll header: swap label and icon to respect toolkit's
+    behaviour.
+  * Photo roll: added pinch to zoom. (LP: #1344277)
+  * Ensure video thumbnails are generated as soon as possible by
+    monitoring changes to files themselves. (LP: #1337593)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 14 Aug 2014 16:43:45 +0000
+
+camera-app (3.0.0+14.10.20140813-0ubuntu1) utopic; urgency=low
+
+  [ Ken VanDine ]
+  * Updated depends for qtdeclarative5-ubuntu-content1 package rename
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 13 Aug 2014 14:52:01 +0000
+
 camera-app (3.0.0+14.10.20140808-0ubuntu1) utopic; urgency=low
 
   [ Brendan Donegan ]

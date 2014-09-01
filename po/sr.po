@@ -1,4 +1,4 @@
-# Basque translation for camera-app
+# Serbian translation for camera-app
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
@@ -8,101 +8,101 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-06-30 04:29-0300\n"
-"PO-Revision-Date: 2014-07-17 18:28+0000\n"
-"Last-Translator: Ibai Oihanguren Sala <Unknown>\n"
-"Language-Team: Basque <eu@li.org>\n"
+"PO-Revision-Date: 2014-08-29 11:05+0000\n"
+"Last-Translator: Данило Шеган <Unknown>\n"
+"Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-23 07:12+0000\n"
-"X-Generator: Launchpad (build 17163)\n"
+"X-Launchpad-Export-Date: 2014-08-30 07:33+0000\n"
+"X-Generator: Launchpad (build 17176)\n"
 
 #: GalleryView.qml:95
 msgid "No media available."
-msgstr "Ez dago euskarririk eskuragarri."
+msgstr "Нема снимака."
 
 #: GalleryViewHeader.qml:72
 msgid "Photo Roll"
-msgstr "Argazki-filma"
+msgstr "Преглед снимака"
 
 #: SlideshowView.qml:41
 msgid "Share"
-msgstr "Partekatu"
+msgstr "Подели"
 
 #: SlideshowView.qml:46 SlideshowView.qml:235
 msgid "Delete"
-msgstr "Ezabatu"
+msgstr "Обриши"
 
 #: SlideshowView.qml:223
 msgid "Delete media?"
-msgstr "Euskarria ezabatu?"
+msgstr "Обрисати снимак?"
 
 #: SlideshowView.qml:230
 msgid "Cancel"
-msgstr "Utzi"
+msgstr "Откажи"
 
 #: camera-app.desktop.in:3
 msgid "Camera"
-msgstr "Kamera"
+msgstr "Камера"
 
 #: camera-app.desktop.in:5
 msgid "Camera application"
-msgstr "Kamera-aplikazioa"
+msgstr "Програм за камеру"
 
 #: camera-app.qml:34
 msgid "Flash"
-msgstr "Flasha"
+msgstr "Блиц"
 
 #: camera-app.qml:35
 msgid "Light;Dark"
-msgstr "Argia;Iluna"
+msgstr "Светло;Тамно"
 
 #: camera-app.qml:38
 msgid "Flip Camera"
-msgstr "Irauli kamera"
+msgstr "Изврни снимак"
 
 #: camera-app.qml:39
 msgid "Front Facing;Back Facing"
-msgstr "Aurrera begira;Atzera begira"
+msgstr "Предња;Задња"
 
 #: camera-app.qml:42
 msgid "Shutter"
-msgstr "Obturadorea"
+msgstr "Бленда"
 
 #: camera-app.qml:43
 msgid "Take a Photo;Snap;Record"
-msgstr "Atera argazkia;Kapturatu;Grabatu"
+msgstr "Сликај;Фотографиши;Сними"
 
 #: camera-app.qml:46
 msgid "Mode"
-msgstr "Modua"
+msgstr "Режим"
 
 #: camera-app.qml:47
 msgid "Stills;Video"
-msgstr "Finkoak;Bideoa"
+msgstr "Слике;Видео"
 
 #: camera-app.qml:51
 msgid "White Balance"
-msgstr "Zuri-balantzea"
+msgstr "Равнотежа беле"
 
 #: camera-app.qml:52
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Argiztapenaren egoera;Egunez;Lainotuta;Barruan"
+msgstr "Светлосни услови;Дан;Облачно;Унутра"
 
 #: camera-app.qml:169
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> argazki atera dira gaur"
+msgstr "Данас је усликано <b>%1</b> фотографија"
 
 #: camera-app.qml:170
 msgid "No photos taken today"
-msgstr "Gaur ez da argazkirik atera"
+msgstr "Нема данас усликаних фотографија"
 
 #: camera-app.qml:178
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> bideo grabatu dira gaur"
+msgstr "Данас је снимљено <b>%1</b> видеа"
 
 #: camera-app.qml:179
 msgid "No videos recorded today"
-msgstr "Gaur ez da bideorik grabatu"
+msgstr "Данас нема снимљених видеа"

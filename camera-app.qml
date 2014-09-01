@@ -72,7 +72,7 @@ Item {
         boundsBehavior: Flickable.StopAtBounds
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
-        interactive: !viewFinderView.touchAcquired
+        interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired
 
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
@@ -156,7 +156,7 @@ Item {
                 onVideoShot: galleryView.showLastPhotoTaken();
             }
 
-            GalleryView {
+            GalleryViewLoader {
                 id: galleryView
                 width: viewSwitcher.width
                 height: viewSwitcher.height

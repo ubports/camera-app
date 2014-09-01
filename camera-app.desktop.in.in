@@ -9,3 +9,4 @@ Terminal=false
 Icon=@CAMERA_ICON@
 X-Ubuntu-Touch=true
 X-Ubuntu-Single-Instance=true
+X-Ubuntu-Default-Department-ID=accessories

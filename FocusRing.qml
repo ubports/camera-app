@@ -32,6 +32,8 @@ Image {
     width: units.gu(11)
     height: units.gu(11)
     source: "assets/focus_ring.png"
+    asynchronous: true
+    cache: false
 
     opacity: 0.0
     Behavior on opacity { UbuntuNumberAnimation {} }

@@ -8,6 +8,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
+# Standard install paths. Needs to be set before finding packages.
+include(GNUInstallDirs)
+
 find_package(Qt5Qml)
 find_package(Qt5Quick)
 find_package(Qt5Multimedia)
@@ -15,9 +18,6 @@ find_package(Qt5Gui)
 
 find_program(INTLTOOL_MERGE intltool-merge)
 find_program(INTLTOOL_EXTRACT intltool-extract)
-
-# Standard install paths
-include(GNUInstallDirs)
 
 option(INSTALL_TESTS "Install the tests on make install" on)
 option(CLICK_MODE "Installs to a contained location" off)
