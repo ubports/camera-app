@@ -49,7 +49,7 @@ inline QString cameraAppImportDirectory() {
     if (isClick()) {
         return QDir::currentPath() + "/@PLUGIN_BASE@";
     } else {
-        return "@PLUGIN_BASE@";
+        return "@CMAKE_INSTALL_PREFIX@/@PLUGIN_BASE@";
     }
 }
 
