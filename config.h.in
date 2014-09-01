@@ -46,7 +46,11 @@ inline QString cameraAppDirectory() {
 }
 
 inline QString cameraAppImportDirectory() {
-    return QDir::currentPath() + "/@PLUGIN_BASE@";
+    if (isClick()) {
+        return QDir::currentPath() + "/@PLUGIN_BASE@";
+    } else {
+        return "@PLUGIN_BASE@";
+    }
 }
 
 inline QString sourceQml() {
