@@ -26,7 +26,7 @@ Item {
 
     property bool overlayVisible: true
     property bool optionValueSelectorVisible: false
-    property bool touchAcquired: viewFinderOverlay.touchAcquired
+    property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
     property alias captureMode: camera.captureMode
     signal photoTaken
