@@ -416,7 +416,7 @@ Item {
                 bottomMargin: units.gu(6)
             }
 
-            enabled: !camera.switchInProgress
+            enabled: !camera.switchInProgress && camera.videoRecorder.recorderState == CameraRecorder.StoppedState
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }
