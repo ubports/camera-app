@@ -27,6 +27,7 @@ Item {
     property var model
     signal photoClicked(int index)
     property real headerHeight
+    property bool inView
     property list<Action> actions
 
     function showPhotoAtIndex(index) {
@@ -83,7 +84,7 @@ Item {
                 
                 asynchronous: true
                 cache: false
-                source: "image://thumbnailer/" + fileURL.toString()
+                source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
                 sourceSize {
                     width: width
                     height: height

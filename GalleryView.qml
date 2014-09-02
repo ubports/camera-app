@@ -35,10 +35,13 @@ Item {
     }
 
     property bool gridMode: false
+    property bool showLastPhotoTakenPending: false
 
     function showLastPhotoTaken() {
         galleryView.gridMode = false;
-        slideshowView.showLastPhotoTaken();
+        // do not immediately try to show the photo in the slideshow as it
+        // might not be in the photo roll model yet
+        showLastPhotoTakenPending = true;
     }
 
     onExit: {
@@ -54,6 +57,7 @@ Item {
             anchors.fill: parent
             model: galleryView.model
             visible: opacity != 0.0
+            inView: galleryView.inView
             onToggleHeader: header.toggle();
         }
 
@@ -63,6 +67,7 @@ Item {
             headerHeight: header.height
             model: galleryView.model
             visible: opacity != 0.0
+            inView: galleryView.inView
             onPhotoClicked: {
                 if (main.contentExportMode) {
                     model.toggleSelected(index);
@@ -102,7 +107,11 @@ Item {
 
     onInViewChanged: {
         if (inView) {
-           header.show();
+            header.show();
+            if (showLastPhotoTakenPending) {
+                slideshowView.showLastPhotoTaken();
+                showLastPhotoTakenPending = false;
+            }
         }
     }
 

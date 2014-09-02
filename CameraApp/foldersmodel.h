@@ -52,7 +52,8 @@ public:
     void setSingleSelectionOnly(bool singleSelectionOnly);
 
     void updateFileInfoList();
-    void insertFileInfo(const QFileInfo& newFileInfo);
+    bool fileMatchesTypeFilters(const QFileInfo& newFileInfo);
+    void insertFileInfo(const QFileInfo& newFileInfo, bool emitChange);
 
     QHash<int, QByteArray> roleNames() const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
