@@ -377,7 +377,7 @@ Item {
 
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
-            enabled: !main.contentExportMode
+            enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState && !main.contentExportMode
         }
 
         ShootButton {
