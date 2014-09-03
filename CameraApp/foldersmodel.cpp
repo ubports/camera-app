@@ -78,19 +78,17 @@ void FoldersModel::setSingleSelectionOnly(bool singleSelectionOnly)
 
 void FoldersModel::updateFileInfoList()
 {
+    beginResetModel();
     m_fileInfoList.clear();
     Q_FOREACH (QString folder, m_folders) {
         QDir currentDir(folder);
         QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
                                                               QDir::Time | QDir::Reversed);
         Q_FOREACH (QFileInfo fileInfo, fileInfoList) {
+            if (fileInfo.isDir()) continue;
             m_watcher->addPath(fileInfo.absoluteFilePath());
-            QString type = m_mimeDatabase.mimeTypeForFile(fileInfo).name();
-            Q_FOREACH (QString filterType, m_typeFilters) {
-                if (type.startsWith(filterType)) {
-                    insertFileInfo(fileInfo);
-                    break;
-                }
+            if (fileMatchesTypeFilters(fileInfo)) {
+                insertFileInfo(fileInfo, false);
             }
         }
     }
@@ -104,19 +102,45 @@ bool moreRecentThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
     return fileInfo1.lastModified() < fileInfo2.lastModified();
 }
 
+bool FoldersModel::fileMatchesTypeFilters(const QFileInfo& newFileInfo)
+{
+    QString type = m_mimeDatabase.mimeTypeForFile(newFileInfo).name();
+    Q_FOREACH (QString filterType, m_typeFilters) {
+        if (type.startsWith(filterType)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 // inserts newFileInfo into m_fileInfoList while keeping m_fileInfoList sorted by
 // file modification time with the files most recently modified first
-void FoldersModel::insertFileInfo(const QFileInfo& newFileInfo)
+void FoldersModel::insertFileInfo(const QFileInfo& newFileInfo, bool emitChange)
 {
     QFileInfoList::iterator i;
     for (i = m_fileInfoList.begin(); i != m_fileInfoList.end(); ++i) {
         QFileInfo fileInfo = *i;
         if (!moreRecentThan(newFileInfo, fileInfo)) {
-            m_fileInfoList.insert(i, newFileInfo);
+            if (emitChange) {
+                int index = m_fileInfoList.indexOf(*i);
+                beginInsertRows(QModelIndex(), index, index);
+                m_fileInfoList.insert(i, newFileInfo);
+                endInsertRows();
+            } else {
+                m_fileInfoList.insert(i, newFileInfo);
+            }
             return;
         }
     }
-    m_fileInfoList.append(newFileInfo);
+
+    if (emitChange) {
+        int index = m_fileInfoList.size();
+        beginInsertRows(QModelIndex(), index, index);
+        m_fileInfoList.append(newFileInfo);
+        endInsertRows();
+    } else {
+        m_fileInfoList.append(newFileInfo);
+    }
 }
 
 QHash<int, QByteArray> FoldersModel::roleNames() const
@@ -177,12 +201,58 @@ QVariant FoldersModel::get(int row, QString role) const
 
 void FoldersModel::directoryChanged(const QString &directoryPath)
 {
-    updateFileInfoList();
+    /* Only react when a file is added. Ignore when a file was modified or
+     * deleted as this is taken care of by FoldersModel::fileChanged()
+     * To do so we go through all the files in directoryPath and add
+     * all the ones we were not watching before.
+     */
+    QStringList watchedFiles = m_watcher->files();
+    QDir directory(directoryPath);
+    QStringList files = directory.entryList(QDir::Files | QDir::Readable,
+                                            QDir::Time | QDir::Reversed);
+
+    Q_FOREACH (QString fileName, files) {
+        QString filePath = directory.absoluteFilePath(fileName);
+        if (!watchedFiles.contains(filePath)) {
+            QFileInfo fileInfo(filePath);
+            if (fileInfo.isDir()) continue;
+            m_watcher->addPath(filePath);
+            if (fileMatchesTypeFilters(fileInfo)) {
+               insertFileInfo(fileInfo, true);
+            }
+        }
+    }
 }
 
 void FoldersModel::fileChanged(const QString &filePath)
 {
-    updateFileInfoList();
+    /* Act appropriately upon file change or removal */
+    bool exists = QFileInfo::exists(filePath);
+    int fileIndex = m_fileInfoList.indexOf(QFileInfo(filePath));
+
+    if (exists) {
+        // file's content has changed
+        QFileInfo fileInfo = QFileInfo(filePath);
+        if (fileIndex == -1) {
+            // file's type might have changed and file might have to be included
+            if (fileMatchesTypeFilters(fileInfo)) {
+                insertFileInfo(fileInfo, true);
+            }
+        } else {
+            // update file information
+            QModelIndex modelIndex = this->index(fileIndex);
+            m_fileInfoList[fileIndex] = fileInfo;
+            Q_EMIT dataChanged(modelIndex, modelIndex);
+        }
+    } else {
+        // file has either been removed or renamed
+        if (fileIndex != -1) {
+            // FIXME: handle the renamed case
+            beginRemoveRows(QModelIndex(), fileIndex, fileIndex);
+            m_fileInfoList.removeAt(fileIndex);
+            endRemoveRows();
+        }
+    }
 }
 
 void FoldersModel::toggleSelected(int row)

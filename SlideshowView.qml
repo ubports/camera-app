@@ -29,7 +29,7 @@ Item {
     property var model
     property int currentIndex: listView.currentIndex
     property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress : false
-
+    property bool inView
     signal toggleHeader
     property list<Action> actions: [
         Action {
@@ -49,7 +49,7 @@ Item {
     }
 
     function showLastPhotoTaken() {
-        listView.positionViewAtBeginning();
+        listView.currentIndex = 0;
     }
 
     function exit() {
@@ -74,11 +74,23 @@ Item {
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
+        // FIXME: this disables the animation introduced by highlightRangeMode
+        // happening setting currentIndex; it is necessary at least because we
+        // were hitting https://bugreports.qt-project.org/browse/QTBUG-41035
+        highlightMoveDuration: 0
         snapMode: ListView.SnapOneItem
         spacing: units.gu(1)
         interactive: currentItem ? !currentItem.pinchInProgress : true
         property real maxDimension: Math.max(width, height)
 
+        removeDisplaced: Transition {
+            UbuntuNumberAnimation { property: "x" }
+        }
+        remove: Transition {
+            ParallelAnimation {
+                UbuntuNumberAnimation { property: "opacity"; to: 0 }
+            }
+        }
         delegate: Item {
             id: delegate
             property bool pinchInProgress: zoomPinchArea.active
@@ -167,7 +179,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: "image://thumbnailer/" + fileURL.toString()
+                            source: slideshowView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -175,7 +187,6 @@ Item {
                             fillMode: Image.PreserveAspectFit
                             opacity: status == Image.Ready ? 1.0 : 0.0
                             Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
-
                         }
 
                         Image {
@@ -301,7 +312,15 @@ Item {
                 text: i18n.tr("Delete")
                 color: UbuntuColors.orange
                 onClicked: {
-                    var currentFilePath = slideshowView.model.get(slideshowView.currentIndex, "filePath");
+                    // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
+                    // whereby after deleting the last item in the list the first
+                    // item would be shown even though the currentIndex was not set to 0
+                    var toBeDeleted = listView.currentIndex;
+                    if (listView.currentIndex == listView.count - 1) {
+                        listView.currentIndex = listView.currentIndex - 1;
+                    }
+
+                    var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
                     fileOperations.remove(currentFilePath);
                     PopupUtils.close(deleteDialog);
                 }
