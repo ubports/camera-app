@@ -498,6 +498,22 @@ Item {
         FocusRing {
             id: focusRing
         }
+
+        CircleButton {
+            id: exportBackButton
+            objectName: "exportBackButton"
+
+            anchors {
+                top: parent.top
+                topMargin: units.gu(4)
+                left: recordModeButton.left
+            }
+
+            iconName: visible ? "go-previous" : ""
+            visible: main.contentExportMode
+            enabled: main.contentExportMode
+            onClicked: main.cancelExport()
+        }
     }
 
     Loader {
