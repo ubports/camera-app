@@ -7,6 +7,5 @@ Exec=@DESKTOP_EXEC@ %u
 Terminal=false
 Icon=@CAMERA_ICON@
 X-Ubuntu-Touch=true
-X-Ubuntu-Gettext-Domain=camera-app
 X-Ubuntu-Single-Instance=true
 X-Ubuntu-Default-Department-ID=accessories
