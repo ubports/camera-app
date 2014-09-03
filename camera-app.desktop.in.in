@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
-Name=tr("Camera")
-GenericName=camera-app
-Comment=tr("Camera application")
+_Name=Camera
+_Comment=Camera application
+_GenericName=Camera
+_Keywords=Photos;Videos;Capture;Shoot;Snapshot;Record
 Exec=@DESKTOP_EXEC@ %u
 Terminal=false
 Icon=@CAMERA_ICON@
 X-Ubuntu-Touch=true
-X-Ubuntu-Gettext-Domain=camera-app
 X-Ubuntu-Single-Instance=true
 X-Ubuntu-Default-Department-ID=accessories
