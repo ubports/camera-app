@@ -1,3 +1,31 @@
+camera-app (3.0.0+14.10.20140903-0ubuntu1) utopic; urgency=low
+
+  [ Michał Sawicz ]
+  * Add :any to python dependency and install the camera app module in
+    app-private libdir.
+
+  [ Ugo Riboni ]
+  * Add translations inside the .desktop file (LP: #1318008)
+
+  [ Florian Boucault ]
+  * Disable mode switching while recording videos.
+  * Disable camera switching while recording videos. (LP: #1358302)
+  * Photo roll: more fine grained media folder monitoring as to properly
+    forward deletions to the view. Workarounded a couple of Qt bugs
+    related to snapMode SnapOneItem. (LP: #1355407)
+  * Do not allow switching to the camera roll while recording a video.
+  * Rename application from 'camera' to 'com.ubuntu.camera' to make
+    state saving work again. Seamlessly transition ~/Pictures/camera and
+    ~/Videos/camera to new locations. (LP: #1363112)
+  * Remove the X-Ubuntu-Gettext-Domain from the .desktop file, which
+    causes the click scope not to load the inline translations. (LP:
+    #1325626)
+  * Align snapshot with viewfinder as to assure visual continuity in the
+    transition from one to the other. (LP: #1362822)
+  * Added cancel button in content export mode. (LP: #1362823)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 03 Sep 2014 18:52:44 +0000
+
 camera-app (3.0.0+14.10.20140829-0ubuntu1) utopic; urgency=low
 
   [ Brendan Donegan ]
