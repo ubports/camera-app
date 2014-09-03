@@ -31,7 +31,7 @@ static QQmlDebuggingEnabler debuggingEnabler(false);
 
 int main(int argc, char** argv)
 {
-    QGuiApplication::setApplicationName("camera");
+    QGuiApplication::setApplicationName("com.ubuntu.camera");
     CameraApplication application(argc, argv);
 
     if (!application.setup()) {

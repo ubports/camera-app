@@ -114,6 +114,9 @@ QString CameraApplication::picturesLocation() const
     }
     QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
     QDir dir;
+    // Transition from old directory 'camera' to new one; see bug #1363112
+    // https://bugs.launchpad.net/ubuntu-ui-toolkit/+bug/1363112
+    dir.rename(locations.at(0) + "/" + "camera", location);
     dir.mkpath(location);
     return location;
 }
@@ -126,6 +129,9 @@ QString CameraApplication::videosLocation() const
     }
     QString location = locations.at(0) + "/" + QCoreApplication::applicationName();
     QDir dir;
+    // Transition from old directory 'camera' to new one; see bug #1363112
+    // https://bugs.launchpad.net/ubuntu-ui-toolkit/+bug/1363112
+    dir.rename(locations.at(0) + "/" + "camera", location);
     dir.mkpath(location);
     return location;
 }
