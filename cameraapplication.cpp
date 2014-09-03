@@ -91,10 +91,8 @@ bool CameraApplication::setup()
     m_view->setColor("black");
     m_view->rootContext()->setContextProperty("application", this);
     m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
-    if (isClick()) {
-        m_view->engine()->addImportPath(cameraAppImportDirectory());
-        qDebug() << "Import path added" << cameraAppImportDirectory();
-    }
+    m_view->engine()->addImportPath(cameraAppImportDirectory());
+    qDebug() << "Import path added" << cameraAppImportDirectory();
     qDebug() << "Camera app directory" << cameraAppDirectory();
     QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
     m_view->setSource(QUrl::fromLocalFile(sourceQml()));
