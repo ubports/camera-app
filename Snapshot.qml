@@ -42,6 +42,7 @@ Item {
         Image {
             id: snapshot
             anchors.centerIn: parent
+            anchors.verticalCenterOffset: -geometry.y
             rotation: snapshotRoot.orientation * -1
 
             asynchronous: true
