@@ -7,102 +7,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"POT-Creation-Date: 2014-09-01 13:28+0200\n"
 "PO-Revision-Date: 2014-07-17 19:55+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-23 07:13+0000\n"
-"X-Generator: Launchpad (build 17163)\n"
+"X-Launchpad-Export-Date: 2014-09-05 07:46+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
-#: GalleryView.qml:95
+#: ../GalleryView.qml:112
 msgid "No media available."
 msgstr "沒有可用的媒體。"
 
-#: GalleryViewHeader.qml:72
+#: ../GalleryViewHeader.qml:73
 msgid "Photo Roll"
 msgstr "相片膠卷"
 
-#: SlideshowView.qml:41
+#: ../SlideshowView.qml:36
 msgid "Share"
 msgstr "分享"
 
-#: SlideshowView.qml:46 SlideshowView.qml:235
+#: ../SlideshowView.qml:41 ../SlideshowView.qml:301
 msgid "Delete"
 msgstr "刪除"
 
-#: SlideshowView.qml:223
+#: ../SlideshowView.qml:289
 msgid "Delete media?"
 msgstr "要刪除媒體？"
 
-#: SlideshowView.qml:230
+#: ../SlideshowView.qml:296
 msgid "Cancel"
 msgstr "取消"
 
-#: camera-app.desktop.in:3
-msgid "Camera"
-msgstr "相機"
-
-#: camera-app.desktop.in:5
-msgid "Camera application"
-msgstr "相機應用程式"
-
-#: camera-app.qml:34
+#: ../camera-app-integration/camera-app.qml:35 ../camera-app.qml:36
 msgid "Flash"
 msgstr "閃光"
 
-#: camera-app.qml:35
+#: ../camera-app-integration/camera-app.qml:36 ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr "Light;Dark;亮;暗"
 
-#: camera-app.qml:38
+#: ../camera-app-integration/camera-app.qml:40 ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr "翻轉相機"
 
-#: camera-app.qml:39
+#: ../camera-app-integration/camera-app.qml:41 ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "前面;背面"
 
-#: camera-app.qml:42
+#: ../camera-app-integration/camera-app.qml:45 ../camera-app.qml:44
 msgid "Shutter"
 msgstr "快門"
 
-#: camera-app.qml:43
+#: ../camera-app-integration/camera-app.qml:46 ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr "Take a Photo;Snap;Record;照相;快照;錄影"
 
-#: camera-app.qml:46
+#: ../camera-app-integration/camera-app.qml:50 ../camera-app.qml:48
 msgid "Mode"
 msgstr "模式"
 
-#: camera-app.qml:47
+#: ../camera-app-integration/camera-app.qml:51 ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr "靜止圖像;影片"
 
-#: camera-app.qml:51
+#: ../camera-app-integration/camera-app.qml:55 ../camera-app.qml:53
 msgid "White Balance"
 msgstr "白平衡"
 
-#: camera-app.qml:52
+#: ../camera-app-integration/camera-app.qml:56 ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
 
-#: camera-app.qml:169
+#: ../camera-app.qml:213
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "今日已拍攝 <b>%1</b> 張相片"
 
-#: camera-app.qml:170
+#: ../camera-app.qml:214
 msgid "No photos taken today"
 msgstr "今日尚未拍攝相片"
 
-#: camera-app.qml:178
+#: ../camera-app.qml:222
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "今日已錄製 <b>%1</b> 卷影片"
 
-#: camera-app.qml:179
+#: ../camera-app.qml:223
 msgid "No videos recorded today"
 msgstr "今日尚未錄製影片"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "相機"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "相機應用程式"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr ""

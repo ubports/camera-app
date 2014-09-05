@@ -7,102 +7,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-06-30 04:29-0300\n"
+"POT-Creation-Date: 2014-09-01 13:28+0200\n"
 "PO-Revision-Date: 2013-12-14 05:36+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-23 07:13+0000\n"
-"X-Generator: Launchpad (build 17163)\n"
+"X-Launchpad-Export-Date: 2014-09-05 07:45+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
-#: GalleryView.qml:95
+#: ../GalleryView.qml:112
 msgid "No media available."
 msgstr ""
 
-#: GalleryViewHeader.qml:72
+#: ../GalleryViewHeader.qml:73
 msgid "Photo Roll"
 msgstr ""
 
-#: SlideshowView.qml:41
+#: ../SlideshowView.qml:36
 msgid "Share"
 msgstr ""
 
-#: SlideshowView.qml:46 SlideshowView.qml:235
+#: ../SlideshowView.qml:41 ../SlideshowView.qml:301
 msgid "Delete"
 msgstr ""
 
-#: SlideshowView.qml:223
+#: ../SlideshowView.qml:289
 msgid "Delete media?"
 msgstr ""
 
-#: SlideshowView.qml:230
+#: ../SlideshowView.qml:296
 msgid "Cancel"
 msgstr ""
 
-#: camera-app.desktop.in:3
-msgid "Camera"
-msgstr "Kamera"
-
-#: camera-app.desktop.in:5
-msgid "Camera application"
-msgstr "Aplikasi kamera"
-
-#: camera-app.qml:34
+#: ../camera-app-integration/camera-app.qml:35 ../camera-app.qml:36
 msgid "Flash"
 msgstr "Denyar"
 
-#: camera-app.qml:35
+#: ../camera-app-integration/camera-app.qml:36 ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr "Cerah;Gelap"
 
-#: camera-app.qml:38
+#: ../camera-app-integration/camera-app.qml:40 ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr "Kalih Kamera"
 
-#: camera-app.qml:39
+#: ../camera-app-integration/camera-app.qml:41 ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "Muka Hadapan;Muka Belakang"
 
-#: camera-app.qml:42
+#: ../camera-app-integration/camera-app.qml:45 ../camera-app.qml:44
 msgid "Shutter"
 msgstr "Pengatup"
 
-#: camera-app.qml:43
+#: ../camera-app-integration/camera-app.qml:46 ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr "Tangkap Foto;Petik;Rakam"
 
-#: camera-app.qml:46
+#: ../camera-app-integration/camera-app.qml:50 ../camera-app.qml:48
 msgid "Mode"
 msgstr "Mod"
 
-#: camera-app.qml:47
+#: ../camera-app-integration/camera-app.qml:51 ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr "Kaku;Video"
 
-#: camera-app.qml:51
+#: ../camera-app-integration/camera-app.qml:55 ../camera-app.qml:53
 msgid "White Balance"
 msgstr "Imbangan Putih"
 
-#: camera-app.qml:52
+#: ../camera-app-integration/camera-app.qml:56 ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Keadaan Pencahayaan;Siang;Mendung;Didalam"
 
-#: camera-app.qml:169
+#: ../camera-app.qml:213
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: camera-app.qml:170
+#: ../camera-app.qml:214
 msgid "No photos taken today"
 msgstr ""
 
-#: camera-app.qml:178
+#: ../camera-app.qml:222
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: camera-app.qml:179
+#: ../camera-app.qml:223
 msgid "No videos recorded today"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Kamera"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Aplikasi kamera"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
 msgstr ""
