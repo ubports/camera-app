@@ -33,8 +33,8 @@ class TestCameraZoom(CameraAppTestCase):
         viewfinder = self.main_window.get_viewfinder_geometry()
         viewfinder_center = self.get_center(viewfinder)
 
-        pinch(viewfinder_center, (0, 0), (10, 0))
-        pinch(viewfinder_center, (10, 0), (0, 0))
+        pinch(viewfinder_center, (0, 0), (15, 0))
+        pinch(viewfinder_center, (15, 0), (0, 0))
 
     """Tests the zoom slider to zoom in"""
     def test_slider_zoom_in(self):
