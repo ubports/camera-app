@@ -108,12 +108,12 @@ Item {
 
                 ListElement {
                     icon: ""
-                    label: "On"
+                    label: QT_TR_NOOP("On")
                     value: true
                 }
                 ListElement {
                     icon: ""
-                    label: "Off"
+                    label: QT_TR_NOOP("Off")
                     value: false
                 }
             },
@@ -130,17 +130,17 @@ Item {
 
                 ListElement {
                     icon: "flash-on"
-                    label: "On"
+                    label: QT_TR_NOOP("On")
                     value: Camera.FlashOn
                 }
                 ListElement {
                     icon: "flash-auto"
-                    label: "Auto"
+                    label: QT_TR_NOOP("Auto")
                     value: Camera.FlashAuto
                 }
                 ListElement {
                     icon: "flash-off"
-                    label: "Off"
+                    label: QT_TR_NOOP("Off")
                     value: Camera.FlashOff
                 }
             },
@@ -157,12 +157,12 @@ Item {
 
                 ListElement {
                     icon: "torch-on"
-                    label: "On"
+                    label: QT_TR_NOOP("On")
                     value: Camera.FlashVideoLight
                 }
                 ListElement {
                     icon: "torch-off"
-                    label: "Off"
+                    label: QT_TR_NOOP("Off")
                     value: Camera.FlashOff
                 }
             },
@@ -171,7 +171,7 @@ Item {
 
                 property string settingsProperty: "hdrEnabled"
                 property string icon: ""
-                property string label: "HDR"
+                property string label: i18n.tr("HDR")
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: camera.advanced.hasHdr
@@ -179,12 +179,12 @@ Item {
 
                 ListElement {
                     icon: ""
-                    label: "On"
+                    label: QT_TR_NOOP("On")
                     value: true
                 }
                 ListElement {
                     icon: ""
-                    label: "Off"
+                    label: QT_TR_NOOP("Off")
                     value: false
                 }
             }
