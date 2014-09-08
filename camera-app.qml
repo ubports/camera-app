@@ -198,6 +198,7 @@ Item {
     Connections {
         target: ContentHub
         onExportRequested: {
+            viewSwitcher.switchToViewFinder();
             if (transferContentType === ContentType.Videos) {
                 viewFinderView.captureMode = Camera.CaptureVideo;
             } else {
