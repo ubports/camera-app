@@ -32,10 +32,9 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
-    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_take_picture(self):
         exposure_button = self.main_window.get_exposure_button()
-        pictures_dir = os.path.expanduser("~/Pictures/camera")
+        pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
 
         # Remove all pictures from pictures_dir that match our pattern
         files = [
