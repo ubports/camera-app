@@ -19,12 +19,13 @@ find_package(Qt5Gui)
 find_program(INTLTOOL_MERGE intltool-merge)
 find_program(INTLTOOL_EXTRACT intltool-extract)
 
-option(INSTALL_TESTS "Install the tests on make install" on)
-option(CLICK_MODE "Installs to a contained location" off)
+option(INSTALL_TESTS "Install the tests on make install" off)
+option(CLICK_MODE "Installs to a contained location" on)
 
 set(CAMERA_APP camera-app)
 set(AUTOPILOT_DIR camera_app)
 set(DESKTOP_FILE camera-app.desktop)
+set(UBUNTU_MANIFEST_PATH "manifest.json.in" CACHE INTERNAL "Relative path to the manifest file")
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
@@ -110,7 +111,7 @@ add_custom_target(${DESKTOP_FILE} ALL
         )
 
 # make non compiled files visible in qtcreator
-file(GLOB_RECURSE NON_COMPILED_FILES *.qml *.js *.py *.svg *.png *.in *.json *.desktop *.pot qmldir)
+file(GLOB_RECURSE NON_COMPILED_FILES *.qml *.js *.py *.svg *.png *.in *.json *.desktop *.pot *.apparmor qmldir)
 add_custom_target(NON_COMPILED_TARGET ALL SOURCES ${NON_COMPILED_FILES})
 
 if(CLICK_MODE)
@@ -118,10 +119,16 @@ if(CLICK_MODE)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}
         DESTINATION ${CMAKE_INSTALL_PREFIX})
 
-    configure_file(manifest.json ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
+    execute_process(
+      COMMAND dpkg-architecture -qDEB_HOST_ARCH
+      OUTPUT_VARIABLE CLICK_ARCH
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json
             DESTINATION ${CMAKE_INSTALL_PREFIX})
-    install(FILES camera-apparmor.json
+    install(FILES camera.apparmor
             DESTINATION ${CMAKE_INSTALL_PREFIX})
     install(FILES camera-contenthub.json
             DESTINATION ${CMAKE_INSTALL_PREFIX})
