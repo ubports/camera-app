@@ -18,6 +18,7 @@ add_custom_target(${POT_FILE} ALL
                           --from-code=UTF-8
                           --c++ --qt --add-comments=TRANSLATORS
                           --keyword=tr --keyword=N_ --keyword=tr:1,2
+                          --keyword=QT_TR_NOOP
                           --package-name=camera-app
                           --copyright-holder='Canonical Ltd.'
                           ${I18N_SRC_FILES})

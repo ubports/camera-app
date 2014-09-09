@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-01 13:28+0200\n"
+"POT-Creation-Date: 2014-09-05 09:03-0300\n"
 "PO-Revision-Date: 2014-09-05 13:19+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-06 07:29+0000\n"
+"X-Launchpad-Export-Date: 2014-09-09 07:50+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#: ../GalleryView.qml:112
+#: ../GalleryView.qml:121
 msgid "No media available."
 msgstr "Sem multimédia disponível"
 
@@ -29,55 +29,73 @@ msgstr "Rolo da câmara"
 msgid "Share"
 msgstr "Partilhar"
 
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:301
+#: ../SlideshowView.qml:41 ../SlideshowView.qml:312
 msgid "Delete"
 msgstr "Apagar"
 
-#: ../SlideshowView.qml:289
+#: ../SlideshowView.qml:300
 msgid "Delete media?"
 msgstr "Apagar multimédia?"
 
-#: ../SlideshowView.qml:296
+#: ../SlideshowView.qml:307
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../camera-app-integration/camera-app.qml:35 ../camera-app.qml:36
+#: ../ViewFinderOverlay.qml:111 ../ViewFinderOverlay.qml:133
+#: ../ViewFinderOverlay.qml:160 ../ViewFinderOverlay.qml:182
+msgid "On"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:116 ../ViewFinderOverlay.qml:143
+#: ../ViewFinderOverlay.qml:165 ../ViewFinderOverlay.qml:187
+msgid "Off"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:138
+msgid "Auto"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:174
+msgid "HDR"
+msgstr ""
+
+#: ../camera-app.qml:36
 msgid "Flash"
 msgstr "Flash"
 
-#: ../camera-app-integration/camera-app.qml:36 ../camera-app.qml:37
+#: ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr "Claro;Escuro"
 
-#: ../camera-app-integration/camera-app.qml:40 ../camera-app.qml:40
+#: ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr "Inverter câmara"
 
-#: ../camera-app-integration/camera-app.qml:41 ../camera-app.qml:41
+#: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "Capa frontal;Capa traseira"
 
-#: ../camera-app-integration/camera-app.qml:45 ../camera-app.qml:44
+#: ../camera-app.qml:44
 msgid "Shutter"
 msgstr "Shutter"
 
-#: ../camera-app-integration/camera-app.qml:46 ../camera-app.qml:45
+#: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr "Tirar uma fotografia;Capturar;Gravar"
 
-#: ../camera-app-integration/camera-app.qml:50 ../camera-app.qml:48
+#: ../camera-app.qml:48
 msgid "Mode"
 msgstr "Modo"
 
-#: ../camera-app-integration/camera-app.qml:51 ../camera-app.qml:49
+#: ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr "Stills;Video"
 
-#: ../camera-app-integration/camera-app.qml:55 ../camera-app.qml:53
+#: ../camera-app.qml:53
 msgid "White Balance"
 msgstr "Equilíbrio de brancos"
 
-#: ../camera-app-integration/camera-app.qml:56 ../camera-app.qml:54
+#: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Condição de luminosidade;Dia;Nublado;Interior"
 

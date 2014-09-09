@@ -105,7 +105,7 @@ Item {
                     right: optionValueSelector.right
                     left: optionValueSelector.left
                 }
-                label: model.label
+                label: i18n.tr(model.label)
                 iconName: model.icon
                 selected: optionsRepeater.model.selectedIndex == index
                 isLast: index === optionsRepeater.count - 1
