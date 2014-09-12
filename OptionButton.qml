@@ -18,7 +18,7 @@ import QtQuick 2.0
 
 CircleButton {
     id: optionButton
-    objectName: "optionButton"
+    objectName: "optionButton-" + model.settingsProperty
 
     property var model
     property string settingsProperty: model.settingsProperty

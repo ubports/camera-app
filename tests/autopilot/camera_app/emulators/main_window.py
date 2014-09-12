@@ -43,21 +43,14 @@ class MainWindow(object):
         return self.app.wait_select_single("CircleButton",
                                            objectName="recordModeButton")
 
-    def get_option_button(self, settingsProperty):
-        """Returns the option button that corresponds to the setting stored
-           in settingsProperty
-        """
-        optionButtons = self.app.select_many("OptionButton")
-        return next(button for button in optionButtons
-                    if button.settingsProperty == settingsProperty)
-
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
-        return self.get_option_button("flashMode")
+        return self.app.select_single(objectName="optionButton-flashMode")
 
     def get_video_flash_button(self):
         """Returns the flash control button of the camera"""
-        return self.get_option_button("videoFlashMode")
+        return self.app.select_single(
+            objectName="optionButton-videoFlashMode")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
