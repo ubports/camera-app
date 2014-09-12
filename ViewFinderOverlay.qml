@@ -28,7 +28,6 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
     property var controls: controls
-    property bool removableStorage: (application.removableStorageLocation !== "")
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -320,8 +319,9 @@ Item {
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
-                } else if (removableStorage) {
-                    camera.imageCapture.captureToLocation(application.removableStorageLocation);
+                // Only capture images to removable storage when not in DESKTOP_MODE
+                } else if (!application.desktopMode && application.externalPicturesLocation !== "") {
+                    camera.imageCapture.captureToLocation(application.externalPicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(application.picturesLocation);
                 }

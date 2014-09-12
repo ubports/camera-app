@@ -146,14 +146,48 @@ QString CameraApplication::temporaryLocation() const
 
 QString CameraApplication::removableStorageLocation() const
 {
-    QDir dir("/media/phablet/");
-    QStringList dirs = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    QString userName = qgetenv("USER");
+    QDir media("/media/" + userName);
+    QStringList mediaDirs = media.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-    if (dirs.size() > 0) {
-        QString location = "/media/phablet/" + dirs.at(0) + "/Pictures";
-        dir.mkpath(location);
+    if (mediaDirs.size() > 0) {
+        QString location = "/media/" + userName + "/" + mediaDirs.at(0);
         return location;
     } else {
         return QString();
     }
+}
+
+QString CameraApplication::externalPicturesLocation() const
+{
+    if (removableStorageLocation().isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    QString pictureDir = QString(locations.at(0)).split("/").value(3);
+    if (pictureDir.isEmpty()){
+        return QString();
+    }
+    QString location = removableStorageLocation() + "/" + pictureDir;
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::externalVideosLocation() const
+{
+    if (removableStorageLocation().isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation);
+    QString movieDir = QString(locations.at(0)).split("/").value(3);
+    if (movieDir.isEmpty()){
+        return QString();
+    }
+    QString location = removableStorageLocation() + "/" + movieDir;
+    QDir dir;
+    dir.mkpath(location);
+    return location;
 }
