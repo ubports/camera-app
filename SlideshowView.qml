@@ -230,7 +230,7 @@ Item {
                         enabled: media.isVideo
                         onClicked: {
                             if (media.isVideo) {
-                                Qt.openUrlExternally(fileURL);
+                                Qt.openUrlExternally(fileURL.toString().replace(/^file/, "video"));
                             }
                         }
                     }
