@@ -239,7 +239,8 @@ Item {
                         enabled: media.isVideo
                         onClicked: {
                             if (media.isVideo) {
-                                Qt.openUrlExternally(fileURL);
+                                var url = fileURL.toString().replace("file://", "video://");
+                                Qt.openUrlExternally(url);
                             }
                         }
                     }
