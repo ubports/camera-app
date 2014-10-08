@@ -1,3 +1,17 @@
+camera-app (3.0.0+14.10.20141008-0ubuntu1) 14.09; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Photo roll's slideshow view: use the photo downscaled instead of the
+    thumbnailer. (LP: #1376767)
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 08 Oct 2014 12:20:06 +0000
+
 camera-app (3.0.0+14.10.20141001-0ubuntu1) 14.09; urgency=low
 
   [ Ubuntu daily release ]
