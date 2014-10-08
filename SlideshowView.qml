@@ -179,7 +179,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
+                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnailer/" + fileURL.toString() : fileURL) : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
