@@ -104,6 +104,9 @@ Item {
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
+                    if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
                     viewFinderView.videoShot();
