@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.2
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.1
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
@@ -115,10 +115,37 @@ Item {
         }
     }
 
-    Label {
-        anchors.centerIn: parent
+    Rectangle {
+        anchors.fill: parent
         visible: model.count === 0
-        text: i18n.tr("No media available.")
+        color: "#0F0F0F"
+
+        Icon {
+            id: noMediaIcon
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: -units.gu(1)
+            }
+            height: units.gu(9)
+            width: units.gu(9)
+            color: "white"
+            opacity: 0.2
+            name: "camera-app-symbolic"
+        }
+
+        Label {
+            id: noMediaLabel
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                top: noMediaIcon.bottom
+                topMargin: units.gu(4)
+            }
+            text: i18n.tr("No media available.")
+            color: "white"
+            opacity: 0.2
+            fontSize: "large"
+        }
     }
 
     state: galleryView.gridMode || main.contentExportMode ? "GRID" : "SLIDESHOW"
