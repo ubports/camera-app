@@ -16,7 +16,6 @@ from autopilot.testcase import AutopilotTestCase
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 from camera_app.emulators.panel import Panel
-from camera_app.helpers import set_location_service_testing
 
 class CameraAppTestCase(AutopilotTestCase):
 
