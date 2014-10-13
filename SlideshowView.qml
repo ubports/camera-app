@@ -179,7 +179,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
+                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnailer/" + fileURL.toString() : fileURL) : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -239,7 +239,8 @@ Item {
                         enabled: media.isVideo
                         onClicked: {
                             if (media.isVideo) {
-                                Qt.openUrlExternally(fileURL);
+                                var url = fileURL.toString().replace("file://", "video://");
+                                Qt.openUrlExternally(url);
                             }
                         }
                     }

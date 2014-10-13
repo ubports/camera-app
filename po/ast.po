@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-09-05 09:03-0300\n"
-"PO-Revision-Date: 2014-07-05 16:02+0000\n"
+"PO-Revision-Date: 2014-09-09 11:56+0000\n"
 "Last-Translator: ivarela <ivarela@ubuntu.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-09 07:50+0000\n"
+"X-Launchpad-Export-Date: 2014-09-10 07:56+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../GalleryView.qml:121
@@ -44,20 +44,20 @@ msgstr "Encaboxar"
 #: ../ViewFinderOverlay.qml:111 ../ViewFinderOverlay.qml:133
 #: ../ViewFinderOverlay.qml:160 ../ViewFinderOverlay.qml:182
 msgid "On"
-msgstr ""
+msgstr "Activáu"
 
 #: ../ViewFinderOverlay.qml:116 ../ViewFinderOverlay.qml:143
 #: ../ViewFinderOverlay.qml:165 ../ViewFinderOverlay.qml:187
 msgid "Off"
-msgstr ""
+msgstr "Desactiváu"
 
 #: ../ViewFinderOverlay.qml:138
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 #: ../ViewFinderOverlay.qml:174
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../camera-app.qml:36
 msgid "Flash"
@@ -127,4 +127,4 @@ msgstr "Aplicación Cámara"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Semeyes;Vídeos;Captura;Toma;Instantánea;Rexistru"
