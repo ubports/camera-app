@@ -35,8 +35,6 @@ class CameraAppTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
-        set_location_service_testing(True)
-        self.addCleanup(set_location_service_testing, False)
         if os.path.exists(self.local_location):
             self.launch_test_local()
         elif os.path.exists(self.deb_location):
