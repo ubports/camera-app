@@ -1,0 +1,130 @@
+# Catalan (Valencian) translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-09-05 09:03-0300\n"
+"PO-Revision-Date: 2014-10-17 05:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Catalan (Valencian) <ca@valencia@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-10-17 06:19+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
+
+#: ../GalleryView.qml:121
+msgid "No media available."
+msgstr ""
+
+#: ../GalleryViewHeader.qml:73
+msgid "Photo Roll"
+msgstr ""
+
+#: ../SlideshowView.qml:36
+msgid "Share"
+msgstr ""
+
+#: ../SlideshowView.qml:41 ../SlideshowView.qml:312
+msgid "Delete"
+msgstr ""
+
+#: ../SlideshowView.qml:300
+msgid "Delete media?"
+msgstr ""
+
+#: ../SlideshowView.qml:307
+msgid "Cancel"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:111 ../ViewFinderOverlay.qml:133
+#: ../ViewFinderOverlay.qml:160 ../ViewFinderOverlay.qml:182
+msgid "On"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:116 ../ViewFinderOverlay.qml:143
+#: ../ViewFinderOverlay.qml:165 ../ViewFinderOverlay.qml:187
+msgid "Off"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:138
+msgid "Auto"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:174
+msgid "HDR"
+msgstr ""
+
+#: ../camera-app.qml:36
+msgid "Flash"
+msgstr ""
+
+#: ../camera-app.qml:37
+msgid "Light;Dark"
+msgstr ""
+
+#: ../camera-app.qml:40
+msgid "Flip Camera"
+msgstr ""
+
+#: ../camera-app.qml:41
+msgid "Front Facing;Back Facing"
+msgstr ""
+
+#: ../camera-app.qml:44
+msgid "Shutter"
+msgstr ""
+
+#: ../camera-app.qml:45
+msgid "Take a Photo;Snap;Record"
+msgstr ""
+
+#: ../camera-app.qml:48
+msgid "Mode"
+msgstr ""
+
+#: ../camera-app.qml:49
+msgid "Stills;Video"
+msgstr ""
+
+#: ../camera-app.qml:53
+msgid "White Balance"
+msgstr ""
+
+#: ../camera-app.qml:54
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr ""
+
+#: ../camera-app.qml:213
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr ""
+
+#: ../camera-app.qml:214
+msgid "No photos taken today"
+msgstr ""
+
+#: ../camera-app.qml:222
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr ""
+
+#: ../camera-app.qml:223
+msgid "No videos recorded today"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr ""
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr ""
