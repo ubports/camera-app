@@ -1,130 +1,130 @@
-# Catalan (Valencian) translation for camera-app
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# Catalan translation for camera-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-09-05 09:03-0300\n"
-"PO-Revision-Date: 2014-10-17 05:40+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Catalan (Valencian) <ca@valencia@li.org>\n"
+"PO-Revision-Date: 2014-10-17 14:24+0000\n"
+"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-17 06:19+0000\n"
+"X-Launchpad-Export-Date: 2014-10-18 07:06+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../GalleryView.qml:121
 msgid "No media available."
-msgstr ""
+msgstr "No hi ha cap element multimèdia disponible"
 
 #: ../GalleryViewHeader.qml:73
 msgid "Photo Roll"
-msgstr ""
+msgstr "Rotlle de fotos"
 
 #: ../SlideshowView.qml:36
 msgid "Share"
-msgstr ""
+msgstr "Comparteix"
 
 #: ../SlideshowView.qml:41 ../SlideshowView.qml:312
 msgid "Delete"
-msgstr ""
+msgstr "Suprimeix"
 
 #: ../SlideshowView.qml:300
 msgid "Delete media?"
-msgstr ""
+msgstr "Voleu suprimir-ho?"
 
 #: ../SlideshowView.qml:307
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·la"
 
 #: ../ViewFinderOverlay.qml:111 ../ViewFinderOverlay.qml:133
 #: ../ViewFinderOverlay.qml:160 ../ViewFinderOverlay.qml:182
 msgid "On"
-msgstr ""
+msgstr "Actiu"
 
 #: ../ViewFinderOverlay.qml:116 ../ViewFinderOverlay.qml:143
 #: ../ViewFinderOverlay.qml:165 ../ViewFinderOverlay.qml:187
 msgid "Off"
-msgstr ""
+msgstr "Inactiu"
 
 #: ../ViewFinderOverlay.qml:138
 msgid "Auto"
-msgstr ""
+msgstr "Automàtic"
 
 #: ../ViewFinderOverlay.qml:174
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../camera-app.qml:36
 msgid "Flash"
-msgstr ""
+msgstr "Flaix"
 
 #: ../camera-app.qml:37
 msgid "Light;Dark"
-msgstr ""
+msgstr "Clar;Fosc"
 
 #: ../camera-app.qml:40
 msgid "Flip Camera"
-msgstr ""
+msgstr "Gira la càmera"
 
 #: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Frontal;posterior"
 
 #: ../camera-app.qml:44
 msgid "Shutter"
-msgstr ""
+msgstr "Disparador"
 
 #: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Fés una foto;Captura;Grava"
 
 #: ../camera-app.qml:48
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 #: ../camera-app.qml:49
 msgid "Stills;Video"
-msgstr ""
+msgstr "Imatge estàtica;Vídeo"
 
 #: ../camera-app.qml:53
 msgid "White Balance"
-msgstr ""
+msgstr "Balanç de blancs"
 
 #: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
 
 #: ../camera-app.qml:213
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "Hui heu fet <b>%1</b> fotos"
 
 #: ../camera-app.qml:214
 msgid "No photos taken today"
-msgstr ""
+msgstr "Hui no heu fet cap foto"
 
 #: ../camera-app.qml:222
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "Hui heu fet <b>%1</b> vídeos"
 
 #: ../camera-app.qml:223
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Hui no heu fet cap video"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr ""
+msgstr "Càmera"
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr ""
+msgstr "Aplicació de càmera"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Fotos; fotografies; vídeos; vídeo; captura; fés foto; enregistra"
