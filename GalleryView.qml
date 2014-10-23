@@ -40,7 +40,7 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            //onTriggered: PopupUtils.open(sharePopoverComponent)
+            onTriggered: PopupUtils.open(sharePopoverComponent)
         },
         Action {
             text: i18n.tr("Delete")
@@ -189,6 +189,51 @@ Item {
             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
+
+    Component {
+        id: sharePopoverComponent
+
+        PopupBase {
+            id: sharePopover
+
+            fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
+
+            // FIXME: ContentPeerPicker should either have a background or not, not half of one
+            Rectangle {
+                anchors.fill: parent
+                color: Theme.palette.normal.overlay
+            }
+
+            ContentItem {
+                id: contentItem
+            }
+
+            ContentPeerPicker {
+                // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
+                // FIXME: ContentPeerPicker should not be visible: false by default
+                visible: true
+                Component.onCompleted: {
+                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
+                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
+                }
+                handler: ContentHandler.Share
+
+                onPeerSelected: {
+                    var transfer = peer.request();
+                    if (transfer.state === ContentTransfer.InProgress) {
+                        transfer.items = model.selectedFiles.map(function(row) {
+                            return contentItem.createObject(parent, {"url": model.get(row, "filePath")});
+                        });
+                        transfer.state = ContentTransfer.Charged;
+                    }
+
+                    galleryView.exitUserSelectionMode();
+                    PopupUtils.close(sharePopover);
+                }
+                onCancelPressed: PopupUtils.close(sharePopover);
+            }
+        }
+    }
 
     Component {
         id: deleteDialogComponent
