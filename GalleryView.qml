@@ -66,8 +66,12 @@ Item {
     }
 
     function exitUserSelectionMode() {
-        model.clearSelection();
-        userSelectionMode = false;
+        if (gridMode) {
+            model.clearSelection();
+            userSelectionMode = false;
+        } else {
+            gridMode = true;
+        }
     }
 
     onExit: {
@@ -94,19 +98,21 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView
+            inSelectionMode: main.contentExportMode || userSelectionMode
             onPhotoClicked: {
-                if (main.contentExportMode || userSelectionMode) {
-                    model.toggleSelected(index);
-                } else {
-                    slideshowView.showPhotoAtIndex(index);
-                    galleryView.gridMode = false;
-                }
+                slideshowView.showPhotoAtIndex(index);
+                galleryView.gridMode = false;
             }
             onPhotoPressAndHold: {
                 if (!userSelectionMode) {
                     userSelectionMode = true;
                     model.toggleSelected(index);
                 }
+            }
+
+            onPhotoSelectionAreaClicked: {
+                if (main.contentExportMode || userSelectionMode)
+                    model.toggleSelected(index);
             }
         }
 
