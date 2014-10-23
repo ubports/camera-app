@@ -16,6 +16,7 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.0
+import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
@@ -34,6 +35,19 @@ Item {
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
         singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
     }
+
+    property list<Action> userSelectionActions: [
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            //onTriggered: PopupUtils.open(sharePopoverComponent)
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: PopupUtils.open(deleteDialogComponent);
+        }
+    ]
 
     property bool gridMode: false
     property bool showLastPhotoTakenPending: false
@@ -93,7 +107,7 @@ Item {
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
-            actions: currentView.actions
+            actions: userSelectionMode ? userSelectionActions : currentView.actions
             gridMode: galleryView.gridMode || main.contentExportMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
             userSelectionMode: galleryView.userSelectionMode
@@ -175,4 +189,38 @@ Item {
             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
+
+    Component {
+        id: deleteDialogComponent
+
+        Dialog {
+            id: deleteDialog
+
+            title: i18n.tr("Delete media?")
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            Button {
+                text: i18n.tr("Cancel")
+                color: UbuntuColors.warmGrey
+                onClicked: PopupUtils.close(deleteDialog)
+            }
+            Button {
+                text: i18n.tr("Delete")
+                color: UbuntuColors.orange
+                onClicked: {
+                    for (var i=model.selectedFiles.length-1; i>=0; i--) {
+                        var currentFilePath = model.get(model.selectedFiles[i], "filePath");
+                        model.toggleSelected(model.selectedFiles[i])
+                        fileOperations.remove(currentFilePath);
+                    }
+
+                    galleryView.exitUserSelectionMode();
+                    PopupUtils.close(deleteDialog);
+                }
+            }
+        }
+    }
 }
