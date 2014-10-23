@@ -40,12 +40,18 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            onTriggered: PopupUtils.open(sharePopoverComponent)
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(sharePopoverComponent)
+            }
         },
         Action {
             text: i18n.tr("Delete")
             iconName: "delete"
-            onTriggered: PopupUtils.open(deleteDialogComponent);
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(deleteDialogComponent);
+            }
         }
     ]
 
@@ -191,6 +197,11 @@ Item {
     ]
 
     Component {
+        id: contentItemComp
+        ContentItem {}
+    }
+
+    Component {
         id: sharePopoverComponent
 
         PopupBase {
@@ -204,16 +215,13 @@ Item {
                 color: Theme.palette.normal.overlay
             }
 
-            ContentItem {
-                id: contentItem
-            }
-
             ContentPeerPicker {
                 // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
                 // FIXME: ContentPeerPicker should not be visible: false by default
                 visible: true
                 Component.onCompleted: {
-                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
+                    //FIXME: Need to handle video and photo selection
+                    var currentFileType = model.get(model.selectedFiles[0], "fileType")
                     contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
                 }
                 handler: ContentHandler.Share
@@ -222,7 +230,7 @@ Item {
                     var transfer = peer.request();
                     if (transfer.state === ContentTransfer.InProgress) {
                         transfer.items = model.selectedFiles.map(function(row) {
-                            return contentItem.createObject(parent, {"url": model.get(row, "filePath")});
+                            return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
                         });
                         transfer.state = ContentTransfer.Charged;
                     }
