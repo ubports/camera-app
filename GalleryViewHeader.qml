@@ -35,6 +35,7 @@ Item {
     property alias actions: actionsDrawer.actions
     property bool gridMode: false
     property bool validationVisible
+    property bool userSelectionMode: false
     signal exit
     signal toggleViews
     signal validationClicked
@@ -70,7 +71,7 @@ Item {
         }
 
         Label {
-            text: i18n.tr("Photo Roll")
+            text: userSelectionMode ? i18n.tr("Select") : i18n.tr("Photo Roll")
             fontSize: "x-large"
             color: Theme.palette.normal.foregroundText
             elide: Text.ElideRight
@@ -85,7 +86,7 @@ Item {
             }
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
-            visible: !main.contentExportMode
+            visible: !main.contentExportMode && !userSelectionMode
         }
 
         IconButton {

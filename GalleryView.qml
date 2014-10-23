@@ -26,6 +26,7 @@ Item {
     signal exit
     property bool inView
     property bool touchAcquired: slideshowView.touchAcquired
+    property bool userSelectionMode: false
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
         folders: [application.picturesLocation, application.videosLocation]
@@ -42,6 +43,11 @@ Item {
         // do not immediately try to show the photo in the slideshow as it
         // might not be in the photo roll model yet
         showLastPhotoTakenPending = true;
+    }
+
+    function exitUserSelectionMode() {
+        model.clearSelection();
+        userSelectionMode = false;
     }
 
     onExit: {
@@ -69,11 +75,17 @@ Item {
             visible: opacity != 0.0
             inView: galleryView.inView
             onPhotoClicked: {
-                if (main.contentExportMode) {
+                if (main.contentExportMode || userSelectionMode) {
                     model.toggleSelected(index);
                 } else {
                     slideshowView.showPhotoAtIndex(index);
                     galleryView.gridMode = false;
+                }
+            }
+            onPhotoPressAndHold: {
+                if (!userSelectionMode) {
+                    userSelectionMode = true;
+                    model.toggleSelected(index);
                 }
             }
         }
@@ -81,10 +93,16 @@ Item {
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
-            onExit: galleryView.exit()
             actions: currentView.actions
             gridMode: galleryView.gridMode || main.contentExportMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
+            userSelectionMode: galleryView.userSelectionMode
+            onExit: {
+                if (userSelectionMode)
+                    galleryView.exitUserSelectionMode()
+                else
+                    galleryView.exit()
+            }
             onToggleViews: {
                 if (!galleryView.gridMode) {
                     // position grid view so that the current photo in slideshow view is visible

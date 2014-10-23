@@ -26,6 +26,7 @@ Item {
     property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
+    signal photoPressAndHold(int index)
     property real headerHeight
     property bool inView
     property list<Action> actions
@@ -114,6 +115,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
+                onPressAndHold: photogridView.photoPressAndHold(index)
             }
         }
     }
