@@ -29,8 +29,10 @@ Item {
     }
 
     function disable() {
-        photoRollHint.necessary = false;
-        photoRollHint.enabled = false;
+        if (photoRollHint.enabled) {
+            photoRollHint.necessary = false;
+            photoRollHint.enabled = false;
+        }
     }
 
     // Display the hint only once after taking the very first photo
