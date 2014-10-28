@@ -116,6 +116,7 @@ Item {
     }
 
     Rectangle {
+        objectName: "noMediaHint"
         anchors.fill: parent
         visible: model.count === 0
         color: "#0F0F0F"
