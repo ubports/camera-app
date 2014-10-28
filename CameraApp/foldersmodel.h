@@ -31,6 +31,7 @@ class FoldersModel : public QAbstractListModel
     Q_PROPERTY (QStringList typeFilters READ typeFilters WRITE setTypeFilters NOTIFY typeFiltersChanged)
     Q_PROPERTY (QList<int> selectedFiles READ selectedFiles NOTIFY selectedFilesChanged)
     Q_PROPERTY (bool singleSelectionOnly READ singleSelectionOnly WRITE setSingleSelectionOnly NOTIFY singleSelectionOnlyChanged)
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
     enum Roles {
@@ -50,6 +51,7 @@ public:
     QList<int> selectedFiles() const;
     bool singleSelectionOnly() const;
     void setSingleSelectionOnly(bool singleSelectionOnly);
+    int count() const;
 
     void updateFileInfoList();
     bool fileMatchesTypeFilters(const QFileInfo& newFileInfo);
@@ -71,6 +73,7 @@ Q_SIGNALS:
     void typeFiltersChanged();
     void selectedFilesChanged();
     void singleSelectionOnlyChanged();
+    void countChanged();
 
 private:
     QStringList m_folders;
