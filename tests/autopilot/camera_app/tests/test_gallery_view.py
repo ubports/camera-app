@@ -28,23 +28,12 @@ class TestCameraGalleryView(CameraAppTestCase):
     def tearDown(self):
         super(TestCameraGalleryView, self).tearDown()
 
-    def swipe_to_gallery(self):
-        main_view = self.main_window.get_root()
-        x, y, w, h = main_view.globalRect
-
-        tx = x + (w // 2)
-        ty = y + (h // 2)
-
-        self.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
-        viewfinder = self.main_window.get_viewfinder()
-        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
-
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
 
-        self.swipe_to_gallery()
+        self.main_window.swipe_to_gallery(self)
 
         self.assertThat(viewfinder.inView, Eventually(Equals(False)))
         self.assertThat(gallery.inView, Eventually(Equals(True)))
@@ -58,7 +47,7 @@ class TestCameraGalleryView(CameraAppTestCase):
 
     """Tests toggling between grid and slideshow views"""
     def test_toggling_view_type(self):
-        self.swipe_to_gallery()
+        self.main_window.swipe_to_gallery(self)
 
         gallery = self.main_window.get_gallery()
         slideshow_view = gallery.wait_select_single("SlideshowView")

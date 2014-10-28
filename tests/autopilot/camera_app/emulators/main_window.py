@@ -6,6 +6,8 @@
 # by the Free Software Foundation.
 
 from camera_app.emulators.panel import Panel
+from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 
 class MainWindow(object):
@@ -37,6 +39,10 @@ class MainWindow(object):
     def get_exposure_button(self):
         """Returns the button that takes pictures"""
         return self.app.wait_select_single("ShootButton")
+
+    def get_photo_roll_hint(self):
+        """Returns the layer that serves at hinting to the existence of the photo roll"""
+        return self.app.wait_select_single("PhotoRollHint")
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
@@ -96,3 +102,25 @@ class MainWindow(object):
         optionButtons = selector.select_many("OptionValueButton")
         return next(button for button in optionButtons
                     if button.label == label)
+
+    def swipe_to_gallery(self, testCase):
+        main_view = self.get_root()
+        x, y, w, h = main_view.globalRect
+
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+
+        testCase.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
+        viewfinder = self.get_viewfinder()
+        testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
+
+    def swipe_to_viewfinder(self, testCase):
+        main_view = self.get_root()
+        x, y, w, h = main_view.globalRect
+
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+
+        testCase.pointing_device.drag(tx, ty, (tx + main_view.width // 2), ty)
+        viewfinder = self.get_viewfinder()
+        testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
