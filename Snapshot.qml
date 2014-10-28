@@ -24,6 +24,7 @@ Item {
     property int orientation
     property ViewFinderGeometry geometry
     property bool deviceDefaultIsPortrait: true
+    property bool loading: snapshot.status == Image.Loading
 
     function startOutAnimation() {
         shoot.restart()
