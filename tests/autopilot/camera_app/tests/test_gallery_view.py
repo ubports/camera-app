@@ -13,6 +13,7 @@ from autopilot.matchers import Eventually
 from camera_app.tests import CameraAppTestCase
 
 import unittest
+import os
 
 
 class TestCameraGalleryView(CameraAppTestCase):
@@ -24,27 +25,18 @@ class TestCameraGalleryView(CameraAppTestCase):
         super(TestCameraGalleryView, self).setUp()
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
+        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
 
     def tearDown(self):
         super(TestCameraGalleryView, self).tearDown()
-
-    def swipe_to_gallery(self):
-        main_view = self.main_window.get_root()
-        x, y, w, h = main_view.globalRect
-
-        tx = x + (w // 2)
-        ty = y + (h // 2)
-
-        self.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
-        viewfinder = self.main_window.get_viewfinder()
-        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
 
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
 
-        self.swipe_to_gallery()
+        self.main_window.swipe_to_gallery(self)
 
         self.assertThat(viewfinder.inView, Eventually(Equals(False)))
         self.assertThat(gallery.inView, Eventually(Equals(True)))
@@ -58,7 +50,7 @@ class TestCameraGalleryView(CameraAppTestCase):
 
     """Tests toggling between grid and slideshow views"""
     def test_toggling_view_type(self):
-        self.swipe_to_gallery()
+        self.main_window.swipe_to_gallery(self)
 
         gallery = self.main_window.get_gallery()
         slideshow_view = gallery.wait_select_single("SlideshowView")
@@ -76,3 +68,34 @@ class TestCameraGalleryView(CameraAppTestCase):
 
         self.assertThat(slideshow_view.visible, Eventually(Equals(False)))
         self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
+
+    def delete_all_media(self):
+        picture_files = os.listdir(self.pictures_dir)
+        for f in picture_files:
+            os.remove(os.path.join(self.pictures_dir, f))
+
+        video_files = os.listdir(self.videos_dir)
+        for f in video_files:
+            os.remove(os.path.join(self.videos_dir, f))
+
+    """Tests swiping to the gallery/photo roll with no media in it"""
+    def test_swipe_to_empty_gallery(self):
+        self.delete_all_media()
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+
+        self.main_window.swipe_to_gallery(self)
+
+        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        hint = self.main_window.get_no_media_hint()
+
+        self.assertThat(hint.visible, Eventually(Equals(True)))
+
+        # add a fake photo to pictures_dir
+        photo_path = os.path.join(self.pictures_dir, "fake_photo.jpg")
+        with open(photo_path, 'a'):
+            os.utime(photo_path, None)
+
+        self.assertThat(hint.visible, Eventually(Equals(False)))

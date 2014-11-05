@@ -91,6 +91,9 @@ Item {
                 } else {
                     viewFinderOverlay.visible = true;
                     snapshot.startOutAnimation();
+                    if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                 }
                 viewFinderView.photoTaken();
                 metricPhotos.increment();
@@ -101,6 +104,9 @@ Item {
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
+                    if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
                     viewFinderView.videoShot();
@@ -269,7 +275,7 @@ Item {
 
     FastBlur {
         anchors.fill: viewFinderSwitcher
-        radius: viewFinderOverlay.revealProgress * 64
+        radius: photoRollHint.visible ? 64 : viewFinderOverlay.revealProgress * 64
         source: radius !== 0 ? viewFinderSwitcher : null
         visible: radius !== 0
     }
@@ -279,10 +285,21 @@ Item {
 
         anchors.fill: parent
         camera: camera
-        opacity: status == Loader.Ready && overlayVisible ? 1.0 : 0.0
+        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
     }
-    
+
+    PhotoRollHint {
+        id: photoRollHint
+        anchors.fill: parent
+        visible: enabled && !snapshot.loading
+
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
+        }
+    }
+
     Snapshot {
         id: snapshot
         anchors.fill: parent

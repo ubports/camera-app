@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-05 09:03-0300\n"
+"POT-Creation-Date: 2014-10-09 19:00-0300\n"
 "PO-Revision-Date: 2014-07-21 13:44+0000\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <te@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-16 05:39+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-10-30 06:34+0000\n"
+"X-Generator: Launchpad (build 17203)\n"
 
 #: ../GalleryView.qml:121
 msgid "No media available."
@@ -25,19 +25,23 @@ msgstr "ఏ మాధ్యమం అందుబాటులోలేదు"
 msgid "Photo Roll"
 msgstr ""
 
+#: ../PhotoRollHint.qml:66
+msgid "Swipe left for photo roll"
+msgstr ""
+
 #: ../SlideshowView.qml:36
 msgid "Share"
 msgstr "పంచుకోండి"
 
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:312
+#: ../SlideshowView.qml:41 ../SlideshowView.qml:313
 msgid "Delete"
 msgstr "తొలగించు"
 
-#: ../SlideshowView.qml:300
+#: ../SlideshowView.qml:301
 msgid "Delete media?"
 msgstr "మాధ్యమాన్ని తొలగించాలా?"
 
-#: ../SlideshowView.qml:307
+#: ../SlideshowView.qml:308
 msgid "Cancel"
 msgstr "రద్దుచేయి"
 
@@ -99,21 +103,21 @@ msgstr "తెలుపు సమతుల్యత"
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "వెలుతురు పరిస్థితి;పగలు; మబ్బులు;లోపల"
 
-#: ../camera-app.qml:213
+#: ../camera-app.qml:214
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: ../camera-app.qml:214
+#: ../camera-app.qml:215
 msgid "No photos taken today"
 msgstr "నేడు ఏ ఛాయాచిత్రాలు తీయలేదు"
 
-#: ../camera-app.qml:222
+#: ../camera-app.qml:223
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: ../camera-app.qml:223
+#: ../camera-app.qml:224
 msgid "No videos recorded today"
 msgstr "నేడు ఏ దృశ్యకాలు తీయలేదు"
 

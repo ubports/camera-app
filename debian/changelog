@@ -1,3 +1,21 @@
+camera-app (3.0.0+14.10.20141028~rtm-0ubuntu1) 14.09; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Add a hint to the existence of the photo roll displayed the first
+    time the user takes a photo. (LP: #1368808)
+  * [Autopilot] Do not stop/start the location service at the beginning
+    of each test. (LP: #1380685)
+  * Display message when no media present in photo roll. (LP: #1375270)
+
+  [ Omer Akram ]
+  * autopilot: fix camera zoom bar not showing in test due to small
+    initial pinch (LP: #1366825)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 28 Oct 2014 21:54:02 +0000
+
 camera-app (3.0.0+14.10.20141008-0ubuntu1) 14.09; urgency=low
 
   [ CI bot ]

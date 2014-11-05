@@ -75,6 +75,10 @@ void FoldersModel::setSingleSelectionOnly(bool singleSelectionOnly)
     }
 }
 
+int FoldersModel::count() const
+{
+    return m_fileInfoList.count();
+}
 
 void FoldersModel::updateFileInfoList()
 {
@@ -94,6 +98,7 @@ void FoldersModel::updateFileInfoList()
     }
     endResetModel();
     m_selectedFiles.clear();
+    Q_EMIT countChanged();
     Q_EMIT selectedFilesChanged();
 }
 
@@ -138,6 +143,7 @@ void FoldersModel::insertFileInfo(const QFileInfo& newFileInfo, bool emitChange)
         beginInsertRows(QModelIndex(), index, index);
         m_fileInfoList.append(newFileInfo);
         endInsertRows();
+        Q_EMIT countChanged();
     } else {
         m_fileInfoList.append(newFileInfo);
     }
@@ -251,6 +257,7 @@ void FoldersModel::fileChanged(const QString &filePath)
             beginRemoveRows(QModelIndex(), fileIndex, fileIndex);
             m_fileInfoList.removeAt(fileIndex);
             endRemoveRows();
+            Q_EMIT countChanged();
         }
     }
 }

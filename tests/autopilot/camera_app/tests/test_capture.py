@@ -24,7 +24,12 @@ class TestCapture(CameraAppTestCase):
     """ This is needed to wait for the application to start.
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
+        # Remove configuration file where knowledge of the photo roll hint's necessity is stored
+        config_file = os.path.expanduser("~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
+        os.remove(config_file)
+
         super(TestCapture, self).setUp()
+
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
@@ -32,10 +37,9 @@ class TestCapture(CameraAppTestCase):
         super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
-    @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_take_picture(self):
         exposure_button = self.main_window.get_exposure_button()
-        pictures_dir = os.path.expanduser("~/Pictures/camera")
+        pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
 
         # Remove all pictures from pictures_dir that match our pattern
         files = [
@@ -49,6 +53,8 @@ class TestCapture(CameraAppTestCase):
         # Wait for the camera to have finished focusing
         # (the exposure button gets enabled when ready)
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(exposure_button.width, Eventually(NotEquals(0)))
+        self.assertThat(exposure_button.height, Eventually(NotEquals(0)))
 
         # Now take the picture! (Give it a little time to animate)
         self.pointing_device.move_to_object(exposure_button)
@@ -91,6 +97,8 @@ class TestCapture(CameraAppTestCase):
         # Click the exposure button to start recording
         self.pointing_device.move_to_object(exposure_button)
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(exposure_button.width, Eventually(NotEquals(0)))
+        self.assertThat(exposure_button.height, Eventually(NotEquals(0)))
         self.pointing_device.click()
 
         # Record video for 2 seconds and check if the stop watch actually
@@ -124,6 +132,33 @@ class TestCapture(CameraAppTestCase):
         self.pointing_device.click()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
+
+    def test_hint_after_first_picture(self):
+        hint = self.main_window.get_photo_roll_hint()
+        photo_button = self.main_window.get_exposure_button()
+
+        # Wait for the camera to be ready to take a picture
+        self.assertThat(photo_button.enabled, Eventually(Equals(True)))
+        self.assertThat(photo_button.width, Eventually(NotEquals(0)))
+        self.assertThat(photo_button.height, Eventually(NotEquals(0)))
+
+        # Check that the photo roll hint is hidden
+        self.assertEquals(hint.visible, False)
+
+        # Take a picture
+        self.pointing_device.move_to_object(photo_button)
+        self.pointing_device.click()
+
+        # Check that the photo roll hint is displayed
+        #self.assertEquals(hint.visible, True)
+        self.assertThat(hint.visible, Eventually(Equals(True)))
+
+        # Swipe to photo roll
+        self.main_window.swipe_to_gallery(self)
+        self.main_window.swipe_to_viewfinder(self)
+
+        # Check that the photo roll hint is hidden
+        self.assertEquals(hint.visible, False)
 
     """Test that the shoot button gets disabled for a while then re-enabled
     after shooting"""
