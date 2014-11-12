@@ -31,10 +31,6 @@ PopupBase {
         color: Theme.palette.normal.overlay
     }
 
-    ContentItem {
-        id: contentItem
-    }
-
     ContentPeerPicker {
         // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
         // FIXME: ContentPeerPicker should not be visible: false by default

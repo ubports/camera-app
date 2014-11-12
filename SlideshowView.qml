@@ -249,9 +249,8 @@ Item {
         }
     }
 
-    Component {
-        id: contentItemComp
-        ContentItem {}
+    ContentItem {
+        id: contentItem
     }
 
     Component {
@@ -260,11 +259,12 @@ Item {
         SharePopover {
             id: sharePopover
 
-            transferContentType: MimeTypeMapper.mimeTypeToContentType(
-                                   slideshowView.model.get(slideshowView.currentIndex, "fileType"));
-            transferItems: slideshowView.model.selectedFiles.map(function(row) {
-                             return contentItemComp.createObject(parent, {"url": slideshowView.model.get(row, "filePath")});
-                           })
+            Component.onCompleted: {
+                contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
+                transferItems = [contentItem];
+            }
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.model.get(slideshowView.currentIndex, "fileType"));
         }
     }
 
