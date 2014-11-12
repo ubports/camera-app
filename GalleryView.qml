@@ -253,33 +253,21 @@ Item {
     Component {
         id: deleteDialogComponent
 
-        Dialog {
+        DeleteDialog {
             id: deleteDialog
-
-            title: i18n.tr("Delete media?")
 
             FileOperations {
                 id: fileOperations
             }
 
-            Button {
-                text: i18n.tr("Cancel")
-                color: UbuntuColors.warmGrey
-                onClicked: PopupUtils.close(deleteDialog)
-            }
-            Button {
-                text: i18n.tr("Delete")
-                color: UbuntuColors.orange
-                onClicked: {
-                    for (var i=model.selectedFiles.length-1; i>=0; i--) {
-                        var currentFilePath = model.get(model.selectedFiles[i], "filePath");
-                        model.toggleSelected(model.selectedFiles[i])
-                        fileOperations.remove(currentFilePath);
-                    }
-
-                    galleryView.exitUserSelectionMode();
-                    PopupUtils.close(deleteDialog);
+            onDeleteFiles: {
+                for (var i=model.selectedFiles.length-1; i>=0; i--) {
+                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
+                    model.toggleSelected(model.selectedFiles[i])
+                    fileOperations.remove(currentFilePath);
                 }
+
+                galleryView.exitUserSelectionMode();
             }
         }
     }
