@@ -23,6 +23,8 @@ PopupBase {
     property var transferContentType 
     property var transferItems
 
+    signal peerSelected
+
     fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
 
     // FIXME: ContentPeerPicker should either have a background or not, not half of one
@@ -36,16 +38,17 @@ PopupBase {
         // FIXME: ContentPeerPicker should not be visible: false by default
         visible: true
         Component.onCompleted: {
-            contentType = transferContentType;
+            contentType = parent.transferContentType;
         }
         handler: ContentHandler.Share
 
         onPeerSelected: {
             var transfer = peer.request();
             if (transfer.state === ContentTransfer.InProgress) {
-                transfer.items = transferItems;
+                transfer.items = parent.transferItems;
                 transfer.state = ContentTransfer.Charged;
             }
+            parent.peerSelected();
             PopupUtils.close(sharePopover);
         }
         onCancelPressed: PopupUtils.close(sharePopover);

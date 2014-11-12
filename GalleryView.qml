@@ -240,6 +240,8 @@ Item {
 
         SharePopover {
             id: sharePopover
+            
+            onPeerSelected: galleryView.exitUserSelectionMode();
 
             transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
             transferItems: model.selectedFiles.map(function(row) {
