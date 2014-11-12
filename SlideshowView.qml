@@ -249,6 +249,10 @@ Item {
         }
     }
 
+    Component {
+        id: contentItemComp
+        ContentItem {}
+    }
 
     Component {
         id: sharePopoverComponent
@@ -256,8 +260,11 @@ Item {
         SharePopover {
             id: sharePopover
 
-            fileType: slideshowView.model.get(slideshowView.currentIndex, "fileType")
-            url: slideshowView.model.get(slideshowView.currentIndex, "filePath")
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(
+                                   slideshowView.model.get(slideshowView.currentIndex, "fileType"));
+            transferItems: slideshowView.model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": slideshowView.model.get(row, "filePath")});
+                           })
         }
     }
 

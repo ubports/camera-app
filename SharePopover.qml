@@ -18,11 +18,10 @@ import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
-import "MimeTypeMapper.js" as MimeTypeMapper
 
 PopupBase {
-    property var fileType 
-    property var url
+    property var transferContentType 
+    property var transferItems
 
     fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
 
@@ -41,15 +40,14 @@ PopupBase {
         // FIXME: ContentPeerPicker should not be visible: false by default
         visible: true
         Component.onCompleted: {
-            contentType = MimeTypeMapper.mimeTypeToContentType(parent.fileType);
+            contentType = transferContentType;
         }
         handler: ContentHandler.Share
 
         onPeerSelected: {
             var transfer = peer.request();
             if (transfer.state === ContentTransfer.InProgress) {
-                contentItem.url = parent.url;
-                transfer.items = [ contentItem ];
+                transfer.items = transferItems;
                 transfer.state = ContentTransfer.Charged;
             }
             PopupUtils.close(sharePopover);

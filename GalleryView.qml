@@ -238,42 +238,13 @@ Item {
     Component {
         id: sharePopoverComponent
 
-        PopupBase {
+        SharePopover {
             id: sharePopover
 
-            fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
-
-            // FIXME: ContentPeerPicker should either have a background or not, not half of one
-            Rectangle {
-                anchors.fill: parent
-                color: Theme.palette.normal.overlay
-            }
-
-            ContentPeerPicker {
-                // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
-                // FIXME: ContentPeerPicker should not be visible: false by default
-                visible: true
-                Component.onCompleted: {
-                    //FIXME: Need to handle video and photo selection
-                    var currentFileType = model.get(model.selectedFiles[0], "fileType")
-                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
-                }
-                handler: ContentHandler.Share
-
-                onPeerSelected: {
-                    var transfer = peer.request();
-                    if (transfer.state === ContentTransfer.InProgress) {
-                        transfer.items = model.selectedFiles.map(function(row) {
-                            return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
-                        });
-                        transfer.state = ContentTransfer.Charged;
-                    }
-
-                    galleryView.exitUserSelectionMode();
-                    PopupUtils.close(sharePopover);
-                }
-                onCancelPressed: PopupUtils.close(sharePopover);
-            }
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
+            transferItems: model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
+                           })
         }
     }
 
