@@ -253,42 +253,11 @@ Item {
     Component {
         id: sharePopoverComponent
 
-        PopupBase {
+        SharePopover {
             id: sharePopover
 
-            fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
-
-            // FIXME: ContentPeerPicker should either have a background or not, not half of one
-            Rectangle {
-                anchors.fill: parent
-                color: Theme.palette.normal.overlay
-            }
-
-            ContentItem {
-                id: contentItem
-            }
-
-            ContentPeerPicker {
-                // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
-                // FIXME: ContentPeerPicker should not be visible: false by default
-                visible: true
-                Component.onCompleted: {
-                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
-                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
-                }
-                handler: ContentHandler.Share
-
-                onPeerSelected: {
-                    var transfer = peer.request();
-                    if (transfer.state === ContentTransfer.InProgress) {
-                        contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
-                        transfer.items = [ contentItem ];
-                        transfer.state = ContentTransfer.Charged;
-                    }
-                    PopupUtils.close(sharePopover);
-                }
-                onCancelPressed: PopupUtils.close(sharePopover);
-            }
+            fileType: slideshowView.model.get(slideshowView.currentIndex, "fileType")
+            url: slideshowView.model.get(slideshowView.currentIndex, "filePath")
         }
     }
 
