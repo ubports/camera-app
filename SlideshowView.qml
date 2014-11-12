@@ -249,15 +249,15 @@ Item {
         }
     }
 
-    ContentItem {
-        id: contentItem
-    }
-
-    Component {
+   Component {
         id: sharePopoverComponent
 
         SharePopover {
             id: sharePopover
+
+            ContentItem {
+                id: contentItem
+            }
 
             Component.onCompleted: {
                 contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
@@ -271,36 +271,24 @@ Item {
     Component {
         id: deleteDialogComponent
 
-        Dialog {
+        DeleteDialog {
             id: deleteDialog
-
-            title: i18n.tr("Delete media?")
 
             FileOperations {
                 id: fileOperations
             }
 
-            Button {
-                text: i18n.tr("Cancel")
-                color: UbuntuColors.warmGrey
-                onClicked: PopupUtils.close(deleteDialog)
-            }
-            Button {
-                text: i18n.tr("Delete")
-                color: UbuntuColors.orange
-                onClicked: {
-                    // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
-                    // whereby after deleting the last item in the list the first
-                    // item would be shown even though the currentIndex was not set to 0
-                    var toBeDeleted = listView.currentIndex;
-                    if (listView.currentIndex == listView.count - 1) {
-                        listView.currentIndex = listView.currentIndex - 1;
-                    }
-
-                    var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
-                    fileOperations.remove(currentFilePath);
-                    PopupUtils.close(deleteDialog);
+            onDeleteFiles: {
+                // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
+                // whereby after deleting the last item in the list the first
+                // item would be shown even though the currentIndex was not set to 0
+                var toBeDeleted = listView.currentIndex;
+                if (listView.currentIndex == listView.count - 1) {
+                    listView.currentIndex = listView.currentIndex - 1;
                 }
+
+                var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
+                fileOperations.remove(currentFilePath);
             }
         }
     }
