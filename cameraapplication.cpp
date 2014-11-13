@@ -162,7 +162,7 @@ QString CameraApplication::removableStorageLocation() const
     }
 }
 
-QString CameraApplication::externalPicturesLocation() const
+QString CameraApplication::removableStoragePicturesLocation() const
 {
     if (removableStorageLocation().isEmpty()) {
         return QString();
@@ -179,7 +179,7 @@ QString CameraApplication::externalPicturesLocation() const
     return location;
 }
 
-QString CameraApplication::externalVideosLocation() const
+QString CameraApplication::removableStorageVideosLocation() const
 {
     if (removableStorageLocation().isEmpty()) {
         return QString();
