@@ -148,6 +148,15 @@ QString CameraApplication::temporaryLocation() const
     return location;
 }
 
+bool CameraApplication::removableStoragePresent() const
+{
+    QString userName = qgetenv("USER");
+    QDir media("/media/" + userName);
+    QStringList mediaDirs = media.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+
+    return (mediaDirs.size() > 0);
+}
+
 QString CameraApplication::removableStorageLocation() const
 {
     QString userName = qgetenv("USER");
