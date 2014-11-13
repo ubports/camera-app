@@ -295,6 +295,10 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
+                // capture videos to removable storage when not in DESKTOP_MODE 
+                if (!application.desktopMode && application.externalVideosLocation !== "") {
+                    camera.videoRecorder.outputLocation = application.externalVideosLocation;
+                }
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
@@ -320,6 +324,9 @@ Item {
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
+                // Only capture images to removable storage when not in DESKTOP_MODE
+                } else if (!application.desktopMode && application.externalPicturesLocation !== "") {
+                    camera.imageCapture.captureToLocation(application.externalPicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(application.picturesLocation);
                 }

@@ -10,5 +10,7 @@
         "content_exchange_source",
         "location"
     ],
+    "write_path": [ "/media/phablet/" ],
+    "read_path": [ "/media/phablet/" ],
     "policy_version": 1.2
 }
