@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
+import Qt.labs.settings 1.0
 
 Item {
     id: viewFinderOverlay
@@ -34,15 +35,14 @@ Item {
         focusRing.show();
     }
 
-    QtObject {
+    Settings {
         id: settings
 
         property int flashMode: Camera.FlashAuto
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
-
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        property bool preferRemovableStorage: false
     }
 
     Binding {
@@ -187,6 +187,28 @@ Item {
                     label: QT_TR_NOOP("Off")
                     value: false
                 }
+            },
+            ListModel {
+                id: removableStorageOptionsModel
+
+                property string settingsProperty: "preferRemovableStorage"
+                property string icon: ""
+                property string label: i18n.tr("SD")
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
+                property bool available: camera.removableStoragePresent
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save to SD Card")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save internally")
+                    value: false
+                }
             }
         ]
 
@@ -295,8 +317,7 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
-                // capture videos to removable storage when not in DESKTOP_MODE 
-                if (!application.desktopMode && application.removableStorageVideosLocation !== "") {
+                if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
                 }
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -324,8 +345,7 @@ Item {
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
-                // Only capture images to removable storage when not in DESKTOP_MODE
-                } else if (!application.desktopMode && application.removableStoragePicturesLocation !== "") {
+                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.imageCapture.captureToLocation(application.removableStoragePicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(application.picturesLocation);
