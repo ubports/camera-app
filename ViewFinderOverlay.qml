@@ -77,10 +77,19 @@ Item {
         }
     }
 
+    function optionsOverlayClose() {
+        print("optionsOverlayClose")
+        if (optionsOverlayLoader.item.valueSelectorOpened) {
+            optionsOverlayLoader.item.closeValueSelector();
+        } else {
+            bottomEdge.close();
+        }
+    }
+
     MouseArea {
         id: bottomEdgeClose
         anchors.fill: parent
-        onClicked: bottomEdge.close()
+        onClicked: optionsOverlayClose()
     }
 
     Panel {
@@ -90,8 +99,18 @@ Item {
             left: parent.left
             bottom: parent.bottom
         }
-        height: units.gu(9)
+        height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+
+        Item {
+            /* Use the 'trigger' feature of Panel so that tapping on the Panel
+               has the same effect as tapping outside of it (bottomEdgeClose) */
+            id: clickReceiver
+            anchors.fill: parent
+            function trigger() {
+                optionsOverlayClose();
+            }
+        }
 
         property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
         property list<ListModel> options: [
@@ -196,7 +215,7 @@ Item {
                 property string label: i18n.tr("SD")
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
-                property bool available: camera.removableStoragePresent
+                property bool available: application.removableStoragePresent
                 property bool visible: true
 
                 ListElement {
