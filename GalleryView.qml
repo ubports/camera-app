@@ -68,6 +68,7 @@ Item {
     function exitUserSelectionMode() {
         if (gridMode) {
             model.clearSelection();
+            model.setSingleSelectionOnly(true)
             userSelectionMode = false;
         } else {
             gridMode = true;
@@ -106,6 +107,7 @@ Item {
             onPhotoPressAndHold: {
                 if (!userSelectionMode) {
                     userSelectionMode = true;
+                    model.setSingleSelectionOnly(false);
                     model.toggleSelected(index);
                 }
             }
@@ -126,6 +128,7 @@ Item {
             onExit: {
                 if (userSelectionMode)
                     galleryView.exitUserSelectionMode()
+                    model.setSingleSelectionOnly(true);
                 else
                     galleryView.exit()
             }

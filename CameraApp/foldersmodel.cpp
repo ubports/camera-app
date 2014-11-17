@@ -21,7 +21,7 @@
 
 FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
-    m_singleSelectionOnly(false)
+    m_singleSelectionOnly(true)
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
