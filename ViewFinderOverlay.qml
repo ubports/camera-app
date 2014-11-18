@@ -216,7 +216,7 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
                 property bool available: application.removableStoragePresent
-                property bool visible: true
+                property bool visible: available
 
                 ListElement {
                     icon: ""
@@ -230,6 +230,14 @@ Item {
                 }
             }
         ]
+
+        /* FIXME: application.removableStoragePresent is not updated dynamically.
+           Workaround that by reading it when the bottom edge is opened/closed.
+        */
+        Connections {
+            target: bottomEdge
+            onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+        }
 
         function indexForValue(model, value) {
             var i;

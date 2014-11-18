@@ -45,7 +45,7 @@ Item {
                 id: optionButton
                 model: modelData
                 onClicked: optionValueSelector.toggle(model, optionButton)
-                enabled: !optionValueSelector.caller || optionValueSelector.caller == optionButton
+                enabled: model.available && (!optionValueSelector.caller || optionValueSelector.caller == optionButton)
                 opacity: enabled ? 1.0 : 0.05
                 Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}}
             }
