@@ -126,11 +126,12 @@ Item {
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
             userSelectionMode: galleryView.userSelectionMode
             onExit: {
-                if (userSelectionMode)
-                    galleryView.exitUserSelectionMode()
+                if (userSelectionMode) {
+                    galleryView.exitUserSelectionMode();
                     model.setSingleSelectionOnly(true);
-                else
+                } else {
                     galleryView.exit()
+                }
             }
             onToggleViews: {
                 if (!galleryView.gridMode) {
