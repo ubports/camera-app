@@ -28,12 +28,6 @@ Dialog {
     }
 
     Button {
-        text: i18n.tr("Cancel")
-        color: UbuntuColors.warmGrey
-        onClicked: PopupUtils.close(deleteDialog)
-    }
-
-    Button {
         id: deleteButton
 
         text: i18n.tr("Delete")
@@ -41,6 +35,12 @@ Dialog {
         onClicked: {
             PopupUtils.close(deleteDialog);
         }
+    }
+
+    Button {
+        text: i18n.tr("Cancel")
+        color: UbuntuColors.warmGrey
+        onClicked: PopupUtils.close(deleteDialog)
     }
 }
 
