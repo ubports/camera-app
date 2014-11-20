@@ -65,6 +65,7 @@ Item {
         model: photogridView.model
         delegate: Item {
             id: cellDelegate
+            objectName: "mediaItem" + index
             
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight

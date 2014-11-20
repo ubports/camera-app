@@ -148,6 +148,7 @@ Item {
                 model: actionsDrawer.actions
                 delegate: AbstractButton {
                     id: actionButton
+                    objectName: "actionButton" + label.text
                     anchors {
                         left: actionsColumn.left
                         right: actionsColumn.right

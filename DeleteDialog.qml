@@ -29,6 +29,7 @@ Dialog {
 
     Button {
         id: deleteButton
+        objectName: "deleteButton"
 
         text: i18n.tr("Delete")
         color: UbuntuColors.orange
