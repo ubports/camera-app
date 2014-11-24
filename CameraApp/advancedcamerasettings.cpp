@@ -38,7 +38,8 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_deviceSelector(0),
     m_viewFinderControl(0),
     m_cameraFlashControl(0),
-    m_cameraExposureControl(0)
+    m_cameraExposureControl(0),
+    m_imageEncoderControl(0)
 {
 }
 
@@ -151,6 +152,18 @@ QCameraExposureControl* AdvancedCameraSettings::exposureControlFromCamera(QCamer
     return exposureControl;
 }
 
+QImageEncoderControl* AdvancedCameraSettings::imageEncoderControlFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QImageEncoderControl_iid);
+    QImageEncoderControl *imageEncoderControl = qobject_cast<QImageEncoderControl*>(control);
+
+    if (imageEncoderControl == 0) {
+        qWarning() << "No image encoder control support";
+    }
+
+    return imageEncoderControl;
+}
+
 
 QObject* AdvancedCameraSettings::camera() const
 {
@@ -207,10 +220,13 @@ void AdvancedCameraSettings::readCapabilities()
                          this, SLOT(onExposureValueChanged(int)));
     }
 
+    m_imageEncoderControl = imageEncoderControlFromCamera(m_camera);
+
     Q_EMIT resolutionChanged();
     Q_EMIT hasFlashChanged();
     Q_EMIT hasHdrChanged();
     Q_EMIT hdrEnabledChanged();
+    Q_EMIT encodingQualityChanged();
 }
 
 void AdvancedCameraSettings::onCameraStateChanged()
@@ -285,6 +301,24 @@ void AdvancedCameraSettings::setHdrEnabled(bool enabled)
         QVariant exposureMode = enabled ? QVariant::fromValue(ExposureHdr)
                                         : QVariant::fromValue(QCameraExposure::ExposureAuto);
         m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
+    }
+}
+
+QMultimedia::EncodingQuality AdvancedCameraSettings::encodingQuality() const
+{
+    if (m_imageEncoderControl) {
+        return m_imageEncoderControl->imageSettings().quality();
+    } else {
+        return QMultimedia::NormalQuality;
+    }
+}
+
+void AdvancedCameraSettings::setEncodingQuality(QMultimedia::EncodingQuality quality)
+{
+    if (m_imageEncoderControl) {
+        QImageEncoderSettings settings;
+        settings.setQuality(quality);
+        m_imageEncoderControl->setImageSettings(settings);
     }
 }
 
