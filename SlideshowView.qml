@@ -376,7 +376,7 @@ Item {
         var source = image.source;
         image.asynchronous = false;
         image.source = "";
-        image.asynchronous = asyc;
+        image.asynchronous = async;
         image.source = source;
     }
 }
