@@ -223,7 +223,8 @@ void FoldersModel::directoryChanged(const QString &directoryPath)
             QFileInfo fileInfo(filePath);
             if (fileInfo.isDir()) continue;
             m_watcher->addPath(filePath);
-            if (fileMatchesTypeFilters(fileInfo)) {
+            if (!m_fileInfoList.contains(fileInfo) &&
+                fileMatchesTypeFilters(fileInfo)) {
                insertFileInfo(fileInfo, true);
             }
         }
