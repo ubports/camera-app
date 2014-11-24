@@ -41,8 +41,9 @@ Item {
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
+        property int encodingQuality: 2 // QMultimedia.NormalQuality
 
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode, encodingQuality"
     }
 
     Binding {
@@ -63,6 +64,12 @@ Item {
         target: camera.advanced
         property: "hdrEnabled"
         value: settings.hdrEnabled
+    }
+
+    Binding {
+        target: camera.advanced
+        property: "encodingQuality"
+        value: settings.encodingQuality
     }
 
     Connections {
@@ -186,6 +193,30 @@ Item {
                     icon: ""
                     label: QT_TR_NOOP("Off")
                     value: false
+                }
+            },
+            ListModel {
+                id: encodingQualityOptionsModel
+
+                property string settingsProperty: "encodingQuality"
+                property string icon: ""
+                property string label: "Q"
+                property bool isToggle: false
+                property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
+                property bool available: true
+                property bool visible: camera.captureMode == Camera.CaptureStillImage
+
+                ListElement {
+                    label: QT_TR_NOOP("Fine")
+                    value: 3 // QMultimedia.HighQuality
+                }
+                ListElement {
+                    label: QT_TR_NOOP("Normal")
+                    value: 2 // QMultimedia.NormalQuality
+                }
+                ListElement {
+                    label: QT_TR_NOOP("Basic")
+                    value: 1 // QMultimedia.LowQuality
                 }
             }
         ]
