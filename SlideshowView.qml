@@ -347,10 +347,7 @@ Item {
 
                 Connections {
                     target: header
-                    onExitEditor: {
-                        editorItem.close(true);
-                        header.editMode = false;
-                    }
+                    onExitEditor: editorItem.close(true);
                 }
 
                 onClosed: editor.active = false
@@ -359,9 +356,10 @@ Item {
 
         function start() {
             editor.active = true;
-            editor.item.photo = listView.currentItem.url.replace("file://", "")
-            header.editModeActions = item.actions
-            header.editMode = true
+            editor.item.photo = listView.currentItem.url.replace("file://", "");
         }
     }
+
+    Binding { target: header; property: "editMode"; value: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.actions; when: editor.active }
 }
