@@ -18,6 +18,7 @@ import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItems
 import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.Extras 0.1
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
@@ -41,6 +42,11 @@ Item {
             text: i18n.tr("Delete")
             iconName: "delete"
             onTriggered: PopupUtils.open(deleteDialogComponent)
+        },
+        Action {
+            text: i18n.tr("Edit")
+            iconName: "edit"
+            onTriggered: editor.start()
         }
     ]
 
@@ -94,6 +100,7 @@ Item {
         delegate: Item {
             id: delegate
             property bool pinchInProgress: zoomPinchArea.active
+            property string url: fileURL
 
             function zoomIn(centerX, centerY, factor) {
                 flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);
@@ -326,6 +333,35 @@ Item {
                     PopupUtils.close(deleteDialog);
                 }
             }
+        }
+    }
+
+    Loader {
+        id: editor
+        anchors.fill: parent
+
+        active: false
+        sourceComponent: Component {
+            PhotoEditor {
+                id: editorItem
+
+                Connections {
+                    target: header
+                    onExitEditor: {
+                        editorItem.close(true);
+                        header.editMode = false;
+                    }
+                }
+
+                onClosed: editor.active = false
+            }
+        }
+
+        function start() {
+            editor.active = true;
+            editor.item.photo = listView.currentItem.url.replace("file://", "")
+            header.editModeActions = item.actions
+            header.editMode = true
         }
     }
 }

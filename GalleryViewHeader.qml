@@ -32,10 +32,13 @@ Item {
     height: units.gu(7)
 
     property bool shown: true
-    property alias actions: actionsDrawer.actions
+    property list<Action> actions
+    property list<Action> editModeActions
     property bool gridMode: false
+    property bool editMode: false
     property bool validationVisible
     signal exit
+    signal exitEditor
     signal toggleViews
     signal validationClicked
 
@@ -66,11 +69,11 @@ Item {
             width: units.gu(8)
             iconName: "back"
             iconColor: Theme.palette.normal.foregroundText
-            onClicked: header.exit()
+            onClicked: editMode ? header.exitEditor() : header.exit()
         }
 
         Label {
-            text: i18n.tr("Photo Roll")
+            text: editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll")
             fontSize: "x-large"
             color: Theme.palette.normal.foregroundText
             elide: Text.ElideRight
@@ -85,7 +88,7 @@ Item {
             }
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
-            visible: !main.contentExportMode
+            visible: !main.contentExportMode && !editMode
         }
 
         IconButton {
@@ -95,7 +98,7 @@ Item {
                 bottom: parent.bottom
             }
             iconName: "contextual-menu"
-            visible: actionsDrawer.actions.length > 0
+            visible: actionsDrawer.actions.length > 0 && !editMode
             onClicked: actionsDrawer.opened = !actionsDrawer.opened
         }
 
@@ -109,6 +112,30 @@ Item {
             onClicked: header.validationClicked()
             visible: header.validationVisible
         }
+
+        IconButton {
+            id: undoButton
+            objectName: "undoButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            visible: header.editMode
+            action: editModeActions.length > 0 ? editModeActions[0] : null
+            onTriggered: if (action) action.triggered()
+        }
+
+        IconButton {
+            id: redoButton
+            objectName: "redoButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            visible: header.editMode
+            action: editModeActions.length > 1 ? editModeActions[1] : null
+            onTriggered: if (action) action.triggered()
+        }
     }
 
     Item {
@@ -121,6 +148,8 @@ Item {
         width: units.gu(20)
         height: childrenRect.height
         clip: actionsColumn.y != 0
+
+        actions: header.actions
 
         function close() {
             opened = false;
