@@ -116,6 +116,11 @@ Item {
                 }
             }
 
+            function reload() {
+                reloadImage(image);
+                reloadImage(highResolutionImage);
+            }
+
             width: ListView.view.width
             height: ListView.view.height
 
@@ -186,7 +191,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnailer/" + fileURL.toString() : fileURL) : ""
+                            source: slideshowView.inView ? "image://" + (media.isVideo ? "thumbnailer/" : "photo/") + fileURL.toString() : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -201,7 +206,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: flickable.sizeScale > 1.0 ? fileURL : ""
+                            source: flickable.sizeScale > 1.0 ? "image://photo/" + fileURL.toString() : ""
                             sourceSize {
                                 width: width
                                 height: height
@@ -350,7 +355,10 @@ Item {
                     onExitEditor: editorItem.close(true);
                 }
 
-                onClosed: editor.active = false
+                onClosed: {
+                    editor.active = false;
+                    if (photoWasModified) listView.currentItem.reload()
+                }
             }
         }
 
@@ -362,4 +370,13 @@ Item {
 
     Binding { target: header; property: "editMode"; value: editor.active }
     Binding { target: header; property: "editModeActions"; value: editor.actions; when: editor.active }
+
+    function reloadImage(image) {
+        var async = image.asynchronous;
+        var source = image.source;
+        image.asynchronous = false;
+        image.source = "";
+        image.asynchronous = asyc;
+        image.source = source;
+    }
 }
