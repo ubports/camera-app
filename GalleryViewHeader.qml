@@ -122,6 +122,7 @@ Item {
         width: units.gu(20)
         height: childrenRect.height
         clip: actionsColumn.y != 0
+        visible: false
 
         function close() {
             opened = false;
@@ -129,6 +130,11 @@ Item {
 
         property bool opened: false
         property list<Action> actions
+
+        onOpenedChanged: {
+            if (opened)
+                visible = true;
+        }
 
         InverseMouseArea {
             onPressed: actionsDrawer.close();
@@ -143,6 +149,11 @@ Item {
             }
             y: actionsDrawer.opened ? 0 : -height
             Behavior on y { UbuntuNumberAnimation {} }
+
+            onYChanged: {
+                if (y == -height)
+                    actionsDrawer.visible = false;
+            }
 
             Repeater {
                 model: actionsDrawer.actions
