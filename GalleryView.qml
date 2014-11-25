@@ -128,7 +128,6 @@ Item {
             onExit: {
                 if (userSelectionMode) {
                     galleryView.exitUserSelectionMode();
-                    model.singleSelectionOnly = true;
                 } else {
                     galleryView.exit()
                 }
