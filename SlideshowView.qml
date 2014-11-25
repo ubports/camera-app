@@ -364,7 +364,7 @@ Item {
 
         function start() {
             editor.active = true;
-            editor.item.photo = listView.currentItem.url.replace("file://", "");
+            editor.item.open(listView.currentItem.url.replace("file://", ""));
         }
     }
 
