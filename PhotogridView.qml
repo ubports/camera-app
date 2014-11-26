@@ -137,12 +137,20 @@ Item {
                     visible: selected
                 }
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        mouse.accepted = true;
-                        photogridView.photoSelectionAreaClicked(index)
-                    }
+            }
+
+            MouseArea {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                width: parent.width * 0.5
+                height: parent.height * 0.5
+                enabled: inSelectionMode
+ 
+                onClicked: {
+                    mouse.accepted = true;
+                    photogridView.photoSelectionAreaClicked(index)
                 }
             }
         }
