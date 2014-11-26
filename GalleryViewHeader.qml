@@ -38,6 +38,7 @@ Item {
     property bool userSelectionMode: false
     signal exit
     signal toggleViews
+    signal toggleSelectAll
     signal validationClicked
 
     function show() {
@@ -87,6 +88,17 @@ Item {
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
             visible: !main.contentExportMode && !userSelectionMode
+        }
+
+        IconButton {
+            objectName: "selectAllButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            iconName: "select"
+            onClicked: header.toggleSelectAll()
+            visible: header.gridMode && userSelectionMode
         }
 
         IconButton {

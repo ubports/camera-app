@@ -140,6 +140,12 @@ Item {
 
                 galleryView.gridMode = !galleryView.gridMode
             }
+            onToggleSelectAll: {
+                if (model.selectedFiles.length != model.count)
+                    model.selectAll();
+                else
+                    model.clearSelection();
+            }
             onValidationClicked: {
                 var selection = model.selectedFiles;
                 var urls = [];
