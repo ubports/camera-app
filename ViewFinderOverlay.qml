@@ -318,6 +318,7 @@ Item {
 
         function timedShoot() {
             timedShootFeedback.start();
+            shootingTimer.remainingSecs = settings.selfTimerDelay;
             shootingTimer.start();
         }
 
@@ -384,7 +385,7 @@ Item {
             id: shootingTimer
             repeat: true
             
-            property int remainingSecs: settings.selfTimerDelay
+            property int remainingSecs: 0
 
             onTriggered: {
                 remainingSecs--;
