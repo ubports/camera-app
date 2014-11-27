@@ -317,6 +317,7 @@ Item {
         enabled: visible
 
         function timedShoot() {
+            timedShootFeedback.start();
             shootingTimer.start();
         }
 
@@ -381,8 +382,20 @@ Item {
 
         Timer {
             id: shootingTimer
-            interval: settings.selfTimerDelay * 1000
-            onTriggered: controls.shoot()
+            repeat: true
+            
+            property int remainingSecs: settings.selfTimerDelay
+
+            onTriggered: {
+                remainingSecs--;
+
+                if (remainingSecs == 0) {
+                    running = false;
+                    controls.shoot();
+                } else {
+                    timedShootFeedback.showRemainingSecs(remainingSecs);
+                }
+            }
         }
 
         PositionSource {
