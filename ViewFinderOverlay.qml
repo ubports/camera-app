@@ -316,6 +316,10 @@ Item {
         visible: opacity != 0.0
         enabled: visible
 
+        function timedShoot() {
+            shootingTimer.start();
+        }
+
         function shoot() {
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
@@ -375,6 +379,12 @@ Item {
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
         }
 
+        Timer {
+            id: shootingTimer
+            interval: settings.selfTimerDelay * 1000
+            onTriggered: controls.shoot()
+        }
+
         PositionSource {
             id: positionSource
             updateInterval: 1000
@@ -422,7 +432,7 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: controls.shoot()
+            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot() : controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {
