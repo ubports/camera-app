@@ -34,8 +34,8 @@ Item {
             horizontalCenter: parent.horizontalCenter
         }
 
-        columns: 3
-        columnSpacing: units.gu(9.5)
+        columns: 4
+        columnSpacing: units.gu(4)
         rowSpacing: units.gu(9.5)
 
         Repeater {

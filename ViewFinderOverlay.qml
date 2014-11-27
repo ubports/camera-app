@@ -41,8 +41,9 @@ Item {
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
+        property int selfTimerDelay: 0
 
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode, selfTimerDelay"
     }
 
     Binding {
@@ -186,6 +187,33 @@ Item {
                     icon: ""
                     label: QT_TR_NOOP("Off")
                     value: false
+                }
+            },
+            ListModel {
+                id: selfTimerOptionsModel
+
+                property string settingsProperty: "selfTimerDelay"
+                property string icon: "reminder"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
+                property bool available: true
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: 0
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("5")
+                    value: 5
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("15")
+                    value: 15
                 }
             }
         ]
