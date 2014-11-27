@@ -66,6 +66,12 @@ Item {
         value: settings.hdrEnabled
     }
 
+    Binding {
+        target: gridlines
+        property: "visible"
+        value: settings.gridEnabled
+    }
+
     Connections {
         target: camera.imageCapture
         onReadyChanged: {
@@ -193,8 +199,8 @@ Item {
                 id: gridOptionsModel
 
                 property string settingsProperty: "gridEnabled"
-                property string icon: ""
-                property string label: i18n.tr("GRID")
+                property string icon: "view-grid-symbolic"
+                property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
                 property bool available: true

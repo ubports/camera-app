@@ -132,7 +132,7 @@ Item {
     Item {
         id: viewFinderSwitcher
         anchors.fill: parent
-        
+
         ShaderEffectSource {
             id: viewFinderGrab
             live: false
@@ -246,6 +246,26 @@ Item {
                 viewFinderHeight: viewFinder.height
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
+            }
+
+            Grid {
+                id: gridlines
+                anchors.fill: parent
+                visible: false
+                columns: 3
+                property int rows: 3
+
+                Repeater {
+                    model: gridlines.columns * gridlines.rows
+
+                    Rectangle {
+                        width: parent.width / gridlines.columns
+                        height: parent.height / gridlines.rows
+                        border.width: 1
+                        border.color: "gray"
+                        color: "transparent"
+                    }
+                }
             }
         }
 
