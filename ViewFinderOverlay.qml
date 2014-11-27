@@ -41,8 +41,9 @@ Item {
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
+        property bool gridEnabled: false
 
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode, gridEnabled"
     }
 
     Binding {
@@ -175,6 +176,28 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: camera.advanced.hasHdr
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("On")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: false
+                }
+            },
+            ListModel {
+                id: gridOptionsModel
+
+                property string settingsProperty: "gridEnabled"
+                property string icon: ""
+                property string label: i18n.tr("GRID")
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                property bool available: true
                 property bool visible: true
 
                 ListElement {
