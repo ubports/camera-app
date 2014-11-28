@@ -316,9 +316,9 @@ Item {
         visible: opacity != 0.0
         enabled: visible
 
-        function timedShoot() {
+        function timedShoot(secs) {
             viewFinderOverlay.visible = false
-            shootingTimer.remainingSecs = settings.selfTimerDelay;
+            shootingTimer.remainingSecs = secs;
             shootingTimer.start();
         }
 
@@ -446,7 +446,7 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot() : controls.shoot()
+            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot(settings.selfTimerDelay) : controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {
