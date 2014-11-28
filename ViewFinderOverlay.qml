@@ -207,12 +207,12 @@ Item {
                 }
                 ListElement {
                     icon: ""
-                    label: QT_TR_NOOP("5")
+                    label: QT_TR_NOOP("5 seconds")
                     value: 5
                 }
                 ListElement {
                     icon: ""
-                    label: QT_TR_NOOP("15")
+                    label: QT_TR_NOOP("15 seconds")
                     value: 15
                 }
             }
