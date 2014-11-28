@@ -253,10 +253,6 @@ Item {
             id: timedShootFeedback
             anchors.fill: parent
 
-            function start() {
-                viewFinderOverlay.visible = false;
-            }
-
             function showRemainingSecs(secs) {
                 remainingSecsLabel.text = secs;
                 remainingSecsLabel.opacity = 1.0;

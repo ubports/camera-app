@@ -317,7 +317,7 @@ Item {
         enabled: visible
 
         function timedShoot() {
-            timedShootFeedback.start();
+            viewFinderOverlay.visible = false
             shootingTimer.remainingSecs = settings.selfTimerDelay;
             shootingTimer.start();
         }
