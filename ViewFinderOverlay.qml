@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
+import Qt.labs.settings 1.0
 
 Item {
     id: viewFinderOverlay
@@ -34,7 +35,7 @@ Item {
         focusRing.show();
     }
 
-    QtObject {
+    Settings {
         id: settings
 
         property int flashMode: Camera.FlashAuto
@@ -42,8 +43,7 @@ Item {
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
         property bool gridEnabled: false
-
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode, gridEnabled"
+        property int encodingQuality: 2 // QMultimedia.NormalQuality
     }
 
     Binding {
@@ -84,10 +84,19 @@ Item {
         }
     }
 
+    function optionsOverlayClose() {
+        print("optionsOverlayClose")
+        if (optionsOverlayLoader.item.valueSelectorOpened) {
+            optionsOverlayLoader.item.closeValueSelector();
+        } else {
+            bottomEdge.close();
+        }
+    }
+
     MouseArea {
         id: bottomEdgeClose
         anchors.fill: parent
-        onClicked: bottomEdge.close()
+        onClicked: optionsOverlayClose()
     }
 
     Panel {
@@ -97,8 +106,18 @@ Item {
             left: parent.left
             bottom: parent.bottom
         }
-        height: units.gu(9)
+        height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+
+        Item {
+            /* Use the 'trigger' feature of Panel so that tapping on the Panel
+               has the same effect as tapping outside of it (bottomEdgeClose) */
+            id: clickReceiver
+            anchors.fill: parent
+            function trigger() {
+                optionsOverlayClose();
+            }
+        }
 
         property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
         property list<ListModel> options: [

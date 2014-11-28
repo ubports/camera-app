@@ -132,6 +132,7 @@ Item {
     Item {
         id: viewFinderSwitcher
         anchors.fill: parent
+        visible: !viewFinderSwitcherBlurred.visible
 
         ShaderEffectSource {
             id: viewFinderGrab
@@ -294,8 +295,12 @@ Item {
     }
 
     FastBlur {
+        id: viewFinderSwitcherBlurred
         anchors.fill: viewFinderSwitcher
-        radius: photoRollHint.visible ? 64 : viewFinderOverlay.revealProgress * 64
+        property real finalRadius: 64
+        property real finalOpacity: 0.7
+        radius: photoRollHint.visible ? finalRadius : viewFinderOverlay.revealProgress * finalRadius
+        opacity: photoRollHint.visible ? finalOpacity : (1.0 - viewFinderOverlay.revealProgress) * finalOpacity + finalOpacity
         source: radius !== 0 ? viewFinderSwitcher : null
         visible: radius !== 0
     }
