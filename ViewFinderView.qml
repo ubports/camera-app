@@ -266,7 +266,7 @@ Item {
             Label {
                 id: remainingSecsLabel
                 anchors.fill: parent
-                fontSize: "x-large"
+                font.pixelSize: units.gu(6)
                 font.bold: true
                 color: "white"
                 style: Text.Outline;
