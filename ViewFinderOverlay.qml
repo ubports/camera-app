@@ -384,17 +384,17 @@ Item {
         Timer {
             id: shootingTimer
             repeat: true
+            triggeredOnStart: true
             
             property int remainingSecs: 0
 
             onTriggered: {
-                remainingSecs--;
-
                 if (remainingSecs == 0) {
                     running = false;
                     controls.shoot();
                 } else {
                     timedShootFeedback.showRemainingSecs(remainingSecs);
+                    remainingSecs--;
                 }
             }
         }
