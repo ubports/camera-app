@@ -212,7 +212,7 @@ Item {
                 id: selfTimerOptionsModel
 
                 property string settingsProperty: "selfTimerDelay"
-                property string icon: "reminder"
+                property string icon: "assets/self_timer.svg"
                 property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
