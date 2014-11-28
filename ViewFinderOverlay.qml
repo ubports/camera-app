@@ -130,6 +130,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
                 property bool available: true
                 property bool visible: true
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: ""
@@ -152,6 +153,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(flashOptionsModel, settings.flashMode)
                 property bool available: camera.advanced.hasFlash
                 property bool visible: camera.captureMode == Camera.CaptureStillImage
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: "flash-on"
@@ -179,6 +181,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(videoFlashOptionsModel, settings.videoFlashMode)
                 property bool available: camera.advanced.hasFlash
                 property bool visible: camera.captureMode == Camera.CaptureVideo
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: "torch-on"
@@ -201,6 +204,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: camera.advanced.hasHdr
                 property bool visible: true
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: ""
@@ -223,6 +227,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
                 property bool available: true
                 property bool visible: camera.captureMode == Camera.CaptureStillImage
+                property bool showInIndicators: false
 
                 ListElement {
                     label: QT_TR_NOOP("Fine")
@@ -298,7 +303,7 @@ Item {
                             bottomMargin: units.gu(0.5)
                         }
                         width: units.gu(2)
-                        visible: modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
+                        visible: modelData.showInIndicators && modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
                         opacity: 0.5
 
                         Icon {
