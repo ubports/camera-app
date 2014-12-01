@@ -230,15 +230,15 @@ Item {
                 property bool showInIndicators: false
 
                 ListElement {
-                    label: QT_TR_NOOP("Fine")
+                    label: QT_TR_NOOP("Fine Quality")
                     value: 3 // QMultimedia.HighQuality
                 }
                 ListElement {
-                    label: QT_TR_NOOP("Normal")
+                    label: QT_TR_NOOP("Normal Quality")
                     value: 2 // QMultimedia.NormalQuality
                 }
                 ListElement {
-                    label: QT_TR_NOOP("Basic")
+                    label: QT_TR_NOOP("Basic Quality")
                     value: 1 // QMultimedia.LowQuality
                 }
             }

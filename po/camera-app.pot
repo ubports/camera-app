@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-09 19:00-0300\n"
+"POT-Creation-Date: 2014-12-01 13:16-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../GalleryView.qml:121
+#: ../GalleryView.qml:145
 msgid "No media available."
 msgstr ""
 
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Photo Roll"
 msgstr ""
 
-#: ../PhotoRollHint.qml:66
+#: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
 msgstr ""
 
@@ -45,22 +45,34 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:111 ../ViewFinderOverlay.qml:133
-#: ../ViewFinderOverlay.qml:160 ../ViewFinderOverlay.qml:182
+#: ../ViewFinderOverlay.qml:137 ../ViewFinderOverlay.qml:160
+#: ../ViewFinderOverlay.qml:188 ../ViewFinderOverlay.qml:211
 msgid "On"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:116 ../ViewFinderOverlay.qml:143
-#: ../ViewFinderOverlay.qml:165 ../ViewFinderOverlay.qml:187
+#: ../ViewFinderOverlay.qml:142 ../ViewFinderOverlay.qml:170
+#: ../ViewFinderOverlay.qml:193 ../ViewFinderOverlay.qml:216
 msgid "Off"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:138
+#: ../ViewFinderOverlay.qml:165
 msgid "Auto"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:174
+#: ../ViewFinderOverlay.qml:202
 msgid "HDR"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:233
+msgid "Fine Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:237
+msgid "Normal Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:241
+msgid "Basic Quality"
 msgstr ""
 
 #: ../camera-app.qml:36
