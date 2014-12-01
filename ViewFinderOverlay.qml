@@ -221,8 +221,8 @@ Item {
                 id: encodingQualityOptionsModel
 
                 property string settingsProperty: "encodingQuality"
-                property string icon: ""
-                property string label: "Q"
+                property string icon: "stock_image"
+                property string label: ""
                 property bool isToggle: false
                 property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
                 property bool available: true
