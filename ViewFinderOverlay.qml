@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
+import Qt.labs.settings 1.0
 
 Item {
     id: viewFinderOverlay
@@ -34,15 +35,15 @@ Item {
         focusRing.show();
     }
 
-    QtObject {
+    Settings {
         id: settings
 
         property int flashMode: Camera.FlashAuto
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
-
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        property bool gridEnabled: false
+        property int encodingQuality: 2 // QMultimedia.NormalQuality
     }
 
     Binding {
@@ -65,6 +66,12 @@ Item {
         value: settings.hdrEnabled
     }
 
+    Binding {
+        target: gridlines
+        property: "visible"
+        value: settings.gridEnabled
+    }
+
     Connections {
         target: camera.imageCapture
         onReadyChanged: {
@@ -77,10 +84,19 @@ Item {
         }
     }
 
+    function optionsOverlayClose() {
+        print("optionsOverlayClose")
+        if (optionsOverlayLoader.item.valueSelectorOpened) {
+            optionsOverlayLoader.item.closeValueSelector();
+        } else {
+            bottomEdge.close();
+        }
+    }
+
     MouseArea {
         id: bottomEdgeClose
         anchors.fill: parent
-        onClicked: bottomEdge.close()
+        onClicked: optionsOverlayClose()
     }
 
     Panel {
@@ -90,8 +106,18 @@ Item {
             left: parent.left
             bottom: parent.bottom
         }
-        height: units.gu(9)
+        height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+
+        Item {
+            /* Use the 'trigger' feature of Panel so that tapping on the Panel
+               has the same effect as tapping outside of it (bottomEdgeClose) */
+            id: clickReceiver
+            anchors.fill: parent
+            function trigger() {
+                optionsOverlayClose();
+            }
+        }
 
         property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
         property list<ListModel> options: [
@@ -175,6 +201,28 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: camera.advanced.hasHdr
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("On")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: false
+                }
+            },
+            ListModel {
+                id: gridOptionsModel
+
+                property string settingsProperty: "gridEnabled"
+                property string icon: "view-grid-symbolic"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                property bool available: true
                 property bool visible: true
 
                 ListElement {
