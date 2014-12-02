@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.2
 
 CircleButton {
     id: optionButton
@@ -24,6 +24,7 @@ CircleButton {
     property string settingsProperty: model.settingsProperty
 
     iconName: model.isToggle ? model.icon : model.get(model.selectedIndex).icon
+    iconSource: model.iconSource
     on: model.isToggle ? model.get(model.selectedIndex).value : true
     enabled: model.available
     label: model.label
