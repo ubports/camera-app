@@ -304,7 +304,8 @@ Item {
                             anchors.fill: parent
                             color: "white"
                             name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            visible: name !== ""
+                            source: name ? "image://theme/%1".arg(name) : modelData.iconSource
+                            visible: source != ""
                         }
 
                         Label {
