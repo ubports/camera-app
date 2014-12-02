@@ -63,6 +63,7 @@ public:
     Q_INVOKABLE QVariant get(int row, QString role) const;
     Q_INVOKABLE void toggleSelected(int row);
     Q_INVOKABLE void clearSelection();
+    Q_INVOKABLE void selectAll();
 
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
