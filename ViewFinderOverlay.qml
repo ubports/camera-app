@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
+import Qt.labs.settings 1.0
 
 Item {
     id: viewFinderOverlay
@@ -34,15 +35,15 @@ Item {
         focusRing.show();
     }
 
-    QtObject {
+    Settings {
         id: settings
 
         property int flashMode: Camera.FlashAuto
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
-
-        StateSaver.properties: "flashMode, gpsEnabled, hdrEnabled, videoFlashMode"
+        property int selfTimerDelay: 0
+        property int encodingQuality: 2 // QMultimedia.NormalQuality
     }
 
     Binding {
@@ -77,10 +78,19 @@ Item {
         }
     }
 
+    function optionsOverlayClose() {
+        print("optionsOverlayClose")
+        if (optionsOverlayLoader.item.valueSelectorOpened) {
+            optionsOverlayLoader.item.closeValueSelector();
+        } else {
+            bottomEdge.close();
+        }
+    }
+
     MouseArea {
         id: bottomEdgeClose
         anchors.fill: parent
-        onClicked: bottomEdge.close()
+        onClicked: optionsOverlayClose()
     }
 
     Panel {
@@ -90,8 +100,18 @@ Item {
             left: parent.left
             bottom: parent.bottom
         }
-        height: units.gu(9)
+        height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+
+        Item {
+            /* Use the 'trigger' feature of Panel so that tapping on the Panel
+               has the same effect as tapping outside of it (bottomEdgeClose) */
+            id: clickReceiver
+            anchors.fill: parent
+            function trigger() {
+                optionsOverlayClose();
+            }
+        }
 
         property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
         property list<ListModel> options: [
@@ -186,6 +206,33 @@ Item {
                     icon: ""
                     label: QT_TR_NOOP("Off")
                     value: false
+                }
+            },
+            ListModel {
+                id: selfTimerOptionsModel
+
+                property string settingsProperty: "selfTimerDelay"
+                property string icon: "assets/self_timer.svg"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
+                property bool available: true
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: 0
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("5 seconds")
+                    value: 5
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("15 seconds")
+                    value: 15
                 }
             }
         ]
@@ -288,6 +335,12 @@ Item {
         visible: opacity != 0.0
         enabled: visible
 
+        function timedShoot(secs) {
+            viewFinderOverlay.visible = false
+            shootingTimer.remainingSecs = secs;
+            shootingTimer.start();
+        }
+
         function shoot() {
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
@@ -347,6 +400,24 @@ Item {
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
         }
 
+        Timer {
+            id: shootingTimer
+            repeat: true
+            triggeredOnStart: true
+            
+            property int remainingSecs: 0
+
+            onTriggered: {
+                if (remainingSecs == 0) {
+                    running = false;
+                    controls.shoot();
+                } else {
+                    timedShootFeedback.showRemainingSecs(remainingSecs);
+                    remainingSecs--;
+                }
+            }
+        }
+
         PositionSource {
             id: positionSource
             updateInterval: 1000
@@ -394,7 +465,7 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: controls.shoot()
+            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot(settings.selfTimerDelay) : controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {
