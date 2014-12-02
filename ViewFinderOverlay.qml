@@ -43,7 +43,6 @@ Item {
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
         property bool gridEnabled: false
-        property int encodingQuality: 2 // QMultimedia.NormalQuality
     }
 
     Binding {
