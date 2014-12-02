@@ -26,8 +26,11 @@ Item {
     property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
+    signal photoPressAndHold(int index)
+    signal photoSelectionAreaClicked(int index)
     property real headerHeight
     property bool inView
+    property bool inSelectionMode
     property list<Action> actions
 
     function showPhotoAtIndex(index) {
@@ -62,6 +65,7 @@ Item {
         model: photogridView.model
         delegate: Item {
             id: cellDelegate
+            objectName: "mediaItem" + index
             
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
@@ -104,16 +108,50 @@ Item {
                 visible: isVideo
             }
 
-            Rectangle {
-                anchors.fill: parent
-                color: UbuntuColors.blue
-                opacity: 0.4
-                visible: selected
-            }
-
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
+                onPressAndHold: photogridView.photoPressAndHold(index)
+            }
+
+            Rectangle {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    topMargin: units.gu(0.5)
+                    rightMargin: units.gu(0.5)
+                }
+                width: units.gu(4)
+                height: units.gu(4)
+                color: selected ? UbuntuColors.orange : UbuntuColors.coolGrey
+                radius: 10
+                opacity: selected ? 0.8 : 0.6
+                visible: inSelectionMode
+
+                Icon {
+                    anchors.centerIn: parent
+                    width: parent.width * 0.8
+                    height: parent.height * 0.8
+                    name: "ok"
+                    color: "white"
+                    visible: selected
+                }
+
+            }
+
+            MouseArea {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                width: parent.width * 0.5
+                height: parent.height * 0.5
+                enabled: inSelectionMode
+ 
+                onClicked: {
+                    mouse.accepted = true;
+                    photogridView.photoSelectionAreaClicked(index)
+                }
             }
         }
     }

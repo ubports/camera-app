@@ -16,6 +16,7 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
@@ -26,6 +27,7 @@ Item {
     signal exit
     property bool inView
     property bool touchAcquired: slideshowView.touchAcquired
+    property bool userSelectionMode: false
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
         folders: [application.picturesLocation, application.videosLocation]
@@ -33,6 +35,25 @@ Item {
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
         singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
     }
+
+    property list<Action> userSelectionActions: [
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(sharePopoverComponent)
+            }
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(deleteDialogComponent);
+            }
+        }
+    ]
 
     property bool gridMode: false
     property bool showLastPhotoTakenPending: false
@@ -42,6 +63,16 @@ Item {
         // do not immediately try to show the photo in the slideshow as it
         // might not be in the photo roll model yet
         showLastPhotoTakenPending = true;
+    }
+
+    function exitUserSelectionMode() {
+        if (gridMode) {
+            model.clearSelection();
+            model.singleSelectionOnly = true;
+            userSelectionMode = false;
+        } else {
+            gridMode = true;
+        }
     }
 
     onExit: {
@@ -68,23 +99,39 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView
+            inSelectionMode: main.contentExportMode || userSelectionMode
             onPhotoClicked: {
-                if (main.contentExportMode) {
+                slideshowView.showPhotoAtIndex(index);
+                galleryView.gridMode = false;
+            }
+            onPhotoPressAndHold: {
+                if (!userSelectionMode) {
+                    userSelectionMode = true;
+                    model.singleSelectionOnly = false;
                     model.toggleSelected(index);
-                } else {
-                    slideshowView.showPhotoAtIndex(index);
-                    galleryView.gridMode = false;
                 }
+            }
+
+            onPhotoSelectionAreaClicked: {
+                if (main.contentExportMode || userSelectionMode)
+                    model.toggleSelected(index);
             }
         }
 
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
-            onExit: galleryView.exit()
-            actions: currentView.actions
+            actions: userSelectionMode ? userSelectionActions : currentView.actions
             gridMode: galleryView.gridMode || main.contentExportMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
+            userSelectionMode: galleryView.userSelectionMode
+            onExit: {
+                if (userSelectionMode) {
+                    galleryView.exitUserSelectionMode();
+                } else {
+                    galleryView.exit()
+                }
+            }
             onToggleViews: {
                 if (!galleryView.gridMode) {
                     // position grid view so that the current photo in slideshow view is visible
@@ -92,6 +139,12 @@ Item {
                 }
 
                 galleryView.gridMode = !galleryView.gridMode
+            }
+            onToggleSelectAll: {
+                if (model.selectedFiles.length != model.count)
+                    model.selectAll();
+                else
+                    model.clearSelection();
             }
             onValidationClicked: {
                 var selection = model.selectedFiles;
@@ -185,4 +238,46 @@ Item {
             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
+
+    Component {
+        id: contentItemComp
+        ContentItem {}
+    }
+
+    Component {
+        id: sharePopoverComponent
+
+        SharePopover {
+            id: sharePopover
+            
+            onContentPeerSelected: galleryView.exitUserSelectionMode();
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
+            transferItems: model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
+                           })
+        }
+    }
+
+    Component {
+        id: deleteDialogComponent
+
+        DeleteDialog {
+            id: deleteDialog
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            onDeleteFiles: {
+                for (var i=model.selectedFiles.length-1; i>=0; i--) {
+                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
+                    model.toggleSelected(model.selectedFiles[i])
+                    fileOperations.remove(currentFilePath);
+                }
+
+                galleryView.exitUserSelectionMode();
+            }
+        }
+    }
 }
