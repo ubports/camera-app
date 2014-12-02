@@ -43,7 +43,6 @@ Item {
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
         property int selfTimerDelay: 0
-        property int encodingQuality: 2 // QMultimedia.NormalQuality
     }
 
     Binding {
