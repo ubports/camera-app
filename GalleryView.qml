@@ -40,6 +40,7 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
+            enabled: model.selectedFiles.length <= 1
             onTriggered: {
                 if (model.selectedFiles.length > 0)
                     PopupUtils.open(sharePopoverComponent)

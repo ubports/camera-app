@@ -149,6 +149,7 @@ Item {
         }
 
         InverseMouseArea {
+            anchors.fill: parent
             onPressed: actionsDrawer.close();
             enabled: actionsDrawer.opened
         }
@@ -177,6 +178,7 @@ Item {
                         right: actionsColumn.right
                     }
                     height: units.gu(6)
+                    enabled: action.enabled
 
                     action: modelData
                     onClicked: actionsDrawer.close()
@@ -197,7 +199,7 @@ Item {
                         }
                         text: model.text
                         elide: Text.ElideRight
-                        color: Theme.palette.normal.foregroundText
+                        color: action.enabled ? Theme.palette.normal.foregroundText : Qt.darker(Theme.palette.normal.foregroundText, 2.0)
                     }
 
                     Icon {
@@ -209,7 +211,7 @@ Item {
                         }
                         width: height
                         height: label.paintedHeight
-                        color: Theme.palette.normal.foregroundText
+                        color: label.color
                         name: model.iconName
                     }
                 }
