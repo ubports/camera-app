@@ -248,25 +248,43 @@ Item {
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
             }
+        }
 
-            Grid {
-                id: gridlines
-                anchors.fill: parent
-                visible: false
-                columns: 3
-                property int rows: 3
+        Item {
+            id: gridlines
+            width: viewFinderGeometry.width
+            height: viewFinderGeometry.height
+            visible: viewFinderOverlay.settings.gridEnabled
 
-                Repeater {
-                    model: gridlines.columns * gridlines.rows
+            property color color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
+            property real thickness: units.dp(2)
 
-                    Rectangle {
-                        width: parent.width / gridlines.columns
-                        height: parent.height / gridlines.rows
-                        border.width: 1
-                        border.color: "gray"
-                        color: "transparent"
-                    }
-                }
+            Rectangle {
+                y: parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                y: 2 * parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: 2 * parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
             }
         }
 

@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
     property var controls: controls
+    property var settings: settings
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -63,12 +64,6 @@ Item {
         target: camera.advanced
         property: "hdrEnabled"
         value: settings.hdrEnabled
-    }
-
-    Binding {
-        target: gridlines
-        property: "visible"
-        value: settings.gridEnabled
     }
 
     Connections {

@@ -22,6 +22,7 @@ Loader {
     property var camera
     property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
     property real revealProgress: loader.item ? loader.item.revealProgress : 0
+    property var settings: loader.item.settings
 
     function showFocusRing(x, y) {
         loader.item.showFocusRing(x, y);
