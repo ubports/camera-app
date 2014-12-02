@@ -16,12 +16,13 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.1
 
 AbstractButton {
     id: button
 
     property alias iconName: icon.name
+    property url iconSource
     property bool on: true
     property string label: ""
 
@@ -44,6 +45,7 @@ AbstractButton {
             fill: parent
             margins: units.gu(1)
         }
+        source: name ? "image://theme/%1".arg(name) : button.iconSource
         color: "white"
         opacity: button.on ? (button.enabled ? 1.0 : 0.3): 0.5
         visible: label === ""

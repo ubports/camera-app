@@ -217,7 +217,8 @@ Item {
                 id: gridOptionsModel
 
                 property string settingsProperty: "gridEnabled"
-                property string icon: "view-grid-symbolic"
+                property string icon: ""
+                property string iconSource: "assets/grid_lines.svg"
                 property string label: ""
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
@@ -304,7 +305,8 @@ Item {
                             anchors.fill: parent
                             color: "white"
                             name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            visible: name !== ""
+                            source: name ? "image://theme/%1".arg(name) : modelData.iconSource
+                            visible: source != ""
                         }
 
                         Label {
