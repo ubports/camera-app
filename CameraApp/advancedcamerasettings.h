@@ -42,7 +42,7 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (bool hasFlash READ hasFlash NOTIFY hasFlashChanged)
     Q_PROPERTY (bool hdrEnabled READ hdrEnabled WRITE setHdrEnabled NOTIFY hdrEnabledChanged)
     Q_PROPERTY (bool hasHdr READ hasHdr NOTIFY hasHdrChanged)
-    Q_PROPERTY (QMultimedia::EncodingQuality encodingQuality READ encodingQuality WRITE setEncodingQuality NOTIFY encodingQualityChanged)
+    Q_PROPERTY (int encodingQuality READ encodingQuality WRITE setEncodingQuality NOTIFY encodingQualityChanged)
 
 public:
     explicit AdvancedCameraSettings(QObject *parent = 0);
@@ -55,8 +55,8 @@ public:
     bool hasHdr() const;
     bool hdrEnabled() const;
     void setHdrEnabled(bool enabled);
-    QMultimedia::EncodingQuality encodingQuality() const;
-    void setEncodingQuality(QMultimedia::EncodingQuality);
+    int encodingQuality() const;
+    void setEncodingQuality(int quality);
     void readCapabilities();
 
 Q_SIGNALS:

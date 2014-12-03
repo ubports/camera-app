@@ -304,7 +304,7 @@ void AdvancedCameraSettings::setHdrEnabled(bool enabled)
     }
 }
 
-QMultimedia::EncodingQuality AdvancedCameraSettings::encodingQuality() const
+int AdvancedCameraSettings::encodingQuality() const
 {
     if (m_imageEncoderControl) {
         return m_imageEncoderControl->imageSettings().quality();
@@ -313,11 +313,11 @@ QMultimedia::EncodingQuality AdvancedCameraSettings::encodingQuality() const
     }
 }
 
-void AdvancedCameraSettings::setEncodingQuality(QMultimedia::EncodingQuality quality)
+void AdvancedCameraSettings::setEncodingQuality(int quality)
 {
     if (m_imageEncoderControl) {
         QImageEncoderSettings settings;
-        settings.setQuality(quality);
+        settings.setQuality((QMultimedia::EncodingQuality)quality);
         m_imageEncoderControl->setImageSettings(settings);
     }
 }
