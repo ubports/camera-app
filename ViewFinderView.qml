@@ -295,6 +295,13 @@ Item {
                     easing: UbuntuAnimation.StandardEasing
                 }
             }
+
+            // tapping anywhere on the screen while a timed shoot is ongoing cancels it
+            MouseArea {
+                anchors.fill: parent
+                onClicked: viewFinderOverlay.controls.cancelTimedShoot()
+                enabled: remainingSecsLabel.visible
+            }
         }
 
         Rectangle {
