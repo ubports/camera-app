@@ -473,7 +473,8 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot(settings.selfTimerDelay) : controls.shoot()
+            onClicked: camera.captureMode == Camera.CaptureStillImage && settings.selfTimerDelay > 0 ?
+                           controls.timedShoot(settings.selfTimerDelay) : controls.shoot()
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {
