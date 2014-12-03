@@ -217,7 +217,7 @@ Item {
                 property bool isToggle: true
                 property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
                 property bool available: true
-                property bool visible: true
+                property bool visible: camera.captureMode == Camera.CaptureStillImage
 
                 ListElement {
                     icon: ""
