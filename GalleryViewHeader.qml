@@ -132,7 +132,7 @@ Item {
             right: parent.right
         }
         width: units.gu(20)
-        height: childrenRect.height
+        height: actionsColumn.height
         clip: actionsColumn.y != 0
         visible: false
 
