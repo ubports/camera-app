@@ -342,6 +342,13 @@ Item {
             shootingTimer.start();
         }
 
+        function cancelTimedShoot() {
+            if (shootingTimer.running) {
+                shootingTimer.stop();
+                timedShootFeedback.stop();
+            }
+        }
+
         function shoot() {
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {

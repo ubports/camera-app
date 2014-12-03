@@ -250,12 +250,21 @@ Item {
             }
         }
 
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) viewFinderOverlay.controls.cancelTimedShoot()
+        }
+
         Item {
             id: timedShootFeedback
             anchors.fill: parent
 
             function start() {
                 viewFinderOverlay.visible = false;
+            }
+
+            function stop() {
+                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
