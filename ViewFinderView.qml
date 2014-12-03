@@ -264,6 +264,7 @@ Item {
             }
 
             function stop() {
+                remainingSecsLabel.text = "";
                 viewFinderOverlay.visible = true;
             }
 
