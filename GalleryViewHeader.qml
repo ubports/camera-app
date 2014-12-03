@@ -169,7 +169,7 @@ Item {
             }
 
             Repeater {
-                model: actionsDrawer.actions
+                model: actionsDrawer.actions.length > 0 ? actionsDrawer.actions : 0
                 delegate: AbstractButton {
                     id: actionButton
                     objectName: "actionButton" + label.text

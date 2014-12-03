@@ -16,7 +16,6 @@
 
 import QtQuick 2.2
 import Ubuntu.Components 1.1
-import Ubuntu.Components.Popups 1.0
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
@@ -35,26 +34,6 @@ Item {
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
         singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
     }
-
-    property list<Action> userSelectionActions: [
-        Action {
-            text: i18n.tr("Share")
-            iconName: "share"
-            enabled: model.selectedFiles.length <= 1
-            onTriggered: {
-                if (model.selectedFiles.length > 0)
-                    PopupUtils.open(sharePopoverComponent)
-            }
-        },
-        Action {
-            text: i18n.tr("Delete")
-            iconName: "delete"
-            onTriggered: {
-                if (model.selectedFiles.length > 0)
-                    PopupUtils.open(deleteDialogComponent);
-            }
-        }
-    ]
 
     property bool gridMode: false
     property bool showLastPhotoTakenPending: false
@@ -97,32 +76,34 @@ Item {
             id: photogridView
             anchors.fill: parent
             headerHeight: header.height
+            userSelectionMode: galleryView.userSelectionMode
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView
-            inSelectionMode: main.contentExportMode || userSelectionMode
+            inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
                 galleryView.gridMode = false;
             }
             onPhotoPressAndHold: {
-                if (!userSelectionMode) {
-                    userSelectionMode = true;
+                if (!galleryView.userSelectionMode) {
+                    galleryView.userSelectionMode = true;
                     model.singleSelectionOnly = false;
                     model.toggleSelected(index);
                 }
             }
 
             onPhotoSelectionAreaClicked: {
-                if (main.contentExportMode || userSelectionMode)
+                if (main.contentExportMode || galleryView.userSelectionMode)
                     model.toggleSelected(index);
             }
+            onExitUserSelectionMode: galleryView.exitUserSelectionMode()
         }
 
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
-            actions: userSelectionMode ? userSelectionActions : currentView.actions
+            actions: currentView.actions
             gridMode: galleryView.gridMode || main.contentExportMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
             userSelectionMode: galleryView.userSelectionMode
@@ -239,46 +220,4 @@ Item {
             UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
         }
     ]
-
-    Component {
-        id: contentItemComp
-        ContentItem {}
-    }
-
-    Component {
-        id: sharePopoverComponent
-
-        SharePopover {
-            id: sharePopover
-            
-            onContentPeerSelected: galleryView.exitUserSelectionMode();
-
-            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
-            transferItems: model.selectedFiles.map(function(row) {
-                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
-                           })
-        }
-    }
-
-    Component {
-        id: deleteDialogComponent
-
-        DeleteDialog {
-            id: deleteDialog
-
-            FileOperations {
-                id: fileOperations
-            }
-
-            onDeleteFiles: {
-                for (var i=model.selectedFiles.length-1; i>=0; i--) {
-                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
-                    model.toggleSelected(model.selectedFiles[i])
-                    fileOperations.remove(currentFilePath);
-                }
-
-                galleryView.exitUserSelectionMode();
-            }
-        }
-    }
 }
