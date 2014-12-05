@@ -252,6 +252,7 @@ Item {
 
         Item {
             id: gridlines
+            anchors.horizontalCenter: parent.horizontalCenter
             width: viewFinderGeometry.width
             height: viewFinderGeometry.height
             visible: viewFinderOverlay.settings.gridEnabled
