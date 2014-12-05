@@ -47,14 +47,15 @@ AbstractButton {
         id: label
         anchors {
             left: icon.name != "" ? icon.right : parent.left
-            leftMargin: units.gu(2)
+            leftMargin: icon.name != "" ? units.gu(2) : icon.anchors.leftMargin
             right: parent.right
-            rightMargin: units.gu(2)
+            rightMargin: icon.anchors.leftMargin
             verticalCenter: parent.verticalCenter
         }
 
         color: "white"
         opacity: optionValueButton.selected ? 1.0 : 0.5
+        elide: Text.ElideRight
     }
 
     Rectangle {
