@@ -15,9 +15,11 @@
  */
 
 import QtQuick 2.2
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.0
+import Ubuntu.Components.Popups 1.0
 import Ubuntu.Thumbnailer 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
@@ -28,10 +30,31 @@ Item {
     signal photoClicked(int index)
     signal photoPressAndHold(int index)
     signal photoSelectionAreaClicked(int index)
+    signal exitUserSelectionMode
     property real headerHeight
     property bool inView
     property bool inSelectionMode
-    property list<Action> actions
+    property bool userSelectionMode: false
+    property var actions: userSelectionMode ? userSelectionActions : []
+    property list<Action> userSelectionActions: [
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            enabled: model.selectedFiles.length <= 1
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(sharePopoverComponent)
+            }
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(deleteDialogComponent);
+            }
+        }
+    ]
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -152,6 +175,48 @@ Item {
                     mouse.accepted = true;
                     photogridView.photoSelectionAreaClicked(index)
                 }
+            }
+        }
+    }
+
+    Component {
+        id: contentItemComp
+        ContentItem {}
+    }
+
+    Component {
+        id: sharePopoverComponent
+
+        SharePopover {
+            id: sharePopover
+
+            onContentPeerSelected: photogridView.exitUserSelectionMode();
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
+            transferItems: model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
+                           })
+        }
+    }
+
+    Component {
+        id: deleteDialogComponent
+
+        DeleteDialog {
+            id: deleteDialog
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            onDeleteFiles: {
+                for (var i=model.selectedFiles.length-1; i>=0; i--) {
+                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
+                    model.toggleSelected(model.selectedFiles[i])
+                    fileOperations.remove(currentFilePath);
+                }
+
+                photogridView.exitUserSelectionMode();
             }
         }
     }

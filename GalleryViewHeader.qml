@@ -132,7 +132,7 @@ Item {
             right: parent.right
         }
         width: units.gu(20)
-        height: childrenRect.height
+        height: actionsColumn.height
         clip: actionsColumn.y != 0
         visible: false
 
@@ -169,7 +169,7 @@ Item {
             }
 
             Repeater {
-                model: actionsDrawer.actions
+                model: actionsDrawer.actions.length > 0 ? actionsDrawer.actions : 0
                 delegate: AbstractButton {
                     id: actionButton
                     objectName: "actionButton" + label.text
