@@ -229,6 +229,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
                 property bool available: true
                 property bool visible: true
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: ""
