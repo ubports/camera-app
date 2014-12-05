@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-18 14:32-0200\n"
+"POT-Creation-Date: 2014-12-05 16:50-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../GalleryView.qml:147
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr ""
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:41
+msgid "Delete"
+msgstr ""
+
+#: ../DeleteDialog.qml:42
+msgid "Cancel"
+msgstr ""
+
+#: ../GalleryView.qml:182
 msgid "No media available."
 msgstr ""
 
-#: ../GalleryViewHeader.qml:73
+#: ../GalleryViewHeader.qml:75
+msgid "Select"
+msgstr ""
+
+#: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
 msgstr ""
 
@@ -29,49 +45,58 @@ msgstr ""
 msgid "Swipe left for photo roll"
 msgstr ""
 
-#: ../SlideshowView.qml:36
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:36
 msgid "Share"
 msgstr ""
 
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:313
-msgid "Delete"
-msgstr ""
-
-#: ../SlideshowView.qml:301
-msgid "Delete media?"
-msgstr ""
-
-#: ../SlideshowView.qml:308
-msgid "Cancel"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:130 ../ViewFinderOverlay.qml:152
-#: ../ViewFinderOverlay.qml:179 ../ViewFinderOverlay.qml:201
+#: ../ViewFinderOverlay.qml:139 ../ViewFinderOverlay.qml:162
+#: ../ViewFinderOverlay.qml:190 ../ViewFinderOverlay.qml:213
 msgid "On"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:135 ../ViewFinderOverlay.qml:162
-#: ../ViewFinderOverlay.qml:184 ../ViewFinderOverlay.qml:206
+#: ../ViewFinderOverlay.qml:144 ../ViewFinderOverlay.qml:172
+#: ../ViewFinderOverlay.qml:195 ../ViewFinderOverlay.qml:218
+#: ../ViewFinderOverlay.qml:237
 msgid "Off"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:157
+#: ../ViewFinderOverlay.qml:167
 msgid "Auto"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:193
+#: ../ViewFinderOverlay.qml:204
 msgid "HDR"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:215
+#: ../ViewFinderOverlay.qml:242
+msgid "5 seconds"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:247
+msgid "15 seconds"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:264
+msgid "Fine Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:268
+msgid "Normal Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:272
+msgid "Basic Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:281
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:223
+#: ../ViewFinderOverlay.qml:289
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:228
+#: ../ViewFinderOverlay.qml:294
 msgid "Save internally"
 msgstr ""
 

@@ -1,3 +1,34 @@
+camera-app (3.0.0+15.04.20141205-0ubuntu1) vivid; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Added option to select encoding quality for photo capture (JPEG
+    encoding quality).
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 05 Dec 2014 13:49:00 +0000
+
+camera-app (3.0.0+15.04.20141202-0ubuntu1) vivid; urgency=low
+
+  [ Sebastien Bacher ]
+  * Wrap the swipe hint, the elided version doesn't make sense in some
+    locales... (LP: #1389611)
+
+  [ Florian Boucault ]
+  * Add support to multi selection on grid view when triggered by the
+    user
+  * Add self timer controlled by a new settings option
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Chris Gagnon ]
+  * wait at beginning of autopilot tests to work around bug #1373039
+    (LP: #1376495, #1373039)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 02 Dec 2014 19:26:50 +0000
+
 camera-app (3.0.0+14.10.20141028~rtm-0ubuntu1) 14.09; urgency=low
 
   [ Ubuntu daily release ]

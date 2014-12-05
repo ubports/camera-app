@@ -42,6 +42,8 @@ Item {
         property bool gpsEnabled: false
         property bool hdrEnabled: false
         property int videoFlashMode: Camera.FlashOff
+        property int selfTimerDelay: 0
+        property int encodingQuality: 2 // QMultimedia.NormalQuality
         property bool preferRemovableStorage: false
     }
 
@@ -63,6 +65,12 @@ Item {
         target: camera.advanced
         property: "hdrEnabled"
         value: settings.hdrEnabled
+    }
+
+    Binding {
+        target: camera.advanced
+        property: "encodingQuality"
+        value: settings.encodingQuality
     }
 
     Connections {
@@ -124,6 +132,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
                 property bool available: true
                 property bool visible: true
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: ""
@@ -146,6 +155,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(flashOptionsModel, settings.flashMode)
                 property bool available: camera.advanced.hasFlash
                 property bool visible: camera.captureMode == Camera.CaptureStillImage
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: "flash-on"
@@ -173,6 +183,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(videoFlashOptionsModel, settings.videoFlashMode)
                 property bool available: camera.advanced.hasFlash
                 property bool visible: camera.captureMode == Camera.CaptureVideo
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: "torch-on"
@@ -195,6 +206,7 @@ Item {
                 property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                 property bool available: camera.advanced.hasHdr
                 property bool visible: true
+                property bool showInIndicators: true
 
                 ListElement {
                     icon: ""
@@ -205,6 +217,60 @@ Item {
                     icon: ""
                     label: QT_TR_NOOP("Off")
                     value: false
+                }
+            },
+            ListModel {
+                id: selfTimerOptionsModel
+
+                property string settingsProperty: "selfTimerDelay"
+                property string icon: ""
+                property string iconSource: "assets/self_timer.svg"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
+                property bool available: true
+                property bool visible: true
+                property bool showInIndicators: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: 0
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("5 seconds")
+                    value: 5
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("15 seconds")
+                    value: 15
+                }
+            },
+            ListModel {
+                id: encodingQualityOptionsModel
+
+                property string settingsProperty: "encodingQuality"
+                property string icon: "stock_image"
+                property string label: ""
+                property bool isToggle: false
+                property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
+                property bool available: true
+                property bool visible: camera.captureMode == Camera.CaptureStillImage
+                property bool showInIndicators: false
+
+                ListElement {
+                    label: QT_TR_NOOP("Fine Quality")
+                    value: 3 // QMultimedia.HighQuality
+                }
+                ListElement {
+                    label: QT_TR_NOOP("Normal Quality")
+                    value: 2 // QMultimedia.NormalQuality
+                }
+                ListElement {
+                    label: QT_TR_NOOP("Basic Quality")
+                    value: 1 // QMultimedia.LowQuality
                 }
             },
             ListModel {
@@ -298,7 +364,7 @@ Item {
                             bottomMargin: units.gu(0.5)
                         }
                         width: units.gu(2)
-                        visible: modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
+                        visible: modelData.showInIndicators && modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
                         opacity: 0.5
 
                         Icon {
@@ -306,7 +372,8 @@ Item {
                             anchors.fill: parent
                             color: "white"
                             name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            visible: name !== ""
+                            source: name ? "image://theme/%1".arg(name) : modelData.iconSource
+                            visible: source != ""
                         }
 
                         Label {
@@ -337,6 +404,19 @@ Item {
         visible: opacity != 0.0
         enabled: visible
 
+        function timedShoot(secs) {
+            timedShootFeedback.start();
+            shootingTimer.remainingSecs = secs;
+            shootingTimer.start();
+        }
+
+        function cancelTimedShoot() {
+            if (shootingTimer.running) {
+                shootingTimer.stop();
+                timedShootFeedback.stop();
+            }
+        }
+
         function shoot() {
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
@@ -350,9 +430,6 @@ Item {
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
-                } else {
-                    camera.videoRecorder.stop();
-                    // TODO: there's no event to tell us that the video has been successfully recorder or failed
                 }
             } else {
                 if (!main.contentExportMode) {
@@ -399,6 +476,25 @@ Item {
         function changeRecordMode() {
             if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+        }
+
+        Timer {
+            id: shootingTimer
+            repeat: true
+            triggeredOnStart: true
+            
+            property int remainingSecs: 0
+
+            onTriggered: {
+                if (remainingSecs == 0) {
+                    running = false;
+                    controls.shoot();
+                    timedShootFeedback.stop();
+                } else {
+                    timedShootFeedback.showRemainingSecs(remainingSecs);
+                    remainingSecs--;
+                }
+            }
         }
 
         PositionSource {
@@ -448,7 +544,17 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: controls.shoot()
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureVideo && camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                    camera.videoRecorder.stop();
+                } else {
+                    if (settings.selfTimerDelay > 0) {
+                        controls.timedShoot(settings.selfTimerDelay);
+                    } else {
+                        controls.shoot();
+                    }
+                }
+            }
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {

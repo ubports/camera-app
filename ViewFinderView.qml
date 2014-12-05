@@ -250,6 +250,61 @@ Item {
             }
         }
 
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) viewFinderOverlay.controls.cancelTimedShoot()
+        }
+
+        Item {
+            id: timedShootFeedback
+            anchors.fill: parent
+
+            function start() {
+                viewFinderOverlay.visible = false;
+            }
+
+            function stop() {
+                remainingSecsLabel.text = "";
+                viewFinderOverlay.visible = true;
+            }
+
+            function showRemainingSecs(secs) {
+                remainingSecsLabel.text = secs;
+                remainingSecsLabel.opacity = 1.0;
+                remainingSecsLabelAnimation.restart();
+            }
+
+            Label {
+                id: remainingSecsLabel
+                anchors.fill: parent
+                font.pixelSize: units.gu(6)
+                font.bold: true
+                color: "white"
+                style: Text.Outline;
+                styleColor: "black"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                visible: opacity != 0.0
+                opacity: 0.0
+
+                OpacityAnimator {
+                    id: remainingSecsLabelAnimation
+                    target: remainingSecsLabel
+                    from: 1.0
+                    to: 0.0
+                    duration: 750
+                    easing: UbuntuAnimation.StandardEasing
+                }
+            }
+
+            // tapping anywhere on the screen while a timed shoot is ongoing cancels it
+            MouseArea {
+                anchors.fill: parent
+                onClicked: viewFinderOverlay.controls.cancelTimedShoot()
+                enabled: remainingSecsLabel.visible
+            }
+        }
+
         Rectangle {
             id: shootFeedback
             anchors.fill: parent

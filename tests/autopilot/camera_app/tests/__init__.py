@@ -8,6 +8,7 @@
 """Camera-app autopilot tests."""
 
 import os
+import time
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
@@ -15,7 +16,7 @@ from autopilot.testcase import AutopilotTestCase
 
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
-from camera_app.emulators.panel import Panel
+
 
 class CameraAppTestCase(AutopilotTestCase):
 
@@ -41,6 +42,12 @@ class CameraAppTestCase(AutopilotTestCase):
         else:
             self.launch_click_installed()
 
+        #  wait and sleep as workaround for bug #1373039. To
+        #  make sure large components get loaded asynchronously on start-up
+        #  -- Chris Gagnon 11-17-2014
+        self.main_window.get_qml_view().visible.wait_for(True)
+        time.sleep(5)
+
     def launch_test_local(self):
         self.app = self.launch_test_application(
             self.local_location,
@@ -55,7 +62,8 @@ class CameraAppTestCase(AutopilotTestCase):
             self.app = self.launch_test_application(
                 "camera-app",
                 "--fullscreen",
-                "--desktop_file_hint=/usr/share/applications/camera-app.desktop",
+                "--desktop_file_hint="
+                "/usr/share/applications/camera-app.desktop",
                 app_type='qt',
                 emulator_base=CameraCustomProxyObjectBase)
 
