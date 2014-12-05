@@ -69,6 +69,10 @@ class MainWindow(object):
         """Returns the flash control button of the camera"""
         return self.get_option_button("videoFlashMode")
 
+    def get_encoding_quality_button(self):
+        """Returns the encoding quality button of the camera"""
+        return self.get_option_button("encodingQuality")
+
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")

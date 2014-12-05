@@ -26,6 +26,7 @@ Item {
     signal exit
     property bool inView
     property bool touchAcquired: slideshowView.touchAcquired
+    property bool userSelectionMode: false
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
         folders: [application.picturesLocation, application.videosLocation]
@@ -42,6 +43,16 @@ Item {
         // do not immediately try to show the photo in the slideshow as it
         // might not be in the photo roll model yet
         showLastPhotoTakenPending = true;
+    }
+
+    function exitUserSelectionMode() {
+        if (gridMode) {
+            model.clearSelection();
+            model.singleSelectionOnly = true;
+            userSelectionMode = false;
+        } else {
+            gridMode = true;
+        }
     }
 
     onExit: {
@@ -65,26 +76,44 @@ Item {
             id: photogridView
             anchors.fill: parent
             headerHeight: header.height
+            userSelectionMode: galleryView.userSelectionMode
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView
+            inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
-                if (main.contentExportMode) {
+                slideshowView.showPhotoAtIndex(index);
+                galleryView.gridMode = false;
+            }
+            onPhotoPressAndHold: {
+                if (!galleryView.userSelectionMode) {
+                    galleryView.userSelectionMode = true;
+                    model.singleSelectionOnly = false;
                     model.toggleSelected(index);
-                } else {
-                    slideshowView.showPhotoAtIndex(index);
-                    galleryView.gridMode = false;
                 }
             }
+
+            onPhotoSelectionAreaClicked: {
+                if (main.contentExportMode || galleryView.userSelectionMode)
+                    model.toggleSelected(index);
+            }
+            onExitUserSelectionMode: galleryView.exitUserSelectionMode()
         }
 
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
-            onExit: galleryView.exit()
             actions: currentView.actions
             gridMode: galleryView.gridMode || main.contentExportMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0
+            userSelectionMode: galleryView.userSelectionMode
+            onExit: {
+                if (userSelectionMode) {
+                    galleryView.exitUserSelectionMode();
+                } else {
+                    galleryView.exit()
+                }
+            }
             onToggleViews: {
                 if (!galleryView.gridMode) {
                     // position grid view so that the current photo in slideshow view is visible
@@ -92,6 +121,12 @@ Item {
                 }
 
                 galleryView.gridMode = !galleryView.gridMode
+            }
+            onToggleSelectAll: {
+                if (model.selectedFiles.length != model.count)
+                    model.selectAll();
+                else
+                    model.clearSelection();
             }
             onValidationClicked: {
                 var selection = model.selectedFiles;

@@ -15,9 +15,11 @@
  */
 
 import QtQuick 2.2
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.0
+import Ubuntu.Components.Popups 1.0
 import Ubuntu.Thumbnailer 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
@@ -26,9 +28,33 @@ Item {
     property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
+    signal photoPressAndHold(int index)
+    signal photoSelectionAreaClicked(int index)
+    signal exitUserSelectionMode
     property real headerHeight
     property bool inView
-    property list<Action> actions
+    property bool inSelectionMode
+    property bool userSelectionMode: false
+    property var actions: userSelectionMode ? userSelectionActions : []
+    property list<Action> userSelectionActions: [
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            enabled: model.selectedFiles.length <= 1
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(sharePopoverComponent)
+            }
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(deleteDialogComponent);
+            }
+        }
+    ]
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -62,6 +88,7 @@ Item {
         model: photogridView.model
         delegate: Item {
             id: cellDelegate
+            objectName: "mediaItem" + index
             
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight
@@ -104,16 +131,92 @@ Item {
                 visible: isVideo
             }
 
-            Rectangle {
-                anchors.fill: parent
-                color: UbuntuColors.blue
-                opacity: 0.4
-                visible: selected
-            }
-
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
+                onPressAndHold: photogridView.photoPressAndHold(index)
+            }
+
+            Rectangle {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    topMargin: units.gu(0.5)
+                    rightMargin: units.gu(0.5)
+                }
+                width: units.gu(4)
+                height: units.gu(4)
+                color: selected ? UbuntuColors.orange : UbuntuColors.coolGrey
+                radius: 10
+                opacity: selected ? 0.8 : 0.6
+                visible: inSelectionMode
+
+                Icon {
+                    anchors.centerIn: parent
+                    width: parent.width * 0.8
+                    height: parent.height * 0.8
+                    name: "ok"
+                    color: "white"
+                    visible: selected
+                }
+
+            }
+
+            MouseArea {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                width: parent.width * 0.5
+                height: parent.height * 0.5
+                enabled: inSelectionMode
+ 
+                onClicked: {
+                    mouse.accepted = true;
+                    photogridView.photoSelectionAreaClicked(index)
+                }
+            }
+        }
+    }
+
+    Component {
+        id: contentItemComp
+        ContentItem {}
+    }
+
+    Component {
+        id: sharePopoverComponent
+
+        SharePopover {
+            id: sharePopover
+
+            onContentPeerSelected: photogridView.exitUserSelectionMode();
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
+            transferItems: model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
+                           })
+        }
+    }
+
+    Component {
+        id: deleteDialogComponent
+
+        DeleteDialog {
+            id: deleteDialog
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            onDeleteFiles: {
+                for (var i=model.selectedFiles.length-1; i>=0; i--) {
+                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
+                    model.toggleSelected(model.selectedFiles[i])
+                    fileOperations.remove(currentFilePath);
+                }
+
+                photogridView.exitUserSelectionMode();
             }
         }
     }
