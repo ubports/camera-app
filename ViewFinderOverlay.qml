@@ -379,6 +379,13 @@ Item {
             shootingTimer.start();
         }
 
+        function cancelTimedShoot() {
+            if (shootingTimer.running) {
+                shootingTimer.stop();
+                timedShootFeedback.stop();
+            }
+        }
+
         function shoot() {
             var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
@@ -389,9 +396,6 @@ Item {
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
-                } else {
-                    camera.videoRecorder.stop();
-                    // TODO: there's no event to tell us that the video has been successfully recorder or failed
                 }
             } else {
                 if (!main.contentExportMode) {
@@ -449,6 +453,7 @@ Item {
                 if (remainingSecs == 0) {
                     running = false;
                     controls.shoot();
+                    timedShootFeedback.stop();
                 } else {
                     timedShootFeedback.showRemainingSecs(remainingSecs);
                     remainingSecs--;
@@ -503,7 +508,17 @@ Item {
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
-            onClicked: settings.selfTimerDelay > 0 ? controls.timedShoot(settings.selfTimerDelay) : controls.shoot()
+            onClicked: {
+                if (camera.captureMode == Camera.CaptureVideo && camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                    camera.videoRecorder.stop();
+                } else {
+                    if (settings.selfTimerDelay > 0) {
+                        controls.timedShoot(settings.selfTimerDelay);
+                    } else {
+                        controls.shoot();
+                    }
+                }
+            }
             rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
             Behavior on rotation {
                 RotationAnimator {

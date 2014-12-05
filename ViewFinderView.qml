@@ -250,12 +250,22 @@ Item {
             }
         }
 
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) viewFinderOverlay.controls.cancelTimedShoot()
+        }
+
         Item {
             id: timedShootFeedback
             anchors.fill: parent
 
             function start() {
                 viewFinderOverlay.visible = false;
+            }
+
+            function stop() {
+                remainingSecsLabel.text = "";
+                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
@@ -285,6 +295,13 @@ Item {
                     duration: 750
                     easing: UbuntuAnimation.StandardEasing
                 }
+            }
+
+            // tapping anywhere on the screen while a timed shoot is ongoing cancels it
+            MouseArea {
+                anchors.fill: parent
+                onClicked: viewFinderOverlay.controls.cancelTimedShoot()
+                enabled: remainingSecsLabel.visible
             }
         }
 
