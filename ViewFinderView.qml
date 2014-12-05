@@ -255,7 +255,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             width: viewFinderGeometry.width
             height: viewFinderGeometry.height
-            visible: viewFinderOverlay.settings.gridEnabled
+            visible: viewFinderOverlay.settings != undefined && viewFinderOverlay.settings.gridEnabled
 
             property color color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
             property real thickness: units.dp(2)
