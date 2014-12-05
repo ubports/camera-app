@@ -1,3 +1,14 @@
+camera-app (3.0.0+15.04.20141205-0ubuntu1) vivid; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Added option to select encoding quality for photo capture (JPEG
+    encoding quality).
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 05 Dec 2014 13:49:00 +0000
+
 camera-app (3.0.0+15.04.20141202-0ubuntu1) vivid; urgency=low
 
   [ Sebastien Bacher ]
