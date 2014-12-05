@@ -57,5 +57,6 @@ Depends: camera-app (>= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends},
          python3-autopilot,
+         python3-wand,
 Description: Test package for the camera app
  Autopilot tests for the camera-app package

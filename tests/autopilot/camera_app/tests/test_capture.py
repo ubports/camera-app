@@ -10,6 +10,7 @@
 from autopilot.matchers import Eventually
 from autopilot.platform import model
 from testtools.matchers import Equals, NotEquals
+from wand.image import Image
 
 from camera_app.tests import CameraAppTestCase
 
@@ -32,6 +33,8 @@ class TestCapture(CameraAppTestCase):
 
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
+        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
 
     def tearDown(self):
         super(TestCapture, self).tearDown()
@@ -39,16 +42,15 @@ class TestCapture(CameraAppTestCase):
     """Test taking a picture"""
     def test_take_picture(self):
         exposure_button = self.main_window.get_exposure_button()
-        pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
 
-        # Remove all pictures from pictures_dir that match our pattern
+        # Remove all pictures from self.pictures_dir that match our pattern
         files = [
-            f for f in os.listdir(pictures_dir)
+            f for f in os.listdir(self.pictures_dir)
             if f[0:5] == "image" and
-            os.path.isfile(os.path.join(pictures_dir, f))
+            os.path.isfile(os.path.join(self.pictures_dir, f))
         ]
         for f in files:
-            os.remove(os.path.join(pictures_dir, f))
+            os.remove(os.path.join(self.pictures_dir, f))
 
         # Wait for the camera to have finished focusing
         # (the exposure button gets enabled when ready)
@@ -65,9 +67,9 @@ class TestCapture(CameraAppTestCase):
         one_picture_on_disk = False
         for i in range(0, 10):
             files = [
-                f for f in os.listdir(pictures_dir)
+                f for f in os.listdir(self.pictures_dir)
                 if f[0:5] == "image" and
-                os.path.isfile(os.path.join(pictures_dir, f))
+                os.path.isfile(os.path.join(self.pictures_dir, f))
             ]
             if len(files) == 1:
                 one_picture_on_disk = True
@@ -177,3 +179,77 @@ class TestCapture(CameraAppTestCase):
         # is True again already before the first check
         self.assertThat(exposure_button.enabled, Eventually(Equals(False)))
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+
+    """Test taking pictures at various levels of quality"""
+    def test_picture_quality_setting(self):
+        qualities = [("Basic Quality", 60),
+                     ("Normal Quality", 80),
+                     ("Fine Quality", 90)
+                    ]
+        for quality, expectedCompression in qualities:
+            self.delete_all_photos()
+            self.set_compression_quality(quality)
+            self.take_picture()
+            picture_file = self.get_first_picture()
+            compression = self.get_compression_quality(picture_file)
+            self.assertThat(compression, Equals(expectedCompression))
+            self.dismiss_first_photo_hint()
+
+    def delete_all_photos(self):
+        picture_files = os.listdir(self.pictures_dir)
+        for f in picture_files:
+            os.remove(os.path.join(self.pictures_dir, f))
+
+    def get_first_picture(self, timeout=10):
+        pictures = []
+        for i in range(0, timeout):
+            pictures = os.listdir(self.pictures_dir)
+            if len(pictures) != 0:
+                break
+            time.sleep(1)
+
+        picture_file = os.path.join(self.pictures_dir, pictures[0])
+        return picture_file
+
+    def take_picture(self):
+        exposure_button = self.main_window.get_exposure_button()
+
+        # Wait for the camera to have finished focusing
+        # (the exposure button gets enabled when ready)
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(exposure_button.width, Eventually(NotEquals(0)))
+        self.assertThat(exposure_button.height, Eventually(NotEquals(0)))
+
+        # Press the shoot a picture button
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
+
+    def get_compression_quality(self, picture_file):
+        quality = 0
+        with Image(filename=picture_file) as image:
+            quality = image.compression_quality
+        return quality
+
+    def dismiss_first_photo_hint(self):
+        # Swipe to photo roll and back to viewfinder
+        self.main_window.swipe_to_gallery(self)
+        self.main_window.swipe_to_viewfinder(self)
+
+    def set_compression_quality(self, quality="Normal Quality"):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open encoding quality option value selector showing the possible values
+        encoding_quality_button = self.main_window.get_encoding_quality_button()
+        self.pointing_device.move_to_object(encoding_quality_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+
+        # tap on chosen compression quality option
+        option = self.main_window.get_option_value_button(quality)
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+
+        bottom_edge.close()

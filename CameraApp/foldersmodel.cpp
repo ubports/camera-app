@@ -289,3 +289,11 @@ void FoldersModel::clearSelection()
     }
     Q_EMIT selectedFilesChanged();
 }
+
+void FoldersModel::selectAll()
+{
+    for (int row = 0; row < m_fileInfoList.size(); ++row) {
+        if (!m_selectedFiles.contains(row))
+            toggleSelected(row);
+    }
+}

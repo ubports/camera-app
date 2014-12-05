@@ -15,18 +15,33 @@
  */
 
 import QtQuick 2.2
+import Ubuntu.Components 1.0
+import Ubuntu.Components.Popups 1.0
 
-CircleButton {
-    id: optionButton
-    objectName: "optionButton"
+Dialog {
+    signal deleteFiles()
 
-    property var model
-    property string settingsProperty: model.settingsProperty
+    title: i18n.tr("Delete media?")
 
-    iconName: model.isToggle || !model.get(model.selectedIndex).icon ? model.icon : model.get(model.selectedIndex).icon
-    iconSource: model.iconSource
-    on: model.isToggle ? model.get(model.selectedIndex).value : true
-    enabled: model.available
-    label: model.label
-    visible: model.visible
+    Component.onCompleted: {
+        deleteButton.clicked.connect(deleteFiles);
+    }
+
+    Button {
+        id: deleteButton
+        objectName: "deleteButton"
+
+        text: i18n.tr("Delete")
+        color: UbuntuColors.orange
+        onClicked: {
+            PopupUtils.close(deleteDialog);
+        }
+    }
+
+    Button {
+        text: i18n.tr("Cancel")
+        color: UbuntuColors.warmGrey
+        onClicked: PopupUtils.close(deleteDialog)
+    }
 }
+
