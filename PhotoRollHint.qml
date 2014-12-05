@@ -64,7 +64,7 @@ Item {
         }
         width: parent.width - 2 * units.gu(2)
         horizontalAlignment: Text.AlignHCenter
-        elide: Text.ElideLeft
+        wrapMode: Text.Wrap
         text: i18n.tr("Swipe left for photo roll")
         fontSize: "x-large"
         color: "#ebebeb"
