@@ -7,131 +7,142 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-11-28 10:16-0200\n"
+"POT-Creation-Date: 2014-12-04 23:20-0200\n"
 "PO-Revision-Date: 2014-11-10 09:22+0000\n"
 "Last-Translator: David Planella <david.planella@ubuntu.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-05 06:22+0000\n"
+"X-Launchpad-Export-Date: 2014-12-06 06:35+0000\n"
 "X-Generator: Launchpad (build 17274)\n"
 
-#: ../GalleryView.qml:145 ../package/GalleryView.qml:145
-msgid "No media available."
-msgstr "No hi ha cap element multimèdia disponible"
-
-#: ../GalleryViewHeader.qml:73 ../package/GalleryViewHeader.qml:73
-msgid "Photo Roll"
-msgstr "Rotlle de fotos"
-
-#: ../PhotoRollHint.qml:68 ../package/PhotoRollHint.qml:68
-msgid "Swipe left for photo roll"
-msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
-
-#: ../SlideshowView.qml:36 ../package/SlideshowView.qml:36
-msgid "Share"
-msgstr "Comparteix"
-
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:313
-#: ../package/SlideshowView.qml:41 ../package/SlideshowView.qml:313
-msgid "Delete"
-msgstr "Suprimeix"
-
-#: ../SlideshowView.qml:301 ../package/SlideshowView.qml:301
+#: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "Voleu suprimir-ho?"
 
-#: ../SlideshowView.qml:308 ../package/SlideshowView.qml:308
+#: ../DeleteDialog.qml:34 ../GalleryView.qml:50 ../SlideshowView.qml:41
+msgid "Delete"
+msgstr "Suprimeix"
+
+#: ../DeleteDialog.qml:42
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: ../ViewFinderOverlay.qml:131 ../ViewFinderOverlay.qml:153
-#: ../ViewFinderOverlay.qml:180 ../ViewFinderOverlay.qml:202
-#: ../package/ViewFinderOverlay.qml:112 ../package/ViewFinderOverlay.qml:134
-#: ../package/ViewFinderOverlay.qml:161 ../package/ViewFinderOverlay.qml:183
+#: ../GalleryView.qml:41 ../SlideshowView.qml:36
+msgid "Share"
+msgstr "Comparteix"
+
+#: ../GalleryView.qml:199
+msgid "No media available."
+msgstr "No hi ha cap element multimèdia disponible"
+
+#: ../GalleryViewHeader.qml:75
+msgid "Select"
+msgstr ""
+
+#: ../GalleryViewHeader.qml:75
+msgid "Photo Roll"
+msgstr "Rotlle de fotos"
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
+
+#: ../ViewFinderOverlay.qml:138 ../ViewFinderOverlay.qml:161
+#: ../ViewFinderOverlay.qml:189 ../ViewFinderOverlay.qml:212
 msgid "On"
 msgstr "Actiu"
 
-#: ../ViewFinderOverlay.qml:136 ../ViewFinderOverlay.qml:163
-#: ../ViewFinderOverlay.qml:185 ../ViewFinderOverlay.qml:207
-#: ../ViewFinderOverlay.qml:224 ../package/ViewFinderOverlay.qml:117
-#: ../package/ViewFinderOverlay.qml:144 ../package/ViewFinderOverlay.qml:166
-#: ../package/ViewFinderOverlay.qml:188 ../package/ViewFinderOverlay.qml:205
+#: ../ViewFinderOverlay.qml:143 ../ViewFinderOverlay.qml:171
+#: ../ViewFinderOverlay.qml:194 ../ViewFinderOverlay.qml:217
+#: ../ViewFinderOverlay.qml:235
 msgid "Off"
 msgstr "Inactiu"
 
-#: ../ViewFinderOverlay.qml:158 ../package/ViewFinderOverlay.qml:139
+#: ../ViewFinderOverlay.qml:166
 msgid "Auto"
 msgstr "Automàtic"
 
-#: ../ViewFinderOverlay.qml:194 ../package/ViewFinderOverlay.qml:175
+#: ../ViewFinderOverlay.qml:203
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:229 ../package/ViewFinderOverlay.qml:210
+#: ../ViewFinderOverlay.qml:240
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:234 ../package/ViewFinderOverlay.qml:215
+#: ../ViewFinderOverlay.qml:245
 msgid "15 seconds"
 msgstr ""
 
-#: ../camera-app.qml:36 ../package/camera-app.qml:36
+#: ../ViewFinderOverlay.qml:262
+msgid "Fine Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:266
+msgid "Normal Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:270
+msgid "Basic Quality"
+msgstr ""
+
+#: ../camera-app.qml:36
 msgid "Flash"
 msgstr "Flaix"
 
-#: ../camera-app.qml:37 ../package/camera-app.qml:37
+#: ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr "Clar;Fosc"
 
-#: ../camera-app.qml:40 ../package/camera-app.qml:40
+#: ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr "Gira la càmera"
 
-#: ../camera-app.qml:41 ../package/camera-app.qml:41
+#: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "Frontal;posterior"
 
-#: ../camera-app.qml:44 ../package/camera-app.qml:44
+#: ../camera-app.qml:44
 msgid "Shutter"
 msgstr "Disparador"
 
-#: ../camera-app.qml:45 ../package/camera-app.qml:45
+#: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr "Fés una foto;Captura;Grava"
 
-#: ../camera-app.qml:48 ../package/camera-app.qml:48
+#: ../camera-app.qml:48
 msgid "Mode"
 msgstr "Mode"
 
-#: ../camera-app.qml:49 ../package/camera-app.qml:49
+#: ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr "Imatge estàtica;Vídeo"
 
-#: ../camera-app.qml:53 ../package/camera-app.qml:53
+#: ../camera-app.qml:53
 msgid "White Balance"
 msgstr "Balanç de blancs"
 
-#: ../camera-app.qml:54 ../package/camera-app.qml:54
+#: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
 
-#: ../camera-app.qml:214 ../package/camera-app.qml:214
+#: ../camera-app.qml:214
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "Avui heu fet <b>%1</b> fotos"
 
-#: ../camera-app.qml:215 ../package/camera-app.qml:215
+#: ../camera-app.qml:215
 msgid "No photos taken today"
 msgstr "Avui no heu fet cap foto"
 
-#: ../camera-app.qml:223 ../package/camera-app.qml:223
+#: ../camera-app.qml:223
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "Avui heu fet <b>%1</b> vídeos"
 
-#: ../camera-app.qml:224 ../package/camera-app.qml:224
+#: ../camera-app.qml:224
 msgid "No videos recorded today"
 msgstr "Avui no heu fet cap video"
 
