@@ -259,7 +259,7 @@ Item {
             visible: viewFinderOverlay.settings != undefined && viewFinderOverlay.settings.gridEnabled
 
             property color color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
-            property real thickness: units.dp(2)
+            property real thickness: units.dp(1)
 
             Rectangle {
                 y: parent.height / 3
