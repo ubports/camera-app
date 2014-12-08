@@ -252,6 +252,7 @@ Item {
 
         Item {
             id: gridlines
+            objectName: "gridlines"
             anchors.horizontalCenter: parent.horizontalCenter
             width: viewFinderGeometry.width
             height: viewFinderGeometry.height

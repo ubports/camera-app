@@ -73,6 +73,10 @@ class MainWindow(object):
         """Returns the encoding quality button of the camera"""
         return self.get_option_button("encodingQuality")
 
+    def get_grid_lines_button(self):
+        """Returns the grid lines toggle button of the camera"""
+        return self.get_option_button("gridEnabled")
+
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")
