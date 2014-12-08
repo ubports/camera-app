@@ -28,6 +28,7 @@
 #include <QtMultimedia/QCameraExposureControl>
 #include <QtMultimedia/QMediaControl>
 #include <QtMultimedia/QImageEncoderControl>
+#include <QtMultimedia/QVideoEncoderSettingsControl>
 
 class QCameraControl;
 class QCameraFlashControl;
@@ -39,6 +40,7 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
                 NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
+    Q_PROPERTY (QStringList videoSupportedResolutions READ videoSupportedResolutions NOTIFY videoSupportedResolutionsChanged)
     Q_PROPERTY (bool hasFlash READ hasFlash NOTIFY hasFlashChanged)
     Q_PROPERTY (bool hdrEnabled READ hdrEnabled WRITE setHdrEnabled NOTIFY hdrEnabledChanged)
     Q_PROPERTY (bool hasHdr READ hasHdr NOTIFY hasHdrChanged)
@@ -51,6 +53,7 @@ public:
     void setCamera(QObject* camera);
     void setActiveCameraIndex(int index);
     QSize resolution() const;
+    QStringList videoSupportedResolutions() const;
     bool hasFlash() const;
     bool hasHdr() const;
     bool hdrEnabled() const;
@@ -67,6 +70,7 @@ Q_SIGNALS:
     void hasHdrChanged();
     void hdrEnabledChanged();
     void encodingQualityChanged();
+    void videoSupportedResolutionsChanged();
 
 private Q_SLOTS:
     void onCameraStateChanged();
@@ -81,6 +85,7 @@ private:
     QCamera* cameraFromCameraObject(QObject* cameraObject) const;
     QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
     QImageEncoderControl* imageEncoderControlFromCamera(QCamera *camera) const;
+    QVideoEncoderSettingsControl* videoEncoderControlFromCamera(QCamera *camera) const;
 
     QObject* m_cameraObject;
     QCamera* m_camera;
@@ -91,6 +96,7 @@ private:
     QCameraFlashControl* m_cameraFlashControl;
     QCameraExposureControl* m_cameraExposureControl;
     QImageEncoderControl* m_imageEncoderControl;
+    QVideoEncoderSettingsControl* m_videoEncoderControl;
 };
 
 #endif // ADVANCEDCAMERASETTINGS_H
