@@ -85,7 +85,7 @@ Item {
         return resolution.split("x").pop() + "p";
     }
 
-    function updateVideoResolution() {
+    function updateVideoResolutionOptions() {
         // Clear and refill videoResolutionOptionsModel with available resolutions
         // Try to only display well known resolutions: 1080p, 720p and 480p
         videoResolutionOptionsModel.clear();
@@ -108,12 +108,12 @@ Item {
     }
 
     Component.onCompleted: {
-        updateVideoResolution();
+        updateVideoResolutionOptions();
     }
 
     Connections {
         target: camera.advanced
-        onVideoSupportedResolutionsChanged: updateVideoResolution();
+        onVideoSupportedResolutionsChanged: updateVideoResolutionOptions();
     }
 
     Connections {
