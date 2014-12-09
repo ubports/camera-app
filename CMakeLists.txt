@@ -25,6 +25,7 @@ option(CLICK_MODE "Installs to a contained location" off)
 set(CAMERA_APP camera-app)
 set(AUTOPILOT_DIR camera_app)
 set(DESKTOP_FILE camera-app.desktop)
+set(UBUNTU_MANIFEST_PATH "manifest.json" CACHE INTERNAL "Tells QtCreator location and name of the manifest file")
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
