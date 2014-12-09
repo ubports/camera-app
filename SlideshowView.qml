@@ -334,7 +334,7 @@ Item {
     }
 
     Binding { target: header; property: "editMode"; value: editor.active }
-    Binding { target: header; property: "editModeActions"; value: editor.actions; when: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
 
     function reloadImage(image) {
         var async = image.asynchronous;
