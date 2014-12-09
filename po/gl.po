@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-12-04 23:20-0200\n"
-"PO-Revision-Date: 2014-10-31 16:35+0000\n"
+"PO-Revision-Date: 2014-12-09 02:32+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-06 06:35+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2014-12-09 06:19+0000\n"
+"X-Generator: Launchpad (build 17283)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -39,7 +39,7 @@ msgstr "Non hai multimedias dispoñíbeis."
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
@@ -70,23 +70,23 @@ msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:240
 msgid "5 seconds"
-msgstr ""
+msgstr "5 segundos"
 
 #: ../ViewFinderOverlay.qml:245
 msgid "15 seconds"
-msgstr ""
+msgstr "15 segundos"
 
 #: ../ViewFinderOverlay.qml:262
 msgid "Fine Quality"
-msgstr ""
+msgstr "Calidade boa"
 
 #: ../ViewFinderOverlay.qml:266
 msgid "Normal Quality"
-msgstr ""
+msgstr "Calidade normal"
 
 #: ../ViewFinderOverlay.qml:270
 msgid "Basic Quality"
-msgstr ""
+msgstr "Calidade básica"
 
 #: ../camera-app.qml:36
 msgid "Flash"
