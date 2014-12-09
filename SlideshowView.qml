@@ -29,7 +29,8 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress : false
+    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
+                                                        editor.active : false
     property bool inView
     signal toggleHeader
     property list<Action> actions: [
