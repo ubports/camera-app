@@ -133,7 +133,7 @@ Item {
         id: viewFinderSwitcher
         anchors.fill: parent
         visible: !viewFinderSwitcherBlurred.visible
-        
+
         ShaderEffectSource {
             id: viewFinderGrab
             live: false
@@ -247,6 +247,46 @@ Item {
                 viewFinderHeight: viewFinder.height
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
+            }
+        }
+
+        Item {
+            id: gridlines
+            objectName: "gridlines"
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: viewFinderGeometry.width
+            height: viewFinderGeometry.height
+            visible: viewFinderOverlay.settings != undefined && viewFinderOverlay.settings.gridEnabled
+
+            property color color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
+            property real thickness: units.dp(1)
+
+            Rectangle {
+                y: parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                y: 2 * parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: 2 * parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
             }
         }
 

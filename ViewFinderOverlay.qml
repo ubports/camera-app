@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
     property var controls: controls
+    property var settings: settings
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -44,6 +45,7 @@ Item {
         property int videoFlashMode: Camera.FlashOff
         property int selfTimerDelay: 0
         property int encodingQuality: 2 // QMultimedia.NormalQuality
+        property bool gridEnabled: false
     }
 
     Binding {
@@ -270,6 +272,29 @@ Item {
                 ListElement {
                     label: QT_TR_NOOP("Basic Quality")
                     value: 1 // QMultimedia.LowQuality
+                }
+            },
+            ListModel {
+                id: gridOptionsModel
+
+                property string settingsProperty: "gridEnabled"
+                property string icon: ""
+                property string iconSource: "assets/grid_lines.svg"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                property bool available: true
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("On")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: false
                 }
             }
         ]
