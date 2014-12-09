@@ -261,82 +261,46 @@ Item {
         }
     }
 
-
-    Component {
+   Component {
         id: sharePopoverComponent
 
-        PopupBase {
+        SharePopover {
             id: sharePopover
-
-            fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
-
-            // FIXME: ContentPeerPicker should either have a background or not, not half of one
-            Rectangle {
-                anchors.fill: parent
-                color: Theme.palette.normal.overlay
-            }
 
             ContentItem {
                 id: contentItem
             }
 
-            ContentPeerPicker {
-                // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
-                // FIXME: ContentPeerPicker should not be visible: false by default
-                visible: true
-                Component.onCompleted: {
-                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
-                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
-                }
-                handler: ContentHandler.Share
-
-                onPeerSelected: {
-                    var transfer = peer.request();
-                    if (transfer.state === ContentTransfer.InProgress) {
-                        contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
-                        transfer.items = [ contentItem ];
-                        transfer.state = ContentTransfer.Charged;
-                    }
-                    PopupUtils.close(sharePopover);
-                }
-                onCancelPressed: PopupUtils.close(sharePopover);
+            Component.onCompleted: {
+                contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
+                transferItems = [contentItem];
             }
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.model.get(slideshowView.currentIndex, "fileType"));
         }
     }
 
     Component {
         id: deleteDialogComponent
 
-        Dialog {
+        DeleteDialog {
             id: deleteDialog
-
-            title: i18n.tr("Delete media?")
 
             FileOperations {
                 id: fileOperations
             }
 
-            Button {
-                text: i18n.tr("Cancel")
-                color: UbuntuColors.warmGrey
-                onClicked: PopupUtils.close(deleteDialog)
-            }
-            Button {
-                text: i18n.tr("Delete")
-                color: UbuntuColors.orange
-                onClicked: {
-                    // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
-                    // whereby after deleting the last item in the list the first
-                    // item would be shown even though the currentIndex was not set to 0
-                    var toBeDeleted = listView.currentIndex;
-                    if (listView.currentIndex == listView.count - 1) {
-                        listView.currentIndex = listView.currentIndex - 1;
-                    }
-
-                    var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
-                    fileOperations.remove(currentFilePath);
-                    PopupUtils.close(deleteDialog);
+            onDeleteFiles: {
+                // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
+                // whereby after deleting the last item in the list the first
+                // item would be shown even though the currentIndex was not set to 0
+                var toBeDeleted = listView.currentIndex;
+                if (listView.currentIndex == listView.count - 1) {
+                    listView.currentIndex = listView.currentIndex - 1;
                 }
+
+                var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
+                fileOperations.remove(currentFilePath);
             }
         }
     }

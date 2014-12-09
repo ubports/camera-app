@@ -14,6 +14,7 @@ from camera_app.tests import CameraAppTestCase
 
 import unittest
 import os
+from time import sleep
 
 
 class TestCameraGalleryView(CameraAppTestCase):
@@ -31,28 +32,10 @@ class TestCameraGalleryView(CameraAppTestCase):
     def tearDown(self):
         super(TestCameraGalleryView, self).tearDown()
 
-    """Tests swiping to the gallery and pressing the back button"""
-    def test_swipe_to_gallery(self):
-        viewfinder = self.main_window.get_viewfinder()
+    def move_from_slideshow_to_photogrid(self):
+        # make sure we move from slideshow to photogrid view
         gallery = self.main_window.get_gallery()
 
-        self.main_window.swipe_to_gallery(self)
-
-        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
-        self.assertThat(gallery.inView, Eventually(Equals(True)))
-
-        back_button = gallery.wait_select_single(objectName="backButton")
-        self.pointing_device.move_to_object(back_button)
-        self.pointing_device.click()
-
-        self.assertThat(viewfinder.inView, Eventually(Equals(True)))
-        self.assertThat(gallery.inView, Eventually(Equals(False)))
-
-    """Tests toggling between grid and slideshow views"""
-    def test_toggling_view_type(self):
-        self.main_window.swipe_to_gallery(self)
-
-        gallery = self.main_window.get_gallery()
         slideshow_view = gallery.wait_select_single("SlideshowView")
         photogrid_view = gallery.wait_select_single("PhotogridView")
 
@@ -78,6 +61,45 @@ class TestCameraGalleryView(CameraAppTestCase):
         for f in video_files:
             os.remove(os.path.join(self.videos_dir, f))
 
+    def add_sample_photo(self):
+        # add a fake photo to pictures_dir
+        photo_path = os.path.join(self.pictures_dir, "fake_photo.jpg")
+        with open(photo_path, 'a'):
+            os.utime(photo_path, None)
+
+    def select_first_photo(self):
+        # select the first photo
+        gallery = self.main_window.get_gallery()
+        photo = gallery.wait_select_single(objectName="mediaItem0")
+        self.pointing_device.move_to_object(photo)
+
+        # do a long press to enter Multiselection mode
+        self.pointing_device.press()
+        sleep(1)
+        self.pointing_device.release()
+
+    """Tests swiping to the gallery and pressing the back button"""
+    def test_swipe_to_gallery(self):
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+
+        self.main_window.swipe_to_gallery(self)
+
+        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        back_button = gallery.wait_select_single(objectName="backButton")
+        self.pointing_device.move_to_object(back_button)
+        self.pointing_device.click()
+
+        self.assertThat(viewfinder.inView, Eventually(Equals(True)))
+        self.assertThat(gallery.inView, Eventually(Equals(False)))
+
+    """Tests toggling between grid and slideshow views"""
+    def test_toggling_view_type(self):
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+
     """Tests swiping to the gallery/photo roll with no media in it"""
     def test_swipe_to_empty_gallery(self):
         self.delete_all_media()
@@ -93,9 +115,52 @@ class TestCameraGalleryView(CameraAppTestCase):
 
         self.assertThat(hint.visible, Eventually(Equals(True)))
 
-        # add a fake photo to pictures_dir
-        photo_path = os.path.join(self.pictures_dir, "fake_photo.jpg")
-        with open(photo_path, 'a'):
-            os.utime(photo_path, None)
+        self.add_sample_photo()
 
         self.assertThat(hint.visible, Eventually(Equals(False)))
+
+    """Tests entering/leaving multiselection mode in the photogrid view"""
+    def test_multiselection_mode(self):
+        self.add_sample_photo()
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+        self.select_first_photo()
+
+        # exit the multiselection mode
+        gallery = self.main_window.get_gallery()
+        back_button = gallery.wait_select_single(objectName="backButton")
+        self.pointing_device.move_to_object(back_button)
+        self.pointing_device.click()
+
+        slideshow_view = gallery.wait_select_single("SlideshowView")
+        photogrid_view = gallery.wait_select_single("PhotogridView")
+
+        self.assertThat(slideshow_view.visible, Eventually(Equals(False)))
+        self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
+
+    """Test deleting photo from multiselection"""
+    def test_delete_photo_from_multiselection(self):
+        self.delete_all_media()
+        self.add_sample_photo()
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+        self.select_first_photo()
+
+        # open actions drawer
+        gallery = self.main_window.get_gallery()
+        opt = gallery.wait_select_single(objectName="additionalActionsButton")
+        self.pointing_device.move_to_object(opt)
+        self.pointing_device.click()
+
+        # click delete action button
+        delete = gallery.wait_select_single(objectName="actionButtonDelete")
+        self.pointing_device.move_to_object(delete)
+        self.pointing_device.click()
+
+        # click confirm button on dialog
+        confirm = self.app.wait_select_single(objectName="deleteButton")
+        self.pointing_device.move_to_object(confirm)
+        self.pointing_device.click()
+
+        hint = self.main_window.get_no_media_hint()
+        self.assertThat(hint.visible, Eventually(Equals(True)))

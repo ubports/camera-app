@@ -37,9 +37,11 @@ Item {
     property bool gridMode: false
     property bool editMode: false
     property bool validationVisible
+    property bool userSelectionMode: false
     signal exit
     signal exitEditor
     signal toggleViews
+    signal toggleSelectAll
     signal validationClicked
 
     function show() {
@@ -73,7 +75,8 @@ Item {
         }
 
         Label {
-            text: editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll")
+            text: userSelectionMode ? i18n.tr("Select") :
+                  (editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll"))
             fontSize: "x-large"
             color: Theme.palette.normal.foregroundText
             elide: Text.ElideRight
@@ -88,7 +91,18 @@ Item {
             }
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
-            visible: !main.contentExportMode && !editMode
+            visible: !main.contentExportMode && !userSelectionMode && !editMode
+        }
+
+        IconButton {
+            objectName: "selectAllButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            iconName: "select"
+            onClicked: header.toggleSelectAll()
+            visible: header.gridMode && userSelectionMode
         }
 
         IconButton {
@@ -146,8 +160,9 @@ Item {
             right: parent.right
         }
         width: units.gu(20)
-        height: childrenRect.height
+        height: actionsColumn.height
         clip: actionsColumn.y != 0
+        visible: false
 
         actions: header.actions
 
@@ -158,7 +173,13 @@ Item {
         property bool opened: false
         property list<Action> actions
 
+        onOpenedChanged: {
+            if (opened)
+                visible = true;
+        }
+
         InverseMouseArea {
+            anchors.fill: parent
             onPressed: actionsDrawer.close();
             enabled: actionsDrawer.opened
         }
@@ -172,15 +193,22 @@ Item {
             y: actionsDrawer.opened ? 0 : -height
             Behavior on y { UbuntuNumberAnimation {} }
 
+            onYChanged: {
+                if (y == -height)
+                    actionsDrawer.visible = false;
+            }
+
             Repeater {
-                model: actionsDrawer.actions
+                model: actionsDrawer.actions.length > 0 ? actionsDrawer.actions : 0
                 delegate: AbstractButton {
                     id: actionButton
+                    objectName: "actionButton" + label.text
                     anchors {
                         left: actionsColumn.left
                         right: actionsColumn.right
                     }
                     height: units.gu(6)
+                    enabled: action.enabled
 
                     action: modelData
                     onClicked: actionsDrawer.close()
@@ -201,7 +229,7 @@ Item {
                         }
                         text: model.text
                         elide: Text.ElideRight
-                        color: Theme.palette.normal.foregroundText
+                        color: action.enabled ? Theme.palette.normal.foregroundText : Qt.darker(Theme.palette.normal.foregroundText, 2.0)
                     }
 
                     Icon {
@@ -213,7 +241,7 @@ Item {
                         }
                         width: height
                         height: label.paintedHeight
-                        color: Theme.palette.normal.foregroundText
+                        color: label.color
                         name: model.iconName
                     }
                 }

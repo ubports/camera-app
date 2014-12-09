@@ -15,21 +15,33 @@
  */
 
 import QtQuick 2.2
+import Ubuntu.Components 1.0
+import Ubuntu.Components.Popups 1.0
 
-Loader {
-    id: loader
+Dialog {
+    signal deleteFiles()
 
-    property var camera
-    property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
-    property real revealProgress: loader.item ? loader.item.revealProgress : 0
-    property var controls: loader.item ? loader.item.controls : null
+    title: i18n.tr("Delete media?")
 
-    function showFocusRing(x, y) {
-        loader.item.showFocusRing(x, y);
+    Component.onCompleted: {
+        deleteButton.clicked.connect(deleteFiles);
     }
 
-    asynchronous: true
-    Component.onCompleted: {
-        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });
+    Button {
+        id: deleteButton
+        objectName: "deleteButton"
+
+        text: i18n.tr("Delete")
+        color: UbuntuColors.orange
+        onClicked: {
+            PopupUtils.close(deleteDialog);
+        }
+    }
+
+    Button {
+        text: i18n.tr("Cancel")
+        color: UbuntuColors.warmGrey
+        onClicked: PopupUtils.close(deleteDialog)
     }
 }
+
