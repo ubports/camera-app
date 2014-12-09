@@ -90,13 +90,21 @@ Item {
                 prefix = "-";
                 time = -time;
             }
+
+            var divisor_for_hours = time % (60 * 60 * 60);
+            var hours = String(Math.floor(divisor_for_hours / 3600));
+
             var divisor_for_minutes = time % (60 * 60);
             var minutes = String(Math.floor(divisor_for_minutes / 60));
 
             var divisor_for_seconds = divisor_for_minutes % 60;
             var seconds = String(Math.ceil(divisor_for_seconds));
 
-            return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
+            if (hours != "0") {
+                return "%1%2:%3:%4".arg(prefix).arg(intern.pad(hours, 2)).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
+            } else {
+                return "%1%2:%3".arg(prefix).arg(intern.pad(minutes, 2)).arg(intern.pad(seconds, 2));
+            }
         }
     }
 }
