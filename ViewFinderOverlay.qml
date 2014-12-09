@@ -405,13 +405,14 @@ Item {
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
                         && position.latitudeValid
-                        && position.longitudeValid
-                        && position.altitudeValid) {
+                        && position.longitudeValid) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
                     camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
-                    camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
+                    if (position.altitudeValid) {
+                        camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
+                    }
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
