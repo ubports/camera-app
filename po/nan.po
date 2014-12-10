@@ -1,16 +1,16 @@
-# Galician translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Min Nan Chinese translation for camera-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-12-04 23:20-0200\n"
-"PO-Revision-Date: 2014-12-09 02:32+0000\n"
-"Last-Translator: Marcos Lans <Unknown>\n"
-"Language-Team: Galician <gl@li.org>\n"
+"PO-Revision-Date: 2014-12-09 07:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Min Nan Chinese <nan@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,141 +19,141 @@ msgstr ""
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
-msgstr "Eliminar multimedia?"
+msgstr ""
 
 #: ../DeleteDialog.qml:34 ../GalleryView.qml:50 ../SlideshowView.qml:41
 msgid "Delete"
-msgstr "Eliminar"
+msgstr ""
 
 #: ../DeleteDialog.qml:42
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #: ../GalleryView.qml:41 ../SlideshowView.qml:36
 msgid "Share"
-msgstr "Compartir"
+msgstr ""
 
 #: ../GalleryView.qml:199
 msgid "No media available."
-msgstr "Non hai multimedias dispoñíbeis."
+msgstr ""
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr "Seleccionar"
+msgstr ""
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
-msgstr "Carrete de fotos"
+msgstr ""
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
-msgstr "Esvare o dedo á esquerda para ver as fotos"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:138 ../ViewFinderOverlay.qml:161
 #: ../ViewFinderOverlay.qml:189 ../ViewFinderOverlay.qml:212
 msgid "On"
-msgstr "Activado"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:143 ../ViewFinderOverlay.qml:171
 #: ../ViewFinderOverlay.qml:194 ../ViewFinderOverlay.qml:217
 #: ../ViewFinderOverlay.qml:235
 msgid "Off"
-msgstr "Desactivado"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:166
 msgid "Auto"
-msgstr "Automático"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:203
 msgid "HDR"
-msgstr "HDR"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:240
 msgid "5 seconds"
-msgstr "5 segundos"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:245
 msgid "15 seconds"
-msgstr "15 segundos"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:262
 msgid "Fine Quality"
-msgstr "Calidade boa"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:266
 msgid "Normal Quality"
-msgstr "Calidade normal"
+msgstr ""
 
 #: ../ViewFinderOverlay.qml:270
 msgid "Basic Quality"
-msgstr "Calidade básica"
+msgstr ""
 
 #: ../camera-app.qml:36
 msgid "Flash"
-msgstr "Flash"
+msgstr ""
 
 #: ../camera-app.qml:37
 msgid "Light;Dark"
-msgstr "Claro;Escuro"
+msgstr ""
 
 #: ../camera-app.qml:40
 msgid "Flip Camera"
-msgstr "Virar a cámara"
+msgstr ""
 
 #: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
-msgstr "Orientación frontal;Orientación traseira"
+msgstr ""
 
 #: ../camera-app.qml:44
 msgid "Shutter"
-msgstr "Obturador"
+msgstr ""
 
 #: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
-msgstr "Facer unha foto;Tomar;Gravar"
+msgstr ""
 
 #: ../camera-app.qml:48
 msgid "Mode"
-msgstr "Modo"
+msgstr ""
 
 #: ../camera-app.qml:49
 msgid "Stills;Video"
-msgstr "Instantáneas;Vídeo"
+msgstr ""
 
 #: ../camera-app.qml:53
 msgid "White Balance"
-msgstr "Balance de brancos"
+msgstr ""
 
 #: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Condicións de luz;Día;Nubrado;Interior"
+msgstr ""
 
 #: ../camera-app.qml:214
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> fotos feitas hoxe"
+msgstr ""
 
 #: ../camera-app.qml:215
 msgid "No photos taken today"
-msgstr "Non hai fotos feitas hoxe"
+msgstr ""
 
 #: ../camera-app.qml:223
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> vídeos gravados hoxe"
+msgstr ""
 
 #: ../camera-app.qml:224
 msgid "No videos recorded today"
-msgstr "Non hai vídeos gravados hoxe"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr "Cámara"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "Aplicativo para cámaras"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Fotos;Vídeos;Captura;Fotografía;Pantalla;Gravar"
+msgstr ""
