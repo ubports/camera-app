@@ -11,6 +11,7 @@ from autopilot.matchers import Eventually
 from autopilot.platform import model
 from testtools.matchers import Equals, NotEquals
 from wand.image import Image
+from MediaInfoDLL3 import MediaInfo, Stream
 
 from camera_app.tests import CameraAppTestCase
 
@@ -253,3 +254,108 @@ class TestCapture(CameraAppTestCase):
         self.pointing_device.click()
 
         bottom_edge.close()
+
+    """Test recording videos at various resolutions"""
+    def test_video_resolution_setting(self):
+        self.switch_to_video_recording()
+        resolutions = self.get_available_video_resolutions()
+
+        for resolution_label in resolutions:
+            self.delete_all_videos()
+            self.set_video_resolution(resolution_label)
+            self.record_video(2)
+            video_file = self.get_first_video()
+            height = self.read_video_height(video_file)
+            expected_height = self.height_from_resolution_label(resolution_label)
+            self.assertThat(height, Equals(expected_height))
+            self.dismiss_first_photo_hint()
+
+    def switch_to_video_recording(self):
+        record_control = self.main_window.get_record_control()
+        # Wait for the camera overlay to be loaded
+        self.assertThat(record_control.enabled, Eventually(Equals(True)))
+        self.assertThat(record_control.width, Eventually(NotEquals(0)))
+        self.assertThat(record_control.height, Eventually(NotEquals(0)))
+
+        self.pointing_device.move_to_object(record_control)
+        self.pointing_device.click()
+
+    def get_available_video_resolutions(self):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open video resolution option value selector showing the possible values
+        video_resolution_button = self.main_window.get_video_resolution_button()
+        self.pointing_device.move_to_object(video_resolution_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        optionButtons = option_value_selector.select_many("OptionValueButton")
+        resolutions = [button.label for button in optionButtons]
+
+        bottom_edge.close()
+        return resolutions
+
+    def delete_all_videos(self):
+        video_files = os.listdir(self.videos_dir)
+        for f in video_files:
+            os.remove(os.path.join(self.videos_dir, f))
+
+    def set_video_resolution(self, resolution_label="720p"):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open video resolution option value selector showing the possible values
+        video_resolution_button = self.main_window.get_video_resolution_button()
+        self.pointing_device.move_to_object(video_resolution_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+
+        # tap on chosen video resolution option
+        option = self.main_window.get_option_value_button(resolution_label)
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+
+        bottom_edge.close()
+
+    def record_video(self, duration):
+        exposure_button = self.main_window.get_exposure_button()
+
+        # Click the exposure button to start recording
+        self.pointing_device.move_to_object(exposure_button)
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(exposure_button.width, Eventually(NotEquals(0)))
+        self.assertThat(exposure_button.height, Eventually(NotEquals(0)))
+        self.pointing_device.click()
+
+        # Record video for duration seconds
+        time.sleep(duration)
+        self.pointing_device.click()
+
+        stop_watch = self.main_window.get_stop_watch()
+        self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
+
+    def get_first_video(self, timeout=10):
+        videos = []
+        for i in range(0, timeout):
+            videos = os.listdir(self.videos_dir)
+            if len(videos) != 0:
+                break
+            time.sleep(1)
+
+        video_file = os.path.join(self.videos_dir, videos[0])
+        return video_file
+
+    def read_video_height(self, video_file):
+        MI = MediaInfo()
+        MI.Open(video_file)
+        height = MI.Get(Stream.Video, 0, "Height")
+        MI.Close()
+        return height
+
+    def height_from_resolution_label(self, resolution_label):
+        # remove last character from label (always 'p')
+        return resolution_label[:-1]
