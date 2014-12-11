@@ -23,6 +23,7 @@ Loader {
     property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
     property real revealProgress: loader.item ? loader.item.revealProgress : 0
     property var controls: loader.item ? loader.item.controls : null
+    property var settings: loader.item.settings
 
     function showFocusRing(x, y) {
         loader.item.showFocusRing(x, y);
