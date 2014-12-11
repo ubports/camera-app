@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-05 16:50-0200\n"
+"POT-Creation-Date: 2014-12-11 10:23-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,54 +49,55 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:139 ../ViewFinderOverlay.qml:162
-#: ../ViewFinderOverlay.qml:190 ../ViewFinderOverlay.qml:213
+#: ../ViewFinderOverlay.qml:141 ../ViewFinderOverlay.qml:164
+#: ../ViewFinderOverlay.qml:192 ../ViewFinderOverlay.qml:215
+#: ../ViewFinderOverlay.qml:292
 msgid "On"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:144 ../ViewFinderOverlay.qml:172
-#: ../ViewFinderOverlay.qml:195 ../ViewFinderOverlay.qml:218
-#: ../ViewFinderOverlay.qml:237
+#: ../ViewFinderOverlay.qml:146 ../ViewFinderOverlay.qml:174
+#: ../ViewFinderOverlay.qml:197 ../ViewFinderOverlay.qml:220
+#: ../ViewFinderOverlay.qml:239 ../ViewFinderOverlay.qml:297
 msgid "Off"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:167
+#: ../ViewFinderOverlay.qml:169
 msgid "Auto"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:204
+#: ../ViewFinderOverlay.qml:206
 msgid "HDR"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:242
+#: ../ViewFinderOverlay.qml:244
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:247
+#: ../ViewFinderOverlay.qml:249
 msgid "15 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:264
+#: ../ViewFinderOverlay.qml:266
 msgid "Fine Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:268
+#: ../ViewFinderOverlay.qml:270
 msgid "Normal Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:272
+#: ../ViewFinderOverlay.qml:274
 msgid "Basic Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:281
+#: ../ViewFinderOverlay.qml:306
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:289
+#: ../ViewFinderOverlay.qml:314
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:294
+#: ../ViewFinderOverlay.qml:319
 msgid "Save internally"
 msgstr ""
 

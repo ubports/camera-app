@@ -7,131 +7,143 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-11-28 10:16-0200\n"
+"POT-Creation-Date: 2014-12-08 09:47-0200\n"
 "PO-Revision-Date: 2014-10-31 00:14+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-05 06:22+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2014-12-11 08:07+0000\n"
+"X-Generator: Launchpad (build 17283)\n"
 
-#: ../GalleryView.qml:145 ../package/GalleryView.qml:145
-msgid "No media available."
-msgstr "ምንም መገናኛ አልተገኘም"
-
-#: ../GalleryViewHeader.qml:73 ../package/GalleryViewHeader.qml:73
-msgid "Photo Roll"
-msgstr "የ ፎቶ ጥቅል"
-
-#: ../PhotoRollHint.qml:68 ../package/PhotoRollHint.qml:68
-msgid "Swipe left for photo roll"
-msgstr "ወደ ግራ ይጥረጉ ፎቶ ለመመልከት"
-
-#: ../SlideshowView.qml:36 ../package/SlideshowView.qml:36
-msgid "Share"
-msgstr "ማካፈያ"
-
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:313
-#: ../package/SlideshowView.qml:41 ../package/SlideshowView.qml:313
-msgid "Delete"
-msgstr "ማጥፊያ"
-
-#: ../SlideshowView.qml:301 ../package/SlideshowView.qml:301
+#: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "መገናኛውን ላጥፋው?"
 
-#: ../SlideshowView.qml:308 ../package/SlideshowView.qml:308
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:41
+msgid "Delete"
+msgstr "ማጥፊያ"
+
+#: ../DeleteDialog.qml:42
 msgid "Cancel"
 msgstr "መሰረዣ"
 
-#: ../ViewFinderOverlay.qml:131 ../ViewFinderOverlay.qml:153
-#: ../ViewFinderOverlay.qml:180 ../ViewFinderOverlay.qml:202
-#: ../package/ViewFinderOverlay.qml:112 ../package/ViewFinderOverlay.qml:134
-#: ../package/ViewFinderOverlay.qml:161 ../package/ViewFinderOverlay.qml:183
+#: ../GalleryView.qml:180
+msgid "No media available."
+msgstr "ምንም መገናኛ አልተገኘም"
+
+#: ../GalleryViewHeader.qml:75
+msgid "Select"
+msgstr ""
+
+#: ../GalleryViewHeader.qml:75
+msgid "Photo Roll"
+msgstr "የ ፎቶ ጥቅል"
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "ወደ ግራ ይጥረጉ ፎቶ ለመመልከት"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:36
+msgid "Share"
+msgstr "ማካፈያ"
+
+#: ../ViewFinderOverlay.qml:140 ../ViewFinderOverlay.qml:163
+#: ../ViewFinderOverlay.qml:191 ../ViewFinderOverlay.qml:214
+#: ../ViewFinderOverlay.qml:291
 msgid "On"
 msgstr "ማብሪያ"
 
-#: ../ViewFinderOverlay.qml:136 ../ViewFinderOverlay.qml:163
-#: ../ViewFinderOverlay.qml:185 ../ViewFinderOverlay.qml:207
-#: ../ViewFinderOverlay.qml:224 ../package/ViewFinderOverlay.qml:117
-#: ../package/ViewFinderOverlay.qml:144 ../package/ViewFinderOverlay.qml:166
-#: ../package/ViewFinderOverlay.qml:188 ../package/ViewFinderOverlay.qml:205
+#: ../ViewFinderOverlay.qml:145 ../ViewFinderOverlay.qml:173
+#: ../ViewFinderOverlay.qml:196 ../ViewFinderOverlay.qml:219
+#: ../ViewFinderOverlay.qml:238 ../ViewFinderOverlay.qml:296
 msgid "Off"
 msgstr "ማጥፊያ"
 
-#: ../ViewFinderOverlay.qml:158 ../package/ViewFinderOverlay.qml:139
+#: ../ViewFinderOverlay.qml:168
 msgid "Auto"
 msgstr "በራሱ"
 
-#: ../ViewFinderOverlay.qml:194 ../package/ViewFinderOverlay.qml:175
+#: ../ViewFinderOverlay.qml:205
 msgid "HDR"
 msgstr "ትእይንት ማግኛ"
 
-#: ../ViewFinderOverlay.qml:229 ../package/ViewFinderOverlay.qml:210
+#: ../ViewFinderOverlay.qml:243
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:234 ../package/ViewFinderOverlay.qml:215
+#: ../ViewFinderOverlay.qml:248
 msgid "15 seconds"
 msgstr ""
 
-#: ../camera-app.qml:36 ../package/camera-app.qml:36
+#: ../ViewFinderOverlay.qml:265
+msgid "Fine Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:269
+msgid "Normal Quality"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:273
+msgid "Basic Quality"
+msgstr ""
+
+#: ../camera-app.qml:36
 msgid "Flash"
 msgstr "ፍላሽ"
 
-#: ../camera-app.qml:37 ../package/camera-app.qml:37
+#: ../camera-app.qml:37
 msgid "Light;Dark"
 msgstr "ብርሀን፡ጨለማ"
 
-#: ../camera-app.qml:40 ../package/camera-app.qml:40
+#: ../camera-app.qml:40
 msgid "Flip Camera"
 msgstr "ካሜራ መገልበጫ"
 
-#: ../camera-app.qml:41 ../package/camera-app.qml:41
+#: ../camera-app.qml:41
 msgid "Front Facing;Back Facing"
 msgstr "ከ ፊት ለፊት: ከ ጀርባ"
 
-#: ../camera-app.qml:44 ../package/camera-app.qml:44
+#: ../camera-app.qml:44
 msgid "Shutter"
 msgstr "ሸተር"
 
-#: ../camera-app.qml:45 ../package/camera-app.qml:45
+#: ../camera-app.qml:45
 msgid "Take a Photo;Snap;Record"
 msgstr "ፎቶ ማንሻ:ፎቶ ማንሻ:መቅረጫ"
 
-#: ../camera-app.qml:48 ../package/camera-app.qml:48
+#: ../camera-app.qml:48
 msgid "Mode"
 msgstr "ዘዴ"
 
-#: ../camera-app.qml:49 ../package/camera-app.qml:49
+#: ../camera-app.qml:49
 msgid "Stills;Video"
 msgstr "ድምፅ የሌለው: ቪዲዮ"
 
-#: ../camera-app.qml:53 ../package/camera-app.qml:53
+#: ../camera-app.qml:53
 msgid "White Balance"
 msgstr "ነጭ ማስተካከያ"
 
-#: ../camera-app.qml:54 ../package/camera-app.qml:54
+#: ../camera-app.qml:54
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "የብርሀን ሁኔታ: ቀን: ደመናማ: ቤት ውስጥ"
 
-#: ../camera-app.qml:214 ../package/camera-app.qml:214
+#: ../camera-app.qml:214
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "<b>%1</b> ዛሬ የተነሱ ፎቶዎች"
 
-#: ../camera-app.qml:215 ../package/camera-app.qml:215
+#: ../camera-app.qml:215
 msgid "No photos taken today"
 msgstr "ዛሬ ፎቶ አላነሱም"
 
-#: ../camera-app.qml:223 ../package/camera-app.qml:223
+#: ../camera-app.qml:223
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "<b>%1</b> ዘሬ የተቀረጸ ቪዲዮ"
 
-#: ../camera-app.qml:224 ../package/camera-app.qml:224
+#: ../camera-app.qml:224
 msgid "No videos recorded today"
 msgstr "ዘሬ የተቀረጸ ቪዲዮ የለም"
 

@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
     property var controls: controls
+    property var settings: settings
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -44,6 +45,7 @@ Item {
         property int videoFlashMode: Camera.FlashOff
         property int selfTimerDelay: 0
         property int encodingQuality: 2 // QMultimedia.NormalQuality
+        property bool gridEnabled: false
         property bool preferRemovableStorage: false
     }
 
@@ -274,6 +276,29 @@ Item {
                 }
             },
             ListModel {
+                id: gridOptionsModel
+
+                property string settingsProperty: "gridEnabled"
+                property string icon: ""
+                property string iconSource: "assets/grid_lines.svg"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                property bool available: true
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("On")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: false
+                }
+            },
+            ListModel {
                 id: removableStorageOptionsModel
 
                 property string settingsProperty: "preferRemovableStorage"
@@ -439,13 +464,14 @@ Item {
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
                         && position.latitudeValid
-                        && position.longitudeValid
-                        && position.altitudeValid) {
+                        && position.longitudeValid) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
                     camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
-                    camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
+                    if (position.altitudeValid) {
+                        camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
+                    }
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
