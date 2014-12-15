@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-12-11 10:23-0200\n"
-"PO-Revision-Date: 2014-11-02 13:06+0000\n"
+"PO-Revision-Date: 2014-12-14 19:50+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-13 07:08+0000\n"
+"X-Launchpad-Export-Date: 2014-12-15 06:31+0000\n"
 "X-Generator: Launchpad (build 17286)\n"
 
 #: ../DeleteDialog.qml:24
@@ -35,7 +35,7 @@ msgstr "Mediaa ei saatavilla."
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr ""
+msgstr "Valitse"
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
@@ -71,35 +71,35 @@ msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:244
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekuntia"
 
 #: ../ViewFinderOverlay.qml:249
 msgid "15 seconds"
-msgstr ""
+msgstr "15 sekuntia"
 
 #: ../ViewFinderOverlay.qml:266
 msgid "Fine Quality"
-msgstr ""
+msgstr "Hyvä laatu"
 
 #: ../ViewFinderOverlay.qml:270
 msgid "Normal Quality"
-msgstr ""
+msgstr "Normaali laatu"
 
 #: ../ViewFinderOverlay.qml:274
 msgid "Basic Quality"
-msgstr ""
+msgstr "Peruslaatu"
 
 #: ../ViewFinderOverlay.qml:306
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:314
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Tallenna muistikortille"
 
 #: ../ViewFinderOverlay.qml:319
 msgid "Save internally"
-msgstr ""
+msgstr "Tallenna sisäiseen tilaan"
 
 #: ../camera-app.qml:36
 msgid "Flash"
