@@ -46,6 +46,7 @@ Item {
         property int selfTimerDelay: 0
         property int encodingQuality: 2 // QMultimedia.NormalQuality
         property bool gridEnabled: false
+        property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
     }
 
@@ -342,6 +343,28 @@ Item {
                 }
             },
             ListModel {
+                id: removableStorageOptionsModel
+
+                property string settingsProperty: "preferRemovableStorage"
+                property string icon: ""
+                property string label: i18n.tr("SD")
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
+                property bool available: application.removableStoragePresent
+                property bool visible: available
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save to SD Card")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save internally")
+                    value: false
+                }
+            },
+            ListModel {
                 id: videoResolutionOptionsModel
 
                 property string settingsProperty: "videoResolution"
@@ -354,6 +377,14 @@ Item {
                 property bool showInIndicators: false
             }
         ]
+
+        /* FIXME: application.removableStoragePresent is not updated dynamically.
+           Workaround that by reading it when the bottom edge is opened/closed.
+        */
+        Connections {
+            target: bottomEdge
+            onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+        }
 
         function indexForValue(model, value) {
             var i;
@@ -474,6 +505,9 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
+                if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                }
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
@@ -497,6 +531,8 @@ Item {
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
+                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.imageCapture.captureToLocation(application.removableStoragePicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(application.picturesLocation);
                 }

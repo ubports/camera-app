@@ -1,3 +1,18 @@
+camera-app (3.0.0+15.04.20141211-0ubuntu1) vivid; urgency=low
+
+  [ CI Train Bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Add an option to save photos and videos to external SD card. Adapted
+    bottom edge UI to accomodate for more than 3 settings. (LP:
+    #1392368)
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 11 Dec 2014 16:24:50 +0000
+
 camera-app (3.0.0+15.04.20141209-0ubuntu1) vivid; urgency=low
 
   [ Florian Boucault ]
