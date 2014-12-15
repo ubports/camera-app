@@ -29,7 +29,9 @@ Item {
     property bool userSelectionMode: false
     property Item currentView: state == "GRID" ? photogridView : slideshowView
     property var model: FoldersModel {
-        folders: [application.picturesLocation, application.videosLocation]
+        folders: [application.picturesLocation, application.videosLocation,
+                  application.removableStoragePicturesLocation,
+                  application.removableStorageVideosLocation]
         typeFilters: !main.contentExportMode ? [ "image", "video" ]
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
         singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single

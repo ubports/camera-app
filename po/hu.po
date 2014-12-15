@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-12-04 23:20-0200\n"
+"POT-Creation-Date: 2014-12-11 10:23-0200\n"
 "PO-Revision-Date: 2014-12-05 20:49+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-06 06:35+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2014-12-13 07:08+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "Média törlése?"
 
-#: ../DeleteDialog.qml:34 ../GalleryView.qml:50 ../SlideshowView.qml:41
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:41
 msgid "Delete"
 msgstr "Törlés"
 
@@ -29,11 +29,7 @@ msgstr "Törlés"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../GalleryView.qml:41 ../SlideshowView.qml:36
-msgid "Share"
-msgstr "Megosztás"
-
-#: ../GalleryView.qml:199
+#: ../GalleryView.qml:182
 msgid "No media available."
 msgstr "Nem érhető el média."
 
@@ -49,44 +45,61 @@ msgstr "Fényképtekercs"
 msgid "Swipe left for photo roll"
 msgstr "Csúsztasson balra a képek eléréshez"
 
-#: ../ViewFinderOverlay.qml:138 ../ViewFinderOverlay.qml:161
-#: ../ViewFinderOverlay.qml:189 ../ViewFinderOverlay.qml:212
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:36
+msgid "Share"
+msgstr "Megosztás"
+
+#: ../ViewFinderOverlay.qml:141 ../ViewFinderOverlay.qml:164
+#: ../ViewFinderOverlay.qml:192 ../ViewFinderOverlay.qml:215
+#: ../ViewFinderOverlay.qml:292
 msgid "On"
 msgstr "Be"
 
-#: ../ViewFinderOverlay.qml:143 ../ViewFinderOverlay.qml:171
-#: ../ViewFinderOverlay.qml:194 ../ViewFinderOverlay.qml:217
-#: ../ViewFinderOverlay.qml:235
+#: ../ViewFinderOverlay.qml:146 ../ViewFinderOverlay.qml:174
+#: ../ViewFinderOverlay.qml:197 ../ViewFinderOverlay.qml:220
+#: ../ViewFinderOverlay.qml:239 ../ViewFinderOverlay.qml:297
 msgid "Off"
 msgstr "Ki"
 
-#: ../ViewFinderOverlay.qml:166
+#: ../ViewFinderOverlay.qml:169
 msgid "Auto"
 msgstr "Automatikus"
 
-#: ../ViewFinderOverlay.qml:203
+#: ../ViewFinderOverlay.qml:206
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:240
+#: ../ViewFinderOverlay.qml:244
 msgid "5 seconds"
 msgstr "5 másodperc"
 
-#: ../ViewFinderOverlay.qml:245
+#: ../ViewFinderOverlay.qml:249
 msgid "15 seconds"
 msgstr "15 másodperc"
 
-#: ../ViewFinderOverlay.qml:262
+#: ../ViewFinderOverlay.qml:266
 msgid "Fine Quality"
 msgstr "Kiváló minőség"
 
-#: ../ViewFinderOverlay.qml:266
+#: ../ViewFinderOverlay.qml:270
 msgid "Normal Quality"
 msgstr "Normál minőség"
 
-#: ../ViewFinderOverlay.qml:270
+#: ../ViewFinderOverlay.qml:274
 msgid "Basic Quality"
 msgstr "Alap minőség"
+
+#: ../ViewFinderOverlay.qml:306
+msgid "SD"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:314
+msgid "Save to SD Card"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:319
+msgid "Save internally"
+msgstr ""
 
 #: ../camera-app.qml:36
 msgid "Flash"

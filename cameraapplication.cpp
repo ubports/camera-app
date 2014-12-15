@@ -147,3 +147,61 @@ QString CameraApplication::temporaryLocation() const
     dir.mkpath(location);
     return location;
 }
+
+bool CameraApplication::removableStoragePresent() const
+{
+    return !removableStorageLocation().isEmpty();
+}
+
+QString CameraApplication::removableStorageLocation() const
+{
+    /* FIXME: when Qt5.4 is available, switch to using newly introduced
+     * QStorageInfo API.
+     * Ref.: http://doc-snapshot.qt-project.org/qt5-5.4/qstorageinfo.html
+     */
+    QString userName = qgetenv("USER");
+    QDir media("/media/" + userName);
+    QStringList mediaDirs = media.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+
+    if (mediaDirs.size() > 0) {
+        return QString("/media/" + userName + "/" + mediaDirs.at(0));
+    } else {
+        return QString();
+    }
+}
+
+QString CameraApplication::removableStoragePicturesLocation() const
+{
+    QString storageLocation = removableStorageLocation();
+    if (storageLocation.isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    QString pictureDir = QString(locations.at(0)).split("/").value(3);
+    if (pictureDir.isEmpty()){
+        return QString();
+    }
+    QString location = storageLocation + "/" + pictureDir;
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::removableStorageVideosLocation() const
+{
+    QString storageLocation = removableStorageLocation();
+    if (storageLocation.isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation);
+    QString movieDir = QString(locations.at(0)).split("/").value(3);
+    if (movieDir.isEmpty()){
+        return QString();
+    }
+    QString location = storageLocation + "/" + movieDir;
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}

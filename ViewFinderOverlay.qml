@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
     property real revealProgress: bottomEdge.progress
     property var controls: controls
+    property var settings: settings
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -44,6 +45,8 @@ Item {
         property int videoFlashMode: Camera.FlashOff
         property int selfTimerDelay: 0
         property int encodingQuality: 2 // QMultimedia.NormalQuality
+        property bool gridEnabled: false
+        property bool preferRemovableStorage: false
     }
 
     Binding {
@@ -271,8 +274,61 @@ Item {
                     label: QT_TR_NOOP("Basic Quality")
                     value: 1 // QMultimedia.LowQuality
                 }
+            },
+            ListModel {
+                id: gridOptionsModel
+
+                property string settingsProperty: "gridEnabled"
+                property string icon: ""
+                property string iconSource: "assets/grid_lines.svg"
+                property string label: ""
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                property bool available: true
+                property bool visible: true
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("On")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Off")
+                    value: false
+                }
+            },
+            ListModel {
+                id: removableStorageOptionsModel
+
+                property string settingsProperty: "preferRemovableStorage"
+                property string icon: ""
+                property string label: i18n.tr("SD")
+                property bool isToggle: true
+                property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
+                property bool available: application.removableStoragePresent
+                property bool visible: available
+
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save to SD Card")
+                    value: true
+                }
+                ListElement {
+                    icon: ""
+                    label: QT_TR_NOOP("Save internally")
+                    value: false
+                }
             }
         ]
+
+        /* FIXME: application.removableStoragePresent is not updated dynamically.
+           Workaround that by reading it when the bottom edge is opened/closed.
+        */
+        Connections {
+            target: bottomEdge
+            onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+        }
 
         function indexForValue(model, value) {
             var i;
@@ -393,6 +449,9 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
+                if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                }
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
@@ -405,16 +464,19 @@ Item {
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
                         && position.latitudeValid
-                        && position.longitudeValid
-                        && position.altitudeValid) {
+                        && position.longitudeValid) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
                     camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
-                    camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
                     camera.imageCapture.setMetadata("GPSProcessingMethod", "GPS");
+                    if (position.altitudeValid) {
+                        camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
+                    }
                 }
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
+                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.imageCapture.captureToLocation(application.removableStoragePicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(application.picturesLocation);
                 }

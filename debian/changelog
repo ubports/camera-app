@@ -1,3 +1,35 @@
+camera-app (3.0.0+15.04.20141211-0ubuntu1) vivid; urgency=low
+
+  [ CI Train Bot ]
+  * Resync trunk
+
+  [ Florian Boucault ]
+  * Add an option to save photos and videos to external SD card. Adapted
+    bottom edge UI to accomodate for more than 3 settings. (LP:
+    #1392368)
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 11 Dec 2014 16:24:50 +0000
+
+camera-app (3.0.0+15.04.20141209-0ubuntu1) vivid; urgency=low
+
+  [ Florian Boucault ]
+  * Add missing commits from merge in revision 428: Add support to multi
+    selection on grid view when triggered by the user
+  * Add missing commits from merge in revision 429: Add self timer
+    controlled by a new settings option
+  * Explicitly tell QtCreator where the manifest is.
+  * Store location even if no valid altitude was provided. (LP:
+    #1396672)
+  * Video recording: support displaying more than 1 hour long video
+    time. (LP: #1398447)
+  * Add gridlines to the viewfinder controlled by a new settings option
+    (LP: #1368140)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 09 Dec 2014 21:48:24 +0000
+
 camera-app (3.0.0+15.04.20141205-0ubuntu1) vivid; urgency=low
 
   [ Ubuntu daily release ]
