@@ -314,6 +314,7 @@ Item {
         sourceComponent: Component {
             PhotoEditor {
                 id: editorItem
+                objectName: "photoEditor"
 
                 Connections {
                     target: header
