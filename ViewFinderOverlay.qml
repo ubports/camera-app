@@ -47,6 +47,9 @@ Item {
         property int encodingQuality: 2 // QMultimedia.NormalQuality
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
+
+        onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
+        onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
     }
 
     Binding {
