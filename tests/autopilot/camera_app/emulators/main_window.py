@@ -65,6 +65,10 @@ class MainWindow(object):
         """Returns the flash control button of the camera"""
         return self.get_option_button("flashMode")
 
+    def get_hdr_button(self):
+        """Returns the hdr control button of the camera"""
+        return self.get_option_button("hdrEnabled")
+
     def get_video_flash_button(self):
         """Returns the flash control button of the camera"""
         return self.get_option_button("videoFlashMode")
