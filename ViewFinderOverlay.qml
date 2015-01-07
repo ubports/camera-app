@@ -120,6 +120,14 @@ Item {
     }
 
     Connections {
+        target: camera.advanced
+        onActiveCameraIndexChanged: {
+            updateVideoResolutionOptions();
+            camera.videoRecorder.resolution = settings.videoResolution;
+        }
+    }
+
+    Connections {
         target: camera.imageCapture
         onReadyChanged: {
             if (camera.imageCapture.ready) {
