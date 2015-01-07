@@ -255,6 +255,40 @@ class TestCapture(CameraAppTestCase):
 
         bottom_edge.close()
 
+    """Test recording videos at a set resolution and switching cameras"""
+    def test_video_resolution_setting_switching_cameras(self):
+        # switch to video recording and empty video folder
+        self.switch_to_video_recording()
+        self.delete_all_videos()
+
+        # select the first resolution for the current camera
+        resolutions = self.get_available_video_resolutions()
+        initial_resolution = resolutions[0]
+        self.set_video_resolution(initial_resolution)
+
+        # switch cameras and select the last resolution for the current camera
+        self.switch_cameras()
+        resolutions = self.get_available_video_resolutions()
+        expected_resolution = resolutions[-1]
+        self.assertThat(expected_resolution, NotEquals(initial_resolution))
+        self.set_video_resolution(expected_resolution)
+
+        # switch back to the initial camera and record a video
+        self.switch_cameras()
+        self.record_video(2)
+        video_file = self.get_first_video()
+        height = self.read_video_height(video_file)
+        expected_height = self.height_from_resolution_label(expected_resolution)
+        self.assertThat(height, Equals(expected_height))
+
+    def switch_cameras(self):
+        # Swap cameras and wait for camera to settle
+        shoot_button = self.main_window.get_exposure_button()
+        swap_camera_button = self.main_window.get_swap_camera_button()
+        self.pointing_device.move_to_object(swap_camera_button)
+        self.pointing_device.click()
+        self.assertThat(shoot_button.enabled, Eventually(Equals(True)))
+
     """Test recording videos at various resolutions"""
     def test_video_resolution_setting(self):
         self.switch_to_video_recording()
