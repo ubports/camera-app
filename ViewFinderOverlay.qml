@@ -163,6 +163,8 @@ Item {
         }
         height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+        enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+        opacity: enabled ? 1.0 : 0.3
 
         Item {
             /* Use the 'trigger' feature of Panel so that tapping on the Panel
