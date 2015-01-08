@@ -283,6 +283,13 @@ QStringList AdvancedCameraSettings::videoSupportedResolutions() const
                                             m_videoEncoderControl->videoSettings());
         QStringList sizesAsStrings;
         Q_FOREACH(QSize size, sizes) {
+            // Workaround for bug https://bugs.launchpad.net/ubuntu/+source/libhybris/+bug/1408650
+            // When using the front camera on krillin, using resolution 640x480 does
+            // not work properly and results in stretched videos. Remove it from
+            // the list of supported resolutions.
+            if (activeCameraIndex() == 1 && size.width() == 640 && size.height() == 480) {
+                continue;
+            }
             sizesAsStrings.append(QString("%1x%2").arg(size.width()).arg(size.height()));
         }
         return sizesAsStrings;
