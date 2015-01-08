@@ -47,6 +47,7 @@ Item {
         property int encodingQuality: 2 // QMultimedia.NormalQuality
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
+        property string videoResolution: "1920x1080"
     }
 
     Binding {
@@ -73,6 +74,57 @@ Item {
         target: camera.advanced
         property: "encodingQuality"
         value: settings.encodingQuality
+    }
+
+    Binding {
+        target: camera.videoRecorder
+        property: "resolution"
+        value: settings.videoResolution
+    }
+
+    function resolutionToLabel(resolution) {
+        // takes in a resolution string (e.g. "1920x1080") and returns a nicer
+        // form of it for display in the UI: "1080p"
+        return resolution.split("x").pop() + "p";
+    }
+
+    function updateVideoResolutionOptions() {
+        // Clear and refill videoResolutionOptionsModel with available resolutions
+        // Try to only display well known resolutions: 1080p, 720p and 480p
+        videoResolutionOptionsModel.clear();
+        var supported = camera.advanced.videoSupportedResolutions;
+        var wellKnown = ["1920x1080", "1280x720", "640x480"];
+        for (var i=0; i<supported.length; i++) {
+            var resolution = supported[i];
+            if (wellKnown.indexOf(resolution) !== -1) {
+                var option = {"icon": "",
+                              "label": resolutionToLabel(resolution),
+                              "value": resolution};
+                videoResolutionOptionsModel.insert(0, option);
+            }
+        }
+
+        // If resolution setting chosen is not supported select the highest available resolution
+        if (supported.indexOf(settings.videoResolution) == -1) {
+            settings.videoResolution = supported[supported.length - 1];
+        }
+    }
+
+    Component.onCompleted: {
+        updateVideoResolutionOptions();
+    }
+
+    Connections {
+        target: camera.advanced
+        onVideoSupportedResolutionsChanged: updateVideoResolutionOptions();
+    }
+
+    Connections {
+        target: camera.advanced
+        onActiveCameraIndexChanged: {
+            updateVideoResolutionOptions();
+            camera.videoRecorder.resolution = settings.videoResolution;
+        }
     }
 
     Connections {
@@ -111,6 +163,8 @@ Item {
         }
         height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+        enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+        opacity: enabled ? 1.0 : 0.3
 
         Item {
             /* Use the 'trigger' feature of Panel so that tapping on the Panel
@@ -319,6 +373,18 @@ Item {
                     label: QT_TR_NOOP("Save internally")
                     value: false
                 }
+            },
+            ListModel {
+                id: videoResolutionOptionsModel
+
+                property string settingsProperty: "videoResolution"
+                property string icon: ""
+                property string label: "HD"
+                property bool isToggle: false
+                property int selectedIndex: bottomEdge.indexForValue(videoResolutionOptionsModel, settings.videoResolution)
+                property bool available: true
+                property bool visible: camera.captureMode == Camera.CaptureVideo
+                property bool showInIndicators: false
             }
         ]
 

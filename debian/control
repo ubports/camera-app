@@ -58,5 +58,6 @@ Depends: camera-app (>= ${binary:Version}),
          ${shlibs:Depends},
          python3-autopilot,
          python3-wand,
+         python3-mediainfodll,
 Description: Test package for the camera app
  Autopilot tests for the camera-app package

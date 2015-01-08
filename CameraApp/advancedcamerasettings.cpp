@@ -39,7 +39,8 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_viewFinderControl(0),
     m_cameraFlashControl(0),
     m_cameraExposureControl(0),
-    m_imageEncoderControl(0)
+    m_imageEncoderControl(0),
+    m_videoEncoderControl(0)
 {
 }
 
@@ -164,6 +165,17 @@ QImageEncoderControl* AdvancedCameraSettings::imageEncoderControlFromCamera(QCam
     return imageEncoderControl;
 }
 
+QVideoEncoderSettingsControl* AdvancedCameraSettings::videoEncoderControlFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QVideoEncoderSettingsControl_iid);
+    QVideoEncoderSettingsControl *videoEncoderControl = qobject_cast<QVideoEncoderSettingsControl*>(control);
+
+    if (videoEncoderControl == 0) {
+        qWarning() << "No video encoder settings control support";
+    }
+
+    return videoEncoderControl;
+}
 
 QObject* AdvancedCameraSettings::camera() const
 {
@@ -221,12 +233,14 @@ void AdvancedCameraSettings::readCapabilities()
     }
 
     m_imageEncoderControl = imageEncoderControlFromCamera(m_camera);
+    m_videoEncoderControl = videoEncoderControlFromCamera(m_camera);
 
     Q_EMIT resolutionChanged();
     Q_EMIT hasFlashChanged();
     Q_EMIT hasHdrChanged();
     Q_EMIT hdrEnabledChanged();
     Q_EMIT encodingQualityChanged();
+    Q_EMIT videoSupportedResolutionsChanged();
 }
 
 void AdvancedCameraSettings::onCameraStateChanged()
@@ -246,6 +260,7 @@ void AdvancedCameraSettings::setActiveCameraIndex(int index)
         Q_EMIT activeCameraIndexChanged();
         Q_EMIT resolutionChanged();
         Q_EMIT hasFlashChanged();
+        Q_EMIT videoSupportedResolutionsChanged();
     }
 }
 
@@ -260,6 +275,29 @@ QSize AdvancedCameraSettings::resolution() const
 
     return QSize();
 }
+
+QStringList AdvancedCameraSettings::videoSupportedResolutions() const
+{
+    if (m_videoEncoderControl) {
+        QList<QSize> sizes = m_videoEncoderControl->supportedResolutions(
+                                            m_videoEncoderControl->videoSettings());
+        QStringList sizesAsStrings;
+        Q_FOREACH(QSize size, sizes) {
+            // Workaround for bug https://bugs.launchpad.net/ubuntu/+source/libhybris/+bug/1408650
+            // When using the front camera on krillin, using resolution 640x480 does
+            // not work properly and results in stretched videos. Remove it from
+            // the list of supported resolutions.
+            if (activeCameraIndex() == 1 && size.width() == 640 && size.height() == 480) {
+                continue;
+            }
+            sizesAsStrings.append(QString("%1x%2").arg(size.width()).arg(size.height()));
+        }
+        return sizesAsStrings;
+    } else {
+        return QStringList();
+    }
+}
+
 
 bool AdvancedCameraSettings::hasFlash() const
 {

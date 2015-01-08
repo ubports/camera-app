@@ -30,6 +30,13 @@ camera-app (3.0.0+15.04.20141209-0ubuntu1) vivid; urgency=low
 
  -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 09 Dec 2014 21:48:24 +0000
 
+camera-app (3.0.0+15.04.20141205-0ubuntu2) UNRELEASED; urgency=medium
+
+  [ Florian Boucault ]
+  * Add dependency on python3-mediainfodll to camera-app-autopilot
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Wed, 10 Dec 2014 15:16:28 -0200
+
 camera-app (3.0.0+15.04.20141205-0ubuntu1) vivid; urgency=low
 
   [ Ubuntu daily release ]
