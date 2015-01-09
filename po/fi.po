@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-12-11 10:23-0200\n"
+"POT-Creation-Date: 2014-12-15 08:50-0200\n"
 "PO-Revision-Date: 2014-12-14 19:50+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-15 06:31+0000\n"
-"X-Generator: Launchpad (build 17286)\n"
+"X-Launchpad-Export-Date: 2015-01-09 06:03+0000\n"
+"X-Generator: Launchpad (build 17298)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -49,55 +49,55 @@ msgstr "Vedä vasemmalle avataksesi kuvarullan"
 msgid "Share"
 msgstr "Jaa"
 
-#: ../ViewFinderOverlay.qml:141 ../ViewFinderOverlay.qml:164
-#: ../ViewFinderOverlay.qml:192 ../ViewFinderOverlay.qml:215
-#: ../ViewFinderOverlay.qml:292
+#: ../ViewFinderOverlay.qml:185 ../ViewFinderOverlay.qml:208
+#: ../ViewFinderOverlay.qml:236 ../ViewFinderOverlay.qml:259
+#: ../ViewFinderOverlay.qml:336
 msgid "On"
 msgstr "Päällä"
 
-#: ../ViewFinderOverlay.qml:146 ../ViewFinderOverlay.qml:174
-#: ../ViewFinderOverlay.qml:197 ../ViewFinderOverlay.qml:220
-#: ../ViewFinderOverlay.qml:239 ../ViewFinderOverlay.qml:297
+#: ../ViewFinderOverlay.qml:190 ../ViewFinderOverlay.qml:218
+#: ../ViewFinderOverlay.qml:241 ../ViewFinderOverlay.qml:264
+#: ../ViewFinderOverlay.qml:283 ../ViewFinderOverlay.qml:341
 msgid "Off"
 msgstr "Pois"
 
-#: ../ViewFinderOverlay.qml:169
+#: ../ViewFinderOverlay.qml:213
 msgid "Auto"
 msgstr "Automaattinen"
 
-#: ../ViewFinderOverlay.qml:206
+#: ../ViewFinderOverlay.qml:250
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:244
+#: ../ViewFinderOverlay.qml:288
 msgid "5 seconds"
 msgstr "5 sekuntia"
 
-#: ../ViewFinderOverlay.qml:249
+#: ../ViewFinderOverlay.qml:293
 msgid "15 seconds"
 msgstr "15 sekuntia"
 
-#: ../ViewFinderOverlay.qml:266
+#: ../ViewFinderOverlay.qml:310
 msgid "Fine Quality"
 msgstr "Hyvä laatu"
 
-#: ../ViewFinderOverlay.qml:270
+#: ../ViewFinderOverlay.qml:314
 msgid "Normal Quality"
 msgstr "Normaali laatu"
 
-#: ../ViewFinderOverlay.qml:274
+#: ../ViewFinderOverlay.qml:318
 msgid "Basic Quality"
 msgstr "Peruslaatu"
 
-#: ../ViewFinderOverlay.qml:306
+#: ../ViewFinderOverlay.qml:350
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:314
+#: ../ViewFinderOverlay.qml:358
 msgid "Save to SD Card"
 msgstr "Tallenna muistikortille"
 
-#: ../ViewFinderOverlay.qml:319
+#: ../ViewFinderOverlay.qml:363
 msgid "Save internally"
 msgstr "Tallenna sisäiseen tilaan"
 
