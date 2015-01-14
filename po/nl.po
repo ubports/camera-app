@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-12-15 08:50-0200\n"
-"PO-Revision-Date: 2014-10-30 08:58+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
+"PO-Revision-Date: 2015-01-13 16:21+0000\n"
+"Last-Translator: Hannie Dumoleyn <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-09 06:03+0000\n"
+"X-Launchpad-Export-Date: 2015-01-14 06:44+0000\n"
 "X-Generator: Launchpad (build 17298)\n"
 
 #: ../DeleteDialog.qml:24
@@ -35,7 +35,7 @@ msgstr "Geen media beschikbaar."
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr ""
+msgstr "Selecteren"
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
@@ -71,35 +71,35 @@ msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:288
 msgid "5 seconds"
-msgstr ""
+msgstr "5 seconden"
 
 #: ../ViewFinderOverlay.qml:293
 msgid "15 seconds"
-msgstr ""
+msgstr "15 seconden"
 
 #: ../ViewFinderOverlay.qml:310
 msgid "Fine Quality"
-msgstr ""
+msgstr "Goede kwaliteit"
 
 #: ../ViewFinderOverlay.qml:314
 msgid "Normal Quality"
-msgstr ""
+msgstr "Standaard kwaliteit"
 
 #: ../ViewFinderOverlay.qml:318
 msgid "Basic Quality"
-msgstr ""
+msgstr "Basiskwaliteit"
 
 #: ../ViewFinderOverlay.qml:350
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:358
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Opslaan op SD-kaart"
 
 #: ../ViewFinderOverlay.qml:363
 msgid "Save internally"
-msgstr ""
+msgstr "Intern opslaan"
 
 #: ../camera-app.qml:36
 msgid "Flash"
