@@ -81,6 +81,10 @@ class MainWindow(object):
         """Returns the grid lines toggle button of the camera"""
         return self.get_option_button("gridEnabled")
 
+    def get_video_resolution_button(self):
+        """Returns the video resolution button of the camera"""
+        return self.get_option_button("videoResolution")
+
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")
