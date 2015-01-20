@@ -185,7 +185,7 @@ class TestCapture(CameraAppTestCase):
     def test_picture_quality_setting(self):
         qualities = [("Basic Quality", 60),
                      ("Normal Quality", 80),
-                     ("Fine Quality", 90)
+                     ("Fine Quality", 95)
                     ]
         for quality, expectedCompression in qualities:
             self.delete_all_photos()
