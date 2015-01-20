@@ -318,7 +318,7 @@ Item {
 
                 ListElement {
                     label: QT_TR_NOOP("Fine Quality")
-                    value: 3 // QMultimedia.HighQuality
+                    value: 4 // QMultimedia.VeryHighQuality
                 }
                 ListElement {
                     label: QT_TR_NOOP("Normal Quality")
