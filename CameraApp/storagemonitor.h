@@ -47,6 +47,9 @@ private Q_SLOTS:
     void refresh();
 
 private:
+    void checkDiskSpace();
+
+private:
     bool m_low;
     bool m_criticallyLow;
     QTimer m_timer;

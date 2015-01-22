@@ -20,7 +20,7 @@
 #include <QDebug>
 
 const int POLL_INTERVAL = 1000;
-const qint64 LOW_SPACE_THRESHOLD = 3917370000;// * 1024 * 100;
+const qint64 LOW_SPACE_THRESHOLD = 1024 * 1024 * 100;
 const qint64 CRITICALLY_LOW_SPACE_THRESHOLD = 1024 * 1024 * 13;
 
 StorageMonitor::StorageMonitor(QObject *parent) :
@@ -34,30 +34,31 @@ StorageMonitor::StorageMonitor(QObject *parent) :
 void StorageMonitor::refresh()
 {
     m_storage.refresh();
+    checkDiskSpace();
+}
+
+void StorageMonitor::checkDiskSpace() {
+    bool currentLow;
+    bool currentCriticallyLow;
+
+    m_storage.refresh();
     if (m_storage.isValid() && m_storage.isReady()) {
         qint64 freeSpace = m_storage.bytesFree();
-
-        bool current = (freeSpace <= LOW_SPACE_THRESHOLD);
-        if (current != m_low) {
-            m_low = current;
-            Q_EMIT(diskSpaceLowChanged());
-        }
-
-        current = (freeSpace <= CRITICALLY_LOW_SPACE_THRESHOLD);
-        if (current != m_criticallyLow) {
-            m_criticallyLow = current;
-            Q_EMIT(diskSpaceCriticallyLowChanged());
-        }
+        currentLow = (freeSpace <= LOW_SPACE_THRESHOLD);
+        currentCriticallyLow = (freeSpace <= CRITICALLY_LOW_SPACE_THRESHOLD);
     } else {
-        if (m_low) {
-            m_low = false;
-            Q_EMIT(diskSpaceLowChanged());
-        }
+        currentLow = false;
+        currentCriticallyLow = false;
+    }
 
-        if (m_criticallyLow) {
-            m_criticallyLow = false;
-            Q_EMIT(diskSpaceCriticallyLowChanged());
-        }
+    if (currentLow != m_low) {
+        m_low = currentLow;
+        Q_EMIT(diskSpaceLowChanged());
+    }
+
+    if (currentCriticallyLow != m_criticallyLow) {
+        m_criticallyLow = currentCriticallyLow;
+        Q_EMIT(diskSpaceCriticallyLowChanged());
     }
 }
 
@@ -70,6 +71,7 @@ void StorageMonitor::setLocation(QString location)
 
             m_location = location;
             m_storage.setPath(m_location);
+            checkDiskSpace();
 
             m_timer.start();
         }
