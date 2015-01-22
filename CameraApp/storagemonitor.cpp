@@ -41,7 +41,6 @@ void StorageMonitor::checkDiskSpace() {
     bool currentLow;
     bool currentCriticallyLow;
 
-    m_storage.refresh();
     if (m_storage.isValid() && m_storage.isReady()) {
         qint64 freeSpace = m_storage.bytesFree();
         currentLow = (freeSpace <= LOW_SPACE_THRESHOLD);
