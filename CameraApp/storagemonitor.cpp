@@ -16,9 +16,6 @@
 
 #include "storagemonitor.h"
 
-#include <QDir>
-#include <QDebug>
-
 const int POLL_INTERVAL = 1000;
 const qint64 MEGABYTE = 1024 * 1024;
 const qint64 LOW_SPACE_THRESHOLD = 100 * MEGABYTE;
@@ -53,12 +50,12 @@ void StorageMonitor::checkDiskSpace() {
 
     if (currentLow != m_low) {
         m_low = currentLow;
-        Q_EMIT(diskSpaceLowChanged());
+        Q_EMIT diskSpaceLowChanged();
     }
 
     if (currentCriticallyLow != m_criticallyLow) {
         m_criticallyLow = currentCriticallyLow;
-        Q_EMIT(diskSpaceCriticallyLowChanged());
+        Q_EMIT diskSpaceCriticallyLowChanged();
     }
 }
 
