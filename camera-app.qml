@@ -21,6 +21,7 @@ import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 
 Item {
     id: main
@@ -224,5 +225,16 @@ Item {
         emptyFormat: i18n.tr("No videos recorded today")
         domain: "camera-app"
         minimum: 0.0
+    }
+
+    StorageMonitor {
+        id: monitor
+        location: "/home/phablet/Videos/"
+        onDiskSpaceLowChanged: console.log("************** below low ****************", diskSpaceLow);
+        onDiskSpaceCriticallyLowChanged: console.log("************** below critically low ****************", diskSpaceCriticallyLow);
+        Component.onCompleted: {
+            console.log("************** low ****************", monitor.diskSpaceLow);
+            console.log("************** crit low ****************", monitor.diskSpaceCriticallyLow);
+        }
     }
 }
