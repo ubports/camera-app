@@ -41,7 +41,7 @@ void StorageMonitor::checkDiskSpace() {
     bool currentLow;
     bool currentCriticallyLow;
 
-    if (m_storage.isValid() && m_storage.isReady()) {
+    if (m_storage.isReady()) {
         qint64 freeSpace = m_storage.bytesFree();
         currentLow = (freeSpace <= LOW_SPACE_THRESHOLD);
         currentCriticallyLow = (freeSpace <= CRITICALLY_LOW_SPACE_THRESHOLD);
@@ -64,16 +64,13 @@ void StorageMonitor::checkDiskSpace() {
 void StorageMonitor::setLocation(QString location)
 {
     if (location != m_location) {
-        QDir target(location);
-        if (target.exists()) {
-            m_timer.stop();
+        m_timer.stop();
+        m_location = location;
+        Q_EMIT locationChanged();
 
-            m_location = location;
-            m_storage.setPath(m_location);
-            checkDiskSpace();
-
-            m_timer.start();
-        }
+        m_storage.setPath(m_location);
+        checkDiskSpace();
+        if (m_storage.isValid()) m_timer.start();
     }
 }
 
