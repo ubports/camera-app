@@ -66,11 +66,14 @@ void StorageMonitor::setLocation(QString location)
     if (location != m_location) {
         m_timer.stop();
         m_location = location;
-        Q_EMIT locationChanged();
 
         m_storage.setPath(m_location);
         checkDiskSpace();
-        if (m_storage.isValid()) m_timer.start();
+        if (m_storage.isValid()) {
+            m_timer.start();
+        }
+
+        Q_EMIT locationChanged();
     }
 }
 
