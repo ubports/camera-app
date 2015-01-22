@@ -1,10 +1,26 @@
+/*
+ * Copyright (C) 2015 Canonical, Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "storagemonitor.h"
 
 #include <QDir>
 #include <QDebug>
 
 const int POLL_INTERVAL = 1000;
-const qint64 LOW_SPACE_THRESHOLD = 1024 * 1024 * 100;
+const qint64 LOW_SPACE_THRESHOLD = 3917370000;// * 1024 * 100;
 const qint64 CRITICALLY_LOW_SPACE_THRESHOLD = 1024 * 1024 * 13;
 
 StorageMonitor::StorageMonitor(QObject *parent) :
@@ -15,39 +31,34 @@ StorageMonitor::StorageMonitor(QObject *parent) :
     connect(&m_timer, SIGNAL(timeout()), SLOT(refresh()));
 }
 
-void StorageMonitor::checkDiskSpace(bool force)
+void StorageMonitor::refresh()
 {
     m_storage.refresh();
     if (m_storage.isValid() && m_storage.isReady()) {
         qint64 freeSpace = m_storage.bytesFree();
-        qDebug() << "checking disk space" << freeSpace;
 
         bool current = (freeSpace <= LOW_SPACE_THRESHOLD);
-        if (force || current != m_low) {
+        if (current != m_low) {
             m_low = current;
             Q_EMIT(diskSpaceLowChanged());
         }
 
         current = (freeSpace <= CRITICALLY_LOW_SPACE_THRESHOLD);
-        if (force || current != m_criticallyLow) {
+        if (current != m_criticallyLow) {
             m_criticallyLow = current;
             Q_EMIT(diskSpaceCriticallyLowChanged());
         }
     } else {
-        if (force || !m_low) {
-            m_low = true;
+        if (m_low) {
+            m_low = false;
             Q_EMIT(diskSpaceLowChanged());
         }
-        if (force || !m_criticallyLow) {
-            m_criticallyLow = true;
+
+        if (m_criticallyLow) {
+            m_criticallyLow = false;
             Q_EMIT(diskSpaceCriticallyLowChanged());
         }
     }
-}
-
-void StorageMonitor::refresh()
-{
-    checkDiskSpace(false);
 }
 
 void StorageMonitor::setLocation(QString location)
@@ -59,7 +70,6 @@ void StorageMonitor::setLocation(QString location)
 
             m_location = location;
             m_storage.setPath(m_location);
-            checkDiskSpace(true);
 
             m_timer.start();
         }
