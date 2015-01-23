@@ -17,6 +17,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
@@ -27,7 +28,7 @@ Item {
 
     property Camera camera
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
-    property real revealProgress: bottomEdge.progress
+    property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
 
@@ -632,7 +633,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready
+            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -766,6 +767,38 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    StorageMonitor {
+        id: storageMonitor
+        location: (application.removableStoragePresent && settings.preferRemovableStorage) ?
+                   application.removableStorageLocation : application.videosLocation
+        onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
+                                   PopupUtils.open(freeSpaceLowDialogComponent);
+                               }
+    }
+
+    NoSpaceHint {
+        id: noSpaceHint
+        anchors.fill: parent
+        visible: storageMonitor.diskSpaceCriticallyLow
+    }
+
+    Component {
+         id: freeSpaceLowDialogComponent
+         Dialog {
+             id: freeSpaceLowDialog
+             title: i18n.tr("Low Storage Space")
+             text: i18n.tr("Your device's free space is running low. Free space soon to continue being able to take photos and record videos.")
+             Button {
+                 text: i18n.tr("Dismiss")
+                 onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+             Button {
+                 text: i18n.tr("Analyse space use")
+                 onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
     }
 
     Loader {
