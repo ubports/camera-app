@@ -98,6 +98,13 @@ void FoldersModel::updateFileInfoList()
         return;
     }
 
+    beginResetModel();
+    m_fileInfoList.clear();
+    endResetModel();
+    m_selectedFiles.clear();
+    Q_EMIT selectedFilesChanged();
+    Q_EMIT countChanged();
+
     m_updateFutureWatcher.cancel();
     QFuture<QPair<QFileInfoList, QStringList> > future = QtConcurrent::run(this, &FoldersModel::computeFileInfoList, m_folders);
     m_updateFutureWatcher.setFuture(future);
@@ -138,9 +145,7 @@ void FoldersModel::setFileInfoList(const QFileInfoList& fileInfoList, const QStr
     // Start monitoring files for modifications in a separate thread as it is very time consuming
     QtConcurrent::run(m_watcher, &QFileSystemWatcher::addPaths, filesToWatch);
 
-    m_selectedFiles.clear();
     Q_EMIT countChanged();
-    Q_EMIT selectedFilesChanged();
 }
 
 bool FoldersModel::fileMatchesTypeFilters(const QFileInfo& newFileInfo)
