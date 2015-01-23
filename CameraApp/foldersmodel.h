@@ -24,8 +24,9 @@
 #include <QtCore/QMimeDatabase>
 #include <QtCore/QSet>
 #include <QtCore/QFutureWatcher>
+#include <QtQml/QQmlParserStatus>
 
-class FoldersModel : public QAbstractListModel
+class FoldersModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY (QStringList folders READ folders WRITE setFolders NOTIFY foldersChanged)
@@ -68,6 +69,10 @@ public:
     Q_INVOKABLE void clearSelection();
     Q_INVOKABLE void selectAll();
 
+    // inherited from QQmlParserStatus
+    void classBegin();
+    void componentComplete();
+
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
     void fileChanged(const QString &directoryPath);
@@ -89,6 +94,7 @@ private:
     QSet<int> m_selectedFiles;
     bool m_singleSelectionOnly;
     QFutureWatcher<QPair<QFileInfoList, QStringList> > m_updateFutureWatcher;
+    bool m_completed;
 };
 
 #endif // FOLDERSMODEL_H

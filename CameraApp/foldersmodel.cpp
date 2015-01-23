@@ -31,7 +31,8 @@ bool newerThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
 
 FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
-    m_singleSelectionOnly(true)
+    m_singleSelectionOnly(true),
+    m_completed(false)
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
@@ -93,6 +94,10 @@ int FoldersModel::count() const
 
 void FoldersModel::updateFileInfoList()
 {
+    if (!m_completed) {
+        return;
+    }
+
     m_updateFutureWatcher.cancel();
     QFuture<QPair<QFileInfoList, QStringList> > future = QtConcurrent::run(this, &FoldersModel::computeFileInfoList, m_folders);
     m_updateFutureWatcher.setFuture(future);
@@ -318,4 +323,14 @@ void FoldersModel::selectAll()
         if (!m_selectedFiles.contains(row))
             toggleSelected(row);
     }
+}
+
+void FoldersModel::classBegin()
+{
+}
+
+void FoldersModel::componentComplete()
+{
+    m_completed = true;
+    updateFileInfoList();
 }
