@@ -22,6 +22,11 @@
 
 #include "qstorageinfo.h"
 
+const int POLL_INTERVAL = 1000;
+const qint64 MEGABYTE = 1024 * 1024;
+const qint64 LOW_SPACE_THRESHOLD = 100 * MEGABYTE;
+const qint64 CRITICALLY_LOW_SPACE_THRESHOLD = 13 * MEGABYTE;
+
 class StorageMonitor : public QObject
 {
     Q_OBJECT

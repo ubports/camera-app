@@ -15,7 +15,6 @@
  */
 
 #include "storagemonitor.h"
-#include "storagemonitor_p.h"
 
 StorageMonitor::StorageMonitor(QObject *parent) :
     QObject(parent), m_low(false), m_criticallyLow(false)

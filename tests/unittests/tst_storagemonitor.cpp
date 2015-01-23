@@ -20,7 +20,6 @@
 
 #include "storagemonitor.h"
 #include "storageinfocontrol.h"
-#include "storagemonitor_p.h"
 
 class tst_StorageMonitor : public QObject
 {
