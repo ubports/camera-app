@@ -226,15 +226,4 @@ Item {
         domain: "camera-app"
         minimum: 0.0
     }
-
-    StorageMonitor {
-        id: monitor
-        location: "/home/phablet/Videos/"
-        onDiskSpaceLowChanged: console.log("************** below low ****************", diskSpaceLow);
-        onDiskSpaceCriticallyLowChanged: console.log("************** below critically low ****************", diskSpaceCriticallyLow);
-        Component.onCompleted: {
-            console.log("************** low ****************", monitor.diskSpaceLow);
-            console.log("************** crit low ****************", monitor.diskSpaceCriticallyLow);
-        }
-    }
 }
