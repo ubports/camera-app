@@ -17,7 +17,6 @@ set(plugin_HDRS
     fileoperations.h
     foldersmodel.h
     storagemonitor.h
-    storagemonitor_p.h
     qstorageinfo.h
     qstorageinfo_p.h
     )
