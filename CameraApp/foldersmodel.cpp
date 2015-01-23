@@ -106,16 +106,14 @@ QPair<QFileInfoList, QStringList> FoldersModel::computeFileInfoList(QStringList 
     Q_FOREACH (QString folder, folders) {
         QDir currentDir(folder);
         QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
-                                                              QDir::Time | QDir::Reversed);
+                                                              QDir::Time);
         Q_FOREACH (QFileInfo fileInfo, fileInfoList) {
-            if (fileInfo.isDir()) continue;
             filesToWatch.append(fileInfo.absoluteFilePath());
             if (fileMatchesTypeFilters(fileInfo)) {
                 filteredFileInfoList.append(fileInfo);
             }
         }
     }
-    qSort(filteredFileInfoList.begin(), filteredFileInfoList.end(), newerThan);
     return QPair<QFileInfoList, QStringList>(filteredFileInfoList, filesToWatch);
 }
 
@@ -239,13 +237,12 @@ void FoldersModel::directoryChanged(const QString &directoryPath)
     QStringList watchedFiles = m_watcher->files();
     QDir directory(directoryPath);
     QStringList files = directory.entryList(QDir::Files | QDir::Readable,
-                                            QDir::Time | QDir::Reversed);
+                                            QDir::Time);
 
     Q_FOREACH (QString fileName, files) {
         QString filePath = directory.absoluteFilePath(fileName);
         if (!watchedFiles.contains(filePath)) {
             QFileInfo fileInfo(filePath);
-            if (fileInfo.isDir()) continue;
             m_watcher->addPath(filePath);
             if (fileMatchesTypeFilters(fileInfo)) {
                insertFileInfo(fileInfo);
