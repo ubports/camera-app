@@ -18,6 +18,16 @@
 #include <QtCore/QDir>
 #include <QtCore/QUrl>
 #include <QtCore/QDateTime>
+#include <QtCore/QFuture>
+#include <QtCore/QFutureWatcher>
+#include <QtCore/QtAlgorithms>
+#include <QtConcurrent/QtConcurrentRun>
+
+bool newerThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
+{
+    return fileInfo1.lastModified() > fileInfo2.lastModified();
+}
+
 
 FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
@@ -26,6 +36,7 @@ FoldersModel::FoldersModel(QObject *parent) :
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
     connect(m_watcher, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
+    connect(&m_updateFutureWatcher, SIGNAL(finished()), this, SLOT(updateFileInfoListFinished()));
 }
 
 QStringList FoldersModel::folders() const
@@ -82,29 +93,50 @@ int FoldersModel::count() const
 
 void FoldersModel::updateFileInfoList()
 {
-    beginResetModel();
-    m_fileInfoList.clear();
-    Q_FOREACH (QString folder, m_folders) {
+    m_updateFutureWatcher.cancel();
+    QFuture<QPair<QFileInfoList, QStringList> > future = QtConcurrent::run(this, &FoldersModel::computeFileInfoList, m_folders);
+    m_updateFutureWatcher.setFuture(future);
+}
+
+QPair<QFileInfoList, QStringList> FoldersModel::computeFileInfoList(QStringList folders)
+{
+    QFileInfoList filteredFileInfoList;
+    QStringList filesToWatch;
+
+    Q_FOREACH (QString folder, folders) {
         QDir currentDir(folder);
         QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
                                                               QDir::Time | QDir::Reversed);
         Q_FOREACH (QFileInfo fileInfo, fileInfoList) {
             if (fileInfo.isDir()) continue;
-            m_watcher->addPath(fileInfo.absoluteFilePath());
+            filesToWatch.append(fileInfo.absoluteFilePath());
             if (fileMatchesTypeFilters(fileInfo)) {
-                insertFileInfo(fileInfo, false);
+                filteredFileInfoList.append(fileInfo);
             }
         }
     }
+    qSort(filteredFileInfoList.begin(), filteredFileInfoList.end(), newerThan);
+    return QPair<QFileInfoList, QStringList>(filteredFileInfoList, filesToWatch);
+}
+
+void FoldersModel::updateFileInfoListFinished()
+{
+    QPair<QFileInfoList, QStringList> result = m_updateFutureWatcher.result();
+    setFileInfoList(result.first, result.second);
+}
+
+void FoldersModel::setFileInfoList(const QFileInfoList& fileInfoList, const QStringList& filesToWatch)
+{
+    beginResetModel();
+    m_fileInfoList = fileInfoList;
     endResetModel();
+
+    // Start monitoring files for modifications in a separate thread as it is very time consuming
+    QtConcurrent::run(m_watcher, &QFileSystemWatcher::addPaths, filesToWatch);
+
     m_selectedFiles.clear();
     Q_EMIT countChanged();
     Q_EMIT selectedFilesChanged();
-}
-
-bool moreRecentThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
-{
-    return fileInfo1.lastModified() < fileInfo2.lastModified();
 }
 
 bool FoldersModel::fileMatchesTypeFilters(const QFileInfo& newFileInfo)
@@ -120,33 +152,25 @@ bool FoldersModel::fileMatchesTypeFilters(const QFileInfo& newFileInfo)
 
 // inserts newFileInfo into m_fileInfoList while keeping m_fileInfoList sorted by
 // file modification time with the files most recently modified first
-void FoldersModel::insertFileInfo(const QFileInfo& newFileInfo, bool emitChange)
+void FoldersModel::insertFileInfo(const QFileInfo& newFileInfo)
 {
     QFileInfoList::iterator i;
     for (i = m_fileInfoList.begin(); i != m_fileInfoList.end(); ++i) {
         QFileInfo fileInfo = *i;
-        if (!moreRecentThan(newFileInfo, fileInfo)) {
-            if (emitChange) {
-                int index = m_fileInfoList.indexOf(*i);
-                beginInsertRows(QModelIndex(), index, index);
-                m_fileInfoList.insert(i, newFileInfo);
-                endInsertRows();
-            } else {
-                m_fileInfoList.insert(i, newFileInfo);
-            }
+        if (newerThan(newFileInfo, fileInfo)) {
+            int index = m_fileInfoList.indexOf(*i);
+            beginInsertRows(QModelIndex(), index, index);
+            m_fileInfoList.insert(i, newFileInfo);
+            endInsertRows();
             return;
         }
     }
 
-    if (emitChange) {
-        int index = m_fileInfoList.size();
-        beginInsertRows(QModelIndex(), index, index);
-        m_fileInfoList.append(newFileInfo);
-        endInsertRows();
-        Q_EMIT countChanged();
-    } else {
-        m_fileInfoList.append(newFileInfo);
-    }
+    int index = m_fileInfoList.size();
+    beginInsertRows(QModelIndex(), index, index);
+    m_fileInfoList.append(newFileInfo);
+    endInsertRows();
+    Q_EMIT countChanged();
 }
 
 QHash<int, QByteArray> FoldersModel::roleNames() const
@@ -224,7 +248,7 @@ void FoldersModel::directoryChanged(const QString &directoryPath)
             if (fileInfo.isDir()) continue;
             m_watcher->addPath(filePath);
             if (fileMatchesTypeFilters(fileInfo)) {
-               insertFileInfo(fileInfo, true);
+               insertFileInfo(fileInfo);
             }
         }
     }
@@ -242,7 +266,7 @@ void FoldersModel::fileChanged(const QString &filePath)
         if (fileIndex == -1) {
             // file's type might have changed and file might have to be included
             if (fileMatchesTypeFilters(fileInfo)) {
-                insertFileInfo(fileInfo, true);
+                insertFileInfo(fileInfo);
             }
         } else {
             // update file information

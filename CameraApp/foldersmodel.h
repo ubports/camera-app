@@ -23,6 +23,7 @@
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QMimeDatabase>
 #include <QtCore/QSet>
+#include <QtCore/QFutureWatcher>
 
 class FoldersModel : public QAbstractListModel
 {
@@ -54,8 +55,10 @@ public:
     int count() const;
 
     void updateFileInfoList();
+    QPair<QFileInfoList, QStringList> computeFileInfoList(QStringList folders);
     bool fileMatchesTypeFilters(const QFileInfo& newFileInfo);
-    void insertFileInfo(const QFileInfo& newFileInfo, bool emitChange);
+    void insertFileInfo(const QFileInfo& newFileInfo);
+    void setFileInfoList(const QFileInfoList& fileInfoList, const QStringList& filesToWatch);
 
     QHash<int, QByteArray> roleNames() const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
@@ -68,6 +71,7 @@ public:
 public Q_SLOTS:
     void directoryChanged(const QString &directoryPath);
     void fileChanged(const QString &directoryPath);
+    void updateFileInfoListFinished();
 
 Q_SIGNALS:
     void foldersChanged();
@@ -84,6 +88,7 @@ private:
     QMimeDatabase m_mimeDatabase;
     QSet<int> m_selectedFiles;
     bool m_singleSelectionOnly;
+    QFutureWatcher<QPair<QFileInfoList, QStringList> > m_updateFutureWatcher;
 };
 
 #endif // FOLDERSMODEL_H
