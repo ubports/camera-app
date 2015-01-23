@@ -30,7 +30,7 @@ Item {
         width: parent.width - 2 * units.gu(2)
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.Wrap
-        text: i18n.tr("No space left on device. Remove photos or videos to be able to take more.")
+        text: i18n.tr("No space left on device, free up space to continue.")
         fontSize: "x-large"
         color: "#ebebeb"
     }

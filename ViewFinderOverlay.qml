@@ -776,6 +776,9 @@ Item {
         onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
                                    PopupUtils.open(freeSpaceLowDialogComponent);
                                }
+        onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
+                                             camera.videoRecorder.stop();
+                                         }
     }
 
     NoSpaceHint {
@@ -788,14 +791,10 @@ Item {
          id: freeSpaceLowDialogComponent
          Dialog {
              id: freeSpaceLowDialog
-             title: i18n.tr("Low Storage Space")
-             text: i18n.tr("Your device's free space is running low. Free space soon to continue being able to take photos and record videos.")
+             title: i18n.tr("Low storage space")
+             text: i18n.tr("You are running out of storage space. To continue without interruptions, free up storage space now.")
              Button {
-                 text: i18n.tr("Dismiss")
-                 onClicked: PopupUtils.close(freeSpaceLowDialog)
-             }
-             Button {
-                 text: i18n.tr("Analyse space use")
+                 text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
              }
          }
