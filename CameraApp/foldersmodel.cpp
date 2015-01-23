@@ -114,6 +114,7 @@ QPair<QFileInfoList, QStringList> FoldersModel::computeFileInfoList(QStringList 
             }
         }
     }
+    qSort(filteredFileInfoList.begin(), filteredFileInfoList.end(), newerThan);
     return QPair<QFileInfoList, QStringList>(filteredFileInfoList, filesToWatch);
 }
 
