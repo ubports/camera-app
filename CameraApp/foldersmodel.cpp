@@ -325,9 +325,12 @@ void FoldersModel::clearSelection()
 void FoldersModel::selectAll()
 {
     for (int row = 0; row < m_fileInfoList.size(); ++row) {
-        if (!m_selectedFiles.contains(row))
-            toggleSelected(row);
+        if (!m_selectedFiles.contains(row)) {
+            m_selectedFiles.insert(row);
+        }
+        Q_EMIT dataChanged(index(row), index(row));
     }
+    Q_EMIT selectedFilesChanged();
 }
 
 void FoldersModel::classBegin()
