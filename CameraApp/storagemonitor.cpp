@@ -15,11 +15,7 @@
  */
 
 #include "storagemonitor.h"
-
-const int POLL_INTERVAL = 1000;
-const qint64 MEGABYTE = 1024 * 1024;
-const qint64 LOW_SPACE_THRESHOLD = 100 * MEGABYTE;
-const qint64 CRITICALLY_LOW_SPACE_THRESHOLD = 13 * MEGABYTE;
+#include "storagemonitor_p.h"
 
 StorageMonitor::StorageMonitor(QObject *parent) :
     QObject(parent), m_low(false), m_criticallyLow(false)

@@ -1,4 +1,5 @@
 # QML plugin
+project(camera_plugin)
 
 set(plugin_SRCS
     components.cpp
@@ -16,6 +17,7 @@ set(plugin_HDRS
     fileoperations.h
     foldersmodel.h
     storagemonitor.h
+    storagemonitor_p.h
     qstorageinfo.h
     qstorageinfo_p.h
     )
