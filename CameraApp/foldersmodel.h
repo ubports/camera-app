@@ -34,6 +34,7 @@ class FoldersModel : public QAbstractListModel, public QQmlParserStatus
     Q_PROPERTY (QList<int> selectedFiles READ selectedFiles NOTIFY selectedFilesChanged)
     Q_PROPERTY (bool singleSelectionOnly READ singleSelectionOnly WRITE setSingleSelectionOnly NOTIFY singleSelectionOnlyChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
 
 public:
     enum Roles {
@@ -54,6 +55,7 @@ public:
     bool singleSelectionOnly() const;
     void setSingleSelectionOnly(bool singleSelectionOnly);
     int count() const;
+    bool loading() const;
 
     void updateFileInfoList();
     QPair<QFileInfoList, QStringList> computeFileInfoList(QStringList folders);
@@ -85,6 +87,7 @@ Q_SIGNALS:
     void selectedFilesChanged();
     void singleSelectionOnlyChanged();
     void countChanged();
+    void loadingChanged();
 
 private:
     QStringList m_folders;
@@ -96,6 +99,7 @@ private:
     bool m_singleSelectionOnly;
     QFutureWatcher<QPair<QFileInfoList, QStringList> > m_updateFutureWatcher;
     bool m_completed;
+    bool m_loading;
 };
 
 #endif // FOLDERSMODEL_H

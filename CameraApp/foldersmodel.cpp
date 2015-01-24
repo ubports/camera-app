@@ -32,7 +32,8 @@ bool newerThan(const QFileInfo& fileInfo1, const QFileInfo& fileInfo2)
 FoldersModel::FoldersModel(QObject *parent) :
     QAbstractListModel(parent),
     m_singleSelectionOnly(true),
-    m_completed(false)
+    m_completed(false),
+    m_loading(false)
 {
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
@@ -91,11 +92,19 @@ int FoldersModel::count() const
     return m_fileInfoList.count();
 }
 
+bool FoldersModel::loading() const
+{
+    return m_loading;
+}
+
 void FoldersModel::updateFileInfoList()
 {
     if (!m_completed) {
         return;
     }
+
+    m_loading = true;
+    Q_EMIT loadingChanged();
 
     beginResetModel();
     m_fileInfoList.clear();
@@ -144,6 +153,8 @@ void FoldersModel::setFileInfoList(const QFileInfoList& fileInfoList, const QStr
     // Start monitoring files for modifications in a separate thread as it is very time consuming
     QtConcurrent::run(m_watcher, &QFileSystemWatcher::addPaths, filesToWatch);
 
+    m_loading = false;
+    Q_EMIT loadingChanged();
     Q_EMIT countChanged();
 }
 
