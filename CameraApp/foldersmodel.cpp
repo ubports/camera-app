@@ -35,7 +35,6 @@ FoldersModel::FoldersModel(QObject *parent) :
     m_completed(false)
 {
     m_watcher = new QFileSystemWatcher(this);
-    connect(m_watcher, SIGNAL(directoryChanged(QString)), this, SLOT(directoryChanged(QString)));
     connect(m_watcher, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
     connect(&m_updateFutureWatcher, SIGNAL(finished()), this, SLOT(updateFileInfoListFinished()));
 }
@@ -238,30 +237,6 @@ QVariant FoldersModel::get(int row, QString role) const
     return data(index(row), roleNames().key(role.toUtf8()));
 }
 
-void FoldersModel::directoryChanged(const QString &directoryPath)
-{
-    /* Only react when a file is added. Ignore when a file was modified or
-     * deleted as this is taken care of by FoldersModel::fileChanged()
-     * To do so we go through all the files in directoryPath and add
-     * all the ones we were not watching before.
-     */
-    QStringList watchedFiles = m_watcher->files();
-    QDir directory(directoryPath);
-    QStringList files = directory.entryList(QDir::Files | QDir::Readable,
-                                            QDir::Time | QDir::Reversed);
-
-    Q_FOREACH (QString fileName, files) {
-        QString filePath = directory.absoluteFilePath(fileName);
-        if (!watchedFiles.contains(filePath)) {
-            QFileInfo fileInfo(filePath);
-            m_watcher->addPath(filePath);
-            if (fileMatchesTypeFilters(fileInfo)) {
-               insertFileInfo(fileInfo);
-            }
-        }
-    }
-}
-
 void FoldersModel::fileChanged(const QString &filePath)
 {
     /* Act appropriately upon file change or removal */
@@ -320,6 +295,17 @@ void FoldersModel::clearSelection()
         Q_EMIT dataChanged(index(selectedFile), index(selectedFile));
     }
     Q_EMIT selectedFilesChanged();
+}
+
+void FoldersModel::prependFile(QString filePath)
+{
+    if (!m_watcher->files().contains(filePath)) {
+        QFileInfo fileInfo(filePath);
+        m_watcher->addPath(filePath);
+        if (fileMatchesTypeFilters(fileInfo)) {
+           insertFileInfo(fileInfo);
+        }
+    }
 }
 
 void FoldersModel::selectAll()

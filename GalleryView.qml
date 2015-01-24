@@ -47,6 +47,10 @@ Item {
         showLastPhotoTakenPending = true;
     }
 
+    function prependMediaToModel(filePath) {
+        galleryView.model.prependFile(filePath);
+    }
+
     function exitUserSelectionMode() {
         if (gridMode) {
             model.clearSelection();

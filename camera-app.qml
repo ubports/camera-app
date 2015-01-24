@@ -152,8 +152,14 @@ Item {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
-                onPhotoTaken: galleryView.showLastPhotoTaken();
-                onVideoShot: galleryView.showLastPhotoTaken();
+                onPhotoTaken: {
+                    galleryView.prependMediaToModel(filePath);
+                    galleryView.showLastPhotoTaken();
+                }
+                onVideoShot: {
+                    galleryView.prependMediaToModel(filePath);
+                    galleryView.showLastPhotoTaken();
+                }
             }
 
             GalleryViewLoader {

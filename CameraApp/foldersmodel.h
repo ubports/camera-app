@@ -68,13 +68,13 @@ public:
     Q_INVOKABLE void toggleSelected(int row);
     Q_INVOKABLE void clearSelection();
     Q_INVOKABLE void selectAll();
+    Q_INVOKABLE void prependFile(QString filePath);
 
     // inherited from QQmlParserStatus
     void classBegin();
     void componentComplete();
 
 public Q_SLOTS:
-    void directoryChanged(const QString &directoryPath);
     void fileChanged(const QString &directoryPath);
     void updateFileInfoListFinished();
 
