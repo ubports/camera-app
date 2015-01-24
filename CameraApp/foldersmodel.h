@@ -69,6 +69,7 @@ public:
     Q_INVOKABLE void clearSelection();
     Q_INVOKABLE void selectAll();
     Q_INVOKABLE void prependFile(QString filePath);
+    Q_INVOKABLE void deleteSelectedFiles();
 
     // inherited from QQmlParserStatus
     void classBegin();

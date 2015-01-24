@@ -319,6 +319,16 @@ void FoldersModel::selectAll()
     Q_EMIT selectedFilesChanged();
 }
 
+void FoldersModel::deleteSelectedFiles()
+{
+    Q_FOREACH (int selectedFile, m_selectedFiles) {
+        QString filePath = m_fileInfoList.at(selectedFile).filePath();
+        QFile::remove(filePath);
+    }
+    m_selectedFiles.clear();
+    Q_EMIT selectedFilesChanged();
+}
+
 void FoldersModel::classBegin()
 {
 }
