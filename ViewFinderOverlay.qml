@@ -783,6 +783,7 @@ Item {
 
     NoSpaceHint {
         id: noSpaceHint
+        objectName: "noSpace"
         anchors.fill: parent
         visible: storageMonitor.diskSpaceCriticallyLow
     }
@@ -791,6 +792,7 @@ Item {
          id: freeSpaceLowDialogComponent
          Dialog {
              id: freeSpaceLowDialog
+             objectName: "lowSpaceDialog"
              title: i18n.tr("Low storage space")
              text: i18n.tr("You are running out of storage space. To continue without interruptions, free up storage space now.")
              Button {
