@@ -61,7 +61,7 @@ public:
     QPair<QFileInfoList, QStringList> computeFileInfoList(QStringList folders);
     bool fileMatchesTypeFilters(const QFileInfo& newFileInfo);
     void insertFileInfo(const QFileInfo& newFileInfo);
-    void setFileInfoList(const QFileInfoList& fileInfoList, const QStringList& filesToWatch);
+    void setFileInfoList(QFileInfoList fileInfoList, const QStringList& filesToWatch);
 
     QHash<int, QByteArray> roleNames() const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
