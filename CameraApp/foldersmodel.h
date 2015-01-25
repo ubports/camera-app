@@ -23,8 +23,10 @@
 #include <QtCore/QFileSystemWatcher>
 #include <QtCore/QMimeDatabase>
 #include <QtCore/QSet>
+#include <QtCore/QFutureWatcher>
+#include <QtQml/QQmlParserStatus>
 
-class FoldersModel : public QAbstractListModel
+class FoldersModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY (QStringList folders READ folders WRITE setFolders NOTIFY foldersChanged)
@@ -32,6 +34,7 @@ class FoldersModel : public QAbstractListModel
     Q_PROPERTY (QList<int> selectedFiles READ selectedFiles NOTIFY selectedFilesChanged)
     Q_PROPERTY (bool singleSelectionOnly READ singleSelectionOnly WRITE setSingleSelectionOnly NOTIFY singleSelectionOnlyChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
 
 public:
     enum Roles {
@@ -52,10 +55,13 @@ public:
     bool singleSelectionOnly() const;
     void setSingleSelectionOnly(bool singleSelectionOnly);
     int count() const;
+    bool loading() const;
 
     void updateFileInfoList();
+    QPair<QFileInfoList, QStringList> computeFileInfoList(QStringList folders);
     bool fileMatchesTypeFilters(const QFileInfo& newFileInfo);
-    void insertFileInfo(const QFileInfo& newFileInfo, bool emitChange);
+    void insertFileInfo(const QFileInfo& newFileInfo);
+    void setFileInfoList(const QFileInfoList& fileInfoList, const QStringList& filesToWatch);
 
     QHash<int, QByteArray> roleNames() const;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
@@ -64,10 +70,16 @@ public:
     Q_INVOKABLE void toggleSelected(int row);
     Q_INVOKABLE void clearSelection();
     Q_INVOKABLE void selectAll();
+    Q_INVOKABLE void prependFile(QString filePath);
+    Q_INVOKABLE void deleteSelectedFiles();
+
+    // inherited from QQmlParserStatus
+    void classBegin();
+    void componentComplete();
 
 public Q_SLOTS:
-    void directoryChanged(const QString &directoryPath);
     void fileChanged(const QString &directoryPath);
+    void updateFileInfoListFinished();
 
 Q_SIGNALS:
     void foldersChanged();
@@ -75,6 +87,7 @@ Q_SIGNALS:
     void selectedFilesChanged();
     void singleSelectionOnlyChanged();
     void countChanged();
+    void loadingChanged();
 
 private:
     QStringList m_folders;
@@ -84,6 +97,9 @@ private:
     QMimeDatabase m_mimeDatabase;
     QSet<int> m_selectedFiles;
     bool m_singleSelectionOnly;
+    QFutureWatcher<QPair<QFileInfoList, QStringList> > m_updateFutureWatcher;
+    bool m_completed;
+    bool m_loading;
 };
 
 #endif // FOLDERSMODEL_H

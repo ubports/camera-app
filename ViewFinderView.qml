@@ -29,8 +29,8 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
     property alias captureMode: camera.captureMode
-    signal photoTaken
-    signal videoShot
+    signal photoTaken(string filePath)
+    signal videoShot(string filePath)
 
     Camera {
         id: camera
@@ -84,18 +84,19 @@ Item {
             }
             onImageCaptured: {
                 snapshot.source = preview;
-            }
-            onImageSaved: {
-                if (main.contentExportMode) {
-                    viewFinderExportConfirmation.confirmExport(path);
-                } else {
+                if (!main.contentExportMode) {
                     viewFinderOverlay.visible = true;
                     snapshot.startOutAnimation();
                     if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
                 }
-                viewFinderView.photoTaken();
+            }
+            onImageSaved: {
+                if (main.contentExportMode) {
+                    viewFinderExportConfirmation.confirmExport(path);
+                }
+                viewFinderView.photoTaken(path);
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -109,7 +110,7 @@ Item {
                     }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
-                    viewFinderView.videoShot();
+                    viewFinderView.videoShot(videoRecorder.actualLocation);
                 }
             }
         }
