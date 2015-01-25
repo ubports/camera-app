@@ -1,3 +1,22 @@
+camera-app (3.0.0+15.04.20150125-0ubuntu1) vivid; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Image quality setting: set "Fine Quality" to the maximum quality.
+    More appropriate user wise and fixes failing AP test.
+  * Asynchronously scan the filesystem for media. Fixes freeze at
+    startup with a huge amount of media. Significantly faster deletion
+    when deleting a huge amount of media. Taking a photo is now always
+    fast even with a huge amount of media. (LP: #1413950)
+  * SD Card: use app specific subfolder of Videos and Pictures to
+    read/write videos and pictures.
+  * Fixed issue where recording video on SD card prevents recording on
+    internal storage later.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Sun, 25 Jan 2015 03:06:33 +0000
+
 camera-app (3.0.0+15.04.20150108-0ubuntu1) vivid; urgency=low
 
   [ Ubuntu daily release ]
