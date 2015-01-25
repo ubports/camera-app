@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-24 16:50-0500\n"
+"POT-Creation-Date: 2015-01-25 12:17-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,12 +25,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:799
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:802
 msgid "Cancel"
 msgstr ""
 
-#: ../GalleryView.qml:182
+#: ../GalleryView.qml:186
 msgid "No media available."
+msgstr ""
+
+#: ../GalleryView.qml:220
+msgid "Scanning for content..."
 msgstr ""
 
 #: ../GalleryViewHeader.qml:75
@@ -105,11 +109,11 @@ msgstr ""
 msgid "Save internally"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:796
+#: ../ViewFinderOverlay.qml:799
 msgid "Low storage space"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:797
+#: ../ViewFinderOverlay.qml:800
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -155,21 +159,21 @@ msgstr ""
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr ""
 
-#: ../camera-app.qml:215
+#: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr ""
 
-#: ../camera-app.qml:216
+#: ../camera-app.qml:222
 msgid "No photos taken today"
 msgstr ""
 
-#: ../camera-app.qml:224
+#: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr ""
 
-#: ../camera-app.qml:225
+#: ../camera-app.qml:231
 msgid "No videos recorded today"
 msgstr ""
 

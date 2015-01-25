@@ -79,6 +79,12 @@ Item {
         // were hitting https://bugreports.qt-project.org/browse/QTBUG-41035
         highlightMoveDuration: 0
         snapMode: ListView.SnapOneItem
+        onCountChanged: {
+            // currentIndex is -1 by default and stays so until manually set to something else
+            if (currentIndex == -1 && count != 0) {
+                currentIndex = 0;
+            }
+        }
         spacing: units.gu(1)
         interactive: currentItem ? !currentItem.pinchInProgress : true
         property real maxDimension: Math.max(width, height)

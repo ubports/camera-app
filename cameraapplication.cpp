@@ -182,7 +182,7 @@ QString CameraApplication::removableStoragePicturesLocation() const
     if (pictureDir.isEmpty()){
         return QString();
     }
-    QString location = storageLocation + "/" + pictureDir;
+    QString location = storageLocation + "/" + pictureDir + "/" + QCoreApplication::applicationName();
     QDir dir;
     dir.mkpath(location);
     return location;
@@ -200,7 +200,7 @@ QString CameraApplication::removableStorageVideosLocation() const
     if (movieDir.isEmpty()){
         return QString();
     }
-    QString location = storageLocation + "/" + movieDir;
+    QString location = storageLocation + "/" + movieDir + "/" + QCoreApplication::applicationName();
     QDir dir;
     dir.mkpath(location);
     return location;
