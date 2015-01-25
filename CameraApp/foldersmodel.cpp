@@ -144,8 +144,15 @@ void FoldersModel::updateFileInfoListFinished()
     setFileInfoList(result.first, result.second);
 }
 
-void FoldersModel::setFileInfoList(const QFileInfoList& fileInfoList, const QStringList& filesToWatch)
+void FoldersModel::setFileInfoList(QFileInfoList fileInfoList, const QStringList& filesToWatch)
 {
+    // prepend files that have been added while the list was computed
+    Q_FOREACH (QFileInfo fileInfo, m_fileInfoList) {
+        if(!fileInfoList.contains(fileInfo)) {
+            fileInfoList.prepend(fileInfo);
+        }
+    }
+
     beginResetModel();
     m_fileInfoList = fileInfoList;
     endResetModel();

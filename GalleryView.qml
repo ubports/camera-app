@@ -193,7 +193,7 @@ Item {
     Rectangle {
         objectName: "scanningMediaHint"
         anchors.fill: parent
-        visible: model.loading
+        visible: model.count === 0 && model.loading
         color: "#0F0F0F"
 
         Icon {
