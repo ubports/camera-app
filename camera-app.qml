@@ -21,6 +21,7 @@ import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 
 Item {
     id: main
