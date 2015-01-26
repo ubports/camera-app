@@ -47,7 +47,7 @@ void QStorageInfo::setPath(const QString &path)
     location = path;
 }
 
-qint64 QStorageInfo::bytesFree() const
+qint64 QStorageInfo::bytesAvailable() const
 {
     return StorageInfoControl::instance()->freeSpaceMap[location];
 }
