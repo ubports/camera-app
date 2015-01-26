@@ -27,6 +27,11 @@ Loader {
         loader.item.showLastPhotoTaken();
     }
 
+    function prependMediaToModel(filePath) {
+        loader.item.prependMediaToModel(filePath);
+    }
+
+
     asynchronous: true
 
     Component.onCompleted: {

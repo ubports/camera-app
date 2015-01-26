@@ -518,7 +518,10 @@ Item {
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                } else {
+                    camera.videoRecorder.outputLocation = application.videosLocation;
                 }
+
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();

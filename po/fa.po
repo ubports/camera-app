@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-12-15 08:50-0200\n"
+"POT-Creation-Date: 2015-01-24 15:51-0200\n"
 "PO-Revision-Date: 2014-11-03 20:05+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-09 06:03+0000\n"
-"X-Generator: Launchpad (build 17298)\n"
+"X-Launchpad-Export-Date: 2015-01-25 06:05+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -29,9 +29,13 @@ msgstr "حذف"
 msgid "Cancel"
 msgstr "لغو"
 
-#: ../GalleryView.qml:182
+#: ../GalleryView.qml:186
 msgid "No media available."
 msgstr "هیچ رسانه‌ای موجود نیست."
+
+#: ../GalleryView.qml:220
+msgid "Scanning for content..."
+msgstr ""
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
@@ -49,55 +53,55 @@ msgstr "برای طومار عکس به چپ بکشید"
 msgid "Share"
 msgstr "به‌اشتراک گذاری"
 
-#: ../ViewFinderOverlay.qml:185 ../ViewFinderOverlay.qml:208
-#: ../ViewFinderOverlay.qml:236 ../ViewFinderOverlay.qml:259
-#: ../ViewFinderOverlay.qml:336
+#: ../ViewFinderOverlay.qml:195 ../ViewFinderOverlay.qml:218
+#: ../ViewFinderOverlay.qml:246 ../ViewFinderOverlay.qml:269
+#: ../ViewFinderOverlay.qml:346
 msgid "On"
 msgstr "روشن"
 
-#: ../ViewFinderOverlay.qml:190 ../ViewFinderOverlay.qml:218
-#: ../ViewFinderOverlay.qml:241 ../ViewFinderOverlay.qml:264
-#: ../ViewFinderOverlay.qml:283 ../ViewFinderOverlay.qml:341
+#: ../ViewFinderOverlay.qml:200 ../ViewFinderOverlay.qml:228
+#: ../ViewFinderOverlay.qml:251 ../ViewFinderOverlay.qml:274
+#: ../ViewFinderOverlay.qml:293 ../ViewFinderOverlay.qml:351
 msgid "Off"
 msgstr "خاموش"
 
-#: ../ViewFinderOverlay.qml:213
+#: ../ViewFinderOverlay.qml:223
 msgid "Auto"
 msgstr "خودکار"
 
-#: ../ViewFinderOverlay.qml:250
+#: ../ViewFinderOverlay.qml:260
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:288
+#: ../ViewFinderOverlay.qml:298
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:293
+#: ../ViewFinderOverlay.qml:303
 msgid "15 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:310
+#: ../ViewFinderOverlay.qml:320
 msgid "Fine Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:314
+#: ../ViewFinderOverlay.qml:324
 msgid "Normal Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:318
+#: ../ViewFinderOverlay.qml:328
 msgid "Basic Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:350
+#: ../ViewFinderOverlay.qml:360
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:358
+#: ../ViewFinderOverlay.qml:368
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:363
+#: ../ViewFinderOverlay.qml:373
 msgid "Save internally"
 msgstr ""
 
@@ -141,21 +145,21 @@ msgstr "توازن نور سفید"
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "شرایط نوری;روز;ابری;داخلی"
 
-#: ../camera-app.qml:214
+#: ../camera-app.qml:220
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "امروز <b>%1</b> عکس گرفته شد"
 
-#: ../camera-app.qml:215
+#: ../camera-app.qml:221
 msgid "No photos taken today"
 msgstr "امروز هیچ عکسی گرفته نشد"
 
-#: ../camera-app.qml:223
+#: ../camera-app.qml:229
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "امروز <b>%1</b> ویدیو ضبط شد"
 
-#: ../camera-app.qml:224
+#: ../camera-app.qml:230
 msgid "No videos recorded today"
 msgstr "امروز هیچ ویدیویی ضبط نشد"
 
