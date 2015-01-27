@@ -462,8 +462,8 @@ Item {
                             id: indicatorIcon
                             anchors.fill: parent
                             color: "white"
-                            name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            source: name ? "image://theme/%1".arg(name) : modelData.iconSource
+                            name: modelData && modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
+                            source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
                             visible: source != ""
                         }
 
