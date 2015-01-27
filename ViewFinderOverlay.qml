@@ -49,6 +49,9 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+
+        onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
+        onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
     }
 
     Binding {
