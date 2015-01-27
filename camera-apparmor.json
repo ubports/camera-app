@@ -10,5 +10,9 @@
         "content_exchange_source",
         "location"
     ],
-    "policy_version": 1.2
+    "policy_version": 1.2,
+    "read_path": [
+        "@{PROC}/*/mounts",
+        "/dev/disk/by-label/"
+    ]
 }
