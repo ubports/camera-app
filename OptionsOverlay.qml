@@ -55,7 +55,7 @@ Item {
     Column {
         id: optionValueSelector
         objectName: "optionValueSelector"
-        width: units.gu(16)
+        width: childrenRect.width
 
         property OptionButton caller
 
@@ -108,12 +108,11 @@ Item {
             id: optionsRepeater
 
             delegate: OptionValueButton {
-                anchors {
-                    right: optionValueSelector.right
-                    left: optionValueSelector.left
-                }
-                label: i18n.tr(model.label)
-                iconName: model.icon
+                anchors.left: optionValueSelector.left
+                columnWidth: optionValueSelector.childrenRect.width
+
+                label: (model && model.label) ? i18n.tr(model.label) : ""
+                iconName: (model && model.icon) ? model.icon : ""
                 selected: optionsRepeater.model.selectedIndex == index
                 isLast: index === optionsRepeater.count - 1
                 onClicked: settings[optionsRepeater.model.settingsProperty] = optionsRepeater.model.get(index).value
