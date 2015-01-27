@@ -37,9 +37,12 @@ AbstractButton {
         height: icon.height
 
         anchors {
-            centerIn: parent
-            topMargin: optionValueButton.marginSize
-            bottomMargin: optionValueButton.marginSize
+            left: (iconName) ? undefined : parent.left
+            leftMargin: (iconName) ? undefined : marginSize
+            horizontalCenter: (iconName) ? parent.horizontalCenter : undefined
+            verticalCenter: parent.verticalCenter
+            topMargin: marginSize
+            bottomMargin: marginSize
         }
 
         Icon {
@@ -58,7 +61,6 @@ AbstractButton {
             id: label
             anchors {
                 left: icon.name != "" ? icon.right : parent.left
-                leftMargin: icon.name != "" ? optionValueButton.marginSize * 2 : 0
                 verticalCenter: parent.verticalCenter
             }
 
@@ -70,7 +72,7 @@ AbstractButton {
 
     Rectangle {
         anchors {
-            horizontalCenter: parent.horizontalCenter
+            left: parent.left
             bottom: parent.bottom
         }
         width: parent.columnWidth

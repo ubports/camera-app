@@ -108,7 +108,7 @@ Item {
             id: optionsRepeater
 
             delegate: OptionValueButton {
-                anchors.horizontalCenter: optionValueSelector.horizontalCenter
+                anchors.left: optionValueSelector.left
                 columnWidth: optionValueSelector.childrenRect.width
 
                 label: (model && model.label) ? i18n.tr(model.label) : ""
