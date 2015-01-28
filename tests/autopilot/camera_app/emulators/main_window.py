@@ -119,6 +119,17 @@ class MainWindow(object):
         return next(button for button in optionButtons
                     if button.label == label)
 
+    def get_no_space_hint(self):
+        """Returns the no space hint"""
+        return self.app.wait_select_single(objectName="noSpace")
+
+    def get_low_space_dialog(self):
+        """Returns the dialog informing of low disk space"""
+        try:
+            return self.app.wait_select_single(objectName="lowSpaceDialog")
+        except:
+            return None
+
     def swipe_to_gallery(self, testCase):
         main_view = self.get_root()
         x, y, w, h = main_view.globalRect

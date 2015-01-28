@@ -17,6 +17,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
@@ -27,7 +28,7 @@ Item {
 
     property Camera camera
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
-    property real revealProgress: bottomEdge.progress
+    property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
 
@@ -635,7 +636,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready
+            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -769,6 +770,39 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    StorageMonitor {
+        id: storageMonitor
+        location: (application.removableStoragePresent && settings.preferRemovableStorage) ?
+                   application.removableStorageLocation : application.videosLocation
+        onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
+                                   PopupUtils.open(freeSpaceLowDialogComponent);
+                               }
+        onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
+                                             camera.videoRecorder.stop();
+                                         }
+    }
+
+    NoSpaceHint {
+        id: noSpaceHint
+        objectName: "noSpace"
+        anchors.fill: parent
+        visible: storageMonitor.diskSpaceCriticallyLow
+    }
+
+    Component {
+         id: freeSpaceLowDialogComponent
+         Dialog {
+             id: freeSpaceLowDialog
+             objectName: "lowSpaceDialog"
+             title: i18n.tr("Low storage space")
+             text: i18n.tr("You are running out of storage space. To continue without interruptions, free up storage space now.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
     }
 
     Loader {

@@ -1,3 +1,27 @@
+camera-app (3.0.0+15.04.20150127~rtm-0ubuntu1) 14.09; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Ugo Riboni ]
+  * warn the user of low disk space while recording or taking a picture
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 27 Jan 2015 14:54:27 +0000
+
+camera-app (3.0.0+15.04.20150126.2-0ubuntu1) vivid; urgency=low
+
+  [ Bill Filler ]
+  * Fix case when pictures have been taken while the library is being
+    scanned.
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Ugo Riboni ]
+  * warn the user of low disk space while recording or taking a picture
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 26 Jan 2015 16:19:07 +0000
+
 camera-app (3.0.0+15.04.20150125-0ubuntu1) vivid; urgency=low
 
   [ Ubuntu daily release ]

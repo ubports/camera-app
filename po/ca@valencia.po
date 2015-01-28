@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-01-24 15:51-0200\n"
+"POT-Creation-Date: 2015-01-25 12:17-0200\n"
 "PO-Revision-Date: 2014-11-23 07:19+0000\n"
 "Last-Translator: Pau Iranzo <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-26 06:52+0000\n"
+"X-Launchpad-Export-Date: 2015-01-27 06:23+0000\n"
 "X-Generator: Launchpad (build 17306)\n"
 
 #: ../DeleteDialog.qml:24
@@ -25,7 +25,7 @@ msgstr "Voleu suprimir-ho?"
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: ../DeleteDialog.qml:42
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:802
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -45,6 +45,10 @@ msgstr ""
 msgid "Photo Roll"
 msgstr "Rotlle de fotos"
 
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr ""
+
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
 msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
@@ -53,113 +57,123 @@ msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
 msgid "Share"
 msgstr "Comparteix"
 
-#: ../ViewFinderOverlay.qml:195 ../ViewFinderOverlay.qml:218
-#: ../ViewFinderOverlay.qml:246 ../ViewFinderOverlay.qml:269
-#: ../ViewFinderOverlay.qml:346
+#: ../ViewFinderOverlay.qml:196 ../ViewFinderOverlay.qml:219
+#: ../ViewFinderOverlay.qml:247 ../ViewFinderOverlay.qml:270
+#: ../ViewFinderOverlay.qml:347
 msgid "On"
 msgstr "Actiu"
 
-#: ../ViewFinderOverlay.qml:200 ../ViewFinderOverlay.qml:228
-#: ../ViewFinderOverlay.qml:251 ../ViewFinderOverlay.qml:274
-#: ../ViewFinderOverlay.qml:293 ../ViewFinderOverlay.qml:351
+#: ../ViewFinderOverlay.qml:201 ../ViewFinderOverlay.qml:229
+#: ../ViewFinderOverlay.qml:252 ../ViewFinderOverlay.qml:275
+#: ../ViewFinderOverlay.qml:294 ../ViewFinderOverlay.qml:352
 msgid "Off"
 msgstr "Inactiu"
 
-#: ../ViewFinderOverlay.qml:223
+#: ../ViewFinderOverlay.qml:224
 msgid "Auto"
 msgstr "Automàtic"
 
-#: ../ViewFinderOverlay.qml:260
+#: ../ViewFinderOverlay.qml:261
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:298
+#: ../ViewFinderOverlay.qml:299
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:303
+#: ../ViewFinderOverlay.qml:304
 msgid "15 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:320
+#: ../ViewFinderOverlay.qml:321
 msgid "Fine Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:324
+#: ../ViewFinderOverlay.qml:325
 msgid "Normal Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:328
+#: ../ViewFinderOverlay.qml:329
 msgid "Basic Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:360
+#: ../ViewFinderOverlay.qml:361
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:368
+#: ../ViewFinderOverlay.qml:369
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:373
+#: ../ViewFinderOverlay.qml:374
 msgid "Save internally"
 msgstr ""
 
-#: ../camera-app.qml:36
+#: ../ViewFinderOverlay.qml:799
+msgid "Low storage space"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:800
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+
+#: ../camera-app.qml:37
 msgid "Flash"
 msgstr "Flaix"
 
-#: ../camera-app.qml:37
+#: ../camera-app.qml:38
 msgid "Light;Dark"
 msgstr "Clar;Fosc"
 
-#: ../camera-app.qml:40
+#: ../camera-app.qml:41
 msgid "Flip Camera"
 msgstr "Gira la càmera"
 
-#: ../camera-app.qml:41
+#: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
 msgstr "Frontal;posterior"
 
-#: ../camera-app.qml:44
+#: ../camera-app.qml:45
 msgid "Shutter"
 msgstr "Disparador"
 
-#: ../camera-app.qml:45
+#: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr "Fés una foto;Captura;Grava"
 
-#: ../camera-app.qml:48
+#: ../camera-app.qml:49
 msgid "Mode"
 msgstr "Mode"
 
-#: ../camera-app.qml:49
+#: ../camera-app.qml:50
 msgid "Stills;Video"
 msgstr "Imatge estàtica;Vídeo"
 
-#: ../camera-app.qml:53
+#: ../camera-app.qml:54
 msgid "White Balance"
 msgstr "Balanç de blancs"
 
-#: ../camera-app.qml:54
+#: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
 
-#: ../camera-app.qml:220
+#: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "Hui heu fet <b>%1</b> fotos"
 
-#: ../camera-app.qml:221
+#: ../camera-app.qml:222
 msgid "No photos taken today"
 msgstr "Hui no heu fet cap foto"
 
-#: ../camera-app.qml:229
+#: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "Hui heu fet <b>%1</b> vídeos"
 
-#: ../camera-app.qml:230
+#: ../camera-app.qml:231
 msgid "No videos recorded today"
 msgstr "Hui no heu fet cap video"
 
