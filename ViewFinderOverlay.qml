@@ -17,6 +17,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import CameraApp 0.1
@@ -27,7 +28,7 @@ Item {
 
     property Camera camera
     property bool touchAcquired: bottomEdge.pressed || zoomPinchArea.active
-    property real revealProgress: bottomEdge.progress
+    property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
 
@@ -47,6 +48,7 @@ Item {
         property int encodingQuality: 2 // QMultimedia.NormalQuality
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
+        property string videoResolution: "1920x1080"
     }
 
     Binding {
@@ -73,6 +75,57 @@ Item {
         target: camera.advanced
         property: "encodingQuality"
         value: settings.encodingQuality
+    }
+
+    Binding {
+        target: camera.videoRecorder
+        property: "resolution"
+        value: settings.videoResolution
+    }
+
+    function resolutionToLabel(resolution) {
+        // takes in a resolution string (e.g. "1920x1080") and returns a nicer
+        // form of it for display in the UI: "1080p"
+        return resolution.split("x").pop() + "p";
+    }
+
+    function updateVideoResolutionOptions() {
+        // Clear and refill videoResolutionOptionsModel with available resolutions
+        // Try to only display well known resolutions: 1080p, 720p and 480p
+        videoResolutionOptionsModel.clear();
+        var supported = camera.advanced.videoSupportedResolutions;
+        var wellKnown = ["1920x1080", "1280x720", "640x480"];
+        for (var i=0; i<supported.length; i++) {
+            var resolution = supported[i];
+            if (wellKnown.indexOf(resolution) !== -1) {
+                var option = {"icon": "",
+                              "label": resolutionToLabel(resolution),
+                              "value": resolution};
+                videoResolutionOptionsModel.insert(0, option);
+            }
+        }
+
+        // If resolution setting chosen is not supported select the highest available resolution
+        if (supported.indexOf(settings.videoResolution) == -1) {
+            settings.videoResolution = supported[supported.length - 1];
+        }
+    }
+
+    Component.onCompleted: {
+        updateVideoResolutionOptions();
+    }
+
+    Connections {
+        target: camera.advanced
+        onVideoSupportedResolutionsChanged: updateVideoResolutionOptions();
+    }
+
+    Connections {
+        target: camera.advanced
+        onActiveCameraIndexChanged: {
+            updateVideoResolutionOptions();
+            camera.videoRecorder.resolution = settings.videoResolution;
+        }
     }
 
     Connections {
@@ -111,6 +164,8 @@ Item {
         }
         height: optionsOverlayLoader.height
         onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+        enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+        opacity: enabled ? 1.0 : 0.3
 
         Item {
             /* Use the 'trigger' feature of Panel so that tapping on the Panel
@@ -264,7 +319,7 @@ Item {
 
                 ListElement {
                     label: QT_TR_NOOP("Fine Quality")
-                    value: 3 // QMultimedia.HighQuality
+                    value: 4 // QMultimedia.VeryHighQuality
                 }
                 ListElement {
                     label: QT_TR_NOOP("Normal Quality")
@@ -319,6 +374,18 @@ Item {
                     label: QT_TR_NOOP("Save internally")
                     value: false
                 }
+            },
+            ListModel {
+                id: videoResolutionOptionsModel
+
+                property string settingsProperty: "videoResolution"
+                property string icon: ""
+                property string label: "HD"
+                property bool isToggle: false
+                property int selectedIndex: bottomEdge.indexForValue(videoResolutionOptionsModel, settings.videoResolution)
+                property bool available: true
+                property bool visible: camera.captureMode == Camera.CaptureVideo
+                property bool showInIndicators: false
             }
         ]
 
@@ -451,7 +518,10 @@ Item {
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                } else {
+                    camera.videoRecorder.outputLocation = application.videosLocation;
                 }
+
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
                     camera.videoRecorder.record();
@@ -566,7 +636,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready
+            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -700,6 +770,39 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    StorageMonitor {
+        id: storageMonitor
+        location: (application.removableStoragePresent && settings.preferRemovableStorage) ?
+                   application.removableStorageLocation : application.videosLocation
+        onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
+                                   PopupUtils.open(freeSpaceLowDialogComponent);
+                               }
+        onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
+                                             camera.videoRecorder.stop();
+                                         }
+    }
+
+    NoSpaceHint {
+        id: noSpaceHint
+        objectName: "noSpace"
+        anchors.fill: parent
+        visible: storageMonitor.diskSpaceCriticallyLow
+    }
+
+    Component {
+         id: freeSpaceLowDialogComponent
+         Dialog {
+             id: freeSpaceLowDialog
+             objectName: "lowSpaceDialog"
+             title: i18n.tr("Low storage space")
+             text: i18n.tr("You are running out of storage space. To continue without interruptions, free up storage space now.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
     }
 
     Loader {

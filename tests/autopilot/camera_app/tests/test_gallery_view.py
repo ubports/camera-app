@@ -62,10 +62,11 @@ class TestCameraGalleryView(CameraAppTestCase):
             os.remove(os.path.join(self.videos_dir, f))
 
     def add_sample_photo(self):
-        # add a fake photo to pictures_dir
-        photo_path = os.path.join(self.pictures_dir, "fake_photo.jpg")
-        with open(photo_path, 'a'):
-            os.utime(photo_path, None)
+        self.main_window.swipe_to_viewfinder(self)
+        exposure_button = self.main_window.get_exposure_button()
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
 
     def select_first_photo(self):
         # select the first photo

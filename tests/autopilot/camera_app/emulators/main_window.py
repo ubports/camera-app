@@ -77,6 +77,10 @@ class MainWindow(object):
         """Returns the grid lines toggle button of the camera"""
         return self.get_option_button("gridEnabled")
 
+    def get_video_resolution_button(self):
+        """Returns the video resolution button of the camera"""
+        return self.get_option_button("videoResolution")
+
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")
@@ -114,6 +118,17 @@ class MainWindow(object):
         optionButtons = selector.select_many("OptionValueButton")
         return next(button for button in optionButtons
                     if button.label == label)
+
+    def get_no_space_hint(self):
+        """Returns the no space hint"""
+        return self.app.wait_select_single(objectName="noSpace")
+
+    def get_low_space_dialog(self):
+        """Returns the dialog informing of low disk space"""
+        try:
+            return self.app.wait_select_single(objectName="lowSpaceDialog")
+        except:
+            return None
 
     def swipe_to_gallery(self, testCase):
         main_view = self.get_root()

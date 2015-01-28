@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Canonical Ltd.
+ * Copyright 2015 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,29 +15,23 @@
  */
 
 import QtQuick 2.2
+import Ubuntu.Components 1.1
 
-Loader {
-    id: loader
+Item {
+    id: noSpaceHint
 
-    signal exit
-    property bool inView
-    property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
+    Label {
+        id: hintLabel
 
-    function showLastPhotoTaken() {
-        loader.item.showLastPhotoTaken();
-    }
-
-    function prependMediaToModel(filePath) {
-        loader.item.prependMediaToModel(filePath);
-    }
-
-
-    asynchronous: true
-
-    Component.onCompleted: {
-        loader.setSource("GalleryView.qml", { "inView": Qt.binding(function() { return loader.inView }) });
-    }
-    onLoaded: {
-        loader.item.exit.connect(exit);
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+        width: parent.width - 2 * units.gu(2)
+        horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.Wrap
+        text: i18n.tr("No space left on device, free up space to continue.")
+        fontSize: "x-large"
+        color: "#ebebeb"
     }
 }

@@ -210,12 +210,7 @@ Item {
             }
 
             onDeleteFiles: {
-                for (var i=model.selectedFiles.length-1; i>=0; i--) {
-                    var currentFilePath = model.get(model.selectedFiles[i], "filePath");
-                    model.toggleSelected(model.selectedFiles[i])
-                    fileOperations.remove(currentFilePath);
-                }
-
+                model.deleteSelectedFiles();
                 photogridView.exitUserSelectionMode();
             }
         }

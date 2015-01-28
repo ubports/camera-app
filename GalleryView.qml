@@ -47,6 +47,10 @@ Item {
         showLastPhotoTakenPending = true;
     }
 
+    function prependMediaToModel(filePath) {
+        galleryView.model.prependFile(filePath);
+    }
+
     function exitUserSelectionMode() {
         if (gridMode) {
             model.clearSelection();
@@ -155,7 +159,7 @@ Item {
     Rectangle {
         objectName: "noMediaHint"
         anchors.fill: parent
-        visible: model.count === 0
+        visible: model.count === 0 && !model.loading
         color: "#0F0F0F"
 
         Icon {
@@ -180,6 +184,40 @@ Item {
                 topMargin: units.gu(4)
             }
             text: i18n.tr("No media available.")
+            color: "white"
+            opacity: 0.2
+            fontSize: "large"
+        }
+    }
+
+    Rectangle {
+        objectName: "scanningMediaHint"
+        anchors.fill: parent
+        visible: model.count === 0 && model.loading
+        color: "#0F0F0F"
+
+        Icon {
+            id: scanningMediaIcon
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: -units.gu(1)
+            }
+            height: units.gu(9)
+            width: units.gu(9)
+            color: "white"
+            opacity: 0.2
+            name: "camera-app-symbolic"
+        }
+
+        Label {
+            id: scanningMediaLabel
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                top: scanningMediaIcon.bottom
+                topMargin: units.gu(4)
+            }
+            text: i18n.tr("Scanning for content...")
             color: "white"
             opacity: 0.2
             fontSize: "large"

@@ -7,157 +7,175 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-12-11 10:23-0200\n"
-"PO-Revision-Date: 2014-01-08 09:31+0000\n"
-"Last-Translator: Tadeáš Pařík <tadeas.parik@gmail.com>\n"
+"POT-Creation-Date: 2015-01-25 12:17-0200\n"
+"PO-Revision-Date: 2014-12-23 13:29+0000\n"
+"Last-Translator: Vojtěch Daněk <vdanek@outlook.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-13 07:08+0000\n"
-"X-Generator: Launchpad (build 17286)\n"
+"X-Launchpad-Export-Date: 2015-01-27 06:22+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
-msgstr ""
+msgstr "Smazat média?"
 
 #: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:41
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
-#: ../DeleteDialog.qml:42
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:802
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
-#: ../GalleryView.qml:182
+#: ../GalleryView.qml:186
 msgid "No media available."
+msgstr "Nejsou dostupná žádná média."
+
+#: ../GalleryView.qml:220
+msgid "Scanning for content..."
 msgstr ""
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
+msgstr "Fotoaparát"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
 msgstr ""
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Táhněte doleva pro fotoaparát"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:36
 msgid "Share"
-msgstr ""
+msgstr "Sdílet"
 
-#: ../ViewFinderOverlay.qml:141 ../ViewFinderOverlay.qml:164
-#: ../ViewFinderOverlay.qml:192 ../ViewFinderOverlay.qml:215
-#: ../ViewFinderOverlay.qml:292
+#: ../ViewFinderOverlay.qml:196 ../ViewFinderOverlay.qml:219
+#: ../ViewFinderOverlay.qml:247 ../ViewFinderOverlay.qml:270
+#: ../ViewFinderOverlay.qml:347
 msgid "On"
-msgstr ""
+msgstr "Zapnuto"
 
-#: ../ViewFinderOverlay.qml:146 ../ViewFinderOverlay.qml:174
-#: ../ViewFinderOverlay.qml:197 ../ViewFinderOverlay.qml:220
-#: ../ViewFinderOverlay.qml:239 ../ViewFinderOverlay.qml:297
+#: ../ViewFinderOverlay.qml:201 ../ViewFinderOverlay.qml:229
+#: ../ViewFinderOverlay.qml:252 ../ViewFinderOverlay.qml:275
+#: ../ViewFinderOverlay.qml:294 ../ViewFinderOverlay.qml:352
 msgid "Off"
-msgstr ""
+msgstr "Vypnuto"
 
-#: ../ViewFinderOverlay.qml:169
+#: ../ViewFinderOverlay.qml:224
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
-#: ../ViewFinderOverlay.qml:206
+#: ../ViewFinderOverlay.qml:261
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:244
+#: ../ViewFinderOverlay.qml:299
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekund"
 
-#: ../ViewFinderOverlay.qml:249
+#: ../ViewFinderOverlay.qml:304
 msgid "15 seconds"
-msgstr ""
+msgstr "15 sekund"
 
-#: ../ViewFinderOverlay.qml:266
+#: ../ViewFinderOverlay.qml:321
 msgid "Fine Quality"
-msgstr ""
+msgstr "Dobrá kvalita"
 
-#: ../ViewFinderOverlay.qml:270
+#: ../ViewFinderOverlay.qml:325
 msgid "Normal Quality"
-msgstr ""
+msgstr "Normální kvalita"
 
-#: ../ViewFinderOverlay.qml:274
+#: ../ViewFinderOverlay.qml:329
 msgid "Basic Quality"
-msgstr ""
+msgstr "Základní kvalita"
 
-#: ../ViewFinderOverlay.qml:306
+#: ../ViewFinderOverlay.qml:361
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:314
+#: ../ViewFinderOverlay.qml:369
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Uložit na SD kartu"
 
-#: ../ViewFinderOverlay.qml:319
+#: ../ViewFinderOverlay.qml:374
 msgid "Save internally"
+msgstr "Uložit interně"
+
+#: ../ViewFinderOverlay.qml:799
+msgid "Low storage space"
 msgstr ""
 
-#: ../camera-app.qml:36
+#: ../ViewFinderOverlay.qml:800
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+
+#: ../camera-app.qml:37
 msgid "Flash"
 msgstr "Blesk"
 
-#: ../camera-app.qml:37
+#: ../camera-app.qml:38
 msgid "Light;Dark"
 msgstr "Světlost;Tmavost"
 
-#: ../camera-app.qml:40
+#: ../camera-app.qml:41
 msgid "Flip Camera"
 msgstr "Přepnout kameru"
 
-#: ../camera-app.qml:41
+#: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
 msgstr "Přední kompozice;Zadní kompozice"
 
-#: ../camera-app.qml:44
+#: ../camera-app.qml:45
 msgid "Shutter"
 msgstr "Clona"
 
-#: ../camera-app.qml:45
+#: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr "Vyfotit;Vyfotografovat;Nahrát"
 
-#: ../camera-app.qml:48
+#: ../camera-app.qml:49
 msgid "Mode"
 msgstr "Režim"
 
-#: ../camera-app.qml:49
+#: ../camera-app.qml:50
 msgid "Stills;Video"
 msgstr "Obrázek;Video"
 
-#: ../camera-app.qml:53
+#: ../camera-app.qml:54
 msgid "White Balance"
 msgstr "Vyvážení bílé"
 
-#: ../camera-app.qml:54
+#: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Světelné podmínky;Den;Oblačno;Uvnitř"
 
-#: ../camera-app.qml:214
+#: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "<b>%1</b> fotek dnes vyfoceno"
 
-#: ../camera-app.qml:215
+#: ../camera-app.qml:222
 msgid "No photos taken today"
-msgstr ""
+msgstr "Žádné dnešní fotky"
 
-#: ../camera-app.qml:223
+#: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> videí dnes nahráno"
 
-#: ../camera-app.qml:224
+#: ../camera-app.qml:231
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Žádné dnešní video"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
@@ -169,4 +187,4 @@ msgstr "Aplikace kamera"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Fotky;Videa;Zachyceno;Vyfoceno;Snapshot;Record"

@@ -21,6 +21,7 @@ import Ubuntu.Components 1.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 
 Item {
     id: main
@@ -152,8 +153,14 @@ Item {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
-                onPhotoTaken: galleryView.showLastPhotoTaken();
-                onVideoShot: galleryView.showLastPhotoTaken();
+                onPhotoTaken: {
+                    galleryView.prependMediaToModel(filePath);
+                    galleryView.showLastPhotoTaken();
+                }
+                onVideoShot: {
+                    galleryView.prependMediaToModel(filePath);
+                    galleryView.showLastPhotoTaken();
+                }
             }
 
             GalleryViewLoader {
