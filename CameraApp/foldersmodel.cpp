@@ -206,6 +206,7 @@ QHash<int, QByteArray> FoldersModel::roleNames() const
     roles[FilePathRole] = "filePath";
     roles[FileUrlRole] = "fileURL";
     roles[FileTypeRole] = "fileType";
+    roles[FileThumbnailPathRole] = "fileThumbnailPath";
     roles[SelectedRole] = "selected";
     return roles;
 }
@@ -235,6 +236,9 @@ QVariant FoldersModel::data(const QModelIndex& index, int role) const
         case FileTypeRole:
             return m_mimeDatabase.mimeTypeForFile(item).name();
             break;
+        case FileThumbnailPathRole:
+            return "image://thumbnailer/" + item.filePath();
+            break;
         case SelectedRole:
             return m_selectedFiles.contains(index.row());
             break;
@@ -260,6 +264,7 @@ void FoldersModel::fileChanged(const QString &filePath)
     /* Act appropriately upon file change or removal */
     bool exists = QFileInfo::exists(filePath);
     int fileIndex = m_fileInfoList.indexOf(QFileInfo(filePath));
+    bool stillWatched = m_watcher->files().contains(filePath);
 
     if (exists) {
         // file's content has changed
@@ -275,6 +280,7 @@ void FoldersModel::fileChanged(const QString &filePath)
             m_fileInfoList[fileIndex] = fileInfo;
             Q_EMIT dataChanged(modelIndex, modelIndex);
         }
+        if (!stillWatched) m_watcher->addPath(filePath);
     } else {
         // file has either been removed or renamed
         if (fileIndex != -1) {

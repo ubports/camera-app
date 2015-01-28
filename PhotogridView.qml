@@ -111,7 +111,7 @@ Item {
                 
                 asynchronous: true
                 cache: false
-                source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
+                source: photogridView.inView ? fileThumbnailPath + "?at=" + Date.now() : ""
                 sourceSize {
                     width: width
                     height: height
