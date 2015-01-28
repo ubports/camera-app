@@ -42,8 +42,7 @@ public:
         FilePathRole = Qt::UserRole + 2,
         FileUrlRole = Qt::UserRole + 3,
         FileTypeRole = Qt::UserRole + 4,
-        FileThumbnailPathRole = Qt::UserRole + 5,
-        SelectedRole = Qt::UserRole + 6
+        SelectedRole = Qt::UserRole + 5
     };
 
     explicit FoldersModel(QObject *parent = 0);

@@ -206,7 +206,6 @@ QHash<int, QByteArray> FoldersModel::roleNames() const
     roles[FilePathRole] = "filePath";
     roles[FileUrlRole] = "fileURL";
     roles[FileTypeRole] = "fileType";
-    roles[FileThumbnailPathRole] = "fileThumbnailPath";
     roles[SelectedRole] = "selected";
     return roles;
 }
@@ -235,9 +234,6 @@ QVariant FoldersModel::data(const QModelIndex& index, int role) const
             break;
         case FileTypeRole:
             return m_mimeDatabase.mimeTypeForFile(item).name();
-            break;
-        case FileThumbnailPathRole:
-            return "image://thumbnailer/" + item.filePath();
             break;
         case SelectedRole:
             return m_selectedFiles.contains(index.row());
