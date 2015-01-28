@@ -260,7 +260,6 @@ void FoldersModel::fileChanged(const QString &filePath)
     /* Act appropriately upon file change or removal */
     bool exists = QFileInfo::exists(filePath);
     int fileIndex = m_fileInfoList.indexOf(QFileInfo(filePath));
-    bool stillWatched = m_watcher->files().contains(filePath);
 
     if (exists) {
         // file's content has changed
@@ -276,7 +275,11 @@ void FoldersModel::fileChanged(const QString &filePath)
             m_fileInfoList[fileIndex] = fileInfo;
             Q_EMIT dataChanged(modelIndex, modelIndex);
         }
-        if (!stillWatched) m_watcher->addPath(filePath);
+
+        // As the documentation states, in some cases the watch is removed on a
+        // fileChanged signal, so we will need to add it back again.
+        // addPath() will safely do nothing if the file is still being watched.
+        m_watcher->addPath(filePath);
     } else {
         // file has either been removed or renamed
         if (fileIndex != -1) {
