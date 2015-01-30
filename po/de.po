@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-01-25 12:17-0200\n"
-"PO-Revision-Date: 2015-01-25 19:57+0000\n"
+"PO-Revision-Date: 2015-01-29 21:51+0000\n"
 "Last-Translator: Niklas Wenzel <nikwen.developer@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-27 06:22+0000\n"
+"X-Launchpad-Export-Date: 2015-01-30 07:05+0000\n"
 "X-Generator: Launchpad (build 17306)\n"
 
 #: ../DeleteDialog.qml:24
@@ -48,6 +48,8 @@ msgstr "Fotoliste"
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
 msgstr ""
+"Kein Speicherplatz übrig auf dem Gerät. Machen Sie Speicherplatz frei, um "
+"fortzufahren."
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
@@ -111,13 +113,15 @@ msgstr "Intern speichern"
 
 #: ../ViewFinderOverlay.qml:799
 msgid "Low storage space"
-msgstr ""
+msgstr "Geringer Speicherplatz"
 
 #: ../ViewFinderOverlay.qml:800
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Sie haben nur noch wenig freien Speicherplatz. Machen Sie Speicherplatz "
+"frei, um ohne Unterbrechungen fortzufahren."
 
 #: ../camera-app.qml:37
 msgid "Flash"
