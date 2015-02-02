@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-01-25 12:17-0200\n"
-"PO-Revision-Date: 2015-01-19 07:35+0000\n"
+"PO-Revision-Date: 2015-01-30 09:52+0000\n"
 "Last-Translator: ☠Jay ZDLin☠ <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-27 06:23+0000\n"
+"X-Launchpad-Export-Date: 2015-01-31 06:17+0000\n"
 "X-Generator: Launchpad (build 17306)\n"
 
 #: ../DeleteDialog.qml:24
@@ -35,7 +35,7 @@ msgstr "Нет содержимого"
 
 #: ../GalleryView.qml:220
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Поиск содержимого..."
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
@@ -47,7 +47,7 @@ msgstr "Фотопленка"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Не хватает свободного места; освободите место, чтобы продолжить."
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
@@ -111,13 +111,15 @@ msgstr "Сохранить локально"
 
 #: ../ViewFinderOverlay.qml:799
 msgid "Low storage space"
-msgstr ""
+msgstr "Мало свободного места"
 
 #: ../ViewFinderOverlay.qml:800
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Заканчивается свободное место для хранения. Чтобы избежать прерываний в "
+"работе, освободите место сейчас."
 
 #: ../camera-app.qml:37
 msgid "Flash"
