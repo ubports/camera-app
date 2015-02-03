@@ -49,6 +49,9 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+
+        onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
+        onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
     }
 
     Binding {
@@ -463,8 +466,8 @@ Item {
                             id: indicatorIcon
                             anchors.fill: parent
                             color: "white"
-                            name: modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            source: name ? "image://theme/%1".arg(name) : modelData.iconSource
+                            name: modelData && modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
+                            source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
                             visible: source != ""
                         }
 

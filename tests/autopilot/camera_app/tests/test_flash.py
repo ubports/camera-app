@@ -47,7 +47,7 @@ class TestCameraFlash(CameraAppTestCase):
 
         # set flash to "on"
         option = self.main_window.get_option_value_button("On")
-        self.pointing_device.move_to_object(option)
+
         self.pointing_device.click()
         self.assertThat(flash_button.iconName, Equals("flash-on"))
 
@@ -90,3 +90,50 @@ class TestCameraFlash(CameraAppTestCase):
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
         self.assertThat(flash_button.iconName, Equals("torch-off"))
+
+    """Test that flash and hdr modes are mutually exclusive"""
+    def test_flash_hdr_mutually_exclusive(self):
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+        flash_button = self.main_window.get_flash_button()
+        hdr_button = self.main_window.get_hdr_button()
+        option_value_selector = self.main_window.get_option_value_selector()
+
+        # open option value selector showing the possible values
+        self.pointing_device.move_to_object(flash_button)
+        self.pointing_device.click()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+
+        # set flash to "on"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("flash-on"))
+
+        # closes the flash options menu and open the hdr options menu
+        self.pointing_device.move_to_object(hdr_button)
+        self.pointing_device.click()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(False)))
+        self.pointing_device.click()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+
+        # set hdr to "on" and verify that flash is "off"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("flash-off"))
+        self.assertThat(hdr_button.on, Equals(True))
+
+        # closes the hdr options menu and open the flash options menu
+        self.pointing_device.move_to_object(flash_button)
+        self.pointing_device.click()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(False)))
+        self.pointing_device.click()
+        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+
+        # set flash to "on" and verify that hdr is "off"
+        option = self.main_window.get_option_value_button("On")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("flash-on"))
+        self.assertThat(hdr_button.on, Equals(False))

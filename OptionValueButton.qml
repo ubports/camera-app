@@ -26,44 +26,56 @@ AbstractButton {
     property alias iconName: icon.name
     property bool selected
     property bool isLast
+    property int columnWidth
+    property int marginSize: units.gu(1)
 
-    Icon {
-        id: icon
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-            topMargin: units.gu(1)
-            bottomMargin: units.gu(1)
-            leftMargin: units.gu(1)
-        }
-        width: height
-        color: "white"
-        opacity: optionValueButton.selected ? 1.0 : 0.5
-        visible: name !== ""
-    }
+    width: marginSize + iconLabelGroup.width + marginSize
 
-    Label {
-        id: label
+    Item {
+        id: iconLabelGroup
+        width: childrenRect.width
+        height: icon.height
+
         anchors {
-            left: icon.name != "" ? icon.right : parent.left
-            leftMargin: icon.name != "" ? units.gu(2) : icon.anchors.leftMargin
-            right: parent.right
-            rightMargin: icon.anchors.leftMargin
+            left: (iconName) ? undefined : parent.left
+            leftMargin: (iconName) ? undefined : marginSize
+            horizontalCenter: (iconName) ? parent.horizontalCenter : undefined
             verticalCenter: parent.verticalCenter
+            topMargin: marginSize
+            bottomMargin: marginSize
         }
 
-        color: "white"
-        opacity: optionValueButton.selected ? 1.0 : 0.5
-        elide: Text.ElideRight
+        Icon {
+            id: icon
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+            }
+            width: optionValueButton.height - optionValueButton.marginSize * 2
+            color: "white"
+            opacity: optionValueButton.selected ? 1.0 : 0.5
+            visible: name !== ""
+        }
+
+        Label {
+            id: label
+            anchors {
+                left: icon.name != "" ? icon.right : parent.left
+                verticalCenter: parent.verticalCenter
+            }
+
+            color: "white"
+            opacity: optionValueButton.selected ? 1.0 : 0.5
+            width: paintedWidth
+        }
     }
 
     Rectangle {
         anchors {
             left: parent.left
-            right: parent.right
             bottom: parent.bottom
         }
+        width: parent.columnWidth
         height: units.dp(1)
         color: "white"
         opacity: 0.5

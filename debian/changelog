@@ -1,3 +1,19 @@
+camera-app (3.0.0+15.04.20150127.1-0ubuntu1) vivid; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Improve thumbnail generation performance: do not retrieve thumbnails
+    for the view that is not visible.
+
+  [ Ugo Riboni ]
+  * Make hdr and flash options mutually exclusive (LP: #1350958)
+  * Size option labels to fit the widest text in the column, so they
+    look good in all languages (LP: #1413529)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 27 Jan 2015 17:37:20 +0000
+
 camera-app (3.0.0+15.04.20150127~rtm-0ubuntu1) 14.09; urgency=low
 
   [ Ubuntu daily release ]
