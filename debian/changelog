@@ -1,3 +1,19 @@
+camera-app (3.0.0+15.04.20150204-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk
+
+  [ Ugo Riboni ]
+  * Add photo editor feature using the component from ubuntu-ui-extras.
+    (LP: #1368787)
+  * Refresh properly the thumbnails when the picture is changed. Make
+    sure after the first change the file is still being watched.
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 04 Feb 2015 20:36:01 +0000
+
 camera-app (3.0.0+15.04.20150127.1-0ubuntu1) vivid; urgency=low
 
   [ Ubuntu daily release ]
