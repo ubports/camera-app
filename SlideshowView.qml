@@ -18,6 +18,7 @@ import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItems
 import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.Extras 0.1
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
@@ -28,7 +29,8 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress : false
+    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
+                                                        editor.active : false
     property bool inView
     signal toggleHeader
     property list<Action> actions: [
@@ -41,6 +43,11 @@ Item {
             text: i18n.tr("Delete")
             iconName: "delete"
             onTriggered: PopupUtils.open(deleteDialogComponent)
+        },
+        Action {
+            text: i18n.tr("Edit")
+            iconName: "edit"
+            onTriggered: editor.start()
         }
     ]
 
@@ -100,6 +107,7 @@ Item {
         delegate: Item {
             id: delegate
             property bool pinchInProgress: zoomPinchArea.active
+            property string url: fileURL
 
             function zoomIn(centerX, centerY, factor) {
                 flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);
@@ -113,6 +121,11 @@ Item {
                     flickable.scaleCenterY = flickable.contentY / flickable.height / (flickable.sizeScale - 1);
                     flickable.sizeScale = 1.0;
                 }
+            }
+
+            function reload() {
+                reloadImage(image);
+                reloadImage(highResolutionImage);
             }
 
             width: ListView.view.width
@@ -185,7 +198,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnailer/" + fileURL.toString() : fileURL) : ""
+                            source: slideshowView.inView ? "image://" + (media.isVideo ? "thumbnailer/" : "photo/") + fileURL.toString() : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -200,7 +213,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: flickable.sizeScale > 1.0 ? fileURL : ""
+                            source: flickable.sizeScale > 1.0 ? "image://photo/" + fileURL.toString() : ""
                             sourceSize {
                                 width: width
                                 height: height
@@ -297,5 +310,45 @@ Item {
                 fileOperations.remove(currentFilePath);
             }
         }
+    }
+
+    Loader {
+        id: editor
+        anchors.fill: parent
+
+        active: false
+        sourceComponent: Component {
+            PhotoEditor {
+                id: editorItem
+                objectName: "photoEditor"
+
+                Connections {
+                    target: header
+                    onExitEditor: editorItem.close(true);
+                }
+
+                onClosed: {
+                    editor.active = false;
+                    if (photoWasModified) listView.currentItem.reload()
+                }
+            }
+        }
+
+        function start() {
+            editor.active = true;
+            editor.item.open(listView.currentItem.url.replace("file://", ""));
+        }
+    }
+
+    Binding { target: header; property: "editMode"; value: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
+
+    function reloadImage(image) {
+        var async = image.asynchronous;
+        var source = image.source;
+        image.asynchronous = false;
+        image.source = "";
+        image.asynchronous = async;
+        image.source = source;
     }
 }

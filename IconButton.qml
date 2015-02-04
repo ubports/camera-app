@@ -20,7 +20,7 @@ import Ubuntu.Components 1.0
 AbstractButton {
     id: button
 
-    property alias iconName: icon.name
+    property string iconName
     property alias iconColor: icon.color
 
     width: units.gu(5)
@@ -38,5 +38,7 @@ AbstractButton {
         width: units.gu(2.5)
         height: width
         color: "white"
+        name: action ? action.iconName : button.iconName
+        opacity: action ? (action.enabled ? 1.0 : 0.5) : 1.0
     }
 }
