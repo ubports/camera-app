@@ -1,3 +1,14 @@
+camera-app (3.0.0+15.04.20150210-0ubuntu1) vivid; urgency=medium
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Florian Boucault ]
+  * Swiping quickly through photo roll no longer causes photos to zoom.
+    Workaround for QTBUG-39332. (LP: #1400141)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 10 Feb 2015 03:13:07 +0000
+
 camera-app (3.0.0+15.04.20150204-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]
