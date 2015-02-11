@@ -239,6 +239,15 @@ Item {
                             mouse.accepted = false;
                         }
                         onDoubleClicked: {
+                            if (listView.moving) {
+                                // FIXME: workaround for Qt bug specific to touch:
+                                // doubleClicked is received even though the MouseArea
+                                // was tapped only once but another MouseArea was also
+                                // tapped shortly before.
+                                // Ref.: https://bugreports.qt.io/browse/QTBUG-39332
+                                return;
+                            }
+
                             if (media.isVideo) {
                                 return;
                             }
