@@ -31,7 +31,6 @@ Item {
     property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
                                                         editor.active : false
     property bool inView
-    property bool inSelectionMode: false
     property bool editingAvailable: false
     signal toggleHeader
     property list<Action> actions: [
