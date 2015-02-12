@@ -73,9 +73,9 @@ Item {
 
         editingAvailable = true;
         var newActions = [];
-        for (var i = 0; i < actions.length; i++) newActions.push(actions[i]);
+        for (var i = 0; i < slideShowActions.length; i++) newActions.push(slideShowActions[i]);
         newActions.push(editAction);
-        actions = newActions;
+        slideShowActions = newActions;
     }
 
     function showPhotoAtIndex(index) {

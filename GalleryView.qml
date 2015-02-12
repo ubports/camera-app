@@ -226,7 +226,7 @@ Item {
         }
     }
 
-    state: galleryView.gridMode || main.contentExportMode ? "GRID" : "SLIDESHOW"
+    state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
     states: [
         State {
             name: "SLIDESHOW"
