@@ -18,7 +18,6 @@ import QtQuick 2.2
 import Ubuntu.Components 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItems
 import Ubuntu.Components.Popups 1.0
-import Ubuntu.Components.Extras 0.1
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
@@ -32,6 +31,7 @@ Item {
     property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
                                                         editor.active : false
     property bool inView
+    property bool editingAvailable: false
     signal toggleHeader
     property list<Action> actions: [
         Action {
@@ -43,13 +43,28 @@ Item {
             text: i18n.tr("Delete")
             iconName: "delete"
             onTriggered: PopupUtils.open(deleteDialogComponent)
-        },
-        Action {
-            text: i18n.tr("Edit")
-            iconName: "edit"
-            onTriggered: editor.start()
         }
     ]
+
+    Action {
+        id: editAction
+        text: i18n.tr("Edit")
+        iconName: "edit"
+        onTriggered: editor.start(listView.currentItem.url)
+    }
+
+    Component.onCompleted: {
+        // The PhotoEditor is only available in Ubuntu.Components.Extras 0.2
+        // If we succeed here we add the edit button to the list of actions.
+        try { Qt.createQmlObject('import QtQuick 2.0; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
+        catch (e) { return; }
+
+        editingAvailable = true;
+        var newActions = [];
+        for (var i = 0; i < actions.length; i++) newActions.push(actions[i]);
+        newActions.push(editAction);
+        actions = newActions;
+    }
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -192,13 +207,15 @@ Item {
                         height: flickable.height * flickable.sizeScale
 
                         property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
+                        property string photoUrl: editingAvailable ? "image://photo/%1".arg(fileURL.toString()) : fileURL.toString().replace("file://", "")
 
                         Image {
                             id: image
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? "image://" + (media.isVideo ? "thumbnailer/" : "photo/") + fileURL.toString() : ""
+                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnail/%1".arg(fileURL.toString())
+                                                                          : media.photoUrl) : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -213,7 +230,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: flickable.sizeScale > 1.0 ? "image://photo/" + fileURL.toString() : ""
+                            source: flickable.sizeScale > 1.0 ? media.photoUrl : ""
                             sourceSize {
                                 width: width
                                 height: height
@@ -321,34 +338,6 @@ Item {
         }
     }
 
-    Loader {
-        id: editor
-        anchors.fill: parent
-
-        active: false
-        sourceComponent: Component {
-            PhotoEditor {
-                id: editorItem
-                objectName: "photoEditor"
-
-                Connections {
-                    target: header
-                    onExitEditor: editorItem.close(true);
-                }
-
-                onClosed: {
-                    editor.active = false;
-                    if (photoWasModified) listView.currentItem.reload()
-                }
-            }
-        }
-
-        function start() {
-            editor.active = true;
-            editor.item.open(listView.currentItem.url.replace("file://", ""));
-        }
-    }
-
     Binding { target: header; property: "editMode"; value: editor.active }
     Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
 
@@ -359,5 +348,25 @@ Item {
         image.source = "";
         image.asynchronous = async;
         image.source = source;
+    }
+
+    Loader {
+        id: editor
+        source: "PhotoEditorLoader.qml"
+        active: false
+        anchors.fill: parent
+
+        function start(url) {
+            editor.active = true;
+            editor.item.start(url);
+        }
+
+        Connections {
+            target: editor.item
+            onClosed: {
+                editor.active = false;
+                if (photoWasModified) listView.currentItem.reload();
+            }
+        }
     }
 }
