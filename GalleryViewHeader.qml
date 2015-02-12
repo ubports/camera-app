@@ -75,7 +75,7 @@ Item {
         }
 
         Label {
-            text: userSelectionMode ? i18n.tr("Select") :
+            text: main.contentExportMode || userSelectionMode ? i18n.tr("Select") :
                   (editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll"))
             fontSize: "x-large"
             color: Theme.palette.normal.foregroundText
@@ -106,13 +106,24 @@ Item {
         }
 
         IconButton {
+            objectName: "singleActionButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            action: actionsDrawer.actions[0]
+            visible: actionsDrawer.actions.length == 1 && !editMode
+            onTriggered: if (action) action.triggered()
+        }
+
+        IconButton {
             objectName: "additionalActionsButton"
             anchors {
                 top: parent.top
                 bottom: parent.bottom
             }
             iconName: "contextual-menu"
-            visible: actionsDrawer.actions.length > 0 && !editMode
+            visible: actionsDrawer.actions.length > 1 && !editMode
             onClicked: actionsDrawer.opened = !actionsDrawer.opened
         }
 

@@ -32,8 +32,20 @@ Item {
                                                         editor.active : false
     property bool inView
     property bool editingAvailable: false
+    property bool inSelectionMode: false
     signal toggleHeader
-    property list<Action> actions: [
+    signal toggleSelection
+    property var actions: inSelectionMode ? slideShowSelectionActions : slideShowActions
+
+    property list<Action> slideShowSelectionActions: [
+        Action {
+            text: i18n.tr("Select")
+            iconName: listView.currentItem.isSelected ? "close" : "ok"
+            onTriggered: slideshowView.toggleSelection()
+        }
+    ]
+
+    property list<Action> slideShowActions: [
         Action {
             text: i18n.tr("Share")
             iconName: "share"
@@ -123,6 +135,7 @@ Item {
             id: delegate
             property bool pinchInProgress: zoomPinchArea.active
             property string url: fileURL
+            property bool isSelected: selected
 
             function zoomIn(centerX, centerY, factor) {
                 flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);

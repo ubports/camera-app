@@ -37,7 +37,7 @@ Item {
         singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
     }
 
-    property bool gridMode: false
+    property bool gridMode: main.contentExportMode
     property bool showLastPhotoTakenPending: false
 
     function showLastPhotoTaken() {
@@ -52,13 +52,9 @@ Item {
     }
 
     function exitUserSelectionMode() {
-        if (gridMode) {
-            model.clearSelection();
-            model.singleSelectionOnly = true;
-            userSelectionMode = false;
-        } else {
-            gridMode = true;
-        }
+        model.clearSelection();
+        model.singleSelectionOnly = true;
+        userSelectionMode = false;
     }
 
     onExit: {
@@ -75,6 +71,8 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView && galleryView.currentView == slideshowView
+            inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
+            onToggleSelection: model.toggleSelected(currentIndex)
             onToggleHeader: header.toggle();
         }
 
@@ -110,11 +108,15 @@ Item {
         GalleryViewHeader {
             id: header
             actions: currentView.actions
-            gridMode: galleryView.gridMode || main.contentExportMode
-            validationVisible: main.contentExportMode && model.selectedFiles.length > 0
+            gridMode: galleryView.gridMode
+            validationVisible: main.contentExportMode && model.selectedFiles.length > 0 && galleryView.gridMode
             userSelectionMode: galleryView.userSelectionMode
             onExit: {
-                if (userSelectionMode) {
+                if ((main.contentExportMode || userSelectionMode) && !galleryView.gridMode) {
+                    galleryView.gridMode = true;
+                    // position grid view so that the current photo in slideshow view is visible
+                    photogridView.showPhotoAtIndex(slideshowView.currentIndex);
+                } else if (userSelectionMode) {
                     galleryView.exitUserSelectionMode();
                 } else {
                     galleryView.exit()
