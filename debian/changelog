@@ -1,3 +1,27 @@
+camera-app (3.0.0+15.04.20150212.3-0ubuntu1) vivid; urgency=medium
+
+  [ Bill Filler ]
+  * dynamically check for editor (LP: #1368787)
+  * update depends on ui-extras new version
+
+  [ Arthur Mello ]
+  * Enable viewing full screen picture while in selection mode Remove
+    actions from the slide show header if we are in selection mode Make
+    it possible to toggle selection when on slide show view Scroll the
+    last seem picture from slideshow into view when returning to the
+    grid photo roll (LP: #1416043)
+
+  [ Ugo Riboni ]
+  * dynamically check for editor (LP: #1368787)
+
+  [ Florian Boucault ]
+  * Click packaging: add autopilot tests dependencies. (LP: #1419022)
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 12 Feb 2015 19:41:11 +0000
+
 camera-app (3.0.0+15.04.20150210-0ubuntu1) vivid; urgency=medium
 
   [ Ubuntu daily release ]
