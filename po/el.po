@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-01-25 12:17-0200\n"
-"PO-Revision-Date: 2014-08-20 17:36+0000\n"
-"Last-Translator: Simos Xenitellis <Unknown>\n"
+"PO-Revision-Date: 2015-02-16 09:04+0000\n"
+"Last-Translator: j3lc <x_nikos@yahoo.gr>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-27 06:22+0000\n"
-"X-Generator: Launchpad (build 17306)\n"
+"X-Launchpad-Export-Date: 2015-02-17 06:26+0000\n"
+"X-Generator: Launchpad (build 17341)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -79,11 +79,11 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:299
 msgid "5 seconds"
-msgstr ""
+msgstr "5 δευτερόλεπτα"
 
 #: ../ViewFinderOverlay.qml:304
 msgid "15 seconds"
-msgstr ""
+msgstr "15 δευτερόλεπτα"
 
 #: ../ViewFinderOverlay.qml:321
 msgid "Fine Quality"
@@ -91,19 +91,19 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:325
 msgid "Normal Quality"
-msgstr ""
+msgstr "Κανονική ποιότητα"
 
 #: ../ViewFinderOverlay.qml:329
 msgid "Basic Quality"
-msgstr ""
+msgstr "Βασική ποιότητα"
 
 #: ../ViewFinderOverlay.qml:361
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:369
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Αποθήκευση στην κάρτα SD"
 
 #: ../ViewFinderOverlay.qml:374
 msgid "Save internally"
@@ -162,20 +162,20 @@ msgstr ""
 #: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "<b>%1</b> φωτογραφίες τραβήχτηκαν σήμερα"
 
 #: ../camera-app.qml:222
 msgid "No photos taken today"
-msgstr ""
+msgstr "Καμία φωτογραφία δεν τραβήχτηκε σήμερα"
 
 #: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> βίντεο τραβήχτηκαν σήμερα"
 
 #: ../camera-app.qml:231
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Κανένα βίντεο δεν τραβήχτηκε σήμερα"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
