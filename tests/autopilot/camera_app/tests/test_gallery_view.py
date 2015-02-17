@@ -55,11 +55,15 @@ class TestCameraGalleryView(CameraAppTestCase):
     def delete_all_media(self):
         picture_files = os.listdir(self.pictures_dir)
         for f in picture_files:
-            os.remove(os.path.join(self.pictures_dir, f))
+            f = os.path.join(self.pictures_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
 
         video_files = os.listdir(self.videos_dir)
         for f in video_files:
-            os.remove(os.path.join(self.videos_dir, f))
+            f = os.path.join(self.videos_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
 
     def add_sample_photo(self):
         self.main_window.swipe_to_viewfinder(self)
