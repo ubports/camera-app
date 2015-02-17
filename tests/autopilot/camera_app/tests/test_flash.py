@@ -28,26 +28,22 @@ class TestCameraFlash(CameraAppTestCase):
     def tearDown(self):
         super(TestCameraFlash, self).tearDown()
 
-    """Test that flash modes cycle properly"""
+    """Test that flash modes activate properly"""
     def test_cycle_flash(self):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
         option_value_selector = self.main_window.get_option_value_selector()
 
-        # ensure initial state
-        self.assertThat(flash_button.iconName, Equals("flash-auto"))
-
         # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-
         self.assertThat(option_value_selector.visible,
                         Eventually(Equals(True)))
 
         # set flash to "on"
         option = self.main_window.get_option_value_button("On")
-
+        self.pointing_device.move_to_object(option)
         self.pointing_device.click()
         self.assertThat(flash_button.iconName, Equals("flash-on"))
 
@@ -56,6 +52,12 @@ class TestCameraFlash(CameraAppTestCase):
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
         self.assertThat(flash_button.iconName, Equals("flash-off"))
+
+        # set flash to "auto"
+        option = self.main_window.get_option_value_button("Auto")
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+        self.assertThat(flash_button.iconName, Equals("flash-auto"))
 
     """Test that video flash modes cycles properly"""
     def test_cycle_video_flash(self):
