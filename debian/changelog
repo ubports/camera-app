@@ -1,3 +1,14 @@
+camera-app (3.0.0+15.04.20150217-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Ugo Riboni ]
+  * Fix some failing tests (that were failing for real test bugs, not
+    due to infrastructure problems).
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 17 Feb 2015 21:37:33 +0000
+
 camera-app (3.0.0+15.04.20150212.3-0ubuntu1) vivid; urgency=medium
 
   [ Bill Filler ]
