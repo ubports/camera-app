@@ -63,6 +63,7 @@ Item {
         text: i18n.tr("Edit")
         iconName: "edit"
         onTriggered: editor.start(listView.currentItem.url)
+        enabled: listView.currentItem && !listView.currentItem.isVideo
     }
 
     Component.onCompleted: {
@@ -136,6 +137,7 @@ Item {
             property bool pinchInProgress: zoomPinchArea.active
             property string url: fileURL
             property bool isSelected: selected
+            property alias isVideo: media.isVideo
 
             function zoomIn(centerX, centerY, factor) {
                 flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);
