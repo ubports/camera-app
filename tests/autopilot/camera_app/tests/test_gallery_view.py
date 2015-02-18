@@ -72,6 +72,19 @@ class TestCameraGalleryView(CameraAppTestCase):
         self.pointing_device.move_to_object(exposure_button)
         self.pointing_device.click()
 
+    def add_sample_video(self):
+        self.main_window.swipe_to_viewfinder(self)
+        video_button = self.main_window.get_record_control()
+        self.pointing_device.move_to_object(video_button)
+        self.pointing_device.click()
+
+        exposure_button = self.main_window.get_exposure_button()
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
+        sleep(3)
+        self.pointing_device.click()
+
     def select_first_photo(self):
         # select the first photo
         gallery = self.main_window.get_gallery()
@@ -123,6 +136,21 @@ class TestCameraGalleryView(CameraAppTestCase):
         self.add_sample_photo()
 
         self.assertThat(hint.visible, Eventually(Equals(False)))
+
+    """Tests the thumnails for video load correctly in slideshow view"""
+    def test_video_thumbnails(self):
+        self.add_sample_video()
+        self.delete_all_media()
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+
+        self.main_window.swipe_to_gallery(self)
+
+        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        spinner = gallery.wait_select_single("ActivityIndicator")
+        self.assertThat(spinner.running, Eventually(Equals(False)))
 
     """Tests entering/leaving multiselection mode in the photogrid view"""
     def test_multiselection_mode(self):
