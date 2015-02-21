@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-01-25 12:17-0200\n"
-"PO-Revision-Date: 2014-07-19 14:50+0000\n"
-"Last-Translator: Paweł Stroka <pawstr@gmail.com>\n"
+"PO-Revision-Date: 2015-02-20 15:35+0000\n"
+"Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-27 06:23+0000\n"
-"X-Generator: Launchpad (build 17306)\n"
+"X-Launchpad-Export-Date: 2015-02-21 05:33+0000\n"
+"X-Generator: Launchpad (build 17355)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -35,11 +35,11 @@ msgstr "Brak dostępnych mediów."
 
 #: ../GalleryView.qml:220
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Wyszukiwanie zawartości..."
 
 #: ../GalleryViewHeader.qml:75
 msgid "Select"
-msgstr ""
+msgstr "Wybierz"
 
 #: ../GalleryViewHeader.qml:75
 msgid "Photo Roll"
@@ -47,7 +47,7 @@ msgstr "Photo Roll"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Brak miejsca w urządzeniu. Usuń niepotrzebne pliki."
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
@@ -61,53 +61,53 @@ msgstr "Udostępnij"
 #: ../ViewFinderOverlay.qml:247 ../ViewFinderOverlay.qml:270
 #: ../ViewFinderOverlay.qml:347
 msgid "On"
-msgstr ""
+msgstr "Wł."
 
 #: ../ViewFinderOverlay.qml:201 ../ViewFinderOverlay.qml:229
 #: ../ViewFinderOverlay.qml:252 ../ViewFinderOverlay.qml:275
 #: ../ViewFinderOverlay.qml:294 ../ViewFinderOverlay.qml:352
 msgid "Off"
-msgstr ""
+msgstr "Wył."
 
 #: ../ViewFinderOverlay.qml:224
 msgid "Auto"
-msgstr ""
+msgstr "Automatycznie"
 
 #: ../ViewFinderOverlay.qml:261
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:299
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekund"
 
 #: ../ViewFinderOverlay.qml:304
 msgid "15 seconds"
-msgstr ""
+msgstr "15 sekund"
 
 #: ../ViewFinderOverlay.qml:321
 msgid "Fine Quality"
-msgstr ""
+msgstr "Najlepsza jakość"
 
 #: ../ViewFinderOverlay.qml:325
 msgid "Normal Quality"
-msgstr ""
+msgstr "Zwykła jakość"
 
 #: ../ViewFinderOverlay.qml:329
 msgid "Basic Quality"
-msgstr ""
+msgstr "Niska jakość"
 
 #: ../ViewFinderOverlay.qml:361
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:369
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Zapisuj na karcie SD"
 
 #: ../ViewFinderOverlay.qml:374
 msgid "Save internally"
-msgstr ""
+msgstr "Zapisuj w pamięci urządzenia"
 
 #: ../ViewFinderOverlay.qml:799
 msgid "Low storage space"
