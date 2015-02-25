@@ -33,17 +33,6 @@ class TestCameraPhotoEditor(CameraAppTestCase):
     def tearDown(self):
         super(TestCameraPhotoEditor, self).tearDown()
 
-    def select_first_photo(self):
-        # select the first photo
-        gallery = self.main_window.get_gallery()
-        photo = gallery.wait_select_single(objectName="mediaItem0")
-        self.pointing_device.move_to_object(photo)
-
-        # do a long press to enter Multiselection mode
-        self.pointing_device.press()
-        sleep(1)
-        self.pointing_device.release()
-
     """Tests swiping to the gallery and pressing the back button"""
     def test_editor_appears(self):
         viewfinder = self.main_window.get_viewfinder()
