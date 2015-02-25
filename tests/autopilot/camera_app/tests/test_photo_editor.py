@@ -28,13 +28,14 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
         self.delete_all_media()
-        self.add_sample_photo()
 
     def tearDown(self):
         super(TestCameraPhotoEditor, self).tearDown()
 
-    """Tests swiping to the gallery and pressing the back button"""
+    """Tests editor opening and closing correctly for pictures"""
     def test_editor_appears(self):
+        self.add_sample_photo()
+
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
 
@@ -47,7 +48,7 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         self.pointing_device.move_to_object(opt)
         self.pointing_device.click()
 
-        # If the editor button is not there when we are viewing a picture, then
+        # If the editor button is not there when in the gallery view, then
         # we are not on a system that has the UI extras package installed or has
         # an older version than the one we need. Skip the test in this case.
         try:
@@ -79,3 +80,29 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         except StateNotFoundError:
             disappeared = True
         self.assertThat(disappeared, Equals(True))
+
+    """Tests editor not being available for videos"""
+    def test_editor_not_on_videos(self):
+        self.add_sample_video()
+
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+
+        self.main_window.swipe_to_gallery(self)
+
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        # open actions drawer
+        opt = gallery.wait_select_single(objectName="additionalActionsButton")
+        self.pointing_device.move_to_object(opt)
+        self.pointing_device.click()
+
+        # If the editor button is not there when in the gallery view, then
+        # we are not on a system that has the UI extras package installed or has
+        # an older version than the one we need. Skip the test in this case.
+        try:
+            edit = gallery.wait_select_single(objectName="actionButtonEdit")
+        except:
+            return
+
+        self.assertThat(edit.enabled, Equals(False))
