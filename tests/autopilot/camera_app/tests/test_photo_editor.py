@@ -33,12 +33,6 @@ class TestCameraPhotoEditor(CameraAppTestCase):
     def tearDown(self):
         super(TestCameraPhotoEditor, self).tearDown()
 
-    def add_sample_photo(self):
-        # add a fake photo to pictures_dir
-        photo_path = os.path.join(self.pictures_dir, "fake_photo.jpg")
-        with open(photo_path, 'a'):
-            os.utime(photo_path, None)
-
     def select_first_photo(self):
         # select the first photo
         gallery = self.main_window.get_gallery()

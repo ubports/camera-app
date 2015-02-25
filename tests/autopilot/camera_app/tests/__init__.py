@@ -9,10 +9,13 @@
 
 import os
 import time
+from time import sleep
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
+from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
@@ -95,3 +98,23 @@ class CameraAppTestCase(AutopilotTestCase):
             f = os.path.join(self.videos_dir, f)
             if os.path.isfile(f):
                 os.remove(f)
+
+    def add_sample_photo(self):
+        self.main_window.swipe_to_viewfinder(self)
+        exposure_button = self.main_window.get_exposure_button()
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
+
+    def add_sample_video(self):
+        self.main_window.swipe_to_viewfinder(self)
+        video_button = self.main_window.get_record_control()
+        self.pointing_device.move_to_object(video_button)
+        self.pointing_device.click()
+
+        exposure_button = self.main_window.get_exposure_button()
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.pointing_device.move_to_object(exposure_button)
+        self.pointing_device.click()
+        sleep(3)
+        self.pointing_device.click()
