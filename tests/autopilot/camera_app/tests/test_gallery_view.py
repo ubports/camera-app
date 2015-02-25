@@ -26,8 +26,6 @@ class TestCameraGalleryView(CameraAppTestCase):
         super(TestCameraGalleryView, self).setUp()
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
-        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
 
     def tearDown(self):
         super(TestCameraGalleryView, self).tearDown()
@@ -51,19 +49,6 @@ class TestCameraGalleryView(CameraAppTestCase):
 
         self.assertThat(slideshow_view.visible, Eventually(Equals(False)))
         self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
-
-    def delete_all_media(self):
-        picture_files = os.listdir(self.pictures_dir)
-        for f in picture_files:
-            f = os.path.join(self.pictures_dir, f)
-            if os.path.isfile(f):
-                os.remove(f)
-
-        video_files = os.listdir(self.videos_dir)
-        for f in video_files:
-            f = os.path.join(self.videos_dir, f)
-            if os.path.isfile(f):
-                os.remove(f)
 
     def add_sample_photo(self):
         self.main_window.swipe_to_viewfinder(self)

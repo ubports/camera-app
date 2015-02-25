@@ -27,20 +27,11 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         super(TestCameraPhotoEditor, self).setUp()
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
-        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
+        self.delete_all_media()
+        self.add_sample_photo()
 
     def tearDown(self):
         super(TestCameraPhotoEditor, self).tearDown()
-
-    def delete_all_media(self):
-        picture_files = os.listdir(self.pictures_dir)
-        for f in picture_files:
-            os.remove(os.path.join(self.pictures_dir, f))
-
-        video_files = os.listdir(self.videos_dir)
-        for f in video_files:
-            os.remove(os.path.join(self.videos_dir, f))
 
     def add_sample_photo(self):
         # add a fake photo to pictures_dir

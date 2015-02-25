@@ -33,6 +33,9 @@ class CameraAppTestCase(AutopilotTestCase):
     deb_location = '/usr/bin/camera-app'
 
     def setUp(self):
+        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
+        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
+
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
         if os.path.exists(self.local_location):
@@ -79,3 +82,16 @@ class CameraAppTestCase(AutopilotTestCase):
     @property
     def main_window(self):
         return MainWindow(self.app)
+
+    def delete_all_media(self):
+        picture_files = os.listdir(self.pictures_dir)
+        for f in picture_files:
+            f = os.path.join(self.pictures_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
+
+        video_files = os.listdir(self.videos_dir)
+        for f in video_files:
+            f = os.path.join(self.videos_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
