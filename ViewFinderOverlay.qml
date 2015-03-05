@@ -418,7 +418,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.top
             }
-            width: indicators.width + units.gu(2)
+            width: indicators.width + units.gu(2) + emptyIndicatorsHint.width
             height: units.gu(3)
             opacity: bottomEdge.pressed || bottomEdge.opened ? 0.0 : 1.0
             Behavior on opacity { UbuntuNumberAnimation {} }
@@ -436,7 +436,22 @@ Item {
                 sourceSize.height: height
                 cache: false
                 asynchronous: true
-                visible: indicators.visibleChildren.length > 1
+            }
+
+            Icon {
+                id: emptyIndicatorsHint
+                name: "go-up"
+                opacity: 0.5
+                color: "white"
+                visible: indicators.visibleChildren.length <= 1
+                anchors {
+                    top: parent.top
+                    topMargin: units.gu(0.5)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(0.5)
+                    horizontalCenter: parent.horizontalCenter
+                }
+                width: visible ? height * 1.5 : 0
             }
 
             Row {
