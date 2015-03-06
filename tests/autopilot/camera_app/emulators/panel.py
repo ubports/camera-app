@@ -51,7 +51,7 @@ class Panel(CameraCustomProxyObjectBase):
 
     def _drag_to_close(self):
         x, y, _, _ = self.globalRect
-        line_x = x + self.width * 0.25
+        line_x = x + self.width - 1
         start_y = y
         stop_y = y + self.height - 1
 
