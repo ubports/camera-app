@@ -5,6 +5,8 @@
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
+import sys
+
 from camera_app.emulators.panel import Panel
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals
@@ -141,7 +143,7 @@ class MainWindow(object):
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        testCase.pointing_device.drag(tx, ty, (tx - main_view.width // 2), ty)
+        testCase.pointing_device.drag(tx, ty, x, ty)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
 

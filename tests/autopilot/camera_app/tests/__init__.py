@@ -9,7 +9,9 @@
 
 import os
 import time
+import shutil
 from time import sleep
+from pkg_resources import resource_filename
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
@@ -35,10 +37,11 @@ class CameraAppTestCase(AutopilotTestCase):
     local_location = "../../camera-app"
     deb_location = '/usr/bin/camera-app'
 
-    def setUp(self):
-        self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
-        self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
+    pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
+    videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
+    sample_dir = resource_filename('camera_app', 'data')
 
+    def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
         if os.path.exists(self.local_location):
@@ -100,21 +103,9 @@ class CameraAppTestCase(AutopilotTestCase):
                 os.remove(f)
 
     def add_sample_photo(self):
-        self.main_window.swipe_to_viewfinder(self)
-        exposure_button = self.main_window.get_exposure_button()
-        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click()
+        shutil.copyfile(os.path.join(self.sample_dir, "sample.jpg"),
+                        os.path.join(self.pictures_dir, "sample.jpg"))
 
     def add_sample_video(self):
-        self.main_window.swipe_to_viewfinder(self)
-        video_button = self.main_window.get_record_control()
-        self.pointing_device.move_to_object(video_button)
-        self.pointing_device.click()
-
-        exposure_button = self.main_window.get_exposure_button()
-        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
-        self.pointing_device.move_to_object(exposure_button)
-        self.pointing_device.click()
-        sleep(3)
-        self.pointing_device.click()
+        shutil.copyfile(os.path.join(self.sample_dir, "sample.mp4"),
+                        os.path.join(self.videos_dir, "sample.mp4"))
