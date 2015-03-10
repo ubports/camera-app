@@ -143,7 +143,7 @@ class MainWindow(object):
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        testCase.pointing_device.drag(tx, ty, x, ty)
+        testCase.pointing_device.drag(tx, ty, x, ty, rate=1)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
 
@@ -154,6 +154,6 @@ class MainWindow(object):
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        testCase.pointing_device.drag(tx, ty, (tx + main_view.width // 2), ty)
+        testCase.pointing_device.drag(tx, ty, (tx + main_view.width // 2), ty, rate=1)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
