@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-01-28 14:03+0000\n"
-"Last-Translator: Dražen Matešić <Unknown>\n"
+"PO-Revision-Date: 2015-03-02 07:10+0000\n"
+"Last-Translator: Damir Jerovšek <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:46+0000\n"
-"X-Generator: Launchpad (build 17355)\n"
+"X-Launchpad-Export-Date: 2015-03-03 05:50+0000\n"
+"X-Generator: Launchpad (build 17361)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -43,7 +43,7 @@ msgstr "Izberite"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Edit Photo"
-msgstr ""
+msgstr "Uredi fotografijo"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
@@ -63,7 +63,7 @@ msgstr "Deli"
 
 #: ../SlideshowView.qml:63
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
 #: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
