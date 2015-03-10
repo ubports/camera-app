@@ -108,6 +108,7 @@ class TestCameraGalleryViewWithVideo(TestCameraGalleryViewMixin, CameraAppTestCa
     """Tests the camera gallery view with video already present"""
 
     def setUp(self):
+        self.delete_all_media()
         self.add_sample_video()
 
         super(TestCameraGalleryViewWithVideo, self).setUp()
@@ -134,6 +135,7 @@ class TestCameraGalleryViewWithPhoto(TestCameraGalleryViewMixin, CameraAppTestCa
     """Tests the camera gallery view with photo already present"""
 
     def setUp(self):
+        self.delete_all_media()
         self.add_sample_photo()
 
         super(TestCameraGalleryViewWithPhoto, self).setUp()
