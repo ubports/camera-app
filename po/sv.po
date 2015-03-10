@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2014-09-09 14:31+0000\n"
+"PO-Revision-Date: 2015-03-06 20:11+0000\n"
 "Last-Translator: Josef Andersson <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:46+0000\n"
-"X-Generator: Launchpad (build 17355)\n"
+"X-Launchpad-Export-Date: 2015-03-07 05:42+0000\n"
+"X-Generator: Launchpad (build 17383)\n"
 "Language: sv\n"
 
 #: ../DeleteDialog.qml:24
@@ -36,15 +36,15 @@ msgstr "Inget media tillgängligt."
 
 #: ../GalleryView.qml:222
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Söker efter innehåll..."
 
 #: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
 msgid "Select"
-msgstr ""
+msgstr "Välj"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Edit Photo"
-msgstr ""
+msgstr "Redigera bild"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
@@ -52,11 +52,11 @@ msgstr "Fotovisare"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Inget utrymme kvar på enhet, frigör utrymme för att fortsätta."
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Svep vänster för bildrullning"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -64,7 +64,7 @@ msgstr "Dela ut"
 
 #: ../SlideshowView.qml:63
 msgid "Edit"
-msgstr ""
+msgstr "Redigera"
 
 #: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
 #: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
@@ -88,45 +88,47 @@ msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:302
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekunder"
 
 #: ../ViewFinderOverlay.qml:307
 msgid "15 seconds"
-msgstr ""
+msgstr "15 sekunder"
 
 #: ../ViewFinderOverlay.qml:324
 msgid "Fine Quality"
-msgstr ""
+msgstr "Bra kvalitet"
 
 #: ../ViewFinderOverlay.qml:328
 msgid "Normal Quality"
-msgstr ""
+msgstr "Normalkvalitet"
 
 #: ../ViewFinderOverlay.qml:332
 msgid "Basic Quality"
-msgstr ""
+msgstr "Grundkvalitet"
 
 #: ../ViewFinderOverlay.qml:364
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:372
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Spara till SD-kort"
 
 #: ../ViewFinderOverlay.qml:377
 msgid "Save internally"
-msgstr ""
+msgstr "Spara internt"
 
 #: ../ViewFinderOverlay.qml:802
 msgid "Low storage space"
-msgstr ""
+msgstr "Lågt lagringsutrymme"
 
 #: ../ViewFinderOverlay.qml:803
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Ditt lagringsutrymme håller på att ta slut. För att fortsätta utan avbrott, "
+"frigör utrymme nu."
 
 #: ../camera-app.qml:37
 msgid "Flash"
