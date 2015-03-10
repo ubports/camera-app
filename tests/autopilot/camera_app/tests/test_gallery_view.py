@@ -170,7 +170,7 @@ class TestCameraGalleryViewWithPhoto(TestCameraGalleryViewMixin, CameraAppTestCa
 
     """Tests entering/leaving multiselection mode in the photogrid view"""
     def test_multiselection_mode(self):
-        self.main_window.swipe_to_gallery()
+        self.main_window.swipe_to_gallery(self)
         self.move_from_slideshow_to_photogrid()
         self.select_first_photo()
 
