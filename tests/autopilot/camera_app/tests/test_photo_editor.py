@@ -18,23 +18,22 @@ import os
 from time import sleep
 
 
-class TestCameraPhotoEditor(CameraAppTestCase):
-    """Tests the main camera features"""
+class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
+    """Tests photo editor when a photo is present"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
     def setUp(self):
-        super(TestCameraPhotoEditor, self).setUp()
+        self.delete_all_media()
+        self.add_sample_photo()
+
+        super(TestCameraPhotoEditorWithPhoto, self).setUp()
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-        self.delete_all_media()
 
     def tearDown(self):
-        super(TestCameraPhotoEditor, self).tearDown()
+        super(TestCameraPhotoEditorWithPhoto, self).tearDown()
 
     """Tests editor opening and closing correctly for pictures"""
     def test_editor_appears(self):
-        self.add_sample_photo()
 
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
@@ -56,6 +55,7 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         except:
             return
 
+        self.assertThat(edit.enabled, Eventually(Equals(True)))
         self.pointing_device.move_to_object(edit)
         self.pointing_device.click()
 
@@ -80,6 +80,20 @@ class TestCameraPhotoEditor(CameraAppTestCase):
         except StateNotFoundError:
             disappeared = True
         self.assertThat(disappeared, Equals(True))
+
+class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
+    """Tests photo editor when a video is present"""
+
+    def setUp(self):
+        self.delete_all_media()
+        self.add_sample_video()
+
+        super(TestCameraPhotoEditorWithVideo, self).setUp()
+        self.assertThat(
+            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+
+    def tearDown(self):
+        super(TestCameraPhotoEditorWithVideo, self).tearDown()
 
     """Tests editor not being available for videos"""
     def test_editor_not_on_videos(self):
