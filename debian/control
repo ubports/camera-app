@@ -21,6 +21,7 @@ Build-Depends: cmake,
                libusermetricsinput1-dev,
                gettext,
                dh-translations,
+               xvfb,
 Standards-Version: 3.9.5
 Homepage: https://launchpad.net/camera-app
 # If you aren't a member of ~phablet-team but need to upload packaging changes,
