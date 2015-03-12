@@ -35,6 +35,7 @@ qt5_use_modules(tst_storagemonitor Widgets Core Quick Qml Test)
 add_test(tst_storagemonitor tst_storagemonitor -xunitxml -o test.xml)
 set_tests_properties(tst_storagemonitor PROPERTIES
     TIMEOUT ${CTEST_TESTING_TIMEOUT}
+    ENVIRONMENT "QT_QPA_PLATFORM=minimal"
     )
 
 target_link_libraries(tst_storagemonitor
