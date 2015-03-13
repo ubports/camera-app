@@ -28,7 +28,8 @@ class TestCapture(CameraAppTestCase):
     def setUp(self):
         # Remove configuration file where knowledge of the photo roll hint's necessity is stored
         config_file = os.path.expanduser("~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
-        os.remove(config_file)
+        if os.path.exists(config_file):
+            os.remove(config_file)
 
         super(TestCapture, self).setUp()
 
@@ -199,7 +200,9 @@ class TestCapture(CameraAppTestCase):
     def delete_all_photos(self):
         picture_files = os.listdir(self.pictures_dir)
         for f in picture_files:
-            os.remove(os.path.join(self.pictures_dir, f))
+            f = os.path.join(self.pictures_dir, f)
+            if os.path.isfile(f):
+                os.remove(os.path.join(self.pictures_dir, f))
 
     def get_first_picture(self, timeout=10):
         pictures = []

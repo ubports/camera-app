@@ -6,6 +6,7 @@
 # by the Free Software Foundation.
 
 import logging
+import sys
 
 from autopilot import logging as autopilot_logging
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
@@ -38,7 +39,7 @@ class Panel(CameraCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=sys.maxsize)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -51,8 +52,8 @@ class Panel(CameraCustomProxyObjectBase):
 
     def _drag_to_close(self):
         x, y, _, _ = self.globalRect
-        line_x = x
+        line_x = x + self.width - 1
         start_y = y
         stop_y = y + self.height - 1
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=sys.maxsize)

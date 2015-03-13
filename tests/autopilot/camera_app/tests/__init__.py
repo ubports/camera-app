@@ -9,10 +9,15 @@
 
 import os
 import time
+import shutil
+from time import sleep
+from pkg_resources import resource_filename
 
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
+from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
 from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
@@ -31,6 +36,10 @@ class CameraAppTestCase(AutopilotTestCase):
 
     local_location = "../../camera-app"
     deb_location = '/usr/bin/camera-app'
+
+    pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
+    videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
+    sample_dir = resource_filename('camera_app', 'data')
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
@@ -79,3 +88,24 @@ class CameraAppTestCase(AutopilotTestCase):
     @property
     def main_window(self):
         return MainWindow(self.app)
+
+    def delete_all_media(self):
+        picture_files = os.listdir(self.pictures_dir)
+        for f in picture_files:
+            f = os.path.join(self.pictures_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
+
+        video_files = os.listdir(self.videos_dir)
+        for f in video_files:
+            f = os.path.join(self.videos_dir, f)
+            if os.path.isfile(f):
+                os.remove(f)
+
+    def add_sample_photo(self):
+        shutil.copyfile(os.path.join(self.sample_dir, "sample.jpg"),
+                        os.path.join(self.pictures_dir, "sample.jpg"))
+
+    def add_sample_video(self):
+        shutil.copyfile(os.path.join(self.sample_dir, "sample.mp4"),
+                        os.path.join(self.videos_dir, "sample.mp4"))
