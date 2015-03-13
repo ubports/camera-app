@@ -413,76 +413,14 @@ Item {
             return -1;
         }
 
-        Item {
+        BottomEdgeIndicators {
+            options: bottomEdge.options
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.top
             }
-            width: indicators.width + units.gu(2)
-            height: units.gu(3)
             opacity: bottomEdge.pressed || bottomEdge.opened ? 0.0 : 1.0
             Behavior on opacity { UbuntuNumberAnimation {} }
-
-            Image {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: parent.top
-                }
-                height: parent.height * 2
-                opacity: 0.3
-                source: "assets/ubuntu_shape.svg"
-                sourceSize.width: width
-                sourceSize.height: height
-                cache: false
-                asynchronous: true
-                visible: indicators.visibleChildren.length > 1
-            }
-
-            Row {
-                id: indicators
-
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
-                spacing: units.gu(1)
-
-                Repeater {
-                    model: bottomEdge.options
-                    delegate: Item {
-                        anchors {
-                            top: parent.top
-                            topMargin: units.gu(0.5)
-                            bottom: parent.bottom
-                            bottomMargin: units.gu(0.5)
-                        }
-                        width: units.gu(2)
-                        visible: modelData.showInIndicators && modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
-                        opacity: 0.5
-
-                        Icon {
-                            id: indicatorIcon
-                            anchors.fill: parent
-                            color: "white"
-                            name: modelData && modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
-                            visible: source != ""
-                        }
-
-                        Label {
-                            id: indicatorLabel
-                            anchors.fill: parent
-                            fontSize: "xx-small"
-                            color: "white"
-                            text: modelData.label
-                            verticalAlignment: Text.AlignVCenter
-                            visible: indicatorIcon.name === ""
-                        }
-                    }
-                }
-            }
         }
     }
 
