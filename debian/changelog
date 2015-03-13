@@ -1,3 +1,25 @@
+camera-app (3.0.0+15.04.20150313-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Disable editing when the file is a video
+  * Fix photos/videos when shooting/recording with orientation lock on
+    by not relying on the app orientation returned by unity8 but instead
+    the device orientation itself. (LP: #1428272, #1422762)
+  * Show placeholder bottom edge hint when no option is set so that the
+    user can always guess the existence of the bottom edge. (LP:
+    #1365419)
+  * Updated pot file
+
+  [ Ugo Riboni ]
+  * Refactor camera editor tests, make them work even if UI extras are
+    not installed, and add a test for the edit button being disabled
+    when on a video
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 13 Mar 2015 00:41:59 +0000
+
 camera-app (3.0.0+15.04.20150218-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]
