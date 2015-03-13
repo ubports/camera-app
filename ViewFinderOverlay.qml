@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import QtMultimedia 5.0
 import QtPositioning 5.2
+import QtSensors 5.0
 import CameraApp 0.1
 import Qt.labs.settings 1.0
 
@@ -424,6 +425,11 @@ Item {
         }
     }
 
+    OrientationSensor {
+        id: orientationSensor
+        active: true
+    }
+
     Item {
         id: controls
 
@@ -451,7 +457,33 @@ Item {
         }
 
         function shoot() {
-            var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+            var orientation;
+            switch (orientationSensor.reading.orientation) {
+                case OrientationReading.TopUp:
+                    orientation = 0;
+                    break;
+                case OrientationReading.TopDown:
+                    orientation = 180;
+                    break;
+                case OrientationReading.LeftUp:
+                    orientation = 90;
+                    break;
+                case OrientationReading.RightUp:
+                    orientation = 270;
+                    break;
+                default:
+                    /* Workaround for OrientationSensor not setting a valid value until
+                       the device is rotated.
+                       Ref.: https://bugs.launchpad.net/qtubuntu-sensors/+bug/1429865
+
+                       Note that the value returned by Screen.angleBetween is valid if
+                       the orientation lock is not engaged.
+                       Ref.: https://bugs.launchpad.net/camera-app/+bug/1422762
+                    */
+                    orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+                    break;
+            }
+
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
                 orientation += 90;
             }
