@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-03-12 18:11+0000\n"
-"Last-Translator: j3lc <x_nikos@yahoo.gr>\n"
+"PO-Revision-Date: 2015-03-19 22:47+0000\n"
+"Last-Translator: Simos Xenitellis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-19 05:40+0000\n"
-"X-Generator: Launchpad (build 17403)\n"
+"X-Launchpad-Export-Date: 2015-03-20 05:18+0000\n"
+"X-Generator: Launchpad (build 17405)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -47,7 +47,7 @@ msgstr "Επεξεργασία φωτογραφίας"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
-msgstr ""
+msgstr "Φωτογραφικό ρολό"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Σύρετε αριστερά για το φωτογραφικό ρολό"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -96,7 +96,7 @@ msgstr "15 δευτερόλεπτα"
 
 #: ../ViewFinderOverlay.qml:324
 msgid "Fine Quality"
-msgstr ""
+msgstr "Βέλτιστη ποιότητα"
 
 #: ../ViewFinderOverlay.qml:328
 msgid "Normal Quality"
