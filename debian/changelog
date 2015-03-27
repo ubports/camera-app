@@ -1,3 +1,15 @@
+camera-app (3.0.0+15.04.20150327.1~rtm-0ubuntu1) 14.09; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+  * Resync trunk.
+
+  [ Florian Boucault ]
+  * Unit tests: make tst_BottomEdgeIndicators::test_options conditional
+    on the presence of Qt5.4
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 27 Mar 2015 16:58:54 +0000
+
 camera-app (3.0.0+15.04.20150313-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]
