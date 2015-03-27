@@ -103,6 +103,11 @@ TestCase {
     }
 
     function test_options(data) {
+        try {
+            Qt.createQmlObject("import QtQuick 2.4; Item {}", indicators);
+        } catch (e) {
+            skip("This test requires Qt 5.4");
+        }
         indicators.options = data.options;
         var emptyIndicatorsHint = findChild(indicators, "emptyIndicatorsHint");
         var indicatorsRow = findChild(indicators, "indicatorsRow");
