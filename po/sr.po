@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2014-09-24 13:27+0000\n"
+"PO-Revision-Date: 2015-04-13 17:30+0000\n"
 "Last-Translator: Данило Шеган <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:46+0000\n"
-"X-Generator: Launchpad (build 17355)\n"
+"X-Launchpad-Export-Date: 2015-04-14 05:31+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -35,15 +35,15 @@ msgstr "Нема снимака."
 
 #: ../GalleryView.qml:222
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Тражи садржај..."
 
 #: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
 msgid "Select"
-msgstr ""
+msgstr "Изабери"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Edit Photo"
-msgstr ""
+msgstr "Уреди фотографију"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
@@ -51,11 +51,11 @@ msgstr "Преглед снимака"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Нема простора на уређају, ослободите простор да наставите."
 
 #: ../PhotoRollHint.qml:68
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Превуците на лево да вртите фотографије"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -63,7 +63,7 @@ msgstr "Подели"
 
 #: ../SlideshowView.qml:63
 msgid "Edit"
-msgstr ""
+msgstr "Уреди"
 
 #: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
 #: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
@@ -87,45 +87,47 @@ msgstr "ХДР"
 
 #: ../ViewFinderOverlay.qml:302
 msgid "5 seconds"
-msgstr ""
+msgstr "5 секунди"
 
 #: ../ViewFinderOverlay.qml:307
 msgid "15 seconds"
-msgstr ""
+msgstr "15 секунди"
 
 #: ../ViewFinderOverlay.qml:324
 msgid "Fine Quality"
-msgstr ""
+msgstr "Добар квалитет"
 
 #: ../ViewFinderOverlay.qml:328
 msgid "Normal Quality"
-msgstr ""
+msgstr "Нормалан квалитет"
 
 #: ../ViewFinderOverlay.qml:332
 msgid "Basic Quality"
-msgstr ""
+msgstr "Основни квалитет"
 
 #: ../ViewFinderOverlay.qml:364
 msgid "SD"
-msgstr ""
+msgstr "СД"
 
 #: ../ViewFinderOverlay.qml:372
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Сачувај на СД картицу"
 
 #: ../ViewFinderOverlay.qml:377
 msgid "Save internally"
-msgstr ""
+msgstr "Сачувај на уређају"
 
 #: ../ViewFinderOverlay.qml:802
 msgid "Low storage space"
-msgstr ""
+msgstr "Мало преосталог простора"
 
 #: ../ViewFinderOverlay.qml:803
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Понестаје вам простора. Да наставите без прекида, ослободите нешто простора "
+"што пре."
 
 #: ../camera-app.qml:37
 msgid "Flash"
