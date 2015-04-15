@@ -90,17 +90,19 @@ class CameraAppTestCase(AutopilotTestCase):
         return MainWindow(self.app)
 
     def delete_all_media(self):
-        picture_files = os.listdir(self.pictures_dir)
-        for f in picture_files:
-            f = os.path.join(self.pictures_dir, f)
-            if os.path.isfile(f):
-                os.remove(f)
+        if os.path.exists(self.pictures_dir):
+            picture_files = os.listdir(self.pictures_dir)
+            for f in picture_files:
+                f = os.path.join(self.pictures_dir, f)
+                if os.path.isfile(f):
+                    os.remove(f)
 
-        video_files = os.listdir(self.videos_dir)
-        for f in video_files:
-            f = os.path.join(self.videos_dir, f)
-            if os.path.isfile(f):
-                os.remove(f)
+        if os.path.exists(self.videos_dir):
+            video_files = os.listdir(self.videos_dir)
+            for f in video_files:
+                f = os.path.join(self.videos_dir, f)
+                if os.path.isfile(f):
+                    os.remove(f)
 
     def add_sample_photo(self):
         shutil.copyfile(os.path.join(self.sample_dir, "sample.jpg"),
