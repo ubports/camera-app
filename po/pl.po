@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-02-20 15:35+0000\n"
+"PO-Revision-Date: 2015-04-20 14:17+0000\n"
 "Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-24 05:46+0000\n"
-"X-Generator: Launchpad (build 17355)\n"
+"X-Launchpad-Export-Date: 2015-04-21 05:36+0000\n"
+"X-Generator: Launchpad (build 17430)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -43,7 +43,7 @@ msgstr "Wybierz"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Edit Photo"
-msgstr ""
+msgstr "Edycja zdjęcia"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
@@ -63,7 +63,7 @@ msgstr "Udostępnij"
 
 #: ../SlideshowView.qml:63
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
 #: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
@@ -119,13 +119,15 @@ msgstr "Zapisuj w pamięci urządzenia"
 
 #: ../ViewFinderOverlay.qml:802
 msgid "Low storage space"
-msgstr ""
+msgstr "Mało miejsca na dysku"
 
 #: ../ViewFinderOverlay.qml:803
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Kończy się miejsce na dysku. Aby uniknąć niespodziwanych problemów, zwolnij "
+"miejsce na dysku."
 
 #: ../camera-app.qml:37
 msgid "Flash"
@@ -195,4 +197,4 @@ msgstr "Aplikacja aparatu"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Zdjęcia;Fotografie;Filmy;Nagrania;Zrzuty"
