@@ -8,14 +8,14 @@
 import logging
 import sys
 
+import ubuntuuitoolkit
 from autopilot import logging as autopilot_logging
-from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 
 
 logger = logging.getLogger(__name__)
 
 
-class Panel(CameraCustomProxyObjectBase):
+class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
     """Panel Autopilot emulator."""
 
     @autopilot_logging.log_action(logger.info)

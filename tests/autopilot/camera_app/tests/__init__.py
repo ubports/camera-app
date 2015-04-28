@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2012 Canonical
+# Copyright 2012, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -10,17 +10,14 @@
 import os
 import time
 import shutil
-from time import sleep
 from pkg_resources import resource_filename
 
+import ubuntuuitoolkit
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
-from autopilot.matchers import Eventually
-from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
-from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 
 
 class CameraAppTestCase(AutopilotTestCase):
@@ -60,13 +57,14 @@ class CameraAppTestCase(AutopilotTestCase):
     def launch_test_local(self):
         self.app = self.launch_test_application(
             self.local_location,
-            emulator_base=CameraCustomProxyObjectBase)
+            emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
     def launch_test_installed(self):
+        proxy_base = ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase
         if model() == 'Desktop':
             self.app = self.launch_test_application(
                 "camera-app",
-                emulator_base=CameraCustomProxyObjectBase)
+                emulator_base=proxy_base)
         else:
             self.app = self.launch_test_application(
                 "camera-app",
@@ -74,12 +72,12 @@ class CameraAppTestCase(AutopilotTestCase):
                 "--desktop_file_hint="
                 "/usr/share/applications/camera-app.desktop",
                 app_type='qt',
-                emulator_base=CameraCustomProxyObjectBase)
+                emulator_base=proxy_base)
 
     def launch_click_installed(self):
         self.app = self.launch_click_package(
             "com.ubuntu.camera",
-            emulator_base=CameraCustomProxyObjectBase)
+            emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
     def get_center(self, object_proxy):
         x, y, w, h = object_proxy.globalRect
