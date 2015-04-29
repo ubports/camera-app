@@ -23,6 +23,9 @@ from testtools.matchers import Equals
 from camera_app.emulators.main_window import MainWindow
 
 
+CUSTOM_PROXY_OBJECT_BASE = ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase
+
+
 class CameraAppTestCase(AutopilotTestCase):
 
     """A common test case class that provides several useful methods
@@ -60,14 +63,13 @@ class CameraAppTestCase(AutopilotTestCase):
     def launch_test_local(self):
         self.app = self.launch_test_application(
             self.local_location,
-            emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
+            emulator_base=CUSTOM_PROXY_OBJECT_BASE)
 
     def launch_test_installed(self):
-        proxy_base = ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase
         if model() == 'Desktop':
             self.app = self.launch_test_application(
                 "camera-app",
-                emulator_base=proxy_base)
+                emulator_base=CUSTOM_PROXY_OBJECT_BASE)
         else:
             self.app = self.launch_test_application(
                 "camera-app",
@@ -75,12 +77,12 @@ class CameraAppTestCase(AutopilotTestCase):
                 "--desktop_file_hint="
                 "/usr/share/applications/camera-app.desktop",
                 app_type='qt',
-                emulator_base=proxy_base)
+                emulator_base=CUSTOM_PROXY_OBJECT_BASE)
 
     def launch_click_installed(self):
         self.app = self.launch_click_package(
             "com.ubuntu.camera",
-            emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
+            emulator_base=CUSTOM_PROXY_OBJECT_BASE)
 
     def get_center(self, object_proxy):
         x, y, w, h = object_proxy.globalRect
