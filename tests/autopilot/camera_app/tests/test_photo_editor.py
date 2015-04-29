@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -7,15 +7,11 @@
 
 """Tests for the Camera photo editor"""
 
-from testtools.matchers import Equals, NotEquals, GreaterThan, LessThan
+from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 from autopilot.exceptions import StateNotFoundError
 
 from camera_app.tests import CameraAppTestCase
-
-import unittest
-import os
-from time import sleep
 
 
 class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
@@ -35,7 +31,7 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
     """Tests editor opening and closing correctly for pictures"""
     def test_editor_appears(self):
 
-        viewfinder = self.main_window.get_viewfinder()
+        self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
 
         self.main_window.swipe_to_gallery(self)
@@ -48,8 +44,9 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
         self.pointing_device.click()
 
         # If the editor button is not there when in the gallery view, then
-        # we are not on a system that has the UI extras package installed or has
-        # an older version than the one we need. Skip the test in this case.
+        # we are not on a system that has the UI extras package installed or
+        # has an older version than the one we need. Skip the test in this
+        # case.
         try:
             edit = gallery.wait_select_single(objectName="actionButtonEdit")
         except:
@@ -81,6 +78,7 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
             disappeared = True
         self.assertThat(disappeared, Equals(True))
 
+
 class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
     """Tests photo editor when a video is present"""
 
@@ -99,7 +97,7 @@ class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
     def test_editor_not_on_videos(self):
         self.add_sample_video()
 
-        viewfinder = self.main_window.get_viewfinder()
+        self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
 
         self.main_window.swipe_to_gallery(self)
@@ -112,8 +110,9 @@ class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
         self.pointing_device.click()
 
         # If the editor button is not there when in the gallery view, then
-        # we are not on a system that has the UI extras package installed or has
-        # an older version than the one we need. Skip the test in this case.
+        # we are not on a system that has the UI extras package installed or
+        # has an older version than the one we need. Skip the test in this
+        # case.
         try:
             edit = gallery.wait_select_single(objectName="actionButtonEdit")
         except:

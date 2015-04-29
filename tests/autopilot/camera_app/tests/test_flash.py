@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2012 Canonical
+# Copyright 2012, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -7,12 +7,10 @@
 
 """Tests for the Camera App flash"""
 
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
-
-import unittest
 
 
 class TestCameraFlash(CameraAppTestCase):
@@ -104,7 +102,8 @@ class TestCameraFlash(CameraAppTestCase):
         # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
 
         # set flash to "on"
         option = self.main_window.get_option_value_button("On")
@@ -115,9 +114,11 @@ class TestCameraFlash(CameraAppTestCase):
         # closes the flash options menu and open the hdr options menu
         self.pointing_device.move_to_object(hdr_button)
         self.pointing_device.click()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(False)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(False)))
         self.pointing_device.click()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
 
         # set hdr to "on" and verify that flash is "off"
         option = self.main_window.get_option_value_button("On")
@@ -129,9 +130,11 @@ class TestCameraFlash(CameraAppTestCase):
         # closes the hdr options menu and open the flash options menu
         self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(False)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(False)))
         self.pointing_device.click()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
 
         # set flash to "on" and verify that hdr is "off"
         option = self.main_window.get_option_value_button("On")
