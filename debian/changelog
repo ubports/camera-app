@@ -1,3 +1,17 @@
+camera-app (3.0.0+15.04.20150514-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk.
+
+  [ Leo Arias ]
+  * Use the base class from the toolkit in autopilot tests.
+
+  [ Omer Akram ]
+  * Autopilot: Ensure the media directories exist before trying to
+    delete data from them. (LP: #1444650)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Thu, 14 May 2015 15:10:24 +0000
+
 camera-app (3.0.0+15.04.20150424-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]
