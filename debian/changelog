@@ -1,3 +1,73 @@
+camera-app (3.0.0+15.04.20150514-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk.
+
+  [ Leo Arias ]
+  * Use the base class from the toolkit in autopilot tests.
+
+  [ Omer Akram ]
+  * Autopilot: Ensure the media directories exist before trying to
+    delete data from them. (LP: #1444650)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Thu, 14 May 2015 15:10:24 +0000
+
+camera-app (3.0.0+15.04.20150424-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Do not render camera when in photo roll and vice-versa. (LP:
+    #1441937)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 24 Apr 2015 14:04:45 +0000
+
+camera-app (3.0.0+15.04.20150327.1~rtm-0ubuntu1) 14.09; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+  * Resync trunk.
+
+  [ Florian Boucault ]
+  * Unit tests: make tst_BottomEdgeIndicators::test_options conditional
+    on the presence of Qt5.4
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 27 Mar 2015 16:58:54 +0000
+
+camera-app (3.0.0+15.04.20150313-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Disable editing when the file is a video
+  * Fix photos/videos when shooting/recording with orientation lock on
+    by not relying on the app orientation returned by unity8 but instead
+    the device orientation itself. (LP: #1428272, #1422762)
+  * Show placeholder bottom edge hint when no option is set so that the
+    user can always guess the existence of the bottom edge. (LP:
+    #1365419)
+  * Updated pot file
+
+  [ Ugo Riboni ]
+  * Refactor camera editor tests, make them work even if UI extras are
+    not installed, and add a test for the edit button being disabled
+    when on a video
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 13 Mar 2015 00:41:59 +0000
+
+camera-app (3.0.0+15.04.20150218-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Ugo Riboni ]
+  * Fix a bug preventing the thumbnails for videos to load correctly
+    (LP: #1423177)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Wed, 18 Feb 2015 14:51:12 +0000
+
 camera-app (3.0.0+15.04.20150217-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]

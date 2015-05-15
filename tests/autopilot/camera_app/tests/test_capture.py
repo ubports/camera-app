@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2012 Canonical
+# Copyright 2012, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -8,7 +8,6 @@
 """Tests for the Camera App"""
 
 from autopilot.matchers import Eventually
-from autopilot.platform import model
 from testtools.matchers import Equals, NotEquals
 from wand.image import Image
 from MediaInfoDLL3 import MediaInfo, Stream
@@ -26,9 +25,12 @@ class TestCapture(CameraAppTestCase):
     """ This is needed to wait for the application to start.
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
-        # Remove configuration file where knowledge of the photo roll hint's necessity is stored
-        config_file = os.path.expanduser("~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
-        os.remove(config_file)
+        # Remove configuration file where knowledge of the photo roll hint's
+        # necessity is stored
+        config_file = os.path.expanduser(
+            "~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
+        if os.path.exists(config_file):
+            os.remove(config_file)
 
         super(TestCapture, self).setUp()
 
@@ -81,8 +83,12 @@ class TestCapture(CameraAppTestCase):
         # check that the camera is able to capture another photo
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
-    """Tests clicking on the record control and checks if the recording time appears"""
     def test_record_video(self):
+        """Test clicking on the record control.
+
+        Check if the recording time appears.
+
+        """
         # Get all the elements
         record_control = self.main_window.get_record_control()
         stop_watch = self.main_window.get_stop_watch()
@@ -163,10 +169,10 @@ class TestCapture(CameraAppTestCase):
         # Check that the photo roll hint is hidden
         self.assertEquals(hint.visible, False)
 
-    """Test that the shoot button gets disabled for a while then re-enabled
-    after shooting"""
     @unittest.skip("Disabled this test due race condition see bug 1227373")
     def test_shoot_button_disable(self):
+        """Test that the shoot button gets disabled for a while then re-enabled
+        after shooting"""
         exposure_button = self.main_window.get_exposure_button()
 
         # The focus ring should be invisible in the beginning
@@ -185,8 +191,7 @@ class TestCapture(CameraAppTestCase):
     def test_picture_quality_setting(self):
         qualities = [("Basic Quality", 60),
                      ("Normal Quality", 80),
-                     ("Fine Quality", 95)
-                    ]
+                     ("Fine Quality", 95)]
         for quality, expectedCompression in qualities:
             self.delete_all_photos()
             self.set_compression_quality(quality)
@@ -199,7 +204,9 @@ class TestCapture(CameraAppTestCase):
     def delete_all_photos(self):
         picture_files = os.listdir(self.pictures_dir)
         for f in picture_files:
-            os.remove(os.path.join(self.pictures_dir, f))
+            f = os.path.join(self.pictures_dir, f)
+            if os.path.isfile(f):
+                os.remove(os.path.join(self.pictures_dir, f))
 
     def get_first_picture(self, timeout=10):
         pictures = []
@@ -241,12 +248,15 @@ class TestCapture(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
 
-        # open encoding quality option value selector showing the possible values
-        encoding_quality_button = self.main_window.get_encoding_quality_button()
+        # open encoding quality option value selector showing the possible
+        # values
+        encoding_quality_button = (
+            self.main_window.get_encoding_quality_button())
         self.pointing_device.move_to_object(encoding_quality_button)
         self.pointing_device.click()
         option_value_selector = self.main_window.get_option_value_selector()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
 
         # tap on chosen compression quality option
         option = self.main_window.get_option_value_button(quality)
@@ -278,7 +288,8 @@ class TestCapture(CameraAppTestCase):
         self.record_video(2)
         video_file = self.get_first_video()
         height = self.read_video_height(video_file)
-        expected_height = self.height_from_resolution_label(expected_resolution)
+        expected_height = self.height_from_resolution_label(
+            expected_resolution)
         self.assertThat(height, Equals(expected_height))
 
     def switch_cameras(self):
@@ -300,7 +311,8 @@ class TestCapture(CameraAppTestCase):
             self.record_video(2)
             video_file = self.get_first_video()
             height = self.read_video_height(video_file)
-            expected_height = self.height_from_resolution_label(resolution_label)
+            expected_height = self.height_from_resolution_label(
+                resolution_label)
             self.assertThat(height, Equals(expected_height))
             self.dismiss_first_photo_hint()
 
@@ -319,12 +331,15 @@ class TestCapture(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
 
-        # open video resolution option value selector showing the possible values
-        video_resolution_button = self.main_window.get_video_resolution_button()
+        # open video resolution option value selector showing the possible
+        # values
+        video_resolution_button = (
+            self.main_window.get_video_resolution_button())
         self.pointing_device.move_to_object(video_resolution_button)
         self.pointing_device.click()
         option_value_selector = self.main_window.get_option_value_selector()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
         optionButtons = option_value_selector.select_many("OptionValueButton")
         resolutions = [button.label for button in optionButtons]
 
@@ -341,12 +356,15 @@ class TestCapture(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
 
-        # open video resolution option value selector showing the possible values
-        video_resolution_button = self.main_window.get_video_resolution_button()
+        # open video resolution option value selector showing the possible
+        # values
+        video_resolution_button = (
+            self.main_window.get_video_resolution_button())
         self.pointing_device.move_to_object(video_resolution_button)
         self.pointing_device.click()
         option_value_selector = self.main_window.get_option_value_selector()
-        self.assertThat(option_value_selector.visible, Eventually(Equals(True)))
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
 
         # tap on chosen video resolution option
         option = self.main_window.get_option_value_button(resolution_label)

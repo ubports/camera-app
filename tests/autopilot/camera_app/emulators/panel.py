@@ -1,20 +1,21 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
 import logging
+import sys
 
+import ubuntuuitoolkit
 from autopilot import logging as autopilot_logging
-from camera_app.emulators.baseemulator import CameraCustomProxyObjectBase
 
 
 logger = logging.getLogger(__name__)
 
 
-class Panel(CameraCustomProxyObjectBase):
+class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
     """Panel Autopilot emulator."""
 
     @autopilot_logging.log_action(logger.info)
@@ -38,7 +39,8 @@ class Panel(CameraCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        self.pointing_device.drag(
+            line_x, start_y, line_x, stop_y, rate=sys.maxsize)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -51,8 +53,9 @@ class Panel(CameraCustomProxyObjectBase):
 
     def _drag_to_close(self):
         x, y, _, _ = self.globalRect
-        line_x = x
+        line_x = x + self.width - 1
         start_y = y
         stop_y = y + self.height - 1
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        self.pointing_device.drag(
+            line_x, start_y, line_x, stop_y, rate=sys.maxsize)

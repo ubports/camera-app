@@ -153,6 +153,7 @@ Item {
                 height: viewSwitcher.height
                 overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
                 inView: !viewSwitcher.atXEnd
+                opacity: inView ? 1.0 : 0.0
                 onPhotoTaken: {
                     galleryView.prependMediaToModel(filePath);
                     galleryView.showLastPhotoTaken();
@@ -169,6 +170,7 @@ Item {
                 height: viewSwitcher.height
                 inView: !viewSwitcher.atXBeginning
                 onExit: viewSwitcher.switchToViewFinder()
+                opacity: inView ? 1.0 : 0.0
             }
         }
     }

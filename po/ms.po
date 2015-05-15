@@ -7,41 +7,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-01-25 12:17-0200\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
 "PO-Revision-Date: 2013-12-14 05:36+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-27 06:23+0000\n"
-"X-Generator: Launchpad (build 17306)\n"
+"X-Launchpad-Export-Date: 2015-05-09 05:47+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr ""
 
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:41
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
 msgid "Delete"
 msgstr ""
 
-#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:802
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
 msgid "Cancel"
 msgstr ""
 
-#: ../GalleryView.qml:186
+#: ../GalleryView.qml:188
 msgid "No media available."
 msgstr ""
 
-#: ../GalleryView.qml:220
+#: ../GalleryView.qml:222
 msgid "Scanning for content..."
 msgstr ""
 
-#: ../GalleryViewHeader.qml:75
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
 msgid "Select"
 msgstr ""
 
-#: ../GalleryViewHeader.qml:75
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr ""
+
+#: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
 msgstr ""
 
@@ -53,67 +57,71 @@ msgstr ""
 msgid "Swipe left for photo roll"
 msgstr ""
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:36
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:196 ../ViewFinderOverlay.qml:219
-#: ../ViewFinderOverlay.qml:247 ../ViewFinderOverlay.qml:270
-#: ../ViewFinderOverlay.qml:347
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
 msgid "On"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:201 ../ViewFinderOverlay.qml:229
-#: ../ViewFinderOverlay.qml:252 ../ViewFinderOverlay.qml:275
-#: ../ViewFinderOverlay.qml:294 ../ViewFinderOverlay.qml:352
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
 msgid "Off"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:224
+#: ../ViewFinderOverlay.qml:227
 msgid "Auto"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:261
+#: ../ViewFinderOverlay.qml:264
 msgid "HDR"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:299
+#: ../ViewFinderOverlay.qml:302
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:304
+#: ../ViewFinderOverlay.qml:307
 msgid "15 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:321
+#: ../ViewFinderOverlay.qml:324
 msgid "Fine Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:325
+#: ../ViewFinderOverlay.qml:328
 msgid "Normal Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:329
+#: ../ViewFinderOverlay.qml:332
 msgid "Basic Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:361
+#: ../ViewFinderOverlay.qml:364
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:369
+#: ../ViewFinderOverlay.qml:372
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:374
+#: ../ViewFinderOverlay.qml:377
 msgid "Save internally"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:799
+#: ../ViewFinderOverlay.qml:802
 msgid "Low storage space"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:800
+#: ../ViewFinderOverlay.qml:803
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."

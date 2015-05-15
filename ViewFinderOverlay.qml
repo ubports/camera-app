@@ -20,6 +20,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import QtMultimedia 5.0
 import QtPositioning 5.2
+import QtSensors 5.0
 import CameraApp 0.1
 import Qt.labs.settings 1.0
 
@@ -413,77 +414,20 @@ Item {
             return -1;
         }
 
-        Item {
+        BottomEdgeIndicators {
+            options: bottomEdge.options
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.top
             }
-            width: indicators.width + units.gu(2)
-            height: units.gu(3)
             opacity: bottomEdge.pressed || bottomEdge.opened ? 0.0 : 1.0
             Behavior on opacity { UbuntuNumberAnimation {} }
-
-            Image {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: parent.top
-                }
-                height: parent.height * 2
-                opacity: 0.3
-                source: "assets/ubuntu_shape.svg"
-                sourceSize.width: width
-                sourceSize.height: height
-                cache: false
-                asynchronous: true
-                visible: indicators.visibleChildren.length > 1
-            }
-
-            Row {
-                id: indicators
-
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
-                spacing: units.gu(1)
-
-                Repeater {
-                    model: bottomEdge.options
-                    delegate: Item {
-                        anchors {
-                            top: parent.top
-                            topMargin: units.gu(0.5)
-                            bottom: parent.bottom
-                            bottomMargin: units.gu(0.5)
-                        }
-                        width: units.gu(2)
-                        visible: modelData.showInIndicators && modelData.available && modelData.visible ? (modelData.isToggle ? modelData.get(model.selectedIndex).value : true) : false
-                        opacity: 0.5
-
-                        Icon {
-                            id: indicatorIcon
-                            anchors.fill: parent
-                            color: "white"
-                            name: modelData && modelData.isToggle ? modelData.icon : modelData.get(model.selectedIndex).icon
-                            source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
-                            visible: source != ""
-                        }
-
-                        Label {
-                            id: indicatorLabel
-                            anchors.fill: parent
-                            fontSize: "xx-small"
-                            color: "white"
-                            text: modelData.label
-                            verticalAlignment: Text.AlignVCenter
-                            visible: indicatorIcon.name === ""
-                        }
-                    }
-                }
-            }
         }
+    }
+
+    OrientationSensor {
+        id: orientationSensor
+        active: true
     }
 
     Item {
@@ -513,7 +457,33 @@ Item {
         }
 
         function shoot() {
-            var orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+            var orientation;
+            switch (orientationSensor.reading.orientation) {
+                case OrientationReading.TopUp:
+                    orientation = 0;
+                    break;
+                case OrientationReading.TopDown:
+                    orientation = 180;
+                    break;
+                case OrientationReading.LeftUp:
+                    orientation = 90;
+                    break;
+                case OrientationReading.RightUp:
+                    orientation = 270;
+                    break;
+                default:
+                    /* Workaround for OrientationSensor not setting a valid value until
+                       the device is rotated.
+                       Ref.: https://bugs.launchpad.net/qtubuntu-sensors/+bug/1429865
+
+                       Note that the value returned by Screen.angleBetween is valid if
+                       the orientation lock is not engaged.
+                       Ref.: https://bugs.launchpad.net/camera-app/+bug/1422762
+                    */
+                    orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+                    break;
+            }
+
             if (Screen.primaryOrientation == Qt.PortraitOrientation) {
                 orientation += 90;
             }
