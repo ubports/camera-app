@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-04-27 15:44+0000\n"
+"PO-Revision-Date: 2015-05-29 19:57+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-05-30 05:30+0000\n"
+"X-Generator: Launchpad (build 17532)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -35,7 +35,7 @@ msgstr "Sem multimédia disponível"
 
 #: ../GalleryView.qml:222
 msgid "Scanning for content..."
-msgstr "A pesquisar por conteúdo..."
+msgstr "A procurar por conteúdo..."
 
 #: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
 msgid "Select"
