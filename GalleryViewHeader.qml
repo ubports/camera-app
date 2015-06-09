@@ -138,28 +138,16 @@ Item {
             visible: header.validationVisible
         }
 
-        IconButton {
-            id: undoButton
-            objectName: "undoButton"
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
+        Repeater {
+            model: header.editMode ? header.editModeActions : null
+            IconButton {
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                visible: header.editMode
+                action: modelData
             }
-            visible: header.editMode
-            action: editModeActions.length > 0 ? editModeActions[0] : null
-            onTriggered: if (action) action.triggered()
-        }
-
-        IconButton {
-            id: redoButton
-            objectName: "redoButton"
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-            }
-            visible: header.editMode
-            action: editModeActions.length > 1 ? editModeActions[1] : null
-            onTriggered: if (action) action.triggered()
         }
     }
 
