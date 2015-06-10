@@ -141,10 +141,7 @@ Item {
         Repeater {
             model: header.editMode ? header.editModeActions : null
             IconButton {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                }
+                Layout.fillHeight: true
                 visible: header.editMode
                 action: modelData
             }
