@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-04-17 00:23+0000\n"
+"PO-Revision-Date: 2015-06-13 23:16+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-14 05:42+0000\n"
+"X-Generator: Launchpad (build 17557)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -172,7 +172,7 @@ msgstr "Condicións de luz;Día;Nubrado;Interior"
 #: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "Hoxe fixo <b>%1</b> fotos"
+msgstr "Hoxe fixo <b>%1</b> foto(s)"
 
 #: ../camera-app.qml:222
 msgid "No photos taken today"
@@ -181,7 +181,7 @@ msgstr "Hoxe non fixo fotos"
 #: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "Hoxe gravou <b>%1</b> vídeos"
+msgstr "Hoxe gravou <b>%1</b> vídeo(s)"
 
 #: ../camera-app.qml:231
 msgid "No videos recorded today"
