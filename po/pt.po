@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-06-04 12:11+0000\n"
+"PO-Revision-Date: 2015-06-15 09:39+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-05 05:49+0000\n"
-"X-Generator: Launchpad (build 17540)\n"
+"X-Launchpad-Export-Date: 2015-06-16 11:17+0000\n"
+"X-Generator: Launchpad (build 17557)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -176,7 +176,7 @@ msgstr "<b>%1</b> fotografias tiradas hoje"
 
 #: ../camera-app.qml:222
 msgid "No photos taken today"
-msgstr "Nenhuma fotografia tirada hoje"
+msgstr "Sem fotografias tiradas hoje"
 
 #: ../camera-app.qml:230
 #, qt-format
@@ -185,7 +185,7 @@ msgstr "<b>%1</b> vídeos gravados hoje"
 
 #: ../camera-app.qml:231
 msgid "No videos recorded today"
-msgstr "Nenhum vídeo gravado hoje"
+msgstr "Sem vídeos gravados hoje"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
