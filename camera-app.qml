@@ -220,8 +220,10 @@ Item {
     Metric {
         id: metricPhotos
         name: "camera-photos"
-        format: i18n.tr("<b>%1</b> photos taken today")
-        emptyFormat: i18n.tr("No photos taken today")
+        // Mark text for translation at a later point.
+        // It will be translated by dtr (or dgettext) to allows plural forms
+        format: i18n.tag("<b>%1</b> photos taken today")
+        emptyFormat: i18n.tag("No photos taken today")
         domain: "camera-app"
         minimum: 0.0
     }
@@ -229,8 +231,10 @@ Item {
     Metric {
         id: metricVideos
         name: "camera-videos"
-        format: i18n.tr("<b>%1</b> videos recorded today")
-        emptyFormat: i18n.tr("No videos recorded today")
+        // Mark text for translation at a later point.
+        // It will be translated by dtr (or dgettext) to allows plural forms
+        format: i18n.tag("<b>%1</b> videos recorded today")
+        emptyFormat: i18n.tag("No videos recorded today")
         domain: "camera-app"
         minimum: 0.0
     }
