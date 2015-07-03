@@ -296,7 +296,7 @@ Item {
             onInViewChanged: if (!viewFinderView.inView) viewFinderOverlay.controls.cancelTimedShoot()
         }
 
-        Item {
+        OrientationHelper {
             id: timedShootFeedback
             anchors.fill: parent
 
