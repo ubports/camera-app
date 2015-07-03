@@ -62,14 +62,6 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
         editor = gallery.wait_select_single(objectName="photoEditor")
         self.assertThat(editor.visible, Eventually(Equals(True)))
 
-        undo = gallery.wait_select_single(objectName="undoButton")
-        self.assertThat(undo.visible, Eventually(Equals(True)))
-        self.assertThat(undo.enabled, Eventually(Equals(False)))
-
-        redo = gallery.wait_select_single(objectName="redoButton")
-        self.assertThat(redo.visible, Eventually(Equals(True)))
-        self.assertThat(redo.enabled, Eventually(Equals(False)))
-
         back = gallery.wait_select_single(objectName="backButton")
         self.pointing_device.move_to_object(back)
         self.pointing_device.click()
