@@ -419,6 +419,7 @@ Item {
             }
 
             BottomEdgeIndicators {
+                id: bottomEdgeIndicators
                 options: bottomEdge.options
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -676,11 +677,11 @@ Item {
             anchors {
                 top: parent.top
                 bottom: shootButton.top
-                bottomMargin: units.gu(1)
+                bottomMargin: bottomEdgeIndicators.height
                 left: parent.left
-                leftMargin: units.gu(1)
+                leftMargin: bottomEdgeIndicators.height
                 right: parent.right
-                rightMargin: units.gu(1)
+                rightMargin: bottomEdgeIndicators.height
             }
 
             property real initialZoom
