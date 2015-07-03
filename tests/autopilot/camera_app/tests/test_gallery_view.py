@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -7,14 +7,13 @@
 
 """Tests for the Camera App zoom"""
 
-from testtools.matchers import Equals, NotEquals, GreaterThan, LessThan
+from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
 
-import unittest
-import os
 from time import sleep
+
 
 class TestCameraGalleryViewMixin(object):
     def move_from_slideshow_to_photogrid(self):
@@ -46,6 +45,7 @@ class TestCameraGalleryViewMixin(object):
         self.pointing_device.press()
         sleep(1)
         self.pointing_device.release()
+
 
 class TestCameraGalleryView(CameraAppTestCase, TestCameraGalleryViewMixin):
     """Tests the camera gallery view without media already present"""
@@ -104,7 +104,9 @@ class TestCameraGalleryView(CameraAppTestCase, TestCameraGalleryViewMixin):
 
         self.assertThat(hint.visible, Eventually(Equals(False)))
 
-class TestCameraGalleryViewWithVideo(TestCameraGalleryViewMixin, CameraAppTestCase):
+
+class TestCameraGalleryViewWithVideo(
+        TestCameraGalleryViewMixin, CameraAppTestCase):
     """Tests the camera gallery view with video already present"""
 
     def setUp(self):
@@ -131,7 +133,9 @@ class TestCameraGalleryViewWithVideo(TestCameraGalleryViewMixin, CameraAppTestCa
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
 
-class TestCameraGalleryViewWithPhoto(TestCameraGalleryViewMixin, CameraAppTestCase):
+
+class TestCameraGalleryViewWithPhoto(
+        TestCameraGalleryViewMixin, CameraAppTestCase):
     """Tests the camera gallery view with photo already present"""
 
     def setUp(self):

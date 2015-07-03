@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2012 Canonical
+# Copyright 2012, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -45,7 +45,7 @@ class TestFocus(CameraAppTestCase):
 
         # The focus ring sould be visible and centered to the mouse click
         # coords now
-        focus_ring_center = self.get_center(focus_ring)
+        # focus_ring_center = self.get_center(focus_ring)
         self.assertThat(focus_ring.opacity, Eventually(GreaterThan(0.5)))
 #        self.assertEquals(focus_ring_center, click_coords)
 
@@ -65,7 +65,7 @@ class TestFocus(CameraAppTestCase):
 
         # The focus ring sould be visible and centered to the mouse
         # click coords now
-        focus_ring_center = self.get_center(focus_ring)
+        # focus_ring_center = self.get_center(focus_ring)
         self.assertThat(focus_ring.opacity, Eventually(GreaterThan(0.5)))
 #        self.assertEquals(focus_ring_center, click_coords)
 

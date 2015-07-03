@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -7,7 +7,7 @@
 
 """Tests for the Camera App zoom"""
 
-from testtools.matchers import Equals, NotEquals, GreaterThan, LessThan
+from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 from autopilot.gestures import pinch
 
