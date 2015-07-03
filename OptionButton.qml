@@ -29,4 +29,5 @@ CircleButton {
     enabled: model.available
     label: model.label
     visible: model.visible
+    automaticOrientation: false
 }

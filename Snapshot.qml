@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.2
+import QtQuick.Window 2.0
 import Ubuntu.Components 1.0
 
 Item {
@@ -34,11 +35,8 @@ Item {
 
     Item {
         id: container
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-        }
         width: parent.width
+        height: parent.height
 
         Image {
             id: snapshot
@@ -69,15 +67,32 @@ Item {
             cache: false
         }
     }
+    property int orientationAngle: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+    property var angleToOrientation: {0: "PORTRAIT",
+                                      90: "LANDSCAPE",
+                                      270: "INVERTED_LANDSCAPE"}
 
     SequentialAnimation {
         id: shoot
 
         PropertyAction { target: snapshotRoot; property: "visible"; value: true }
         PauseAnimation { duration: 150 }
-        XAnimator { target: container; to: container.width + shadow.width; duration: UbuntuAnimation.BriskDuration; easing: UbuntuAnimation.StandardEasing}
+        XAnimator {
+            target: container
+            to: angleToOrientation[orientationAngle] == "PORTRAIT" ? container.width + shadow.width : 0
+            duration: UbuntuAnimation.BriskDuration
+            easing: UbuntuAnimation.StandardEasing
+        }
+        YAnimator {
+            target: container
+            to: angleToOrientation[orientationAngle] == "LANDSCAPE" ? container.height + shadow.width :
+                angleToOrientation[orientationAngle] == "INVERTED_LANDSCAPE" ? -(container.height + shadow.width) : 0
+            duration: UbuntuAnimation.BriskDuration
+            easing: UbuntuAnimation.StandardEasing
+        }
         PropertyAction { target: snapshot; property: "source"; value: ""}
         PropertyAction { target: snapshotRoot; property: "visible"; value: false }
         PropertyAction { target: container; property: "x"; value: 0 }
+        PropertyAction { target: container; property: "y"; value: 0 }
     }
 }
