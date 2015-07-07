@@ -1,11 +1,9 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
-
-import sys
 
 from camera_app.emulators.panel import Panel
 from autopilot.matchers import Eventually
@@ -47,7 +45,8 @@ class MainWindow(object):
         return self.app.wait_select_single("ShootButton")
 
     def get_photo_roll_hint(self):
-        """Returns the layer that serves at hinting to the existence of the photo roll"""
+        """Returns the layer that serves at hinting to the existence of the
+        photo roll"""
         return self.app.wait_select_single("PhotoRollHint")
 
     def get_record_control(self):
@@ -154,6 +153,7 @@ class MainWindow(object):
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        testCase.pointing_device.drag(tx, ty, (tx + main_view.width // 2), ty, rate=1)
+        testCase.pointing_device.drag(
+            tx, ty, (tx + main_view.width // 2), ty, rate=1)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))

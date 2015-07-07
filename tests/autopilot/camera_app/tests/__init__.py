@@ -10,15 +10,12 @@
 import os
 import time
 import shutil
-from time import sleep
 from pkg_resources import resource_filename
 
 import ubuntuuitoolkit
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
-from autopilot.matchers import Eventually
-from testtools.matchers import Equals
 
 from camera_app.emulators.main_window import MainWindow
 
@@ -94,10 +91,10 @@ class CameraAppTestCase(AutopilotTestCase):
 
     def delete_all_media(self):
         if os.path.exists(self.pictures_dir):
-            delete_all_files_in_directory(self.pictures_dir)
+            self.delete_all_files_in_directory(self.pictures_dir)
 
         if os.path.exists(self.videos_dir):
-            delete_all_files_in_directory(self.videos_dir)
+            self.delete_all_files_in_directory(self.videos_dir)
 
     def delete_all_files_in_directory(self, directory):
         files = os.listdir(directory)
