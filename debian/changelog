@@ -1,3 +1,32 @@
+camera-app (3.0.0+15.10.20150707-0ubuntu1) wily; urgency=medium
+
+  [ Brendan Donegan ]
+  * Use pointing_device from self.app instead of the testCase passed in
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Remove hardcoded actions in GalleryViewHeader to make it extensible.
+  * Set desktop file flags informing Unity that the camera app is doing
+    its own content rotation when the device rotates. Manually
+    rotate/position depending on device orientation: photo roll bottom
+    edge indicators and content first photo roll hint snapshot animation
+    countdown timer (LP: #1467461, #1466409, #1467658, #1467661,
+    #1447694, #1468269, #1367792, #1468284)
+
+  [ Leo Arias ]
+  * Fixed the static errors reported by flake8. Added the check to the
+    debian build tests. Added python3-flake8 as a build dependency. (LP:
+    #1444170)
+  * Use pointing_device from self.app instead of the testCase passed in
+
+  [ Olivier Tilloy ]
+  * Updated application icon. removed: camera-app.svg added: camera-
+    app.png
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 07 Jul 2015 11:09:20 +0000
+
 camera-app (3.0.0+15.04.20150514-0ubuntu1) vivid; urgency=medium
 
   [ CI Train Bot ]
