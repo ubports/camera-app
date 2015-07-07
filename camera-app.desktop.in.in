@@ -10,3 +10,4 @@ Icon=@CAMERA_ICON@
 X-Ubuntu-Touch=true
 X-Ubuntu-Single-Instance=true
 X-Ubuntu-Default-Department-ID=accessories
+X-Ubuntu-Rotates-Window-Contents=true

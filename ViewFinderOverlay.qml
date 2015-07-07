@@ -159,269 +159,290 @@ Item {
         onClicked: optionsOverlayClose()
     }
 
-    Panel {
-        id: bottomEdge
-        anchors {
-            right: parent.right
-            left: parent.left
-            bottom: parent.bottom
-        }
-        height: optionsOverlayLoader.height
-        onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
-        enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
-        opacity: enabled ? 1.0 : 0.3
+    OrientationHelper {
+        id: bottomEdgeOrientation
+        transitionEnabled: bottomEdge.opened
 
-        Item {
-            /* Use the 'trigger' feature of Panel so that tapping on the Panel
-               has the same effect as tapping outside of it (bottomEdgeClose) */
-            id: clickReceiver
-            anchors.fill: parent
-            function trigger() {
-                optionsOverlayClose();
-            }
-        }
-
-        property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
-        property list<ListModel> options: [
-            ListModel {
-                id: gpsOptionsModel
-
-                property string settingsProperty: "gpsEnabled"
-                property string icon: "location"
-                property string label: ""
-                property bool isToggle: true
-                property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
-                property bool available: true
-                property bool visible: true
-                property bool showInIndicators: true
-
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("On")
-                    value: true
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Off")
-                    value: false
-                }
-            },
-            ListModel {
-                id: flashOptionsModel
-
-                property string settingsProperty: "flashMode"
-                property string icon: ""
-                property string label: ""
-                property bool isToggle: false
-                property int selectedIndex: bottomEdge.indexForValue(flashOptionsModel, settings.flashMode)
-                property bool available: camera.advanced.hasFlash
-                property bool visible: camera.captureMode == Camera.CaptureStillImage
-                property bool showInIndicators: true
-
-                ListElement {
-                    icon: "flash-on"
-                    label: QT_TR_NOOP("On")
-                    value: Camera.FlashOn
-                }
-                ListElement {
-                    icon: "flash-auto"
-                    label: QT_TR_NOOP("Auto")
-                    value: Camera.FlashAuto
-                }
-                ListElement {
-                    icon: "flash-off"
-                    label: QT_TR_NOOP("Off")
-                    value: Camera.FlashOff
-                }
-            },
-            ListModel {
-                id: videoFlashOptionsModel
-
-                property string settingsProperty: "videoFlashMode"
-                property string icon: ""
-                property string label: ""
-                property bool isToggle: false
-                property int selectedIndex: bottomEdge.indexForValue(videoFlashOptionsModel, settings.videoFlashMode)
-                property bool available: camera.advanced.hasFlash
-                property bool visible: camera.captureMode == Camera.CaptureVideo
-                property bool showInIndicators: true
-
-                ListElement {
-                    icon: "torch-on"
-                    label: QT_TR_NOOP("On")
-                    value: Camera.FlashVideoLight
-                }
-                ListElement {
-                    icon: "torch-off"
-                    label: QT_TR_NOOP("Off")
-                    value: Camera.FlashOff
-                }
-            },
-            ListModel {
-                id: hdrOptionsModel
-
-                property string settingsProperty: "hdrEnabled"
-                property string icon: ""
-                property string label: i18n.tr("HDR")
-                property bool isToggle: true
-                property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
-                property bool available: camera.advanced.hasHdr
-                property bool visible: true
-                property bool showInIndicators: true
-
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("On")
-                    value: true
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Off")
-                    value: false
-                }
-            },
-            ListModel {
-                id: selfTimerOptionsModel
-
-                property string settingsProperty: "selfTimerDelay"
-                property string icon: ""
-                property string iconSource: "assets/self_timer.svg"
-                property string label: ""
-                property bool isToggle: true
-                property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
-                property bool available: true
-                property bool visible: true
-                property bool showInIndicators: true
-
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Off")
-                    value: 0
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("5 seconds")
-                    value: 5
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("15 seconds")
-                    value: 15
-                }
-            },
-            ListModel {
-                id: encodingQualityOptionsModel
-
-                property string settingsProperty: "encodingQuality"
-                property string icon: "stock_image"
-                property string label: ""
-                property bool isToggle: false
-                property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
-                property bool available: true
-                property bool visible: camera.captureMode == Camera.CaptureStillImage
-                property bool showInIndicators: false
-
-                ListElement {
-                    label: QT_TR_NOOP("Fine Quality")
-                    value: 4 // QMultimedia.VeryHighQuality
-                }
-                ListElement {
-                    label: QT_TR_NOOP("Normal Quality")
-                    value: 2 // QMultimedia.NormalQuality
-                }
-                ListElement {
-                    label: QT_TR_NOOP("Basic Quality")
-                    value: 1 // QMultimedia.LowQuality
-                }
-            },
-            ListModel {
-                id: gridOptionsModel
-
-                property string settingsProperty: "gridEnabled"
-                property string icon: ""
-                property string iconSource: "assets/grid_lines.svg"
-                property string label: ""
-                property bool isToggle: true
-                property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
-                property bool available: true
-                property bool visible: true
-
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("On")
-                    value: true
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Off")
-                    value: false
-                }
-            },
-            ListModel {
-                id: removableStorageOptionsModel
-
-                property string settingsProperty: "preferRemovableStorage"
-                property string icon: ""
-                property string label: i18n.tr("SD")
-                property bool isToggle: true
-                property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
-                property bool available: application.removableStoragePresent
-                property bool visible: available
-
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Save to SD Card")
-                    value: true
-                }
-                ListElement {
-                    icon: ""
-                    label: QT_TR_NOOP("Save internally")
-                    value: false
-                }
-            },
-            ListModel {
-                id: videoResolutionOptionsModel
-
-                property string settingsProperty: "videoResolution"
-                property string icon: ""
-                property string label: "HD"
-                property bool isToggle: false
-                property int selectedIndex: bottomEdge.indexForValue(videoResolutionOptionsModel, settings.videoResolution)
-                property bool available: true
-                property bool visible: camera.captureMode == Camera.CaptureVideo
-                property bool showInIndicators: false
-            }
-        ]
-
-        /* FIXME: application.removableStoragePresent is not updated dynamically.
-           Workaround that by reading it when the bottom edge is opened/closed.
-        */
-        Connections {
-            target: bottomEdge
-            onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
-        }
-
-        function indexForValue(model, value) {
-            var i;
-            var element;
-            for (i=0; i<model.count; i++) {
-                element = model.get(i);
-                if (element.value === value) {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        BottomEdgeIndicators {
-            options: bottomEdge.options
+        Panel {
+            id: bottomEdge
             anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.top
+                right: parent.right
+                left: parent.left
+                bottom: parent.bottom
             }
-            opacity: bottomEdge.pressed || bottomEdge.opened ? 0.0 : 1.0
-            Behavior on opacity { UbuntuNumberAnimation {} }
+            height: optionsOverlayLoader.height
+            onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
+            enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+            opacity: enabled ? 1.0 : 0.3
+
+            Item {
+                /* Use the 'trigger' feature of Panel so that tapping on the Panel
+                   has the same effect as tapping outside of it (bottomEdgeClose) */
+                id: clickReceiver
+                anchors.fill: parent
+                function trigger() {
+                    optionsOverlayClose();
+                }
+            }
+
+            property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
+            property list<ListModel> options: [
+                ListModel {
+                    id: gpsOptionsModel
+
+                    property string settingsProperty: "gpsEnabled"
+                    property string icon: "location"
+                    property string label: ""
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(gpsOptionsModel, settings.gpsEnabled)
+                    property bool available: true
+                    property bool visible: true
+                    property bool showInIndicators: true
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
+                },
+                ListModel {
+                    id: flashOptionsModel
+
+                    property string settingsProperty: "flashMode"
+                    property string icon: ""
+                    property string label: ""
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(flashOptionsModel, settings.flashMode)
+                    property bool available: camera.advanced.hasFlash
+                    property bool visible: camera.captureMode == Camera.CaptureStillImage
+                    property bool showInIndicators: true
+
+                    ListElement {
+                        icon: "flash-on"
+                        label: QT_TR_NOOP("On")
+                        value: Camera.FlashOn
+                    }
+                    ListElement {
+                        icon: "flash-auto"
+                        label: QT_TR_NOOP("Auto")
+                        value: Camera.FlashAuto
+                    }
+                    ListElement {
+                        icon: "flash-off"
+                        label: QT_TR_NOOP("Off")
+                        value: Camera.FlashOff
+                    }
+                },
+                ListModel {
+                    id: videoFlashOptionsModel
+
+                    property string settingsProperty: "videoFlashMode"
+                    property string icon: ""
+                    property string label: ""
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(videoFlashOptionsModel, settings.videoFlashMode)
+                    property bool available: camera.advanced.hasFlash
+                    property bool visible: camera.captureMode == Camera.CaptureVideo
+                    property bool showInIndicators: true
+
+                    ListElement {
+                        icon: "torch-on"
+                        label: QT_TR_NOOP("On")
+                        value: Camera.FlashVideoLight
+                    }
+                    ListElement {
+                        icon: "torch-off"
+                        label: QT_TR_NOOP("Off")
+                        value: Camera.FlashOff
+                    }
+                },
+                ListModel {
+                    id: hdrOptionsModel
+
+                    property string settingsProperty: "hdrEnabled"
+                    property string icon: ""
+                    property string label: i18n.tr("HDR")
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
+                    property bool available: camera.advanced.hasHdr
+                    property bool visible: true
+                    property bool showInIndicators: true
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
+                },
+                ListModel {
+                    id: selfTimerOptionsModel
+
+                    property string settingsProperty: "selfTimerDelay"
+                    property string icon: ""
+                    property string iconSource: "assets/self_timer.svg"
+                    property string label: ""
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(selfTimerOptionsModel, settings.selfTimerDelay)
+                    property bool available: true
+                    property bool visible: true
+                    property bool showInIndicators: true
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Off")
+                        value: 0
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("5 seconds")
+                        value: 5
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("15 seconds")
+                        value: 15
+                    }
+                },
+                ListModel {
+                    id: encodingQualityOptionsModel
+
+                    property string settingsProperty: "encodingQuality"
+                    property string icon: "stock_image"
+                    property string label: ""
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(encodingQualityOptionsModel, settings.encodingQuality)
+                    property bool available: true
+                    property bool visible: camera.captureMode == Camera.CaptureStillImage
+                    property bool showInIndicators: false
+
+                    ListElement {
+                        label: QT_TR_NOOP("Fine Quality")
+                        value: 4 // QMultimedia.VeryHighQuality
+                    }
+                    ListElement {
+                        label: QT_TR_NOOP("Normal Quality")
+                        value: 2 // QMultimedia.NormalQuality
+                    }
+                    ListElement {
+                        label: QT_TR_NOOP("Basic Quality")
+                        value: 1 // QMultimedia.LowQuality
+                    }
+                },
+                ListModel {
+                    id: gridOptionsModel
+
+                    property string settingsProperty: "gridEnabled"
+                    property string icon: ""
+                    property string iconSource: "assets/grid_lines.svg"
+                    property string label: ""
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(gridOptionsModel, settings.gridEnabled)
+                    property bool available: true
+                    property bool visible: true
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
+                },
+                ListModel {
+                    id: removableStorageOptionsModel
+
+                    property string settingsProperty: "preferRemovableStorage"
+                    property string icon: ""
+                    property string label: i18n.tr("SD")
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
+                    property bool available: application.removableStoragePresent
+                    property bool visible: available
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Save to SD Card")
+                        value: true
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Save internally")
+                        value: false
+                    }
+                },
+                ListModel {
+                    id: videoResolutionOptionsModel
+
+                    property string settingsProperty: "videoResolution"
+                    property string icon: ""
+                    property string label: "HD"
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(videoResolutionOptionsModel, settings.videoResolution)
+                    property bool available: true
+                    property bool visible: camera.captureMode == Camera.CaptureVideo
+                    property bool showInIndicators: false
+                }
+            ]
+
+            /* FIXME: application.removableStoragePresent is not updated dynamically.
+               Workaround that by reading it when the bottom edge is opened/closed.
+            */
+            Connections {
+                target: bottomEdge
+                onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+            }
+
+            function indexForValue(model, value) {
+                var i;
+                var element;
+                for (i=0; i<model.count; i++) {
+                    element = model.get(i);
+                    if (element.value === value) {
+                        return i;
+                    }
+                }
+
+                return -1;
+            }
+
+            BottomEdgeIndicators {
+                id: bottomEdgeIndicators
+                options: bottomEdge.options
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    bottom: parent.top
+                }
+                opacity: bottomEdge.pressed || bottomEdge.opened ? 0.0 : 1.0
+                Behavior on opacity { UbuntuNumberAnimation {} }
+            }
+
+            Loader {
+                id: optionsOverlayLoader
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.top
+                }
+                asynchronous: true
+                sourceComponent: Component {
+                    OptionsOverlay {
+                        options: bottomEdge.options
+                    }
+                }
+            }
         }
     }
 
@@ -438,7 +459,7 @@ Item {
             right: parent.right
         }
         height: parent.height
-        y: bottomEdge.position - bottomEdge.height
+        y: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation) == 0 ? bottomEdge.position - bottomEdge.height : 0
         opacity: 1 - bottomEdge.progress
         visible: opacity != 0.0
         enabled: visible
@@ -656,9 +677,11 @@ Item {
             anchors {
                 top: parent.top
                 bottom: shootButton.top
-                bottomMargin: units.gu(1)
+                bottomMargin: bottomEdgeIndicators.height
                 left: parent.left
+                leftMargin: bottomEdgeIndicators.height
                 right: parent.right
+                rightMargin: bottomEdgeIndicators.height
             }
 
             property real initialZoom
@@ -776,20 +799,5 @@ Item {
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
              }
          }
-    }
-
-    Loader {
-        id: optionsOverlayLoader
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: controls.bottom
-        }
-        asynchronous: true
-        sourceComponent: Component {
-            OptionsOverlay {
-                options: bottomEdge.options
-            }
-        }
     }
 }

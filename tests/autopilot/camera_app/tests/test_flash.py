@@ -112,10 +112,11 @@ class TestCameraFlash(CameraAppTestCase):
         self.assertThat(flash_button.iconName, Equals("flash-on"))
 
         # closes the flash options menu and open the hdr options menu
-        self.pointing_device.move_to_object(hdr_button)
+        self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
         self.assertThat(
             option_value_selector.visible, Eventually(Equals(False)))
+        self.pointing_device.move_to_object(hdr_button)
         self.pointing_device.click()
         self.assertThat(
             option_value_selector.visible, Eventually(Equals(True)))
@@ -128,10 +129,11 @@ class TestCameraFlash(CameraAppTestCase):
         self.assertThat(hdr_button.on, Equals(True))
 
         # closes the hdr options menu and open the flash options menu
-        self.pointing_device.move_to_object(flash_button)
+        self.pointing_device.move_to_object(hdr_button)
         self.pointing_device.click()
         self.assertThat(
             option_value_selector.visible, Eventually(Equals(False)))
+        self.pointing_device.move_to_object(flash_button)
         self.pointing_device.click()
         self.assertThat(
             option_value_selector.visible, Eventually(Equals(True)))

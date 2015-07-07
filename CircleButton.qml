@@ -25,6 +25,7 @@ AbstractButton {
     property url iconSource
     property bool on: true
     property string label: ""
+    property bool automaticOrientation: true
 
     width: units.gu(5)
     height: width
@@ -49,7 +50,7 @@ AbstractButton {
         color: "white"
         opacity: button.on ? (button.enabled ? 1.0 : 0.3): 0.5
         visible: label === ""
-        rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+        rotation: automaticOrientation ? Screen.angleBetween(Screen.primaryOrientation, Screen.orientation) : 0
         Behavior on rotation {
             RotationAnimator {
                 duration: UbuntuAnimation.BriskDuration
@@ -69,7 +70,7 @@ AbstractButton {
         text: label
         opacity: button.on ? (button.enabled ? 1.0 : 0.3): 0.5
         visible: label !== ""
-        rotation: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+        rotation: automaticOrientation ? Screen.angleBetween(Screen.primaryOrientation, Screen.orientation) : 0
         Behavior on rotation {
             RotationAnimator {
                 duration: UbuntuAnimation.BriskDuration

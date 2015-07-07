@@ -40,33 +40,35 @@ Item {
         property alias photoRollHintNecessary: photoRollHint.necessary
     }
 
-    Image {
-        id: hintPictogram
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            horizontalCenterOffset: units.gu(4)
-            verticalCenter: parent.verticalCenter
-            verticalCenterOffset: -units.gu(1)
+    OrientationHelper {
+        Image {
+            id: hintPictogram
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                horizontalCenterOffset: units.gu(4)
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: -units.gu(1)
+            }
+
+            asynchronous: true
+            cache: false
+            source: photoRollHint.enabled ? "assets/camera_swipe.png" : ""
         }
 
-        asynchronous: true
-        cache: false
-        source: photoRollHint.enabled ? "assets/camera_swipe.png" : ""
-    }
+        Label {
+            id: hintLabel
 
-    Label {
-        id: hintLabel
-
-        anchors {
-            top: hintPictogram.bottom
-            topMargin: units.gu(5)
-            horizontalCenter: parent.horizontalCenter
+            anchors {
+                top: hintPictogram.bottom
+                topMargin: units.gu(5)
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: parent.width - 2 * units.gu(2)
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.Wrap
+            text: i18n.tr("Swipe left for photo roll")
+            fontSize: "x-large"
+            color: "#ebebeb"
         }
-        width: parent.width - 2 * units.gu(2)
-        horizontalAlignment: Text.AlignHCenter
-        wrapMode: Text.Wrap
-        text: i18n.tr("Swipe left for photo roll")
-        fontSize: "x-large"
-        color: "#ebebeb"
     }
 }
