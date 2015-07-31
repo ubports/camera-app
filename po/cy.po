@@ -1,0 +1,200 @@
+# Welsh translation for camera-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"PO-Revision-Date: 2015-07-30 13:14+0000\n"
+"Last-Translator: Owen Llywelyn <owen.llywelyn@gmail.com>\n"
+"Language-Team: Welsh <cy@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-07-31 05:38+0000\n"
+"X-Generator: Launchpad (build 17656)\n"
+
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Dileu cyfrwng?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+msgid "Delete"
+msgstr "Dileu"
+
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
+msgid "Cancel"
+msgstr "Diddymu"
+
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "Dim cyfryngau ar gael."
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "Sganio am gynnwys..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "Dewis"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr "Golygu llun"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "Rhôl Lluniau"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Dim lle'n weddill ar y ddyfais, crëwch le rhydd i barhau."
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Trawiwch i'r dde am rhôl lluniau"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "Rhannu"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr "Golygu"
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
+msgid "On"
+msgstr "Ymlaen"
+
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+msgid "Off"
+msgstr "I ffwrdd"
+
+#: ../ViewFinderOverlay.qml:227
+msgid "Auto"
+msgstr "Awto"
+
+#: ../ViewFinderOverlay.qml:264
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:302
+msgid "5 seconds"
+msgstr "5 eiliad"
+
+#: ../ViewFinderOverlay.qml:307
+msgid "15 seconds"
+msgstr "15 eiliad"
+
+#: ../ViewFinderOverlay.qml:324
+msgid "Fine Quality"
+msgstr "Ansawdd Uchel"
+
+#: ../ViewFinderOverlay.qml:328
+msgid "Normal Quality"
+msgstr "Ansawdd Arferol"
+
+#: ../ViewFinderOverlay.qml:332
+msgid "Basic Quality"
+msgstr "Ansawdd Sylfaenol"
+
+#: ../ViewFinderOverlay.qml:364
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:372
+msgid "Save to SD Card"
+msgstr "Cadw ar gerdyn SD"
+
+#: ../ViewFinderOverlay.qml:377
+msgid "Save internally"
+msgstr "Cadw'n fewnol"
+
+#: ../ViewFinderOverlay.qml:802
+msgid "Low storage space"
+msgstr "Gofod storio isel"
+
+#: ../ViewFinderOverlay.qml:803
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+"Rydych yn mynd yn brin o ofod storio. I barhau heb ymyrraeth, crëwch ofod "
+"storio nawr."
+
+#: ../camera-app.qml:37
+msgid "Flash"
+msgstr "Fflash"
+
+#: ../camera-app.qml:38
+msgid "Light;Dark"
+msgstr "Golau;Tywyll"
+
+#: ../camera-app.qml:41
+msgid "Flip Camera"
+msgstr "Camera Tu Chwith"
+
+#: ../camera-app.qml:42
+msgid "Front Facing;Back Facing"
+msgstr "Wynebu Blaen;Wynebu Cefn"
+
+#: ../camera-app.qml:45
+msgid "Shutter"
+msgstr "Mwgwd"
+
+#: ../camera-app.qml:46
+msgid "Take a Photo;Snap;Record"
+msgstr "Cymryd Llun;Snap;Recordio"
+
+#: ../camera-app.qml:49
+msgid "Mode"
+msgstr "Modd"
+
+#: ../camera-app.qml:50
+msgid "Stills;Video"
+msgstr "Llun llonydd;Fideo"
+
+#: ../camera-app.qml:54
+msgid "White Balance"
+msgstr "Cydbwysedd Gwyn"
+
+#: ../camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "Cyflwr golau;Dydd;Cymylog;Tu mewn"
+
+#: ../camera-app.qml:221
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "Tynnwyd <b>%1</b> llun heddiw"
+
+#: ../camera-app.qml:222
+msgid "No photos taken today"
+msgstr "Dim lluniau wedi'u tynnu heddiw"
+
+#: ../camera-app.qml:230
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "Recordiwyd <b>%1</b> fideo heddiw"
+
+#: ../camera-app.qml:231
+msgid "No videos recorded today"
+msgstr "Dim fideos wedi'u recordio heddiw"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Camera"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Ap Camera"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Lluniau;Fideos;Cipio;Saethu;Ciplun;Recordio"
