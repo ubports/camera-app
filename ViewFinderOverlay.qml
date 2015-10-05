@@ -185,7 +185,17 @@ Item {
                 }
             }
 
-            property real progress: (bottomEdge.height - bottomEdge.position) / bottomEdge.height
+            /* At startup, opened is false and 'bottomEdge.height' is 0 until
+               optionsOverlayLoader has finished loading. When that happens
+               'bottomEdge.height' becomes non 0 and 'bottomEdge.position' which
+               depends on bottomEdge.height eventually reaches the value
+               'bottomEdge.height'. Unfortunately during that short period 'progress'
+               has an incorrect value and unfortunate consequences/bugs occur.
+               That makes it important to only compute progress when 'opened' is true.
+
+               Ref.: https://bugs.launchpad.net/ubuntu/+source/camera-app/+bug/1472903
+            */
+            property real progress: opened ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
             property list<ListModel> options: [
                 ListModel {
                     id: gpsOptionsModel
