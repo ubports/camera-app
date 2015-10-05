@@ -1,3 +1,14 @@
+camera-app (3.0.0+15.10.20151005.1-0ubuntu1) wily; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Fix viewfinder short disappearance at startup. Make overlay controls
+    appear slightly faster at startup. (LP: #1472903)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Mon, 05 Oct 2015 13:15:50 +0000
+
 camera-app (3.0.0+15.10.20150707-0ubuntu1) wily; urgency=medium
 
   [ Brendan Donegan ]
