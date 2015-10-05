@@ -96,7 +96,7 @@ class TestFocus(CameraAppTestCase):
 
         # Check if there's a gap between the viewfinder feed and the zoom
         # control. If there is, test that focusing there won't show the focus
-        #ring.
+        # ring.
         if zoom.y > feed.height:  # Feed is aligned to the top of the window
             x, y, h, w = zoom.globalRect
             click_coords = [x + (h // 2), y - 2]

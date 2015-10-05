@@ -159,7 +159,7 @@ class TestCapture(CameraAppTestCase):
         self.pointing_device.click()
 
         # Check that the photo roll hint is displayed
-        #self.assertEquals(hint.visible, True)
+        # self.assertEquals(hint.visible, True)
         self.assertThat(hint.visible, Eventually(Equals(True)))
 
         # Swipe to photo roll
