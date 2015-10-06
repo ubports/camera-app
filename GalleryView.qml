@@ -17,6 +17,7 @@
 import QtQuick 2.2
 import Ubuntu.Components 1.1
 import Ubuntu.Content 0.1
+import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -49,6 +50,10 @@ Item {
 
     function prependMediaToModel(filePath) {
         galleryView.model.prependFile(filePath);
+    }
+
+    function precacheThumbnail(filePath) {
+        thumbnail.filename = filePath;
     }
 
     function exitUserSelectionMode() {
@@ -224,6 +229,18 @@ Item {
             opacity: 0.2
             fontSize: "large"
         }
+    }
+
+    Image {
+        id: thumbnail
+        property string filename
+
+        visible: false
+        asynchronous: true
+        cache: false
+        sourceSize.width: 32
+        sourceSize.height: 32
+        source: "image://thumbnailer/" + filename
     }
 
     state: galleryView.gridMode ? "GRID" : "SLIDESHOW"

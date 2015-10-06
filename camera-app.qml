@@ -245,6 +245,7 @@ Item {
             onVideoShot: {
                 galleryView.prependMediaToModel(filePath);
                 galleryView.showLastPhotoTaken();
+                galleryView.precacheThumbnail(filePath);
             }
         }
 
