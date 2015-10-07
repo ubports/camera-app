@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-06-09 15:27+0000\n"
-"Last-Translator: enolp <enolp@softastur.org>\n"
+"PO-Revision-Date: 2015-10-06 11:55+0000\n"
+"Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-10 05:06+0000\n"
-"X-Generator: Launchpad (build 17549)\n"
+"X-Launchpad-Export-Date: 2015-10-07 06:04+0000\n"
+"X-Generator: Launchpad (build 17802)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -43,7 +43,7 @@ msgstr "Seleicionar"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Edit Photo"
-msgstr ""
+msgstr "Editar la foto"
 
 #: ../GalleryViewHeader.qml:79
 msgid "Photo Roll"
@@ -63,7 +63,7 @@ msgstr "Compartir"
 
 #: ../SlideshowView.qml:63
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
 #: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
