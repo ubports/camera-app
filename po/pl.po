@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-04-27 14:04+0000\n"
-"Last-Translator: GTriderXC <gtriderxc@yahoo.com>\n"
+"PO-Revision-Date: 2015-10-12 19:10+0000\n"
+"Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-10-13 06:11+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -79,7 +79,7 @@ msgstr "Wył."
 
 #: ../ViewFinderOverlay.qml:227
 msgid "Auto"
-msgstr "Automatycznie"
+msgstr "Automatyczny"
 
 #: ../ViewFinderOverlay.qml:264
 msgid "HDR"
@@ -197,4 +197,4 @@ msgstr "Aplikacja aparatu"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Zdjęcia;Fotografie;Filmy;Nagrania;Zrzuty"
+msgstr "Zdjęcia;Fotografie;Nagrywanie;Filmy;Nagrania;Zrzuty"
