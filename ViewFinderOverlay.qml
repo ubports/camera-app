@@ -50,6 +50,7 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+        property string photoResolution
 
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
         onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
@@ -87,10 +88,65 @@ Item {
         value: settings.videoResolution
     }
 
+    Binding {
+        target: camera.imageCapture
+        property: "resolution"
+        value: settings.photoResolution
+    }
+
+    Connections {
+        target: camera.imageCapture
+        onResolutionChanged: {
+            // FIXME: this is a necessary workaround because:
+            // - Neither camera.viewfinder.resolution nor camera.advanced.resolution
+            //   emit a changed signal when the underlying AalViewfinderSettingsControl's
+            //   resolution changes
+            // - we know that qtubuntu-camera changes the resolution of the
+            //   viewfinder automatically when the capture resolution is set
+            // - we need camera.viewfinder.resolution to hold the right
+            //   value
+            camera.viewfinder.resolution = camera.advanced.resolution;
+        }
+    }
+
     function resolutionToLabel(resolution) {
         // takes in a resolution string (e.g. "1920x1080") and returns a nicer
         // form of it for display in the UI: "1080p"
         return resolution.split("x").pop() + "p";
+    }
+
+    function sizeToString(size) {
+        return size.width + "x" + size.height;
+    }
+
+    function stringToSize(resolution) {
+        var r = resolution.split("x");
+        return Qt.size(r[0], r[1]);
+    }
+
+    function sizeToAspectRatio(size) {
+        var ratio = Math.max(size.width, size.height) / Math.min(size.width, size.height);
+        var maxDenominator = 12;
+        var epsilon;
+        var numerator;
+        var denominator;
+        var bestDenominator;
+        var bestEpsilon = 10000;
+        for (denominator = 2; denominator <= maxDenominator; denominator++) {
+            numerator = ratio * denominator;
+            epsilon = Math.abs(Math.round(numerator) - numerator);
+            if (epsilon < bestEpsilon) {
+                bestEpsilon = epsilon;
+                bestDenominator = denominator;
+            }
+        }
+        numerator = Math.round(ratio * bestDenominator);
+        return "%1:%2".arg(numerator).arg(bestDenominator);
+    }
+
+    function sizeToMegapixels(size) {
+        var megapixels = (size.width * size.height) / 1000000;
+        return parseFloat(megapixels.toFixed(1))
     }
 
     function updateVideoResolutionOptions() {
@@ -110,25 +166,63 @@ Item {
         }
 
         // If resolution setting chosen is not supported select the highest available resolution
-        if (supported.indexOf(settings.videoResolution) == -1) {
+        if (supported.length > 0 && supported.indexOf(settings.videoResolution) == -1) {
             settings.videoResolution = supported[supported.length - 1];
         }
     }
 
+    function updatePhotoResolutionOptions() {
+        // Clear and refill photoResolutionOptionsModel with available resolutions
+        photoResolutionOptionsModel.clear();
+
+        var optionMaximum = {"icon": "",
+                             "label": "%1 (%2MP)".arg(sizeToAspectRatio(camera.advanced.maximumResolution))
+                                                 .arg(sizeToMegapixels(camera.advanced.maximumResolution)),
+                             "value": sizeToString(camera.advanced.maximumResolution)};
+
+        var optionFitting = {"icon": "",
+                             "label": "%1 (%2MP)".arg(sizeToAspectRatio(camera.advanced.fittingResolution))
+                                                 .arg(sizeToMegapixels(camera.advanced.fittingResolution)),
+                             "value": sizeToString(camera.advanced.fittingResolution)};
+
+        if (camera.advanced.fittingResolution != camera.advanced.maximumResolution) {
+            photoResolutionOptionsModel.insert(0, optionMaximum);
+            photoResolutionOptionsModel.insert(1, optionFitting);
+        }
+
+        // If resolution setting chosen is not supported select the fitting resolution
+        if (settings.photoResolution != optionFitting.value &&
+            settings.photoResolution != optionMaximum.value) {
+            settings.photoResolution = optionFitting.value;
+        }
+    }
+
     Component.onCompleted: {
+        camera.cameraState = Camera.LoadedState;
+        camera.imageCapture.resolution = settings.photoResolution;
+        // FIXME: see workaround setting camera.viewfinder.resolution above
+        camera.viewfinder.resolution = camera.advanced.resolution;
         updateVideoResolutionOptions();
+        updatePhotoResolutionOptions();
+        camera.cameraState = Camera.ActiveState;
     }
 
     Connections {
         target: camera.advanced
         onVideoSupportedResolutionsChanged: updateVideoResolutionOptions();
+        onFittingResolutionChanged: updatePhotoResolutionOptions();
+        onMaximumResolutionChanged: updatePhotoResolutionOptions();
     }
 
     Connections {
         target: camera.advanced
         onActiveCameraIndexChanged: {
             updateVideoResolutionOptions();
+            updatePhotoResolutionOptions();
             camera.videoRecorder.resolution = settings.videoResolution;
+            camera.imageCapture.resolution = settings.photoResolution;
+            // FIXME: see workaround setting camera.viewfinder.resolution above
+            camera.viewfinder.resolution = camera.advanced.resolution;
         }
     }
 
@@ -403,6 +497,18 @@ Item {
                     property int selectedIndex: bottomEdge.indexForValue(videoResolutionOptionsModel, settings.videoResolution)
                     property bool available: true
                     property bool visible: camera.captureMode == Camera.CaptureVideo
+                    property bool showInIndicators: false
+                },
+                ListModel {
+                    id: photoResolutionOptionsModel
+
+                    property string settingsProperty: "photoResolution"
+                    property string icon: ""
+                    property string label: sizeToAspectRatio(stringToSize(settings.photoResolution))
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolution)
+                    property bool available: true
+                    property bool visible: camera.captureMode == Camera.CaptureStillImage && count > 1
                     property bool showInIndicators: false
                 }
             ]
