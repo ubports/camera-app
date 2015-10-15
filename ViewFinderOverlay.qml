@@ -109,6 +109,22 @@ Item {
         }
     }
 
+    Connections {
+        target: camera.videoRecorder
+        onResolutionChanged: {
+            // FIXME: see workaround setting camera.viewfinder.resolution above
+            camera.viewfinder.resolution = camera.advanced.resolution;
+        }
+    }
+
+    Connections {
+        target: camera
+        onCaptureModeChanged: {
+            // FIXME: see workaround setting camera.viewfinder.resolution above
+            camera.viewfinder.resolution = camera.advanced.resolution;
+        }
+    }
+
     function resolutionToLabel(resolution) {
         // takes in a resolution string (e.g. "1920x1080") and returns a nicer
         // form of it for display in the UI: "1080p"
