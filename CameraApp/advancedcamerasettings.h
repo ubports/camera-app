@@ -57,6 +57,7 @@ public:
     QSize resolution() const;
     QSize maximumResolution() const;
     QSize fittingResolution() const;
+    float getScreenAspectRatio() const;
     QStringList videoSupportedResolutions() const;
     bool hasFlash() const;
     bool hasHdr() const;

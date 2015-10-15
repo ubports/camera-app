@@ -26,6 +26,8 @@
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 #include <QtMultimedia/QCameraFlashControl>
 #include <QtMultimedia/QCameraExposureControl>
+#include <QGuiApplication>
+#include <QScreen>
 
 #include <cmath>
 
@@ -313,9 +315,25 @@ QSize AdvancedCameraSettings::maximumResolution() const
     return QSize();
 }
 
+float AdvancedCameraSettings::getScreenAspectRatio() const
+{
+    float screenAspectRatio;
+    QScreen *screen = QGuiApplication::primaryScreen();
+    Q_ASSERT(!screen);
+    const int kScreenWidth = screen->geometry().width();
+    const int kScreenHeight = screen->geometry().height();
+    Q_ASSERT(kScreenWidth > 0 && kScreenHeight > 0);
+
+    screenAspectRatio = (kScreenWidth > kScreenHeight) ?
+        ((float)kScreenWidth / (float)kScreenHeight) : ((float)kScreenHeight / (float)kScreenWidth);
+
+    return screenAspectRatio;
+}
+
 QSize AdvancedCameraSettings::fittingResolution() const
 {
     QList<float> prioritizedAspectRatios;
+    prioritizedAspectRatios.append(getScreenAspectRatio());
     const float backAspectRatios[4] = { 16.0f/9.0f, 3.0f/2.0f, 4.0f/3.0f, 5.0f/4.0f };
     for (int i=0; i<4; ++i) {
         if (!prioritizedAspectRatios.contains(backAspectRatios[i])) {
