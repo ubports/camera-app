@@ -16,7 +16,7 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.3
 
 Item {
     property int time: 0

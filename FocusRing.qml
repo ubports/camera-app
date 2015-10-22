@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.2
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.3
 
 Image {
     id: focusRing

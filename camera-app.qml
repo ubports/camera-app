@@ -17,7 +17,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.3
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 import Ubuntu.Content 0.1

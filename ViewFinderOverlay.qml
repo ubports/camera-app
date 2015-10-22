@@ -16,8 +16,8 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.0
-import Ubuntu.Components 1.1
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import QtMultimedia 5.0
 import QtPositioning 5.2
 import QtSensors 5.0
