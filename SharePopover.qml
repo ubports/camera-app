@@ -34,7 +34,7 @@ PopupBase {
     // FIXME: ContentPeerPicker should either have a background or not, not half of one
     Rectangle {
         anchors.fill: parent
-        color: Theme.palette.normal.overlay
+        color: theme.palette.normal.overlay
     }
 
     ContentPeerPicker {

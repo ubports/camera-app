@@ -70,7 +70,7 @@ Item {
             }
             width: units.gu(8)
             iconName: "back"
-            iconColor: Theme.palette.normal.foregroundText
+            iconColor: theme.palette.normal.foregroundText
             onClicked: editMode ? header.exitEditor() : header.exit()
         }
 
@@ -78,7 +78,7 @@ Item {
             text: main.contentExportMode || userSelectionMode ? i18n.tr("Select") :
                   (editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll"))
             fontSize: "x-large"
-            color: Theme.palette.normal.foregroundText
+            color: theme.palette.normal.foregroundText
             elide: Text.ElideRight
             Layout.fillWidth: true
         }
@@ -225,7 +225,7 @@ Item {
                         }
                         text: model.text
                         elide: Text.ElideRight
-                        color: action.enabled ? Theme.palette.normal.foregroundText : Qt.darker(Theme.palette.normal.foregroundText, 2.0)
+                        color: action.enabled ? theme.palette.normal.foregroundText : Qt.darker(theme.palette.normal.foregroundText, 2.0)
                     }
 
                     Icon {
