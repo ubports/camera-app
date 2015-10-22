@@ -69,7 +69,7 @@ Item {
     Component.onCompleted: {
         // The PhotoEditor is only available in Ubuntu.Components.Extras 0.2
         // If we succeed here we add the edit button to the list of actions.
-        try { Qt.createQmlObject('import QtQuick 2.0; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
+        try { Qt.createQmlObject('import QtQuick 2.4; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
         catch (e) { return; }
 
         editingAvailable = true;
