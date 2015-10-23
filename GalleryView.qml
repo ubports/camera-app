@@ -53,7 +53,7 @@ Item {
     }
 
     function precacheThumbnail(filePath) {
-        thumbnail.filename = filePath;
+        preCachingThumbnail.filename = filePath;
     }
 
     function exitUserSelectionMode() {
@@ -231,8 +231,11 @@ Item {
         }
     }
 
+    // This image component is used to pre-load thumbnails of recently
+    // created files.  This is primarily to hide the delays in
+    // thumbnailing videos.
     Image {
-        id: thumbnail
+        id: preCachingThumbnail
         property string filename
 
         visible: false
@@ -240,7 +243,13 @@ Item {
         cache: false
         sourceSize.width: 32
         sourceSize.height: 32
-        source: "image://thumbnailer/" + filename
+        source: filename ? "image://thumbnailer/%1".arg(filename) : ""
+
+        onStatusChanged: {
+            if (status == Image.Ready) {
+                filename = "";
+            }
+        }
     }
 
     state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
