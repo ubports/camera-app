@@ -14,10 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import Ubuntu.Components 1.0
-import Ubuntu.Components.ListItems 1.0 as ListItems
-import Ubuntu.Components.Popups 1.0
+import QtQuick 2.4
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItems
+import Ubuntu.Components.Popups 1.3
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
@@ -69,7 +69,7 @@ Item {
     Component.onCompleted: {
         // The PhotoEditor is only available in Ubuntu.Components.Extras 0.2
         // If we succeed here we add the edit button to the list of actions.
-        try { Qt.createQmlObject('import QtQuick 2.0; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
+        try { Qt.createQmlObject('import QtQuick 2.4; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
         catch (e) { return; }
 
         editingAvailable = true;
