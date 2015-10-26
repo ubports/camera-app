@@ -29,6 +29,7 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
     property alias captureMode: camera.captureMode
+    property real aspectRatio: viewFinder.sourceRect.width / viewFinder.sourceRect.height
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
@@ -212,7 +213,7 @@ Item {
             id: viewFinder
             
             x: 0
-            y: -viewFinderGeometry.y
+            y: 0
             width: parent.width
             height: parent.height
             source: camera

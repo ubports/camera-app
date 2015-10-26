@@ -85,23 +85,13 @@ bool CameraApplication::setup()
                 Qt::InvertedPortraitOrientation |
                 Qt::InvertedLandscapeOrientation);
 
-    m_view.reset(new QQuickView());
-    m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->setTitle("Camera");
-    m_view->setColor("black");
-    m_view->rootContext()->setContextProperty("application", this);
-    m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
-    m_view->engine()->addImportPath(cameraAppImportDirectory());
+    m_engine.reset(new QQmlApplicationEngine());
+    m_engine->rootContext()->setContextProperty("application", this);
+    m_engine->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
+    m_engine->addImportPath(cameraAppImportDirectory());
     qDebug() << "Import path added" << cameraAppImportDirectory();
     qDebug() << "Camera app directory" << cameraAppDirectory();
-    QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
-    m_view->setSource(QUrl::fromLocalFile(sourceQml()));
-
-    //run fullscreen if specified at command line or not in DESKTOP_MODE (i.e. on a device)
-    if (arguments().contains(QLatin1String("--fullscreen")) || !isDesktopMode()) 
-      m_view->showFullScreen();
-    else 
-      m_view->show();
+    m_engine->load(QUrl::fromLocalFile(sourceQml()));
 
     return true;
 }

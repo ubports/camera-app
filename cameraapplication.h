@@ -20,7 +20,7 @@
 #ifndef CAMERAAPPLICATION_H
 #define CAMERAAPPLICATION_H
 
-#include <QtQuick/QQuickView>
+#include <QtQml/QQmlApplicationEngine>
 #include <QGuiApplication>
 
 class QDate;
@@ -54,7 +54,7 @@ Q_SIGNALS:
     void removableStoragePresentChanged();
 
 private:
-    QScopedPointer<QQuickView> m_view;
+    QScopedPointer<QQmlApplicationEngine> m_engine;
 };
 
 #endif // CAMERAAPPLICATION_H

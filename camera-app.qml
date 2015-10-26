@@ -23,13 +23,13 @@ import UserMetrics 0.1
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 
-Item {
+Window {
     id: main
     objectName: "main"
-    width: units.gu(40)
-    height: units.gu(71)
-//    width: application.desktopMode ? units.gu(120) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(40) : units.gu(80))
-//    height: application.desktopMode ? units.gu(60) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(80) : units.gu(40))
+    width: height * viewFinderView.aspectRatio
+    height: units.gu(80)
+    color: "black"
+    title: "Camera"
 
     UnityActions.ActionManager {
         actions: [
@@ -63,6 +63,11 @@ Item {
 
     Component.onCompleted: {
         i18n.domain = "camera-app";
+        if (!application.desktopMode) {
+            main.showFullScreen();
+        } else {
+            main.show();
+        }
     }
 
 
