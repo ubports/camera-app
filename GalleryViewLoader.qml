@@ -31,6 +31,9 @@ Loader {
         loader.item.prependMediaToModel(filePath);
     }
 
+    function precacheThumbnail(filePath) {
+        loader.item.precacheThumbnail(filePath);
+    }
 
     asynchronous: true
 
