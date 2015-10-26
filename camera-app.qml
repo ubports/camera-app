@@ -96,7 +96,7 @@ Window {
                         galleryView.y = 0;
                         viewFinderView.x = 0;
                         viewFinderView.y = 0;
-                        viewSwitcher.contentX = viewSwitcher.ratio * viewSwitcher.contentWidth;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentX / viewSwitcher.contentWidth });
                     }
                 }
@@ -112,7 +112,7 @@ Window {
                         galleryView.y = Qt.binding(function() { return viewFinderView.height + viewSwitcher.panesMargin });
                         viewFinderView.x = 0;
                         viewFinderView.y = 0;
-                        viewSwitcher.contentY = viewSwitcher.ratio * viewSwitcher.contentHeight;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentY / viewSwitcher.contentHeight });
                     }
                 }
@@ -128,7 +128,7 @@ Window {
                         galleryView.y = 0;
                         viewFinderView.x = 0;
                         viewFinderView.y = Qt.binding(function() { return galleryView.height + viewSwitcher.panesMargin });
-                        viewSwitcher.contentY = (0.5 - viewSwitcher.ratio) * viewSwitcher.contentHeight;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return 0.5 - viewSwitcher.contentY / viewSwitcher.contentHeight });
                     }
                 }
@@ -181,6 +181,19 @@ Window {
                 flick(0, -settleVelocity);
             }
         }
+
+        function positionContentAtRatio(ratio) {
+            if (state == "PORTRAIT") {
+                viewSwitcher.contentX = ratio * viewSwitcher.contentWidth;
+            } else if (state == "LANDSCAPE") {
+                viewSwitcher.contentY = ratio * viewSwitcher.contentHeight;
+            } else if (state == "LANDSCAPE_INVERTED") {
+                viewSwitcher.contentY = (0.5 - ratio) * viewSwitcher.contentHeight;
+            }
+        }
+
+        onContentWidthChanged: positionContentAtRatio(viewSwitcher.ratio)
+        onContentHeightChanged: positionContentAtRatio(viewSwitcher.ratio)
 
         onMovementEnded: {
             // go to a rest position as soon as user stops interacting with the Flickable
