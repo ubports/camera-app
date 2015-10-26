@@ -53,6 +53,8 @@ Item {
     property alias cacheBuffer: gridView.cacheBuffer
     readonly property alias currentItem: gridView.currentItem
     property alias header: gridView.header
+    property alias maximumFlickVelocity: gridView.maximumFlickVelocity
+    property alias flickDeceleration: gridView.flickDeceleration
 
     function contentHeightForRows(rows, height) {
         return rows * height
