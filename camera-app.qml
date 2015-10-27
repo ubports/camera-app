@@ -187,7 +187,7 @@ Window {
                 viewSwitcher.contentX = ratio * viewSwitcher.contentWidth;
             } else if (state == "LANDSCAPE") {
                 viewSwitcher.contentY = ratio * viewSwitcher.contentHeight;
-            } else if (state == "LANDSCAPE_INVERTED") {
+            } else if (state == "INVERTED_LANDSCAPE") {
                 viewSwitcher.contentY = (0.5 - ratio) * viewSwitcher.contentHeight;
             }
         }
