@@ -213,7 +213,7 @@ Item {
             id: viewFinder
             
             x: 0
-            y: 0
+            y: -viewFinderGeometry.y
             width: parent.width
             height: parent.height
             source: camera
