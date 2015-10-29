@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-04-13 17:30+0000\n"
-"Last-Translator: Данило Шеган <Unknown>\n"
+"PO-Revision-Date: 2015-10-28 20:53+0000\n"
+"Last-Translator: Bojan Bogdanović <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-10-29 05:34+0000\n"
+"X-Generator: Launchpad (build 17837)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -176,7 +176,7 @@ msgstr "Данас је усликано <b>%1</b> фотографија"
 
 #: ../camera-app.qml:222
 msgid "No photos taken today"
-msgstr "Нема данас усликаних фотографија"
+msgstr "Данас нема усликаних фотографија"
 
 #: ../camera-app.qml:230
 #, qt-format
