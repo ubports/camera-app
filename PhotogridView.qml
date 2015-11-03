@@ -25,7 +25,6 @@ import "MimeTypeMapper.js" as MimeTypeMapper
 Item {
     id: photogridView
 
-    property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
     signal photoPressAndHold(int index)
@@ -63,7 +62,7 @@ Item {
     function exit() {
     }
 
-    GridView {
+    ResponsiveGridView {
         id: gridView
         anchors.fill: parent
         // FIXME: prevent the header from overlapping the beginning of the grid
@@ -73,7 +72,7 @@ Item {
             width: gridView.width
             height: headerHeight
         }
-        
+
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
             // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
@@ -82,16 +81,18 @@ Item {
             flickDeceleration = flickDeceleration * scaleFactor;
         }
 
-        cellWidth: width / photogridView.itemsPerRow
-        cellHeight: cellWidth
+        minimumHorizontalSpacing: units.dp(2)
+        maximumNumberOfColumns: 100
+        delegateWidth: units.gu(13)
+        delegateHeight: units.gu(13)
 
         model: photogridView.model
         delegate: Item {
             id: cellDelegate
             objectName: "mediaItem" + index
             
-            width: GridView.view.cellWidth
-            height: GridView.view.cellHeight
+            width: gridView.cellWidth
+            height: gridView.cellHeight
 
             property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
 
@@ -100,13 +101,13 @@ Item {
                 property real margin: units.dp(2)
                 anchors {
                     top: parent.top
-                    topMargin: index < photogridView.itemsPerRow ? 0 : margin/2
+                    topMargin: index < photogridView.columns ? 0 : margin/2
                     bottom: parent.bottom
                     bottomMargin: margin/2
                     left: parent.left
-                    leftMargin: index % photogridView.itemsPerRow == 0 ? 0 : margin/2
+                    leftMargin: index % photogridView.columns == 0 ? 0 : margin/2
                     right: parent.right
-                    rightMargin: index % photogridView.itemsPerRow == photogridView.itemsPerRow - 1 ? 0 : margin/2
+                    rightMargin: index % photogridView.columns == photogridView.columns - 1 ? 0 : margin/2
                 }
                 
                 asynchronous: true
