@@ -223,8 +223,18 @@ Item {
                    feed is rotated too.
                    FIXME: This should come from a system configuration option so that we
                    don't have to have a different codebase for each different device we want
-                   to run on */
-            orientation: Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0
+                   to run on. Android has that information and QML has an API to reflect it:
+                   the camera.orientation property. Unfortunately it is not hooked up yet.
+
+                   Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
+                         http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
+                         http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
+            */
+            Component.onCompleted: {
+                // Set orientation only at startup because later on Screen.primaryOrientation
+                // may change.
+                orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
+            }
             
             /* Convenience item tracking the real position and size of the real video feed.
                    Having this helps since these values depend on a lot of rules:
