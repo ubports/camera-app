@@ -14,9 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.3
 import Ubuntu.Content 0.1
+import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -49,6 +50,10 @@ Item {
 
     function prependMediaToModel(filePath) {
         galleryView.model.prependFile(filePath);
+    }
+
+    function precacheThumbnail(filePath) {
+        preCachingThumbnail.filename = filePath;
     }
 
     function exitUserSelectionMode() {
@@ -223,6 +228,27 @@ Item {
             color: "white"
             opacity: 0.2
             fontSize: "large"
+        }
+    }
+
+    // This image component is used to pre-load thumbnails of recently
+    // created files.  This is primarily to hide the delays in
+    // thumbnailing videos.
+    Image {
+        id: preCachingThumbnail
+        property string filename
+
+        visible: false
+        asynchronous: true
+        cache: false
+        sourceSize.width: 32
+        sourceSize.height: 32
+        source: filename ? "image://thumbnailer/%1".arg(filename) : ""
+
+        onStatusChanged: {
+            if (status == Image.Ready) {
+                filename = "";
+            }
         }
     }
 

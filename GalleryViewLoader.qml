@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
+import QtQuick 2.4
 
 Loader {
     id: loader
@@ -31,6 +31,9 @@ Loader {
         loader.item.prependMediaToModel(filePath);
     }
 
+    function precacheThumbnail(filePath) {
+        loader.item.precacheThumbnail(filePath);
+    }
 
     asynchronous: true
 
