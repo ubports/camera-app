@@ -149,7 +149,8 @@ class MainWindow(object):
 
     def swipe_to_viewfinder(self, testCase):
         main_view = self.get_root()
-        x, y, w, h = main_view.globalRect
+        x, y = main_view.x, main_view.y
+        w, h = main_view.width, main_view.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
