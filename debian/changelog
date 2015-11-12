@@ -1,3 +1,18 @@
+camera-app (3.0.0+16.04.20151103-0ubuntu1) xenial; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Desktop convergence fixes: Fix viewfinder positioning. Resize window
+    to follow viewfinder's aspect ratio. Made photo grid responsive.
+    added: ResponsiveGridView.qml
+  * Only use Screen.primaryOrientation returned at startup which is more
+    indicative of the native orientation of the device. Fixes case where
+    viewfinder rotated when changing window size. (LP: #1511026)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Tue, 03 Nov 2015 14:23:17 +0000
+
 camera-app (3.0.0+16.04.20151026-0ubuntu1) xenial; urgency=medium
 
   [ CI Train Bot ]

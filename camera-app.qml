@@ -23,13 +23,13 @@ import UserMetrics 0.1
 import Ubuntu.Content 0.1
 import CameraApp 0.1
 
-Item {
+Window {
     id: main
     objectName: "main"
-    width: units.gu(40)
-    height: units.gu(71)
-//    width: application.desktopMode ? units.gu(120) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(40) : units.gu(80))
-//    height: application.desktopMode ? units.gu(60) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(80) : units.gu(40))
+    width: height * viewFinderView.aspectRatio
+    height: units.gu(80)
+    color: "black"
+    title: "Camera"
 
     UnityActions.ActionManager {
         actions: [
@@ -63,6 +63,11 @@ Item {
 
     Component.onCompleted: {
         i18n.domain = "camera-app";
+        if (!application.desktopMode) {
+            main.showFullScreen();
+        } else {
+            main.show();
+        }
     }
 
 
@@ -91,7 +96,7 @@ Item {
                         galleryView.y = 0;
                         viewFinderView.x = 0;
                         viewFinderView.y = 0;
-                        viewSwitcher.contentX = viewSwitcher.ratio * viewSwitcher.contentWidth;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentX / viewSwitcher.contentWidth });
                     }
                 }
@@ -107,7 +112,7 @@ Item {
                         galleryView.y = Qt.binding(function() { return viewFinderView.height + viewSwitcher.panesMargin });
                         viewFinderView.x = 0;
                         viewFinderView.y = 0;
-                        viewSwitcher.contentY = viewSwitcher.ratio * viewSwitcher.contentHeight;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentY / viewSwitcher.contentHeight });
                     }
                 }
@@ -123,7 +128,7 @@ Item {
                         galleryView.y = 0;
                         viewFinderView.x = 0;
                         viewFinderView.y = Qt.binding(function() { return galleryView.height + viewSwitcher.panesMargin });
-                        viewSwitcher.contentY = (0.5 - viewSwitcher.ratio) * viewSwitcher.contentHeight;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return 0.5 - viewSwitcher.contentY / viewSwitcher.contentHeight });
                     }
                 }
@@ -176,6 +181,19 @@ Item {
                 flick(0, -settleVelocity);
             }
         }
+
+        function positionContentAtRatio(ratio) {
+            if (state == "PORTRAIT") {
+                viewSwitcher.contentX = ratio * viewSwitcher.contentWidth;
+            } else if (state == "LANDSCAPE") {
+                viewSwitcher.contentY = ratio * viewSwitcher.contentHeight;
+            } else if (state == "INVERTED_LANDSCAPE") {
+                viewSwitcher.contentY = (0.5 - ratio) * viewSwitcher.contentHeight;
+            }
+        }
+
+        onContentWidthChanged: positionContentAtRatio(viewSwitcher.ratio)
+        onContentHeightChanged: positionContentAtRatio(viewSwitcher.ratio)
 
         onMovementEnded: {
             // go to a rest position as soon as user stops interacting with the Flickable

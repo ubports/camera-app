@@ -18,7 +18,7 @@ class MainWindow(object):
 
     def get_qml_view(self):
         """Get the main QML view"""
-        return self.app.wait_select_single("QQuickView")
+        return self.get_root()
 
     def get_root(self):
         """Returns the root QML Item"""
