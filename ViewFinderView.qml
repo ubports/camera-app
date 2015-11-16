@@ -29,7 +29,7 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
     property alias captureMode: camera.captureMode
-    property real aspectRatio: viewFinder.sourceRect.width / viewFinder.sourceRect.height
+    property real aspectRatio: viewFinder.sourceRect.height != 0 ? viewFinder.sourceRect.width / viewFinder.sourceRect.height : 1.0
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
@@ -122,12 +122,6 @@ Item {
         onActiveChanged: {
             if (Qt.application.active) {
                 camera.start()
-                // FIXME: this is a workaround for bug #1516569 where upon
-                // resume the camera application does not render. This forces
-                // rendering to start again.
-                // Ref.: https://bugs.launchpad.net/camera-app/+bug/1516569
-                viewFinderView.opacity = 0.9;
-                viewFinderView.opacity = 1.0;
             } else if (!application.desktopMode) {
                 if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
                     camera.videoRecorder.stop();
