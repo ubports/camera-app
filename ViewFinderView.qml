@@ -126,24 +126,14 @@ Item {
                 // resume the camera application does not render. This forces
                 // rendering to start again.
                 // Ref.: https://bugs.launchpad.net/camera-app/+bug/1516569
-                forceRenderAnimator.start()
-                forceRenderAnimator.stop()
+                viewFinderView.opacity = 0.9;
+                viewFinderView.opacity = 1.0;
             } else if (!application.desktopMode) {
                 if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
                     camera.videoRecorder.stop();
                 }
                 camera.stop()
             }
-        }
-    }
-
-    Item {
-        XAnimator on x {
-            id: forceRenderAnimator
-            from: 0
-            to: 10
-            loops: Animation.Infinite
-            running: false
         }
     }
 
