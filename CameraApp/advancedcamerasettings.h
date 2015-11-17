@@ -40,6 +40,8 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
                 NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
+    Q_PROPERTY (QSize imageCaptureResolution READ imageCaptureResolution)
+    Q_PROPERTY (QSize videoRecorderResolution READ videoRecorderResolution)
     Q_PROPERTY (QSize maximumResolution READ maximumResolution NOTIFY maximumResolutionChanged)
     Q_PROPERTY (QSize fittingResolution READ fittingResolution NOTIFY fittingResolutionChanged)
     Q_PROPERTY (QStringList videoSupportedResolutions READ videoSupportedResolutions NOTIFY videoSupportedResolutionsChanged)
@@ -55,6 +57,8 @@ public:
     void setCamera(QObject* camera);
     void setActiveCameraIndex(int index);
     QSize resolution() const;
+    QSize imageCaptureResolution() const;
+    QSize videoRecorderResolution() const;
     QSize maximumResolution() const;
     QSize fittingResolution() const;
     float getScreenAspectRatio() const;

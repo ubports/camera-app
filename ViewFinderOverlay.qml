@@ -215,11 +215,10 @@ Item {
 
     Component.onCompleted: {
         camera.cameraState = Camera.LoadedState;
-        camera.imageCapture.resolution = settings.photoResolution;
-        // FIXME: see workaround setting camera.viewfinder.resolution above
-        camera.viewfinder.resolution = camera.advanced.resolution;
         updateVideoResolutionOptions();
         updatePhotoResolutionOptions();
+        // FIXME: see workaround setting camera.viewfinder.resolution above
+        camera.viewfinder.resolution = camera.advanced.resolution;
         camera.cameraState = Camera.ActiveState;
     }
 
@@ -233,12 +232,15 @@ Item {
     Connections {
         target: camera.advanced
         onActiveCameraIndexChanged: {
-            updateVideoResolutionOptions();
+            // FIXME: use camera.advanced.imageCaptureResolution instead of camera.imageCapture.resolution
+            // because the latter is not updated when the backend changes the resolution
+            settings.photoResolution = sizeToString(camera.advanced.imageCaptureResolution);
+            settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updatePhotoResolutionOptions();
-            camera.videoRecorder.resolution = settings.videoResolution;
-            camera.imageCapture.resolution = settings.photoResolution;
+            updateVideoResolutionOptions();
             // FIXME: see workaround setting camera.viewfinder.resolution above
             camera.viewfinder.resolution = camera.advanced.resolution;
+            settings.photoResolution = sizeToString(camera.advanced.fittingResolution);
         }
     }
 

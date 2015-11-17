@@ -290,6 +290,24 @@ QSize AdvancedCameraSettings::resolution() const
     return QSize();
 }
 
+QSize AdvancedCameraSettings::imageCaptureResolution() const
+{
+    if (m_imageEncoderControl != 0) {
+        return m_imageEncoderControl->imageSettings().resolution();
+    }
+
+    return QSize();
+}
+
+QSize AdvancedCameraSettings::videoRecorderResolution() const
+{
+    if (m_videoEncoderControl != 0) {
+        return m_videoEncoderControl->videoSettings().resolution();
+    }
+
+    return QSize();
+}
+
 QSize AdvancedCameraSettings::maximumResolution() const
 {
     if (m_imageEncoderControl) {
