@@ -14,10 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import Ubuntu.Components 1.0
-import Ubuntu.Components.ListItems 1.0 as ListItems
-import Ubuntu.Components.Popups 1.0
+import QtQuick 2.4
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItems
+import Ubuntu.Components.Popups 1.3
 import Ubuntu.Content 0.1
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
@@ -28,10 +28,24 @@ Item {
 
     property var model
     property int currentIndex: listView.currentIndex
-    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress : false
+    property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
+                                                        editor.active : false
     property bool inView
+    property bool editingAvailable: false
+    property bool inSelectionMode: false
     signal toggleHeader
-    property list<Action> actions: [
+    signal toggleSelection
+    property var actions: inSelectionMode ? slideShowSelectionActions : slideShowActions
+
+    property list<Action> slideShowSelectionActions: [
+        Action {
+            text: i18n.tr("Select")
+            iconName: listView.currentItem.isSelected ? "close" : "ok"
+            onTriggered: slideshowView.toggleSelection()
+        }
+    ]
+
+    property list<Action> slideShowActions: [
         Action {
             text: i18n.tr("Share")
             iconName: "share"
@@ -43,6 +57,27 @@ Item {
             onTriggered: PopupUtils.open(deleteDialogComponent)
         }
     ]
+
+    Action {
+        id: editAction
+        text: i18n.tr("Edit")
+        iconName: "edit"
+        onTriggered: editor.start(listView.currentItem.url)
+        enabled: listView.currentItem && !listView.currentItem.isVideo
+    }
+
+    Component.onCompleted: {
+        // The PhotoEditor is only available in Ubuntu.Components.Extras 0.2
+        // If we succeed here we add the edit button to the list of actions.
+        try { Qt.createQmlObject('import QtQuick 2.4; import Ubuntu.Components.Extras 0.2; Item {}', slideshowView) }
+        catch (e) { return; }
+
+        editingAvailable = true;
+        var newActions = [];
+        for (var i = 0; i < slideShowActions.length; i++) newActions.push(slideShowActions[i]);
+        newActions.push(editAction);
+        slideShowActions = newActions;
+    }
 
     function showPhotoAtIndex(index) {
         listView.positionViewAtIndex(index, ListView.Contain);
@@ -79,6 +114,12 @@ Item {
         // were hitting https://bugreports.qt-project.org/browse/QTBUG-41035
         highlightMoveDuration: 0
         snapMode: ListView.SnapOneItem
+        onCountChanged: {
+            // currentIndex is -1 by default and stays so until manually set to something else
+            if (currentIndex == -1 && count != 0) {
+                currentIndex = 0;
+            }
+        }
         spacing: units.gu(1)
         interactive: currentItem ? !currentItem.pinchInProgress : true
         property real maxDimension: Math.max(width, height)
@@ -94,6 +135,9 @@ Item {
         delegate: Item {
             id: delegate
             property bool pinchInProgress: zoomPinchArea.active
+            property string url: fileURL
+            property bool isSelected: selected
+            property alias isVideo: media.isVideo
 
             function zoomIn(centerX, centerY, factor) {
                 flickable.scaleCenterX = centerX / (flickable.sizeScale * flickable.width);
@@ -107,6 +151,11 @@ Item {
                     flickable.scaleCenterY = flickable.contentY / flickable.height / (flickable.sizeScale - 1);
                     flickable.sizeScale = 1.0;
                 }
+            }
+
+            function reload() {
+                reloadImage(image);
+                reloadImage(highResolutionImage);
             }
 
             width: ListView.view.width
@@ -173,13 +222,15 @@ Item {
                         height: flickable.height * flickable.sizeScale
 
                         property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
+                        property string photoUrl: editingAvailable ? "image://photo/%1".arg(fileURL.toString()) : fileURL.toString().replace("file://", "")
 
                         Image {
                             id: image
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: slideshowView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
+                            source: slideshowView.inView ? (media.isVideo ? "image://thumbnailer/%1".arg(fileURL.toString())
+                                                                          : media.photoUrl) : ""
                             sourceSize {
                                 width: listView.maxDimension
                                 height: listView.maxDimension
@@ -194,7 +245,7 @@ Item {
                             anchors.fill: parent
                             asynchronous: true
                             cache: false
-                            source: flickable.sizeScale > 1.0 ? fileURL : ""
+                            source: flickable.sizeScale > 1.0 ? media.photoUrl : ""
                             sourceSize {
                                 width: width
                                 height: height
@@ -220,6 +271,15 @@ Item {
                             mouse.accepted = false;
                         }
                         onDoubleClicked: {
+                            if (listView.moving) {
+                                // FIXME: workaround for Qt bug specific to touch:
+                                // doubleClicked is received even though the MouseArea
+                                // was tapped only once but another MouseArea was also
+                                // tapped shortly before.
+                                // Ref.: https://bugreports.qt.io/browse/QTBUG-39332
+                                return;
+                            }
+
                             if (media.isVideo) {
                                 return;
                             }
@@ -239,7 +299,8 @@ Item {
                         enabled: media.isVideo
                         onClicked: {
                             if (media.isVideo) {
-                                Qt.openUrlExternally(fileURL);
+                                var url = fileURL.toString().replace("file://", "video://");
+                                Qt.openUrlExternally(url);
                             }
                         }
                     }
@@ -248,82 +309,78 @@ Item {
         }
     }
 
-
-    Component {
+   Component {
         id: sharePopoverComponent
 
-        PopupBase {
+        SharePopover {
             id: sharePopover
-
-            fadingAnimation: UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration }
-
-            // FIXME: ContentPeerPicker should either have a background or not, not half of one
-            Rectangle {
-                anchors.fill: parent
-                color: Theme.palette.normal.overlay
-            }
 
             ContentItem {
                 id: contentItem
             }
 
-            ContentPeerPicker {
-                // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
-                // FIXME: ContentPeerPicker should not be visible: false by default
-                visible: true
-                Component.onCompleted: {
-                    var currentFileType = slideshowView.model.get(slideshowView.currentIndex, "fileType");
-                    contentType = MimeTypeMapper.mimeTypeToContentType(currentFileType);
-                }
-                handler: ContentHandler.Share
-
-                onPeerSelected: {
-                    var transfer = peer.request();
-                    if (transfer.state === ContentTransfer.InProgress) {
-                        contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
-                        transfer.items = [ contentItem ];
-                        transfer.state = ContentTransfer.Charged;
-                    }
-                    PopupUtils.close(sharePopover);
-                }
-                onCancelPressed: PopupUtils.close(sharePopover);
+            Component.onCompleted: {
+                contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
+                transferItems = [contentItem];
             }
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.model.get(slideshowView.currentIndex, "fileType"));
         }
     }
 
     Component {
         id: deleteDialogComponent
 
-        Dialog {
+        DeleteDialog {
             id: deleteDialog
-
-            title: i18n.tr("Delete media?")
 
             FileOperations {
                 id: fileOperations
             }
 
-            Button {
-                text: i18n.tr("Cancel")
-                color: UbuntuColors.warmGrey
-                onClicked: PopupUtils.close(deleteDialog)
-            }
-            Button {
-                text: i18n.tr("Delete")
-                color: UbuntuColors.orange
-                onClicked: {
-                    // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
-                    // whereby after deleting the last item in the list the first
-                    // item would be shown even though the currentIndex was not set to 0
-                    var toBeDeleted = listView.currentIndex;
-                    if (listView.currentIndex == listView.count - 1) {
-                        listView.currentIndex = listView.currentIndex - 1;
-                    }
-
-                    var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
-                    fileOperations.remove(currentFilePath);
-                    PopupUtils.close(deleteDialog);
+            onDeleteFiles: {
+                // FIXME: workaround bug in ListView with snapMode: ListView.SnapOneItem
+                // whereby after deleting the last item in the list the first
+                // item would be shown even though the currentIndex was not set to 0
+                var toBeDeleted = listView.currentIndex;
+                if (listView.currentIndex == listView.count - 1) {
+                    listView.currentIndex = listView.currentIndex - 1;
                 }
+
+                var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
+                fileOperations.remove(currentFilePath);
+            }
+        }
+    }
+
+    Binding { target: header; property: "editMode"; value: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
+
+    function reloadImage(image) {
+        var async = image.asynchronous;
+        var source = image.source;
+        image.asynchronous = false;
+        image.source = "";
+        image.asynchronous = async;
+        image.source = source;
+    }
+
+    Loader {
+        id: editor
+        source: "PhotoEditorLoader.qml"
+        active: false
+        anchors.fill: parent
+
+        function start(url) {
+            editor.active = true;
+            editor.item.start(url);
+        }
+
+        Connections {
+            target: editor.item
+            onClosed: {
+                editor.active = false;
+                if (photoWasModified) listView.currentItem.reload();
             }
         }
     }

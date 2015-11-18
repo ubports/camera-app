@@ -20,7 +20,7 @@
 #ifndef CAMERAAPPLICATION_H
 #define CAMERAAPPLICATION_H
 
-#include <QtQuick/QQuickView>
+#include <QtQml/QQmlApplicationEngine>
 #include <QGuiApplication>
 
 class QDate;
@@ -32,6 +32,10 @@ class CameraApplication : public QGuiApplication
     Q_PROPERTY(QString picturesLocation READ picturesLocation CONSTANT)
     Q_PROPERTY(QString videosLocation READ videosLocation CONSTANT)
     Q_PROPERTY(QString temporaryLocation READ temporaryLocation CONSTANT)
+    Q_PROPERTY(bool removableStoragePresent READ removableStoragePresent NOTIFY removableStoragePresentChanged)
+    Q_PROPERTY(QString removableStorageLocation READ removableStorageLocation CONSTANT)
+    Q_PROPERTY(QString removableStoragePicturesLocation READ removableStoragePicturesLocation CONSTANT)
+    Q_PROPERTY(QString removableStorageVideosLocation READ removableStorageVideosLocation CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
@@ -41,9 +45,16 @@ public:
     QString picturesLocation() const;
     QString videosLocation() const;
     QString temporaryLocation() const;
+    bool removableStoragePresent() const;
+    QString removableStorageLocation() const;
+    QString removableStoragePicturesLocation() const;
+    QString removableStorageVideosLocation() const;
+
+Q_SIGNALS:
+    void removableStoragePresentChanged();
 
 private:
-    QScopedPointer<QQuickView> m_view;
+    QScopedPointer<QQmlApplicationEngine> m_engine;
 };
 
 #endif // CAMERAAPPLICATION_H

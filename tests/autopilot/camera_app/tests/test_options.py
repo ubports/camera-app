@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -11,6 +11,7 @@ from testtools.matchers import Equals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
+
 
 class TestCameraOptions(CameraAppTestCase):
     """Tests the options overlay"""
@@ -40,3 +41,32 @@ class TestCameraOptions(CameraAppTestCase):
 
         # check overlay is closed
         self.assertThat(bottom_edge.opened, Eventually(Equals(False)))
+
+    """Test toggling on/off grid lines option"""
+    def test_toggle_grid_lines(self):
+        gridlines = self.app.wait_select_single(
+            "QQuickItem", objectName="gridlines")
+        self.set_grid_lines_value("On")
+        self.assertEquals(gridlines.visible, True)
+        self.set_grid_lines_value("Off")
+        self.assertEquals(gridlines.visible, False)
+
+    def set_grid_lines_value(self, value="On"):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open grid lines option value selector showing the possible values
+        grid_lines_button = self.main_window.get_grid_lines_button()
+        self.pointing_device.move_to_object(grid_lines_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
+
+        # tap on chosen value
+        option = self.main_window.get_option_value_button(value)
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+
+        bottom_edge.close()

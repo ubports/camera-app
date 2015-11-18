@@ -14,9 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import QtQuick.Window 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import QtQuick.Window 2.2
+import Ubuntu.Components 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
@@ -29,8 +29,9 @@ Item {
     property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
     property alias captureMode: camera.captureMode
-    signal photoTaken
-    signal videoShot
+    property real aspectRatio: viewFinder.sourceRect.height != 0 ? viewFinder.sourceRect.width / viewFinder.sourceRect.height : 1.0
+    signal photoTaken(string filePath)
+    signal videoShot(string filePath)
 
     Camera {
         id: camera
@@ -84,15 +85,19 @@ Item {
             }
             onImageCaptured: {
                 snapshot.source = preview;
+                if (!main.contentExportMode) {
+                    viewFinderOverlay.visible = true;
+                    snapshot.startOutAnimation();
+                    if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
+                }
             }
             onImageSaved: {
                 if (main.contentExportMode) {
                     viewFinderExportConfirmation.confirmExport(path);
-                } else {
-                    viewFinderOverlay.visible = true;
-                    snapshot.startOutAnimation();
                 }
-                viewFinderView.photoTaken();
+                viewFinderView.photoTaken(path);
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -101,9 +106,12 @@ Item {
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
+                    if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
-                    viewFinderView.videoShot();
+                    viewFinderView.videoShot(videoRecorder.actualLocation);
                 }
             }
         }
@@ -126,7 +134,8 @@ Item {
     Item {
         id: viewFinderSwitcher
         anchors.fill: parent
-        
+        visible: !viewFinderSwitcherBlurred.visible
+
         ShaderEffectSource {
             id: viewFinderGrab
             live: false
@@ -214,8 +223,18 @@ Item {
                    feed is rotated too.
                    FIXME: This should come from a system configuration option so that we
                    don't have to have a different codebase for each different device we want
-                   to run on */
-            orientation: Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0
+                   to run on. Android has that information and QML has an API to reflect it:
+                   the camera.orientation property. Unfortunately it is not hooked up yet.
+
+                   Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
+                         http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
+                         http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
+            */
+            Component.onCompleted: {
+                // Set orientation only at startup because later on Screen.primaryOrientation
+                // may change.
+                orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
+            }
             
             /* Convenience item tracking the real position and size of the real video feed.
                    Having this helps since these values depend on a lot of rules:
@@ -240,6 +259,101 @@ Item {
                 viewFinderHeight: viewFinder.height
                 viewFinderWidth: viewFinder.width
                 viewFinderOrientation: viewFinder.orientation
+            }
+        }
+
+        Item {
+            id: gridlines
+            objectName: "gridlines"
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: viewFinderGeometry.width
+            height: viewFinderGeometry.height
+            visible: viewFinderOverlay.settings != undefined && viewFinderOverlay.settings.gridEnabled
+
+            property color color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
+            property real thickness: units.dp(1)
+
+            Rectangle {
+                y: parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                y: 2 * parent.height / 3
+                width: parent.width
+                height: gridlines.thickness
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
+            }
+
+            Rectangle {
+                x: 2 * parent.width / 3
+                width: gridlines.thickness
+                height: parent.height
+                color: gridlines.color
+            }
+        }
+
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) viewFinderOverlay.controls.cancelTimedShoot()
+        }
+
+        OrientationHelper {
+            id: timedShootFeedback
+            anchors.fill: parent
+
+            function start() {
+                viewFinderOverlay.visible = false;
+            }
+
+            function stop() {
+                remainingSecsLabel.text = "";
+                viewFinderOverlay.visible = true;
+            }
+
+            function showRemainingSecs(secs) {
+                remainingSecsLabel.text = secs;
+                remainingSecsLabel.opacity = 1.0;
+                remainingSecsLabelAnimation.restart();
+            }
+
+            Label {
+                id: remainingSecsLabel
+                anchors.fill: parent
+                font.pixelSize: units.gu(6)
+                font.bold: true
+                color: "white"
+                style: Text.Outline;
+                styleColor: "black"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                visible: opacity != 0.0
+                opacity: 0.0
+
+                OpacityAnimator {
+                    id: remainingSecsLabelAnimation
+                    target: remainingSecsLabel
+                    from: 1.0
+                    to: 0.0
+                    duration: 750
+                    easing: UbuntuAnimation.StandardEasing
+                }
+            }
+
+            // tapping anywhere on the screen while a timed shoot is ongoing cancels it
+            MouseArea {
+                anchors.fill: parent
+                onClicked: viewFinderOverlay.controls.cancelTimedShoot()
+                enabled: remainingSecsLabel.visible
             }
         }
 
@@ -268,8 +382,12 @@ Item {
     }
 
     FastBlur {
+        id: viewFinderSwitcherBlurred
         anchors.fill: viewFinderSwitcher
-        radius: viewFinderOverlay.revealProgress * 64
+        property real finalRadius: 64
+        property real finalOpacity: 0.7
+        radius: photoRollHint.visible ? finalRadius : viewFinderOverlay.revealProgress * finalRadius
+        opacity: photoRollHint.visible ? finalOpacity : (1.0 - viewFinderOverlay.revealProgress) * finalOpacity + finalOpacity
         source: radius !== 0 ? viewFinderSwitcher : null
         visible: radius !== 0
     }
@@ -279,10 +397,21 @@ Item {
 
         anchors.fill: parent
         camera: camera
-        opacity: status == Loader.Ready && overlayVisible ? 1.0 : 0.0
+        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
     }
-    
+
+    PhotoRollHint {
+        id: photoRollHint
+        anchors.fill: parent
+        visible: enabled && !snapshot.loading
+
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
+        }
+    }
+
     Snapshot {
         id: snapshot
         anchors.fill: parent

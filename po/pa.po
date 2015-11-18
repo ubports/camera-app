@@ -1,0 +1,200 @@
+# Punjabi translation for camera-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"PO-Revision-Date: 2015-03-01 04:46+0000\n"
+"Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
+
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "ਮੀਡੀਆ ਹਟਾਓ?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+msgid "Delete"
+msgstr "ਹਟਾਓ"
+
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
+msgid "Cancel"
+msgstr "ਰੱਦ"
+
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "ਕੋਈ ਮੀਡੀਆ ਮੌਜੂਦ ਨਹੀਂ।"
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "ਸਮੱਗਰੀ ਲਈ ਸਕੈਨ ਕਰ ਰਿਹਾ..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "ਚੁਣੋ"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr "ਫ਼ੋਟੋ ਸੋਧ"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "ਫ਼ੋਟੋ ਰੋਲ"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "ਜੰਤਰ ਤੇ ਕੋਈ ਥਾਂ ਨਹੀਂ ਬਚੀ, ਜਾਰੀ ਰੱਖਣ ਲਈ ਥਾਂ ਖਾਲੀ ਕਰੋ।"
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "ਫ਼ੋਟੋ ਰੋਲ ਲਈ ਖਂਬੇ ਪਾਸੇ ਸਵਾਈਪ ਕਰੋ"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "ਸਾਂਝਾ ਕਰੋ"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr "ਸੋਧ"
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
+msgid "On"
+msgstr "ਚਾਲੂ"
+
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+msgid "Off"
+msgstr "ਬੰਦ"
+
+#: ../ViewFinderOverlay.qml:227
+msgid "Auto"
+msgstr "ਸਵੈ"
+
+#: ../ViewFinderOverlay.qml:264
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:302
+msgid "5 seconds"
+msgstr "5 ਸਕਿੰਟ"
+
+#: ../ViewFinderOverlay.qml:307
+msgid "15 seconds"
+msgstr "15 ਸਕਿੰਟ"
+
+#: ../ViewFinderOverlay.qml:324
+msgid "Fine Quality"
+msgstr "ਵਧੀਆ ਗੁਣਵੱਤਾ"
+
+#: ../ViewFinderOverlay.qml:328
+msgid "Normal Quality"
+msgstr "ਆਮ ਗੁਣਵੱਤਾ"
+
+#: ../ViewFinderOverlay.qml:332
+msgid "Basic Quality"
+msgstr "ਬੁਨਿਆਦੀ ਗੁਣਵੱਤਾ"
+
+#: ../ViewFinderOverlay.qml:364
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:372
+msgid "Save to SD Card"
+msgstr "SD ਕਾਰਡ ਤੇ ਸੰਭਾਲ੍ਹੋ"
+
+#: ../ViewFinderOverlay.qml:377
+msgid "Save internally"
+msgstr "ਅੰਦੂਰਨੀ ਤੌਰ ਤੇ ਸੰਭਾਲ੍ਹੋ"
+
+#: ../ViewFinderOverlay.qml:802
+msgid "Low storage space"
+msgstr "ਘੱਟ ਸਟੋਰੇਜ਼ ਥਾਂ"
+
+#: ../ViewFinderOverlay.qml:803
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+"ਤੁਸੀਂ ਸਟੋਰੇਜ਼ ਥਾਂ ਖਤਮ ਹੋ ਗਈ ਹੈ, ਬਿਨਾਂ ਰੁਕਾਵਟ ਦੇ ਜਾਰੀ ਰੱਖਣ ਲਈ, ਹੁਣੇ ਸਟੋਰੇਜ਼ "
+"ਥਾਂ ਖਾਲੀ ਕਰੋ।"
+
+#: ../camera-app.qml:37
+msgid "Flash"
+msgstr "ਫਲੈਸ਼"
+
+#: ../camera-app.qml:38
+msgid "Light;Dark"
+msgstr "ਰੌਸਨੀ;ਹਨੇਰਾ"
+
+#: ../camera-app.qml:41
+msgid "Flip Camera"
+msgstr "ਕੈਮਰਾ ਘੁਮਾਓ"
+
+#: ../camera-app.qml:42
+msgid "Front Facing;Back Facing"
+msgstr "ਸਾਹਮਣੇ ਮੂੰਹ; ਪਿੱਛੇ ਮੂੰਹ"
+
+#: ../camera-app.qml:45
+msgid "Shutter"
+msgstr "ਸ਼ਟਰ"
+
+#: ../camera-app.qml:46
+msgid "Take a Photo;Snap;Record"
+msgstr "ਇੱਕ ਫ਼ੋਟੋ ਖਿਚੋ;ਸਨੈਪ;ਰਿਕਾਰਡ"
+
+#: ../camera-app.qml:49
+msgid "Mode"
+msgstr "ਮੋਡ"
+
+#: ../camera-app.qml:50
+msgid "Stills;Video"
+msgstr "ਅਚਲ;ਵੀਡੀਓ"
+
+#: ../camera-app.qml:54
+msgid "White Balance"
+msgstr "ਸਫ਼ੈਦ ਸੰਤੁਲਨ"
+
+#: ../camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "ਰੌਸਨੀ ਦੇ ਹਾਲਾਤ;ਦਿਨ;ਬੱਦਲ;ਅੰਦਰ"
+
+#: ../camera-app.qml:221
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "<b>%1</b> ਅੱਜ ਖਿੱਚੀਆਂ ਫ਼ੋਟੋਆਂ"
+
+#: ../camera-app.qml:222
+msgid "No photos taken today"
+msgstr "ਅੱਜ ਕੋਈ ਫ਼ੋਟੋ ਨਹੀਂ ਖਿੱਚੀ"
+
+#: ../camera-app.qml:230
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "<b>%1</b> ਅੱਜ ਰਿਕਾਰਡ ਕੀਤੀਆਂ ਵੀਡੀਓ"
+
+#: ../camera-app.qml:231
+msgid "No videos recorded today"
+msgstr "ਅੱਜ ਕੋਈ ਵੀਡੀਓ ਰਿਕਾਰਡ ਨਹੀਂ ਕੀਤੀ"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "ਕੈਮਰਾ"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "ਕੈਮਰਾ ਐਪਲੀਕੇਸ਼ਨ"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "ਫ਼ੋਟੋਆਂ;ਵੀਡੀਓ;ਕੈਪਚਰ;ਸ਼ੂਟ;ਸਨੈਪਸ਼ਾਟ;ਰਿਕਾਰਡ"

@@ -14,21 +14,46 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import Ubuntu.Thumbnailer 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
 Item {
     id: photogridView
 
-    property int itemsPerRow: 3
     property var model
     signal photoClicked(int index)
+    signal photoPressAndHold(int index)
+    signal photoSelectionAreaClicked(int index)
+    signal exitUserSelectionMode
     property real headerHeight
     property bool inView
-    property list<Action> actions
+    property bool inSelectionMode
+    property bool userSelectionMode: false
+    property var actions: userSelectionMode ? userSelectionActions : []
+    property list<Action> userSelectionActions: [
+        Action {
+            text: i18n.tr("Share")
+            iconName: "share"
+            enabled: model.selectedFiles.length <= 1
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(sharePopoverComponent)
+            }
+        },
+        Action {
+            text: i18n.tr("Delete")
+            iconName: "delete"
+            onTriggered: {
+                if (model.selectedFiles.length > 0)
+                    PopupUtils.open(deleteDialogComponent);
+            }
+        }
+    ]
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -37,7 +62,7 @@ Item {
     function exit() {
     }
 
-    GridView {
+    ResponsiveGridView {
         id: gridView
         anchors.fill: parent
         // FIXME: prevent the header from overlapping the beginning of the grid
@@ -47,7 +72,7 @@ Item {
             width: gridView.width
             height: headerHeight
         }
-        
+
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
             // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
@@ -56,15 +81,18 @@ Item {
             flickDeceleration = flickDeceleration * scaleFactor;
         }
 
-        cellWidth: width / photogridView.itemsPerRow
-        cellHeight: cellWidth
+        minimumHorizontalSpacing: units.dp(2)
+        maximumNumberOfColumns: 100
+        delegateWidth: units.gu(13)
+        delegateHeight: units.gu(13)
 
         model: photogridView.model
         delegate: Item {
             id: cellDelegate
+            objectName: "mediaItem" + index
             
-            width: GridView.view.cellWidth
-            height: GridView.view.cellHeight
+            width: gridView.cellWidth
+            height: gridView.cellHeight
 
             property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
 
@@ -73,18 +101,20 @@ Item {
                 property real margin: units.dp(2)
                 anchors {
                     top: parent.top
-                    topMargin: index < photogridView.itemsPerRow ? 0 : margin/2
+                    topMargin: index < photogridView.columns ? 0 : margin/2
                     bottom: parent.bottom
                     bottomMargin: margin/2
                     left: parent.left
-                    leftMargin: index % photogridView.itemsPerRow == 0 ? 0 : margin/2
+                    leftMargin: index % photogridView.columns == 0 ? 0 : margin/2
                     right: parent.right
-                    rightMargin: index % photogridView.itemsPerRow == photogridView.itemsPerRow - 1 ? 0 : margin/2
+                    rightMargin: index % photogridView.columns == photogridView.columns - 1 ? 0 : margin/2
                 }
                 
                 asynchronous: true
                 cache: false
-                source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() : ""
+                // The thumbnailer does not seem to check when an image has been changed on disk,
+                // so we use this hack to force it to check and refresh if necessary.
+                source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() + "?at=" + Date.now() : ""
                 sourceSize {
                     width: width
                     height: height
@@ -104,16 +134,87 @@ Item {
                 visible: isVideo
             }
 
-            Rectangle {
-                anchors.fill: parent
-                color: UbuntuColors.blue
-                opacity: 0.4
-                visible: selected
-            }
-
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
+                onPressAndHold: photogridView.photoPressAndHold(index)
+            }
+
+            Rectangle {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    topMargin: units.gu(0.5)
+                    rightMargin: units.gu(0.5)
+                }
+                width: units.gu(4)
+                height: units.gu(4)
+                color: selected ? UbuntuColors.orange : UbuntuColors.coolGrey
+                radius: 10
+                opacity: selected ? 0.8 : 0.6
+                visible: inSelectionMode
+
+                Icon {
+                    anchors.centerIn: parent
+                    width: parent.width * 0.8
+                    height: parent.height * 0.8
+                    name: "ok"
+                    color: "white"
+                    visible: selected
+                }
+
+            }
+
+            MouseArea {
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                width: parent.width * 0.5
+                height: parent.height * 0.5
+                enabled: inSelectionMode
+ 
+                onClicked: {
+                    mouse.accepted = true;
+                    photogridView.photoSelectionAreaClicked(index)
+                }
+            }
+        }
+    }
+
+    Component {
+        id: contentItemComp
+        ContentItem {}
+    }
+
+    Component {
+        id: sharePopoverComponent
+
+        SharePopover {
+            id: sharePopover
+
+            onContentPeerSelected: photogridView.exitUserSelectionMode();
+
+            transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
+            transferItems: model.selectedFiles.map(function(row) {
+                             return contentItemComp.createObject(parent, {"url": model.get(row, "filePath")});
+                           })
+        }
+    }
+
+    Component {
+        id: deleteDialogComponent
+
+        DeleteDialog {
+            id: deleteDialog
+
+            FileOperations {
+                id: fileOperations
+            }
+
+            onDeleteFiles: {
+                model.deleteSelectedFiles();
+                photogridView.exitUserSelectionMode();
             }
         }
     }

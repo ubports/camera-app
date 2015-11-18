@@ -15,13 +15,18 @@
  *
  */
 
-import QtQuick 2.0
+import QtQuick 2.4
 import QtTest 1.0
 import "../../"
 import "../../.." //Needed for out of source build
 
 TestCase {
     name: "StopWatch"
+
+    function test_time_format_hours() {
+        stopWatch.time = 12345
+        compare(stopWatch.label, "03:25:45", "Time not calculated correctly")
+    }
 
     function test_time_format_calc() {
         stopWatch.time = 1234

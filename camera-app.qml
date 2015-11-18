@@ -14,21 +14,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import QtQuick.Window 2.0
+import QtQuick 2.4
+import QtQuick.Window 2.2
 import QtMultimedia 5.0
-import Ubuntu.Components 1.0
+import Ubuntu.Components 1.3
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
 import Ubuntu.Content 0.1
+import CameraApp 0.1
 
-Item {
+Window {
     id: main
     objectName: "main"
-    width: units.gu(40)
-    height: units.gu(71)
-//    width: application.desktopMode ? units.gu(120) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(40) : units.gu(80))
-//    height: application.desktopMode ? units.gu(60) : (Screen.primaryOrientation === Qt.PortraitOrientation ? units.gu(80) : units.gu(40))
+    width: height * viewFinderView.aspectRatio
+    height: units.gu(80)
+    color: "black"
+    title: "Camera"
 
     UnityActions.ActionManager {
         actions: [
@@ -62,16 +63,77 @@ Item {
 
     Component.onCompleted: {
         i18n.domain = "camera-app";
+        if (!application.desktopMode) {
+            main.showFullScreen();
+        } else {
+            main.show();
+        }
     }
 
 
     Flickable {
         id: viewSwitcher
         anchors.fill: parent
-        flickableDirection: Flickable.HorizontalFlick
+        flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
-        contentWidth: contentItem.childrenRect.width
-        contentHeight: contentItem.childrenRect.height
+
+        property real panesMargin: units.gu(1)
+        property real ratio
+        property int orientationAngle: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
+        property var angleToOrientation: {0: "PORTRAIT",
+                                          90: "LANDSCAPE",
+                                          270: "INVERTED_LANDSCAPE"}
+        state: angleToOrientation[orientationAngle]
+        states: [
+            State {
+                name: "PORTRAIT"
+                StateChangeScript {
+                    script: {
+                        viewSwitcher.ratio = viewSwitcher.ratio;
+                        viewSwitcher.contentWidth = Qt.binding(function() { return viewSwitcher.width * 2 + viewSwitcher.panesMargin });
+                        viewSwitcher.contentHeight = Qt.binding(function() { return viewSwitcher.height });
+                        galleryView.x = Qt.binding(function() { return viewFinderView.width + viewSwitcher.panesMargin });
+                        galleryView.y = 0;
+                        viewFinderView.x = 0;
+                        viewFinderView.y = 0;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
+                        viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentX / viewSwitcher.contentWidth });
+                    }
+                }
+            },
+            State {
+                name: "LANDSCAPE"
+                StateChangeScript {
+                    script: {
+                        viewSwitcher.ratio = viewSwitcher.ratio;
+                        viewSwitcher.contentWidth = Qt.binding(function() { return viewSwitcher.width });
+                        viewSwitcher.contentHeight = Qt.binding(function() { return viewSwitcher.height * 2 + viewSwitcher.panesMargin });
+                        galleryView.x = 0;
+                        galleryView.y = Qt.binding(function() { return viewFinderView.height + viewSwitcher.panesMargin });
+                        viewFinderView.x = 0;
+                        viewFinderView.y = 0;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
+                        viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentY / viewSwitcher.contentHeight });
+                    }
+                }
+            },
+            State {
+                name: "INVERTED_LANDSCAPE"
+                StateChangeScript {
+                    script: {
+                        viewSwitcher.ratio = viewSwitcher.ratio;
+                        viewSwitcher.contentWidth = Qt.binding(function() { return viewSwitcher.width });
+                        viewSwitcher.contentHeight = Qt.binding(function() { return viewSwitcher.height * 2 + viewSwitcher.panesMargin });
+                        galleryView.x = 0;
+                        galleryView.y = 0;
+                        viewFinderView.x = 0;
+                        viewFinderView.y = Qt.binding(function() { return galleryView.height + viewSwitcher.panesMargin });
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
+                        viewSwitcher.ratio = Qt.binding(function() { return 0.5 - viewSwitcher.contentY / viewSwitcher.contentHeight });
+                    }
+                }
+            }
+        ]
         interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired
 
         Component.onCompleted: {
@@ -89,21 +151,49 @@ Item {
         function settle() {
             settling = true;
             var velocity;
-            if (horizontalVelocity < 0 || visibleArea.xPosition <= 0.05 || (horizontalVelocity == 0 && visibleArea.xPosition <= 0.25)) {
-                // FIXME: compute velocity better to ensure it reaches rest position (maybe in a constant time)
-                velocity = settleVelocity;
+            if (flickableDirection == Flickable.HorizontalFlick) {
+                if (horizontalVelocity < 0 || visibleArea.xPosition <= 0.05 || (horizontalVelocity == 0 && visibleArea.xPosition <= 0.25)) {
+                    // FIXME: compute velocity better to ensure it reaches rest position (maybe in a constant time)
+                    velocity = settleVelocity;
+                } else {
+                    velocity = -settleVelocity;
+                }
+                flick(velocity, 0);
             } else {
-                velocity = -settleVelocity;
+                if (verticalVelocity < 0 || visibleArea.yPosition <= 0.05 || (verticalVelocity == 0 && visibleArea.yPosition <= 0.25)) {
+                    // FIXME: compute velocity better to ensure it reaches rest position (maybe in a constant time)
+                    velocity = settleVelocity;
+                } else {
+                    velocity = -settleVelocity;
+                }
+                flick(0, velocity);
             }
-
-            flick(velocity, 0);
         }
 
         function switchToViewFinder() {
             cancelFlick();
             switching = true;
-            flick(settleVelocity, 0);
+            if (state == "PORTRAIT") {
+                flick(settleVelocity, 0);
+            } else if (state == "LANDSCAPE") {
+                flick(0, settleVelocity);
+            } else if (state == "INVERTED_LANDSCAPE") {
+                flick(0, -settleVelocity);
+            }
         }
+
+        function positionContentAtRatio(ratio) {
+            if (state == "PORTRAIT") {
+                viewSwitcher.contentX = ratio * viewSwitcher.contentWidth;
+            } else if (state == "LANDSCAPE") {
+                viewSwitcher.contentY = ratio * viewSwitcher.contentHeight;
+            } else if (state == "INVERTED_LANDSCAPE") {
+                viewSwitcher.contentY = (0.5 - ratio) * viewSwitcher.contentHeight;
+            }
+        }
+
+        onContentWidthChanged: positionContentAtRatio(viewSwitcher.ratio)
+        onContentHeightChanged: positionContentAtRatio(viewSwitcher.ratio)
 
         onMovementEnded: {
             // go to a rest position as soon as user stops interacting with the Flickable
@@ -138,31 +228,52 @@ Item {
             }
         }
 
-        Row {
-            id: viewsRow
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
+        onFlickingVerticallyChanged: {
+            // use flickingHorizontallyChanged instead of flickEnded because flickEnded
+            // is not called when a flick is interrupted by the user
+            if (!flickingVertically) {
+                if (settling) {
+                    settling = false;
+                }
+                if (switching) {
+                    switching = true;
+                }
             }
-            spacing: units.gu(1)
+        }
 
-            ViewFinderView {
-                id: viewFinderView
-                width: viewSwitcher.width
-                height: viewSwitcher.height
-                overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
-                inView: !viewSwitcher.atXEnd
-                onPhotoTaken: galleryView.showLastPhotoTaken();
-                onVideoShot: galleryView.showLastPhotoTaken();
+        onVerticalVelocityChanged: {
+            // FIXME: this is a workaround for the lack of notification when
+            // the user manually interrupts a flick by pressing and releasing
+            if (verticalVelocity == 0 && !atYBeginning && !atYEnd && !settling && !moving) {
+                settle();
             }
+        }
 
-            GalleryViewLoader {
-                id: galleryView
-                width: viewSwitcher.width
-                height: viewSwitcher.height
-                inView: !viewSwitcher.atXBeginning
-                onExit: viewSwitcher.switchToViewFinder()
+        ViewFinderView {
+            id: viewFinderView
+            width: viewSwitcher.width
+            height: viewSwitcher.height
+            overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
+            inView: viewSwitcher.ratio < 0.5
+            opacity: inView ? 1.0 : 0.0
+            onPhotoTaken: {
+                galleryView.prependMediaToModel(filePath);
+                galleryView.showLastPhotoTaken();
             }
+            onVideoShot: {
+                galleryView.prependMediaToModel(filePath);
+                galleryView.showLastPhotoTaken();
+                galleryView.precacheThumbnail(filePath);
+            }
+        }
+
+        GalleryViewLoader {
+            id: galleryView
+            width: viewSwitcher.width
+            height: viewSwitcher.height
+            inView: viewSwitcher.ratio > 0.0
+            onExit: viewSwitcher.switchToViewFinder()
+            opacity: inView ? 1.0 : 0.0
         }
     }
 

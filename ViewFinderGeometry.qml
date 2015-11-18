@@ -14,10 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.4
 
 Item {
     property size cameraResolution;
+    property bool cameraResolutionValid: cameraResolution.width != -1
+                                         && cameraResolution.height != -1
     property int viewFinderHeight;
     property int viewFinderWidth;
     property int viewFinderOrientation;
@@ -30,6 +32,8 @@ Item {
     property real widthScale: viewFinderWidth / __cameraWidth
     property real heightScale: viewFinderHeight / __cameraHeight
 
-    width: (widthScale <= heightScale) ? viewFinderWidth : __cameraWidth * heightScale
-    height: (widthScale <= heightScale) ? __cameraHeight * widthScale : viewFinderHeight
+    width: cameraResolutionValid ? ((widthScale <= heightScale) ? viewFinderWidth : __cameraWidth * heightScale)
+                                 : viewFinderWidth
+    height: cameraResolutionValid ? ((widthScale <= heightScale) ? __cameraHeight * widthScale : viewFinderHeight)
+                                  : viewFinderHeight
 }
