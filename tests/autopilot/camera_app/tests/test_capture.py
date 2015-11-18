@@ -90,13 +90,11 @@ class TestCapture(CameraAppTestCase):
 
         """
         # Get all the elements
-        record_control = self.main_window.get_record_control()
         stop_watch = self.main_window.get_stop_watch()
         exposure_button = self.main_window.get_exposure_button()
 
         # Click the record button to toggle photo/video mode
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click()
+        self.main_window.switch_recording_mode()
 
         # Before recording the stop watch should read zero recording time
         # and not be visible anyway.
@@ -137,8 +135,7 @@ class TestCapture(CameraAppTestCase):
         # Now stop the video and go back to picture mode and check if
         # everything resets itself to previous states
         self.pointing_device.click()
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click()
+        self.main_window.switch_recording_mode()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
 
