@@ -1,11 +1,13 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2014 Canonical
+# Copyright 2014, 2015 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
 from camera_app.emulators.panel import Panel
+from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 
 class MainWindow(object):
@@ -16,7 +18,7 @@ class MainWindow(object):
 
     def get_qml_view(self):
         """Get the main QML view"""
-        return self.app.wait_select_single("QQuickView")
+        return self.get_root()
 
     def get_root(self):
         """Returns the root QML Item"""
@@ -30,6 +32,10 @@ class MainWindow(object):
         """Returns the gallery view"""
         return self.app.wait_select_single("GalleryView")
 
+    def get_no_media_hint(self):
+        """Returns the Item representing the hint that no media is available"""
+        return self.app.wait_select_single(objectName="noMediaHint")
+
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
         return self.app.wait_select_single("FocusRing")
@@ -37,6 +43,11 @@ class MainWindow(object):
     def get_exposure_button(self):
         """Returns the button that takes pictures"""
         return self.app.wait_select_single("ShootButton")
+
+    def get_photo_roll_hint(self):
+        """Returns the layer that serves at hinting to the existence of the
+        photo roll"""
+        return self.app.wait_select_single("PhotoRollHint")
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
@@ -55,9 +66,25 @@ class MainWindow(object):
         """Returns the flash control button of the camera"""
         return self.get_option_button("flashMode")
 
+    def get_hdr_button(self):
+        """Returns the hdr control button of the camera"""
+        return self.get_option_button("hdrEnabled")
+
     def get_video_flash_button(self):
         """Returns the flash control button of the camera"""
         return self.get_option_button("videoFlashMode")
+
+    def get_encoding_quality_button(self):
+        """Returns the encoding quality button of the camera"""
+        return self.get_option_button("encodingQuality")
+
+    def get_grid_lines_button(self):
+        """Returns the grid lines toggle button of the camera"""
+        return self.get_option_button("gridEnabled")
+
+    def get_video_resolution_button(self):
+        """Returns the video resolution button of the camera"""
+        return self.get_option_button("videoResolution")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
@@ -96,3 +123,37 @@ class MainWindow(object):
         optionButtons = selector.select_many("OptionValueButton")
         return next(button for button in optionButtons
                     if button.label == label)
+
+    def get_no_space_hint(self):
+        """Returns the no space hint"""
+        return self.app.wait_select_single(objectName="noSpace")
+
+    def get_low_space_dialog(self):
+        """Returns the dialog informing of low disk space"""
+        try:
+            return self.app.wait_select_single(objectName="lowSpaceDialog")
+        except:
+            return None
+
+    def swipe_to_gallery(self, testCase):
+        main_view = self.get_root()
+        x, y, w, h = main_view.globalRect
+
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+
+        self.app.pointing_device.drag(tx, ty, x, ty, rate=1)
+        viewfinder = self.get_viewfinder()
+        testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
+
+    def swipe_to_viewfinder(self, testCase):
+        main_view = self.get_root()
+        x, y, w, h = main_view.globalRect
+
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+
+        self.app.pointing_device.drag(
+            tx, ty, (tx + main_view.width // 2), ty, rate=1)
+        viewfinder = self.get_viewfinder()
+        testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))

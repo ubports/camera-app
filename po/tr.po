@@ -7,95 +7,181 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-01 13:28+0200\n"
-"PO-Revision-Date: 2014-07-16 17:59+0000\n"
-"Last-Translator: Volkan Gezer <Unknown>\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"PO-Revision-Date: 2015-03-22 15:47+0000\n"
+"Last-Translator: Arda Ünlü <aarda.uunlu@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-05 07:45+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
 
-#: ../GalleryView.qml:112
-msgid "No media available."
-msgstr "Kullanılabilir ortam yok."
-
-#: ../GalleryViewHeader.qml:73
-msgid "Photo Roll"
-msgstr "Fotoğraf Rulosu"
-
-#: ../SlideshowView.qml:36
-msgid "Share"
-msgstr "Paylaş"
-
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:301
-msgid "Delete"
-msgstr "Sil"
-
-#: ../SlideshowView.qml:289
+#: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "Ortam silinsin mi?"
 
-#: ../SlideshowView.qml:296
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+msgid "Delete"
+msgstr "Sil"
+
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../camera-app-integration/camera-app.qml:35 ../camera-app.qml:36
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "Kullanılabilir ortam yok."
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "İçerik aranıyor..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "Seç"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr "Fotoğrafı Düzenle"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "Fotoğraf Rulosu"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Aygıtta yer kalmadı, devam etmek için yer açın."
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Film rulosu için sola kaydırın."
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "Paylaş"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr "Düzenle"
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
+msgid "On"
+msgstr "Açık"
+
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+msgid "Off"
+msgstr "Kapalı"
+
+#: ../ViewFinderOverlay.qml:227
+msgid "Auto"
+msgstr "Otomatik"
+
+#: ../ViewFinderOverlay.qml:264
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:302
+msgid "5 seconds"
+msgstr "5 saniye"
+
+#: ../ViewFinderOverlay.qml:307
+msgid "15 seconds"
+msgstr "15 saniye"
+
+#: ../ViewFinderOverlay.qml:324
+msgid "Fine Quality"
+msgstr "İyi Kalite"
+
+#: ../ViewFinderOverlay.qml:328
+msgid "Normal Quality"
+msgstr "Normal Kalite"
+
+#: ../ViewFinderOverlay.qml:332
+msgid "Basic Quality"
+msgstr "Temel Kalite"
+
+#: ../ViewFinderOverlay.qml:364
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:372
+msgid "Save to SD Card"
+msgstr "SD Kartına kaydedildi"
+
+#: ../ViewFinderOverlay.qml:377
+msgid "Save internally"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:802
+msgid "Low storage space"
+msgstr "Az depo alanı"
+
+#: ../ViewFinderOverlay.qml:803
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr "Depo alanınız bitiyor. Kesilmeden devam etmek için, şimdi yer açın."
+
+#: ../camera-app.qml:37
 msgid "Flash"
 msgstr "Flaş"
 
-#: ../camera-app-integration/camera-app.qml:36 ../camera-app.qml:37
+#: ../camera-app.qml:38
 msgid "Light;Dark"
 msgstr "Aydınlık;Karanlık"
 
-#: ../camera-app-integration/camera-app.qml:40 ../camera-app.qml:40
+#: ../camera-app.qml:41
 msgid "Flip Camera"
 msgstr "Kamerayı Ters Çevir"
 
-#: ../camera-app-integration/camera-app.qml:41 ../camera-app.qml:41
+#: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
 msgstr "Ön Kamera:Arka Kamera"
 
-#: ../camera-app-integration/camera-app.qml:45 ../camera-app.qml:44
+#: ../camera-app.qml:45
 msgid "Shutter"
 msgstr "Deklanşör"
 
-#: ../camera-app-integration/camera-app.qml:46 ../camera-app.qml:45
+#: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
 msgstr "Fotoğraf Çek;Yakala;Kaydet"
 
-#: ../camera-app-integration/camera-app.qml:50 ../camera-app.qml:48
+#: ../camera-app.qml:49
 msgid "Mode"
 msgstr "Kip"
 
-#: ../camera-app-integration/camera-app.qml:51 ../camera-app.qml:49
+#: ../camera-app.qml:50
 msgid "Stills;Video"
 msgstr "Sabitler;Video"
 
-#: ../camera-app-integration/camera-app.qml:55 ../camera-app.qml:53
+#: ../camera-app.qml:54
 msgid "White Balance"
 msgstr "Beyaz Dengesi"
 
-#: ../camera-app-integration/camera-app.qml:56 ../camera-app.qml:54
+#: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Işık Koşulu;Gün;Bulutlu;İçeride"
 
-#: ../camera-app.qml:213
+#: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "Bugün <b>%1</b> fotoğraf çekildi"
 
-#: ../camera-app.qml:214
+#: ../camera-app.qml:222
 msgid "No photos taken today"
 msgstr "Bugün fotoğraf çekilmedi"
 
-#: ../camera-app.qml:222
+#: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "Bugün <b>%1</b> video kaydedildi"
 
-#: ../camera-app.qml:223
+#: ../camera-app.qml:231
 msgid "No videos recorded today"
 msgstr "Bugün video kaydedilmedi"
 

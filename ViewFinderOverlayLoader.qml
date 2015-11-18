@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
+import QtQuick 2.4
 
 Loader {
     id: loader
@@ -22,6 +22,8 @@ Loader {
     property var camera
     property bool touchAcquired: loader.item ? loader.item.touchAcquired : false
     property real revealProgress: loader.item ? loader.item.revealProgress : 0
+    property var controls: loader.item ? loader.item.controls : null
+    property var settings: loader.item.settings
 
     function showFocusRing(x, y) {
         loader.item.showFocusRing(x, y);

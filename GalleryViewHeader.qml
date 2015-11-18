@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.2
-import Ubuntu.Components 1.0
+import QtQuick 2.4
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 
 Item {
@@ -32,11 +32,16 @@ Item {
     height: units.gu(7)
 
     property bool shown: true
-    property alias actions: actionsDrawer.actions
+    property list<Action> actions
+    property list<Action> editModeActions
     property bool gridMode: false
+    property bool editMode: false
     property bool validationVisible
+    property bool userSelectionMode: false
     signal exit
+    signal exitEditor
     signal toggleViews
+    signal toggleSelectAll
     signal validationClicked
 
     function show() {
@@ -65,14 +70,15 @@ Item {
             }
             width: units.gu(8)
             iconName: "back"
-            iconColor: Theme.palette.normal.foregroundText
-            onClicked: header.exit()
+            iconColor: theme.palette.normal.foregroundText
+            onClicked: editMode ? header.exitEditor() : header.exit()
         }
 
         Label {
-            text: i18n.tr("Photo Roll")
+            text: main.contentExportMode || userSelectionMode ? i18n.tr("Select") :
+                  (editMode ? i18n.tr("Edit Photo") : i18n.tr("Photo Roll"))
             fontSize: "x-large"
-            color: Theme.palette.normal.foregroundText
+            color: theme.palette.normal.foregroundText
             elide: Text.ElideRight
             Layout.fillWidth: true
         }
@@ -85,7 +91,29 @@ Item {
             }
             iconName: header.gridMode ? "stock_image" : "view-grid-symbolic"
             onClicked: header.toggleViews()
-            visible: !main.contentExportMode
+            visible: !main.contentExportMode && !userSelectionMode && !editMode
+        }
+
+        IconButton {
+            objectName: "selectAllButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            iconName: "select"
+            onClicked: header.toggleSelectAll()
+            visible: header.gridMode && userSelectionMode
+        }
+
+        IconButton {
+            objectName: "singleActionButton"
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            action: actionsDrawer.actions[0]
+            visible: actionsDrawer.actions.length == 1 && !editMode
+            onTriggered: if (action) action.triggered()
         }
 
         IconButton {
@@ -95,7 +123,7 @@ Item {
                 bottom: parent.bottom
             }
             iconName: "contextual-menu"
-            visible: actionsDrawer.actions.length > 0
+            visible: actionsDrawer.actions.length > 1 && !editMode
             onClicked: actionsDrawer.opened = !actionsDrawer.opened
         }
 
@@ -109,6 +137,15 @@ Item {
             onClicked: header.validationClicked()
             visible: header.validationVisible
         }
+
+        Repeater {
+            model: header.editMode ? header.editModeActions : null
+            IconButton {
+                Layout.fillHeight: true
+                visible: header.editMode
+                action: modelData
+            }
+        }
     }
 
     Item {
@@ -119,8 +156,11 @@ Item {
             right: parent.right
         }
         width: units.gu(20)
-        height: childrenRect.height
+        height: actionsColumn.height
         clip: actionsColumn.y != 0
+        visible: false
+
+        actions: header.actions
 
         function close() {
             opened = false;
@@ -129,7 +169,13 @@ Item {
         property bool opened: false
         property list<Action> actions
 
+        onOpenedChanged: {
+            if (opened)
+                visible = true;
+        }
+
         InverseMouseArea {
+            anchors.fill: parent
             onPressed: actionsDrawer.close();
             enabled: actionsDrawer.opened
         }
@@ -143,15 +189,22 @@ Item {
             y: actionsDrawer.opened ? 0 : -height
             Behavior on y { UbuntuNumberAnimation {} }
 
+            onYChanged: {
+                if (y == -height)
+                    actionsDrawer.visible = false;
+            }
+
             Repeater {
-                model: actionsDrawer.actions
+                model: actionsDrawer.actions.length > 0 ? actionsDrawer.actions : 0
                 delegate: AbstractButton {
                     id: actionButton
+                    objectName: "actionButton" + label.text
                     anchors {
                         left: actionsColumn.left
                         right: actionsColumn.right
                     }
                     height: units.gu(6)
+                    enabled: action.enabled
 
                     action: modelData
                     onClicked: actionsDrawer.close()
@@ -172,7 +225,7 @@ Item {
                         }
                         text: model.text
                         elide: Text.ElideRight
-                        color: Theme.palette.normal.foregroundText
+                        color: action.enabled ? theme.palette.normal.foregroundText : Qt.darker(theme.palette.normal.foregroundText, 2.0)
                     }
 
                     Icon {
@@ -184,7 +237,7 @@ Item {
                         }
                         width: height
                         height: label.paintedHeight
-                        color: Theme.palette.normal.foregroundText
+                        color: label.color
                         name: model.iconName
                     }
                 }

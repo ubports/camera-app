@@ -1,0 +1,200 @@
+# Catalan translation for camera-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"PO-Revision-Date: 2015-02-22 15:21+0000\n"
+"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
+
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Voleu suprimir-ho?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+msgid "Delete"
+msgstr "Suprimeix"
+
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "No hi ha cap element multimèdia disponible"
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "S'està cercant contingut multimèdia..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "Seleccioneu"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr ""
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "Rotlle de fotos"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "No queda espai al dispositiu. Cal que n'allibereu per continuar."
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "Comparteix"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
+msgid "On"
+msgstr "Actiu"
+
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+msgid "Off"
+msgstr "Inactiu"
+
+#: ../ViewFinderOverlay.qml:227
+msgid "Auto"
+msgstr "Automàtic"
+
+#: ../ViewFinderOverlay.qml:264
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:302
+msgid "5 seconds"
+msgstr "5 segons"
+
+#: ../ViewFinderOverlay.qml:307
+msgid "15 seconds"
+msgstr "15 segons"
+
+#: ../ViewFinderOverlay.qml:324
+msgid "Fine Quality"
+msgstr "Qualitat extra"
+
+#: ../ViewFinderOverlay.qml:328
+msgid "Normal Quality"
+msgstr "Qualitat normal"
+
+#: ../ViewFinderOverlay.qml:332
+msgid "Basic Quality"
+msgstr "Qualitat bàsica"
+
+#: ../ViewFinderOverlay.qml:364
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:372
+msgid "Save to SD Card"
+msgstr "Guarda-ho a la targeta SD"
+
+#: ../ViewFinderOverlay.qml:377
+msgid "Save internally"
+msgstr "Guarda-ho a la memòria interna"
+
+#: ../ViewFinderOverlay.qml:802
+msgid "Low storage space"
+msgstr "Poc espai d'emmagatzematge"
+
+#: ../ViewFinderOverlay.qml:803
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+"S'està esgotant l'espai d'emmagatzematge. Hauríeu d'alliberar espai per "
+"continuar sense interrupcions."
+
+#: ../camera-app.qml:37
+msgid "Flash"
+msgstr "Flaix"
+
+#: ../camera-app.qml:38
+msgid "Light;Dark"
+msgstr "Clar;Fosc"
+
+#: ../camera-app.qml:41
+msgid "Flip Camera"
+msgstr "Gira la càmera"
+
+#: ../camera-app.qml:42
+msgid "Front Facing;Back Facing"
+msgstr "Frontal;posterior"
+
+#: ../camera-app.qml:45
+msgid "Shutter"
+msgstr "Disparador"
+
+#: ../camera-app.qml:46
+msgid "Take a Photo;Snap;Record"
+msgstr "Fés una foto;Captura;Grava"
+
+#: ../camera-app.qml:49
+msgid "Mode"
+msgstr "Mode"
+
+#: ../camera-app.qml:50
+msgid "Stills;Video"
+msgstr "Imatge estàtica;Vídeo"
+
+#: ../camera-app.qml:54
+msgid "White Balance"
+msgstr "Balanç de blancs"
+
+#: ../camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "Condició d'il·luminació;Dia;Núvol;Interior"
+
+#: ../camera-app.qml:221
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "Hui heu fet <b>%1</b> fotos"
+
+#: ../camera-app.qml:222
+msgid "No photos taken today"
+msgstr "Hui no heu fet cap foto"
+
+#: ../camera-app.qml:230
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "Hui heu fet <b>%1</b> vídeos"
+
+#: ../camera-app.qml:231
+msgid "No videos recorded today"
+msgstr "Hui no heu fet cap video"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Càmera"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Aplicació de càmera"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Fotos; fotografies; vídeos; vídeo; captura; fés foto; enregistra"

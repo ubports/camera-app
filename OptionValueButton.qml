@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.0
+import QtQuick 2.4
+import Ubuntu.Components 1.3
 
 AbstractButton {
     id: optionValueButton
@@ -26,43 +26,56 @@ AbstractButton {
     property alias iconName: icon.name
     property bool selected
     property bool isLast
+    property int columnWidth
+    property int marginSize: units.gu(1)
 
-    Icon {
-        id: icon
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-            topMargin: units.gu(1)
-            bottomMargin: units.gu(1)
-            leftMargin: units.gu(1)
-        }
-        width: height
-        color: "white"
-        opacity: optionValueButton.selected ? 1.0 : 0.5
-        visible: name !== ""
-    }
+    width: marginSize + iconLabelGroup.width + marginSize
 
-    Label {
-        id: label
+    Item {
+        id: iconLabelGroup
+        width: childrenRect.width
+        height: icon.height
+
         anchors {
-            left: icon.name != "" ? icon.right : parent.left
-            leftMargin: units.gu(2)
-            right: parent.right
-            rightMargin: units.gu(2)
+            left: (iconName) ? undefined : parent.left
+            leftMargin: (iconName) ? undefined : marginSize
+            horizontalCenter: (iconName) ? parent.horizontalCenter : undefined
             verticalCenter: parent.verticalCenter
+            topMargin: marginSize
+            bottomMargin: marginSize
         }
 
-        color: "white"
-        opacity: optionValueButton.selected ? 1.0 : 0.5
+        Icon {
+            id: icon
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+            }
+            width: optionValueButton.height - optionValueButton.marginSize * 2
+            color: "white"
+            opacity: optionValueButton.selected ? 1.0 : 0.5
+            visible: name !== ""
+        }
+
+        Label {
+            id: label
+            anchors {
+                left: icon.name != "" ? icon.right : parent.left
+                verticalCenter: parent.verticalCenter
+            }
+
+            color: "white"
+            opacity: optionValueButton.selected ? 1.0 : 0.5
+            width: paintedWidth
+        }
     }
 
     Rectangle {
         anchors {
             left: parent.left
-            right: parent.right
             bottom: parent.bottom
         }
+        width: parent.columnWidth
         height: units.dp(1)
         color: "white"
         opacity: 0.5

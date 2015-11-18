@@ -32,6 +32,9 @@ static QQmlDebuggingEnabler debuggingEnabler(false);
 int main(int argc, char** argv)
 {
     QGuiApplication::setApplicationName("com.ubuntu.camera");
+    // Necessary for Qt.labs.settings to work
+    // Ref.: https://bugs.launchpad.net/ubuntu-ui-toolkit/+bug/1354321
+    QCoreApplication::setOrganizationDomain(QGuiApplication::applicationName());
     CameraApplication application(argc, argv);
 
     if (!application.setup()) {

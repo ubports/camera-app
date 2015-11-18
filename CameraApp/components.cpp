@@ -23,6 +23,7 @@
 #include "advancedcamerasettings.h"
 #include "fileoperations.h"
 #include "foldersmodel.h"
+#include "storagemonitor.h"
 
 void Components::registerTypes(const char *uri)
 {
@@ -32,6 +33,7 @@ void Components::registerTypes(const char *uri)
     qmlRegisterType<AdvancedCameraSettings>(uri, 0, 1, "AdvancedCameraSettings");
     qmlRegisterType<FileOperations>(uri, 0, 1, "FileOperations");
     qmlRegisterType<FoldersModel>(uri, 0, 1, "FoldersModel");
+    qmlRegisterType<StorageMonitor>(uri, 0, 1, "StorageMonitor");
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)

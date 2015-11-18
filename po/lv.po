@@ -1,103 +1,193 @@
 # Latvian translation for camera-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-01 13:28+0200\n"
-"PO-Revision-Date: 2014-07-27 07:53+0000\n"
-"Last-Translator: Jānis-Marks Gailis <jm-gailis@fai-vianet.fr>\n"
+"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"PO-Revision-Date: 2015-03-01 07:37+0000\n"
+"Last-Translator: Rūdolfs Mazurs <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-05 07:45+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:07+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
+"Language: lv\n"
 
-#: ../GalleryView.qml:112
-msgid "No media available."
-msgstr ""
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Dzēst mediju?"
 
-#: ../GalleryViewHeader.qml:73
-msgid "Photo Roll"
-msgstr ""
-
-#: ../SlideshowView.qml:36
-msgid "Share"
-msgstr "Koplietot"
-
-#: ../SlideshowView.qml:41 ../SlideshowView.qml:301
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
 msgid "Delete"
 msgstr "Dzēst"
 
-#: ../SlideshowView.qml:289
-msgid "Delete media?"
-msgstr ""
-
-#: ../SlideshowView.qml:296
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: ../camera-app-integration/camera-app.qml:35 ../camera-app.qml:36
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "Nav pieejams medijs."
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "Meklē saturu..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "Izvēlēties"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr "Rediģēt fotogrāfiju"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "Foto rullis"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Nav palicis vietas uz ierīces, atbrīvojiet vietu, lai turpinātu."
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Velciet pa kreisi foto rullim"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "Dalīties"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
+#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
+#: ../ViewFinderOverlay.qml:350
+msgid "On"
+msgstr "Ieslēgts"
+
+#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
+#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
+#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+msgid "Off"
+msgstr "Izslēgts"
+
+#: ../ViewFinderOverlay.qml:227
+msgid "Auto"
+msgstr "Automātiski"
+
+#: ../ViewFinderOverlay.qml:264
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:302
+msgid "5 seconds"
+msgstr "5 sekundes"
+
+#: ../ViewFinderOverlay.qml:307
+msgid "15 seconds"
+msgstr "15 sekundes"
+
+#: ../ViewFinderOverlay.qml:324
+msgid "Fine Quality"
+msgstr "Laba kvalitāte"
+
+#: ../ViewFinderOverlay.qml:328
+msgid "Normal Quality"
+msgstr "Normāla kvalitāte"
+
+#: ../ViewFinderOverlay.qml:332
+msgid "Basic Quality"
+msgstr "Pamata kvalitāte"
+
+#: ../ViewFinderOverlay.qml:364
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:372
+msgid "Save to SD Card"
+msgstr "Saglabāt uz SD kartes"
+
+#: ../ViewFinderOverlay.qml:377
+msgid "Save internally"
+msgstr "Saglabāt iekšēji"
+
+#: ../ViewFinderOverlay.qml:802
+msgid "Low storage space"
+msgstr "Maz vietas krātuvē"
+
+#: ../ViewFinderOverlay.qml:803
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+"Jūsu krātuvē sāk beigties vieta. Lai turpinātu bez pārtraukumiem, "
+"atbrīvojiet vietu tagad."
+
+#: ../camera-app.qml:37
 msgid "Flash"
 msgstr "Zibspuldze"
 
-#: ../camera-app-integration/camera-app.qml:36 ../camera-app.qml:37
+#: ../camera-app.qml:38
 msgid "Light;Dark"
 msgstr "Gaišs;Tumšs"
 
-#: ../camera-app-integration/camera-app.qml:40 ../camera-app.qml:40
+#: ../camera-app.qml:41
 msgid "Flip Camera"
-msgstr "Spiest pogu"
+msgstr "Apgriezt kameru"
 
-#: ../camera-app-integration/camera-app.qml:41 ../camera-app.qml:41
+#: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
 msgstr "Uz priekšu vērsta;Atpakaļ vērsta"
 
-#: ../camera-app-integration/camera-app.qml:45 ../camera-app.qml:44
+#: ../camera-app.qml:45
 msgid "Shutter"
 msgstr "Slēdzis"
 
-#: ../camera-app-integration/camera-app.qml:46 ../camera-app.qml:45
+#: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
-msgstr "Fotogrāfēt;Knipsēt;Ierakstīt"
+msgstr "Fotografēt;Knipsēt;Ierakstīt"
 
-#: ../camera-app-integration/camera-app.qml:50 ../camera-app.qml:48
+#: ../camera-app.qml:49
 msgid "Mode"
 msgstr "Režīms"
 
-#: ../camera-app-integration/camera-app.qml:51 ../camera-app.qml:49
+#: ../camera-app.qml:50
 msgid "Stills;Video"
 msgstr "Kadri;Video"
 
-#: ../camera-app-integration/camera-app.qml:55 ../camera-app.qml:53
+#: ../camera-app.qml:54
 msgid "White Balance"
 msgstr "Baltās krāsas balanss"
 
-#: ../camera-app-integration/camera-app.qml:56 ../camera-app.qml:54
+#: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Gaismas apstākļi;Diena;Mākoņains;Iekšā"
 
-#: ../camera-app.qml:213
+#: ../camera-app.qml:221
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> foto uzņemtas šodien"
-
-#: ../camera-app.qml:214
-msgid "No photos taken today"
-msgstr "Nav šodien uzņemtu foto"
+msgstr "Šodien uzņemti <b>%1</b> fotogrāfijas"
 
 #: ../camera-app.qml:222
+msgid "No photos taken today"
+msgstr "Šodien netika uzņemtas fotogrāfijas"
+
+#: ../camera-app.qml:230
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> video ierakstītas šodien"
+msgstr "Šodien ierakstīti <b>%1</b> video"
 
-#: ../camera-app.qml:223
+#: ../camera-app.qml:231
 msgid "No videos recorded today"
-msgstr "Nav šodien uzņemtu video"
+msgstr "Šodien netika ierakstīti video"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
@@ -105,8 +195,8 @@ msgstr "Fotokamera"
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "Applikācija Fotokamera"
+msgstr "Fotokameras lietotne"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Fotogrāfijas;Video;Uzņemt;Ierakstīt;Filmēt;Knipsēt;"

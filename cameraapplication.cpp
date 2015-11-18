@@ -85,23 +85,13 @@ bool CameraApplication::setup()
                 Qt::InvertedPortraitOrientation |
                 Qt::InvertedLandscapeOrientation);
 
-    m_view.reset(new QQuickView());
-    m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->setTitle("Camera");
-    m_view->setColor("black");
-    m_view->rootContext()->setContextProperty("application", this);
-    m_view->engine()->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
-    m_view->engine()->addImportPath(cameraAppImportDirectory());
+    m_engine.reset(new QQmlApplicationEngine());
+    m_engine->rootContext()->setContextProperty("application", this);
+    m_engine->setBaseUrl(QUrl::fromLocalFile(cameraAppDirectory()));
+    m_engine->addImportPath(cameraAppImportDirectory());
     qDebug() << "Import path added" << cameraAppImportDirectory();
     qDebug() << "Camera app directory" << cameraAppDirectory();
-    QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
-    m_view->setSource(QUrl::fromLocalFile(sourceQml()));
-
-    //run fullscreen if specified at command line or not in DESKTOP_MODE (i.e. on a device)
-    if (arguments().contains(QLatin1String("--fullscreen")) || !isDesktopMode()) 
-      m_view->showFullScreen();
-    else 
-      m_view->show();
+    m_engine->load(QUrl::fromLocalFile(sourceQml()));
 
     return true;
 }
@@ -143,6 +133,64 @@ QString CameraApplication::temporaryLocation() const
         return QString();
     }
     QString location = locations.at(0);
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+bool CameraApplication::removableStoragePresent() const
+{
+    return !removableStorageLocation().isEmpty();
+}
+
+QString CameraApplication::removableStorageLocation() const
+{
+    /* FIXME: when Qt5.4 is available, switch to using newly introduced
+     * QStorageInfo API.
+     * Ref.: http://doc-snapshot.qt-project.org/qt5-5.4/qstorageinfo.html
+     */
+    QString userName = qgetenv("USER");
+    QDir media("/media/" + userName);
+    QStringList mediaDirs = media.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+
+    if (mediaDirs.size() > 0) {
+        return QString("/media/" + userName + "/" + mediaDirs.at(0));
+    } else {
+        return QString();
+    }
+}
+
+QString CameraApplication::removableStoragePicturesLocation() const
+{
+    QString storageLocation = removableStorageLocation();
+    if (storageLocation.isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    QString pictureDir = QString(locations.at(0)).split("/").value(3);
+    if (pictureDir.isEmpty()){
+        return QString();
+    }
+    QString location = storageLocation + "/" + pictureDir + "/" + QCoreApplication::applicationName();
+    QDir dir;
+    dir.mkpath(location);
+    return location;
+}
+
+QString CameraApplication::removableStorageVideosLocation() const
+{
+    QString storageLocation = removableStorageLocation();
+    if (storageLocation.isEmpty()) {
+        return QString();
+    }
+
+    QStringList locations = QStandardPaths::standardLocations(QStandardPaths::MoviesLocation);
+    QString movieDir = QString(locations.at(0)).split("/").value(3);
+    if (movieDir.isEmpty()){
+        return QString();
+    }
+    QString location = storageLocation + "/" + movieDir + "/" + QCoreApplication::applicationName();
     QDir dir;
     dir.mkpath(location);
     return location;
