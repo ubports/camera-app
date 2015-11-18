@@ -115,4 +115,3 @@ class TestCameraZoom(CameraAppTestCase):
         # Ideally we should test the same thing when switching back to photo
         # mode, however due to http://pad.lv/1191088 zooming when recording
         # video is disabled, so adding that test is pointless until fixed.
-
