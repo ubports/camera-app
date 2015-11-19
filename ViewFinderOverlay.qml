@@ -50,7 +50,8 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
-        property string photoResolution
+        property string photoResolution0
+        property string photoResolution1
 
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
         onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
@@ -91,7 +92,7 @@ Item {
     Binding {
         target: camera.imageCapture
         property: "resolution"
-        value: settings.photoResolution
+        value: settings["photoResolution" + camera.advanced.activeCameraIndex]
     }
 
     Connections {
@@ -206,10 +207,11 @@ Item {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
+        var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
         // If resolution setting chosen is not supported select the fitting resolution
-        if (settings.photoResolution != optionFitting.value &&
-            settings.photoResolution != optionMaximum.value) {
-            settings.photoResolution = optionFitting.value;
+        if (photoResolution != optionFitting.value &&
+            photoResolution != optionMaximum.value) {
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = optionFitting.value;
         }
     }
 
@@ -232,15 +234,22 @@ Item {
     Connections {
         target: camera.advanced
         onActiveCameraIndexChanged: {
+            var hasPhotoResolutionSetting = (settings["photoResolution" + camera.advanced.activeCameraIndex] != "")
             // FIXME: use camera.advanced.imageCaptureResolution instead of camera.imageCapture.resolution
             // because the latter is not updated when the backend changes the resolution
-            settings.photoResolution = sizeToString(camera.advanced.imageCaptureResolution);
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.imageCaptureResolution);
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updatePhotoResolutionOptions();
             updateVideoResolutionOptions();
             // FIXME: see workaround setting camera.viewfinder.resolution above
             camera.viewfinder.resolution = camera.advanced.resolution;
-            settings.photoResolution = sizeToString(camera.advanced.fittingResolution);
+
+            // If no resolution has ever been chosen, select the one that fits the screen
+            print("BOUDIO", hasPhotoResolutionSetting)
+            if (!hasPhotoResolutionSetting) {
+                print("YEAAAH")
+                settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
+            }
         }
     }
 
@@ -520,11 +529,11 @@ Item {
                 ListModel {
                     id: photoResolutionOptionsModel
 
-                    property string settingsProperty: "photoResolution"
+                    property string settingsProperty: "photoResolution" + camera.advanced.activeCameraIndex
                     property string icon: ""
-                    property string label: sizeToAspectRatio(stringToSize(settings.photoResolution))
+                    property string label: sizeToAspectRatio(stringToSize(settings[settingsProperty]))
                     property bool isToggle: false
-                    property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolution)
+                    property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings[settingsProperty])
                     property bool available: true
                     property bool visible: camera.captureMode == Camera.CaptureStillImage
                     property bool showInIndicators: false
