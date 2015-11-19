@@ -50,6 +50,10 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+        // FIXME: stores the resolution selected for 2 cameras. Instead it should:
+        //  - support any number of cameras
+        //  - not rely on the camera index but on Camera.deviceId
+        // Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#deviceId-prop
         property string photoResolution0
         property string photoResolution1
 
