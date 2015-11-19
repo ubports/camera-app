@@ -245,9 +245,7 @@ Item {
             camera.viewfinder.resolution = camera.advanced.resolution;
 
             // If no resolution has ever been chosen, select the one that fits the screen
-            print("BOUDIO", hasPhotoResolutionSetting)
             if (!hasPhotoResolutionSetting) {
-                print("YEAAAH")
                 settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
             }
         }
