@@ -195,3 +195,14 @@ QString CameraApplication::removableStorageVideosLocation() const
     dir.mkpath(location);
     return location;
 }
+
+QStringList CameraApplication::availableFrameworks()
+{
+    if (m_availableFrameworks.isEmpty()) {
+        QDir frameworksFolder("/usr/share/click/frameworks/");
+        m_availableFrameworks = frameworksFolder.entryList(QDir::Files, QDir::Name);
+        m_availableFrameworks.replaceInStrings(".framework", "");
+    }
+
+    return m_availableFrameworks;
+}

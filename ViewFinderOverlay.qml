@@ -536,8 +536,8 @@ Item {
                     property string label: sizeToAspectRatio(stringToSize(settings[settingsProperty]))
                     property bool isToggle: false
                     property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings[settingsProperty])
-                    property bool available: true
-                    property bool visible: camera.captureMode == Camera.CaptureStillImage
+                    property bool available: application.availableFrameworks.indexOf("ubuntu-sdk-15.04.3") != -1
+                    property bool visible: available && camera.captureMode == Camera.CaptureStillImage
                     property bool showInIndicators: false
                 }
             ]
