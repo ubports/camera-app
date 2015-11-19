@@ -201,8 +201,8 @@ Item {
                                                  .arg(sizeToMegapixels(camera.advanced.fittingResolution)),
                              "value": sizeToString(camera.advanced.fittingResolution)};
 
+        photoResolutionOptionsModel.insert(0, optionMaximum);
         if (camera.advanced.fittingResolution != camera.advanced.maximumResolution) {
-            photoResolutionOptionsModel.insert(0, optionMaximum);
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
@@ -526,7 +526,7 @@ Item {
                     property bool isToggle: false
                     property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolution)
                     property bool available: true
-                    property bool visible: camera.captureMode == Camera.CaptureStillImage && count > 1
+                    property bool visible: camera.captureMode == Camera.CaptureStillImage
                     property bool showInIndicators: false
                 }
             ]
