@@ -1,3 +1,14 @@
+camera-app (3.0.0+16.04.20151116.1-0ubuntu1) xenial; urgency=medium
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+  [ Florian Boucault ]
+  * Avoid unfortunate division by zero that was breaking rendering
+    silently. (LP: #1516569)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Mon, 16 Nov 2015 15:57:33 +0000
+
 camera-app (3.0.0+16.04.20151103-0ubuntu1) xenial; urgency=medium
 
   [ CI Train Bot ]

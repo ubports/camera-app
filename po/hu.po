@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-23 15:59-0300\n"
-"PO-Revision-Date: 2015-05-31 06:43+0000\n"
+"PO-Revision-Date: 2015-11-09 15:32+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-01 05:34+0000\n"
-"X-Generator: Launchpad (build 17532)\n"
+"X-Launchpad-Export-Date: 2015-11-10 04:58+0000\n"
+"X-Generator: Launchpad (build 17843)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -31,7 +31,7 @@ msgstr "Mégse"
 
 #: ../GalleryView.qml:188
 msgid "No media available."
-msgstr "Nem érhető el média."
+msgstr "Nincs elérhető médiatartalom."
 
 #: ../GalleryView.qml:222
 msgid "Scanning for content..."
