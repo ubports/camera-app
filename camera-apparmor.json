@@ -13,6 +13,7 @@
     "policy_version": 1.2,
     "read_path": [
         "@{PROC}/*/mounts",
-        "/dev/disk/by-label/"
+        "/dev/disk/by-label/",
+        "/usr/share/click/frameworks/"
     ]
 }
