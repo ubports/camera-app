@@ -1,3 +1,44 @@
+camera-app (3.0.0+16.04.20151120-0ubuntu1) xenial; urgency=medium
+
+  [ Albert Astals Cid ]
+  * Add missing return in AdvancedCameraSettings::mediaControlFromCamera
+
+  [ Bartosz Kosiorek ]
+  * Fix plural form (LP: #1323373)
+  * Improve camera performance by optimized size of the png and svg
+    files, without changing visual appearance (used compresspng.com and
+    compressor.io)
+
+  [ Benjamin Zeller ]
+  * Make sure camera-app cmake project works out of the box in the SDK:
+    Enable click mode by default Disable click mode in debian rules file
+    Add variable UBUNTU_MANIFEST_PATH variable so QtC knows where to
+    look for the manifest file Rename camera-apparmor.json =>
+    camera.apparmor (editor support) Copy qmldir file to builddirectory
+    so QML2_IMPORT_PATH set by QtC does actually work Automatically
+    substitute the click architecture in the manifest file Renamed
+    manifest.json => manifest.json.in, since manifest file can now be
+    specified by the project file (UBUNTU_MANIFEST_PATH) renamed:
+    camera-apparmor.json => camera.apparmor manifest.json =>
+    manifest.json.in
+
+  [ Florian Boucault ]
+  * Slideshow view: hiding the header closes the options menu. (LP:
+    #1494145)
+
+  [ Richard Huddie ]
+  * Fix for https://bugs.launchpad.net/camera-app/+bug/1514408 (LP:
+    #1514408)
+
+  [ Robert Ancell ]
+  * Use new QML package names for qml-module-qtquick2, qml-module-
+    qttest, qml-module-qtquick-window2, qml-module-qtpositioning.
+
+  [ Sebastien Bacher ]
+  * Use the red color for the Delete button as recommended by design
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Fri, 20 Nov 2015 15:36:19 +0000
+
 camera-app (3.0.0+16.04.20151116.1-0ubuntu1) xenial; urgency=medium
 
   [ CI Train Bot ]
