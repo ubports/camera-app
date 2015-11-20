@@ -73,6 +73,7 @@ Window {
 
     Flickable {
         id: viewSwitcher
+        objectName: "viewSwitcher"
         anchors.fill: parent
         flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
