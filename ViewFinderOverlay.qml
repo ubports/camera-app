@@ -280,7 +280,7 @@ Item {
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                     property bool available: camera.advanced.hasHdr
-                    property bool visible: true
+                    property bool visible: camera.captureMode === Camera.CaptureStillImage
                     property bool showInIndicators: true
 
                     ListElement {
@@ -582,7 +582,7 @@ Item {
             id: shootingTimer
             repeat: true
             triggeredOnStart: true
-            
+
             property int remainingSecs: 0
 
             onTriggered: {
