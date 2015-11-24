@@ -412,10 +412,10 @@ Item {
                     property string settingsProperty: "playShutterSound"
                     property string icon: ""
                     property string label: ""
-                    property bool isToggle: false
+                    property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, settings.playShutterSound)
                     property bool available: true
-                    property bool visible: true
+                    property bool visible: truecamera.captureMode === Camera.CaptureStillImage
                     property bool showInIndicators: false
 
                     ListElement {
