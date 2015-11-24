@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-02-23 15:59-0300\n"
+"POT-Creation-Date: 2015-06-21 18:57+0200\n"
 "PO-Revision-Date: 2015-06-26 09:31+0000\n"
 "Last-Translator: Luo Lei <luolei@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-27 05:35+0000\n"
-"X-Generator: Launchpad (build 17578)\n"
+"X-Launchpad-Export-Date: 2015-11-24 05:33+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -25,7 +25,7 @@ msgstr "删除媒体文件？"
 msgid "Delete"
 msgstr "删除"
 
-#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:805
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:775
 msgid "Cancel"
 msgstr "取消"
 
@@ -65,63 +65,75 @@ msgstr "分享"
 msgid "Edit"
 msgstr "编辑"
 
-#: ../ViewFinderOverlay.qml:199 ../ViewFinderOverlay.qml:222
-#: ../ViewFinderOverlay.qml:250 ../ViewFinderOverlay.qml:273
-#: ../ViewFinderOverlay.qml:350
+#: ../ViewFinderOverlay.qml:200 ../ViewFinderOverlay.qml:223
+#: ../ViewFinderOverlay.qml:251 ../ViewFinderOverlay.qml:274
+#: ../ViewFinderOverlay.qml:351
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:86
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
 msgstr "开启"
 
-#: ../ViewFinderOverlay.qml:204 ../ViewFinderOverlay.qml:232
-#: ../ViewFinderOverlay.qml:255 ../ViewFinderOverlay.qml:278
-#: ../ViewFinderOverlay.qml:297 ../ViewFinderOverlay.qml:355
+#: ../ViewFinderOverlay.qml:205 ../ViewFinderOverlay.qml:233
+#: ../ViewFinderOverlay.qml:256 ../ViewFinderOverlay.qml:279
+#: ../ViewFinderOverlay.qml:298 ../ViewFinderOverlay.qml:356
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:91
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
 msgstr "关闭"
 
-#: ../ViewFinderOverlay.qml:227
+#: ../ViewFinderOverlay.qml:228
 msgid "Auto"
 msgstr "自动"
 
-#: ../ViewFinderOverlay.qml:264
+#: ../ViewFinderOverlay.qml:265
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:302
+#: ../ViewFinderOverlay.qml:303
 msgid "5 seconds"
 msgstr "5 秒"
 
-#: ../ViewFinderOverlay.qml:307
+#: ../ViewFinderOverlay.qml:308
 msgid "15 seconds"
 msgstr "15 秒"
 
-#: ../ViewFinderOverlay.qml:324
+#: ../ViewFinderOverlay.qml:325
 msgid "Fine Quality"
 msgstr "高品质"
 
-#: ../ViewFinderOverlay.qml:328
+#: ../ViewFinderOverlay.qml:329
 msgid "Normal Quality"
 msgstr "普通品质"
 
-#: ../ViewFinderOverlay.qml:332
+#: ../ViewFinderOverlay.qml:333
 msgid "Basic Quality"
 msgstr "基本品质"
 
-#: ../ViewFinderOverlay.qml:364
+#: ../ViewFinderOverlay.qml:365
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:372
+#: ../ViewFinderOverlay.qml:373
 msgid "Save to SD Card"
 msgstr "保存到SD卡"
 
-#: ../ViewFinderOverlay.qml:377
+#: ../ViewFinderOverlay.qml:378
 msgid "Save internally"
 msgstr "保存到手机"
 
-#: ../ViewFinderOverlay.qml:802
+#: ../ViewFinderOverlay.qml:772
 msgid "Low storage space"
 msgstr "存储空间紧张"
 
-#: ../ViewFinderOverlay.qml:803
+#: ../ViewFinderOverlay.qml:773
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -167,21 +179,21 @@ msgstr "白平衡"
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "光照条件;白天;多云;室内"
 
-#: ../camera-app.qml:221
+#: ../camera-app.qml:225
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "今天拍了 <b>%1</b> 张照片"
 
-#: ../camera-app.qml:222
+#: ../camera-app.qml:226
 msgid "No photos taken today"
 msgstr "今天没拍任何照片"
 
-#: ../camera-app.qml:230
+#: ../camera-app.qml:236
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "今天拍了 <b>%1</b> 个录像"
 
-#: ../camera-app.qml:231
+#: ../camera-app.qml:237
 msgid "No videos recorded today"
 msgstr "今天没拍任何录像"
 
