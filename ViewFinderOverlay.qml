@@ -415,7 +415,7 @@ Item {
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, settings.playShutterSound)
                     property bool available: true
-                    property bool visible: truecamera.captureMode === Camera.CaptureStillImage
+                    property bool visible: camera.captureMode === Camera.CaptureStillImage
                     property bool showInIndicators: false
 
                     ListElement {
