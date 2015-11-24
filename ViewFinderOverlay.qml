@@ -50,6 +50,7 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+        property bool playShutterSound: true
 
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
         onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
@@ -404,6 +405,29 @@ Item {
                     property bool available: true
                     property bool visible: camera.captureMode == Camera.CaptureVideo
                     property bool showInIndicators: false
+                },
+                ListModel {
+                    id: shutterSoundOptionsModel
+
+                    property string settingsProperty: "playShutterSound"
+                    property string icon: ""
+                    property string label: ""
+                    property bool isToggle: false
+                    property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, settings.playShutterSound)
+                    property bool available: true
+                    property bool visible: true
+                    property bool showInIndicators: false
+
+                    ListElement {
+                        icon: "audio-volume-high"
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: "audio-volume-muted"
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
                 }
             ]
 
@@ -582,7 +606,7 @@ Item {
             id: shootingTimer
             repeat: true
             triggeredOnStart: true
-            
+
             property int remainingSecs: 0
 
             onTriggered: {
