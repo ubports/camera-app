@@ -580,6 +580,11 @@ Item {
             zoomControl.value = camera.currentZoom
         }
 
+        Connections {
+            target: Qt.application
+            onActiveChanged: if (active) zoomControl.value = camera.currentZoom
+        }
+
         Timer {
             id: shootingTimer
             repeat: true
