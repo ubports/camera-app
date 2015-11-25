@@ -40,6 +40,10 @@ class AdvancedCameraSettings : public QObject
     Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
                 NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
+    Q_PROPERTY (QSize imageCaptureResolution READ imageCaptureResolution)
+    Q_PROPERTY (QSize videoRecorderResolution READ videoRecorderResolution)
+    Q_PROPERTY (QSize maximumResolution READ maximumResolution NOTIFY maximumResolutionChanged)
+    Q_PROPERTY (QSize fittingResolution READ fittingResolution NOTIFY fittingResolutionChanged)
     Q_PROPERTY (QStringList videoSupportedResolutions READ videoSupportedResolutions NOTIFY videoSupportedResolutionsChanged)
     Q_PROPERTY (bool hasFlash READ hasFlash NOTIFY hasFlashChanged)
     Q_PROPERTY (bool hdrEnabled READ hdrEnabled WRITE setHdrEnabled NOTIFY hdrEnabledChanged)
@@ -53,6 +57,11 @@ public:
     void setCamera(QObject* camera);
     void setActiveCameraIndex(int index);
     QSize resolution() const;
+    QSize imageCaptureResolution() const;
+    QSize videoRecorderResolution() const;
+    QSize maximumResolution() const;
+    QSize fittingResolution() const;
+    float getScreenAspectRatio() const;
     QStringList videoSupportedResolutions() const;
     bool hasFlash() const;
     bool hasHdr() const;
@@ -66,6 +75,8 @@ Q_SIGNALS:
     void cameraChanged();
     void activeCameraIndexChanged();
     void resolutionChanged();
+    void maximumResolutionChanged();
+    void fittingResolutionChanged();
     void hasFlashChanged();
     void hasHdrChanged();
     void hdrEnabledChanged();

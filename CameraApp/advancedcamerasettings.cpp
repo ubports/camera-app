@@ -26,6 +26,10 @@
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 #include <QtMultimedia/QCameraFlashControl>
 #include <QtMultimedia/QCameraExposureControl>
+#include <QGuiApplication>
+#include <QScreen>
+
+#include <cmath>
 
 // Definition of this enum value is duplicated in qtubuntu-camera
 static const QCameraExposure::ExposureMode ExposureHdr = static_cast<QCameraExposure::ExposureMode>(QCameraExposure::ExposureModeVendor + 1);
@@ -222,6 +226,12 @@ void AdvancedCameraSettings::readCapabilities()
         QObject::connect(m_cameraControl,
                          SIGNAL(captureModeChanged(QCamera::CaptureModes)),
                          this, SIGNAL(resolutionChanged()));
+        QObject::connect(m_cameraControl,
+                         SIGNAL(captureModeChanged(QCamera::CaptureModes)),
+                         this, SIGNAL(maximumResolutionChanged()));
+        QObject::connect(m_cameraControl,
+                         SIGNAL(captureModeChanged(QCamera::CaptureModes)),
+                         this, SIGNAL(fittingResolutionChanged()));
     }
 
     m_cameraFlashControl = flashControlFromCamera(m_camera);
@@ -237,6 +247,8 @@ void AdvancedCameraSettings::readCapabilities()
     m_videoEncoderControl = videoEncoderControlFromCamera(m_camera);
 
     Q_EMIT resolutionChanged();
+    Q_EMIT maximumResolutionChanged();
+    Q_EMIT fittingResolutionChanged();
     Q_EMIT hasFlashChanged();
     Q_EMIT hasHdrChanged();
     Q_EMIT hdrEnabledChanged();
@@ -260,6 +272,8 @@ void AdvancedCameraSettings::setActiveCameraIndex(int index)
         }
         Q_EMIT activeCameraIndexChanged();
         Q_EMIT resolutionChanged();
+        Q_EMIT maximumResolutionChanged();
+        Q_EMIT fittingResolutionChanged();
         Q_EMIT hasFlashChanged();
         Q_EMIT videoSupportedResolutionsChanged();
     }
@@ -272,6 +286,117 @@ QSize AdvancedCameraSettings::resolution() const
         if (result.isValid()) {
             return result.toSize();
         }
+    }
+
+    return QSize();
+}
+
+QSize AdvancedCameraSettings::imageCaptureResolution() const
+{
+    if (m_imageEncoderControl != 0) {
+        return m_imageEncoderControl->imageSettings().resolution();
+    }
+
+    return QSize();
+}
+
+QSize AdvancedCameraSettings::videoRecorderResolution() const
+{
+    if (m_videoEncoderControl != 0) {
+        return m_videoEncoderControl->videoSettings().resolution();
+    }
+
+    return QSize();
+}
+
+QSize AdvancedCameraSettings::maximumResolution() const
+{
+    if (m_imageEncoderControl) {
+        QList<QSize> sizes = m_imageEncoderControl->supportedResolutions(
+                                       m_imageEncoderControl->imageSettings());
+
+        QSize maximumSize;
+        long maximumPixels = 0;
+
+        QList<QSize>::const_iterator it = sizes.begin();
+        while (it != sizes.end()) {
+            const long pixels = ((long)((*it).width())) * ((long)((*it).height()));
+            if (pixels > maximumPixels) {
+                maximumSize = *it;
+                maximumPixels = pixels;
+            }
+            ++it;
+        }
+
+        return maximumSize;
+    }
+
+    return QSize();
+}
+
+float AdvancedCameraSettings::getScreenAspectRatio() const
+{
+    float screenAspectRatio;
+    QScreen *screen = QGuiApplication::primaryScreen();
+    Q_ASSERT(!screen);
+    const int kScreenWidth = screen->geometry().width();
+    const int kScreenHeight = screen->geometry().height();
+    Q_ASSERT(kScreenWidth > 0 && kScreenHeight > 0);
+
+    screenAspectRatio = (kScreenWidth > kScreenHeight) ?
+        ((float)kScreenWidth / (float)kScreenHeight) : ((float)kScreenHeight / (float)kScreenWidth);
+
+    return screenAspectRatio;
+}
+
+QSize AdvancedCameraSettings::fittingResolution() const
+{
+    QList<float> prioritizedAspectRatios;
+    prioritizedAspectRatios.append(getScreenAspectRatio());
+    const float backAspectRatios[4] = { 16.0f/9.0f, 3.0f/2.0f, 4.0f/3.0f, 5.0f/4.0f };
+    for (int i=0; i<4; ++i) {
+        if (!prioritizedAspectRatios.contains(backAspectRatios[i])) {
+            prioritizedAspectRatios.append(backAspectRatios[i]);
+        }
+    }
+
+    if (m_imageEncoderControl) {
+        QList<QSize> sizes = m_imageEncoderControl->supportedResolutions(
+                                       m_imageEncoderControl->imageSettings());
+
+        QSize optimalSize;
+        long optimalPixels = 0;
+
+        if (!sizes.empty()) {
+            float aspectRatio;
+
+            // Loop over all reported camera resolutions until we find the highest
+            // one that matches the current prioritized aspect ratio. If it doesn't
+            // find one on the current aspect ration, it selects the next ratio and
+            // tries again.
+            QList<float>::const_iterator ratioIt = prioritizedAspectRatios.begin();
+            while (ratioIt != prioritizedAspectRatios.end()) {
+                // Don't update the aspect ratio when using this function for finding
+                // the optimal thumbnail size as it will affect the preview window size
+                aspectRatio = (*ratioIt);
+
+                QList<QSize>::const_iterator it = sizes.begin();
+                while (it != sizes.end()) {
+                    const float ratio = (float)(*it).width() / (float)(*it).height();
+                    const long pixels = ((long)((*it).width())) * ((long)((*it).height()));
+                    const float EPSILON = 0.02;
+                    if (fabs(ratio - aspectRatio) < EPSILON && pixels > optimalPixels) {
+                        optimalSize = *it;
+                        optimalPixels = pixels;
+                    }
+                    ++it;
+                }
+                if (optimalPixels > 0) break;
+                ++ratioIt;
+            }
+        }
+
+        return optimalSize;
     }
 
     return QSize();
