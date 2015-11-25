@@ -83,6 +83,7 @@ QMediaControl* AdvancedCameraSettings::mediaControlFromCamera(QCamera *camera, c
         return 0;
     }
 
+    return control;
 }
 
 QVideoDeviceSelectorControl* AdvancedCameraSettings::selectorFromCamera(QCamera *camera) const

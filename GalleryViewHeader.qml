@@ -49,6 +49,9 @@ Item {
     }
 
     function toggle() {
+        if (shown) {
+            actionsDrawer.close();
+        }
         shown = !shown;
     }
 

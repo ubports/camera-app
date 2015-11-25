@@ -23,6 +23,9 @@ set(plugin_HDRS
 
 add_library(camera-qml SHARED ${plugin_SRCS} ${plugin_HDRS})
 
+#make sure that the qmldir file is in the QML2_IMPORT_PATH when running from QtC
+file(COPY qmldir DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 target_link_libraries(camera-qml
     ${Qt5Qml_LIBRARIES}
     ${Qt5Quick_LIBRARIES}

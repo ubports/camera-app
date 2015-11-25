@@ -24,6 +24,10 @@ class MainWindow(object):
         """Returns the root QML Item"""
         return self.app.wait_select_single(objectName="main")
 
+    def get_view_switcher(self):
+        """Returns the switcher Flickable"""
+        return self.app.wait_select_single(objectName="viewSwitcher")
+
     def get_viewfinder(self):
         """Returns the viewfinder view"""
         return self.app.wait_select_single("ViewFinderView")
@@ -136,8 +140,9 @@ class MainWindow(object):
             return None
 
     def swipe_to_gallery(self, testCase):
-        main_view = self.get_root()
-        x, y, w, h = main_view.globalRect
+        view_switcher = self.get_view_switcher()
+        x, y = view_switcher.x, view_switcher.y
+        w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
@@ -147,13 +152,14 @@ class MainWindow(object):
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
 
     def swipe_to_viewfinder(self, testCase):
-        main_view = self.get_root()
-        x, y, w, h = main_view.globalRect
+        view_switcher = self.get_view_switcher()
+        x, y = view_switcher.x, view_switcher.y
+        w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
 
         self.app.pointing_device.drag(
-            tx, ty, (tx + main_view.width // 2), ty, rate=1)
+            tx, ty, (tx + view_switcher.width // 2), ty, rate=1)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))

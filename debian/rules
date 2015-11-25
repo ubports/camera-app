@@ -8,6 +8,9 @@ export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 %:
 	dh $@ --parallel --with translations
 
+override_dh_auto_configure:
+	dh_auto_configure -- -DCLICK_MODE=OFF -DINSTALL_TESTS=ON
+
 override_dh_auto_test:
 	python3 -m flake8 .
 	dh_auto_test
