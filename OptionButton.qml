@@ -23,7 +23,7 @@ CircleButton {
     property var model
     property string settingsProperty: model.settingsProperty
 
-    iconName: model.isToggle || !model.get(model.selectedIndex).icon ? model.icon : model.get(model.selectedIndex).icon
+    iconName: !model.get(model.selectedIndex).icon ? model.icon : model.get(model.selectedIndex).icon
     iconSource: (model && model.iconSource) ? model.iconSource : ""
     on: model.isToggle ? model.get(model.selectedIndex).value : true
     enabled: model.available
