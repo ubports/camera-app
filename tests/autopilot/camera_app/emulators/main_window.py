@@ -7,7 +7,7 @@
 
 from camera_app.emulators.panel import Panel
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals
+from testtools.matchers import Equals, NotEquals
 
 
 class MainWindow(object):
@@ -163,3 +163,22 @@ class MainWindow(object):
             tx, ty, (tx + view_switcher.width // 2), ty, rate=1)
         viewfinder = self.get_viewfinder()
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
+
+    def switch_cameras(self):
+        # Swap cameras and wait for camera to settle
+        shoot_button = self.get_exposure_button()
+        swap_camera_button = self.get_swap_camera_button()
+        self.app.pointing_device.move_to_object(swap_camera_button)
+        self.app.pointing_device.click()
+        shoot_button.enabled.wait_for(True)
+
+    def switch_recording_mode(self):
+        record_control = self.get_record_control()
+
+        # Wait for the camera overlay to be loaded
+        record_control.enabled.wait_for(True)
+        record_control.width.wait_for(NotEquals(0))
+        record_control.height.wait_for(NotEquals(0))
+
+        self.app.pointing_device.move_to_object(record_control)
+        self.app.pointing_device.click()

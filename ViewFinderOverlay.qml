@@ -50,6 +50,7 @@ Item {
         property bool gridEnabled: false
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
+        property bool playShutterSound: true
         // FIXME: stores the resolution selected for 2 cameras. Instead it should:
         //  - support any number of cameras
         //  - not rely on the camera index but on Camera.deviceId
@@ -403,7 +404,7 @@ Item {
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(hdrOptionsModel, settings.hdrEnabled)
                     property bool available: camera.advanced.hasHdr
-                    property bool visible: true
+                    property bool visible: camera.captureMode === Camera.CaptureStillImage
                     property bool showInIndicators: true
 
                     ListElement {
@@ -527,6 +528,29 @@ Item {
                     property bool available: true
                     property bool visible: camera.captureMode == Camera.CaptureVideo
                     property bool showInIndicators: false
+                },
+                ListModel {
+                    id: shutterSoundOptionsModel
+
+                    property string settingsProperty: "playShutterSound"
+                    property string icon: ""
+                    property string label: ""
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, settings.playShutterSound)
+                    property bool available: true
+                    property bool visible: camera.captureMode === Camera.CaptureStillImage
+                    property bool showInIndicators: false
+
+                    ListElement {
+                        icon: "audio-volume-high"
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: "audio-volume-muted"
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
                 },
                 ListModel {
                     id: photoResolutionOptionsModel
@@ -706,18 +730,25 @@ Item {
         function completeSwitch() {
             viewFinderSwitcherAnimation.restart();
             camera.switchInProgress = false;
+            zoomControl.value = camera.currentZoom;
         }
 
         function changeRecordMode() {
             if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+            zoomControl.value = camera.currentZoom
+        }
+
+        Connections {
+            target: Qt.application
+            onActiveChanged: if (active) zoomControl.value = camera.currentZoom
         }
 
         Timer {
             id: shootingTimer
             repeat: true
             triggeredOnStart: true
-            
+
             property int remainingSecs: 0
 
             onTriggered: {
