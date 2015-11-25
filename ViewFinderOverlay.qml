@@ -571,11 +571,18 @@ Item {
         function completeSwitch() {
             viewFinderSwitcherAnimation.restart();
             camera.switchInProgress = false;
+            zoomControl.value = camera.currentZoom;
         }
 
         function changeRecordMode() {
             if (camera.captureMode == Camera.CaptureVideo) camera.videoRecorder.stop()
             camera.captureMode = (camera.captureMode == Camera.CaptureVideo) ? Camera.CaptureStillImage : Camera.CaptureVideo
+            zoomControl.value = camera.currentZoom
+        }
+
+        Connections {
+            target: Qt.application
+            onActiveChanged: if (active) zoomControl.value = camera.currentZoom
         }
 
         Timer {

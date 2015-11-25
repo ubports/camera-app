@@ -68,3 +68,50 @@ class TestCameraZoom(CameraAppTestCase):
 
         self.pointing_device.drag(tx, ty, (tx - zoom_control.width), ty)
         self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
+
+    """Tests zoom is reset to minimum on camera switch"""
+    def test_zoom_reset_on_camera_change(self):
+        zoom_control = self.main_window.get_zoom_control()
+        zoom_slider = self.main_window.get_zoom_slider()
+
+        self.activate_zoom()
+        x, y, w, h = zoom_slider.globalRect
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+        self.pointing_device.drag(tx, ty, (tx + zoom_control.width), ty)
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
+
+        self.main_window.switch_cameras()
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.minimumValue)))
+
+        self.activate_zoom()
+        self.pointing_device.drag(tx, ty, (tx + zoom_control.width), ty)
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
+
+        self.main_window.switch_cameras()
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.minimumValue)))
+
+    """Tests zoom is reset to minimum on recording mode switch"""
+    def test_zoom_reset_on_recording_mode_change(self):
+        zoom_control = self.main_window.get_zoom_control()
+        zoom_slider = self.main_window.get_zoom_slider()
+
+        self.activate_zoom()
+        x, y, w, h = zoom_slider.globalRect
+        tx = x + (w // 2)
+        ty = y + (h // 2)
+        self.pointing_device.drag(tx, ty, (tx + zoom_control.width), ty)
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
+
+        self.main_window.switch_recording_mode()
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.minimumValue)))
+
+        # Ideally we should test the same thing when switching back to photo
+        # mode, however due to http://pad.lv/1191088 zooming when recording
+        # video is disabled, so adding that test is pointless until fixed.

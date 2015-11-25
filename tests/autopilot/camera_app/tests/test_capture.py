@@ -90,13 +90,11 @@ class TestCapture(CameraAppTestCase):
 
         """
         # Get all the elements
-        record_control = self.main_window.get_record_control()
         stop_watch = self.main_window.get_stop_watch()
         exposure_button = self.main_window.get_exposure_button()
 
         # Click the record button to toggle photo/video mode
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click()
+        self.main_window.switch_recording_mode()
 
         # Before recording the stop watch should read zero recording time
         # and not be visible anyway.
@@ -137,8 +135,7 @@ class TestCapture(CameraAppTestCase):
         # Now stop the video and go back to picture mode and check if
         # everything resets itself to previous states
         self.pointing_device.click()
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click()
+        self.main_window.switch_recording_mode()
 
         self.assertThat(stop_watch.opacity, Eventually(Equals(0.0)))
 
@@ -268,7 +265,7 @@ class TestCapture(CameraAppTestCase):
     """Test recording videos at a set resolution and switching cameras"""
     def test_video_resolution_setting_switching_cameras(self):
         # switch to video recording and empty video folder
-        self.switch_to_video_recording()
+        self.main_window.switch_recording_mode()
         self.delete_all_videos()
 
         # select the first resolution for the current camera
@@ -277,14 +274,14 @@ class TestCapture(CameraAppTestCase):
         self.set_video_resolution(initial_resolution)
 
         # switch cameras and select the last resolution for the current camera
-        self.switch_cameras()
+        self.main_window.switch_cameras()
         resolutions = self.get_available_video_resolutions()
         expected_resolution = resolutions[-1]
         self.assertThat(expected_resolution, NotEquals(initial_resolution))
         self.set_video_resolution(expected_resolution)
 
         # switch back to the initial camera and record a video
-        self.switch_cameras()
+        self.main_window.switch_cameras()
         self.record_video(2)
         video_file = self.get_first_video()
         height = self.read_video_height(video_file)
@@ -292,17 +289,9 @@ class TestCapture(CameraAppTestCase):
             expected_resolution)
         self.assertThat(height, Equals(expected_height))
 
-    def switch_cameras(self):
-        # Swap cameras and wait for camera to settle
-        shoot_button = self.main_window.get_exposure_button()
-        swap_camera_button = self.main_window.get_swap_camera_button()
-        self.pointing_device.move_to_object(swap_camera_button)
-        self.pointing_device.click()
-        self.assertThat(shoot_button.enabled, Eventually(Equals(True)))
-
     """Test recording videos at various resolutions"""
     def test_video_resolution_setting(self):
-        self.switch_to_video_recording()
+        self.main_window.switch_recording_mode()
         resolutions = self.get_available_video_resolutions()
 
         for resolution_label in resolutions:
@@ -315,16 +304,6 @@ class TestCapture(CameraAppTestCase):
                 resolution_label)
             self.assertThat(height, Equals(expected_height))
             self.dismiss_first_photo_hint()
-
-    def switch_to_video_recording(self):
-        record_control = self.main_window.get_record_control()
-        # Wait for the camera overlay to be loaded
-        self.assertThat(record_control.enabled, Eventually(Equals(True)))
-        self.assertThat(record_control.width, Eventually(NotEquals(0)))
-        self.assertThat(record_control.height, Eventually(NotEquals(0)))
-
-        self.pointing_device.move_to_object(record_control)
-        self.pointing_device.click()
 
     def get_available_video_resolutions(self):
         # open bottom edge
