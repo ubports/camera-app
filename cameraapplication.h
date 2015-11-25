@@ -36,7 +36,6 @@ class CameraApplication : public QGuiApplication
     Q_PROPERTY(QString removableStorageLocation READ removableStorageLocation CONSTANT)
     Q_PROPERTY(QString removableStoragePicturesLocation READ removableStoragePicturesLocation CONSTANT)
     Q_PROPERTY(QString removableStorageVideosLocation READ removableStorageVideosLocation CONSTANT)
-    Q_PROPERTY(QStringList availableFrameworks READ availableFrameworks CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
@@ -50,14 +49,12 @@ public:
     QString removableStorageLocation() const;
     QString removableStoragePicturesLocation() const;
     QString removableStorageVideosLocation() const;
-    QStringList availableFrameworks();
 
 Q_SIGNALS:
     void removableStoragePresentChanged();
 
 private:
     QScopedPointer<QQmlApplicationEngine> m_engine;
-    QStringList m_availableFrameworks;
 };
 
 #endif // CAMERAAPPLICATION_H
