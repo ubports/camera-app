@@ -39,8 +39,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(
-            line_x, start_y, line_x, stop_y, rate=sys.maxsize)
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
