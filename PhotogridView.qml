@@ -43,7 +43,8 @@ Item {
             enabled: model.selectedFiles.length <= 1
             onTriggered: {
                 if (model.selectedFiles.length > 0) {
-                    PopupUtils.open(sharePopoverComponent).parent = photogridView
+                    var dialog = PopupUtils.open(sharePopoverComponent)
+                    dialog.parent = photogridView
                 }
             }
         },
@@ -52,7 +53,8 @@ Item {
             iconName: "delete"
             onTriggered: {
                 if (model.selectedFiles.length > 0) {
-                    PopupUtils.open(deleteDialogComponent).parent = photogridView
+                    var dialog = PopupUtils.open(deleteDialogComponent)
+                    dialog.parent = photogridView
                 }
             }
         }

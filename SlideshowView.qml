@@ -49,12 +49,18 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            onTriggered: PopupUtils.open(sharePopoverComponent).parent = slideshowView
+            onTriggered: {
+                var dialog = PopupUtils.open(sharePopoverComponent)
+                dialog.parent = slideshowView
+            }
         },
         Action {
             text: i18n.tr("Delete")
             iconName: "delete"
-            onTriggered: PopupUtils.open(deleteDialogComponent).parent = slideshowView
+            onTriggered: {
+                var dialog = PopupUtils.open(deleteDialogComponent)
+                dialog.parent = slideshowView
+            }
         }
     ]
 
