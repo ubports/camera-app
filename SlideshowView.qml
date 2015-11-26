@@ -49,12 +49,12 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            onTriggered: PopupUtils.open(sharePopoverComponent)
+            onTriggered: PopupUtils.open(sharePopoverComponent).parent = slideshowView
         },
         Action {
             text: i18n.tr("Delete")
             iconName: "delete"
-            onTriggered: PopupUtils.open(deleteDialogComponent)
+            onTriggered: PopupUtils.open(deleteDialogComponent).parent = slideshowView
         }
     ]
 
@@ -323,6 +323,7 @@ Item {
                 contentItem.url = slideshowView.model.get(slideshowView.currentIndex, "filePath");
                 transferItems = [contentItem];
             }
+            onVisibleChanged: toggleHeader()
 
             transferContentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.model.get(slideshowView.currentIndex, "fileType"));
         }
@@ -350,6 +351,7 @@ Item {
                 var currentFilePath = slideshowView.model.get(toBeDeleted, "filePath");
                 fileOperations.remove(currentFilePath);
             }
+            onVisibleChanged: toggleHeader()
         }
     }
 
