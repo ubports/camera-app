@@ -285,6 +285,7 @@ class TestCapture(CameraAppTestCase):
         self.record_video(2)
         video_file = self.get_first_video()
         height = self.read_video_height(video_file)
+        expected_resolution = self.get_selected_video_resolution()
         expected_height = self.height_from_resolution_label(
             expected_resolution)
         self.assertThat(height, Equals(expected_height))
@@ -324,6 +325,26 @@ class TestCapture(CameraAppTestCase):
 
         bottom_edge.close()
         return resolutions
+
+    def get_selected_video_resolution(self):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open video resolution option value selector showing the possible
+        # values
+        video_resolution_button = (
+            self.main_window.get_video_resolution_button())
+        self.pointing_device.move_to_object(video_resolution_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
+        optionButtons = option_value_selector.select_many("OptionValueButton")
+        resolutions = [button.label for button in optionButtons if button.selected]
+
+        bottom_edge.close()
+        return resolutions[0]
 
     def delete_all_videos(self):
         video_files = os.listdir(self.videos_dir)
