@@ -96,7 +96,7 @@ class TestCameraZoom(CameraAppTestCase):
             zoom_control.value, Eventually(Equals(zoom_control.minimumValue)))
 
     """Tests zoom is reset to minimum on recording mode switch"""
-    def test_zoom_reset_on_recording_mode_change(self):
+    def test_zoom_not_reset_on_recording_mode_change(self):
         zoom_control = self.main_window.get_zoom_control()
         zoom_slider = self.main_window.get_zoom_slider()
 
@@ -110,8 +110,8 @@ class TestCameraZoom(CameraAppTestCase):
 
         self.main_window.switch_recording_mode()
         self.assertThat(
-            zoom_control.value, Eventually(Equals(zoom_control.minimumValue)))
+            zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
 
-        # Ideally we should test the same thing when switching back to photo
-        # mode, however due to http://pad.lv/1191088 zooming when recording
-        # video is disabled, so adding that test is pointless until fixed.
+        self.main_window.switch_recording_mode()
+        self.assertThat(
+            zoom_control.value, Eventually(Equals(zoom_control.maximumValue)))
