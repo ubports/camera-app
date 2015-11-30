@@ -107,6 +107,7 @@ Item {
                     model.toggleSelected(index);
             }
             onExitUserSelectionMode: galleryView.exitUserSelectionMode()
+            onToggleHeader: header.toggle()
         }
 
         // FIXME: it would be better to use the standard header from the toolkit
