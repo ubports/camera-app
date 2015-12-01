@@ -341,7 +341,8 @@ class TestCapture(CameraAppTestCase):
         self.assertThat(
             option_value_selector.visible, Eventually(Equals(True)))
         optionButtons = option_value_selector.select_many("OptionValueButton")
-        resolutions = [button.label for button in optionButtons if button.selected]
+        resolutions = [button.label for button in optionButtons
+                       if button.selected]
 
         bottom_edge.close()
         return resolutions[0]
