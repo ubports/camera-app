@@ -6,7 +6,6 @@
 # by the Free Software Foundation.
 
 import logging
-import sys
 
 import ubuntuuitoolkit
 from autopilot import logging as autopilot_logging
