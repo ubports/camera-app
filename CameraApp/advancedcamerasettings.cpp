@@ -338,7 +338,7 @@ float AdvancedCameraSettings::getScreenAspectRatio() const
 {
     float screenAspectRatio;
     QScreen *screen = QGuiApplication::primaryScreen();
-    Q_ASSERT(!screen);
+    Q_ASSERT(screen);
     const int kScreenWidth = screen->geometry().width();
     const int kScreenHeight = screen->geometry().height();
     Q_ASSERT(kScreenWidth > 0 && kScreenHeight > 0);
