@@ -30,6 +30,7 @@ Item {
     signal photoPressAndHold(int index)
     signal photoSelectionAreaClicked(int index)
     signal exitUserSelectionMode
+    signal toggleHeader()
     property real headerHeight
     property bool inView
     property bool inSelectionMode
@@ -41,16 +42,20 @@ Item {
             iconName: "share"
             enabled: model.selectedFiles.length <= 1
             onTriggered: {
-                if (model.selectedFiles.length > 0)
-                    PopupUtils.open(sharePopoverComponent)
+                if (model.selectedFiles.length > 0) {
+                    var dialog = PopupUtils.open(sharePopoverComponent)
+                    dialog.parent = photogridView
+                }
             }
         },
         Action {
             text: i18n.tr("Delete")
             iconName: "delete"
             onTriggered: {
-                if (model.selectedFiles.length > 0)
-                    PopupUtils.open(deleteDialogComponent);
+                if (model.selectedFiles.length > 0) {
+                    var dialog = PopupUtils.open(deleteDialogComponent)
+                    dialog.parent = photogridView
+                }
             }
         }
     ]
@@ -194,6 +199,7 @@ Item {
             id: sharePopover
 
             onContentPeerSelected: photogridView.exitUserSelectionMode();
+            onVisibleChanged: photogridView.toggleHeader()
 
             transferContentType: MimeTypeMapper.mimeTypeToContentType(model.get(model.selectedFiles[0], "fileType"));
             transferItems: model.selectedFiles.map(function(row) {
@@ -216,6 +222,7 @@ Item {
                 model.deleteSelectedFiles();
                 photogridView.exitUserSelectionMode();
             }
+            onVisibleChanged: photogridView.toggleHeader()
         }
     }
 }

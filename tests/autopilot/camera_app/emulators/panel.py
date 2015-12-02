@@ -6,7 +6,6 @@
 # by the Free Software Foundation.
 
 import logging
-import sys
 
 import ubuntuuitoolkit
 from autopilot import logging as autopilot_logging
@@ -39,8 +38,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(
-            line_x, start_y, line_x, stop_y, rate=sys.maxsize)
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -57,5 +55,4 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y
         stop_y = y + self.height - 1
 
-        self.pointing_device.drag(
-            line_x, start_y, line_x, stop_y, rate=sys.maxsize)
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y)

@@ -36,6 +36,7 @@ Item {
     Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
+        cameraState: Camera.UnloadedState
         StateSaver.properties: "captureMode"
 
         function manualFocus(x, y) {
@@ -67,10 +68,6 @@ Item {
             StateSaver.properties: "activeCameraIndex"
         }
 
-        Component.onCompleted: {
-            camera.start();
-        }
-        
         /* Use only digital zoom for now as it's what phone cameras mostly use.
                TODO: if optical zoom is available, maximumZoom should be the combined
                range of optical and digital zoom and currentZoom should adjust the two
@@ -121,12 +118,14 @@ Item {
         target: Qt.application
         onActiveChanged: {
             if (Qt.application.active) {
-                camera.start()
+                if (camera.cameraState == Camera.LoadedState) {
+                    camera.cameraState = Camera.ActiveState;
+                }
             } else if (!application.desktopMode) {
                 if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
                     camera.videoRecorder.stop();
                 }
-                camera.stop()
+                camera.cameraState = Camera.LoadedState;
             }
         }
     }
@@ -250,16 +249,16 @@ Item {
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: application.desktopMode ? 180 : 0
             }
+        }
 
-            ViewFinderGeometry {
-                id: viewFinderGeometry
-                anchors.centerIn: parent
+        ViewFinderGeometry {
+            id: viewFinderGeometry
+            anchors.centerIn: parent
 
-                cameraResolution: camera.advanced.resolution
-                viewFinderHeight: viewFinder.height
-                viewFinderWidth: viewFinder.width
-                viewFinderOrientation: viewFinder.orientation
-            }
+            cameraResolution: camera.viewfinder.resolution
+            viewFinderHeight: viewFinder.height
+            viewFinderWidth: viewFinder.width
+            viewFinderOrientation: viewFinder.orientation
         }
 
         Item {

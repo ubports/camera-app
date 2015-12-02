@@ -33,9 +33,7 @@ Dialog {
 
         text: i18n.tr("Delete")
         color: UbuntuColors.red
-        onClicked: {
-            PopupUtils.close(deleteDialog);
-        }
+        onClicked: PopupUtils.close(deleteDialog)
     }
 
     Button {
