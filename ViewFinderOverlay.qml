@@ -964,4 +964,51 @@ Item {
              }
          }
     }
+
+    Connections {
+        id: permissionErrorMonitor
+        property var currentPermissionsDialog: null
+        target: camera
+        onError: {
+            // Camera.CameraError is very generic, but at the moment this is the only
+            // kind of notification that we receive when permissions have been revoked.
+            if (errorCode == Camera.CameraError && currentPermissionsDialog == null) {
+                currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent)
+            }
+        }
+        onCameraStateChanged: {
+            if (camera.cameraState != Camera.UnloadedState && currentPermissionsDialog != null) {
+                PopupUtils.close(currentPermissionsDialog)
+                currentPermissionsDialog = null
+            }
+        }
+    }
+
+    Component {
+         id: noPermissionsDialogComponent
+         Dialog {
+             id: noPermissionsDialog
+             objectName: "noPermissionsDialog"
+             title: i18n.tr("No camera permissions")
+             text: i18n.tr("Camera app doesn't have permissions to access the camera hardware.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: {
+                     PopupUtils.close(noPermissionsDialog)
+                     permissionErrorMonitor.currentDialog = null
+                 }
+             }
+             Button {
+                 text: i18n.tr("Edit App Permissions")
+                 onClicked: {
+                     // Can't access the camera app permissions page directly. See:
+                     // https://bugs.launchpad.net/ubuntu/+source/ubuntu-system-settings/+bug/1521973
+                     // So we send the user as close as possible.
+                     Qt.openUrlExternally("settings:///system/security-privacy")
+                     PopupUtils.close(noPermissionsDialog)
+                     permissionErrorMonitor.currentDialog = null
+                 }
+             }
+         }
+    }
 }
