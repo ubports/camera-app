@@ -1,0 +1,212 @@
+# Belarusian translation for camera-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the camera-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: camera-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-06-21 18:57+0200\n"
+"PO-Revision-Date: 2015-12-05 20:23+0000\n"
+"Last-Translator: XiveZ <kyrsant2008@list.ru>\n"
+"Language-Team: Belarusian <be@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-12-06 06:03+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
+
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Выдаліць змесціва?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:775
+msgid "Cancel"
+msgstr "Скасаваць"
+
+#: ../GalleryView.qml:188
+msgid "No media available."
+msgstr "Адсутнічаюць медыяфайлы"
+
+#: ../GalleryView.qml:222
+msgid "Scanning for content..."
+msgstr "Сканаваньне..."
+
+#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+msgid "Select"
+msgstr "Абраць"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Edit Photo"
+msgstr "Рэдагаваць фотаздымак"
+
+#: ../GalleryViewHeader.qml:79
+msgid "Photo Roll"
+msgstr "Фотастужка"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Бракуе вольнага месца; вызваліце месца, каб працягнуць."
+
+#: ../PhotoRollHint.qml:68
+msgid "Swipe left for photo roll"
+msgstr "Націсьніце і цягніце налева для пераходу да фотастужкі"
+
+#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+msgid "Share"
+msgstr "Падзяліцца"
+
+#: ../SlideshowView.qml:63
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+#: ../ViewFinderOverlay.qml:200 ../ViewFinderOverlay.qml:223
+#: ../ViewFinderOverlay.qml:251 ../ViewFinderOverlay.qml:274
+#: ../ViewFinderOverlay.qml:351
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:86
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
+msgid "On"
+msgstr "УЛ"
+
+#: ../ViewFinderOverlay.qml:205 ../ViewFinderOverlay.qml:233
+#: ../ViewFinderOverlay.qml:256 ../ViewFinderOverlay.qml:279
+#: ../ViewFinderOverlay.qml:298 ../ViewFinderOverlay.qml:356
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:91
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
+msgid "Off"
+msgstr "АДКЛ"
+
+#: ../ViewFinderOverlay.qml:228
+msgid "Auto"
+msgstr "Аўта"
+
+#: ../ViewFinderOverlay.qml:265
+msgid "HDR"
+msgstr "HDR"
+
+#: ../ViewFinderOverlay.qml:303
+msgid "5 seconds"
+msgstr "5 секунд"
+
+#: ../ViewFinderOverlay.qml:308
+msgid "15 seconds"
+msgstr "15 секунд"
+
+#: ../ViewFinderOverlay.qml:325
+msgid "Fine Quality"
+msgstr "Высокая якасьць"
+
+#: ../ViewFinderOverlay.qml:329
+msgid "Normal Quality"
+msgstr "Звычайная якасьць"
+
+#: ../ViewFinderOverlay.qml:333
+msgid "Basic Quality"
+msgstr "Пачатковая якасьць"
+
+#: ../ViewFinderOverlay.qml:365
+msgid "SD"
+msgstr "SD"
+
+#: ../ViewFinderOverlay.qml:373
+msgid "Save to SD Card"
+msgstr "Захаваць на SD-картку"
+
+#: ../ViewFinderOverlay.qml:378
+msgid "Save internally"
+msgstr "Захаваць на прыладзе"
+
+#: ../ViewFinderOverlay.qml:772
+msgid "Low storage space"
+msgstr "Бракуе вольнага месца"
+
+#: ../ViewFinderOverlay.qml:773
+msgid ""
+"You are running out of storage space. To continue without interruptions, "
+"free up storage space now."
+msgstr ""
+"Скончваецца вольнае месца для захоўваньня дадзеных. Каб пазьбегнуць гэтага - "
+" вызваліце месца."
+
+#: ../camera-app.qml:37
+msgid "Flash"
+msgstr "Выбліск"
+
+#: ../camera-app.qml:38
+msgid "Light;Dark"
+msgstr "Дзень;Ноч"
+
+#: ../camera-app.qml:41
+msgid "Flip Camera"
+msgstr "Павярнуць камеру"
+
+#: ../camera-app.qml:42
+msgid "Front Facing;Back Facing"
+msgstr "Пярэдняя камера;Задняя камера"
+
+#: ../camera-app.qml:45
+msgid "Shutter"
+msgstr "Затвор"
+
+#: ../camera-app.qml:46
+msgid "Take a Photo;Snap;Record"
+msgstr "Зрабіць фота;Імгненны здымак;Запісаць"
+
+#: ../camera-app.qml:49
+msgid "Mode"
+msgstr "Рэжым"
+
+#: ../camera-app.qml:50
+msgid "Stills;Video"
+msgstr "Фота;Відэа"
+
+#: ../camera-app.qml:54
+msgid "White Balance"
+msgstr "Баланс белага"
+
+#: ../camera-app.qml:55
+msgid "Lighting Condition;Day;Cloudy;Inside"
+msgstr "Умовы асьвятленьня;Ясна;Пахмурна;Памяшканьне"
+
+#: ../camera-app.qml:225
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "<b>%1</b> фотаздымкаў  на сёньня"
+
+#: ../camera-app.qml:226
+msgid "No photos taken today"
+msgstr "Няма сёньняшніх фатаздымкаў"
+
+#: ../camera-app.qml:236
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "<b>%1</b> відэазапісаў на сёньня"
+
+#: ../camera-app.qml:237
+msgid "No videos recorded today"
+msgstr "Няма сёньняшніх відэазапісаў"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Камера"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Фотакамера"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Фота;Відэа;Захоп;Здымка;Здымак;Запіс"
