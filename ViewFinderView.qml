@@ -33,6 +33,31 @@ Item {
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
+
+    onInViewChanged: decideCameraState()
+    Connections {
+        target: viewFinderOverlay
+        onStatusChanged: decideCameraState()
+    }
+
+    function decideCameraState() {
+        if (viewFinderOverlay.status == Loader.Ready) {
+            if (viewFinderView.inView) {
+                camera.cameraState = Camera.LoadedState;
+                viewFinderOverlay.updateResolutionOptions();
+                camera.cameraState = Camera.ActiveState;
+            } else {
+                camera.cameraState = Camera.LoadedState;
+                viewFinderOverlay.updateResolutionOptions();
+            }
+        } else {
+            if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
+                camera.videoRecorder.stop();
+            }
+            camera.cameraState = Camera.UnloadedState;
+        }
+    }
+
     Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
@@ -114,22 +139,6 @@ Item {
         }
     }
 
-    Connections {
-        target: Qt.application
-        onActiveChanged: {
-            if (Qt.application.active) {
-                if (camera.cameraState == Camera.LoadedState) {
-                    camera.cameraState = Camera.ActiveState;
-                }
-            } else if (!application.desktopMode) {
-                if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                    camera.videoRecorder.stop();
-                }
-                camera.cameraState = Camera.LoadedState;
-            }
-        }
-    }
-
     Item {
         id: viewFinderSwitcher
         anchors.fill: parent
@@ -146,7 +155,9 @@ Item {
                     // 'viewFinder.visible = false' prevents the camera switching
                     viewFinder.width = 1;
                     viewFinder.height = 1;
+                    camera.cameraState = Camera.LoadedState;
                     camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0;
+                    decideCameraState();
                     viewFinderSwitcherRotation.angle = 180;
                 }
             }
