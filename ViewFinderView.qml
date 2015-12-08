@@ -20,6 +20,7 @@ import Ubuntu.Components 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
+import Ubuntu.Content 0.1
 
 Item {
     id: viewFinderView
@@ -33,7 +34,7 @@ Item {
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
-    Camera {
+    property Camera camera: Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
         cameraState: Camera.UnloadedState
@@ -77,6 +78,16 @@ Item {
         property bool switchInProgress: false
         
         imageCapture {
+            onReadyChanged: {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>>>> ready ?", camera.imageCapture.ready, main.transfer)
+                if (camera.imageCapture.ready && main.transfer) {
+                    if (main.transfer.contentType === ContentType.Videos) {
+                        viewFinderView.captureMode = Camera.CaptureVideo;
+                    } else {
+                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                    }
+                }
+            }
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
@@ -103,12 +114,14 @@ Item {
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
+                    if (main.contentExportMode) {
+                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                    } else if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                 }
             }
         }

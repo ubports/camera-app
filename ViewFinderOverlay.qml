@@ -672,7 +672,9 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
-                if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                if (main.contentExportMode) {
+                    camera.videoRecorder.outputLocation = application.temporaryLocation;
+                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
                 } else {
                     camera.videoRecorder.outputLocation = application.videosLocation;
