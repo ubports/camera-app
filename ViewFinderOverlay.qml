@@ -989,8 +989,8 @@ Item {
          Dialog {
              id: noPermissionsDialog
              objectName: "noPermissionsDialog"
-             title: i18n.tr("No camera permissions")
-             text: i18n.tr("Camera app doesn't have permissions to access the camera hardware.")
+             title: i18n.tr("No camera permission")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware.")
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: {
@@ -999,12 +999,9 @@ Item {
                  }
              }
              Button {
-                 text: i18n.tr("Edit App Permissions")
+                 text: i18n.tr("Edit Permissions")
                  onClicked: {
-                     // Can't access the camera app permissions page directly. See:
-                     // https://bugs.launchpad.net/ubuntu/+source/ubuntu-system-settings/+bug/1521973
-                     // So we send the user as close as possible.
-                     Qt.openUrlExternally("settings:///system/security-privacy")
+                     Qt.openUrlExternally("settings:///system/security-privacy?service=camera")
                      PopupUtils.close(noPermissionsDialog)
                      permissionErrorMonitor.currentDialog = null
                  }
