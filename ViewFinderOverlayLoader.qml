@@ -29,6 +29,10 @@ Loader {
         loader.item.showFocusRing(x, y);
     }
 
+    function updateResolutionOptions() {
+        loader.item.updateResolutionOptions();
+    }
+
     asynchronous: true
     Component.onCompleted: {
         loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });
