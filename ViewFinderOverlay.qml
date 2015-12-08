@@ -209,6 +209,7 @@ Item {
 
         photoResolutionOptionsModel.insert(0, optionMaximum);
 
+        // Only show optionFitting if it's greater than 50% of the maximum available resolution
         var fittingSize = camera.advanced.fittingResolution.width * camera.advanced.fittingResolution.height;
         var maximumSize = camera.advanced.maximumResolution.width * camera.advanced.maximumResolution.height;
         if (camera.advanced.fittingResolution != camera.advanced.maximumResolution &&
