@@ -1,3 +1,34 @@
+camera-app (3.0.0+16.04.20151202-0ubuntu1) xenial; urgency=medium
+
+  [ Brendan Donegan ]
+  * New release: Bump framework version to ubuntu-sdk-15.04.3 New option
+    for the user to choose between the maximum resolution the sensor
+    allows or the resolution that fits the screen. Add option to disable
+    shutter sound Correctly reset the zoom UI when the actual zoom level
+    of the camera resets due to switching cameras or recording modes
+    Hide the HDR setting while recording video as it does not apply to
+    this mode
+
+  [ Florian Boucault ]
+  * New release: Bump framework version to ubuntu-sdk-15.04.3 New option
+    for the user to choose between the maximum resolution the sensor
+    allows or the resolution that fits the screen. Add option to disable
+    shutter sound Correctly reset the zoom UI when the actual zoom level
+    of the camera resets due to switching cameras or recording modes
+    Hide the HDR setting while recording video as it does not apply to
+    this mode
+
+  [ Ugo Riboni ]
+  * New release: Bump framework version to ubuntu-sdk-15.04.3 New option
+    for the user to choose between the maximum resolution the sensor
+    allows or the resolution that fits the screen. Add option to disable
+    shutter sound Correctly reset the zoom UI when the actual zoom level
+    of the camera resets due to switching cameras or recording modes
+    Hide the HDR setting while recording video as it does not apply to
+    this mode
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Wed, 02 Dec 2015 08:47:51 +0000
+
 camera-app (3.0.0+16.04.20151124-0ubuntu1) xenial; urgency=medium
 
   * Added missing bump of framework version to ubuntu-sdk-15.04.2
