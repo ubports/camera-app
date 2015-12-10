@@ -324,7 +324,6 @@ Window {
                 }
             }
             main.transfer = transfer;
-            console.log("==================== ", main.transfer)
         }
     }
 
