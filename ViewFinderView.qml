@@ -79,7 +79,6 @@ Item {
         
         imageCapture {
             onReadyChanged: {
-                console.log(">>>>>>>>>>>>>>>>>>>>>>>>> ready ?", camera.imageCapture.ready, main.transfer)
                 if (camera.imageCapture.ready && main.transfer) {
                     if (main.transfer.contentType === ContentType.Videos) {
                         viewFinderView.captureMode = Camera.CaptureVideo;
@@ -436,5 +435,6 @@ Item {
         id: viewFinderExportConfirmation
         anchors.fill: parent
         snapshot: snapshot
+        isVideo: main.transfer.contentType == ContentType.Videos
     }
 }
