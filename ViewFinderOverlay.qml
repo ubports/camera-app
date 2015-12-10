@@ -225,13 +225,11 @@ Item {
         }
     }
 
-    Component.onCompleted: {
-        camera.cameraState = Camera.LoadedState;
+    function updateResolutionOptions() {
         updateVideoResolutionOptions();
         updatePhotoResolutionOptions();
         // FIXME: see workaround setting camera.viewfinder.resolution above
         camera.viewfinder.resolution = camera.advanced.resolution;
-        camera.cameraState = Camera.ActiveState;
     }
 
     Connections {
@@ -249,10 +247,7 @@ Item {
             // because the latter is not updated when the backend changes the resolution
             settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.imageCaptureResolution);
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
-            updatePhotoResolutionOptions();
-            updateVideoResolutionOptions();
-            // FIXME: see workaround setting camera.viewfinder.resolution above
-            camera.viewfinder.resolution = camera.advanced.resolution;
+            updateResolutionOptions();
 
             // If no resolution has ever been chosen, select the one that fits the screen
             if (!hasPhotoResolutionSetting) {
