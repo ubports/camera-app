@@ -20,6 +20,7 @@ import Ubuntu.Components 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
+import Ubuntu.Content 0.1
 
 Item {
     id: viewFinderView
@@ -32,7 +33,6 @@ Item {
     property real aspectRatio: viewFinder.sourceRect.height != 0 ? viewFinder.sourceRect.width / viewFinder.sourceRect.height : 1.0
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
-
 
     onInViewChanged: decideCameraState()
     Connections {
@@ -58,7 +58,7 @@ Item {
         }
     }
 
-    Camera {
+    property Camera camera: Camera {
         id: camera
         captureMode: Camera.CaptureStillImage
         cameraState: Camera.UnloadedState
@@ -100,8 +100,17 @@ Item {
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool switchInProgress: false
-        
+
         imageCapture {
+            onReadyChanged: {
+                if (camera.imageCapture.ready && main.transfer) {
+                    if (main.transfer.contentType === ContentType.Videos) {
+                        viewFinderView.captureMode = Camera.CaptureVideo;
+                    } else {
+                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                    }
+                }
+            }
             onCaptureFailed: {
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
@@ -124,16 +133,18 @@ Item {
                 console.log("Picture saved as " + path);
             }
         }
-        
+
         videoRecorder {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
                     metricVideos.increment()
                     viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
+                    if (main.contentExportMode) {
+                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                    } else if (photoRollHint.necessary) {
+                        photoRollHint.enable();
+                    }
                 }
             }
         }
@@ -168,7 +179,7 @@ Item {
                 angle: 180
             }
         }
-        
+
         transform: [
             Scale {
                 id: viewFinderSwitcherScale
@@ -185,11 +196,11 @@ Item {
                 angle: 0
             }
         ]
-        
-        
+
+
         SequentialAnimation {
             id: viewFinderSwitcherAnimation
-            
+
             SequentialAnimation {
                 ParallelAnimation {
                     UbuntuNumberAnimation {target: viewFinderSwitcherScale; property: "xScale"; from: 1.0; to: 0.8; duration: UbuntuAnimation.BriskDuration ; easing: UbuntuAnimation.StandardEasing}
@@ -218,16 +229,16 @@ Item {
                 }
             }
         }
-        
+
         VideoOutput {
             id: viewFinder
-            
+
             x: 0
             y: -viewFinderGeometry.y
             width: parent.width
             height: parent.height
             source: camera
-            
+
             /* This rotation need to be applied since the camera hardware in the
                    Galaxy Nexus phone is mounted at an angle inside the device, so the video
                    feed is rotated too.
@@ -245,7 +256,7 @@ Item {
                 // may change.
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
             }
-            
+
             /* Convenience item tracking the real position and size of the real video feed.
                    Having this helps since these values depend on a lot of rules:
                    - the feed is automatically scaled to fit the viewfinder
@@ -253,7 +264,7 @@ Item {
                    - the resolution and aspect ratio of the feed changes depending on the active camera
                    The item is also separated in a component so it can be unit tested.
                  */
-            
+
             transform: Rotation {
                 origin.x: viewFinder.width / 2
                 origin.y: viewFinder.height / 2
@@ -434,5 +445,6 @@ Item {
         id: viewFinderExportConfirmation
         anchors.fill: parent
         snapshot: snapshot
+        isVideo: main.transfer.contentType == ContentType.Videos
     }
 }
