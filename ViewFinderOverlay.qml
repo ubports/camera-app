@@ -966,4 +966,48 @@ Item {
              }
          }
     }
+
+    Connections {
+        id: permissionErrorMonitor
+        property var currentPermissionsDialog: null
+        target: camera
+        onError: {
+            // Camera.CameraError is very generic, but at the moment this is the only
+            // kind of notification that we receive when permissions have been revoked.
+            if (errorCode == Camera.CameraError && currentPermissionsDialog == null) {
+                currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent);
+            }
+        }
+        onCameraStateChanged: {
+            if (camera.cameraState != Camera.UnloadedState && currentPermissionsDialog != null) {
+                PopupUtils.close(currentPermissionsDialog);
+                currentPermissionsDia   log = null;
+            }
+        }
+    }
+
+    Component {
+         id: noPermissionsDialogComponent
+         Dialog {
+             id: noPermissionsDialog
+             objectName: "noPermissionsDialog"
+             title: i18n.tr("Cannot access camera")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your phone.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: {
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentDialog = null;
+                 }
+             }
+             Button {
+                 text: i18n.tr("Edit Permissions")
+                 onClicked: {
+                     Qt.openUrlExternally("settings:///system/security-privacy?service=camera");
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentDialog = null;
+                 }
+             }
+         }
+    }
 }
