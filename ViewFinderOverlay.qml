@@ -981,7 +981,7 @@ Item {
         onCameraStateChanged: {
             if (camera.cameraState != Camera.UnloadedState && currentPermissionsDialog != null) {
                 PopupUtils.close(currentPermissionsDialog);
-                currentPermissionsDia   log = null;
+                currentPermissionsDialog = null;
             }
         }
     }
