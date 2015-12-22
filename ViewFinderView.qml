@@ -39,6 +39,10 @@ Item {
         target: viewFinderOverlay
         onStatusChanged: decideCameraState()
     }
+    Connections {
+        target: Qt.application
+        onActiveChanged: if (Qt.application.active && camera.failedToConnect) decideCameraState()
+    }
 
     function decideCameraState() {
         if (viewFinderOverlay.status == Loader.Ready) {
@@ -63,6 +67,7 @@ Item {
         captureMode: Camera.CaptureStillImage
         cameraState: Camera.UnloadedState
         StateSaver.properties: "captureMode"
+        property bool failedToConnect: false
 
         function manualFocus(x, y) {
             viewFinderOverlay.showFocusRing(x, y);
