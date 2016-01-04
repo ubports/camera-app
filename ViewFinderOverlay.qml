@@ -972,16 +972,20 @@ Item {
         property var currentPermissionsDialog: null
         target: camera
         onError: {
-            // Camera.CameraError is very generic, but at the moment this is the only
-            // kind of notification that we receive when permissions have been revoked.
-            if (errorCode == Camera.CameraError && currentPermissionsDialog == null) {
-                currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent);
+            if (errorCode == Camera.ServiceMissingError) {
+                if (currentPermissionsDialog == null) {
+                    currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent);
+                }
+                camera.failedToConnect = true;
             }
         }
         onCameraStateChanged: {
-            if (camera.cameraState != Camera.UnloadedState && currentPermissionsDialog != null) {
-                PopupUtils.close(currentPermissionsDialog);
-                currentPermissionsDialog = null;
+            if (camera.cameraState != Camera.UnloadedState) {
+                if (currentPermissionsDialog != null) {
+                    PopupUtils.close(currentPermissionsDialog);
+                    currentPermissionsDialog = null;
+                }
+                camera.failedToConnect = false;
             }
         }
     }
@@ -997,7 +1001,7 @@ Item {
                  text: i18n.tr("Cancel")
                  onClicked: {
                      PopupUtils.close(noPermissionsDialog);
-                     permissionErrorMonitor.currentDialog = null;
+                     permissionErrorMonitor.currentPermissionsDialog = null;
                  }
              }
              Button {
@@ -1005,7 +1009,7 @@ Item {
                  onClicked: {
                      Qt.openUrlExternally("settings:///system/security-privacy?service=camera");
                      PopupUtils.close(noPermissionsDialog);
-                     permissionErrorMonitor.currentDialog = null;
+                     permissionErrorMonitor.currentPermissionsDialog = null;
                  }
              }
          }
