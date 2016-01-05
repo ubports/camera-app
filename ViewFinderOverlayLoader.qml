@@ -24,6 +24,7 @@ Loader {
     property real revealProgress: loader.item ? loader.item.revealProgress : 0
     property var controls: loader.item ? loader.item.controls : null
     property var settings: loader.item.settings
+    signal photoCaptureStarting()
 
     function showFocusRing(x, y) {
         loader.item.showFocusRing(x, y);
@@ -31,6 +32,11 @@ Loader {
 
     function updateResolutionOptions() {
         loader.item.updateResolutionOptions();
+    }
+
+    Connections {
+        target: item
+        onPhotoCaptureStarting: loader.photoCaptureStarting()
     }
 
     asynchronous: true

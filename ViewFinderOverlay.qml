@@ -32,6 +32,7 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
+    signal photoCaptureStarting()
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -696,6 +697,8 @@ Item {
                         camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     }
                 }
+
+                viewFinderOverlay.photoCaptureStarting()
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
