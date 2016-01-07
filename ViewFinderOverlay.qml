@@ -879,6 +879,7 @@ Item {
             MouseArea {
                 id: manualFocusMouseArea
                 anchors.fill: parent
+                enabled: !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
