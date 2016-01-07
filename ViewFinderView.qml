@@ -31,7 +31,6 @@ Item {
     property bool inView
     property alias captureMode: camera.captureMode
     property real aspectRatio: viewFinder.sourceRect.height != 0 ? viewFinder.sourceRect.width / viewFinder.sourceRect.height : 1.0
-    property bool photoCaptureInProgress: false
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
@@ -39,7 +38,6 @@ Item {
     Connections {
         target: viewFinderOverlay
         onStatusChanged: decideCameraState()
-        onPhotoCaptureStarting: viewFinderView.photoCaptureInProgress = true
     }
     Connections {
         target: Qt.application
@@ -107,6 +105,7 @@ Item {
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool switchInProgress: false
+        property bool photoCaptureInProgress: false
 
         imageCapture {
             onReadyChanged: {
@@ -119,7 +118,7 @@ Item {
                 }
             }
             onCaptureFailed: {
-                photoCaptureInProgress = false;
+                camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
             onImageCaptured: {
@@ -137,7 +136,7 @@ Item {
                     viewFinderExportConfirmation.confirmExport(path);
                 }
                 viewFinderView.photoTaken(path);
-                photoCaptureInProgress = false;
+                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
