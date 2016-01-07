@@ -135,7 +135,7 @@ Window {
                 }
             }
         ]
-        interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired && !viewFinderView.photoCaptureInProgress
+        interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired && !viewFinderView.camera.photoCaptureInProgress
 
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition

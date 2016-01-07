@@ -32,7 +32,6 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
-    signal photoCaptureStarting()
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -286,6 +285,7 @@ Item {
             height: optionsOverlayLoader.height
             onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
             Item {
@@ -698,7 +698,7 @@ Item {
                     }
                 }
 
-                viewFinderOverlay.photoCaptureStarting()
+                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
@@ -787,6 +787,7 @@ Item {
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState && !main.contentExportMode
+                     && !camera.photoCaptureInProgress
         }
 
         ShootButton {
@@ -836,6 +837,7 @@ Item {
             }
 
             enabled: !camera.switchInProgress && camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }
@@ -858,6 +860,7 @@ Item {
             property real maximumScale: 3.0
             property bool active: false
 
+            enabled: !camera.photoCaptureInProgress
             onPinchStarted: {
                 active = true;
                 initialZoom = zoomControl.value;
@@ -876,6 +879,7 @@ Item {
             MouseArea {
                 id: manualFocusMouseArea
                 anchors.fill: parent
+                enabled: !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
