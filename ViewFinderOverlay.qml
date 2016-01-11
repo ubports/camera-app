@@ -993,6 +993,8 @@ Item {
                     currentPermissionsDialog = null;
                 }
                 camera.failedToConnect = false;
+            } else {
+                camera.photoCaptureInProgress = false;
             }
         }
     }
