@@ -45,20 +45,13 @@ Item {
     }
 
     function decideCameraState() {
-        if (viewFinderOverlay.status == Loader.Ready) {
-            if (viewFinderView.inView) {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-                camera.cameraState = Camera.ActiveState;
-            } else {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-            }
+        if (viewFinderView.inView) {
+            camera.cameraState = Camera.LoadedState;
+            viewFinderOverlay.updateResolutionOptions();
+            camera.cameraState = Camera.ActiveState;
         } else {
-            if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                camera.videoRecorder.stop();
-            }
-            camera.cameraState = Camera.UnloadedState;
+            camera.cameraState = Camera.LoadedState;
+            viewFinderOverlay.updateResolutionOptions();
         }
     }
 
