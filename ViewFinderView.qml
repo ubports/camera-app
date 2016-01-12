@@ -45,13 +45,15 @@ Item {
     }
 
     function decideCameraState() {
-        if (viewFinderView.inView) {
-            camera.cameraState = Camera.LoadedState;
-            viewFinderOverlay.updateResolutionOptions();
-            camera.cameraState = Camera.ActiveState;
-        } else {
-            camera.cameraState = Camera.LoadedState;
-            viewFinderOverlay.updateResolutionOptions();
+        if (viewFinderOverlay.status == Loader.Ready) {
+            if (viewFinderView.inView) {
+                camera.cameraState = Camera.LoadedState;
+                viewFinderOverlay.updateResolutionOptions();
+                camera.cameraState = Camera.ActiveState;
+            } else {
+                camera.cameraState = Camera.LoadedState;
+                viewFinderOverlay.updateResolutionOptions();
+            }
         }
     }
 
