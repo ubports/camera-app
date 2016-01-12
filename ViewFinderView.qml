@@ -54,11 +54,6 @@ Item {
                 camera.cameraState = Camera.LoadedState;
                 viewFinderOverlay.updateResolutionOptions();
             }
-        } else {
-            if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                camera.videoRecorder.stop();
-            }
-            camera.cameraState = Camera.UnloadedState;
         }
     }
 
