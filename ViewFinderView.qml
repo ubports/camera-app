@@ -34,7 +34,6 @@ Item {
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
-    onInViewChanged: decideCameraState()
     Connections {
         target: viewFinderOverlay
         onStatusChanged: decideCameraState()
@@ -46,14 +45,9 @@ Item {
 
     function decideCameraState() {
         if (viewFinderOverlay.status == Loader.Ready) {
-            if (viewFinderView.inView) {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-                camera.cameraState = Camera.ActiveState;
-            } else {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-            }
+            camera.cameraState = Camera.LoadedState;
+            viewFinderOverlay.updateResolutionOptions();
+            camera.cameraState = Camera.ActiveState;
         }
     }
 
