@@ -108,6 +108,7 @@ private:
     QCameraExposureControl* m_cameraExposureControl;
     QImageEncoderControl* m_imageEncoderControl;
     QVideoEncoderSettingsControl* m_videoEncoderControl;
+    bool m_hdrEnabled;
 };
 
 #endif // ADVANCEDCAMERASETTINGS_H

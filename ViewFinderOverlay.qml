@@ -208,7 +208,12 @@ Item {
                              "value": sizeToString(camera.advanced.fittingResolution)};
 
         photoResolutionOptionsModel.insert(0, optionMaximum);
-        if (camera.advanced.fittingResolution != camera.advanced.maximumResolution) {
+
+        // Only show optionFitting if it's greater than 50% of the maximum available resolution
+        var fittingSize = camera.advanced.fittingResolution.width * camera.advanced.fittingResolution.height;
+        var maximumSize = camera.advanced.maximumResolution.width * camera.advanced.maximumResolution.height;
+        if (camera.advanced.fittingResolution != camera.advanced.maximumResolution &&
+            fittingSize / maximumSize >= 0.5) {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
@@ -220,13 +225,11 @@ Item {
         }
     }
 
-    Component.onCompleted: {
-        camera.cameraState = Camera.LoadedState;
+    function updateResolutionOptions() {
         updateVideoResolutionOptions();
         updatePhotoResolutionOptions();
         // FIXME: see workaround setting camera.viewfinder.resolution above
         camera.viewfinder.resolution = camera.advanced.resolution;
-        camera.cameraState = Camera.ActiveState;
     }
 
     Connections {
@@ -244,10 +247,7 @@ Item {
             // because the latter is not updated when the backend changes the resolution
             settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.imageCaptureResolution);
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
-            updatePhotoResolutionOptions();
-            updateVideoResolutionOptions();
-            // FIXME: see workaround setting camera.viewfinder.resolution above
-            camera.viewfinder.resolution = camera.advanced.resolution;
+            updateResolutionOptions();
 
             // If no resolution has ever been chosen, select the one that fits the screen
             if (!hasPhotoResolutionSetting) {
@@ -285,6 +285,7 @@ Item {
             height: optionsOverlayLoader.height
             onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
             Item {
@@ -667,7 +668,9 @@ Item {
             }
 
             if (camera.captureMode == Camera.CaptureVideo) {
-                if (application.removableStoragePresent && settings.preferRemovableStorage) {
+                if (main.contentExportMode) {
+                    camera.videoRecorder.outputLocation = application.temporaryLocation;
+                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
                     camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
                 } else {
                     camera.videoRecorder.outputLocation = application.videosLocation;
@@ -694,6 +697,8 @@ Item {
                         camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     }
                 }
+
+                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
@@ -782,6 +787,7 @@ Item {
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState && !main.contentExportMode
+                     && !camera.photoCaptureInProgress
         }
 
         ShootButton {
@@ -831,6 +837,7 @@ Item {
             }
 
             enabled: !camera.switchInProgress && camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }
@@ -853,6 +860,7 @@ Item {
             property real maximumScale: 3.0
             property bool active: false
 
+            enabled: !camera.photoCaptureInProgress
             onPinchStarted: {
                 active = true;
                 initialZoom = zoomControl.value;
@@ -871,6 +879,7 @@ Item {
             MouseArea {
                 id: manualFocusMouseArea
                 anchors.fill: parent
+                enabled: !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
@@ -961,6 +970,56 @@ Item {
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
+    }
+
+    Connections {
+        id: permissionErrorMonitor
+        property var currentPermissionsDialog: null
+        target: camera
+        onError: {
+            if (errorCode == Camera.ServiceMissingError) {
+                if (currentPermissionsDialog == null) {
+                    currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent);
+                }
+                camera.failedToConnect = true;
+            }
+        }
+        onCameraStateChanged: {
+            if (camera.cameraState != Camera.UnloadedState) {
+                if (currentPermissionsDialog != null) {
+                    PopupUtils.close(currentPermissionsDialog);
+                    currentPermissionsDialog = null;
+                }
+                camera.failedToConnect = false;
+            } else {
+                camera.photoCaptureInProgress = false;
+            }
+        }
+    }
+
+    Component {
+         id: noPermissionsDialogComponent
+         Dialog {
+             id: noPermissionsDialog
+             objectName: "noPermissionsDialog"
+             title: i18n.tr("Cannot access camera")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your phone.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: {
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentPermissionsDialog = null;
+                 }
+             }
+             Button {
+                 text: i18n.tr("Edit Permissions")
+                 onClicked: {
+                     Qt.openUrlExternally("settings:///system/security-privacy?service=camera");
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentPermissionsDialog = null;
+                 }
              }
          }
     }

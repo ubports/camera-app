@@ -64,7 +64,7 @@ Item {
         }
 
         live: true
-        minimumValue: 1.0 // No zoom => 1.0 zoom factor
+        minimumValue: 0.0 // No zoom => 0.0 zoom factor
         value: minimumValue
     }
 

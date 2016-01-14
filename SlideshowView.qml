@@ -170,7 +170,7 @@ Item {
             ActivityIndicator {
                 anchors.centerIn: parent
                 visible: running
-                running: image.status != Image.Ready
+                running: image.status == Image.Loading
             }
 
             PinchArea {

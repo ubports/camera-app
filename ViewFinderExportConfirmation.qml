@@ -20,6 +20,7 @@ import Ubuntu.Components 1.3
 Item {
     id: viewFinderExportConfirmation
 
+    property bool isVideo
     property string mediaPath
     property Snapshot snapshot
 
@@ -27,7 +28,7 @@ Item {
         viewFinder.visible = false;
         viewFinderOverlay.visible = false;
         mediaPath = path;
-        snapshot.visible = true;
+        if (!isVideo) snapshot.visible = true;
         visible = true;
     }
 
@@ -46,54 +47,70 @@ Item {
         asynchronous: true
         sourceComponent: Component {
             Item {
-                CircleButton {
-                    id: retryButton
-                    objectName: "retryButton"
-
-                    anchors {
-                        right: validateButton.left
-                        rightMargin: units.gu(7.5)
-                        bottom: parent.bottom
-                        bottomMargin: units.gu(6)
-                    }
-
-                    iconName: "reload"
-                    onClicked: viewFinderExportConfirmation.hide()
+                VideoReview {
+                    id: videoReview
+                    anchors.fill: parent
+                    bottomMargin: buttons.height
+                    videoPath: mediaPath
+                    visible: isVideo
                 }
 
-                CircleButton {
-                    id: validateButton
-                    objectName: "validateButton"
+                Item {
+                    id: buttons
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    height: childrenRect.height
 
-                    width: units.gu(8)
-                    anchors {
-                        bottom: parent.bottom
-                        bottomMargin: units.gu(5)
-                        horizontalCenter: parent.horizontalCenter
+                    CircleButton {
+                        id: retryButton
+                        objectName: "retryButton"
+
+                        anchors {
+                            right: validateButton.left
+                            rightMargin: units.gu(7.5)
+                            bottom: parent.bottom
+                            bottomMargin: units.gu(6)
+                        }
+
+                        iconName: "reload"
+                        onClicked: viewFinderExportConfirmation.hide()
                     }
 
-                    iconName: "ok"
-                    onClicked: {
-                        viewFinderExportConfirmation.hide();
-                        main.exportContent([mediaPath]);
+                    CircleButton {
+                        id: validateButton
+                        objectName: "validateButton"
+
+                        width: units.gu(8)
+                        anchors {
+                            bottom: parent.bottom
+                            bottomMargin: units.gu(5)
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        iconName: "ok"
+                        onClicked: {
+                            viewFinderExportConfirmation.hide();
+                            main.exportContent([mediaPath]);
+                        }
                     }
-                }
 
-                CircleButton {
-                    id: cancelButton
-                    objectName: "cancelButton"
+                    CircleButton {
+                        id: cancelButton
+                        objectName: "cancelButton"
 
-                    anchors {
-                        left: validateButton.right
-                        leftMargin: units.gu(7.5)
-                        bottom: parent.bottom
-                        bottomMargin: units.gu(6)
-                    }
+                        anchors {
+                            left: validateButton.right
+                            leftMargin: units.gu(7.5)
+                            bottom: parent.bottom
+                            bottomMargin: units.gu(6)
+                        }
 
-                    iconName: "close"
-                    onClicked: {
-                        viewFinderExportConfirmation.hide();
-                        main.cancelExport();
+                        iconName: "close"
+                        onClicked: {
+                            viewFinderExportConfirmation.hide();
+                            main.cancelExport();
+                        }
                     }
                 }
             }
