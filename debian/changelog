@@ -1,3 +1,30 @@
+camera-app (3.0.0+16.04.20160114-0ubuntu1) xenial; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk. added: po/be.po
+
+  [ Florian Boucault ]
+  * New release: Only show fitting resolution option if it's greater
+    than 50% of the maximum available resolution. Fixed 2 CPU wasters:
+    when in photo roll's grid mode, do not have the slideshow mode's
+    ActivityIndicator running. When in photo roll, disable viewfinder.
+    Enable camera-app as source for videos for content-hub export, and
+    adjust the UI Notify the user when camera permissions have been
+    revoked, and provide shortcut to change them again added:
+    VideoReview.qml
+
+  [ Ugo Riboni ]
+  * New release: Only show fitting resolution option if it's greater
+    than 50% of the maximum available resolution. Fixed 2 CPU wasters:
+    when in photo roll's grid mode, do not have the slideshow mode's
+    ActivityIndicator running. When in photo roll, disable viewfinder.
+    Enable camera-app as source for videos for content-hub export, and
+    adjust the UI Notify the user when camera permissions have been
+    revoked, and provide shortcut to change them again added:
+    VideoReview.qml
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Thu, 14 Jan 2016 16:08:35 +0000
+
 camera-app (3.0.0+16.04.20151202-0ubuntu1) xenial; urgency=medium
 
   [ Brendan Donegan ]
