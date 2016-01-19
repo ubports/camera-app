@@ -7,45 +7,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-21 18:57+0200\n"
+"POT-Creation-Date: 2016-01-14 16:57+0100\n"
 "PO-Revision-Date: 2015-03-01 04:46+0000\n"
 "Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
 "Language-Team: Punjabi <pa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-24 05:33+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2016-01-19 05:44+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "ਮੀਡੀਆ ਹਟਾਓ?"
 
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:50 ../SlideshowView.qml:55
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:52 ../SlideshowView.qml:58
 msgid "Delete"
 msgstr "ਹਟਾਓ"
 
-#: ../DeleteDialog.qml:42 ../ViewFinderOverlay.qml:775
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:971
+#: ../ViewFinderOverlay.qml:1010
 msgid "Cancel"
 msgstr "ਰੱਦ"
 
-#: ../GalleryView.qml:188
+#: ../GalleryView.qml:194
 msgid "No media available."
 msgstr "ਕੋਈ ਮੀਡੀਆ ਮੌਜੂਦ ਨਹੀਂ।"
 
-#: ../GalleryView.qml:222
+#: ../GalleryView.qml:228
 msgid "Scanning for content..."
 msgstr "ਸਮੱਗਰੀ ਲਈ ਸਕੈਨ ਕਰ ਰਿਹਾ..."
 
-#: ../GalleryViewHeader.qml:78 ../SlideshowView.qml:42
+#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
 msgid "Select"
 msgstr "ਚੁਣੋ"
 
-#: ../GalleryViewHeader.qml:79
+#: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "ਫ਼ੋਟੋ ਸੋਧ"
 
-#: ../GalleryViewHeader.qml:79
+#: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "ਫ਼ੋਟੋ ਰੋਲ"
 
@@ -53,7 +54,7 @@ msgstr "ਫ਼ੋਟੋ ਰੋਲ"
 msgid "No space left on device, free up space to continue."
 msgstr "ਜੰਤਰ ਤੇ ਕੋਈ ਥਾਂ ਨਹੀਂ ਬਚੀ, ਜਾਰੀ ਰੱਖਣ ਲਈ ਥਾਂ ਖਾਲੀ ਕਰੋ।"
 
-#: ../PhotoRollHint.qml:68
+#: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "ਫ਼ੋਟੋ ਰੋਲ ਲਈ ਖਂਬੇ ਪਾਸੇ ਸਵਾਈਪ ਕਰੋ"
 
@@ -61,85 +62,96 @@ msgstr "ਫ਼ੋਟੋ ਰੋਲ ਲਈ ਖਂਬੇ ਪਾਸੇ ਸਵਾਈਪ 
 msgid "Share"
 msgstr "ਸਾਂਝਾ ਕਰੋ"
 
-#: ../SlideshowView.qml:63
+#: ../SlideshowView.qml:69
 msgid "Edit"
 msgstr "ਸੋਧ"
 
-#: ../ViewFinderOverlay.qml:200 ../ViewFinderOverlay.qml:223
-#: ../ViewFinderOverlay.qml:251 ../ViewFinderOverlay.qml:274
-#: ../ViewFinderOverlay.qml:351
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:86
+#: ../ViewFinderOverlay.qml:327 ../ViewFinderOverlay.qml:350
+#: ../ViewFinderOverlay.qml:378 ../ViewFinderOverlay.qml:401
+#: ../ViewFinderOverlay.qml:478 ../ViewFinderOverlay.qml:535
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
 msgstr "ਚਾਲੂ"
 
-#: ../ViewFinderOverlay.qml:205 ../ViewFinderOverlay.qml:233
-#: ../ViewFinderOverlay.qml:256 ../ViewFinderOverlay.qml:279
-#: ../ViewFinderOverlay.qml:298 ../ViewFinderOverlay.qml:356
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../build/tests/unittests/tst_BottomEdgeIndicators.qml:91
+#: ../ViewFinderOverlay.qml:332 ../ViewFinderOverlay.qml:360
+#: ../ViewFinderOverlay.qml:383 ../ViewFinderOverlay.qml:406
+#: ../ViewFinderOverlay.qml:425 ../ViewFinderOverlay.qml:483
+#: ../ViewFinderOverlay.qml:540
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
 msgstr "ਬੰਦ"
 
-#: ../ViewFinderOverlay.qml:228
+#: ../ViewFinderOverlay.qml:355
 msgid "Auto"
 msgstr "ਸਵੈ"
 
-#: ../ViewFinderOverlay.qml:265
+#: ../ViewFinderOverlay.qml:392
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:303
+#: ../ViewFinderOverlay.qml:430
 msgid "5 seconds"
 msgstr "5 ਸਕਿੰਟ"
 
-#: ../ViewFinderOverlay.qml:308
+#: ../ViewFinderOverlay.qml:435
 msgid "15 seconds"
 msgstr "15 ਸਕਿੰਟ"
 
-#: ../ViewFinderOverlay.qml:325
+#: ../ViewFinderOverlay.qml:452
 msgid "Fine Quality"
 msgstr "ਵਧੀਆ ਗੁਣਵੱਤਾ"
 
-#: ../ViewFinderOverlay.qml:329
+#: ../ViewFinderOverlay.qml:456
 msgid "Normal Quality"
 msgstr "ਆਮ ਗੁਣਵੱਤਾ"
 
-#: ../ViewFinderOverlay.qml:333
+#: ../ViewFinderOverlay.qml:460
 msgid "Basic Quality"
 msgstr "ਬੁਨਿਆਦੀ ਗੁਣਵੱਤਾ"
 
-#: ../ViewFinderOverlay.qml:365
+#: ../ViewFinderOverlay.qml:492
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:373
+#: ../ViewFinderOverlay.qml:500
 msgid "Save to SD Card"
 msgstr "SD ਕਾਰਡ ਤੇ ਸੰਭਾਲ੍ਹੋ"
 
-#: ../ViewFinderOverlay.qml:378
+#: ../ViewFinderOverlay.qml:505
 msgid "Save internally"
 msgstr "ਅੰਦੂਰਨੀ ਤੌਰ ਤੇ ਸੰਭਾਲ੍ਹੋ"
 
-#: ../ViewFinderOverlay.qml:772
+#: ../ViewFinderOverlay.qml:968
 msgid "Low storage space"
 msgstr "ਘੱਟ ਸਟੋਰੇਜ਼ ਥਾਂ"
 
-#: ../ViewFinderOverlay.qml:773
+#: ../ViewFinderOverlay.qml:969
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 "ਤੁਸੀਂ ਸਟੋਰੇਜ਼ ਥਾਂ ਖਤਮ ਹੋ ਗਈ ਹੈ, ਬਿਨਾਂ ਰੁਕਾਵਟ ਦੇ ਜਾਰੀ ਰੱਖਣ ਲਈ, ਹੁਣੇ ਸਟੋਰੇਜ਼ "
 "ਥਾਂ ਖਾਲੀ ਕਰੋ।"
+
+#: ../ViewFinderOverlay.qml:1007
+msgid "Cannot access camera"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1008
+msgid ""
+"Camera app doesn't have permission to access the camera hardware or another "
+"error occurred.\n"
+"\n"
+"If granting permission does not resolve this problem, reboot your phone."
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1017
+msgid "Edit Permissions"
+msgstr ""
 
 #: ../camera-app.qml:37
 msgid "Flash"
@@ -181,21 +193,21 @@ msgstr "ਸਫ਼ੈਦ ਸੰਤੁਲਨ"
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "ਰੌਸਨੀ ਦੇ ਹਾਲਾਤ;ਦਿਨ;ਬੱਦਲ;ਅੰਦਰ"
 
-#: ../camera-app.qml:225
+#: ../camera-app.qml:335
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "<b>%1</b> ਅੱਜ ਖਿੱਚੀਆਂ ਫ਼ੋਟੋਆਂ"
 
-#: ../camera-app.qml:226
+#: ../camera-app.qml:336
 msgid "No photos taken today"
 msgstr "ਅੱਜ ਕੋਈ ਫ਼ੋਟੋ ਨਹੀਂ ਖਿੱਚੀ"
 
-#: ../camera-app.qml:236
+#: ../camera-app.qml:346
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "<b>%1</b> ਅੱਜ ਰਿਕਾਰਡ ਕੀਤੀਆਂ ਵੀਡੀਓ"
 
-#: ../camera-app.qml:237
+#: ../camera-app.qml:347
 msgid "No videos recorded today"
 msgstr "ਅੱਜ ਕੋਈ ਵੀਡੀਓ ਰਿਕਾਰਡ ਨਹੀਂ ਕੀਤੀ"
 
