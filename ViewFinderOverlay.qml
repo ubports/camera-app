@@ -879,14 +879,12 @@ Item {
             MouseArea {
                 id: manualFocusMouseArea
                 anchors.fill: parent
-                enabled: !camera.photoCaptureInProgress
+                enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom) &&
+                         !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
                 }
-                // FIXME: calling 'isFocusPointModeSupported' fails with
-                // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
-                //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
             }
         }
 
