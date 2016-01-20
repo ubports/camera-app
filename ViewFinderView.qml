@@ -61,8 +61,14 @@ Item {
         function manualFocus(x, y) {
             viewFinderOverlay.showFocusRing(x, y);
             autoFocusTimer.restart();
+
+            var p = viewFinder.mapPointToSourceNormalized(Qt.point(x, y));
+            // Adjust coordinates of the focus point in case the sensor is rotated
+            // compared to the video feed, since this does not seem to be taken
+            // into account by mapPointToSourceNormalized.
+            if (viewFinderGeometry.viewFinderOrientation == -90) p.y = 1.0 - p.y;
             focus.focusMode = Camera.FocusAuto;
-            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y));
+            focus.customFocusPoint = p;
             focus.focusPointMode = Camera.FocusPointCustom;
         }
 
