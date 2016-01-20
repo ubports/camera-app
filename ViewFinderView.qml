@@ -260,14 +260,6 @@ Item {
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
             }
 
-            /* Convenience item tracking the real position and size of the real video feed.
-                   Having this helps since these values depend on a lot of rules:
-                   - the feed is automatically scaled to fit the viewfinder
-                   - the viewfinder might apply a rotation to the feed, depending on device orientation
-                   - the resolution and aspect ratio of the feed changes depending on the active camera
-                   The item is also separated in a component so it can be unit tested.
-                 */
-
             transform: Rotation {
                 origin.x: viewFinder.width / 2
                 origin.y: viewFinder.height / 2
@@ -276,6 +268,13 @@ Item {
             }
         }
 
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
+         */
         ViewFinderGeometry {
             id: viewFinderGeometry
             anchors.centerIn: parent
