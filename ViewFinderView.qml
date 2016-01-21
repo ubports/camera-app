@@ -237,30 +237,22 @@ Item {
             source: camera
 
             /* This rotation need to be applied since the camera hardware in the
-                   Galaxy Nexus phone is mounted at an angle inside the device, so the video
-                   feed is rotated too.
-                   FIXME: This should come from a system configuration option so that we
-                   don't have to have a different codebase for each different device we want
-                   to run on. Android has that information and QML has an API to reflect it:
-                   the camera.orientation property. Unfortunately it is not hooked up yet.
+               Galaxy Nexus phone is mounted at an angle inside the device, so the video
+               feed is rotated too.
+               FIXME: This should come from a system configuration option so that we
+               don't have to have a different codebase for each different device we want
+               to run on. Android has that information and QML has an API to reflect it:
+               the camera.orientation property. Unfortunately it is not hooked up yet.
 
-                   Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
-                         http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
-                         http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
+               Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
+                     http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
+                     http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
             */
             Component.onCompleted: {
                 // Set orientation only at startup because later on Screen.primaryOrientation
                 // may change.
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
             }
-
-            /* Convenience item tracking the real position and size of the real video feed.
-                   Having this helps since these values depend on a lot of rules:
-                   - the feed is automatically scaled to fit the viewfinder
-                   - the viewfinder might apply a rotation to the feed, depending on device orientation
-                   - the resolution and aspect ratio of the feed changes depending on the active camera
-                   The item is also separated in a component so it can be unit tested.
-                 */
 
             transform: Rotation {
                 origin.x: viewFinder.width / 2
@@ -270,6 +262,13 @@ Item {
             }
         }
 
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
+         */
         ViewFinderGeometry {
             id: viewFinderGeometry
             anchors.centerIn: parent
