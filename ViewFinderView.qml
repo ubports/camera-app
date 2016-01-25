@@ -96,6 +96,15 @@ Item {
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
 
+        onPhotoCaptureInProgressChanged: {
+            if (photoCaptureInProgress) {
+                snapshot.lockOrientation();
+                if (!main.contentExportMode) {
+                    viewFinder.opacity = 0.2;
+                }
+            }
+        }
+
         imageCapture {
             onReadyChanged: {
                 if (camera.imageCapture.ready && main.transfer) {
@@ -110,7 +119,6 @@ Item {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
-            onImageCaptured: snapshot.lockOrientation()
             onImageSaved: {
                 if (!main.contentExportMode) {
                     snapshot.source = "image://photo/%1".arg(path);
@@ -255,6 +263,10 @@ Item {
                 origin.y: viewFinder.height / 2
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: application.desktopMode ? 180 : 0
+            }
+
+            Behavior on opacity {
+                NumberAnimation { duration: UbuntuAnimation.SnapDuration }
             }
         }
 
@@ -431,7 +443,10 @@ Item {
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
-        onSlidingChanged: viewFinderOverlay.visible = !sliding
+        onSlidingChanged: {
+            if (sliding) viewFinder.opacity = 1.0
+            viewFinderOverlay.visible = !sliding
+        }
     }
 
     ViewFinderExportConfirmation {

@@ -27,7 +27,7 @@ Item {
     property bool deviceDefaultIsPortrait: true
     property bool loading: snapshot.status == Image.Loading
 
-    visible: false
+    opacity: 0.0
 
     // Rotation and sliding direction is locked at the moment the picture is shoot
     // (in case processing is long, such as with HDR)
@@ -78,8 +78,10 @@ Item {
     SequentialAnimation {
         id: shoot
 
-        PropertyAction { target: snapshotRoot; property: "visible"; value: true }
-        PauseAnimation { duration: 150 }
+        NumberAnimation {
+            target: snapshotRoot; property: "opacity"; to: 1.0
+            duration: UbuntuAnimation.SnapDuration
+        }
         XAnimator {
             target: container
             to: angleToOrientation[orientationAngle] == "PORTRAIT" ? container.width + shadow.width : 0
@@ -94,7 +96,7 @@ Item {
             easing: UbuntuAnimation.StandardEasing
         }
         PropertyAction { target: snapshot; property: "source"; value: ""}
-        PropertyAction { target: snapshotRoot; property: "visible"; value: false }
+        PropertyAction { target: snapshotRoot; property: "opacity"; value: 0.0 }
         PropertyAction { target: container; property: "x"; value: 0 }
         PropertyAction { target: container; property: "y"; value: 0 }
     }
