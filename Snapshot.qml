@@ -27,11 +27,11 @@ Item {
     property bool deviceDefaultIsPortrait: true
     property bool loading: snapshot.status == Image.Loading
 
-    function startOutAnimation() {
-        shoot.restart()
-    }
-
     visible: false
+
+    // Rotation and sliding direction is locked at the moment the picture is shoot
+    // (in case processing is long, such as with HDR)
+    function lockOrientation() { snapshot.rotation = orientationAngle }
 
     Item {
         id: container
@@ -42,25 +42,28 @@ Item {
             id: snapshot
             anchors.centerIn: parent
             anchors.verticalCenterOffset: -geometry.y
-            rotation: snapshotRoot.orientation * -1
 
             asynchronous: true
             cache: false
             fillMode: Image.PreserveAspectFit
             smooth: false
-            width: deviceDefaultIsPortrait ? geometry.height : geometry.width
-            height: deviceDefaultIsPortrait ? geometry.width : geometry.height
+            width: rotation == 0 ? geometry.width : geometry.height
+            height: rotation == 0 ? geometry.height : geometry.width
             sourceSize.width: width
             sourceSize.height: height
+
+            onStatusChanged: if (snapshot.status == Image.Ready) shoot.restart()
         }
 
         Image {
             id: shadow
 
-            property bool rotated: (snapshot.rotation % 180) != 0
-            height: rotated ? snapshot.width : snapshot.height
+            transformOrigin: Item.TopLeft
+            rotation: snapshot.rotation
             width: units.gu(2)
-            x: (container.width - (rotated ? snapshot.height : snapshot.width)) / 2 - width
+            height: rotation == 0 ? snapshot.height : snapshot.width
+            x: rotation == 90 ? container.width : - width
+            y: rotation == 270 ? container.height + width : (rotation == 90 ? - width : 0)
             source: "assets/shadow.png"
             fillMode: Image.Stretch
             asynchronous: true

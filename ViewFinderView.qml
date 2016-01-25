@@ -110,18 +110,14 @@ Item {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
-            onImageCaptured: {
-                snapshot.source = preview;
+            onImageCaptured: snapshot.lockOrientation()
+            onImageSaved: {
                 if (!main.contentExportMode) {
-                    viewFinderOverlay.visible = true;
-                    snapshot.startOutAnimation();
+                    snapshot.source = "image://photo/%1".arg(path);
                     if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
-                }
-            }
-            onImageSaved: {
-                if (main.contentExportMode) {
+                } else {
                     viewFinderExportConfirmation.confirmExport(path);
                 }
                 viewFinderView.photoTaken(path);
@@ -435,6 +431,7 @@ Item {
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+        onSlidingChanged: viewFinderOverlay.visible = !sliding
     }
 
     ViewFinderExportConfirmation {
