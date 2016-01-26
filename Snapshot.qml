@@ -21,6 +21,7 @@ import Ubuntu.Components 1.3
 Item {
     id: snapshotRoot
     property alias source: snapshot.source
+    property bool shouldSlide: true
     property bool sliding: false
     property int orientation
     property ViewFinderGeometry geometry
@@ -52,7 +53,7 @@ Item {
             sourceSize.width: width
             sourceSize.height: height
 
-            onStatusChanged: if (snapshot.status == Image.Ready) shoot.restart()
+            onStatusChanged: if (shouldSlide && snapshot.status == Image.Ready) shoot.restart()
         }
 
         Image {

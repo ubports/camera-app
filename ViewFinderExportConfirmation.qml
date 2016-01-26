@@ -28,7 +28,7 @@ Item {
         viewFinder.visible = false;
         viewFinderOverlay.visible = false;
         mediaPath = path;
-        if (!isVideo) snapshot.visible = true;
+        if (!isVideo) snapshot.opacity = 1.0;
         visible = true;
     }
 
@@ -36,7 +36,7 @@ Item {
         viewFinder.visible = true;
         viewFinderOverlay.visible = true;
         snapshot.source = "";
-        snapshot.visible = false;
+        snapshot.opacity = 0.0;
         visible = false;
     }
 

@@ -99,9 +99,7 @@ Item {
         onPhotoCaptureInProgressChanged: {
             if (photoCaptureInProgress) {
                 snapshot.lockOrientation();
-                if (!main.contentExportMode) {
-                    viewFinder.opacity = 0.1;
-                }
+                viewFinder.opacity = 0.1;
             }
         }
 
@@ -417,11 +415,8 @@ Item {
         orientation: viewFinder.orientation
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
-        onSlidingChanged: {
-            if (sliding) {
-                viewFinder.opacity = 1.0
-            }
-        }
+        shouldSlide: !main.contentExportMode
+        onSlidingChanged: if (sliding) viewFinder.opacity = 1.0
     }
 
     ViewFinderOverlayLoader {
@@ -449,5 +444,6 @@ Item {
         anchors.fill: parent
         snapshot: snapshot
         isVideo: main.transfer.contentType == ContentType.Videos
+        onVisibleChanged: if (visible) viewFinder.opacity = 1.0
     }
 }
