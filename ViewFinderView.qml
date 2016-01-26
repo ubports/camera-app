@@ -120,9 +120,11 @@ Item {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
+
+            onImageCaptured: snapshot.source = preview
+
             onImageSaved: {
                 if (!main.contentExportMode) {
-                    snapshot.source = "image://photo/%1".arg(path);
                     if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
