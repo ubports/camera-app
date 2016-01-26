@@ -21,7 +21,7 @@ import Ubuntu.Components 1.3
 Item {
     id: snapshotRoot
     property alias source: snapshot.source
-    property alias sliding: shoot.running
+    property bool sliding: false
     property int orientation
     property ViewFinderGeometry geometry
     property bool deviceDefaultIsPortrait: true
@@ -82,6 +82,8 @@ Item {
             target: snapshotRoot; property: "opacity"; to: 1.0
             duration: UbuntuAnimation.SnapDuration
         }
+        PauseAnimation { duration: 150 }
+        PropertyAction { target: snapshotRoot; property: "sliding"; value: true}
         XAnimator {
             target: container
             to: angleToOrientation[orientationAngle] == "PORTRAIT" ? container.width + shadow.width : 0
@@ -99,5 +101,6 @@ Item {
         PropertyAction { target: snapshotRoot; property: "opacity"; value: 0.0 }
         PropertyAction { target: container; property: "x"; value: 0 }
         PropertyAction { target: container; property: "y"; value: 0 }
+        PropertyAction { target: snapshotRoot; property: "sliding"; value: false}
     }
 }

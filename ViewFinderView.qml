@@ -100,7 +100,8 @@ Item {
             if (photoCaptureInProgress) {
                 snapshot.lockOrientation();
                 if (!main.contentExportMode) {
-                    viewFinder.opacity = 0.2;
+                    viewFinderOverlay.visible = false;
+                    viewFinder.opacity = 0.1;
                 }
             }
         }
@@ -264,10 +265,6 @@ Item {
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: application.desktopMode ? 180 : 0
             }
-
-            Behavior on opacity {
-                NumberAnimation { duration: UbuntuAnimation.SnapDuration }
-            }
         }
 
         /* Convenience item tracking the real position and size of the real video feed.
@@ -400,7 +397,7 @@ Item {
                 target: shootFeedback
                 from: 1.0
                 to: 0.0
-                duration: 50
+                duration: UbuntuAnimation.SnapDuration
                 easing: UbuntuAnimation.StandardEasing
             }
         }
@@ -444,8 +441,10 @@ Item {
         geometry: viewFinderGeometry
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
         onSlidingChanged: {
-            if (sliding) viewFinder.opacity = 1.0
-            viewFinderOverlay.visible = !sliding
+            if (sliding) {
+                viewFinder.opacity = 1.0
+                viewFinderOverlay.visible = true;
+            }
         }
     }
 

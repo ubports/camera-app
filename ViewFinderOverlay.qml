@@ -684,6 +684,7 @@ Item {
                 if (!main.contentExportMode) {
                     shootFeedback.start();
                 }
+                camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
@@ -698,7 +699,6 @@ Item {
                     }
                 }
 
-                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
