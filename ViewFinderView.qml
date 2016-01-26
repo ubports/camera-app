@@ -100,7 +100,6 @@ Item {
             if (photoCaptureInProgress) {
                 snapshot.lockOrientation();
                 if (!main.contentExportMode) {
-                    viewFinderOverlay.visible = false;
                     viewFinder.opacity = 0.1;
                 }
             }
@@ -142,7 +141,6 @@ Item {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
                         viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
@@ -336,12 +334,10 @@ Item {
             anchors.fill: parent
 
             function start() {
-                viewFinderOverlay.visible = false;
             }
 
             function stop() {
                 remainingSecsLabel.text = "";
-                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
@@ -390,7 +386,6 @@ Item {
 
             function start() {
                 shootFeedback.opacity = 1.0;
-                viewFinderOverlay.visible = false;
                 shootFeedbackAnimation.restart();
             }
 
@@ -416,6 +411,19 @@ Item {
         visible: radius !== 0
     }
 
+    Snapshot {
+        id: snapshot
+        anchors.fill: parent
+        orientation: viewFinder.orientation
+        geometry: viewFinderGeometry
+        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+        onSlidingChanged: {
+            if (sliding) {
+                viewFinder.opacity = 1.0
+            }
+        }
+    }
+
     ViewFinderOverlayLoader {
         id: viewFinderOverlay
 
@@ -433,20 +441,6 @@ Item {
         Connections {
             target: viewFinderView
             onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
-        }
-    }
-
-    Snapshot {
-        id: snapshot
-        anchors.fill: parent
-        orientation: viewFinder.orientation
-        geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
-        onSlidingChanged: {
-            if (sliding) {
-                viewFinder.opacity = 1.0
-                viewFinderOverlay.visible = true;
-            }
         }
     }
 
