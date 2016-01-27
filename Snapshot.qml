@@ -27,12 +27,15 @@ Item {
     property ViewFinderGeometry geometry
     property bool deviceDefaultIsPortrait: true
     property bool loading: snapshot.status == Image.Loading
+    property bool loaded: snapshot.status == Image.Ready
 
     opacity: 0.0
 
     // Rotation and sliding direction is locked at the moment the picture is shoot
     // (in case processing is long, such as with HDR)
     function lockOrientation() { snapshot.rotation = orientationAngle }
+
+    onLoadedChanged: if (loaded && shouldSlide) shoot.restart()
 
     Item {
         id: container
@@ -52,8 +55,6 @@ Item {
             height: rotation == 0 ? geometry.height : geometry.width
             sourceSize.width: width
             sourceSize.height: height
-
-            onStatusChanged: if (shouldSlide && snapshot.status == Image.Ready) shoot.restart()
         }
 
         Image {

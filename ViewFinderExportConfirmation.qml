@@ -24,10 +24,9 @@ Item {
     property string mediaPath
     property Snapshot snapshot
 
-    function confirmExport(path) {
+    function confirmExport() {
         viewFinder.visible = false;
         viewFinderOverlay.visible = false;
-        mediaPath = path;
         if (!isVideo) snapshot.opacity = 1.0;
         visible = true;
     }
@@ -92,6 +91,7 @@ Item {
                         onClicked: {
                             viewFinderExportConfirmation.hide();
                             main.exportContent([mediaPath]);
+                            mediaPath = "";
                         }
                     }
 
@@ -110,6 +110,7 @@ Item {
                         onClicked: {
                             viewFinderExportConfirmation.hide();
                             main.cancelExport();
+                            mediaPath = "";
                         }
                     }
                 }

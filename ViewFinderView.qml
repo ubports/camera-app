@@ -126,8 +126,12 @@ Item {
                         photoRollHint.enable();
                     }
                 } else {
-                    viewFinderExportConfirmation.confirmExport(path);
+                    // run confirmExport only when both the image is saved and the snapshot is loaded
+                    // to prevent the screen being black while the snapshot loads
+                    viewFinderExportConfirmation.mediaPath = path;
+                    if (snapshot.loaded) viewFinderExportConfirmation.confirmExport()
                 }
+
                 viewFinderView.photoTaken(path);
                 camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
@@ -141,7 +145,8 @@ Item {
                     metricVideos.increment()
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
-                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                        viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
+                        viewFinderExportConfirmation.confirmExport();
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
@@ -417,6 +422,10 @@ Item {
         deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
         shouldSlide: !main.contentExportMode
         onSlidingChanged: if (sliding) viewFinder.opacity = 1.0
+
+        // run confirmExport only when both the image is saved and the snapshot is loaded
+        // to prevent the screen being black while the snapshot loads
+        onLoadedChanged: if (loaded && viewFinderExportConfirmation.mediaPath != "") viewFinderExportConfirmation.confirmExport()
     }
 
     ViewFinderOverlayLoader {
