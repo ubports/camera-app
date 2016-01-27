@@ -26,6 +26,8 @@ Item {
     height: icon.height
     opacity: enabled ? 1.0 : 0.5
 
+    property alias pulsing: progressAnimation.running
+
     MouseArea {
         anchors.fill: parent
         onClicked: shootButton.clicked()
@@ -52,4 +54,38 @@ Item {
             PropertyChanges { target: icon; source: "assets/record_video_stop.png" }
         }
     ]
+
+    SequentialAnimation {
+        id: progressAnimation
+        alwaysRunToEnd: true
+        loops: Animation.Infinite
+
+        UbuntuNumberAnimation {
+            target: shootButton
+            properties: "opacity"
+            from: 0.5
+            to: 0.1
+            duration: 750
+        }
+
+        UbuntuNumberAnimation {
+            target: shootButton
+            properties: "opacity"
+            from: 0.1
+            to: 0.5
+            duration: 750
+        }
+
+        onStopped: restoreAnimation.restart()
+   }
+
+    UbuntuNumberAnimation {
+        id: restoreAnimation
+        target: shootButton
+        properties: "opacity"
+        from: 0.5
+        to: 1.0
+        duration: 750
+    }
+
 }
