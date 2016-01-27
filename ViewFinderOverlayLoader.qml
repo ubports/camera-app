@@ -33,10 +33,6 @@ Loader {
         loader.item.updateResolutionOptions();
     }
 
-    function setCaptureInProgress(captureInProgress) {
-        if (loader.item) loader.item.captureInProgress = captureInProgress
-    }
-
     asynchronous: true
     Component.onCompleted: {
         loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });

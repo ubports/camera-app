@@ -32,7 +32,6 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
-    property bool captureInProgress: false
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -825,7 +824,7 @@ Item {
                 }
             }
 
-            pulsing: viewFinderOverlay.captureInProgress
+            pulsing: camera.photoCaptureInProgress
         }
 
         CircleButton {

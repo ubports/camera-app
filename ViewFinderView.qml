@@ -101,7 +101,6 @@ Item {
                 snapshot.lockOrientation();
                 viewFinder.opacity = 0.1;
             }
-            viewFinderOverlay.setCaptureInProgress(photoCaptureInProgress)
         }
 
         imageCapture {
