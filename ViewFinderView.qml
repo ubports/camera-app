@@ -126,7 +126,6 @@ Item {
                         photoRollHint.enable();
                     }
                 } else {
-                    console.log(">>>>>>>>>>>>>>>>>>> TRANSFER MODE <<<<<<<<<<<<<<<<<<")
                     // show export confirmation only when both the image is saved and the snapshot
                     // is loaded to prevent the screen being black while the image loads
                     viewFinderExportConfirmation.mediaPath = path;
