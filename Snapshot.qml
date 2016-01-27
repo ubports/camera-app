@@ -23,9 +23,7 @@ Item {
     property alias source: snapshot.source
     property bool shouldSlide: true
     property bool sliding: false
-    property int orientation
     property ViewFinderGeometry geometry
-    property bool deviceDefaultIsPortrait: true
     property bool loading: snapshot.status == Image.Loading
     property bool loaded: snapshot.status == Image.Ready
 

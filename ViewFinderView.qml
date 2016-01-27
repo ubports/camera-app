@@ -417,9 +417,7 @@ Item {
     Snapshot {
         id: snapshot
         anchors.fill: parent
-        orientation: viewFinder.orientation
         geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
         shouldSlide: !main.contentExportMode
         onSlidingChanged: if (sliding) viewFinder.opacity = 1.0
 
