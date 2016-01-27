@@ -22,22 +22,7 @@ Item {
 
     property bool isVideo
     property string mediaPath
-    property Snapshot snapshot
-
-    function confirmExport() {
-        viewFinder.visible = false;
-        viewFinderOverlay.visible = false;
-        if (!isVideo) snapshot.opacity = 1.0;
-        visible = true;
-    }
-
-    function hide() {
-        viewFinder.visible = true;
-        viewFinderOverlay.visible = true;
-        snapshot.source = "";
-        snapshot.opacity = 0.0;
-        visible = false;
-    }
+    signal hideRequested()
 
     visible: false
 
@@ -73,7 +58,7 @@ Item {
                         }
 
                         iconName: "reload"
-                        onClicked: viewFinderExportConfirmation.hide()
+                        onClicked: hideRequested()
                     }
 
                     CircleButton {
@@ -89,7 +74,7 @@ Item {
 
                         iconName: "ok"
                         onClicked: {
-                            viewFinderExportConfirmation.hide();
+                            hideRequested();
                             main.exportContent([mediaPath]);
                             mediaPath = "";
                         }
@@ -108,7 +93,7 @@ Item {
 
                         iconName: "close"
                         onClicked: {
-                            viewFinderExportConfirmation.hide();
+                            hideRequested();
                             main.cancelExport();
                             mediaPath = "";
                         }

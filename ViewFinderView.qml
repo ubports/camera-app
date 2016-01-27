@@ -126,10 +126,11 @@ Item {
                         photoRollHint.enable();
                     }
                 } else {
-                    // run confirmExport only when both the image is saved and the snapshot is loaded
-                    // to prevent the screen being black while the snapshot loads
+                    console.log(">>>>>>>>>>>>>>>>>>> TRANSFER MODE <<<<<<<<<<<<<<<<<<")
+                    // show export confirmation only when both the image is saved and the snapshot
+                    // is loaded to prevent the screen being black while the image loads
                     viewFinderExportConfirmation.mediaPath = path;
-                    if (snapshot.loaded) viewFinderExportConfirmation.confirmExport()
+                    if (snapshot.loaded) viewFinderExportConfirmation.show()
                 }
 
                 viewFinderView.photoTaken(path);
@@ -146,7 +147,7 @@ Item {
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
                         viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
-                        viewFinderExportConfirmation.confirmExport();
+                        viewFinderExportConfirmation.show();
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
@@ -421,9 +422,11 @@ Item {
         shouldSlide: !main.contentExportMode
         onSlidingChanged: if (sliding) viewFinder.opacity = 1.0
 
-        // run confirmExport only when both the image is saved and the snapshot is loaded
-        // to prevent the screen being black while the snapshot loads
-        onLoadedChanged: if (loaded && viewFinderExportConfirmation.mediaPath != "") viewFinderExportConfirmation.confirmExport()
+        // show export confirmation only when both the image is saved and the snapshot
+        // is loaded to prevent the screen being black while the image loads
+        onLoadedChanged: {
+            if (main.contentExportMode && loaded && viewFinderExportConfirmation.mediaPath != "") viewFinderExportConfirmation.show()
+        }
     }
 
     ViewFinderOverlayLoader {
@@ -449,8 +452,23 @@ Item {
     ViewFinderExportConfirmation {
         id: viewFinderExportConfirmation
         anchors.fill: parent
-        snapshot: snapshot
+
         isVideo: main.transfer.contentType == ContentType.Videos
         onVisibleChanged: if (visible) viewFinder.opacity = 1.0
+
+        function show() {
+            viewFinder.visible = false;
+            viewFinderOverlay.visible = false;
+            if (!isVideo) snapshot.opacity = 1.0;
+            visible = true;
+        }
+
+        onHideRequested: {
+            viewFinder.visible = true;
+            viewFinderOverlay.visible = true;
+            snapshot.source = "";
+            snapshot.opacity = 0.0;
+            visible = false;
+        }
     }
 }
