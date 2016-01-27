@@ -30,6 +30,7 @@ Window {
     height: units.gu(80)
     color: "black"
     title: "Camera"
+    flags: Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint
 
     UnityActions.ActionManager {
         actions: [
@@ -63,11 +64,7 @@ Window {
 
     Component.onCompleted: {
         i18n.domain = "camera-app";
-        if (!application.desktopMode) {
-            main.showFullScreen();
-        } else {
-            main.show();
-        }
+        main.show();
     }
 
 
