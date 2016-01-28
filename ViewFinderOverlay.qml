@@ -823,8 +823,6 @@ Item {
                     direction: RotationAnimator.Shortest
                 }
             }
-
-            pulsing: camera.photoCaptureInProgress
         }
 
         CircleButton {
@@ -945,6 +943,16 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    ProcessingFeedback {
+        anchors {
+            top: parent.top
+            topMargin: units.gu(2)
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
+        processing: camera.photoCaptureInProgress
     }
 
     StorageMonitor {
