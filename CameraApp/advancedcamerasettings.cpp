@@ -237,11 +237,11 @@ void AdvancedCameraSettings::readCapabilities()
 
     m_cameraFlashControl = flashControlFromCamera(m_camera);
     m_cameraExposureControl = exposureControlFromCamera(m_camera);
-    QVariant exposureMode = m_hdrEnabled ? QVariant::fromValue(ExposureHdr)
-                                         : QVariant::fromValue(QCameraExposure::ExposureAuto);
-    m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
 
     if (m_cameraExposureControl) {
+        QVariant exposureMode = m_hdrEnabled ? QVariant::fromValue(ExposureHdr)
+                                             : QVariant::fromValue(QCameraExposure::ExposureAuto);
+        m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
         QObject::connect(m_cameraExposureControl,
                          SIGNAL(actualValueChanged(int)),
                          this, SLOT(onExposureValueChanged(int)));
