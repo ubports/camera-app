@@ -32,6 +32,23 @@ Window {
     title: "Camera"
     flags: Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint
 
+    property int preFullScreenVisibility
+
+    function toggleFullScreen() {
+        if (main.visibility != Window.FullScreen) {
+            preFullScreenVisibility = main.visibility;
+            main.visibility = Window.FullScreen;
+        } else {
+            main.visibility = preFullScreenVisibility;
+        }
+    }
+
+    function exitFullScreen() {
+        if (main.visibility == Window.FullScreen) {
+            main.visibility = preFullScreenVisibility;
+        }
+    }
+
     UnityActions.ActionManager {
         actions: [
             UnityActions.Action {
@@ -74,6 +91,16 @@ Window {
         anchors.fill: parent
         flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
+
+        focus: true
+        Keys.onPressed: {
+            if (event.key == Qt.Key_F11) {
+                main.toggleFullScreen();
+                event.accepted = true;
+            }
+        }
+        Keys.onEscapePressed: main.exitFullScreen()
+
 
         property real panesMargin: units.gu(1)
         property real ratio
