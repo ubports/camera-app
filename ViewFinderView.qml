@@ -121,11 +121,7 @@ Item {
             onImageCaptured: snapshot.source = preview
 
             onImageSaved: {
-                if (!main.contentExportMode) {
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
-                } else {
+                if (main.contentExportMode) {
                     // show export confirmation only when both the image is saved and the snapshot
                     // is loaded to prevent the screen being black while the image loads
                     viewFinderExportConfirmation.mediaPath = path;
@@ -414,12 +410,28 @@ Item {
         visible: radius !== 0
     }
 
+    PhotoRollHint {
+        id: photoRollHint
+        anchors.fill: parent
+        visible: enabled
+
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
+        }
+    }
+
     Snapshot {
         id: snapshot
         anchors.fill: parent
         geometry: viewFinderGeometry
         shouldSlide: !main.contentExportMode
-        onSlidingChanged: if (sliding) viewFinder.opacity = 1.0
+        onSlidingChanged: {
+            if (sliding) {
+                viewFinder.opacity = 1.0;
+                if (!main.contentExportMode && photoRollHint.necessary) photoRollHint.enable();
+            }
+        }
 
         // show export confirmation only when both the image is saved and the snapshot
         // is loaded to prevent the screen being black while the image loads
@@ -435,17 +447,6 @@ Item {
         camera: camera
         opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
-    }
-
-    PhotoRollHint {
-        id: photoRollHint
-        anchors.fill: parent
-        visible: enabled && !snapshot.loading
-
-        Connections {
-            target: viewFinderView
-            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
-        }
     }
 
     ViewFinderExportConfirmation {
