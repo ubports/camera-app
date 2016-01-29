@@ -252,6 +252,7 @@ FocusScope {
                 // Set orientation only at startup because later on Screen.primaryOrientation
                 // may change.
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
+                viewFinderOverlay.sensorOrientation = orientation;
             }
 
             transform: Rotation {
