@@ -30,7 +30,9 @@ Window {
     height: units.gu(80)
     color: "black"
     title: "Camera"
-    flags: Qt.Window | Qt.MaximizeUsingFullscreenGeometryHint
+    // special flag only supported by Unity8/MIR so far that hides the shell's
+    // top panel in Staged mode
+    flags: Qt.Window | 0x00800000
 
     property int preFullScreenVisibility
 
