@@ -94,7 +94,6 @@ Window {
         flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
 
-        focus: true
         Keys.onPressed: {
             if (event.key == Qt.Key_F11) {
                 main.toggleFullScreen();
@@ -282,6 +281,7 @@ Window {
             height: viewSwitcher.height
             overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
             inView: viewSwitcher.ratio < 0.5
+            focus: !galleryView.focus
             opacity: inView ? 1.0 : 0.0
             onPhotoTaken: {
                 galleryView.prependMediaToModel(filePath);
@@ -299,6 +299,7 @@ Window {
             width: viewSwitcher.width
             height: viewSwitcher.height
             inView: viewSwitcher.ratio > 0.0
+            focus: inView
             onExit: viewSwitcher.switchToViewFinder()
             opacity: inView ? 1.0 : 0.0
         }

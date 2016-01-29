@@ -22,7 +22,7 @@ import CameraApp 0.1
 import QtGraphicalEffects 1.0
 import Ubuntu.Content 0.1
 
-Item {
+FocusScope {
     id: viewFinderView
 
     property bool overlayVisible: true
