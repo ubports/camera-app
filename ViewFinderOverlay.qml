@@ -218,12 +218,31 @@ Item {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
+        // If resolution setting is not supported select the resolution automatically
         var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
-        // If resolution setting chosen is not supported select the fitting resolution
-        if (photoResolution != optionFitting.value &&
-            photoResolution != optionMaximum.value) {
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = optionFitting.value;
+        if (!isResolutionAnOption(photoResolution)) {
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
         }
+    }
+
+    function getAutomaticResolution() {
+        var fittingResolution = sizeToString(camera.advanced.fittingResolution);
+        var maximumResolution = sizeToString(camera.advanced.maximumResolution);
+        if (isResolutionAnOption(fittingResolution)) {
+            return fittingResolution;
+        } else {
+            return maximumResolution;
+        }
+    }
+
+    function isResolutionAnOption(resolution) {
+        for (var i=0; i<photoResolutionOptionsModel.count; i++) {
+            var option = photoResolutionOptionsModel.get(i);
+            if (option.value == resolution) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function updateResolutionOptions() {
@@ -250,9 +269,9 @@ Item {
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
-            // If no resolution has ever been chosen, select the one that fits the screen
+            // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
+                settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
             }
         }
     }
@@ -684,6 +703,7 @@ Item {
                 if (!main.contentExportMode) {
                     shootFeedback.start();
                 }
+                camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
@@ -698,7 +718,6 @@ Item {
                     }
                 }
 
-                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
@@ -943,6 +962,16 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    ProcessingFeedback {
+        anchors {
+            top: parent.top
+            topMargin: units.gu(2)
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
+        processing: camera.photoCaptureInProgress
     }
 
     StorageMonitor {

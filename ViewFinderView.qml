@@ -98,34 +98,33 @@ FocusScope {
 
         imageCapture {
             onReadyChanged: {
-                if (camera.imageCapture.ready && main.transfer) {
-                    if (main.transfer.contentType === ContentType.Videos) {
-                        viewFinderView.captureMode = Camera.CaptureVideo;
-                    } else {
-                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                if (camera.imageCapture.ready) {
+                    if (camera.photoCaptureInProgress) {
+                        camera.photoCaptureInProgress = false;
+                    }
+
+                    if (main.transfer) {
+                        if (main.transfer.contentType === ContentType.Videos) {
+                            viewFinderView.captureMode = Camera.CaptureVideo;
+                        } else {
+                            viewFinderView.captureMode = Camera.CaptureStillImage;
+                        }
                     }
                 }
             }
+
             onCaptureFailed: {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
-            onImageCaptured: {
-                snapshot.source = preview;
-                if (!main.contentExportMode) {
-                    viewFinderOverlay.visible = true;
-                    snapshot.startOutAnimation();
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
-                }
-            }
+
             onImageSaved: {
                 if (main.contentExportMode) {
-                    viewFinderExportConfirmation.confirmExport(path);
+                    viewFinderExportConfirmation.mediaPath = path;
+                    viewFinderExportConfirmation.show()
                 }
+
                 viewFinderView.photoTaken(path);
-                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -135,10 +134,10 @@ FocusScope {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
-                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                        viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
+                        viewFinderExportConfirmation.show();
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
@@ -235,6 +234,7 @@ FocusScope {
             width: parent.width
             height: parent.height
             source: camera
+            opacity: camera.photoCaptureInProgress && !camera.imageCapture.ready ? 0.1 : 1.0
 
             /* This rotation need to be applied since the camera hardware in the
                Galaxy Nexus phone is mounted at an angle inside the device, so the video
@@ -330,12 +330,10 @@ FocusScope {
             anchors.fill: parent
 
             function start() {
-                viewFinderOverlay.visible = false;
             }
 
             function stop() {
                 remainingSecsLabel.text = "";
-                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
@@ -384,7 +382,6 @@ FocusScope {
 
             function start() {
                 shootFeedback.opacity = 1.0;
-                viewFinderOverlay.visible = false;
                 shootFeedbackAnimation.restart();
             }
 
@@ -393,7 +390,7 @@ FocusScope {
                 target: shootFeedback
                 from: 1.0
                 to: 0.0
-                duration: 50
+                duration: UbuntuAnimation.SnapDuration
                 easing: UbuntuAnimation.StandardEasing
             }
         }
@@ -410,6 +407,17 @@ FocusScope {
         visible: radius !== 0
     }
 
+    PhotoRollHint {
+        id: photoRollHint
+        anchors.fill: parent
+        visible: enabled
+
+        Connections {
+            target: viewFinderView
+            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
+        }
+    }
+
     ViewFinderOverlayLoader {
         id: viewFinderOverlay
 
@@ -419,29 +427,23 @@ FocusScope {
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
     }
 
-    PhotoRollHint {
-        id: photoRollHint
-        anchors.fill: parent
-        visible: enabled && !snapshot.loading
-
-        Connections {
-            target: viewFinderView
-            onInViewChanged: if (!viewFinderView.inView) photoRollHint.disable()
-        }
-    }
-
-    Snapshot {
-        id: snapshot
-        anchors.fill: parent
-        orientation: viewFinder.orientation
-        geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
-    }
-
     ViewFinderExportConfirmation {
         id: viewFinderExportConfirmation
         anchors.fill: parent
-        snapshot: snapshot
+
         isVideo: main.transfer.contentType == ContentType.Videos
+        onVisibleChanged: if (visible) viewFinder.opacity = 1.0
+
+        function show() {
+            viewFinder.visible = false;
+            viewFinderOverlay.visible = false;
+            visible = true;
+        }
+
+        onHideRequested: {
+            viewFinder.visible = true;
+            viewFinderOverlay.visible = true;
+            visible = false;
+        }
     }
 }
