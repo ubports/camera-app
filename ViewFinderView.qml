@@ -96,17 +96,10 @@ FocusScope {
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
 
-        onPhotoCaptureInProgressChanged: {
-            if (photoCaptureInProgress) {
-                viewFinder.opacity = 0.1;
-            }
-        }
-
         imageCapture {
             onReadyChanged: {
                 if (camera.imageCapture.ready) {
                     if (camera.photoCaptureInProgress) {
-                        viewFinder.opacity = 1.0;
                         camera.photoCaptureInProgress = false;
                     }
 
@@ -241,6 +234,7 @@ FocusScope {
             width: parent.width
             height: parent.height
             source: camera
+            opacity: camera.photoCaptureInProgress && !camera.imageCapture.ready ? 0.1 : 1.0
 
             /* This rotation need to be applied since the camera hardware in the
                Galaxy Nexus phone is mounted at an angle inside the device, so the video
