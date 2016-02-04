@@ -98,38 +98,40 @@ Item {
 
         onPhotoCaptureInProgressChanged: {
             if (photoCaptureInProgress) {
-                snapshot.lockOrientation();
                 viewFinder.opacity = 0.1;
             }
         }
 
         imageCapture {
             onReadyChanged: {
-                if (camera.imageCapture.ready && main.transfer) {
-                    if (main.transfer.contentType === ContentType.Videos) {
-                        viewFinderView.captureMode = Camera.CaptureVideo;
-                    } else {
-                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                if (camera.imageCapture.ready) {
+                    if (camera.photoCaptureInProgress) {
+                        viewFinder.opacity = 1.0;
+                        camera.photoCaptureInProgress = false;
+                    }
+
+                    if (main.transfer) {
+                        if (main.transfer.contentType === ContentType.Videos) {
+                            viewFinderView.captureMode = Camera.CaptureVideo;
+                        } else {
+                            viewFinderView.captureMode = Camera.CaptureStillImage;
+                        }
                     }
                 }
             }
+
             onCaptureFailed: {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
 
-            onImageCaptured: snapshot.source = preview
-
             onImageSaved: {
                 if (main.contentExportMode) {
-                    // show export confirmation only when both the image is saved and the snapshot
-                    // is loaded to prevent the screen being black while the image loads
                     viewFinderExportConfirmation.mediaPath = path;
-                    if (snapshot.loaded) viewFinderExportConfirmation.show()
+                    viewFinderExportConfirmation.show()
                 }
 
                 viewFinderView.photoTaken(path);
-                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -421,25 +423,6 @@ Item {
         }
     }
 
-    Snapshot {
-        id: snapshot
-        anchors.fill: parent
-        geometry: viewFinderGeometry
-        shouldSlide: !main.contentExportMode
-        onSlidingChanged: {
-            if (sliding) {
-                viewFinder.opacity = 1.0;
-                if (!main.contentExportMode && photoRollHint.necessary) photoRollHint.enable();
-            }
-        }
-
-        // show export confirmation only when both the image is saved and the snapshot
-        // is loaded to prevent the screen being black while the image loads
-        onLoadedChanged: {
-            if (main.contentExportMode && loaded && viewFinderExportConfirmation.mediaPath != "") viewFinderExportConfirmation.show()
-        }
-    }
-
     ViewFinderOverlayLoader {
         id: viewFinderOverlay
 
@@ -459,15 +442,12 @@ Item {
         function show() {
             viewFinder.visible = false;
             viewFinderOverlay.visible = false;
-            if (!isVideo) snapshot.opacity = 1.0;
             visible = true;
         }
 
         onHideRequested: {
             viewFinder.visible = true;
             viewFinderOverlay.visible = true;
-            snapshot.source = "";
-            snapshot.opacity = 0.0;
             visible = false;
         }
     }
