@@ -22,7 +22,7 @@ import CameraApp 0.1
 import QtGraphicalEffects 1.0
 import Ubuntu.Content 0.1
 
-Item {
+FocusScope {
     id: viewFinderView
 
     property bool overlayVisible: true
@@ -258,6 +258,7 @@ Item {
                 // Set orientation only at startup because later on Screen.primaryOrientation
                 // may change.
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
+                viewFinderOverlay.sensorOrientation = orientation;
             }
 
             transform: Rotation {

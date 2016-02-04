@@ -32,6 +32,7 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
+    property int sensorOrientation
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -217,12 +218,31 @@ Item {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
+        // If resolution setting is not supported select the resolution automatically
         var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
-        // If resolution setting chosen is not supported select the fitting resolution
-        if (photoResolution != optionFitting.value &&
-            photoResolution != optionMaximum.value) {
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = optionFitting.value;
+        if (!isResolutionAnOption(photoResolution)) {
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
         }
+    }
+
+    function getAutomaticResolution() {
+        var fittingResolution = sizeToString(camera.advanced.fittingResolution);
+        var maximumResolution = sizeToString(camera.advanced.maximumResolution);
+        if (isResolutionAnOption(fittingResolution)) {
+            return fittingResolution;
+        } else {
+            return maximumResolution;
+        }
+    }
+
+    function isResolutionAnOption(resolution) {
+        for (var i=0; i<photoResolutionOptionsModel.count; i++) {
+            var option = photoResolutionOptionsModel.get(i);
+            if (option.value == resolution) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function updateResolutionOptions() {
@@ -249,9 +269,9 @@ Item {
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
-            // If no resolution has ever been chosen, select the one that fits the screen
+            // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
+                settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
             }
         }
     }
@@ -663,9 +683,8 @@ Item {
                     break;
             }
 
-            if (Screen.primaryOrientation == Qt.PortraitOrientation) {
-                orientation += 90;
-            }
+            // account for the orientation of the sensor
+            orientation -= viewFinderOverlay.sensorOrientation;
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {

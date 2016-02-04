@@ -24,6 +24,7 @@ Loader {
     property real revealProgress: loader.item ? loader.item.revealProgress : 0
     property var controls: loader.item ? loader.item.controls : null
     property var settings: loader.item.settings
+    property int sensorOrientation
 
     function showFocusRing(x, y) {
         loader.item.showFocusRing(x, y);
@@ -35,6 +36,7 @@ Loader {
 
     asynchronous: true
     Component.onCompleted: {
-        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera });
+        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera,
+                                                    "sensorOrientation": Qt.binding(function () {return loader.sensorOrientation})});
     }
 }
