@@ -100,6 +100,7 @@ FocusScope {
             onReadyChanged: {
                 if (camera.imageCapture.ready) {
                     if (camera.photoCaptureInProgress) {
+                        if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
                         camera.photoCaptureInProgress = false;
                     }
 
@@ -424,7 +425,10 @@ FocusScope {
         anchors.fill: parent
         camera: camera
         opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
-        Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
+        Behavior on opacity {
+            enabled: !photoRollHint.enabled
+            UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}
+        }
     }
 
     ViewFinderExportConfirmation {
