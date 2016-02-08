@@ -308,16 +308,6 @@ Item {
                      && !camera.photoCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
-            Item {
-                /* Use the 'trigger' feature of Panel so that tapping on the Panel
-                   has the same effect as tapping outside of it (bottomEdgeClose) */
-                id: clickReceiver
-                anchors.fill: parent
-                function trigger() {
-                    optionsOverlayClose();
-                }
-            }
-
             /* At startup, opened is false and 'bottomEdge.height' is 0 until
                optionsOverlayLoader has finished loading. When that happens
                'bottomEdge.height' becomes non 0 and 'bottomEdge.position' which
@@ -618,6 +608,24 @@ Item {
                 sourceComponent: Component {
                     OptionsOverlay {
                         options: bottomEdge.options
+                    }
+                }
+            }
+
+            triggerSize: units.gu(3)
+
+            Item {
+                /* Use the 'trigger' feature of Panel so that tapping on the Panel
+                   can be acted upon */
+                id: clickReceiver
+                anchors.fill: parent
+                anchors.topMargin: -bottomEdge.triggerSize
+
+                function trigger() {
+                    if (bottomEdge.opened) {
+                        optionsOverlayClose();
+                    } else {
+                        bottomEdge.open();
                     }
                 }
             }
