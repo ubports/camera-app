@@ -67,7 +67,8 @@ class TestCameraZoom(CameraAppTestCase):
         ty = y + (h // 2)
 
         self.pointing_device.drag(tx, ty, (tx - zoom_control.width), ty)
-        self.assertThat(zoom_control.value, Eventually(Equals(1.0)))
+        self.assertThat(zoom_control.value,
+                        Eventually(Equals(zoom_control.minimumValue)))
 
     """Tests zoom is reset to minimum on camera switch"""
     def test_zoom_reset_on_camera_change(self):

@@ -44,7 +44,8 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_cameraFlashControl(0),
     m_cameraExposureControl(0),
     m_imageEncoderControl(0),
-    m_videoEncoderControl(0)
+    m_videoEncoderControl(0),
+    m_hdrEnabled(false)
 {
 }
 
@@ -238,6 +239,9 @@ void AdvancedCameraSettings::readCapabilities()
     m_cameraExposureControl = exposureControlFromCamera(m_camera);
 
     if (m_cameraExposureControl) {
+        QVariant exposureMode = m_hdrEnabled ? QVariant::fromValue(ExposureHdr)
+                                             : QVariant::fromValue(QCameraExposure::ExposureAuto);
+        m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
         QObject::connect(m_cameraExposureControl,
                          SIGNAL(actualValueChanged(int)),
                          this, SLOT(onExposureValueChanged(int)));
@@ -451,20 +455,20 @@ bool AdvancedCameraSettings::hasHdr() const
 
 bool AdvancedCameraSettings::hdrEnabled() const
 {
-    if (m_cameraExposureControl) {
-        QVariant exposureMode = m_cameraExposureControl->actualValue(QCameraExposureControl::ExposureMode);
-        return exposureMode.value<QCameraExposure::ExposureMode>() == ExposureHdr;
-    } else {
-        return false;
-    }
+    return m_hdrEnabled;
 }
 
 void AdvancedCameraSettings::setHdrEnabled(bool enabled)
 {
-    if (m_cameraExposureControl) {
-        QVariant exposureMode = enabled ? QVariant::fromValue(ExposureHdr)
-                                        : QVariant::fromValue(QCameraExposure::ExposureAuto);
-        m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
+    if (enabled != m_hdrEnabled) {
+        m_hdrEnabled = enabled;
+        if (m_cameraExposureControl) {
+            QVariant exposureMode = enabled ? QVariant::fromValue(ExposureHdr)
+                                            : QVariant::fromValue(QCameraExposure::ExposureAuto);
+            m_cameraExposureControl->setValue(QCameraExposureControl::ExposureMode, exposureMode);
+        } else {
+            Q_EMIT hdrEnabledChanged();
+        }
     }
 }
 

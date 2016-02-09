@@ -22,7 +22,7 @@ import CameraApp 0.1
 import QtGraphicalEffects 1.0
 import Ubuntu.Content 0.1
 
-Item {
+FocusScope {
     id: viewFinderView
 
     property bool overlayVisible: true
@@ -34,27 +34,20 @@ Item {
     signal photoTaken(string filePath)
     signal videoShot(string filePath)
 
-    onInViewChanged: decideCameraState()
     Connections {
         target: viewFinderOverlay
         onStatusChanged: decideCameraState()
     }
+    Connections {
+        target: Qt.application
+        onActiveChanged: if (Qt.application.active && camera.failedToConnect) decideCameraState()
+    }
 
     function decideCameraState() {
         if (viewFinderOverlay.status == Loader.Ready) {
-            if (viewFinderView.inView) {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-                camera.cameraState = Camera.ActiveState;
-            } else {
-                camera.cameraState = Camera.LoadedState;
-                viewFinderOverlay.updateResolutionOptions();
-            }
-        } else {
-            if (camera.videoRecorder.recorderState == CameraRecorder.RecordingState) {
-                camera.videoRecorder.stop();
-            }
-            camera.cameraState = Camera.UnloadedState;
+            camera.cameraState = Camera.LoadedState;
+            viewFinderOverlay.updateResolutionOptions();
+            camera.cameraState = Camera.ActiveState;
         }
     }
 
@@ -63,6 +56,7 @@ Item {
         captureMode: Camera.CaptureStillImage
         cameraState: Camera.UnloadedState
         StateSaver.properties: "captureMode"
+        property bool failedToConnect: false
 
         function manualFocus(x, y) {
             viewFinderOverlay.showFocusRing(x, y);
@@ -100,6 +94,7 @@ Item {
         property alias currentZoom: camera.digitalZoom
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool switchInProgress: false
+        property bool photoCaptureInProgress: false
 
         imageCapture {
             onReadyChanged: {
@@ -112,6 +107,7 @@ Item {
                 }
             }
             onCaptureFailed: {
+                camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
             onImageCaptured: {
@@ -129,6 +125,7 @@ Item {
                     viewFinderExportConfirmation.confirmExport(path);
                 }
                 viewFinderView.photoTaken(path);
+                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -240,30 +237,23 @@ Item {
             source: camera
 
             /* This rotation need to be applied since the camera hardware in the
-                   Galaxy Nexus phone is mounted at an angle inside the device, so the video
-                   feed is rotated too.
-                   FIXME: This should come from a system configuration option so that we
-                   don't have to have a different codebase for each different device we want
-                   to run on. Android has that information and QML has an API to reflect it:
-                   the camera.orientation property. Unfortunately it is not hooked up yet.
+               Galaxy Nexus phone is mounted at an angle inside the device, so the video
+               feed is rotated too.
+               FIXME: This should come from a system configuration option so that we
+               don't have to have a different codebase for each different device we want
+               to run on. Android has that information and QML has an API to reflect it:
+               the camera.orientation property. Unfortunately it is not hooked up yet.
 
-                   Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
-                         http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
-                         http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
+               Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
+                     http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
+                     http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
             */
             Component.onCompleted: {
                 // Set orientation only at startup because later on Screen.primaryOrientation
                 // may change.
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
+                viewFinderOverlay.sensorOrientation = orientation;
             }
-
-            /* Convenience item tracking the real position and size of the real video feed.
-                   Having this helps since these values depend on a lot of rules:
-                   - the feed is automatically scaled to fit the viewfinder
-                   - the viewfinder might apply a rotation to the feed, depending on device orientation
-                   - the resolution and aspect ratio of the feed changes depending on the active camera
-                   The item is also separated in a component so it can be unit tested.
-                 */
 
             transform: Rotation {
                 origin.x: viewFinder.width / 2
@@ -273,6 +263,13 @@ Item {
             }
         }
 
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
+         */
         ViewFinderGeometry {
             id: viewFinderGeometry
             anchors.centerIn: parent

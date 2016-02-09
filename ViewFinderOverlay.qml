@@ -32,6 +32,7 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
+    property int sensorOrientation
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -217,12 +218,31 @@ Item {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
+        // If resolution setting is not supported select the resolution automatically
         var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
-        // If resolution setting chosen is not supported select the fitting resolution
-        if (photoResolution != optionFitting.value &&
-            photoResolution != optionMaximum.value) {
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = optionFitting.value;
+        if (!isResolutionAnOption(photoResolution)) {
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
         }
+    }
+
+    function getAutomaticResolution() {
+        var fittingResolution = sizeToString(camera.advanced.fittingResolution);
+        var maximumResolution = sizeToString(camera.advanced.maximumResolution);
+        if (isResolutionAnOption(fittingResolution)) {
+            return fittingResolution;
+        } else {
+            return maximumResolution;
+        }
+    }
+
+    function isResolutionAnOption(resolution) {
+        for (var i=0; i<photoResolutionOptionsModel.count; i++) {
+            var option = photoResolutionOptionsModel.get(i);
+            if (option.value == resolution) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function updateResolutionOptions() {
@@ -249,9 +269,9 @@ Item {
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
-            // If no resolution has ever been chosen, select the one that fits the screen
+            // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
+                settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
             }
         }
     }
@@ -285,6 +305,7 @@ Item {
             height: optionsOverlayLoader.height
             onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
             Item {
@@ -662,9 +683,8 @@ Item {
                     break;
             }
 
-            if (Screen.primaryOrientation == Qt.PortraitOrientation) {
-                orientation += 90;
-            }
+            // account for the orientation of the sensor
+            orientation -= viewFinderOverlay.sensorOrientation;
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {
@@ -696,6 +716,8 @@ Item {
                         camera.imageCapture.setMetadata("GPSAltitude", position.coordinate.altitude);
                     }
                 }
+
+                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
@@ -784,6 +806,7 @@ Item {
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState && !main.contentExportMode
+                     && !camera.photoCaptureInProgress
         }
 
         ShootButton {
@@ -833,6 +856,7 @@ Item {
             }
 
             enabled: !camera.switchInProgress && camera.videoRecorder.recorderState == CameraRecorder.StoppedState
+                     && !camera.photoCaptureInProgress
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }
@@ -855,6 +879,7 @@ Item {
             property real maximumScale: 3.0
             property bool active: false
 
+            enabled: !camera.photoCaptureInProgress
             onPinchStarted: {
                 active = true;
                 initialZoom = zoomControl.value;
@@ -872,14 +897,19 @@ Item {
 
             MouseArea {
                 id: manualFocusMouseArea
-                anchors.fill: parent
+                anchors {
+                    fill: parent
+                    // Pinch gestures need more clearance at the edges of the screen, but
+                    // tap to focus should be safe all the way to the edges themselves instead.
+                    leftMargin: -bottomEdgeIndicators.height
+                    rightMargin: -bottomEdgeIndicators.height
+                }
+                enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom) &&
+                         !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
                 }
-                // FIXME: calling 'isFocusPointModeSupported' fails with
-                // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
-                //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
             }
         }
 
@@ -963,6 +993,56 @@ Item {
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
+    }
+
+    Connections {
+        id: permissionErrorMonitor
+        property var currentPermissionsDialog: null
+        target: camera
+        onError: {
+            if (errorCode == Camera.ServiceMissingError) {
+                if (currentPermissionsDialog == null) {
+                    currentPermissionsDialog = PopupUtils.open(noPermissionsDialogComponent);
+                }
+                camera.failedToConnect = true;
+            }
+        }
+        onCameraStateChanged: {
+            if (camera.cameraState != Camera.UnloadedState) {
+                if (currentPermissionsDialog != null) {
+                    PopupUtils.close(currentPermissionsDialog);
+                    currentPermissionsDialog = null;
+                }
+                camera.failedToConnect = false;
+            } else {
+                camera.photoCaptureInProgress = false;
+            }
+        }
+    }
+
+    Component {
+         id: noPermissionsDialogComponent
+         Dialog {
+             id: noPermissionsDialog
+             objectName: "noPermissionsDialog"
+             title: i18n.tr("Cannot access camera")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your phone.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: {
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentPermissionsDialog = null;
+                 }
+             }
+             Button {
+                 text: i18n.tr("Edit Permissions")
+                 onClicked: {
+                     Qt.openUrlExternally("settings:///system/security-privacy?service=camera");
+                     PopupUtils.close(noPermissionsDialog);
+                     permissionErrorMonitor.currentPermissionsDialog = null;
+                 }
              }
          }
     }

@@ -41,7 +41,7 @@ Item {
         ActivityIndicator {
             anchors.centerIn: parent
             visible: running
-            running: thumbnail.status != Image.Ready
+            running: thumbnail.status == Image.Loading
         }
 
         Icon {
