@@ -96,6 +96,12 @@ FocusScope {
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
 
+        onPhotoCaptureInProgressChanged: {
+            if (main.contentExportMode && camera.photoCaptureInProgress) {
+                viewFinderExportConfirmation.photoCaptureStarted();
+            }
+        }
+
         imageCapture {
             onReadyChanged: {
                 if (camera.imageCapture.ready) {
@@ -120,10 +126,7 @@ FocusScope {
             }
 
             onImageSaved: {
-                if (main.contentExportMode) {
-                    viewFinderExportConfirmation.mediaPath = path;
-                    viewFinderExportConfirmation.show()
-                }
+                if (main.contentExportMode) viewFinderExportConfirmation.mediaPath = path;
 
                 viewFinderView.photoTaken(path);
                 metricPhotos.increment();
@@ -138,7 +141,6 @@ FocusScope {
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
                         viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
-                        viewFinderExportConfirmation.show();
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
@@ -235,7 +237,9 @@ FocusScope {
             width: parent.width
             height: parent.height
             source: camera
-            opacity: camera.photoCaptureInProgress && !camera.imageCapture.ready ? 0.1 : 1.0
+            opacity: ((main.contentExportMode && viewFinderExportConfirmation.waitingForPictureCapture) ||
+                      (!main.contentExportMode && camera.photoCaptureInProgress && !camera.imageCapture.ready))
+                      ? 0.1 : 1.0
 
             /* This rotation need to be applied since the camera hardware in the
                Galaxy Nexus phone is mounted at an angle inside the device, so the video
@@ -425,6 +429,9 @@ FocusScope {
         anchors.fill: parent
         camera: camera
         opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
+        readyForCapture: main.contentExportMode &&
+                         viewFinderExportConfirmation.waitingForPictureCapture ? false : camera.imageCapture.ready
+
         Behavior on opacity {
             enabled: !photoRollHint.enabled
             UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}
@@ -436,9 +443,9 @@ FocusScope {
         anchors.fill: parent
 
         isVideo: main.transfer.contentType == ContentType.Videos
-        onVisibleChanged: if (visible) viewFinder.opacity = 1.0
+        viewFinderGeometry: viewFinderGeometry
 
-        function show() {
+        onShowRequested: {
             viewFinder.visible = false;
             viewFinderOverlay.visible = false;
             visible = true;

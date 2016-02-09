@@ -33,6 +33,7 @@ Item {
     property var controls: controls
     property var settings: settings
     property int sensorOrientation
+    property bool readyForCapture
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -819,7 +820,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
+            enabled: viewFinderOverlay.readyForCapture && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
