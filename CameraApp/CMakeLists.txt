@@ -7,8 +7,6 @@ set(plugin_SRCS
     fileoperations.cpp
     foldersmodel.cpp
     storagemonitor.cpp
-    qstorageinfo.cpp
-    qstorageinfo_unix.cpp
     )
 
 set(plugin_HDRS
@@ -17,8 +15,6 @@ set(plugin_HDRS
     fileoperations.h
     foldersmodel.h
     storagemonitor.h
-    qstorageinfo.h
-    qstorageinfo_p.h
     )
 
 add_library(camera-qml SHARED ${plugin_SRCS} ${plugin_HDRS})
