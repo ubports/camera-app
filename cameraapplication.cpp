@@ -30,6 +30,7 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QScreen>
+#include <QStorageInfo>
 #include <QtGui/QGuiApplication>
 
 #include "config.h"
@@ -145,19 +146,15 @@ bool CameraApplication::removableStoragePresent() const
 
 QString CameraApplication::removableStorageLocation() const
 {
-    /* FIXME: when Qt5.4 is available, switch to using newly introduced
-     * QStorageInfo API.
-     * Ref.: http://doc-snapshot.qt-project.org/qt5-5.4/qstorageinfo.html
-     */
-    QString userName = qgetenv("USER");
-    QDir media("/media/" + userName);
-    QStringList mediaDirs = media.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-
-    if (mediaDirs.size() > 0) {
-        return QString("/media/" + userName + "/" + mediaDirs.at(0));
-    } else {
-        return QString();
+    QString mediaRoot("/media/" + qgetenv("USER"));
+    Q_FOREACH(QStorageInfo volume, QStorageInfo::mountedVolumes()) {
+         if (volume.rootPath().startsWith(mediaRoot) &&
+             volume.isValid() && volume.isReady()) {
+            return volume.rootPath();
+         }
     }
+
+    return QString();
 }
 
 QString CameraApplication::removableStoragePicturesLocation() const
