@@ -974,6 +974,9 @@ Item {
         onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
                                              camera.videoRecorder.stop();
                                          }
+        onIsWriteableChanged: if (!isWriteable && !diskSpaceLow) {
+                                  PopupUtils.open(readOnlyMediaDialogComponent);
+                              }
     }
 
     NoSpaceHint {
@@ -993,6 +996,20 @@ Item {
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
+    }
+
+    Component {
+         id: readOnlyMediaDialogComponent
+         Dialog {
+             id: readOnlyMediaDialog
+             objectName: "readOnlyMediaDialog"
+             title: i18n.tr("External storage not writeable")
+             text: i18n.tr("It does not seem possible to write to your external storage media. Trying to eject and insert it again might solve the issue, or you might need to format it.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(readOnlyMediaDialog)
              }
          }
     }

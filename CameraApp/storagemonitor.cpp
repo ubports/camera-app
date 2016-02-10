@@ -17,7 +17,7 @@
 #include "storagemonitor.h"
 
 StorageMonitor::StorageMonitor(QObject *parent) :
-    QObject(parent), m_low(false), m_criticallyLow(false)
+    QObject(parent), m_low(false), m_criticallyLow(false), m_writeable(true)
 {
     m_timer.setInterval(POLL_INTERVAL);
     m_timer.setSingleShot(false);
@@ -54,6 +54,33 @@ void StorageMonitor::checkDiskSpace() {
     }
 }
 
+#include <QDebug>
+
+void StorageMonitor::checkWriteable()
+{
+    bool writeable = true;
+
+    QString mediaRoot("/media/" + qgetenv("USER"));
+    if (m_storage.rootPath().startsWith(mediaRoot)) {
+        // check only for external media, assume internal media is always writeable
+        if (m_storage.isReadOnly()) {
+            writeable = false;
+        } else {
+            QDir storageRoot(m_storage.rootPath());
+            QFile testFile(storageRoot.absoluteFilePath(".write_test"));
+            bool opened = testFile.open(QIODevice::WriteOnly | QIODevice::Unbuffered);
+            if (!opened || testFile.write("x", 1) != 1) writeable = false;
+            testFile.close();
+            testFile.remove();
+        }
+    }
+
+    if (m_writeable != writeable) {
+        m_writeable = writeable;
+        Q_EMIT isWriteableChanged();
+    }
+}
+
 void StorageMonitor::setLocation(QString location)
 {
     if (location != m_location) {
@@ -62,6 +89,7 @@ void StorageMonitor::setLocation(QString location)
 
         m_storage.setPath(m_location);
         checkDiskSpace();
+        checkWriteable();
         if (m_storage.isValid()) {
             m_timer.start();
         }
@@ -83,4 +111,9 @@ bool StorageMonitor::diskSpaceLow() const
 bool StorageMonitor::diskSpaceCriticallyLow() const
 {
     return m_criticallyLow;
+}
+
+bool StorageMonitor::isWriteable() const
+{
+    return m_writeable;
 }
