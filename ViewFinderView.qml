@@ -111,7 +111,7 @@ FocusScope {
                 console.log("Image capture failed for request " + requestId + ": " + message);
                 camera.photoCaptureInProgress = false;
                 viewFinderOverlay.visible = true;
-                PopupUtils.open(photoCaptureFailedDialogComponent);
+                PopupUtils.open(captureFailedDialogComponent);
             }
             onImageCaptured: {
                 snapshot.source = preview;
@@ -145,6 +145,11 @@ FocusScope {
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
+                }
+            }
+            onErrorCodeChanged: {
+                if (videoRecorder.errorCode !== CameraRecorder.NoError) {
+                    PopupUtils.open(captureFailedDialogComponent);
                 }
             }
         }
@@ -449,21 +454,21 @@ FocusScope {
     }
 
     Component {
-         id: photoCaptureFailedDialogComponent
+         id: captureFailedDialogComponent
          Dialog {
-             id: photoCaptureFailedDialog
-             objectName: "photoCaptureFailedDialog"
+             id: captureFailedDialog
+             objectName: "captureFailedDialog"
              title: i18n.tr("Capture failed")
 
              // If we are capturing to an SD card the problem can be a broken card, otherwise it is probably a
              // crash in the driver and a reboot might fix things.
              text: StorageLocations.removableStorageLocation && viewFinderOverlay.settings.preferRemovableStorage ?
-                   i18n.tr("Failed to capture the picture. Replacing your external media, formatting it, or restarting the device might fix the problem.") :
-                   i18n.tr("Failed to capture the picture. Restarting your device might fix the problem.")
+                   i18n.tr("Replacing your external media, formatting it, or restarting the device might fix the problem.") :
+                   i18n.tr("Restarting your device might fix the problem.")
 
              Button {
                  text: i18n.tr("Cancel")
-                 onClicked: PopupUtils.close(photoCaptureFailedDialog)
+                 onClicked: PopupUtils.close(captureFailedDialog)
              }
          }
     }
