@@ -974,7 +974,7 @@ Item {
         onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
                                              camera.videoRecorder.stop();
                                          }
-        onIsWriteableChanged: if (!isWriteable && !diskSpaceLow) {
+        onIsWriteableChanged: if (!isWriteable && !diskSpaceLow && !main.contentExportMode) {
                                   PopupUtils.open(readOnlyMediaDialogComponent);
                               }
     }
