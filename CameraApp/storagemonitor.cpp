@@ -15,6 +15,7 @@
  */
 
 #include "storagemonitor.h"
+#include "storagelocations.h"
 
 StorageMonitor::StorageMonitor(QObject *parent) :
     QObject(parent), m_low(false), m_criticallyLow(false), m_writeable(true)
@@ -66,7 +67,8 @@ void StorageMonitor::checkWriteable()
         if (m_storage.isReadOnly()) {
             writeable = false;
         } else {
-            QDir storageRoot(m_storage.rootPath());
+            StorageLocations locations;
+            QDir storageRoot(locations.removableStoragePicturesLocation());
             QFile testFile(storageRoot.absoluteFilePath(".write_test"));
             bool opened = testFile.open(QIODevice::WriteOnly | QIODevice::Unbuffered);
             if (!opened || testFile.write("x", 1) != 1) writeable = false;
