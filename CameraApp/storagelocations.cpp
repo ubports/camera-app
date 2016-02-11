@@ -78,7 +78,7 @@ QString StorageLocations::removableStorageLocation() const
 
     return QString();
 }
-#include <QDebug>
+
 QString StorageLocations::removableStoragePicturesLocation() const
 {
     QString storageLocation = removableStorageLocation();
