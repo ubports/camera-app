@@ -55,8 +55,6 @@ void StorageMonitor::checkDiskSpace() {
     }
 }
 
-#include <QDebug>
-
 void StorageMonitor::checkWriteable()
 {
     bool writeable = true;
