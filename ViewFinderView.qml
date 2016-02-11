@@ -96,36 +96,39 @@ FocusScope {
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
 
+        onPhotoCaptureInProgressChanged: {
+            if (main.contentExportMode && camera.photoCaptureInProgress) {
+                viewFinderExportConfirmation.photoCaptureStarted();
+            }
+        }
+
         imageCapture {
             onReadyChanged: {
-                if (camera.imageCapture.ready && main.transfer) {
-                    if (main.transfer.contentType === ContentType.Videos) {
-                        viewFinderView.captureMode = Camera.CaptureVideo;
-                    } else {
-                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                if (camera.imageCapture.ready) {
+                    if (camera.photoCaptureInProgress) {
+                        if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
+                        camera.photoCaptureInProgress = false;
+                    }
+
+                    if (main.transfer) {
+                        if (main.transfer.contentType === ContentType.Videos) {
+                            viewFinderView.captureMode = Camera.CaptureVideo;
+                        } else {
+                            viewFinderView.captureMode = Camera.CaptureStillImage;
+                        }
                     }
                 }
             }
+
             onCaptureFailed: {
                 camera.photoCaptureInProgress = false;
                 console.log("Capture failed for request " + requestId + ": " + message);
             }
-            onImageCaptured: {
-                snapshot.source = preview;
-                if (!main.contentExportMode) {
-                    viewFinderOverlay.visible = true;
-                    snapshot.startOutAnimation();
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
-                }
-            }
+
             onImageSaved: {
-                if (main.contentExportMode) {
-                    viewFinderExportConfirmation.confirmExport(path);
-                }
+                if (main.contentExportMode) viewFinderExportConfirmation.mediaPath = path;
+
                 viewFinderView.photoTaken(path);
-                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -135,10 +138,9 @@ FocusScope {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
-                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                        viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
@@ -235,6 +237,9 @@ FocusScope {
             width: parent.width
             height: parent.height
             source: camera
+            opacity: ((main.contentExportMode && viewFinderExportConfirmation.waitingForPictureCapture) ||
+                      (!main.contentExportMode && camera.photoCaptureInProgress && !camera.imageCapture.ready))
+                      ? 0.1 : 1.0
 
             /* This rotation need to be applied since the camera hardware in the
                Galaxy Nexus phone is mounted at an angle inside the device, so the video
@@ -330,12 +335,10 @@ FocusScope {
             anchors.fill: parent
 
             function start() {
-                viewFinderOverlay.visible = false;
             }
 
             function stop() {
                 remainingSecsLabel.text = "";
-                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
@@ -384,7 +387,6 @@ FocusScope {
 
             function start() {
                 shootFeedback.opacity = 1.0;
-                viewFinderOverlay.visible = false;
                 shootFeedbackAnimation.restart();
             }
 
@@ -393,7 +395,7 @@ FocusScope {
                 target: shootFeedback
                 from: 1.0
                 to: 0.0
-                duration: 50
+                duration: UbuntuAnimation.SnapDuration
                 easing: UbuntuAnimation.StandardEasing
             }
         }
@@ -410,19 +412,10 @@ FocusScope {
         visible: radius !== 0
     }
 
-    ViewFinderOverlayLoader {
-        id: viewFinderOverlay
-
-        anchors.fill: parent
-        camera: camera
-        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
-        Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
-    }
-
     PhotoRollHint {
         id: photoRollHint
         anchors.fill: parent
-        visible: enabled && !snapshot.loading
+        visible: enabled
 
         Connections {
             target: viewFinderView
@@ -430,18 +423,38 @@ FocusScope {
         }
     }
 
-    Snapshot {
-        id: snapshot
+    ViewFinderOverlayLoader {
+        id: viewFinderOverlay
+
         anchors.fill: parent
-        orientation: viewFinder.orientation
-        geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+        camera: camera
+        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
+        readyForCapture: main.contentExportMode &&
+                         viewFinderExportConfirmation.waitingForPictureCapture ? false : camera.imageCapture.ready
+
+        Behavior on opacity {
+            enabled: !photoRollHint.enabled
+            UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}
+        }
     }
 
     ViewFinderExportConfirmation {
         id: viewFinderExportConfirmation
         anchors.fill: parent
-        snapshot: snapshot
+
         isVideo: main.transfer.contentType == ContentType.Videos
+        viewFinderGeometry: viewFinderGeometry
+
+        onShowRequested: {
+            viewFinder.visible = false;
+            viewFinderOverlay.visible = false;
+            visible = true;
+        }
+
+        onHideRequested: {
+            viewFinder.visible = true;
+            viewFinderOverlay.visible = true;
+            visible = false;
+        }
     }
 }

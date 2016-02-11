@@ -33,6 +33,7 @@ Item {
     property var controls: controls
     property var settings: settings
     property int sensorOrientation
+    property bool readyForCapture
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -711,6 +712,7 @@ Item {
                 if (!main.contentExportMode) {
                     shootFeedback.start();
                 }
+                camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.valid
@@ -725,7 +727,6 @@ Item {
                     }
                 }
 
-                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
                     camera.imageCapture.captureToLocation(application.temporaryLocation);
                 } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
@@ -827,7 +828,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
+            enabled: viewFinderOverlay.readyForCapture && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -970,6 +971,16 @@ Item {
             enabled: main.contentExportMode
             onClicked: main.cancelExport()
         }
+    }
+
+    ProcessingFeedback {
+        anchors {
+            top: parent.top
+            topMargin: units.gu(2)
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
+        processing: camera.photoCaptureInProgress
     }
 
     StorageMonitor {
