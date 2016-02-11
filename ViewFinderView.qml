@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import QtQuick.Window 2.2
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
@@ -107,8 +108,10 @@ FocusScope {
                 }
             }
             onCaptureFailed: {
+                console.log("Image capture failed for request " + requestId + ": " + message);
                 camera.photoCaptureInProgress = false;
-                console.log("Capture failed for request " + requestId + ": " + message);
+                viewFinderOverlay.visible = true;
+                PopupUtils.open(photoCaptureFailedDialogComponent);
             }
             onImageCaptured: {
                 snapshot.source = preview;
@@ -443,5 +446,25 @@ FocusScope {
         anchors.fill: parent
         snapshot: snapshot
         isVideo: main.transfer.contentType == ContentType.Videos
+    }
+
+    Component {
+         id: photoCaptureFailedDialogComponent
+         Dialog {
+             id: photoCaptureFailedDialog
+             objectName: "photoCaptureFailedDialog"
+             title: i18n.tr("Capture failed")
+
+             // If we are capturing to an SD card the problem can be a broken card, otherwise it is probably a
+             // crash in the driver and a reboot might fix things.
+             text: StorageLocations.removableStorageLocation && viewFinderOverlay.settings.preferRemovableStorage ?
+                   i18n.tr("Failed to capture the picture. Replacing your external media, formatting it, or restarting the device might fix the problem.") :
+                   i18n.tr("Failed to capture the picture. Restarting your device might fix the problem.")
+
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(photoCaptureFailedDialog)
+             }
+         }
     }
 }
