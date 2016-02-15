@@ -332,6 +332,7 @@ Item {
                     property bool available: true
                     property bool visible: true
                     property bool showInIndicators: true
+                    property bool colorize: !positionSource.isPrecise
 
                     ListElement {
                         icon: ""
@@ -715,9 +716,7 @@ Item {
                 camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
-                if (settings.gpsEnabled && positionSource.valid
-                        && position.latitudeValid
-                        && position.longitudeValid) {
+                if (settings.gpsEnabled && positionSource.isPrecise) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
                     camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
@@ -788,6 +787,11 @@ Item {
             id: positionSource
             updateInterval: 1000
             active: settings.gpsEnabled
+            property bool isPrecise: valid
+                                     && position.latitudeValid
+                                     && position.longitudeValid
+                                     && (!position.horizontalAccuracyValid ||
+                                          position.horizontalAccuracy <= 100)
         }
 
         Connections {

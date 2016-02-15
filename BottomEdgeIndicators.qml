@@ -83,7 +83,7 @@ Item {
                 Icon {
                     id: indicatorIcon
                     anchors.fill: parent
-                    color: "white"
+                    color: modelData.colorize ? "red" : "white"
                     name: modelData && modelData.isToggle ? modelData.icon : (modelData.get(model.selectedIndex) ? modelData.get(model.selectedIndex).icon : "")
                     source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
                     visible: source != ""
