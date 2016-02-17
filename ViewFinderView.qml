@@ -444,6 +444,13 @@ FocusScope {
             enabled: !photoRollHint.enabled
             UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}
         }
+
+        // Tapping anywhere on the screen should not trigger any camera
+        // controls while PhotoRoll hint is visible 
+        MouseArea {
+            anchors.fill: parent
+            enabled: photoRollHint.visible
+        }
     }
 
     ViewFinderExportConfirmation {
