@@ -29,29 +29,14 @@ class CameraApplication : public QGuiApplication
 {
     Q_OBJECT
     Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
-    Q_PROPERTY(QString picturesLocation READ picturesLocation CONSTANT)
-    Q_PROPERTY(QString videosLocation READ videosLocation CONSTANT)
-    Q_PROPERTY(QString temporaryLocation READ temporaryLocation CONSTANT)
-    Q_PROPERTY(bool removableStoragePresent READ removableStoragePresent NOTIFY removableStoragePresentChanged)
-    Q_PROPERTY(QString removableStorageLocation READ removableStorageLocation CONSTANT)
-    Q_PROPERTY(QString removableStoragePicturesLocation READ removableStoragePicturesLocation CONSTANT)
-    Q_PROPERTY(QString removableStorageVideosLocation READ removableStorageVideosLocation CONSTANT)
 
 public:
     CameraApplication(int &argc, char **argv);
     virtual ~CameraApplication();
     bool setup();
     bool isDesktopMode() const;
-    QString picturesLocation() const;
-    QString videosLocation() const;
-    QString temporaryLocation() const;
-    bool removableStoragePresent() const;
-    QString removableStorageLocation() const;
-    QString removableStoragePicturesLocation() const;
-    QString removableStorageVideosLocation() const;
 
 Q_SIGNALS:
-    void removableStoragePresentChanged();
 
 private:
     QScopedPointer<QQmlApplicationEngine> m_engine;

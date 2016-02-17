@@ -504,7 +504,7 @@ Item {
                     property string label: i18n.tr("SD")
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
-                    property bool available: application.removableStoragePresent
+                    property bool available: StorageLocations.removableStoragePresent
                     property bool visible: available
 
                     ListElement {
@@ -567,12 +567,12 @@ Item {
                 }
             ]
 
-            /* FIXME: application.removableStoragePresent is not updated dynamically.
+            /* FIXME: StorageLocations.removableStoragePresent is not updated dynamically.
                Workaround that by reading it when the bottom edge is opened/closed.
             */
             Connections {
                 target: bottomEdge
-                onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+                onOpenedChanged: removableStorageOptionsModel.available = StorageLocations.removableStoragePresent
             }
 
             function indexForValue(model, value) {
@@ -698,11 +698,11 @@ Item {
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {
-                    camera.videoRecorder.outputLocation = application.temporaryLocation;
-                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
-                    camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                    camera.videoRecorder.outputLocation = StorageLocations.temporaryLocation;
+                } else if (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.videoRecorder.outputLocation = StorageLocations.removableStorageVideosLocation;
                 } else {
-                    camera.videoRecorder.outputLocation = application.videosLocation;
+                    camera.videoRecorder.outputLocation = StorageLocations.videosLocation;
                 }
 
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -727,11 +727,11 @@ Item {
                 }
 
                 if (main.contentExportMode) {
-                    camera.imageCapture.captureToLocation(application.temporaryLocation);
-                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
-                    camera.imageCapture.captureToLocation(application.removableStoragePicturesLocation);
+                    camera.imageCapture.captureToLocation(StorageLocations.temporaryLocation);
+                } else if (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.imageCapture.captureToLocation(StorageLocations.removableStoragePicturesLocation);
                 } else {
-                    camera.imageCapture.captureToLocation(application.picturesLocation);
+                    camera.imageCapture.captureToLocation(StorageLocations.picturesLocation);
                 }
             }
         }
@@ -989,14 +989,17 @@ Item {
 
     StorageMonitor {
         id: storageMonitor
-        location: (application.removableStoragePresent && settings.preferRemovableStorage) ?
-                   application.removableStorageLocation : application.videosLocation
+        location: (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) ?
+                   StorageLocations.removableStorageLocation : StorageLocations.videosLocation
         onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
                                    PopupUtils.open(freeSpaceLowDialogComponent);
                                }
         onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
                                              camera.videoRecorder.stop();
                                          }
+        onIsWriteableChanged: if (!isWriteable && !diskSpaceLow && !main.contentExportMode) {
+                                  PopupUtils.open(readOnlyMediaDialogComponent);
+                              }
     }
 
     NoSpaceHint {
@@ -1016,6 +1019,20 @@ Item {
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
+    }
+
+    Component {
+         id: readOnlyMediaDialogComponent
+         Dialog {
+             id: readOnlyMediaDialog
+             objectName: "readOnlyMediaDialog"
+             title: i18n.tr("External storage not writeable")
+             text: i18n.tr("It does not seem possible to write to your external storage media. Trying to eject and insert it again might solve the issue, or you might need to format it.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(readOnlyMediaDialog)
              }
          }
     }

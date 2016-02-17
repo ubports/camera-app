@@ -34,6 +34,7 @@ class StorageMonitor : public QObject
     Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY locationChanged)
     Q_PROPERTY(bool diskSpaceLow READ diskSpaceLow NOTIFY diskSpaceLowChanged)
     Q_PROPERTY(bool diskSpaceCriticallyLow READ diskSpaceCriticallyLow NOTIFY diskSpaceCriticallyLowChanged)
+    Q_PROPERTY(bool isWriteable READ isWriteable NOTIFY isWriteableChanged)
 
 public:
     explicit StorageMonitor(QObject *parent = 0);
@@ -42,21 +43,25 @@ public:
     void setLocation(QString location);
     bool diskSpaceLow() const;
     bool diskSpaceCriticallyLow() const;
+    bool isWriteable() const;
 
 Q_SIGNALS:
     void locationChanged();
     void diskSpaceLowChanged();
     void diskSpaceCriticallyLowChanged();
+    void isWriteableChanged();
 
 private Q_SLOTS:
     void refresh();
 
 private:
     void checkDiskSpace();
+    void checkWriteable();
 
 private:
     bool m_low;
     bool m_criticallyLow;
+    bool m_writeable;
     QTimer m_timer;
     QString m_location;
     QStorageInfo m_storage;
