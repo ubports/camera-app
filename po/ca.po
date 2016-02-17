@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2015-03-03 11:01+0000\n"
+"PO-Revision-Date: 2016-02-01 13:21+0000\n"
 "Last-Translator: David Planella <david.planella@ubuntu.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-19 05:44+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-02-02 05:43+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -139,7 +139,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1007
 msgid "Cannot access camera"
-msgstr ""
+msgstr "No es pot accedir a la càmera"
 
 #: ../ViewFinderOverlay.qml:1008
 msgid ""
@@ -148,10 +148,15 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"O bé l'aplicació de la càmera no pot accedir al maquinari o bé s'ha produït "
+"un altre error.\n"
+"\n"
+"Si després d'atorgar permisos a l'aplicació no s'ha resolt el problema, "
+"caldrà que reinicieu el telèfon."
 
 #: ../ViewFinderOverlay.qml:1017
 msgid "Edit Permissions"
-msgstr ""
+msgstr "Edita els permisos"
 
 #: ../camera-app.qml:37
 msgid "Flash"
