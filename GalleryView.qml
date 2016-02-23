@@ -76,7 +76,6 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView && galleryView.currentView == slideshowView
-            focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onToggleSelection: model.toggleSelected(currentIndex)
             onToggleHeader: header.toggle();
@@ -90,7 +89,6 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView && galleryView.currentView == photogridView
-            focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
