@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import QtQuick.Window 2.2
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
@@ -96,36 +97,41 @@ FocusScope {
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
 
+        onPhotoCaptureInProgressChanged: {
+            if (main.contentExportMode && camera.photoCaptureInProgress) {
+                viewFinderExportConfirmation.photoCaptureStarted();
+            }
+        }
+
         imageCapture {
             onReadyChanged: {
-                if (camera.imageCapture.ready && main.transfer) {
-                    if (main.transfer.contentType === ContentType.Videos) {
-                        viewFinderView.captureMode = Camera.CaptureVideo;
-                    } else {
-                        viewFinderView.captureMode = Camera.CaptureStillImage;
+                if (camera.imageCapture.ready) {
+                    if (camera.photoCaptureInProgress) {
+                        if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
+                        camera.photoCaptureInProgress = false;
+                    }
+
+                    if (main.transfer) {
+                        if (main.transfer.contentType === ContentType.Videos) {
+                            viewFinderView.captureMode = Camera.CaptureVideo;
+                        } else {
+                            viewFinderView.captureMode = Camera.CaptureStillImage;
+                        }
                     }
                 }
             }
+
             onCaptureFailed: {
+                console.log("Image capture failed for request " + requestId + ": " + message);
                 camera.photoCaptureInProgress = false;
-                console.log("Capture failed for request " + requestId + ": " + message);
+                viewFinderOverlay.visible = true;
+                PopupUtils.open(captureFailedDialogComponent);
             }
-            onImageCaptured: {
-                snapshot.source = preview;
-                if (!main.contentExportMode) {
-                    viewFinderOverlay.visible = true;
-                    snapshot.startOutAnimation();
-                    if (photoRollHint.necessary) {
-                        photoRollHint.enable();
-                    }
-                }
-            }
+
             onImageSaved: {
-                if (main.contentExportMode) {
-                    viewFinderExportConfirmation.confirmExport(path);
-                }
+                if (main.contentExportMode) viewFinderExportConfirmation.mediaPath = path;
+
                 viewFinderView.photoTaken(path);
-                camera.photoCaptureInProgress = false;
                 metricPhotos.increment();
                 console.log("Picture saved as " + path);
             }
@@ -135,13 +141,17 @@ FocusScope {
             onRecorderStateChanged: {
                 if (videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     metricVideos.increment()
-                    viewFinderOverlay.visible = true;
                     viewFinderView.videoShot(videoRecorder.actualLocation);
                     if (main.contentExportMode) {
-                        viewFinderExportConfirmation.confirmExport(videoRecorder.actualLocation);
+                        viewFinderExportConfirmation.mediaPath = videoRecorder.actualLocation
                     } else if (photoRollHint.necessary) {
                         photoRollHint.enable();
                     }
+                }
+            }
+            onErrorCodeChanged: {
+                if (videoRecorder.errorCode !== CameraRecorder.NoError) {
+                    PopupUtils.open(captureFailedDialogComponent);
                 }
             }
         }
@@ -235,18 +245,21 @@ FocusScope {
             width: parent.width
             height: parent.height
             source: camera
+            opacity: ((main.contentExportMode && viewFinderExportConfirmation.waitingForPictureCapture) ||
+                      (!main.contentExportMode && camera.photoCaptureInProgress && !camera.imageCapture.ready))
+                      ? 0.1 : 1.0
 
             /* This rotation need to be applied since the camera hardware in the
-                   Galaxy Nexus phone is mounted at an angle inside the device, so the video
-                   feed is rotated too.
-                   FIXME: This should come from a system configuration option so that we
-                   don't have to have a different codebase for each different device we want
-                   to run on. Android has that information and QML has an API to reflect it:
-                   the camera.orientation property. Unfortunately it is not hooked up yet.
+               Galaxy Nexus phone is mounted at an angle inside the device, so the video
+               feed is rotated too.
+               FIXME: This should come from a system configuration option so that we
+               don't have to have a different codebase for each different device we want
+               to run on. Android has that information and QML has an API to reflect it:
+               the camera.orientation property. Unfortunately it is not hooked up yet.
 
-                   Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
-                         http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
-                         http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
+               Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#orientation-prop
+                     http://doc.qt.io/qt-5/qcamerainfocontrol.html#cameraOrientation
+                     http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html#orientation
             */
             Component.onCompleted: {
                 // Set orientation only at startup because later on Screen.primaryOrientation
@@ -254,14 +267,6 @@ FocusScope {
                 orientation = Screen.primaryOrientation === Qt.PortraitOrientation  ? -90 : 0;
                 viewFinderOverlay.sensorOrientation = orientation;
             }
-
-            /* Convenience item tracking the real position and size of the real video feed.
-                   Having this helps since these values depend on a lot of rules:
-                   - the feed is automatically scaled to fit the viewfinder
-                   - the viewfinder might apply a rotation to the feed, depending on device orientation
-                   - the resolution and aspect ratio of the feed changes depending on the active camera
-                   The item is also separated in a component so it can be unit tested.
-                 */
 
             transform: Rotation {
                 origin.x: viewFinder.width / 2
@@ -271,6 +276,13 @@ FocusScope {
             }
         }
 
+        /* Convenience item tracking the real position and size of the real video feed.
+           Having this helps since these values depend on a lot of rules:
+           - the feed is automatically scaled to fit the viewfinder
+           - the viewfinder might apply a rotation to the feed, depending on device orientation
+           - the resolution and aspect ratio of the feed changes depending on the active camera
+           The item is also separated in a component so it can be unit tested.
+         */
         ViewFinderGeometry {
             id: viewFinderGeometry
             anchors.centerIn: parent
@@ -331,12 +343,10 @@ FocusScope {
             anchors.fill: parent
 
             function start() {
-                viewFinderOverlay.visible = false;
             }
 
             function stop() {
                 remainingSecsLabel.text = "";
-                viewFinderOverlay.visible = true;
             }
 
             function showRemainingSecs(secs) {
@@ -385,7 +395,6 @@ FocusScope {
 
             function start() {
                 shootFeedback.opacity = 1.0;
-                viewFinderOverlay.visible = false;
                 shootFeedbackAnimation.restart();
             }
 
@@ -394,7 +403,7 @@ FocusScope {
                 target: shootFeedback
                 from: 1.0
                 to: 0.0
-                duration: 50
+                duration: UbuntuAnimation.SnapDuration
                 easing: UbuntuAnimation.StandardEasing
             }
         }
@@ -411,19 +420,10 @@ FocusScope {
         visible: radius !== 0
     }
 
-    ViewFinderOverlayLoader {
-        id: viewFinderOverlay
-
-        anchors.fill: parent
-        camera: camera
-        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
-        Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}}
-    }
-
     PhotoRollHint {
         id: photoRollHint
         anchors.fill: parent
-        visible: enabled && !snapshot.loading
+        visible: enabled
 
         Connections {
             target: viewFinderView
@@ -431,18 +431,65 @@ FocusScope {
         }
     }
 
-    Snapshot {
-        id: snapshot
+    ViewFinderOverlayLoader {
+        id: viewFinderOverlay
+
         anchors.fill: parent
-        orientation: viewFinder.orientation
-        geometry: viewFinderGeometry
-        deviceDefaultIsPortrait: Screen.primaryOrientation === Qt.PortraitOrientation
+        camera: camera
+        opacity: status == Loader.Ready && overlayVisible && !photoRollHint.enabled ? 1.0 : 0.0
+        readyForCapture: main.contentExportMode &&
+                         viewFinderExportConfirmation.waitingForPictureCapture ? false : camera.imageCapture.ready
+
+        Behavior on opacity {
+            enabled: !photoRollHint.enabled
+            UbuntuNumberAnimation {duration: UbuntuAnimation.SnapDuration}
+        }
+
+        // Tapping anywhere on the screen should not trigger any camera
+        // controls while PhotoRoll hint is visible 
+        MouseArea {
+            anchors.fill: parent
+            enabled: photoRollHint.visible
+        }
     }
 
     ViewFinderExportConfirmation {
         id: viewFinderExportConfirmation
         anchors.fill: parent
-        snapshot: snapshot
+
         isVideo: main.transfer.contentType == ContentType.Videos
+        viewFinderGeometry: viewFinderGeometry
+
+        onShowRequested: {
+            viewFinder.visible = false;
+            viewFinderOverlay.visible = false;
+            visible = true;
+        }
+
+        onHideRequested: {
+            viewFinder.visible = true;
+            viewFinderOverlay.visible = true;
+            visible = false;
+        }
+    }
+
+    Component {
+         id: captureFailedDialogComponent
+         Dialog {
+             id: captureFailedDialog
+             objectName: "captureFailedDialog"
+             title: i18n.tr("Capture failed")
+
+             // If we are capturing to an SD card the problem can be a broken card, otherwise it is probably a
+             // crash in the driver and a reboot might fix things.
+             text: StorageLocations.removableStorageLocation && viewFinderOverlay.settings.preferRemovableStorage ?
+                   i18n.tr("Replacing your external media, formatting it, or restarting the device might fix the problem.") :
+                   i18n.tr("Restarting your device might fix the problem.")
+
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(captureFailedDialog)
+             }
+         }
     }
 }

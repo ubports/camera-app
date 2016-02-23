@@ -24,6 +24,14 @@
 #include "fileoperations.h"
 #include "foldersmodel.h"
 #include "storagemonitor.h"
+#include "storagelocations.h"
+
+static QObject* StorageLocations_singleton_factory(QQmlEngine* engine, QJSEngine* scriptEngine)
+{
+    Q_UNUSED(engine);
+    Q_UNUSED(scriptEngine);
+    return new StorageLocations();
+}
 
 void Components::registerTypes(const char *uri)
 {
@@ -34,6 +42,7 @@ void Components::registerTypes(const char *uri)
     qmlRegisterType<FileOperations>(uri, 0, 1, "FileOperations");
     qmlRegisterType<FoldersModel>(uri, 0, 1, "FoldersModel");
     qmlRegisterType<StorageMonitor>(uri, 0, 1, "StorageMonitor");
+    qmlRegisterSingletonType<StorageLocations>(uri, 0, 1, "StorageLocations", StorageLocations_singleton_factory);
 }
 
 void Components::initializeEngine(QQmlEngine *engine, const char *uri)

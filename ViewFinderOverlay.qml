@@ -33,6 +33,7 @@ Item {
     property var controls: controls
     property var settings: settings
     property int sensorOrientation
+    property bool readyForCapture
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -218,12 +219,31 @@ Item {
             photoResolutionOptionsModel.insert(1, optionFitting);
         }
 
+        // If resolution setting is not supported select the resolution automatically
         var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
-        // If resolution setting chosen is not supported select the fitting resolution
-        if (photoResolution != optionFitting.value &&
-            photoResolution != optionMaximum.value) {
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = optionFitting.value;
+        if (!isResolutionAnOption(photoResolution)) {
+            settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
         }
+    }
+
+    function getAutomaticResolution() {
+        var fittingResolution = sizeToString(camera.advanced.fittingResolution);
+        var maximumResolution = sizeToString(camera.advanced.maximumResolution);
+        if (isResolutionAnOption(fittingResolution)) {
+            return fittingResolution;
+        } else {
+            return maximumResolution;
+        }
+    }
+
+    function isResolutionAnOption(resolution) {
+        for (var i=0; i<photoResolutionOptionsModel.count; i++) {
+            var option = photoResolutionOptionsModel.get(i);
+            if (option.value == resolution) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function updateResolutionOptions() {
@@ -250,9 +270,9 @@ Item {
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
-            // If no resolution has ever been chosen, select the one that fits the screen
+            // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.fittingResolution);
+                settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
             }
         }
     }
@@ -289,16 +309,6 @@ Item {
                      && !camera.photoCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
-            Item {
-                /* Use the 'trigger' feature of Panel so that tapping on the Panel
-                   has the same effect as tapping outside of it (bottomEdgeClose) */
-                id: clickReceiver
-                anchors.fill: parent
-                function trigger() {
-                    optionsOverlayClose();
-                }
-            }
-
             /* At startup, opened is false and 'bottomEdge.height' is 0 until
                optionsOverlayLoader has finished loading. When that happens
                'bottomEdge.height' becomes non 0 and 'bottomEdge.position' which
@@ -322,6 +332,7 @@ Item {
                     property bool available: true
                     property bool visible: true
                     property bool showInIndicators: true
+                    property bool colorize: !positionSource.isPrecise
 
                     ListElement {
                         icon: ""
@@ -493,7 +504,7 @@ Item {
                     property string label: i18n.tr("SD")
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
-                    property bool available: application.removableStoragePresent
+                    property bool available: StorageLocations.removableStoragePresent
                     property bool visible: available
 
                     ListElement {
@@ -556,12 +567,12 @@ Item {
                 }
             ]
 
-            /* FIXME: application.removableStoragePresent is not updated dynamically.
+            /* FIXME: StorageLocations.removableStoragePresent is not updated dynamically.
                Workaround that by reading it when the bottom edge is opened/closed.
             */
             Connections {
                 target: bottomEdge
-                onOpenedChanged: removableStorageOptionsModel.available = application.removableStoragePresent
+                onOpenedChanged: removableStorageOptionsModel.available = StorageLocations.removableStoragePresent
             }
 
             function indexForValue(model, value) {
@@ -599,6 +610,24 @@ Item {
                 sourceComponent: Component {
                     OptionsOverlay {
                         options: bottomEdge.options
+                    }
+                }
+            }
+
+            triggerSize: units.gu(3)
+
+            Item {
+                /* Use the 'trigger' feature of Panel so that tapping on the Panel
+                   can be acted upon */
+                id: clickReceiver
+                anchors.fill: parent
+                anchors.topMargin: -bottomEdge.triggerSize
+
+                function trigger() {
+                    if (bottomEdge.opened) {
+                        optionsOverlayClose();
+                    } else {
+                        bottomEdge.open();
                     }
                 }
             }
@@ -669,11 +698,11 @@ Item {
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {
-                    camera.videoRecorder.outputLocation = application.temporaryLocation;
-                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
-                    camera.videoRecorder.outputLocation = application.removableStorageVideosLocation;
+                    camera.videoRecorder.outputLocation = StorageLocations.temporaryLocation;
+                } else if (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.videoRecorder.outputLocation = StorageLocations.removableStorageVideosLocation;
                 } else {
-                    camera.videoRecorder.outputLocation = application.videosLocation;
+                    camera.videoRecorder.outputLocation = StorageLocations.videosLocation;
                 }
 
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
@@ -684,11 +713,10 @@ Item {
                 if (!main.contentExportMode) {
                     shootFeedback.start();
                 }
+                camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
                 var position = positionSource.position;
-                if (settings.gpsEnabled && positionSource.valid
-                        && position.latitudeValid
-                        && position.longitudeValid) {
+                if (settings.gpsEnabled && positionSource.isPrecise) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
                     camera.imageCapture.setMetadata("GPSLongitude", position.coordinate.longitude);
                     camera.imageCapture.setMetadata("GPSTimeStamp", position.timestamp);
@@ -698,13 +726,12 @@ Item {
                     }
                 }
 
-                camera.photoCaptureInProgress = true;
                 if (main.contentExportMode) {
-                    camera.imageCapture.captureToLocation(application.temporaryLocation);
-                } else if (application.removableStoragePresent && settings.preferRemovableStorage) {
-                    camera.imageCapture.captureToLocation(application.removableStoragePicturesLocation);
+                    camera.imageCapture.captureToLocation(StorageLocations.temporaryLocation);
+                } else if (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) {
+                    camera.imageCapture.captureToLocation(StorageLocations.removableStoragePicturesLocation);
                 } else {
-                    camera.imageCapture.captureToLocation(application.picturesLocation);
+                    camera.imageCapture.captureToLocation(StorageLocations.picturesLocation);
                 }
             }
         }
@@ -760,6 +787,11 @@ Item {
             id: positionSource
             updateInterval: 1000
             active: settings.gpsEnabled
+            property bool isPrecise: valid
+                                     && position.latitudeValid
+                                     && position.longitudeValid
+                                     && (!position.horizontalAccuracyValid ||
+                                          position.horizontalAccuracy <= 100)
         }
 
         Connections {
@@ -800,7 +832,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            enabled: camera.imageCapture.ready && !storageMonitor.diskSpaceCriticallyLow
+            enabled: viewFinderOverlay.readyForCapture && !storageMonitor.diskSpaceCriticallyLow
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -878,15 +910,19 @@ Item {
 
             MouseArea {
                 id: manualFocusMouseArea
-                anchors.fill: parent
-                enabled: !camera.photoCaptureInProgress
+                anchors {
+                    fill: parent
+                    // Pinch gestures need more clearance at the edges of the screen, but
+                    // tap to focus should be safe all the way to the edges themselves instead.
+                    leftMargin: -bottomEdgeIndicators.height
+                    rightMargin: -bottomEdgeIndicators.height
+                }
+                enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom) &&
+                         !camera.photoCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;
                 }
-                // FIXME: calling 'isFocusPointModeSupported' fails with
-                // "Error: Unknown method parameter type: QDeclarativeCamera::FocusPointMode"
-                //enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom)
             }
         }
 
@@ -941,16 +977,29 @@ Item {
         }
     }
 
+    ProcessingFeedback {
+        anchors {
+            top: parent.top
+            topMargin: units.gu(2)
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
+        processing: camera.photoCaptureInProgress
+    }
+
     StorageMonitor {
         id: storageMonitor
-        location: (application.removableStoragePresent && settings.preferRemovableStorage) ?
-                   application.removableStorageLocation : application.videosLocation
+        location: (StorageLocations.removableStoragePresent && settings.preferRemovableStorage) ?
+                   StorageLocations.removableStorageLocation : StorageLocations.videosLocation
         onDiskSpaceLowChanged: if (storageMonitor.diskSpaceLow && !storageMonitor.diskSpaceCriticallyLow) {
                                    PopupUtils.open(freeSpaceLowDialogComponent);
                                }
         onDiskSpaceCriticallyLowChanged: if (storageMonitor.diskSpaceCriticallyLow) {
                                              camera.videoRecorder.stop();
                                          }
+        onIsWriteableChanged: if (!isWriteable && !diskSpaceLow && !main.contentExportMode) {
+                                  PopupUtils.open(readOnlyMediaDialogComponent);
+                              }
     }
 
     NoSpaceHint {
@@ -970,6 +1019,20 @@ Item {
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: PopupUtils.close(freeSpaceLowDialog)
+             }
+         }
+    }
+
+    Component {
+         id: readOnlyMediaDialogComponent
+         Dialog {
+             id: readOnlyMediaDialog
+             objectName: "readOnlyMediaDialog"
+             title: i18n.tr("External storage not writeable")
+             text: i18n.tr("It does not seem possible to write to your external storage media. Trying to eject and insert it again might solve the issue, or you might need to format it.")
+             Button {
+                 text: i18n.tr("Cancel")
+                 onClicked: PopupUtils.close(readOnlyMediaDialog)
              }
          }
     }
