@@ -42,6 +42,33 @@ class TestCameraOptions(CameraAppTestCase):
         # check overlay is closed
         self.assertThat(bottom_edge.opened, Eventually(Equals(False)))
 
+        # try opening and closing by tapping on the bottom of the viewfinder
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # check overlay is opened
+        self.assertThat(bottom_edge.opened, Eventually(Equals(True)))
+
+        # tap on the bottom of the viewfinder to close overlay
+        viewfinder = self.main_window.get_viewfinder()
+        x = viewfinder.globalRect.x + viewfinder.width / 2.0
+        y = viewfinder.globalRect.y + viewfinder.height - 1.0
+        self.pointing_device.move(x, y)
+        self.pointing_device.click()
+
+        # check overlay is closed
+        self.assertThat(bottom_edge.opened, Eventually(Equals(False)))
+
+    """Test that the options overlay opens properly by tapping on the hint"""
+    def test_overlay_open_tapping_hint(self):
+        options_hint = self.app.wait_select_single(objectName="indicatorsRow")
+        self.pointing_device.move_to_object(options_hint)
+        self.pointing_device.click()
+
+        # check overlay is opened
+        bottom_edge = self.main_window.get_bottom_edge()
+        self.assertThat(bottom_edge.opened, Eventually(Equals(True)))
+
     """Test toggling on/off grid lines option"""
     def test_toggle_grid_lines(self):
         gridlines = self.app.wait_select_single(
