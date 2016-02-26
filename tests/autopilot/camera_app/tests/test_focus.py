@@ -67,7 +67,6 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
-        mid_feed = self.get_center(feed)
         self.verify_focus_ring_after_click_at(focus_ring, mid_x, mid_y)
 
         # Then try on the side edges and top edge to verify they
