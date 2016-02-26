@@ -33,6 +33,7 @@ add_executable(tst_storagemonitor
 
 qt5_use_modules(tst_storagemonitor Widgets Core Quick Qml Test)
 add_test(tst_storagemonitor tst_storagemonitor -xunitxml -o test.xml)
+add_test(flake8 python3 -m flake8 ${CMAKE_SOURCE_DIR}/tests/autopilot)
 set_tests_properties(tst_storagemonitor PROPERTIES
     TIMEOUT ${CTEST_TESTING_TIMEOUT}
     ENVIRONMENT "QT_QPA_PLATFORM=minimal"
