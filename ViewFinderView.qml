@@ -110,14 +110,6 @@ Item {
                         if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
                         camera.photoCaptureInProgress = false;
                     }
-
-                    if (main.transfer) {
-                        if (main.transfer.contentType === ContentType.Videos) {
-                            viewFinderView.captureMode = Camera.CaptureVideo;
-                        } else {
-                            viewFinderView.captureMode = Camera.CaptureStillImage;
-                        }
-                    }
                 }
             }
 
