@@ -22,37 +22,54 @@ Item {
 
     property bool isVideo
     property string mediaPath
-    property Snapshot snapshot
+    property bool waitingForPictureCapture: false
 
-    function confirmExport(path) {
-        viewFinder.visible = false;
-        viewFinderOverlay.visible = false;
-        mediaPath = path;
-        if (!isVideo) snapshot.visible = true;
-        visible = true;
-    }
-
-    function hide() {
-        viewFinder.visible = true;
-        viewFinderOverlay.visible = true;
-        snapshot.source = "";
-        snapshot.visible = false;
-        visible = false;
-    }
+    signal hideRequested()
+    signal showRequested()
+    property ViewFinderGeometry viewFinderGeometry
 
     visible: false
 
+    // For videos show immediately without waiting for the preview to load,
+    // since we will show a progress indicator instead of the preview
+    onMediaPathChanged: if (mediaPath && isVideo) showRequested()
+
+    function photoCaptureStarted() {
+        controls.item.lockPictureOrientation()
+        waitingForPictureCapture = true
+    }
+
     Loader {
+        id: controls
         anchors.fill: parent
         asynchronous: true
         sourceComponent: Component {
             Item {
+                function lockPictureOrientation() { pictureReview.lockOrientation() }
+
                 VideoReview {
                     id: videoReview
                     anchors.fill: parent
                     bottomMargin: buttons.height
-                    videoPath: mediaPath
+                    videoPath: isVideo ? mediaPath : ""
                     visible: isVideo
+                }
+
+                PictureReview {
+                    id: pictureReview
+                    anchors.fill: parent
+                    visible: !isVideo
+                    geometry: viewFinderGeometry
+                    source: !isVideo ? mediaPath : ""
+
+                    // Show export confirmation only when the snapshot is loaded to prevent the
+                    // screen being black while the image loads
+                    onLoadedChanged: {
+                        if (loaded) {
+                             viewFinderExportConfirmation.showRequested()
+                             waitingForPictureCapture = false
+                         }
+                    }
                 }
 
                 Item {
@@ -74,7 +91,7 @@ Item {
                         }
 
                         iconName: "reload"
-                        onClicked: viewFinderExportConfirmation.hide()
+                        onClicked: hideRequested()
                     }
 
                     CircleButton {
@@ -90,8 +107,9 @@ Item {
 
                         iconName: "ok"
                         onClicked: {
-                            viewFinderExportConfirmation.hide();
+                            hideRequested();
                             main.exportContent([mediaPath]);
+                            mediaPath = "";
                         }
                     }
 
@@ -108,8 +126,9 @@ Item {
 
                         iconName: "close"
                         onClicked: {
-                            viewFinderExportConfirmation.hide();
+                            hideRequested();
                             main.cancelExport();
+                            mediaPath = "";
                         }
                     }
                 }

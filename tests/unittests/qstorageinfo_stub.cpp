@@ -14,13 +14,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "qstorageinfo.h"
-#include "qstorageinfo_p.h"
+#include <QStorageInfo>
 #include "storageinfocontrol.h"
 
 #include <QDebug>
 
 QString location;
+
+class QStorageInfoPrivateRef {
+public:
+    bool deref() { return false; }
+};
+
+class QStorageInfoPrivate {
+public:
+    QStorageInfoPrivateRef ref;
+};
 
 QStorageInfo::QStorageInfo()
 {
@@ -45,6 +54,11 @@ QStorageInfo::~QStorageInfo()
 void QStorageInfo::setPath(const QString &path)
 {
     location = path;
+}
+
+QString QStorageInfo::rootPath() const
+{
+    return location;
 }
 
 qint64 QStorageInfo::bytesAvailable() const
