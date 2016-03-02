@@ -239,6 +239,7 @@ Item {
     Component {
         id: unableShareDialogComponent
         UnableShareDialog {
+            objectName: "unableShareDialog"
             onVisibleChanged: photogridView.toggleHeader()
         }
     }

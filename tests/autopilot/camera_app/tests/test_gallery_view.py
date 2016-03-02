@@ -204,9 +204,8 @@ class TestCameraGalleryViewWithPhotosAndVideo(
 
     def setUp(self):
         self.delete_all_media()
-        self.add_sample_photo(name="sample1.jpg")
-        self.add_sample_photo(name="sample2.jpg")
-        self.add_sample_video(name="video.mp4")
+        self.add_sample_photo()
+        self.add_sample_video()
 
         super(TestCameraGalleryViewWithPhotosAndVideo, self).setUp()
         self.assertThat(
@@ -250,5 +249,18 @@ class TestCameraGalleryViewWithPhotosAndVideo(
 
         # Verify that it stays enabled with mixed media selected
         self.select_media(1)
-        self.select_media(2)
         self.verify_share_state(True)
+
+    """Tests sharing with mixed media generates a warning dialog"""
+    def test_no_share_mixed_media(self):
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+
+        self.select_media(0)
+        self.select_media(1)
+        share = self.verify_share_state(True, close=False)
+
+        self.pointing_device.move_to_object(share)
+        self.pointing_device.click()
+
+        self.main_window.get_gallery().wait_select_single(objectName="unableShareDialog")
