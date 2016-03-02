@@ -183,6 +183,7 @@ Item {
                 property real maximumZoom: 3.0
                 property bool active: false
                 property var center
+                enabled: !media.isVideo
 
                 onPinchStarted: {
                     active = true;
