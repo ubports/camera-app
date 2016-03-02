@@ -40,12 +40,21 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            enabled: model.selectedFiles.length <= 1
+            enabled: model.selectedFiles.length > 0
             onTriggered: {
-                if (model.selectedFiles.length > 0) {
-                    var dialog = PopupUtils.open(sharePopoverComponent)
-                    dialog.parent = photogridView
+                // Display a warning message if we are attempting to share mixed
+                // content, as the framework does not properly support this
+                var lastType = model.get(0, "fileType");
+                for (var i = 1; i < model.selectedFiles.length; i++) {
+                    var type = model.get(i, "fileType");
+                    if (type !== lastType) {
+                        PopupUtils.open(unableShareDialogComponent).parent = photogridView;
+                        return;
+                    }
+                    lastType = type;
                 }
+
+                PopupUtils.open(sharePopoverComponent).parent = photogridView
             }
         },
         Action {
@@ -225,4 +234,12 @@ Item {
             onVisibleChanged: photogridView.toggleHeader()
         }
     }
+
+    Component {
+        id: unableShareDialogComponent
+        UnableShareDialog {
+            onVisibleChanged: photogridView.toggleHeader()
+        }
+    }
+
 }
