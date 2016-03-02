@@ -261,7 +261,7 @@ Item {
                         }
 
                         Icon {
-                            id: mediaLoadingErrorIcon
+                            objectName: "videoLoadingErrorIcon"
                             anchors.centerIn: parent
                             width: Math.min(listView.height, listView.width) - units.gu(8)
                             height: width
