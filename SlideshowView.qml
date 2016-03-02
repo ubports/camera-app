@@ -258,6 +258,16 @@ Item {
                             }
                             fillMode: Image.PreserveAspectFit
                         }
+
+                        Icon {
+                            id: mediaLoadingErrorIcon
+                            anchors.centerIn: parent
+                            width: Math.min(listView.height, listView.width) - units.gu(8)
+                            height: width
+                            name: "stock_video"
+                            color: "white"
+                            opacity: image.status == Image.Error ? 0.8 : 0.0
+                         }
                     }
 
                     Icon {
