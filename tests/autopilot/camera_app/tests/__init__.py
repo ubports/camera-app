@@ -103,10 +103,10 @@ class CameraAppTestCase(AutopilotTestCase):
             if os.path.isfile(f):
                 os.remove(f)
 
-    def add_sample_photo(self):
+    def add_sample_photo(self, name="sample.jpg"):
         shutil.copyfile(os.path.join(self.sample_dir, "sample.jpg"),
-                        os.path.join(self.pictures_dir, "sample.jpg"))
+                        os.path.join(self.pictures_dir, name))
 
-    def add_sample_video(self):
+    def add_sample_video(self, name="sample.mp4"):
         shutil.copyfile(os.path.join(self.sample_dir, "sample.mp4"),
-                        os.path.join(self.videos_dir, "sample.mp4"))
+                        os.path.join(self.videos_dir, name))
