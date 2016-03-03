@@ -139,6 +139,16 @@ Item {
                 visible: isVideo
             }
 
+            Icon {
+                objectName: "videoLoadingErrorIcon"
+                anchors.centerIn: parent
+                width: units.gu(6)
+                height: width
+                name: cellDelegate.isVideo ? "stock_video" : "stock_image"
+                color: "white"
+                opacity: thumbnail.status == Image.Error ? 1.0 : 0.0
+             }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
