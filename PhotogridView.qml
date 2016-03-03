@@ -140,7 +140,7 @@ Item {
             }
 
             Icon {
-                objectName: "videoLoadingErrorIcon"
+                objectName: "thumbnailLoadingErrorIcon"
                 anchors.centerIn: parent
                 width: units.gu(6)
                 height: width
