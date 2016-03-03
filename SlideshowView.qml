@@ -263,11 +263,11 @@ Item {
                         Icon {
                             objectName: "videoLoadingErrorIcon"
                             anchors.centerIn: parent
-                            width: Math.min(listView.height, listView.width) - units.gu(8)
+                            width: units.gu(30)
                             height: width
-                            name: "stock_video"
+                            name: media.isVideo ? "stock_video" : "stock_image"
                             color: "white"
-                            opacity: image.status == Image.Error ? 0.8 : 0.0
+                            opacity: image.status == Image.Error ? 1.0 : 0.0
                          }
                     }
 
