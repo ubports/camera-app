@@ -60,11 +60,15 @@ Item {
         property bool failedToConnect: false
 
         function manualFocus(x, y) {
-            viewFinderOverlay.showFocusRing(x, y);
-            autoFocusTimer.restart();
-            focus.focusMode = Camera.FocusAuto;
-            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y));
-            focus.focusPointMode = Camera.FocusPointCustom;
+            var normalizedPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y - viewFinder.y));
+            if (normalizedPoint.x >= 0.0 && normalizedPoint.x <= 1.0 &&
+                normalizedPoint.y >= 0.0 && normalizedPoint.y <= 1.0) {
+                viewFinderOverlay.showFocusRing(x, y);
+                autoFocusTimer.restart();
+                focus.focusMode = Camera.FocusAuto;
+                focus.customFocusPoint = normalizedPoint;
+                focus.focusPointMode = Camera.FocusPointCustom;
+            }
         }
 
         function autoFocus() {
