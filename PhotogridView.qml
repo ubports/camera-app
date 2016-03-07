@@ -44,17 +44,11 @@ Item {
             onTriggered: {
                 // Display a warning message if we are attempting to share mixed
                 // content, as the framework does not properly support this
-                var lastType = model.get(0, "fileType");
-                for (var i = 1; i < model.selectedFiles.length; i++) {
-                    var type = model.get(i, "fileType");
-                    if (type !== lastType) {
-                        PopupUtils.open(unableShareDialogComponent).parent = photogridView;
-                        return;
-                    }
-                    lastType = type;
+                if (selectionContainsMixedMedia()) {
+                    PopupUtils.open(unableShareDialogComponent).parent = photogridView;
+                } else {
+                    PopupUtils.open(sharePopoverComponent).parent = photogridView;
                 }
-
-                PopupUtils.open(sharePopoverComponent).parent = photogridView
             }
         },
         Action {
@@ -68,6 +62,19 @@ Item {
             }
         }
     ]
+
+    function selectionContainsMixedMedia() {
+        var selection = model.selectedFiles;
+        var lastType = model.get(selection[0], "fileType");
+        for (var i = 1; i < selection.length; i++) {
+            var type = model.get(selection[i], "fileType");
+            if (type !== lastType) {
+                return true;
+            }
+            lastType = type;
+        }
+        return false;
+    }
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
