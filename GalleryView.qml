@@ -35,7 +35,7 @@ Item {
                   StorageLocations.removableStorageVideosLocation]
         typeFilters: !main.contentExportMode ? [ "image", "video" ]
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
-        singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
+        singleSelectionOnly: main.contentExportMode && main.transfer.selectionType === ContentTransfer.Single
     }
 
     property bool gridMode: main.contentExportMode
@@ -58,7 +58,6 @@ Item {
 
     function exitUserSelectionMode() {
         model.clearSelection();
-        model.singleSelectionOnly = true;
         userSelectionMode = false;
     }
 
@@ -97,7 +96,6 @@ Item {
             onPhotoPressAndHold: {
                 if (!galleryView.userSelectionMode) {
                     galleryView.userSelectionMode = true;
-                    model.singleSelectionOnly = false;
                     model.toggleSelected(index);
                 }
             }
