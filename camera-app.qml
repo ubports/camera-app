@@ -280,7 +280,7 @@ Window {
 
     property bool contentExportMode: transfer !== null
     property var transfer: null
-    property var transferContentType: ContentType.Pictures
+    property var transferContentType: transfer ? transfer.contentType : "image"
 
     function exportContent(urls) {
         if (!main.transfer) return;
