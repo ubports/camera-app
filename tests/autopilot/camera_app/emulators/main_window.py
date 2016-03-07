@@ -90,6 +90,10 @@ class MainWindow(object):
         """Returns the video resolution button of the camera"""
         return self.get_option_button("videoResolution")
 
+    def get_timer_delay_button(self):
+        """Returns the timer delay option button of the camera"""
+        return self.get_option_button("selfTimerDelay")
+
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
         return self.app.wait_select_single("StopWatch")
