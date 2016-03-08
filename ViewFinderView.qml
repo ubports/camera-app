@@ -100,6 +100,7 @@ Item {
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
+        property bool timedCaptureInProgress: false
 
         onPhotoCaptureInProgressChanged: {
             if (main.contentExportMode && camera.photoCaptureInProgress) {
