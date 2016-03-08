@@ -263,4 +263,5 @@ class TestCameraGalleryViewWithPhotosAndVideo(
         self.pointing_device.move_to_object(share)
         self.pointing_device.click()
 
-        self.main_window.get_gallery().wait_select_single(objectName="unableShareDialog")
+        gallery = self.main_window.get_gallery()
+        gallery.wait_select_single(objectName="unableShareDialog")
