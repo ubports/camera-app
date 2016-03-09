@@ -7,7 +7,7 @@
 
 """Tests for the Camera App zoom"""
 
-from testtools.matchers import Equals
+from testtools.matchers import Equals, NotEquals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
@@ -124,6 +124,7 @@ class TestCameraGalleryViewWithVideo(
     def test_video_thumbnails(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
+        thumb_error = self.main_window.get_broken_video_icon()
 
         self.main_window.swipe_to_gallery(self)
 
@@ -132,6 +133,38 @@ class TestCameraGalleryViewWithVideo(
 
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
+        self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
+
+
+class TestCameraGalleryViewWithBrokenVideo(
+        TestCameraGalleryViewMixin, CameraAppTestCase):
+    """Tests the camera gallery view with a broken video already present"""
+
+    def setUp(self):
+        self.delete_all_media()
+        self.add_sample_video(broken=True)
+
+        super(TestCameraGalleryViewWithBrokenVideo, self).setUp()
+        self.assertThat(
+            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+
+    def tearDown(self):
+        super(TestCameraGalleryViewWithBrokenVideo, self).tearDown()
+
+    """Tests the placeholder thumnails for broken video loads correctly"""
+    def test_video_thumbnails(self):
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+        thumb_error = self.main_window.get_broken_video_icon()
+
+        self.main_window.swipe_to_gallery(self)
+
+        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        spinner = gallery.wait_select_single("ActivityIndicator")
+        self.assertThat(spinner.running, Eventually(Equals(False)))
+        self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
 
 
 class TestCameraGalleryViewWithPhoto(

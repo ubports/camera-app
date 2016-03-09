@@ -107,6 +107,11 @@ class CameraAppTestCase(AutopilotTestCase):
         shutil.copyfile(os.path.join(self.sample_dir, "sample.jpg"),
                         os.path.join(self.pictures_dir, "sample.jpg"))
 
-    def add_sample_video(self):
-        shutil.copyfile(os.path.join(self.sample_dir, "sample.mp4"),
-                        os.path.join(self.videos_dir, "sample.mp4"))
+    def add_sample_video(self, broken=False):
+        if broken:
+            path = os.path.join(self.videos_dir, "sample_broken.mp4")
+            with open(path, "w") as video:
+                video.write("I AM NOT A VIDEO")
+        else:
+            shutil.copyfile(os.path.join(self.sample_dir, "sample.mp4"),
+                            os.path.join(self.videos_dir, "sample.mp4"))
