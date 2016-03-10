@@ -232,7 +232,7 @@ class TestCameraGalleryViewWithPhoto(
 
 
 class TestCameraGalleryViewWithPhotosAndVideo(
-                TestCameraGalleryViewMixin, CameraAppTestCase):
+        TestCameraGalleryViewMixin, CameraAppTestCase):
     """Tests the camera gallery view with two photos and a video"""
 
     def setUp(self):
