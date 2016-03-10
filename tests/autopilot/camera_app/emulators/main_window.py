@@ -36,6 +36,11 @@ class MainWindow(object):
         """Returns the gallery view"""
         return self.app.wait_select_single("GalleryView")
 
+    def get_broken_video_icon(self):
+        """Returns the gallery view"""
+        name = "thumbnailLoadingErrorIcon"
+        return self.app.wait_select_single(objectName=name)
+
     def get_no_media_hint(self):
         """Returns the Item representing the hint that no media is available"""
         return self.app.wait_select_single(objectName="noMediaHint")
@@ -89,6 +94,10 @@ class MainWindow(object):
     def get_video_resolution_button(self):
         """Returns the video resolution button of the camera"""
         return self.get_option_button("videoResolution")
+
+    def get_timer_delay_button(self):
+        """Returns the timer delay option button of the camera"""
+        return self.get_option_button("selfTimerDelay")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""

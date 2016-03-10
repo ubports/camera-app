@@ -183,6 +183,7 @@ Item {
                 property real maximumZoom: 3.0
                 property bool active: false
                 property var center
+                enabled: !media.isVideo
 
                 onPinchStarted: {
                     active = true;
@@ -258,6 +259,16 @@ Item {
                             }
                             fillMode: Image.PreserveAspectFit
                         }
+
+                        Icon {
+                            objectName: "thumbnailLoadingErrorIcon"
+                            anchors.centerIn: parent
+                            width: units.gu(30)
+                            height: width
+                            name: media.isVideo ? "stock_video" : "stock_image"
+                            color: "white"
+                            opacity: image.status == Image.Error ? 1.0 : 0.0
+                         }
                     }
 
                     Icon {

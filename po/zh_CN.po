@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2016-01-20 02:50+0000\n"
+"PO-Revision-Date: 2016-02-25 02:26+0000\n"
 "Last-Translator: Ian Li <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-21 05:51+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-02-26 05:25+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -48,7 +48,7 @@ msgstr "编辑照片"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
-msgstr "相册"
+msgstr "相机胶卷"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."

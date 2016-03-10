@@ -289,6 +289,7 @@ Item {
         id: bottomEdgeClose
         anchors.fill: parent
         onClicked: optionsOverlayClose()
+        enabled: !camera.timedCaptureInProgress
     }
 
     OrientationHelper {
@@ -305,7 +306,7 @@ Item {
             height: optionsOverlayLoader.height
             onOpenedChanged: optionsOverlayLoader.item.closeValueSelector()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
-                     && !camera.photoCaptureInProgress
+                     && !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
 
             /* At startup, opened is false and 'bottomEdge.height' is 0 until
@@ -652,13 +653,15 @@ Item {
         enabled: visible
 
         function timedShoot(secs) {
+            camera.timedCaptureInProgress = true;
             timedShootFeedback.start();
             shootingTimer.remainingSecs = secs;
             shootingTimer.start();
         }
 
         function cancelTimedShoot() {
-            if (shootingTimer.running) {
+            if (camera.timedCaptureInProgress) {
+                camera.timedCaptureInProgress = false;
                 shootingTimer.stop();
                 timedShootFeedback.stop();
             }
@@ -774,6 +777,7 @@ Item {
             onTriggered: {
                 if (remainingSecs == 0) {
                     running = false;
+                    camera.timedCaptureInProgress = false;
                     controls.shoot();
                     timedShootFeedback.stop();
                 } else {
@@ -819,7 +823,7 @@ Item {
             iconName: (camera.captureMode == Camera.CaptureStillImage) ? "camcorder" : "camera-symbolic"
             onClicked: controls.changeRecordMode()
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState && !main.contentExportMode
-                     && !camera.photoCaptureInProgress
+                     && !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
         }
 
         ShootButton {
@@ -833,6 +837,7 @@ Item {
             }
 
             enabled: viewFinderOverlay.readyForCapture && !storageMonitor.diskSpaceCriticallyLow
+                     && !camera.timedCaptureInProgress
             state: (camera.captureMode == Camera.CaptureVideo) ?
                    ((camera.videoRecorder.recorderState == CameraRecorder.StoppedState) ? "record_off" : "record_on") :
                    "camera"
@@ -869,7 +874,7 @@ Item {
             }
 
             enabled: !camera.switchInProgress && camera.videoRecorder.recorderState == CameraRecorder.StoppedState
-                     && !camera.photoCaptureInProgress
+                     && !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
             iconName: "camera-flip"
             onClicked: controls.switchCamera()
         }
@@ -892,7 +897,7 @@ Item {
             property real maximumScale: 3.0
             property bool active: false
 
-            enabled: !camera.photoCaptureInProgress
+            enabled: !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
             onPinchStarted: {
                 active = true;
                 initialZoom = zoomControl.value;
@@ -918,7 +923,7 @@ Item {
                     rightMargin: -bottomEdgeIndicators.height
                 }
                 enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom) &&
-                         !camera.photoCaptureInProgress
+                         !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
                 onClicked: {
                     camera.manualFocus(mouse.x, mouse.y);
                     mouse.accepted = false;

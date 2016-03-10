@@ -135,7 +135,9 @@ Window {
                 }
             }
         ]
-        interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired && !viewFinderView.camera.photoCaptureInProgress
+        interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired
+                     && !viewFinderView.camera.photoCaptureInProgress
+                     && !viewFinderView.camera.timedCaptureInProgress
 
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
@@ -312,16 +314,10 @@ Window {
         onExportRequested: {
             viewSwitcher.switchToViewFinder();
 
-            // The exportRequested event can arrive before or after the
-            // app is active, but setting the recording type before the
-            // capture becomes ready does not have any effect.
-            // See camera.imageCapture.onReadyChanged for the other case.
-            if (viewFinderView.camera.imageCapture.ready) {
-                if (transfer.contentType === ContentType.Videos) {
-                    viewFinderView.captureMode = Camera.CaptureVideo;
-                } else {
-                    viewFinderView.captureMode = Camera.CaptureStillImage;
-                }
+            if (transfer.contentType === ContentType.Videos) {
+                viewFinderView.captureMode = Camera.CaptureVideo;
+            } else {
+                viewFinderView.captureMode = Camera.CaptureStillImage;
             }
             main.transfer = transfer;
         }

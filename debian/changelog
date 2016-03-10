@@ -1,3 +1,30 @@
+camera-app (3.0.0+16.04.20160229-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello, Florian Boucault, Ugo Riboni ]
+  * New release: Allow tap to focus up to the left/right edge of the
+    screen Query the manual focus support to enable/disable tap-to-focus
+    as the backend supports it Do not crash if no QCameraExposureControl
+    is available (true with Unity 7) Before setting a photo capture
+    resolution, always checks it is included in the possible resolution
+    options Fix bottom edge mouse handling: ensure that clicks on the
+    bottom edge open it and that any click outside of option buttons
+    dismiss the bottom edge Various performance improvements to minimize
+    the time between shots and between pressing the shutter button and
+    the actual capture When the GPS fix is accurate to less than 100m
+    display the GPS icon in red and don't save location Display error
+    messages when disk write fails and when SD card is not writeable
+    when switching to it Disable record/shuttle button while PhotoRoll
+    hint is visible removed: CameraApp/qstorageinfo.cpp
+    CameraApp/qstorageinfo.h CameraApp/qstorageinfo_p.h
+    CameraApp/qstorageinfo_unix.cpp Snapshot.qml run_tests.sh added:
+    CameraApp/storagelocations.cpp CameraApp/storagelocations.h
+    PictureReview.qml ProcessingFeedback.qml
+
+  [ Florian Boucault ]
+  * Update translations catalog (pot)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Mon, 29 Feb 2016 12:14:39 +0000
+
 camera-app (3.0.0+16.04.20160114-0ubuntu1) xenial; urgency=medium
 
   [ CI Train Bot ]
