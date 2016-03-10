@@ -40,11 +40,14 @@ Item {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            enabled: model.selectedFiles.length <= 1
+            enabled: model.selectedFiles.length > 0
             onTriggered: {
-                if (model.selectedFiles.length > 0) {
-                    var dialog = PopupUtils.open(sharePopoverComponent)
-                    dialog.parent = photogridView
+                // Display a warning message if we are attempting to share mixed
+                // content, as the framework does not properly support this
+                if (selectionContainsMixedMedia()) {
+                    PopupUtils.open(unableShareDialogComponent).parent = photogridView;
+                } else {
+                    PopupUtils.open(sharePopoverComponent).parent = photogridView;
                 }
             }
         },
@@ -59,6 +62,19 @@ Item {
             }
         }
     ]
+
+    function selectionContainsMixedMedia() {
+        var selection = model.selectedFiles;
+        var lastType = model.get(selection[0], "fileType");
+        for (var i = 1; i < selection.length; i++) {
+            var type = model.get(selection[i], "fileType");
+            if (type !== lastType) {
+                return true;
+            }
+            lastType = type;
+        }
+        return false;
+    }
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -170,6 +186,7 @@ Item {
                 visible: inSelectionMode
 
                 Icon {
+                    objectName: "mediaItemCheckBox"
                     anchors.centerIn: parent
                     width: parent.width * 0.8
                     height: parent.height * 0.8
@@ -235,4 +252,13 @@ Item {
             onVisibleChanged: photogridView.toggleHeader()
         }
     }
+
+    Component {
+        id: unableShareDialogComponent
+        UnableShareDialog {
+            objectName: "unableShareDialog"
+            onVisibleChanged: photogridView.toggleHeader()
+        }
+    }
+
 }
