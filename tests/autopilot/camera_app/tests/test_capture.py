@@ -17,6 +17,7 @@ from camera_app.tests import CameraAppTestCase
 import unittest
 import time
 import os
+import glob
 
 
 class TestCapture(CameraAppTestCase):
@@ -264,7 +265,7 @@ class TestCapture(CameraAppTestCase):
     def get_first_picture(self, timeout=10):
         pictures = []
         for i in range(0, timeout):
-            pictures = os.listdir(self.pictures_dir)
+            pictures = glob.glob(os.path.join(self.pictures_dir, "*.jpg"))
             if len(pictures) != 0:
                 break
             time.sleep(1)
