@@ -138,6 +138,10 @@ class TestCameraGalleryViewWithVideo(
         thumb_error = self.main_window.get_broken_media_icon()
         self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
 
+        self.move_from_slideshow_to_photogrid()
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
+
 
 class TestCameraGalleryViewWithBrokenVideo(
         TestCameraGalleryViewMixin, CameraAppTestCase):
@@ -166,6 +170,10 @@ class TestCameraGalleryViewWithBrokenVideo(
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
 
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
+
+        self.move_from_slideshow_to_photogrid()
         thumb_error = self.main_window.get_broken_media_icon()
         self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
 
