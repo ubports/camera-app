@@ -32,6 +32,9 @@ class TestFocus(CameraAppTestCase):
         # The focus ring should be invisible in the beginning
         self.assertThat(ring.opacity, Eventually(Equals(0.0)))
 
+        focus_mouse_area = self.main_window.get_focus_mouse_area()
+        self.assertThat(focus_mouse_area.enabled, Eventually(Equals(True)))
+
         # Click in the designated spot
         self.pointing_device.move(x, y)
         self.pointing_device.click()

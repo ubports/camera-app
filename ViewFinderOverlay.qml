@@ -915,6 +915,7 @@ Item {
 
             MouseArea {
                 id: manualFocusMouseArea
+                objectName: "manualFocusMouseArea"
                 anchors {
                     fill: parent
                     // Pinch gestures need more clearance at the edges of the screen, but
