@@ -36,10 +36,19 @@ class MainWindow(object):
         """Returns the gallery view"""
         return self.app.wait_select_single("GalleryView")
 
-    def get_broken_video_icon(self):
-        """Returns the gallery view"""
-        name = "thumbnailLoadingErrorIcon"
-        return self.app.wait_select_single(objectName=name)
+    def get_media(self, index=0):
+        """Returns media at index in the currently loaded view in gallery"""
+        gallery = self.get_gallery()
+        view = gallery.select_single("SlideshowView")
+        if not view.visible:
+            view = gallery.select_single("PhotogridView")
+
+        return view.wait_select_single(objectName="mediaItem" + str(index))
+
+    def get_broken_media_icon(self, index=0):
+        """Returns the broken media icon"""
+        media = self.get_media(index)
+        return media.wait_select_single(objectName="thumbnailLoadingErrorIcon")
 
     def get_no_media_hint(self):
         """Returns the Item representing the hint that no media is available"""
