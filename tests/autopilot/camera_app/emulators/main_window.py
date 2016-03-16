@@ -45,6 +45,11 @@ class MainWindow(object):
         """Returns the Item representing the hint that no media is available"""
         return self.app.wait_select_single(objectName="noMediaHint")
 
+    def get_focus_mouse_area(self):
+        """Returns the focus mouse area"""
+        return self.app.wait_select_single("QQuickMouseArea",
+                                           objectName="manualFocusMouseArea")
+
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
         return self.app.wait_select_single("FocusRing")
