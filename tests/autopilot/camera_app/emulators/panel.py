@@ -38,7 +38,9 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        # FIXME: a rate higher than 1 does not always make panel move
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
+                                      time_between_events=0.0001)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -55,4 +57,6 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y
         stop_y = y + self.height - 1
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        # FIXME: a rate higher than 1 does not always make panel move
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
+                                      time_between_events=0.0001)
