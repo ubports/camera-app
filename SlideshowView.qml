@@ -140,6 +140,7 @@ Item {
         }
         delegate: Item {
             id: delegate
+            objectName: "mediaItem" + index
             property bool pinchInProgress: zoomPinchArea.active
             property string url: fileURL
             property bool isSelected: selected

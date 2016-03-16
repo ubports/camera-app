@@ -36,10 +36,8 @@ class TestCameraGalleryViewMixin(object):
         self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
 
     def select_media(self, index=0):
-        # select the photo with index, default to the first one
-        gallery = self.main_window.get_gallery()
-        photo = gallery.wait_select_single(objectName="mediaItem" + str(index))
-        checkbox = photo.wait_select_single(objectName="mediaItemCheckBox")
+        media = self.main_window.get_media(index)
+        checkbox = media.wait_select_single(objectName="mediaItemCheckBox")
 
         self.pointing_device.move_to_object(checkbox)
 
@@ -129,8 +127,6 @@ class TestCameraGalleryViewWithVideo(
     def test_video_thumbnails(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
-        thumb_error = self.main_window.get_broken_video_icon()
-
         self.main_window.swipe_to_gallery(self)
 
         self.assertThat(viewfinder.inView, Eventually(Equals(False)))
@@ -138,6 +134,12 @@ class TestCameraGalleryViewWithVideo(
 
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
+
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
+
+        self.move_from_slideshow_to_photogrid()
+        thumb_error = self.main_window.get_broken_media_icon()
         self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
 
 
@@ -160,15 +162,19 @@ class TestCameraGalleryViewWithBrokenVideo(
     def test_video_thumbnails(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
-        thumb_error = self.main_window.get_broken_video_icon()
 
         self.main_window.swipe_to_gallery(self)
-
         self.assertThat(viewfinder.inView, Eventually(Equals(False)))
         self.assertThat(gallery.inView, Eventually(Equals(True)))
 
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
+
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
+
+        self.move_from_slideshow_to_photogrid()
+        thumb_error = self.main_window.get_broken_media_icon()
         self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
 
 
