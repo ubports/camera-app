@@ -23,7 +23,7 @@ import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
-Item {
+FocusScope {
     id: slideshowView
 
     property var model
@@ -111,14 +111,12 @@ Item {
 
         anchors.fill: parent
         model: slideshowView.model
+        focus: true
         orientation: ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
-        // FIXME: this disables the animation introduced by highlightRangeMode
-        // happening setting currentIndex; it is necessary at least because we
-        // were hitting https://bugreports.qt-project.org/browse/QTBUG-41035
-        highlightMoveDuration: 0
+        highlightMoveDuration: UbuntuAnimation.FastDuration
         snapMode: ListView.SnapOneItem
         onCountChanged: {
             // currentIndex is -1 by default and stays so until manually set to something else

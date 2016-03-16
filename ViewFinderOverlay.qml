@@ -32,6 +32,7 @@ Item {
     property real revealProgress: noSpaceHint.visible ? 1.0 : bottomEdge.progress
     property var controls: controls
     property var settings: settings
+    property int sensorOrientation
     property bool readyForCapture
 
     function showFocusRing(x, y) {
@@ -695,9 +696,8 @@ Item {
                     break;
             }
 
-            if (Screen.primaryOrientation == Qt.PortraitOrientation) {
-                orientation += 90;
-            }
+            // account for the orientation of the sensor
+            orientation -= viewFinderOverlay.sensorOrientation;
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {
