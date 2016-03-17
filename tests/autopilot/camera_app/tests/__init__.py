@@ -51,11 +51,7 @@ class CameraAppTestCase(AutopilotTestCase):
         else:
             self.launch_click_installed()
 
-        #  wait and sleep as workaround for bug #1373039. To
-        #  make sure large components get loaded asynchronously on start-up
-        #  -- Chris Gagnon 11-17-2014
         self.main_window.get_qml_view().visible.wait_for(True)
-        time.sleep(5)
 
     def launch_test_local(self):
         self.app = self.launch_test_application(

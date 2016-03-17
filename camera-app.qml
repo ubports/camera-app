@@ -30,26 +30,6 @@ Window {
     height: units.gu(80)
     color: "black"
     title: "Camera"
-    // special flag only supported by Unity8/MIR so far that hides the shell's
-    // top panel in Staged mode
-    flags: Qt.Window | 0x00800000
-
-    property int preFullScreenVisibility
-
-    function toggleFullScreen() {
-        if (main.visibility != Window.FullScreen) {
-            preFullScreenVisibility = main.visibility;
-            main.visibility = Window.FullScreen;
-        } else {
-            main.visibility = preFullScreenVisibility;
-        }
-    }
-
-    function exitFullScreen() {
-        if (main.visibility == Window.FullScreen) {
-            main.visibility = preFullScreenVisibility;
-        }
-    }
 
     UnityActions.ActionManager {
         actions: [
@@ -83,7 +63,11 @@ Window {
 
     Component.onCompleted: {
         i18n.domain = "camera-app";
-        main.show();
+        if (!application.desktopMode) {
+            main.showFullScreen();
+        } else {
+            main.show();
+        }
     }
 
 
@@ -93,15 +77,6 @@ Window {
         anchors.fill: parent
         flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
-
-        Keys.onPressed: {
-            if (event.key == Qt.Key_F11) {
-                main.toggleFullScreen();
-                event.accepted = true;
-            }
-        }
-        Keys.onEscapePressed: main.exitFullScreen()
-
 
         property real panesMargin: units.gu(1)
         property real ratio
@@ -283,7 +258,6 @@ Window {
             height: viewSwitcher.height
             overlayVisible: !viewSwitcher.moving && !viewSwitcher.flicking
             inView: viewSwitcher.ratio < 0.5
-            focus: !galleryView.focus
             opacity: inView ? 1.0 : 0.0
             onPhotoTaken: {
                 galleryView.prependMediaToModel(filePath);
@@ -301,7 +275,6 @@ Window {
             width: viewSwitcher.width
             height: viewSwitcher.height
             inView: viewSwitcher.ratio > 0.0
-            focus: inView
             onExit: viewSwitcher.switchToViewFinder()
             opacity: inView ? 1.0 : 0.0
         }
