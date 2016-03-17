@@ -8,7 +8,6 @@
 """Camera-app autopilot tests."""
 
 import os
-import time
 import shutil
 from pkg_resources import resource_filename
 

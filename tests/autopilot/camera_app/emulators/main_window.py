@@ -68,9 +68,9 @@ class MainWindow(object):
         return self.app.wait_select_single("ShootButton")
 
     def get_photo_roll_hint(self):
-        """Returns the layer that serves at hinting to the existence of the
-        photo roll"""
-        return self.app.wait_select_single("PhotoRollHint")
+        """Returns the photo roll hint"""
+        return self.app.wait_select_single("PhotoRollHint",
+                                           objectName="photoRollHint")
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
@@ -164,27 +164,42 @@ class MainWindow(object):
 
     def swipe_to_gallery(self, testCase):
         view_switcher = self.get_view_switcher()
+        viewfinder = self.get_viewfinder()
+        view_switcher.interactive.wait_for(True)
+        view_switcher.enabled.wait_for(True)
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
+        viewfinder.inView.wait_for(True)
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        self.app.pointing_device.drag(tx, ty, x, ty, rate=1)
-        viewfinder = self.get_viewfinder()
+        # FIXME: a rate higher than 1 does not always make view_switcher move
+        self.app.pointing_device.drag(tx, ty, x, ty, rate=1,
+                                      time_between_events=0.0001)
+
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
 
     def swipe_to_viewfinder(self, testCase):
         view_switcher = self.get_view_switcher()
+        viewfinder = self.get_viewfinder()
+        view_switcher.interactive.wait_for(True)
+        view_switcher.enabled.wait_for(True)
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
+        viewfinder.inView.wait_for(False)
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
 
+        # FIXME: a rate higher than 1 does not always make view_switcher move
         self.app.pointing_device.drag(
-            tx, ty, (tx + view_switcher.width // 2), ty, rate=1)
-        viewfinder = self.get_viewfinder()
+            tx, ty, (tx + view_switcher.width // 2), ty, rate=1,
+            time_between_events=0.0001)
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
 
     def switch_cameras(self):

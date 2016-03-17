@@ -293,9 +293,11 @@ class TestCapture(CameraAppTestCase):
         return quality
 
     def dismiss_first_photo_hint(self):
-        # Swipe to photo roll and back to viewfinder
-        self.main_window.swipe_to_gallery(self)
-        self.main_window.swipe_to_viewfinder(self)
+        photo_roll_hint = self.main_window.get_photo_roll_hint()
+        if photo_roll_hint.enabled:
+            # Swipe to photo roll and back to viewfinder
+            self.main_window.swipe_to_gallery(self)
+            self.main_window.swipe_to_viewfinder(self)
 
     def set_compression_quality(self, quality="Normal Quality"):
         # open bottom edge

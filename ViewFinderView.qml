@@ -418,6 +418,7 @@ Item {
 
     PhotoRollHint {
         id: photoRollHint
+        objectName: "photoRollHint"
         anchors.fill: parent
         visible: enabled
 
