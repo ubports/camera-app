@@ -33,6 +33,7 @@ Item {
     property var controls: controls
     property var settings: settings
     property bool readyForCapture
+    property int sensorOrientation
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -695,9 +696,8 @@ Item {
                     break;
             }
 
-            if (Screen.primaryOrientation == Qt.PortraitOrientation) {
-                orientation += 90;
-            }
+            // account for the orientation of the sensor
+            orientation -= viewFinderOverlay.sensorOrientation;
 
             if (camera.captureMode == Camera.CaptureVideo) {
                 if (main.contentExportMode) {

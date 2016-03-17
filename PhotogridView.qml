@@ -22,7 +22,7 @@ import Ubuntu.Content 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
-Item {
+FocusScope {
     id: photogridView
 
     property var model
