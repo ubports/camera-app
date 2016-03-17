@@ -17,6 +17,7 @@ from camera_app.tests import CameraAppTestCase
 import unittest
 import time
 import os
+import glob
 
 
 class TestCapture(CameraAppTestCase):
@@ -82,6 +83,62 @@ class TestCapture(CameraAppTestCase):
 
         # check that the camera is able to capture another photo
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+
+    """Test taking a picture with a timer set"""
+    def test_take_picture_with_timer(self):
+        delay = 5
+        self.enable_timer("%s seconds" % str(delay))
+
+        # start timed shoot
+        shoot_button = self.main_window.get_exposure_button()
+        self.assertThat(shoot_button.enabled, Eventually(Equals(True)))
+        self.pointing_device.move_to_object(shoot_button)
+        self.pointing_device.click()
+
+        switch_cameras_button = self.main_window.get_swap_camera_button()
+        record_mode_button = self.main_window.get_record_control()
+        view_switcher = self.main_window.get_view_switcher()
+
+        # controls and navigation should be disabled at this point
+        self.assertThat(shoot_button.enabled,
+                        Eventually(Equals(True)))
+        self.assertThat(switch_cameras_button.enabled,
+                        Eventually(Equals(True)))
+        self.assertThat(record_mode_button.enabled,
+                        Eventually(Equals(True)))
+        self.assertThat(view_switcher.interactive,
+                        Eventually(Equals(True)))
+
+        # after the delay controls and navigation should be re-enabled
+        self.assertThat(shoot_button.enabled,
+                        Eventually(Equals(True), timeout=delay))
+        self.assertThat(switch_cameras_button.enabled,
+                        Eventually(Equals(True), timeout=delay))
+        self.assertThat(record_mode_button.enabled,
+                        Eventually(Equals(True), timeout=delay))
+        self.assertThat(view_switcher.interactive,
+                        Eventually(Equals(True), timeout=delay))
+
+    def enable_timer(self, label_value):
+        # open bottom edge
+        bottom_edge = self.main_window.get_bottom_edge()
+        bottom_edge.open()
+
+        # open video resolution option value selector showing the possible
+        # values
+        timer_delay_button = self.main_window.get_timer_delay_button()
+        self.pointing_device.move_to_object(timer_delay_button)
+        self.pointing_device.click()
+        option_value_selector = self.main_window.get_option_value_selector()
+        self.assertThat(
+            option_value_selector.visible, Eventually(Equals(True)))
+
+        # select a 5 seconds delay
+        option = self.main_window.get_option_value_button(label_value)
+        self.pointing_device.move_to_object(option)
+        self.pointing_device.click()
+
+        bottom_edge.close()
 
     def test_record_video(self):
         """Test clicking on the record control.
@@ -208,7 +265,7 @@ class TestCapture(CameraAppTestCase):
     def get_first_picture(self, timeout=10):
         pictures = []
         for i in range(0, timeout):
-            pictures = os.listdir(self.pictures_dir)
+            pictures = glob.glob(os.path.join(self.pictures_dir, "*.jpg"))
             if len(pictures) != 0:
                 break
             time.sleep(1)

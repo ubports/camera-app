@@ -36,9 +36,28 @@ class MainWindow(object):
         """Returns the gallery view"""
         return self.app.wait_select_single("GalleryView")
 
+    def get_media(self, index=0):
+        """Returns media at index in the currently loaded view in gallery"""
+        gallery = self.get_gallery()
+        view = gallery.select_single("SlideshowView")
+        if not view.visible:
+            view = gallery.select_single("PhotogridView")
+
+        return view.wait_select_single(objectName="mediaItem" + str(index))
+
+    def get_broken_media_icon(self, index=0):
+        """Returns the broken media icon"""
+        media = self.get_media(index)
+        return media.wait_select_single(objectName="thumbnailLoadingErrorIcon")
+
     def get_no_media_hint(self):
         """Returns the Item representing the hint that no media is available"""
         return self.app.wait_select_single(objectName="noMediaHint")
+
+    def get_focus_mouse_area(self):
+        """Returns the focus mouse area"""
+        return self.app.wait_select_single("QQuickMouseArea",
+                                           objectName="manualFocusMouseArea")
 
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
@@ -89,6 +108,10 @@ class MainWindow(object):
     def get_video_resolution_button(self):
         """Returns the video resolution button of the camera"""
         return self.get_option_button("videoResolution")
+
+    def get_timer_delay_button(self):
+        """Returns the timer delay option button of the camera"""
+        return self.get_option_button("selfTimerDelay")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""

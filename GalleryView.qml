@@ -35,7 +35,7 @@ Item {
                   StorageLocations.removableStorageVideosLocation]
         typeFilters: !main.contentExportMode ? [ "image", "video" ]
                                               : [MimeTypeMapper.contentTypeToMimeType(main.transferContentType)]
-        singleSelectionOnly: main.transfer.selectionType === ContentTransfer.Single
+        singleSelectionOnly: main.contentExportMode && main.transfer.selectionType === ContentTransfer.Single
     }
 
     property bool gridMode: main.contentExportMode
@@ -58,7 +58,6 @@ Item {
 
     function exitUserSelectionMode() {
         model.clearSelection();
-        model.singleSelectionOnly = true;
         userSelectionMode = false;
     }
 
@@ -76,7 +75,6 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView && galleryView.currentView == slideshowView
-            focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onToggleSelection: model.toggleSelected(currentIndex)
             onToggleHeader: header.toggle();
@@ -90,7 +88,6 @@ Item {
             model: galleryView.model
             visible: opacity != 0.0
             inView: galleryView.inView && galleryView.currentView == photogridView
-            focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
@@ -99,7 +96,6 @@ Item {
             onPhotoPressAndHold: {
                 if (!galleryView.userSelectionMode) {
                     galleryView.userSelectionMode = true;
-                    model.singleSelectionOnly = false;
                     model.toggleSelected(index);
                 }
             }
