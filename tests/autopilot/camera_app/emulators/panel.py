@@ -40,7 +40,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
 
         # FIXME: a rate higher than 1 does not always make panel move
         self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
-                                      time_between_events=0.0001)
+                                  time_between_events=0.0001)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -59,4 +59,4 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
 
         # FIXME: a rate higher than 1 does not always make panel move
         self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
-                                      time_between_events=0.0001)
+                                  time_between_events=0.0001)
