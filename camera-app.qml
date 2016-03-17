@@ -20,7 +20,7 @@ import QtMultimedia 5.0
 import Ubuntu.Components 1.3
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import UserMetrics 0.1
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 import CameraApp 0.1
 
 Window {

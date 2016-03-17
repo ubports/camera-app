@@ -21,7 +21,7 @@ import Ubuntu.Components.Popups 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 
 Item {
     id: viewFinderView
