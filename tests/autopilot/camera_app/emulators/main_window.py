@@ -68,9 +68,9 @@ class MainWindow(object):
         return self.app.wait_select_single("ShootButton")
 
     def get_photo_roll_hint(self):
-        """Returns the layer that serves at hinting to the existence of the
-        photo roll"""
-        return self.app.wait_select_single("PhotoRollHint")
+        """Returns the photo roll hint"""
+        return self.app.wait_select_single("PhotoRollHint",
+                                           objectName="photoRollHint")
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
@@ -151,10 +151,6 @@ class MainWindow(object):
         return next(button for button in optionButtons
                     if button.label == label)
 
-    def get_photo_roll_hint(self):
-        """Returns the photo roll hint"""
-        return self.app.wait_select_single("PhotoRollHint",
-                                           objectName="photoRollHint")
     def get_no_space_hint(self):
         """Returns the no space hint"""
         return self.app.wait_select_single(objectName="noSpace")
