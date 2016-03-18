@@ -40,7 +40,7 @@ class TestFocus(CameraAppTestCase):
         self.pointing_device.click()
 
         # The focus ring sould be visible now
-        self.assertThat(ring.opacity, Eventually(GreaterThan(0.5)))
+        self.assertThat(ring.opacity, Eventually(GreaterThan(0.1)))
 
         # After some seconds the focus ring should fade out
         self.assertThat(ring.opacity, Eventually(Equals(0.0)))
@@ -48,19 +48,22 @@ class TestFocus(CameraAppTestCase):
     """Test focusing in an area where we know the picture is"""
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_valid_and_disappear(self):
+        geometry = self.main_window.get_viewfinder_geometry()
         focus_ring = self.main_window.get_focus_ring()
-        feed = self.main_window.get_viewfinder_geometry()
         switch_cameras = self.main_window.get_swap_camera_button()
         exposure_button = self.main_window.get_exposure_button()
 
         # Click in the center of the viewfinder area
-        mid_x, mid_y = self.get_center(feed)
+        mid_x, mid_y = self.get_center(geometry)
         self.verify_focus_ring_after_click_at(focus_ring, mid_x, mid_y)
 
         # Then try on the side edges and top edge to verify they
         # are focusable too
-        self.verify_focus_ring_after_click_at(focus_ring, 1, mid_y)
-        self.verify_focus_ring_after_click_at(focus_ring, feed.width - 1,
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x + 1, mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x +
+                                              geometry.globalRect.width - 1,
                                               mid_y)
         self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
@@ -72,10 +75,13 @@ class TestFocus(CameraAppTestCase):
         # Click in the center of the viewfinder area
         self.verify_focus_ring_after_click_at(focus_ring, mid_x, mid_y)
 
-        # Then try on the side edges and top edge to verify they
+        # Then try on the left, right and above the center to verify they
         # are focusable too
-        self.verify_focus_ring_after_click_at(focus_ring, 1, mid_y)
-        self.verify_focus_ring_after_click_at(focus_ring, feed.width - 1,
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x + 1, mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x +
+                                              geometry.globalRect.width - 1,
                                               mid_y)
         self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
