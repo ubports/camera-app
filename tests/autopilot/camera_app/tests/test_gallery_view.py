@@ -201,9 +201,7 @@ class TestCameraGalleryViewWithPhoto(
 
         # open actions drawer
         gallery = self.main_window.get_gallery()
-        opt = gallery.wait_select_single(objectName="additionalActionsButton")
-        self.pointing_device.move_to_object(opt)
-        self.pointing_device.click()
+        self.main_window.open_actions_drawer(gallery)
 
         # click delete action button
         delete = gallery.wait_select_single(objectName="actionButtonDelete")
@@ -254,20 +252,15 @@ class TestCameraGalleryViewWithPhotosAndVideo(
         super(TestCameraGalleryViewWithPhotosAndVideo, self).tearDown()
 
     def verify_share_state(self, expectedState, close=True):
-        # open actions drawer
         gallery = self.main_window.get_gallery()
-        opt = gallery.wait_select_single(objectName="additionalActionsButton")
-        self.pointing_device.move_to_object(opt)
-        self.pointing_device.click()
+        self.main_window.open_actions_drawer(gallery)
 
         # verify expected state
         share = gallery.wait_select_single(objectName="actionButtonShare")
         self.assertThat(share.enabled, Eventually(Equals(expectedState)))
 
         if (close):
-            # close actions drawer
-            self.pointing_device.move_to_object(opt)
-            self.pointing_device.click()
+            self.main_window.close_actions_drawer(gallery)
         else:
             return share
 

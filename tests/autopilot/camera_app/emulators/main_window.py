@@ -162,6 +162,28 @@ class MainWindow(object):
         except:
             return None
 
+    def open_actions_drawer(self, gallery):
+        """Opens action drawer of gallery"""
+        actionsDrawerButton = gallery.wait_select_single(
+                                          "IconButton",
+                                          objectName="additionalActionsButton")
+        self.app.pointing_device.move_to_object(actionsDrawerButton)
+        self.app.pointing_device.click()
+        actionsDrawer = gallery.wait_select_single("QQuickItem",
+                                                   objectName="actionsDrawer")
+        actionsDrawer.fullyOpened.wait_for(True)
+
+    def close_actions_drawer(self, gallery):
+        """Closes action drawer of gallery"""
+        actionsDrawerButton = gallery.wait_select_single(
+                                          "IconButton",
+                                          objectName="additionalActionsButton")
+        self.app.pointing_device.move_to_object(actionsDrawerButton)
+        self.app.pointing_device.click()
+        actionsDrawer = gallery.wait_select_single("QQuickItem",
+                                                   objectName="actionsDrawer")
+        actionsDrawer.fullyClosed.wait_for(True)
+
     def swipe_to_gallery(self, testCase):
         view_switcher = self.get_view_switcher()
         viewfinder = self.get_viewfinder()
@@ -181,6 +203,8 @@ class MainWindow(object):
                                       time_between_events=0.0001)
 
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
 
     def swipe_to_viewfinder(self, testCase):
         view_switcher = self.get_view_switcher()
@@ -201,6 +225,8 @@ class MainWindow(object):
             tx, ty, (tx + view_switcher.width // 2), ty, rate=1,
             time_between_events=0.0001)
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
 
     def switch_cameras(self):
         # Swap cameras and wait for camera to settle

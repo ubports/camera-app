@@ -37,11 +37,7 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
         self.main_window.swipe_to_gallery(self)
 
         self.assertThat(gallery.inView, Eventually(Equals(True)))
-
-        # open actions drawer
-        opt = gallery.wait_select_single(objectName="additionalActionsButton")
-        self.pointing_device.move_to_object(opt)
-        self.pointing_device.click()
+        self.main_window.open_actions_drawer(gallery)
 
         # If the editor button is not there when in the gallery view, then
         # we are not on a system that has the UI extras package installed or
@@ -95,11 +91,7 @@ class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
         self.main_window.swipe_to_gallery(self)
 
         self.assertThat(gallery.inView, Eventually(Equals(True)))
-
-        # open actions drawer
-        opt = gallery.wait_select_single(objectName="additionalActionsButton")
-        self.pointing_device.move_to_object(opt)
-        self.pointing_device.click()
+        self.main_window.open_actions_drawer(gallery)
 
         # If the editor button is not there when in the gallery view, then
         # we are not on a system that has the UI extras package installed or

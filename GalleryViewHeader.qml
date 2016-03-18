@@ -153,6 +153,7 @@ Item {
 
     Item {
         id: actionsDrawer
+        objectName: "actionsDrawer"
 
         anchors {
             top: parent.bottom
@@ -170,6 +171,8 @@ Item {
         }
 
         property bool opened: false
+        property bool fullyOpened: actionsColumn.y == 0
+        property bool fullyClosed: actionsColumn.y == -actionsColumn.height
         property list<Action> actions
 
         onOpenedChanged: {
