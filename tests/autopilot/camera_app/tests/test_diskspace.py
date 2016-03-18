@@ -61,9 +61,6 @@ class TestCameraDiskSpace(CameraAppTestCase):
         # threshold as they all expect a normal situation at the start
         self.assertThat(self.diskSpaceAvailable(), GreaterThan(LOW_THRESHOLD))
 
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
     def tearDown(self):
         super(TestCameraDiskSpace, self).tearDown()
         os.remove(self.diskFiller) if os.path.exists(self.diskFiller) else None

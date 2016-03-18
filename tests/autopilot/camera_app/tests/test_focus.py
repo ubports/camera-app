@@ -18,16 +18,6 @@ import unittest
 class TestFocus(CameraAppTestCase):
     """Tests the focus"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestFocus, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestFocus, self).tearDown()
-
     def verify_focus_ring_after_click_at(self, ring, x, y):
         # The focus ring should be invisible in the beginning
         self.assertThat(ring.opacity, Eventually(Equals(0.0)))

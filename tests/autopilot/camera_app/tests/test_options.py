@@ -16,14 +16,6 @@ from camera_app.tests import CameraAppTestCase
 class TestCameraOptions(CameraAppTestCase):
     """Tests the options overlay"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestCameraOptions, self).setUp()
-        # FIXME: this should be in parent class
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
     """Test that the options overlay closes properly by tapping"""
     def test_overlay_tap_to_close(self):
         bottom_edge = self.main_window.get_bottom_edge()

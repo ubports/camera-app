@@ -16,16 +16,6 @@ from camera_app.tests import CameraAppTestCase
 class TestCameraFlash(CameraAppTestCase):
     """Tests the flash"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestCameraFlash, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraFlash, self).tearDown()
-
     """Test that flash modes activate properly"""
     def test_cycle_flash(self):
         bottom_edge = self.main_window.get_bottom_edge()

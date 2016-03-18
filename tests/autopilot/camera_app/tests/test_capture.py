@@ -34,14 +34,8 @@ class TestCapture(CameraAppTestCase):
             os.remove(config_file)
 
         super(TestCapture, self).setUp()
-
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
         self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
         self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
-
-    def tearDown(self):
-        super(TestCapture, self).tearDown()
 
     """Test taking a picture"""
     def test_take_picture(self):

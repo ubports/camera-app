@@ -56,11 +56,6 @@ class TestCameraGalleryView(CameraAppTestCase, TestCameraGalleryViewMixin):
     def setUp(self):
         self.delete_all_media()
         super(TestCameraGalleryView, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryView, self).tearDown()
 
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
@@ -115,13 +110,7 @@ class TestCameraGalleryViewWithVideo(
     def setUp(self):
         self.delete_all_media()
         self.add_sample_video()
-
         super(TestCameraGalleryViewWithVideo, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithVideo, self).tearDown()
 
     """Tests the thumnails for video load correctly in slideshow view"""
     def test_video_thumbnails(self):
@@ -150,13 +139,7 @@ class TestCameraGalleryViewWithBrokenVideo(
     def setUp(self):
         self.delete_all_media()
         self.add_sample_video(broken=True)
-
         super(TestCameraGalleryViewWithBrokenVideo, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithBrokenVideo, self).tearDown()
 
     """Tests the placeholder thumnails for broken video loads correctly"""
     def test_video_thumbnails(self):
@@ -185,13 +168,7 @@ class TestCameraGalleryViewWithPhoto(
     def setUp(self):
         self.delete_all_media()
         self.add_sample_photo()
-
         super(TestCameraGalleryViewWithPhoto, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithPhoto, self).tearDown()
 
     """Test deleting photo from multiselection"""
     def test_delete_photo_from_multiselection(self):
@@ -243,13 +220,7 @@ class TestCameraGalleryViewWithPhotosAndVideo(
         self.delete_all_media()
         self.add_sample_photo()
         self.add_sample_video()
-
         super(TestCameraGalleryViewWithPhotosAndVideo, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithPhotosAndVideo, self).tearDown()
 
     def verify_share_state(self, expectedState, close=True):
         gallery = self.main_window.get_gallery()

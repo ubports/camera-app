@@ -20,13 +20,7 @@ class TestCameraPhotoEditorWithPhoto(CameraAppTestCase):
     def setUp(self):
         self.delete_all_media()
         self.add_sample_photo()
-
         super(TestCameraPhotoEditorWithPhoto, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraPhotoEditorWithPhoto, self).tearDown()
 
     """Tests editor opening and closing correctly for pictures"""
     def test_editor_appears(self):
@@ -73,13 +67,7 @@ class TestCameraPhotoEditorWithVideo(CameraAppTestCase):
     def setUp(self):
         self.delete_all_media()
         self.add_sample_video()
-
         super(TestCameraPhotoEditorWithVideo, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraPhotoEditorWithVideo, self).tearDown()
 
     """Tests editor not being available for videos"""
     def test_editor_not_on_videos(self):

@@ -19,16 +19,6 @@ import unittest
 class TestCameraZoom(CameraAppTestCase):
     """Tests the main camera features"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestCameraZoom, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraZoom, self).tearDown()
-
     def activate_zoom(self):
         viewfinder = self.main_window.get_viewfinder_geometry()
         viewfinder_center = self.get_center(viewfinder)
