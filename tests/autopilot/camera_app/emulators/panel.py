@@ -24,6 +24,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         :return: The panel.
 
         """
+        self.ready.wait_for(True)
         self.animating.wait_for(False)
         if not self.opened:
             self._drag_to_open()
@@ -45,6 +46,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
     @autopilot_logging.log_action(logger.info)
     def close(self):
         """Close the panel if it's opened."""
+        self.ready.wait_for(True)
         self.animating.wait_for(False)
         if self.opened:
             self._drag_to_close()

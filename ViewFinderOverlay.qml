@@ -308,6 +308,7 @@ Item {
             enabled: camera.videoRecorder.recorderState == CameraRecorder.StoppedState
                      && !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
             opacity: enabled ? 1.0 : 0.3
+            property bool ready: optionsOverlayLoader.status == Loader.Ready
 
             /* At startup, opened is false and 'bottomEdge.height' is 0 until
                optionsOverlayLoader has finished loading. When that happens
