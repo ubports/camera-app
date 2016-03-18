@@ -75,8 +75,8 @@ class TestCameraDiskSpace(CameraAppTestCase):
         exposure_button = self.main_window.get_exposure_button()
         no_space_hint = self.main_window.get_no_space_hint()
 
-        self.assertThat(exposure_button.enabled, Equals(True))
-        self.assertThat(no_space_hint.visible, Equals(False))
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(no_space_hint.visible, Eventually(Equals(False)))
 
         self.setFreeSpaceTo(CRITICAL_THRESHOLD - MEGABYTE)
         self.assertThat(
@@ -89,8 +89,8 @@ class TestCameraDiskSpace(CameraAppTestCase):
         self.assertThat(
             self.diskSpaceAvailable(), GreaterThan(CRITICAL_THRESHOLD))
 
-        self.assertThat(exposure_button.enabled, Equals(True))
-        self.assertThat(no_space_hint.visible, Equals(False))
+        self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
+        self.assertThat(no_space_hint.visible, Eventually(Equals(False)))
 
     def test_low_disk(self):
         """Verify proper behavior when disk space becomes low"""
