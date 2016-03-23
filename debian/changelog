@@ -1,3 +1,21 @@
+camera-app (3.0.0+16.04.20160323.3-0ubuntu1) xenial; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk. added: po/sk.po
+
+  [ Florian Boucault, Ken VanDine, Ugo Riboni ]
+  * New release: Only accept manual focus on points inside the
+    viewfinder. viewFinderView.captureMode can now be set before the
+    camera is ready. Take advantage of that to fix bug #1545123 Disable
+    controls and prevent navigation while a delayed/timed shoot is
+    ongoing. Display a stock icon as the video thumbnail when
+    thumbnailer fails (which it will do now if it can't process a video)
+    Allow sharing multiple files, except if they are mixed content Only
+    use full screen in staged mode. added: UnableShareDialog.qml
+    tests/unittests/tst_PhotogridView.qml (LP: #1545123)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Wed, 23 Mar 2016 19:06:26 +0000
+
 camera-app (3.0.0+16.04.20160229-0ubuntu1) xenial; urgency=medium
 
   [ Arthur Mello, Florian Boucault, Ugo Riboni ]
