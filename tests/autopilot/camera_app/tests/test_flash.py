@@ -60,7 +60,7 @@ class TestCameraFlash(CameraAppTestCase):
         option_value_selector = self.main_window.get_option_value_selector()
 
         # ensure initial state
-        self.assertThat(flash_button.iconName, Equals("torch-off"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-off")))
 
         # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
@@ -73,13 +73,13 @@ class TestCameraFlash(CameraAppTestCase):
         option = self.main_window.get_option_value_button("On")
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.iconName, Equals("torch-on"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-on")))
 
         # set flash to "off"
         option = self.main_window.get_option_value_button("Off")
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.iconName, Equals("torch-off"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-off")))
 
     """Test that flash and hdr modes are mutually exclusive"""
     def test_flash_hdr_mutually_exclusive(self):
