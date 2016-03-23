@@ -322,9 +322,10 @@ class TestCapture(CameraAppTestCase):
         # switch cameras and select the last resolution for the current camera
         self.main_window.switch_cameras()
         resolutions = self.get_available_video_resolutions()
-        expected_resolution = resolutions[-1]
-        self.assertThat(expected_resolution, NotEquals(initial_resolution))
-        self.set_video_resolution(expected_resolution)
+        if len(resolutions) > 1:
+            expected_resolution = resolutions[-1]
+            self.assertThat(expected_resolution, NotEquals(initial_resolution))
+            self.set_video_resolution(expected_resolution)
 
         # switch back to the initial camera and record a video
         self.main_window.switch_cameras()
