@@ -21,6 +21,9 @@ class TestCameraFlash(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        if not flash_button:
+            return
+
         option_value_selector = self.main_window.get_option_value_selector()
 
         # open option value selector showing the possible values
@@ -57,6 +60,9 @@ class TestCameraFlash(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_video_flash_button()
+        if not flash_button:
+            return
+
         option_value_selector = self.main_window.get_option_value_selector()
 
         # ensure initial state
@@ -86,6 +92,9 @@ class TestCameraFlash(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        if not flash_button:
+            return
+
         hdr_button = self.main_window.get_hdr_button()
         option_value_selector = self.main_window.get_option_value_selector()
 

@@ -82,8 +82,12 @@ class MainWindow(object):
            in settingsProperty
         """
         optionButtons = self.app.select_many("OptionButton")
-        return next(button for button in optionButtons
-                    if button.settingsProperty == settingsProperty)
+        optionButton = next(button for button in optionButtons
+                            if button.settingsProperty == settingsProperty)
+        if optionButton.visible:
+            return optionButton
+        else:
+            return None
 
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
