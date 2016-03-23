@@ -41,6 +41,12 @@ class CameraAppTestCase(AutopilotTestCase):
     sample_dir = resource_filename('camera_app', 'data')
 
     def setUp(self):
+        # Remove configuration file
+        config_file = os.path.expanduser(
+            "~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
+        if os.path.exists(config_file):
+            os.remove(config_file)
+
         self.pointing_device = Pointer(self.input_device_class.create())
         super(CameraAppTestCase, self).setUp()
         if os.path.exists(self.local_location):

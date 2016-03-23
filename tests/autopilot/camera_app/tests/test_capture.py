@@ -26,13 +26,6 @@ class TestCapture(CameraAppTestCase):
     """ This is needed to wait for the application to start.
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
-        # Remove configuration file where knowledge of the photo roll hint's
-        # necessity is stored
-        config_file = os.path.expanduser(
-            "~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")
-        if os.path.exists(config_file):
-            os.remove(config_file)
-
         super(TestCapture, self).setUp()
         self.pictures_dir = os.path.expanduser("~/Pictures/com.ubuntu.camera")
         self.videos_dir = os.path.expanduser("~/Videos/com.ubuntu.camera")
