@@ -169,8 +169,8 @@ class MainWindow(object):
     def open_actions_drawer(self, gallery):
         """Opens action drawer of gallery"""
         actionsDrawerButton = gallery.wait_select_single(
-                                        "IconButton",
-                                        objectName="additionalActionsButton")
+            "IconButton",
+            objectName="additionalActionsButton")
         self.app.pointing_device.move_to_object(actionsDrawerButton)
         self.app.pointing_device.click()
         actionsDrawer = gallery.wait_select_single("QQuickItem",
@@ -180,8 +180,8 @@ class MainWindow(object):
     def close_actions_drawer(self, gallery):
         """Closes action drawer of gallery"""
         actionsDrawerButton = gallery.wait_select_single(
-                                        "IconButton",
-                                        objectName="additionalActionsButton")
+            "IconButton",
+            objectName="additionalActionsButton")
         self.app.pointing_device.move_to_object(actionsDrawerButton)
         self.app.pointing_device.click()
         actionsDrawer = gallery.wait_select_single("QQuickItem",
