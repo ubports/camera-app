@@ -24,6 +24,7 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         :return: The panel.
 
         """
+        self.ready.wait_for(True)
         self.animating.wait_for(False)
         if not self.opened:
             self._drag_to_open()
@@ -38,11 +39,14 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y + self.height - 1
         stop_y = y
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        # FIXME: a rate higher than 1 does not always make panel move
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
+                                  time_between_events=0.0001)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
         """Close the panel if it's opened."""
+        self.ready.wait_for(True)
         self.animating.wait_for(False)
         if self.opened:
             self._drag_to_close()
@@ -55,4 +59,6 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
         start_y = y
         stop_y = y + self.height - 1
 
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y)
+        # FIXME: a rate higher than 1 does not always make panel move
+        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
+                                  time_between_events=0.0001)

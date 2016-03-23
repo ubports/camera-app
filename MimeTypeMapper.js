@@ -17,7 +17,7 @@
 */
 
 .pragma library
-.import Ubuntu.Content 0.1 as UbuntuContent
+.import Ubuntu.Content 1.3 as UbuntuContent
 
 function startsWith(string, prefix) {
     return string.indexOf(prefix) === 0;

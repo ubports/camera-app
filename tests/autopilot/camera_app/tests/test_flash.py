@@ -16,21 +16,14 @@ from camera_app.tests import CameraAppTestCase
 class TestCameraFlash(CameraAppTestCase):
     """Tests the flash"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestCameraFlash, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraFlash, self).tearDown()
-
     """Test that flash modes activate properly"""
     def test_cycle_flash(self):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        if not flash_button:
+            return
+
         option_value_selector = self.main_window.get_option_value_selector()
 
         # open option value selector showing the possible values
@@ -67,10 +60,13 @@ class TestCameraFlash(CameraAppTestCase):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_video_flash_button()
+        if not flash_button:
+            return
+
         option_value_selector = self.main_window.get_option_value_selector()
 
         # ensure initial state
-        self.assertThat(flash_button.iconName, Equals("torch-off"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-off")))
 
         # open option value selector showing the possible values
         self.pointing_device.move_to_object(flash_button)
@@ -83,19 +79,22 @@ class TestCameraFlash(CameraAppTestCase):
         option = self.main_window.get_option_value_button("On")
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.iconName, Equals("torch-on"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-on")))
 
         # set flash to "off"
         option = self.main_window.get_option_value_button("Off")
         self.pointing_device.move_to_object(option)
         self.pointing_device.click()
-        self.assertThat(flash_button.iconName, Equals("torch-off"))
+        self.assertThat(flash_button.iconName, Eventually(Equals("torch-off")))
 
     """Test that flash and hdr modes are mutually exclusive"""
     def test_flash_hdr_mutually_exclusive(self):
         bottom_edge = self.main_window.get_bottom_edge()
         bottom_edge.open()
         flash_button = self.main_window.get_flash_button()
+        if not flash_button:
+            return
+
         hdr_button = self.main_window.get_hdr_button()
         option_value_selector = self.main_window.get_option_value_selector()
 

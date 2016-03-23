@@ -18,12 +18,12 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItems
 import Ubuntu.Components.Popups 1.3
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 import Ubuntu.Thumbnailer 0.1
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
-Item {
+FocusScope {
     id: slideshowView
 
     property var model
@@ -111,14 +111,12 @@ Item {
 
         anchors.fill: parent
         model: slideshowView.model
+        focus: true
         orientation: ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         cacheBuffer: width
         highlightRangeMode: ListView.StrictlyEnforceRange
-        // FIXME: this disables the animation introduced by highlightRangeMode
-        // happening setting currentIndex; it is necessary at least because we
-        // were hitting https://bugreports.qt-project.org/browse/QTBUG-41035
-        highlightMoveDuration: 0
+        highlightMoveDuration: UbuntuAnimation.FastDuration
         snapMode: ListView.SnapOneItem
         onCountChanged: {
             // currentIndex is -1 by default and stays so until manually set to something else
@@ -140,6 +138,7 @@ Item {
         }
         delegate: Item {
             id: delegate
+            objectName: "mediaItem" + index
             property bool pinchInProgress: zoomPinchArea.active
             property string url: fileURL
             property bool isSelected: selected
@@ -183,6 +182,7 @@ Item {
                 property real maximumZoom: 3.0
                 property bool active: false
                 property var center
+                enabled: !media.isVideo
 
                 onPinchStarted: {
                     active = true;
@@ -258,6 +258,16 @@ Item {
                             }
                             fillMode: Image.PreserveAspectFit
                         }
+
+                        Icon {
+                            objectName: "thumbnailLoadingErrorIcon"
+                            anchors.centerIn: parent
+                            width: units.gu(30)
+                            height: width
+                            name: media.isVideo ? "stock_video" : "stock_image"
+                            color: "white"
+                            opacity: image.status == Image.Error ? 1.0 : 0.0
+                         }
                     }
 
                     Icon {
