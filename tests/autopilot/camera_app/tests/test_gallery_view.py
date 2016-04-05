@@ -7,7 +7,7 @@
 
 """Tests for the Camera App zoom"""
 
-from testtools.matchers import Equals
+from testtools.matchers import Equals, NotEquals
 from autopilot.matchers import Eventually
 
 from camera_app.tests import CameraAppTestCase
@@ -35,16 +35,19 @@ class TestCameraGalleryViewMixin(object):
         self.assertThat(slideshow_view.visible, Eventually(Equals(False)))
         self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
 
-    def select_first_photo(self):
-        # select the first photo
-        gallery = self.main_window.get_gallery()
-        photo = gallery.wait_select_single(objectName="mediaItem0")
-        self.pointing_device.move_to_object(photo)
+    def select_media(self, index=0):
+        media = self.main_window.get_media(index)
+        checkbox = media.wait_select_single(objectName="mediaItemCheckBox")
 
-        # do a long press to enter Multiselection mode
-        self.pointing_device.press()
-        sleep(1)
-        self.pointing_device.release()
+        self.pointing_device.move_to_object(checkbox)
+
+        if checkbox.visible:
+            self.click()
+        else:
+            # do a long press to enter Multiselection mode
+            self.pointing_device.press()
+            sleep(1)
+            self.pointing_device.release()
 
 
 class TestCameraGalleryView(CameraAppTestCase, TestCameraGalleryViewMixin):
@@ -53,11 +56,6 @@ class TestCameraGalleryView(CameraAppTestCase, TestCameraGalleryViewMixin):
     def setUp(self):
         self.delete_all_media()
         super(TestCameraGalleryView, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryView, self).tearDown()
 
     """Tests swiping to the gallery and pressing the back button"""
     def test_swipe_to_gallery(self):
@@ -112,19 +110,12 @@ class TestCameraGalleryViewWithVideo(
     def setUp(self):
         self.delete_all_media()
         self.add_sample_video()
-
         super(TestCameraGalleryViewWithVideo, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithVideo, self).tearDown()
 
     """Tests the thumnails for video load correctly in slideshow view"""
     def test_video_thumbnails(self):
         viewfinder = self.main_window.get_viewfinder()
         gallery = self.main_window.get_gallery()
-
         self.main_window.swipe_to_gallery(self)
 
         self.assertThat(viewfinder.inView, Eventually(Equals(False)))
@@ -132,6 +123,42 @@ class TestCameraGalleryViewWithVideo(
 
         spinner = gallery.wait_select_single("ActivityIndicator")
         self.assertThat(spinner.running, Eventually(Equals(False)))
+
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
+
+        self.move_from_slideshow_to_photogrid()
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(Equals(0.0)))
+
+
+class TestCameraGalleryViewWithBrokenVideo(
+        TestCameraGalleryViewMixin, CameraAppTestCase):
+    """Tests the camera gallery view with a broken video already present"""
+
+    def setUp(self):
+        self.delete_all_media()
+        self.add_sample_video(broken=True)
+        super(TestCameraGalleryViewWithBrokenVideo, self).setUp()
+
+    """Tests the placeholder thumnails for broken video loads correctly"""
+    def test_video_thumbnails(self):
+        viewfinder = self.main_window.get_viewfinder()
+        gallery = self.main_window.get_gallery()
+
+        self.main_window.swipe_to_gallery(self)
+        self.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        self.assertThat(gallery.inView, Eventually(Equals(True)))
+
+        spinner = gallery.wait_select_single("ActivityIndicator")
+        self.assertThat(spinner.running, Eventually(Equals(False)))
+
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
+
+        self.move_from_slideshow_to_photogrid()
+        thumb_error = self.main_window.get_broken_media_icon()
+        self.assertThat(thumb_error.opacity, Eventually(NotEquals(0.0)))
 
 
 class TestCameraGalleryViewWithPhoto(
@@ -141,25 +168,17 @@ class TestCameraGalleryViewWithPhoto(
     def setUp(self):
         self.delete_all_media()
         self.add_sample_photo()
-
         super(TestCameraGalleryViewWithPhoto, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-
-    def tearDown(self):
-        super(TestCameraGalleryViewWithPhoto, self).tearDown()
 
     """Test deleting photo from multiselection"""
     def test_delete_photo_from_multiselection(self):
         self.main_window.swipe_to_gallery(self)
         self.move_from_slideshow_to_photogrid()
-        self.select_first_photo()
+        self.select_media()
 
         # open actions drawer
         gallery = self.main_window.get_gallery()
-        opt = gallery.wait_select_single(objectName="additionalActionsButton")
-        self.pointing_device.move_to_object(opt)
-        self.pointing_device.click()
+        self.main_window.open_actions_drawer(gallery)
 
         # click delete action button
         delete = gallery.wait_select_single(objectName="actionButtonDelete")
@@ -178,7 +197,7 @@ class TestCameraGalleryViewWithPhoto(
     def test_multiselection_mode(self):
         self.main_window.swipe_to_gallery(self)
         self.move_from_slideshow_to_photogrid()
-        self.select_first_photo()
+        self.select_media()
 
         # exit the multiselection mode
         gallery = self.main_window.get_gallery()
@@ -191,3 +210,61 @@ class TestCameraGalleryViewWithPhoto(
 
         self.assertThat(slideshow_view.visible, Eventually(Equals(False)))
         self.assertThat(photogrid_view.visible, Eventually(Equals(True)))
+
+
+class TestCameraGalleryViewWithPhotosAndVideo(
+        TestCameraGalleryViewMixin, CameraAppTestCase):
+    """Tests the camera gallery view with two photos and a video"""
+
+    def setUp(self):
+        self.delete_all_media()
+        self.add_sample_photo()
+        self.add_sample_video()
+        super(TestCameraGalleryViewWithPhotosAndVideo, self).setUp()
+
+    def verify_share_state(self, expectedState, close=True):
+        gallery = self.main_window.get_gallery()
+        self.main_window.open_actions_drawer(gallery)
+
+        # verify expected state
+        share = gallery.wait_select_single(objectName="actionButtonShare")
+        self.assertThat(share.enabled, Eventually(Equals(expectedState)))
+
+        if (close):
+            self.main_window.close_actions_drawer(gallery)
+        else:
+            return share
+
+    """Tests share button enable or disabled correctly in multiselection"""
+    def test_multiselection_share_enabled(self):
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+
+        # Verify options button disabled until we select something
+        gallery = self.main_window.get_gallery()
+        opt = gallery.wait_select_single(objectName="additionalActionsButton")
+        self.assertThat(opt.visible, Eventually(Equals(False)))
+
+        # Verify that if we select one photo options and share are enabled
+        self.select_media(0)
+        self.assertThat(opt.visible, Eventually(Equals(True)))
+        self.verify_share_state(True)
+
+        # Verify that it stays enabled with mixed media selected
+        self.select_media(1)
+        self.verify_share_state(True)
+
+    """Tests sharing with mixed media generates a warning dialog"""
+    def test_no_share_mixed_media(self):
+        self.main_window.swipe_to_gallery(self)
+        self.move_from_slideshow_to_photogrid()
+
+        self.select_media(0)
+        self.select_media(1)
+        share = self.verify_share_state(True, close=False)
+
+        self.pointing_device.move_to_object(share)
+        self.pointing_device.click()
+
+        gallery = self.main_window.get_gallery()
+        gallery.wait_select_single(objectName="unableShareDialog")

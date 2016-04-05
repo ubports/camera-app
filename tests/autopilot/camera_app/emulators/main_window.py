@@ -36,9 +36,28 @@ class MainWindow(object):
         """Returns the gallery view"""
         return self.app.wait_select_single("GalleryView")
 
+    def get_media(self, index=0):
+        """Returns media at index in the currently loaded view in gallery"""
+        gallery = self.get_gallery()
+        view = gallery.select_single("SlideshowView")
+        if not view.visible:
+            view = gallery.select_single("PhotogridView")
+
+        return view.wait_select_single(objectName="mediaItem" + str(index))
+
+    def get_broken_media_icon(self, index=0):
+        """Returns the broken media icon"""
+        media = self.get_media(index)
+        return media.wait_select_single(objectName="thumbnailLoadingErrorIcon")
+
     def get_no_media_hint(self):
         """Returns the Item representing the hint that no media is available"""
         return self.app.wait_select_single(objectName="noMediaHint")
+
+    def get_focus_mouse_area(self):
+        """Returns the focus mouse area"""
+        return self.app.wait_select_single("QQuickMouseArea",
+                                           objectName="manualFocusMouseArea")
 
     def get_focus_ring(self):
         """Returns the focus ring of the camera"""
@@ -49,9 +68,9 @@ class MainWindow(object):
         return self.app.wait_select_single("ShootButton")
 
     def get_photo_roll_hint(self):
-        """Returns the layer that serves at hinting to the existence of the
-        photo roll"""
-        return self.app.wait_select_single("PhotoRollHint")
+        """Returns the photo roll hint"""
+        return self.app.wait_select_single("PhotoRollHint",
+                                           objectName="photoRollHint")
 
     def get_record_control(self):
         """Returns the button that toggles between photo and video recording"""
@@ -63,8 +82,12 @@ class MainWindow(object):
            in settingsProperty
         """
         optionButtons = self.app.select_many("OptionButton")
-        return next(button for button in optionButtons
-                    if button.settingsProperty == settingsProperty)
+        optionButton = next(button for button in optionButtons
+                            if button.settingsProperty == settingsProperty)
+        if optionButton.visible:
+            return optionButton
+        else:
+            return None
 
     def get_flash_button(self):
         """Returns the flash control button of the camera"""
@@ -89,6 +112,10 @@ class MainWindow(object):
     def get_video_resolution_button(self):
         """Returns the video resolution button of the camera"""
         return self.get_option_button("videoResolution")
+
+    def get_timer_delay_button(self):
+        """Returns the timer delay option button of the camera"""
+        return self.get_option_button("selfTimerDelay")
 
     def get_stop_watch(self):
         """Returns the stop watch when using the record button of the camera"""
@@ -139,30 +166,71 @@ class MainWindow(object):
         except:
             return None
 
+    def open_actions_drawer(self, gallery):
+        """Opens action drawer of gallery"""
+        actionsDrawerButton = gallery.wait_select_single(
+            "IconButton",
+            objectName="additionalActionsButton")
+        self.app.pointing_device.move_to_object(actionsDrawerButton)
+        self.app.pointing_device.click()
+        actionsDrawer = gallery.wait_select_single("QQuickItem",
+                                                   objectName="actionsDrawer")
+        actionsDrawer.fullyOpened.wait_for(True)
+
+    def close_actions_drawer(self, gallery):
+        """Closes action drawer of gallery"""
+        actionsDrawerButton = gallery.wait_select_single(
+            "IconButton",
+            objectName="additionalActionsButton")
+        self.app.pointing_device.move_to_object(actionsDrawerButton)
+        self.app.pointing_device.click()
+        actionsDrawer = gallery.wait_select_single("QQuickItem",
+                                                   objectName="actionsDrawer")
+        actionsDrawer.fullyClosed.wait_for(True)
+
     def swipe_to_gallery(self, testCase):
         view_switcher = self.get_view_switcher()
+        viewfinder = self.get_viewfinder()
+        view_switcher.interactive.wait_for(True)
+        view_switcher.enabled.wait_for(True)
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
+        viewfinder.inView.wait_for(True)
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
 
-        self.app.pointing_device.drag(tx, ty, x, ty, rate=1)
-        viewfinder = self.get_viewfinder()
+        # FIXME: a rate higher than 1 does not always make view_switcher move
+        self.app.pointing_device.drag(tx, ty, x, ty, rate=1,
+                                      time_between_events=0.0001)
+
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
 
     def swipe_to_viewfinder(self, testCase):
         view_switcher = self.get_view_switcher()
+        viewfinder = self.get_viewfinder()
+        view_switcher.interactive.wait_for(True)
+        view_switcher.enabled.wait_for(True)
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
+        viewfinder.inView.wait_for(False)
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
 
         tx = x + (w // 2)
         ty = y + (h // 2)
 
+        # FIXME: a rate higher than 1 does not always make view_switcher move
         self.app.pointing_device.drag(
-            tx, ty, (tx + view_switcher.width // 2), ty, rate=1)
-        viewfinder = self.get_viewfinder()
+            tx, ty, (tx + view_switcher.width // 2), ty, rate=1,
+            time_between_events=0.0001)
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
+        view_switcher.settling.wait_for(False)
+        view_switcher.switching.wait_for(False)
 
     def switch_cameras(self):
         # Swap cameras and wait for camera to settle

@@ -17,7 +17,7 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 
 PopupBase {
     property var transferContentType 
@@ -31,17 +31,9 @@ PopupBase {
         contentPeerPicker.peerSelected.connect(contentPeerSelected);
     }
 
-    // FIXME: ContentPeerPicker should either have a background or not, not half of one
-    Rectangle {
-        anchors.fill: parent
-        color: theme.palette.normal.overlay
-    }
-
     ContentPeerPicker {
         id: contentPeerPicker
         // FIXME: ContentPeerPicker should define an implicit size and not refer to its parent
-        // FIXME: ContentPeerPicker should not be visible: false by default
-        visible: true
         Component.onCompleted: {
             contentType = parent.transferContentType;
         }

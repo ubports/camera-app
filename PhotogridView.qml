@@ -18,7 +18,7 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Thumbnailer 0.1
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -40,11 +40,14 @@ FocusScope {
         Action {
             text: i18n.tr("Share")
             iconName: "share"
-            enabled: model.selectedFiles.length <= 1
+            enabled: model.selectedFiles.length > 0
             onTriggered: {
-                if (model.selectedFiles.length > 0) {
-                    var dialog = PopupUtils.open(sharePopoverComponent)
-                    dialog.parent = photogridView
+                // Display a warning message if we are attempting to share mixed
+                // content, as the framework does not properly support this
+                if (selectionContainsMixedMedia()) {
+                    PopupUtils.open(unableShareDialogComponent).parent = photogridView;
+                } else {
+                    PopupUtils.open(sharePopoverComponent).parent = photogridView;
                 }
             }
         },
@@ -59,6 +62,19 @@ FocusScope {
             }
         }
     ]
+
+    function selectionContainsMixedMedia() {
+        var selection = model.selectedFiles;
+        var lastType = model.get(selection[0], "fileType");
+        for (var i = 1; i < selection.length; i++) {
+            var type = model.get(selection[i], "fileType");
+            if (type !== lastType) {
+                return true;
+            }
+            lastType = type;
+        }
+        return false;
+    }
 
     function showPhotoAtIndex(index) {
         gridView.positionViewAtIndex(index, GridView.Center);
@@ -139,6 +155,16 @@ FocusScope {
                 visible: isVideo
             }
 
+            Icon {
+                objectName: "thumbnailLoadingErrorIcon"
+                anchors.centerIn: parent
+                width: units.gu(6)
+                height: width
+                name: cellDelegate.isVideo ? "stock_video" : "stock_image"
+                color: "white"
+                opacity: thumbnail.status == Image.Error ? 1.0 : 0.0
+             }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: photogridView.photoClicked(index)
@@ -160,6 +186,7 @@ FocusScope {
                 visible: inSelectionMode
 
                 Icon {
+                    objectName: "mediaItemCheckBox"
                     anchors.centerIn: parent
                     width: parent.width * 0.8
                     height: parent.height * 0.8
@@ -225,4 +252,13 @@ FocusScope {
             onVisibleChanged: photogridView.toggleHeader()
         }
     }
+
+    Component {
+        id: unableShareDialogComponent
+        UnableShareDialog {
+            objectName: "unableShareDialog"
+            onVisibleChanged: photogridView.toggleHeader()
+        }
+    }
+
 }

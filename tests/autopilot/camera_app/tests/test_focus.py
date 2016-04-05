@@ -18,39 +18,44 @@ import unittest
 class TestFocus(CameraAppTestCase):
     """Tests the focus"""
 
-    """ This is needed to wait for the application to start.
-        In the testfarm, the application may take some time to show up."""
-    def setUp(self):
-        super(TestFocus, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+    def verify_focus_ring_after_click_at(self, ring, x, y):
+        # The focus ring should be invisible in the beginning
+        self.assertThat(ring.opacity, Eventually(Equals(0.0)))
 
-    def tearDown(self):
-        super(TestFocus, self).tearDown()
+        focus_mouse_area = self.main_window.get_focus_mouse_area()
+        self.assertThat(focus_mouse_area.enabled, Eventually(Equals(True)))
+
+        # Click in the designated spot
+        self.pointing_device.move(x, y)
+        self.pointing_device.click()
+
+        # The focus ring sould be visible now
+        self.assertThat(ring.opacity, Eventually(GreaterThan(0.1)))
+
+        # After some seconds the focus ring should fade out
+        self.assertThat(ring.opacity, Eventually(Equals(0.0)))
 
     """Test focusing in an area where we know the picture is"""
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_valid_and_disappear(self):
+        geometry = self.main_window.get_viewfinder_geometry()
         focus_ring = self.main_window.get_focus_ring()
-        feed = self.main_window.get_viewfinder_geometry()
         switch_cameras = self.main_window.get_swap_camera_button()
         exposure_button = self.main_window.get_exposure_button()
 
-        # The focus ring should be invisible in the beginning
-        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
+        # Click in the center of the viewfinder area
+        mid_x, mid_y = self.get_center(geometry)
+        self.verify_focus_ring_after_click_at(focus_ring, mid_x, mid_y)
 
-        self.pointing_device.move_to_object(feed)
-        self.pointing_device.click()
-        click_coords = list(self.pointing_device.position())
-
-        # The focus ring sould be visible and centered to the mouse click
-        # coords now
-        # focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring.opacity, Eventually(GreaterThan(0.5)))
-#        self.assertEquals(focus_ring_center, click_coords)
-
-        # After some seconds the focus ring should fade out
-        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
+        # Then try on the side edges and top edge to verify they
+        # are focusable too
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x + 1, mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x +
+                                              geometry.globalRect.width - 1,
+                                              mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
         # Switch cameras, wait for camera to settle, and try again
         self.pointing_device.move_to_object(switch_cameras)
@@ -58,19 +63,17 @@ class TestFocus(CameraAppTestCase):
         self.assertThat(exposure_button.enabled, Eventually(Equals(True)))
 
         # Click in the center of the viewfinder area
-        click_coords = [feed.globalRect[2] // 2 + feed.globalRect[0],
-                        feed.globalRect[3] // 2 + feed.globalRect[1]]
-        self.pointing_device.move(click_coords[0], click_coords[1])
-        self.pointing_device.click()
+        self.verify_focus_ring_after_click_at(focus_ring, mid_x, mid_y)
 
-        # The focus ring sould be visible and centered to the mouse
-        # click coords now
-        # focus_ring_center = self.get_center(focus_ring)
-        self.assertThat(focus_ring.opacity, Eventually(GreaterThan(0.5)))
-#        self.assertEquals(focus_ring_center, click_coords)
-
-        # After some seconds the focus ring should fade out
-        self.assertThat(focus_ring.opacity, Eventually(Equals(0.0)))
+        # Then try on the left, right and above the center to verify they
+        # are focusable too
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x + 1, mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring,
+                                              geometry.globalRect.x +
+                                              geometry.globalRect.width - 1,
+                                              mid_y)
+        self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_invalid(self):

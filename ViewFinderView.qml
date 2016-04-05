@@ -21,7 +21,7 @@ import Ubuntu.Components.Popups 1.3
 import QtMultimedia 5.0
 import CameraApp 0.1
 import QtGraphicalEffects 1.0
-import Ubuntu.Content 0.1
+import Ubuntu.Content 1.3
 
 FocusScope {
     id: viewFinderView
@@ -60,11 +60,15 @@ FocusScope {
         property bool failedToConnect: false
 
         function manualFocus(x, y) {
-            viewFinderOverlay.showFocusRing(x, y);
-            autoFocusTimer.restart();
-            focus.focusMode = Camera.FocusAuto;
-            focus.customFocusPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y));
-            focus.focusPointMode = Camera.FocusPointCustom;
+            var normalizedPoint = viewFinder.mapPointToSourceNormalized(Qt.point(x, y - viewFinder.y));
+            if (normalizedPoint.x >= 0.0 && normalizedPoint.x <= 1.0 &&
+                normalizedPoint.y >= 0.0 && normalizedPoint.y <= 1.0) {
+                viewFinderOverlay.showFocusRing(x, y);
+                autoFocusTimer.restart();
+                focus.focusMode = Camera.FocusAuto;
+                focus.customFocusPoint = normalizedPoint;
+                focus.focusPointMode = Camera.FocusPointCustom;
+            }
         }
 
         function autoFocus() {
@@ -95,6 +99,7 @@ FocusScope {
         property alias maximumZoom: camera.maximumDigitalZoom
         property bool switchInProgress: false
         property bool photoCaptureInProgress: false
+        property bool timedCaptureInProgress: false
 
         onPhotoCaptureInProgressChanged: {
             if (main.contentExportMode && camera.photoCaptureInProgress) {
@@ -108,14 +113,6 @@ FocusScope {
                     if (camera.photoCaptureInProgress) {
                         if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
                         camera.photoCaptureInProgress = false;
-                    }
-
-                    if (main.transfer) {
-                        if (main.transfer.contentType === ContentType.Videos) {
-                            viewFinderView.captureMode = Camera.CaptureVideo;
-                        } else {
-                            viewFinderView.captureMode = Camera.CaptureStillImage;
-                        }
                     }
                 }
             }
@@ -421,6 +418,7 @@ FocusScope {
 
     PhotoRollHint {
         id: photoRollHint
+        objectName: "photoRollHint"
         anchors.fill: parent
         visible: enabled
 
