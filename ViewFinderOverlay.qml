@@ -916,14 +916,8 @@ Item {
 
             MouseArea {
                 id: manualFocusMouseArea
+                anchors.fill: parent
                 objectName: "manualFocusMouseArea"
-                anchors {
-                    fill: parent
-                    // Pinch gestures need more clearance at the edges of the screen, but
-                    // tap to focus should be safe all the way to the edges themselves instead.
-                    leftMargin: -bottomEdgeIndicators.height
-                    rightMargin: -bottomEdgeIndicators.height
-                }
                 enabled: camera.focus.isFocusPointModeSupported(Camera.FocusPointCustom) &&
                          !camera.photoCaptureInProgress && !camera.timedCaptureInProgress
                 onClicked: {
