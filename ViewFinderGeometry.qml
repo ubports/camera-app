@@ -24,9 +24,9 @@ Item {
     property int viewFinderWidth;
     property int viewFinderOrientation;
 
-    property int __cameraWidth: Math.abs(viewFinderOrientation) == 90 ?
+    property int __cameraWidth: Math.abs(viewFinderOrientation) == 90 || Math.abs(viewFinderOrientation) == 270 ?
                                 cameraResolution.height : cameraResolution.width
-    property int __cameraHeight: Math.abs(viewFinderOrientation) == 90 ?
+    property int __cameraHeight: Math.abs(viewFinderOrientation) == 90 || Math.abs(viewFinderOrientation) == 270 ?
                                  cameraResolution.width : cameraResolution.height
 
     property real widthScale: viewFinderWidth / __cameraWidth

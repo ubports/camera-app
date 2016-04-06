@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QMultimedia>
 #include <QtMultimedia/QCamera>
+#include <QtMultimedia/QCameraInfoControl>
 #include <QtMultimedia/QVideoDeviceSelectorControl>
 #include <QtMultimedia/QCameraViewfinderSettingsControl>
 #include <QtMultimedia/QCameraExposureControl>
@@ -37,8 +38,6 @@ class AdvancedCameraSettings : public QObject
 {
     Q_OBJECT
     Q_PROPERTY (QObject* camera READ camera WRITE setCamera NOTIFY cameraChanged)
-    Q_PROPERTY (int activeCameraIndex READ activeCameraIndex WRITE setActiveCameraIndex
-                NOTIFY activeCameraIndexChanged)
     Q_PROPERTY (QSize resolution READ resolution NOTIFY resolutionChanged)
     Q_PROPERTY (QSize imageCaptureResolution READ imageCaptureResolution)
     Q_PROPERTY (QSize videoRecorderResolution READ videoRecorderResolution)
@@ -53,9 +52,7 @@ class AdvancedCameraSettings : public QObject
 public:
     explicit AdvancedCameraSettings(QObject *parent = 0);
     QObject* camera() const;
-    int activeCameraIndex() const;
     void setCamera(QObject* camera);
-    void setActiveCameraIndex(int index);
     QSize resolution() const;
     QSize imageCaptureResolution() const;
     QSize videoRecorderResolution() const;
@@ -73,7 +70,6 @@ public:
 
 Q_SIGNALS:
     void cameraChanged();
-    void activeCameraIndexChanged();
     void resolutionChanged();
     void maximumResolutionChanged();
     void fittingResolutionChanged();
@@ -86,6 +82,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onCameraStateChanged();
     void onExposureValueChanged(int parameter);
+    void onSelectedDeviceChanged(int index);
 
 private:
     QVideoDeviceSelectorControl* selectorFromCamera(QCamera *camera) const;
@@ -97,17 +94,18 @@ private:
     QMediaControl* mediaControlFromCamera(QCamera *camera, const char* iid) const;
     QImageEncoderControl* imageEncoderControlFromCamera(QCamera *camera) const;
     QVideoEncoderSettingsControl* videoEncoderControlFromCamera(QCamera *camera) const;
+    QCameraInfoControl* cameraInfoControlFromCamera(QCamera *camera) const;
 
     QObject* m_cameraObject;
     QCamera* m_camera;
     QVideoDeviceSelectorControl* m_deviceSelector;
-    int m_activeCameraIndex;
     QCameraViewfinderSettingsControl* m_viewFinderControl;
     QCameraControl* m_cameraControl;
     QCameraFlashControl* m_cameraFlashControl;
     QCameraExposureControl* m_cameraExposureControl;
     QImageEncoderControl* m_imageEncoderControl;
     QVideoEncoderSettingsControl* m_videoEncoderControl;
+    QCameraInfoControl* m_cameraInfoControl;
     bool m_hdrEnabled;
 };
 

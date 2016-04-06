@@ -55,8 +55,7 @@ Item {
         property bool playShutterSound: true
         // FIXME: stores the resolution selected for 2 cameras. Instead it should:
         //  - support any number of cameras
-        //  - not rely on the camera index but on Camera.deviceId
-        // Ref.: http://doc.qt.io/qt-5/qml-qtmultimedia-camera.html#deviceId-prop
+        //  - not assume that camera.deviceId is a string containing an integer
         property string photoResolution0
         property string photoResolution1
 
@@ -99,7 +98,7 @@ Item {
     Binding {
         target: camera.imageCapture
         property: "resolution"
-        value: settings["photoResolution" + camera.advanced.activeCameraIndex]
+        value: settings["photoResolution" + camera.deviceId]
     }
 
     Connections {
@@ -220,9 +219,9 @@ Item {
         }
 
         // If resolution setting is not supported select the resolution automatically
-        var photoResolution = settings["photoResolution" + camera.advanced.activeCameraIndex];
+        var photoResolution = settings["photoResolution" + camera.deviceId];
         if (!isResolutionAnOption(photoResolution)) {
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
+            settings["photoResolution" + camera.deviceId] = getAutomaticResolution();
         }
     }
 
@@ -261,18 +260,18 @@ Item {
     }
 
     Connections {
-        target: camera.advanced
-        onActiveCameraIndexChanged: {
-            var hasPhotoResolutionSetting = (settings["photoResolution" + camera.advanced.activeCameraIndex] != "")
+        target: camera
+        onDeviceIdChanged: {
+            var hasPhotoResolutionSetting = (settings["photoResolution" + camera.deviceId] != "")
             // FIXME: use camera.advanced.imageCaptureResolution instead of camera.imageCapture.resolution
             // because the latter is not updated when the backend changes the resolution
-            settings["photoResolution" + camera.advanced.activeCameraIndex] = sizeToString(camera.advanced.imageCaptureResolution);
+            settings["photoResolution" + camera.deviceId] = sizeToString(camera.advanced.imageCaptureResolution);
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
             // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.advanced.activeCameraIndex] = getAutomaticResolution();
+                settings["photoResolution" + camera.deviceId] = getAutomaticResolution();
             }
         }
     }
@@ -558,7 +557,7 @@ Item {
                 ListModel {
                     id: photoResolutionOptionsModel
 
-                    property string settingsProperty: "photoResolution" + camera.advanced.activeCameraIndex
+                    property string settingsProperty: "photoResolution" + camera.deviceId
                     property string icon: ""
                     property string label: sizeToAspectRatio(stringToSize(settings[settingsProperty]))
                     property bool isToggle: false

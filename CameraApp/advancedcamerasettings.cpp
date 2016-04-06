@@ -36,7 +36,6 @@ static const QCameraExposure::ExposureMode ExposureHdr = static_cast<QCameraExpo
 
 AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     QObject(parent),
-    m_activeCameraIndex(0),
     m_cameraObject(0),
     m_camera(0),
     m_deviceSelector(0),
@@ -45,6 +44,7 @@ AdvancedCameraSettings::AdvancedCameraSettings(QObject *parent) :
     m_cameraExposureControl(0),
     m_imageEncoderControl(0),
     m_videoEncoderControl(0),
+    m_cameraInfoControl(0),
     m_hdrEnabled(false)
 {
 }
@@ -183,14 +183,21 @@ QVideoEncoderSettingsControl* AdvancedCameraSettings::videoEncoderControlFromCam
     return videoEncoderControl;
 }
 
+QCameraInfoControl* AdvancedCameraSettings::cameraInfoControlFromCamera(QCamera *camera) const
+{
+    QMediaControl *control = mediaControlFromCamera(camera, QCameraInfoControl_iid);
+    QCameraInfoControl *infoControl = qobject_cast<QCameraInfoControl*>(control);
+
+    if (infoControl == 0) {
+        qWarning() << "No info control support";
+    }
+
+    return infoControl;
+}
+
 QObject* AdvancedCameraSettings::camera() const
 {
     return m_cameraObject;
-}
-
-int AdvancedCameraSettings::activeCameraIndex() const
-{
-    return m_activeCameraIndex;
 }
 
 void AdvancedCameraSettings::setCamera(QObject *cameraObject)
@@ -210,13 +217,23 @@ void AdvancedCameraSettings::setCamera(QObject *cameraObject)
 
             QVideoDeviceSelectorControl* selector = selectorFromCamera(m_camera);
             m_deviceSelector = selector;
-            if (selector) {
-                m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
-            }
+            connect(m_deviceSelector, SIGNAL(selectedDeviceChanged(int)),
+                    this, SLOT(onSelectedDeviceChanged(int)));
         }
 
         Q_EMIT cameraChanged();
     }
+}
+
+void AdvancedCameraSettings::onSelectedDeviceChanged(int index)
+{
+    Q_UNUSED(index);
+
+    Q_EMIT resolutionChanged();
+    Q_EMIT maximumResolutionChanged();
+    Q_EMIT fittingResolutionChanged();
+    Q_EMIT hasFlashChanged();
+    Q_EMIT videoSupportedResolutionsChanged();
 }
 
 void AdvancedCameraSettings::readCapabilities()
@@ -249,6 +266,7 @@ void AdvancedCameraSettings::readCapabilities()
 
     m_imageEncoderControl = imageEncoderControlFromCamera(m_camera);
     m_videoEncoderControl = videoEncoderControlFromCamera(m_camera);
+    m_cameraInfoControl = cameraInfoControlFromCamera(m_camera);
 
     Q_EMIT resolutionChanged();
     Q_EMIT maximumResolutionChanged();
@@ -264,22 +282,6 @@ void AdvancedCameraSettings::onCameraStateChanged()
 {
     if (m_camera->state() == QCamera::LoadedState || m_camera->state() == QCamera::ActiveState) {
         readCapabilities();
-    }
-}
-
-void AdvancedCameraSettings::setActiveCameraIndex(int index)
-{
-    if (index != m_activeCameraIndex) {
-        m_activeCameraIndex = index;
-        if (m_deviceSelector) {
-            m_deviceSelector->setSelectedDevice(m_activeCameraIndex);
-        }
-        Q_EMIT activeCameraIndexChanged();
-        Q_EMIT resolutionChanged();
-        Q_EMIT maximumResolutionChanged();
-        Q_EMIT fittingResolutionChanged();
-        Q_EMIT hasFlashChanged();
-        Q_EMIT videoSupportedResolutionsChanged();
     }
 }
 
@@ -417,7 +419,9 @@ QStringList AdvancedCameraSettings::videoSupportedResolutions() const
             // When using the front camera on krillin, using resolution 640x480 does
             // not work properly and results in stretched videos. Remove it from
             // the list of supported resolutions.
-            if (activeCameraIndex() == 1 && size.width() == 640 && size.height() == 480) {
+            QString currentDeviceName = m_deviceSelector->deviceName(m_deviceSelector->selectedDevice());
+            if (m_cameraInfoControl->cameraPosition(currentDeviceName) == QCamera::FrontFace &&
+                size.width() == 640 && size.height() == 480) {
                 continue;
             }
             sizesAsStrings.append(QString("%1x%2").arg(size.width()).arg(size.height()));
