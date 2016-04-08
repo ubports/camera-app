@@ -55,7 +55,6 @@ class TestFocus(CameraAppTestCase):
                                               geometry.globalRect.x +
                                               geometry.globalRect.width - 100,
                                               mid_y)
-        self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
         # Switch cameras, wait for camera to settle, and try again
         self.pointing_device.move_to_object(switch_cameras)
@@ -73,7 +72,6 @@ class TestFocus(CameraAppTestCase):
                                               geometry.globalRect.x +
                                               geometry.globalRect.width - 100,
                                               mid_y)
-        self.verify_focus_ring_after_click_at(focus_ring, mid_x, 1)
 
     @unittest.skipIf(model() == 'Galaxy Nexus', 'Unusable with Mir on maguro')
     def test_focus_invalid(self):
