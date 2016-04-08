@@ -50,7 +50,8 @@ class TestFocus(CameraAppTestCase):
         # Then try on the side edges and top edge to verify they
         # are focusable too
         self.verify_focus_ring_after_click_at(focus_ring,
-                                              geometry.globalRect.x + 100, mid_y)
+                                              geometry.globalRect.x + 100,
+                                              mid_y)
         self.verify_focus_ring_after_click_at(focus_ring,
                                               geometry.globalRect.x +
                                               geometry.globalRect.width - 100,
@@ -67,7 +68,8 @@ class TestFocus(CameraAppTestCase):
         # Then try on the left, right and above the center to verify they
         # are focusable too
         self.verify_focus_ring_after_click_at(focus_ring,
-                                              geometry.globalRect.x + 100, mid_y)
+                                              geometry.globalRect.x + 100,
+                                              mid_y)
         self.verify_focus_ring_after_click_at(focus_ring,
                                               geometry.globalRect.x +
                                               geometry.globalRect.width - 100,
