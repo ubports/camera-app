@@ -196,15 +196,29 @@ class MainWindow(object):
         view_switcher.settling.wait_for(False)
         view_switcher.switching.wait_for(False)
         viewfinder.inView.wait_for(True)
+
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
-
-        tx = x + (w // 2)
-        ty = y + (h // 2)
+        center_x = x + (w // 2)
+        center_y = y + (h // 2)
 
         # FIXME: a rate higher than 1 does not always make view_switcher move
-        self.app.pointing_device.drag(tx, ty, x, ty, rate=1,
-                                      time_between_events=0.0001)
+        if view_switcher.state == "PORTRAIT":
+            self.app.pointing_device.drag(center_x, center_y,
+                                          x, center_y,
+                                          rate=1, time_between_events=0.0001)
+        elif view_switcher.state == "LANDSCAPE":
+            self.app.pointing_device.drag(center_x, y + (3 * h // 4),
+                                          center_x, center_y,
+                                          rate=1, time_between_events=0.0001)
+        elif view_switcher.state == "INVERTED_LANDSCAPE":
+            self.app.pointing_device.drag(center_x, y + (h // 4),
+                                          center_x, center_y,
+                                          rate=1, time_between_events=0.0001)
+        else:
+            self.app.pointing_device.drag(center_x, center_y,
+                                          x + w - 1, center_y,
+                                          rate=1, time_between_events=0.0001)
 
         testCase.assertThat(viewfinder.inView, Eventually(Equals(False)))
         view_switcher.settling.wait_for(False)
@@ -218,16 +232,30 @@ class MainWindow(object):
         view_switcher.settling.wait_for(False)
         view_switcher.switching.wait_for(False)
         viewfinder.inView.wait_for(False)
+
         x, y = view_switcher.x, view_switcher.y
         w, h = view_switcher.width, view_switcher.height
-
-        tx = x + (w // 2)
-        ty = y + (h // 2)
+        center_x = x + (w // 2)
+        center_y = y + (h // 2)
 
         # FIXME: a rate higher than 1 does not always make view_switcher move
-        self.app.pointing_device.drag(
-            tx, ty, (tx + view_switcher.width // 2), ty, rate=1,
-            time_between_events=0.0001)
+        if view_switcher.state == "PORTRAIT":
+            self.app.pointing_device.drag(center_x, center_y,
+                                          x + w - 1, center_y,
+                                          rate=1, time_between_events=0.0001)
+        elif view_switcher.state == "LANDSCAPE":
+            self.app.pointing_device.drag(center_x, y + (h // 4),
+                                          center_x, center_y,
+                                          rate=1, time_between_events=0.0001)
+        elif view_switcher.state == "INVERTED_LANDSCAPE":
+            self.app.pointing_device.drag(center_x, y + (3 * h // 4),
+                                          center_x, center_y,
+                                          rate=1, time_between_events=0.0001)
+        else:
+            self.app.pointing_device.drag(center_x, center_y,
+                                          x, center_y,
+                                          rate=1, time_between_events=0.0001)
+
         testCase.assertThat(viewfinder.inView, Eventually(Equals(True)))
         view_switcher.settling.wait_for(False)
         view_switcher.switching.wait_for(False)
