@@ -71,7 +71,6 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
 
     def _drag_to_close(self):
         x, y, _, _ = self.globalRect
-        center_x = x + self.width * 0.50
         center_y = y + self.height * 0.50
 
         view_switcher = self.get_root_instance().wait_select_single(
