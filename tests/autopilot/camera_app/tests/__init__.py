@@ -17,6 +17,8 @@ from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
 from camera_app.emulators.main_window import MainWindow
+from camera_app.ubuntu_system_tests.helpers.camera.fixture_setup import (
+    SetCameraAccessRequests)
 
 
 CUSTOM_PROXY_OBJECT_BASE = ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase
@@ -41,6 +43,7 @@ class CameraAppTestCase(AutopilotTestCase):
     sample_dir = resource_filename('camera_app', 'data')
 
     def setUp(self):
+        self.useFixture(SetCameraAccessRequests())
         # Remove configuration file
         config_file = os.path.expanduser(
             "~/.config/com.ubuntu.camera/com.ubuntu.camera.conf")

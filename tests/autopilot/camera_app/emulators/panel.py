@@ -35,13 +35,29 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
 
     def _drag_to_open(self):
         x, y, _, _ = self.globalRect
-        line_x = x + self.width * 0.50
-        start_y = y + self.height - 1
-        stop_y = y
+        center_x = x + self.width * 0.50
+        center_y = y + self.height * 0.50
+
+        view_switcher = self.get_root_instance().wait_select_single(
+            objectName="viewSwitcher")
 
         # FIXME: a rate higher than 1 does not always make panel move
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
-                                  time_between_events=0.0001)
+        if view_switcher.state == "PORTRAIT":
+            self.pointing_device.drag(center_x, y + self.height - 1,
+                                      center_x, y, rate=1,
+                                      time_between_events=0.0001)
+        elif view_switcher.state == "LANDSCAPE":
+            self.pointing_device.drag(0, center_y,
+                                      self.height - 1, center_y, rate=1,
+                                      time_between_events=0.0001)
+        elif view_switcher.state == "INVERTED_LANDSCAPE":
+            self.pointing_device.drag(x + self.height - 1, center_y,
+                                      x, center_y, rate=1,
+                                      time_between_events=0.0001)
+        else:
+            self.pointing_device.drag(center_x, y + self.height - 1,
+                                      center_x, y, rate=1,
+                                      time_between_events=0.0001)
 
     @autopilot_logging.log_action(logger.info)
     def close(self):
@@ -55,10 +71,25 @@ class Panel(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
 
     def _drag_to_close(self):
         x, y, _, _ = self.globalRect
-        line_x = x + self.width - 1
-        start_y = y
-        stop_y = y + self.height - 1
+        center_y = y + self.height * 0.50
+
+        view_switcher = self.get_root_instance().wait_select_single(
+            objectName="viewSwitcher")
 
         # FIXME: a rate higher than 1 does not always make panel move
-        self.pointing_device.drag(line_x, start_y, line_x, stop_y, rate=1,
-                                  time_between_events=0.0001)
+        if view_switcher.state == "PORTRAIT":
+            self.pointing_device.drag(x, y,
+                                      x, y + self.height - 1, rate=1,
+                                      time_between_events=0.0001)
+        elif view_switcher.state == "LANDSCAPE":
+            self.pointing_device.drag(self.height - 1, center_y,
+                                      0, center_y, rate=1,
+                                      time_between_events=0.0001)
+        elif view_switcher.state == "INVERTED_LANDSCAPE":
+            self.pointing_device.drag(x, center_y,
+                                      x + self.height - 1, center_y, rate=1,
+                                      time_between_events=0.0001)
+        else:
+            self.pointing_device.drag(x, y,
+                                      x, y + self.height - 1, rate=1,
+                                      time_between_events=0.0001)

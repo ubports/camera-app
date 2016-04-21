@@ -41,10 +41,10 @@ class TestCameraOptions(CameraAppTestCase):
         # check overlay is opened
         self.assertThat(bottom_edge.opened, Eventually(Equals(True)))
 
-        # tap on the bottom of the viewfinder to close overlay
+        # tap on the top of the viewfinder to close overlay
         viewfinder = self.main_window.get_viewfinder()
         x = viewfinder.globalRect.x + viewfinder.width / 2.0
-        y = viewfinder.globalRect.y + viewfinder.height - 1.0
+        y = viewfinder.globalRect.y + 1.0
         self.pointing_device.move(x, y)
         self.pointing_device.click()
 

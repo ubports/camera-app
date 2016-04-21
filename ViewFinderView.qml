@@ -56,7 +56,7 @@ FocusScope {
         id: camera
         captureMode: Camera.CaptureStillImage
         cameraState: Camera.UnloadedState
-        StateSaver.properties: "captureMode"
+        StateSaver.properties: "captureMode, position"
         property bool failedToConnect: false
 
         function manualFocus(x, y) {
@@ -89,7 +89,6 @@ FocusScope {
         property AdvancedCameraSettings advanced: AdvancedCameraSettings {
             id: advancedCamera
             camera: camera
-            StateSaver.properties: "activeCameraIndex"
         }
 
         /* Use only digital zoom for now as it's what phone cameras mostly use.
@@ -171,7 +170,7 @@ FocusScope {
                     viewFinder.width = 1;
                     viewFinder.height = 1;
                     camera.cameraState = Camera.LoadedState;
-                    camera.advanced.activeCameraIndex = (camera.advanced.activeCameraIndex === 0) ? 1 : 0;
+                    camera.position = (camera.position === Camera.FrontFace) ? Camera.BackFace : Camera.FrontFace;
                     decideCameraState();
                     viewFinderSwitcherRotation.angle = 180;
                 }
