@@ -178,6 +178,11 @@ Item {
         videoResolutionOptionsModel.clear();
         var supported = camera.advanced.videoSupportedResolutions;
         var wellKnown = ["1920x1080", "1280x720", "640x480"];
+
+        supported = supported.slice().sort(function(a, b) {
+            return a.split("x")[0] - b.split("x")[0];
+        });
+
         for (var i=0; i<supported.length; i++) {
             var resolution = supported[i];
             if (wellKnown.indexOf(resolution) !== -1) {
