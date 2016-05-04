@@ -1,3 +1,13 @@
+camera-app (3.0.0+16.04.20160421.1-0ubuntu1) xenial; urgency=medium
+
+  [ Florian Boucault, Ugo Riboni ]
+  * New release: Reverted revision 637 that was causing a regression
+    where the controls could not be opened in landscape orientation
+    anymore. Set Camera.position to switch front/back cameras instead of
+    AdvancedCameraSettings and hardcoded camera indexes (LP: #1563858)
+
+ -- Florian Boucault <florian.boucault@canonical.com>  Thu, 21 Apr 2016 12:07:22 +0000
+
 camera-app (3.0.0+16.04.20160323.3-0ubuntu1) xenial; urgency=medium
 
   [ CI Train Bot ]
