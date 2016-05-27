@@ -216,8 +216,12 @@ FocusScope {
                         easing: UbuntuAnimation.StandardEasing
                     }
                 }
-                PropertyAction { target: viewFinder; property: "width"; value: viewFinderSwitcher.width}
-                PropertyAction { target: viewFinder; property: "height"; value: viewFinderSwitcher.height}
+                ScriptAction {
+                    script: {
+                        viewFinder.width = Qt.binding(function () {return viewFinderSwitcher.width;});
+                        viewFinder.height = Qt.binding(function () {return viewFinderSwitcher.height;});
+                    }
+                }
                 PropertyAction { target: viewFinderGrab; property: "visible"; value: false }
                 ParallelAnimation {
                     UbuntuNumberAnimation {target: viewFinderSwitcherScale; property: "xScale"; from: 0.8; to: 1.0; duration: UbuntuAnimation.BriskDuration; easing: UbuntuAnimation.StandardEasingReverse}
