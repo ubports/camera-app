@@ -8,6 +8,17 @@ export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 %:
 	dh $@ --parallel --with translations
 
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+# Skip tests on the archs they are known to be flaky with current configuration
+# Ref.: https://bugs.launchpad.net/ubuntu/+source/mesa/+bug/1585942
+testskip_architectures := arm64
+
+override_dh_auto_test:
+ifneq ($(DEB_HOST_ARCH),$(findstring $(DEB_HOST_ARCH), $(testskip_architectures)))
+    dh_auto_test
+endif
+
 override_dh_auto_configure:
 	dh_auto_configure -- -DCLICK_MODE=OFF -DINSTALL_TESTS=ON
 
