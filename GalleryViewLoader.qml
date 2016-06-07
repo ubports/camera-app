@@ -38,9 +38,11 @@ Loader {
     asynchronous: true
 
     Component.onCompleted: {
-        loader.setSource("GalleryView.qml", { "inView": Qt.binding(function() { return loader.inView }) });
+        loader.setSource("GalleryView.qml");
     }
+
     onLoaded: {
+        loader.item.inView = Qt.binding(function() { return loader.inView });
         loader.item.exit.connect(exit);
     }
 }
