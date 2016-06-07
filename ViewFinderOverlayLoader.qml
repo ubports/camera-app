@@ -37,9 +37,12 @@ Loader {
 
     asynchronous: true
     Component.onCompleted: {
-        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera,
-                                                    "readyForCapture": Qt.binding(function() { return loader.readyForCapture}),
-                                                    "sensorOrientation": Qt.binding(function () {return loader.sensorOrientation})
+        loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera
                                                   });
+    }
+
+    onLoaded: {
+        loader.item.readyForCapture = Qt.binding(function() { return loader.readyForCapture });
+        loader.item.sensorOrientation = Qt.binding(function() { return loader.sensorOrientation });
     }
 }
