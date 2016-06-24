@@ -573,7 +573,7 @@ Item {
             */
             Connections {
                 target: bottomEdge
-                onOpenedChanged: removableStorageOptionsModel.available = StorageLocations.removableStoragePresent
+                onOpenedChanged: StorageLocations.updateRemovableStorageInfo()
             }
 
             function indexForValue(model, value) {

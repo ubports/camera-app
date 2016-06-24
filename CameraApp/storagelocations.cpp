@@ -22,6 +22,7 @@
 
 StorageLocations::StorageLocations(QObject *parent) : QObject(parent)
 {
+    updateRemovableStorageInfo();
 }
 
 QString StorageLocations::picturesLocation() const
@@ -68,15 +69,7 @@ QString StorageLocations::temporaryLocation() const
 
 QString StorageLocations::removableStorageLocation() const
 {
-    QString mediaRoot("/media/" + qgetenv("USER"));
-    Q_FOREACH(QStorageInfo volume, QStorageInfo::mountedVolumes()) {
-         if (volume.rootPath().startsWith(mediaRoot) &&
-             volume.isValid() && volume.isReady()) {
-            return volume.rootPath();
-         }
-    }
-
-    return QString();
+    return m_removableStorageLocation;
 }
 
 QString StorageLocations::removableStoragePicturesLocation() const
@@ -118,4 +111,22 @@ QString StorageLocations::removableStorageVideosLocation() const
 bool StorageLocations::removableStoragePresent() const
 {
     return !removableStorageLocation().isEmpty();
+}
+
+void StorageLocations::updateRemovableStorageInfo()
+{
+    QString removableStorageLocation;
+    QString mediaRoot("/media/" + qgetenv("USER"));
+    // FIXME: calling QStorageInfo::mountedVolumes() is very slow (80ms on krillin)
+    Q_FOREACH(QStorageInfo volume, QStorageInfo::mountedVolumes()) {
+         if (volume.rootPath().startsWith(mediaRoot) &&
+             volume.isValid() && volume.isReady()) {
+            removableStorageLocation = volume.rootPath();
+         }
+    }
+
+    if (m_removableStorageLocation != removableStorageLocation) {
+        m_removableStorageLocation = removableStorageLocation;
+        Q_EMIT removableStoragePresentChanged();
+    }
 }
