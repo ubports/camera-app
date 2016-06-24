@@ -153,6 +153,7 @@ FocusScope {
                 color: "white"
                 opacity: 0.8
                 visible: isVideo
+                asynchronous: true
             }
 
             Icon {
@@ -163,6 +164,7 @@ FocusScope {
                 name: cellDelegate.isVideo ? "stock_video" : "stock_image"
                 color: "white"
                 opacity: thumbnail.status == Image.Error ? 1.0 : 0.0
+                asynchronous: true
              }
 
             MouseArea {
@@ -193,6 +195,7 @@ FocusScope {
                     name: "ok"
                     color: "white"
                     visible: selected
+                    asynchronous: true
                 }
 
             }

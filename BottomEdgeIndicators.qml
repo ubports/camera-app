@@ -54,6 +54,7 @@ Item {
             horizontalCenter: parent.horizontalCenter
         }
         width: visible ? height * 1.5 : 0
+        asynchronous: true
     }
 
     Row {
@@ -87,6 +88,7 @@ Item {
                     name: modelData && modelData.isToggle ? modelData.icon : (modelData.get(model.selectedIndex) ? modelData.get(model.selectedIndex).icon : "")
                     source: name ? "image://theme/%1".arg(name) : (modelData.iconSource || "")
                     visible: source != ""
+                    asynchronous: true
                 }
 
                 Label {

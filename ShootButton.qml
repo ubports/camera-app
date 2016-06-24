@@ -35,6 +35,7 @@ Item {
         id: icon
         anchors.centerIn: parent
         cache: false
+        asynchronous: true
     }
 
     states: [

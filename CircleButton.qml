@@ -58,6 +58,7 @@ AbstractButton {
                 direction: RotationAnimator.Shortest
             }
         }
+        asynchronous: true
     }
 
     Label {

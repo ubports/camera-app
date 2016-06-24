@@ -51,6 +51,7 @@ Item {
             name: "media-playback-start"
             color: "white"
             opacity: 0.8
+            asynchronous: true
         }
 
         MouseArea {

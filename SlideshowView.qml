@@ -267,6 +267,7 @@ FocusScope {
                             name: media.isVideo ? "stock_video" : "stock_image"
                             color: "white"
                             opacity: image.status == Image.Error ? 1.0 : 0.0
+                            asynchronous: true
                          }
                     }
 
@@ -278,6 +279,7 @@ FocusScope {
                         color: "white"
                         opacity: 0.8
                         visible: media.isVideo
+                        asynchronous: true
                     }
 
                     MouseArea {
