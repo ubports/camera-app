@@ -59,7 +59,7 @@ public:
     QSize maximumResolution() const;
     QSize fittingResolution() const;
     float getScreenAspectRatio() const;
-    QStringList videoSupportedResolutions() const;
+    QStringList videoSupportedResolutions();
     bool hasFlash() const;
     bool hasHdr() const;
     bool hdrEnabled() const;
@@ -107,6 +107,7 @@ private:
     QVideoEncoderSettingsControl* m_videoEncoderControl;
     QCameraInfoControl* m_cameraInfoControl;
     bool m_hdrEnabled;
+    QStringList m_videoSupportedResolutions;
 };
 
 #endif // ADVANCEDCAMERASETTINGS_H
