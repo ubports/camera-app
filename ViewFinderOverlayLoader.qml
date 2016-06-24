@@ -35,7 +35,6 @@ Loader {
         loader.item.updateResolutionOptions();
     }
 
-    asynchronous: true
     Component.onCompleted: {
         loader.setSource("ViewFinderOverlay.qml", { "camera": loader.camera
                                                   });
