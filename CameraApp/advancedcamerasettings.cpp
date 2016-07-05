@@ -229,6 +229,8 @@ void AdvancedCameraSettings::onSelectedDeviceChanged(int index)
 {
     Q_UNUSED(index);
 
+    m_videoSupportedResolutions.clear();
+
     Q_EMIT resolutionChanged();
     Q_EMIT maximumResolutionChanged();
     Q_EMIT fittingResolutionChanged();
@@ -267,6 +269,7 @@ void AdvancedCameraSettings::readCapabilities()
     m_imageEncoderControl = imageEncoderControlFromCamera(m_camera);
     m_videoEncoderControl = videoEncoderControlFromCamera(m_camera);
     m_cameraInfoControl = cameraInfoControlFromCamera(m_camera);
+    m_videoSupportedResolutions.clear();
 
     Q_EMIT resolutionChanged();
     Q_EMIT maximumResolutionChanged();
@@ -408,25 +411,27 @@ QSize AdvancedCameraSettings::fittingResolution() const
     return QSize();
 }
 
-QStringList AdvancedCameraSettings::videoSupportedResolutions() const
+QStringList AdvancedCameraSettings::videoSupportedResolutions()
 {
     if (m_videoEncoderControl) {
-        QList<QSize> sizes = m_videoEncoderControl->supportedResolutions(
-                                            m_videoEncoderControl->videoSettings());
-        QStringList sizesAsStrings;
-        Q_FOREACH(QSize size, sizes) {
-            // Workaround for bug https://bugs.launchpad.net/ubuntu/+source/libhybris/+bug/1408650
-            // When using the front camera on krillin, using resolution 640x480 does
-            // not work properly and results in stretched videos. Remove it from
-            // the list of supported resolutions.
+        if (m_videoSupportedResolutions.isEmpty()) {
             QString currentDeviceName = m_deviceSelector->deviceName(m_deviceSelector->selectedDevice());
-            if (m_cameraInfoControl->cameraPosition(currentDeviceName) == QCamera::FrontFace &&
-                size.width() == 640 && size.height() == 480) {
-                continue;
+            QCamera::Position cameraPosition = m_cameraInfoControl->cameraPosition(currentDeviceName);
+            QList<QSize> sizes = m_videoEncoderControl->supportedResolutions(
+                                                m_videoEncoderControl->videoSettings());
+            Q_FOREACH(QSize size, sizes) {
+                // Workaround for bug https://bugs.launchpad.net/ubuntu/+source/libhybris/+bug/1408650
+                // When using the front camera on krillin, using resolution 640x480 does
+                // not work properly and results in stretched videos. Remove it from
+                // the list of supported resolutions.
+                if (cameraPosition == QCamera::FrontFace &&
+                    size.width() == 640 && size.height() == 480) {
+                    continue;
+                }
+                m_videoSupportedResolutions.append(QString("%1x%2").arg(size.width()).arg(size.height()));
             }
-            sizesAsStrings.append(QString("%1x%2").arg(size.width()).arg(size.height()));
         }
-        return sizesAsStrings;
+        return m_videoSupportedResolutions;
     } else {
         return QStringList();
     }

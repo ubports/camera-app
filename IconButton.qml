@@ -40,5 +40,6 @@ AbstractButton {
         color: "white"
         name: action ? action.iconName : button.iconName
         opacity: action ? (action.enabled ? 1.0 : 0.5) : 1.0
+        asynchronous: true
     }
 }

@@ -42,9 +42,13 @@ public:
     QString removableStorageVideosLocation() const;
 
     bool removableStoragePresent() const;
+    Q_INVOKABLE void updateRemovableStorageInfo();
 
 Q_SIGNALS:
     void removableStoragePresentChanged();
+
+private:
+    QString m_removableStorageLocation;
 };
 
 #endif // STORAGELOCATIONS_H

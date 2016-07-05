@@ -245,6 +245,7 @@ Item {
                         height: label.paintedHeight
                         color: label.color
                         name: model.iconName
+                        asynchronous: true
                     }
                 }
             }

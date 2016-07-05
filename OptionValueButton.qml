@@ -55,6 +55,7 @@ AbstractButton {
             color: "white"
             opacity: optionValueButton.selected ? 1.0 : 0.5
             visible: name !== ""
+            asynchronous: true
         }
 
         Label {

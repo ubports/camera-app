@@ -182,6 +182,7 @@ Item {
             color: "white"
             opacity: 0.2
             name: "camera-app-symbolic"
+            asynchronous: true
         }
 
         Label {
@@ -216,6 +217,7 @@ Item {
             color: "white"
             opacity: 0.2
             name: "camera-app-symbolic"
+            asynchronous: true
         }
 
         Label {
