@@ -1,3 +1,11 @@
+camera-app (3.0.0+16.10.20160705-0ubuntu1) yakkety; urgency=medium
+
+  [ Florian Boucault, Tarmac ]
+  * Startup time improvements: (LP: #1563858, #1572576, #1584524,
+    #1585942)
+
+ -- Kaleo <florian@boucault.net>  Tue, 05 Jul 2016 14:24:32 +0000
+
 camera-app (3.0.0+16.10.20160607-0ubuntu1) yakkety; urgency=medium
 
   [ Florian Boucault ]
