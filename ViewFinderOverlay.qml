@@ -53,12 +53,9 @@ Item {
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
         property bool playShutterSound: true
-        // FIXME: stores the resolution selected for 2 cameras. Instead it should:
-        //  - support any number of cameras
-        //  - not assume that camera.deviceId is a string containing an integer
-        property string photoResolution0
-        property string photoResolution1
+        property var photoResolutions
 
+        Component.onCompleted: if (!photoResolutions) photoResolutions = {}
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
         onHdrEnabledChanged: if (hdrEnabled) flashMode = Camera.FlashOff
     }
@@ -98,7 +95,7 @@ Item {
     Binding {
         target: camera.imageCapture
         property: "resolution"
-        value: settings["photoResolution" + camera.deviceId]
+        value: settings.photoResolutions[camera.deviceId]
     }
 
     Connections {
@@ -219,9 +216,20 @@ Item {
         }
 
         // If resolution setting is not supported select the resolution automatically
-        var photoResolution = settings["photoResolution" + camera.deviceId];
+        var photoResolution = settings.photoResolutions[camera.deviceId];
         if (!isResolutionAnOption(photoResolution)) {
-            settings["photoResolution" + camera.deviceId] = getAutomaticResolution();
+            setPhotoResolution(getAutomaticResolution());
+        }
+    }
+
+    function setPhotoResolution(resolution) {
+        var size = stringToSize(resolution);
+        if (size.width > 0 && size.height > 0
+            && resolution != settings.photoResolutions[camera.deviceId]) {
+            settings.photoResolutions[camera.deviceId] = resolution;
+            // FIXME: resetting the value of the property 'photoResolutions' is
+            // necessary to ensure that a change notification signal is emitted
+            settings.photoResolutions = settings.photoResolutions;
         }
     }
 
@@ -262,16 +270,16 @@ Item {
     Connections {
         target: camera
         onDeviceIdChanged: {
-            var hasPhotoResolutionSetting = (settings["photoResolution" + camera.deviceId] != "")
+            var hasPhotoResolutionSetting = (settings.photoResolutions[camera.deviceId] != "")
             // FIXME: use camera.advanced.imageCaptureResolution instead of camera.imageCapture.resolution
             // because the latter is not updated when the backend changes the resolution
-            settings["photoResolution" + camera.deviceId] = sizeToString(camera.advanced.imageCaptureResolution);
+            setPhotoResolution(sizeToString(camera.advanced.imageCaptureResolution));
             settings.videoResolution = sizeToString(camera.advanced.videoRecorderResolution);
             updateResolutionOptions();
 
             // If no resolution has ever been chosen, select one automatically
             if (!hasPhotoResolutionSetting) {
-                settings["photoResolution" + camera.deviceId] = getAutomaticResolution();
+                setPhotoResolution(getAutomaticResolution());
             }
         }
     }
@@ -557,11 +565,14 @@ Item {
                 ListModel {
                     id: photoResolutionOptionsModel
 
-                    property string settingsProperty: "photoResolution" + camera.deviceId
+                    function setSettingProperty(value) {
+                        setPhotoResolution(value);
+                    }
+
                     property string icon: ""
-                    property string label: sizeToAspectRatio(stringToSize(settings[settingsProperty]))
+                    property string label: sizeToAspectRatio(stringToSize(settings.photoResolutions[camera.deviceId]))
                     property bool isToggle: false
-                    property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings[settingsProperty])
+                    property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolutions[camera.deviceId])
                     property bool available: true
                     property bool visible: camera.captureMode == Camera.CaptureStillImage
                     property bool showInIndicators: false
