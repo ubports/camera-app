@@ -680,31 +680,33 @@ Item {
         }
 
         function shoot() {
-            var orientation;
-            switch (orientationSensor.reading.orientation) {
-                case OrientationReading.TopUp:
-                    orientation = 0;
-                    break;
-                case OrientationReading.TopDown:
-                    orientation = 180;
-                    break;
-                case OrientationReading.LeftUp:
-                    orientation = 90;
-                    break;
-                case OrientationReading.RightUp:
-                    orientation = 270;
-                    break;
-                default:
-                    /* Workaround for OrientationSensor not setting a valid value until
-                       the device is rotated.
-                       Ref.: https://bugs.launchpad.net/qtubuntu-sensors/+bug/1429865
+            var orientation = 0;
+            if (orientationSensor.reading != null) {
+                switch (orientationSensor.reading.orientation) {
+                    case OrientationReading.TopUp:
+                        orientation = 0;
+                        break;
+                    case OrientationReading.TopDown:
+                        orientation = 180;
+                        break;
+                    case OrientationReading.LeftUp:
+                        orientation = 90;
+                        break;
+                    case OrientationReading.RightUp:
+                        orientation = 270;
+                        break;
+                    default:
+                        /* Workaround for OrientationSensor not setting a valid value until
+                           the device is rotated.
+                           Ref.: https://bugs.launchpad.net/qtubuntu-sensors/+bug/1429865
 
-                       Note that the value returned by Screen.angleBetween is valid if
-                       the orientation lock is not engaged.
-                       Ref.: https://bugs.launchpad.net/camera-app/+bug/1422762
-                    */
-                    orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
-                    break;
+                           Note that the value returned by Screen.angleBetween is valid if
+                           the orientation lock is not engaged.
+                           Ref.: https://bugs.launchpad.net/camera-app/+bug/1422762
+                        */
+                        orientation = Screen.angleBetween(Screen.orientation, Screen.primaryOrientation);
+                        break;
+                }
             }
 
             // account for the orientation of the sensor
