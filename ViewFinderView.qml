@@ -108,12 +108,10 @@ FocusScope {
         }
 
         imageCapture {
-            onReadyChanged: {
-                if (camera.imageCapture.ready) {
-                    if (camera.photoCaptureInProgress) {
-                        if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
-                        camera.photoCaptureInProgress = false;
-                    }
+            onImageCaptured: {
+                if (camera.photoCaptureInProgress) {
+                    if (photoRollHint.necessary && !main.transfer) photoRollHint.enable();
+                    camera.photoCaptureInProgress = false;
                 }
             }
 
