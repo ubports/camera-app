@@ -902,6 +902,7 @@ Item {
             id: zoomPinchArea
             anchors {
                 top: parent.top
+                topMargin: bottomEdgeIndicators.height
                 bottom: shootButton.top
                 bottomMargin: bottomEdgeIndicators.height
                 left: parent.left
