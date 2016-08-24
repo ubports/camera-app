@@ -91,7 +91,7 @@ Window {
         id: viewSwitcher
         objectName: "viewSwitcher"
         anchors.fill: parent
-        flickableDirection: state == "PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
+        flickableDirection: state == "PORTRAIT" || state == "INVERTED_PORTRAIT" ? Flickable.HorizontalFlick : Flickable.VerticalFlick
         boundsBehavior: Flickable.StopAtBounds
 
         Keys.onPressed: {
@@ -108,6 +108,7 @@ Window {
         property int orientationAngle: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
         property var angleToOrientation: {0: "PORTRAIT",
                                           90: "LANDSCAPE",
+                                          180: "INVERTED_PORTRAIT",
                                           270: "INVERTED_LANDSCAPE"}
         state: angleToOrientation[orientationAngle]
         states: [
@@ -124,6 +125,22 @@ Window {
                         viewFinderView.y = 0;
                         viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
                         viewSwitcher.ratio = Qt.binding(function() { return viewSwitcher.contentX / viewSwitcher.contentWidth });
+                    }
+                }
+            },
+            State {
+                name: "INVERTED_PORTRAIT"
+                StateChangeScript {
+                    script: {
+                        viewSwitcher.ratio = viewSwitcher.ratio;
+                        viewSwitcher.contentWidth = Qt.binding(function() { return viewSwitcher.width * 2 + viewSwitcher.panesMargin });
+                        viewSwitcher.contentHeight = Qt.binding(function() { return viewSwitcher.height });
+                        galleryView.x = 0;
+                        galleryView.y = 0;
+                        viewFinderView.x = Qt.binding(function() { return viewFinderView.width + viewSwitcher.panesMargin });
+                        viewFinderView.y = 0;
+                        viewSwitcher.positionContentAtRatio(viewSwitcher.ratio)
+                        viewSwitcher.ratio = Qt.binding(function() { return 0.5 - viewSwitcher.contentX / viewSwitcher.contentWidth });
                     }
                 }
             },
@@ -203,6 +220,8 @@ Window {
             switching = true;
             if (state == "PORTRAIT") {
                 flick(settleVelocity, 0);
+            } else if (state == "INVERTED_PORTRAIT") {
+                flick(-settleVelocity, 0);
             } else if (state == "LANDSCAPE") {
                 flick(0, settleVelocity);
             } else if (state == "INVERTED_LANDSCAPE") {
@@ -213,7 +232,9 @@ Window {
         function positionContentAtRatio(ratio) {
             if (state == "PORTRAIT") {
                 viewSwitcher.contentX = ratio * viewSwitcher.contentWidth;
-            } else if (state == "LANDSCAPE") {
+            } else if (state == "INVERTED_PORTRAIT") {
+                viewSwitcher.contentX = (0.5 - ratio) * viewSwitcher.contentWidth;
+            }  else if (state == "LANDSCAPE") {
                 viewSwitcher.contentY = ratio * viewSwitcher.contentHeight;
             } else if (state == "INVERTED_LANDSCAPE") {
                 viewSwitcher.contentY = (0.5 - ratio) * viewSwitcher.contentHeight;

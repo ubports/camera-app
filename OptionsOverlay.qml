@@ -115,7 +115,13 @@ Item {
                 iconName: (model && model.icon) ? model.icon : ""
                 selected: optionsRepeater.model.selectedIndex == index
                 isLast: index === optionsRepeater.count - 1
-                onClicked: settings[optionsRepeater.model.settingsProperty] = optionsRepeater.model.get(index).value
+                onClicked: {
+                    if (optionsRepeater.model.setSettingProperty) {
+                        optionsRepeater.model.setSettingProperty(optionsRepeater.model.get(index).value);
+                    } else {
+                        settings[optionsRepeater.model.settingsProperty] = optionsRepeater.model.get(index).value;
+                    }
+                }
             }
         }
     }
