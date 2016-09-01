@@ -1,16 +1,16 @@
-# Malay translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# French (Canada) translation for camera-app
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2013-12-14 05:36+0000\n"
-"Last-Translator: abuyop <Unknown>\n"
-"Language-Team: Malay <ms@li.org>\n"
+"PO-Revision-Date: 2016-08-31 19:13+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (Canada) <fr_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -153,43 +153,43 @@ msgstr ""
 
 #: ../camera-app.qml:37
 msgid "Flash"
-msgstr "Denyar"
+msgstr ""
 
 #: ../camera-app.qml:38
 msgid "Light;Dark"
-msgstr "Cerah;Gelap"
+msgstr ""
 
 #: ../camera-app.qml:41
 msgid "Flip Camera"
-msgstr "Kalih Kamera"
+msgstr ""
 
 #: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
-msgstr "Muka Hadapan;Muka Belakang"
+msgstr ""
 
 #: ../camera-app.qml:45
 msgid "Shutter"
-msgstr "Pengatup"
+msgstr ""
 
 #: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
-msgstr "Tangkap Foto;Petik;Rakam"
+msgstr ""
 
 #: ../camera-app.qml:49
 msgid "Mode"
-msgstr "Mod"
+msgstr ""
 
 #: ../camera-app.qml:50
 msgid "Stills;Video"
-msgstr "Kaku;Video"
+msgstr ""
 
 #: ../camera-app.qml:54
 msgid "White Balance"
-msgstr "Imbangan Putih"
+msgstr ""
 
 #: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Keadaan Pencahayaan;Siang;Mendung;Didalam"
+msgstr ""
 
 #: ../camera-app.qml:335
 #, qt-format
@@ -211,11 +211,11 @@ msgstr ""
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr "Kamera"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "Aplikasi kamera"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
