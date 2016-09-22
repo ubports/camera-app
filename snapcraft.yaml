@@ -43,4 +43,4 @@ parts:
       - qtdeclarative5-ubuntu-ui-extras0.2
       - qtdeclarative5-ubuntu-thumbnailer0.1
       - xdg-user-dirs
-    after: [desktop/qt5]
+    after: [desktop-qt5]
