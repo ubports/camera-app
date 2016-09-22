@@ -10,6 +10,16 @@ apps:
     plugs: [unity7, opengl, camera, pulseaudio, home]
 
 parts:
+  wrapper:
+    source: .
+    plugin: dump
+    organize:
+      camera.wrapper: bin/camera.wrapper
+    stage:
+      - bin/camera.wrapper
+    snap:
+      - bin/camera.wrapper
+
   camera:
     source: .
     plugin: cmake
@@ -34,13 +44,3 @@ parts:
       - qtdeclarative5-ubuntu-thumbnailer0.1
       - xdg-user-dirs
     after: [desktop/qt5]
-
-  wrapper:
-    source: .
-    plugin: dump
-    organize:
-      camera.wrapper: bin/camera.wrapper
-    stage:
-      - bin/camera.wrapper
-    snap:
-      - bin/camera.wrapper
