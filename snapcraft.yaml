@@ -25,6 +25,8 @@ parts:
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr, -DCLICK_MODE=off]
     build-packages:
+      - gcc
+      - g++
       - cmake
       - gettext
       - intltool
