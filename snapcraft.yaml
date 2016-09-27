@@ -2,7 +2,8 @@ name: camera-app
 version: 3.0.0.658
 summary: Ubuntu Camera Application
 description: Camera application to take pictures and shoot videos
-confinement: strict
+confinement: devmode
+grade: devel
 
 apps:
   camera-app:
