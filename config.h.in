@@ -29,6 +29,8 @@ inline bool isClick() {
 #endif
 }
 
+static QString SNAP_ENV = qgetenv("SNAP");
+
 inline bool isRunningInstalled() {
     static bool installed = (QCoreApplication::applicationDirPath() ==
                              QDir(("@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@")).canonicalPath());
@@ -36,7 +38,9 @@ inline bool isRunningInstalled() {
 }
 
 inline QString cameraAppDirectory() {
-    if (isClick()) {
+    if (!SNAP_ENV.isEmpty()) {
+        return SNAP_ENV + "@CMAKE_INSTALL_PREFIX@/@CAMERA_APP_DIR@/";
+    } else if (isClick()) {
         return QDir::currentPath();
     } else if (isRunningInstalled()) {
         return QString("@CMAKE_INSTALL_PREFIX@/@CAMERA_APP_DIR@/");
@@ -46,7 +50,9 @@ inline QString cameraAppDirectory() {
 }
 
 inline QString cameraAppImportDirectory() {
-    if (isClick()) {
+    if (!SNAP_ENV.isEmpty()) {
+        return SNAP_ENV + "@CMAKE_INSTALL_PREFIX@/@PLUGIN_BASE@";
+    } else if (isClick()) {
         return QDir::currentPath() + "/@PLUGIN_BASE@";
     } else {
         return "@CMAKE_INSTALL_PREFIX@/@PLUGIN_BASE@";

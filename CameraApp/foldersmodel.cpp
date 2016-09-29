@@ -124,6 +124,8 @@ QPair<QFileInfoList, QStringList> FoldersModel::computeFileInfoList(QStringList 
     QStringList filesToWatch;
 
     Q_FOREACH (QString folder, folders) {
+        if (folder.isEmpty()) continue;
+
         QDir currentDir(folder);
         QFileInfoList fileInfoList = currentDir.entryInfoList(QDir::Files | QDir::Readable,
                                                               QDir::Time | QDir::Reversed);

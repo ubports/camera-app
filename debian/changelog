@@ -1,3 +1,11 @@
+camera-app (3.0.0+16.10.20160824-0ubuntu1) yakkety; urgency=medium
+
+  [ Florian Boucault ]
+  * New release: (LP: #1563858, #1572576, #1584524, #1585942, #1595082,
+    #1615657)
+
+ -- Kaleo <florian@boucault.net>  Wed, 24 Aug 2016 14:03:57 +0000
+
 camera-app (3.0.0+16.10.20160705-0ubuntu1) yakkety; urgency=medium
 
   [ Florian Boucault, Tarmac ]
