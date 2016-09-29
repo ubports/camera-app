@@ -28,5 +28,6 @@ mkdir -p $HOME/.config/
 ln -s /home/$USER/.config/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
 export GST_PLUGIN_SYSTEM_PATH="$SNAP/usr/lib/x86_64-linux-gnu/gstreamer-1.0"
+export MIR_CLIENT_PLATFORM_PATH="$SNAP/usr/lib/x86_64-linux-gnu/mir/client-platform"
 
-exec "$SNAP/bin/desktop-launch" "camera-app" "$@"
+exec "$SNAP/bin/desktop-launch" "camera-app" --desktop_file_hint=unity8 "$@"
