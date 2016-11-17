@@ -27,4 +27,4 @@ fi
 mkdir -p $HOME/.config/
 ln -s /home/$USER/.config/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
-exec "$SNAP/bin/desktop-launch" "camera-app" --desktop_file_hint=unity8 "$@"
+exec "$SNAP/usr/bin/camera-app" --desktop_file_hint=unity8 "$@"

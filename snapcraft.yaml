@@ -7,8 +7,8 @@ grade: devel
 
 apps:
   camera-app:
-    command: bin/camera.wrapper
-    plugs: [unity7, opengl, camera, pulseaudio, home, plataform]
+    command: desktop-launch $SNAP/bin/camera.wrapper
+    plugs: [unity7, opengl, camera, pulseaudio, home, platform]
 
 plugs:
   platform:
@@ -23,7 +23,7 @@ parts:
     organize:
       camera.wrapper: bin/camera.wrapper
 
-  camera:
+  camera-app:
     source: .
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr, -DCLICK_MODE=off]
@@ -40,4 +40,5 @@ parts:
       - qtmultimedia5-dev
     stage-packages:
       - xdg-user-dirs
-    after: [desktop-ubuntu-app-platform]
+    after: 
+      - desktop-ubuntu-app-platform
