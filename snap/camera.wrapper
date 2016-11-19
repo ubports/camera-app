@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#FIXME: (ubuntu-app-platform) missing pulse path on LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/ubuntu-app-platform/usr/lib/x86_64-linux-gnu/pulseaudio
+
 # FIXME: this is a workaround for XDG variables
 # not being set adequately
 # Ref.: https://bugs.launchpad.net/snappy/+bug/1577471
