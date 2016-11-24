@@ -1,5 +1,12 @@
 #!/bin/sh
 
+ARCH="x86_64-linux-gnu"
+# FIXME: (ubuntu-app-platform) missing pulse path on LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/ubuntu-app-platform/usr/lib/$ARCH/pulseaudio
+
+# FIXME: Tell GStreamer where to find its system plugins
+export GST_PLUGIN_SYSTEM_PATH=$SNAP/ubuntu-app-platform/usr/lib/$ARCH/gstreamer-1.0
+
 # FIXME: this is a workaround for XDG variables
 # not being set adequately
 # Ref.: https://bugs.launchpad.net/snappy/+bug/1577471
@@ -27,4 +34,4 @@ fi
 mkdir -p $HOME/.config/
 ln -s /home/$USER/.config/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
-exec "$SNAP/bin/desktop-launch" "camera-app" --desktop_file_hint=unity8 "$@"
+exec "$SNAP/usr/bin/camera-app" --desktop_file_hint=unity8 "$@"
