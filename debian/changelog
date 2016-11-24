@@ -1,3 +1,11 @@
+camera-app (3.0.0+17.04.20161124.3-0ubuntu1) zesty; urgency=medium
+
+  [ Florian Boucault, Renato Araujo Oliveira Filho ]
+  * New release: (LP: #1563858, #1572576, #1584524, #1585942, #1595082,
+    #1615657)
+
+ -- Kaleo <florian@boucault.net>  Thu, 24 Nov 2016 19:36:35 +0000
+
 camera-app (3.0.0+16.10.20160824-0ubuntu1) yakkety; urgency=medium
 
   [ Florian Boucault ]
