@@ -8,7 +8,7 @@ grade: devel
 apps:
   camera-app:
     command: desktop-launch $SNAP/bin/camera.wrapper
-    plugs: [unity7, opengl, camera, pulseaudio, home, platform]
+    plugs: [unity7, unity8, opengl, camera, pulseaudio, home, platform]
 
 plugs:
   platform:

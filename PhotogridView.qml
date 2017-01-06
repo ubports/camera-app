@@ -35,7 +35,7 @@ FocusScope {
     property bool inView
     property bool inSelectionMode
     property bool userSelectionMode: false
-    property var actions: userSelectionMode ? userSelectionActions : []
+    property var actions: userSelectionMode ? userSelectionActions : null
     property list<Action> userSelectionActions: [
         Action {
             text: i18n.tr("Share")
