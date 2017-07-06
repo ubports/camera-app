@@ -41,4 +41,5 @@ set_tests_properties(tst_storagemonitor PROPERTIES
 
 target_link_libraries(tst_storagemonitor
     camera-qml
+    stdc++
 )

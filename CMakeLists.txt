@@ -80,6 +80,7 @@ target_link_libraries(${CAMERA_APP}
     ${Qt5Quick_LIBRARIES}
     ${Qt5Multimedia_LIBRARIES}
     ${Qt5Gui_LIBRARIES}
+    stdc++
     )
 
 install(TARGETS ${CAMERA_APP}
