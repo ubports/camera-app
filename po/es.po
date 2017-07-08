@@ -8,14 +8,17 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2016-01-18 15:36+0000\n"
-"Last-Translator: Víctor R. Ruiz <Unknown>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2017-07-08 03:41+0000\n"
+"Last-Translator: Francisco Molinero <paco@byasl.com>\n"
+"Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports"
+"/camera-app/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -58,7 +61,7 @@ msgstr ""
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "Deslice a la izquierda para ver el carrete"
+msgstr "Deslice hacia la izquierda para ver el carrete"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -105,7 +108,7 @@ msgstr "15 segundos"
 
 #: ../ViewFinderOverlay.qml:452
 msgid "Fine Quality"
-msgstr "Calidad alta"
+msgstr "Alta calidad"
 
 #: ../ViewFinderOverlay.qml:456
 msgid "Normal Quality"
@@ -141,7 +144,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1007
 msgid "Cannot access camera"
-msgstr "Cámara no accesible."
+msgstr "No se puede acceder a la cámara"
 
 #: ../ViewFinderOverlay.qml:1008
 msgid ""
