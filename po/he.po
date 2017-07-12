@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-09 19:58+0000\n"
+"PO-Revision-Date: 2017-07-12 12:59+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
 "Language-Team: Hebrew <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/he/>\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "החליקו שמאלה כדי לגשת לתמונות שצולמו"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -67,7 +67,7 @@ msgstr "שיתוף"
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
-msgstr ""
+msgstr "עריכה"
 
 #: ../ViewFinderOverlay.qml:327 ../ViewFinderOverlay.qml:350
 #: ../ViewFinderOverlay.qml:378 ../ViewFinderOverlay.qml:401
@@ -76,7 +76,7 @@ msgstr ""
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr ""
+msgstr "דלוק"
 
 #: ../ViewFinderOverlay.qml:332 ../ViewFinderOverlay.qml:360
 #: ../ViewFinderOverlay.qml:383 ../ViewFinderOverlay.qml:406
@@ -86,23 +86,23 @@ msgstr ""
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
-msgstr ""
+msgstr "מכובה"
 
 #: ../ViewFinderOverlay.qml:355
 msgid "Auto"
-msgstr ""
+msgstr "אוטומטי"
 
 #: ../ViewFinderOverlay.qml:392
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:430
 msgid "5 seconds"
-msgstr ""
+msgstr "5 שניות"
 
 #: ../ViewFinderOverlay.qml:435
 msgid "15 seconds"
-msgstr ""
+msgstr "15 שניות"
 
 #: ../ViewFinderOverlay.qml:452
 msgid "Fine Quality"
@@ -122,11 +122,11 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:500
 msgid "Save to SD Card"
-msgstr ""
+msgstr "שמירה לאחסון חיצוני"
 
 #: ../ViewFinderOverlay.qml:505
 msgid "Save internally"
-msgstr ""
+msgstr "שמירה לאחסון פנימי"
 
 #: ../ViewFinderOverlay.qml:968
 msgid "Low storage space"
