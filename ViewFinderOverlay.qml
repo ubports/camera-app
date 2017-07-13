@@ -54,6 +54,7 @@ Item {
         property string videoResolution: "1920x1080"
         property bool playShutterSound: true
         property var photoResolutions
+        property bool dateStampImages: false
 
         Component.onCompleted: if (!photoResolutions) photoResolutions = {}
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
@@ -335,6 +336,29 @@ Item {
             */
             property real progress: opened ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
             property list<ListModel> options: [
+                ListModel {
+                    id: dateStampImagesModel
+
+                    property string settingsProperty: "dateStampImages"
+                    property string icon: "calendar"
+                    property string label: ""
+                    property bool isToggle: true
+                    property int selectedIndex: bottomEdge.indexForValue(dateStampImagesModel, settings.dateStampImages)
+                    property bool available: true
+                    property bool visible: true
+                    property bool showInIndicators: false
+
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("On")
+                        value: true
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("Off")
+                        value: false
+                    }
+                },
                 ListModel {
                     id: gpsOptionsModel
 
@@ -728,6 +752,7 @@ Item {
 
                 if (camera.videoRecorder.recorderState == CameraRecorder.StoppedState) {
                     camera.videoRecorder.setMetadata("Orientation", orientation);
+                    camera.videoRecorder.setMetadata("Date", new Date());
                     camera.videoRecorder.record();
                 }
             } else {
@@ -736,6 +761,7 @@ Item {
                 }
                 camera.photoCaptureInProgress = true;
                 camera.imageCapture.setMetadata("Orientation", orientation);
+                camera.imageCapture.setMetadata("Date", new Date());
                 var position = positionSource.position;
                 if (settings.gpsEnabled && positionSource.isPrecise) {
                     camera.imageCapture.setMetadata("GPSLatitude", position.coordinate.latitude);
@@ -753,7 +779,7 @@ Item {
                     camera.imageCapture.captureToLocation(StorageLocations.removableStoragePicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(StorageLocations.picturesLocation);
-                }
+                }               
             }
         }
 
@@ -816,6 +842,10 @@ Item {
                                           position.horizontalAccuracy <= 100)
         }
 
+        PostProcessOperations {
+            id: postProcessOperations
+        }
+
         Connections {
             target: camera.imageCapture
             onReadyChanged: {
@@ -823,6 +853,11 @@ Item {
                     if (camera.switchInProgress) {
                         controls.completeSwitch();
                     }
+                }
+            }
+            onImageSaved : {
+                if(path && settings.dateStampImages) {
+                    postProcessOperations.addDateStamp(path);
                 }
             }
         }
