@@ -756,7 +756,7 @@ Item {
                     camera.imageCapture.captureToLocation(StorageLocations.removableStoragePicturesLocation);
                 } else {
                     camera.imageCapture.captureToLocation(StorageLocations.picturesLocation);
-                }               
+                }
             }
         }
 
