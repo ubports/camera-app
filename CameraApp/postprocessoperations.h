@@ -18,6 +18,7 @@
 #define POSTPROCESSOPERATIONS_H
 
 #include <QtCore/QObject>
+#include <QThread>
 
 class PostProcessOperations : public QObject
 {
@@ -25,7 +26,10 @@ class PostProcessOperations : public QObject
 
 public:
     explicit PostProcessOperations(QObject *parent = 0);
-    Q_INVOKABLE bool addDateStamp(const QString & path) const;
+    Q_INVOKABLE bool addDateStamp(const QString & path);
+
+protected:
+    QThread* workingThread;
 };
 
 #endif // POSTPROCESSOPERATIONS_H

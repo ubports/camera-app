@@ -25,20 +25,35 @@ PostProcessOperations::PostProcessOperations(QObject *parent) :
 {
 }
 
-bool PostProcessOperations::addDateStamp(const QString & path) const
+bool PostProcessOperations::addDateStamp(const QString & path)
 {
+    const int TEXT_POINT_SIZE=24;
     //TODO run async
-    try {      
-        const int TEXT_POINT_SIZE=24;
-        QImage image = QImage(path);
-        QPainter* painter = new QPainter(&image);
-        painter->setFont(QFont("Helvetica",TEXT_POINT_SIZE));
-        painter->setPen(QColor("yellow"));
-        QDate now = QDate::currentDate();
-        painter->drawText(image.width()-TEXT_POINT_SIZE*25,image.height()-TEXT_POINT_SIZE*2.5,now.toString(Qt::LocaleDate));
-        image.save(path);
-        return true;
-    } catch (...) {
-        return false;
-    }
+    class AddDateStamp : public QThread {
+
+        QString path;
+
+        public:
+          AddDateStamp(QString inPath) {
+              this->path = inPath;
+          }
+
+          void run() {
+              try {
+                  QImage image = QImage(path);
+                  QPainter* painter = new QPainter(&image);
+                  painter->setFont(QFont("Helvetica",TEXT_POINT_SIZE));
+                  painter->setPen(QColor("yellow"));
+                  QDate now = QDate::currentDate();
+                  painter->drawText(image.width()-TEXT_POINT_SIZE*25,image.height()-TEXT_POINT_SIZE*2.5,now.toString(Qt::LocaleDate));
+                  image.save(path);
+              } catch (...) {
+                  return ;
+              }
+          }
+    } ;
+
+    this->workingThread = new AddDateStamp(path);
+    connect(this->workingThread, &AddDateStamp::finished, this->workingThread, &QObject::deleteLater);
+    this->workingThread->start();
 }
