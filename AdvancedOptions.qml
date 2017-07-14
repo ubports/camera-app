@@ -3,13 +3,13 @@ import Ubuntu.Components 1.3
 import Qt.labs.settings 1.0
 
 
-Column {
-
+Flickable {
     id:advancedOptions
 
     property Settings settings: viewFinderOverlay.settings
 
-    height:units.gu(20)
+    height:units.gu(25)
+
     anchors {
         left: parent.left
         right: parent.right
@@ -17,26 +17,33 @@ Column {
         rightMargin: units.gu(5)
     }
 
-    ListItem {
-        Label {
-            color: UbuntuColors.slate
-            text: i18n.tr("Advnaced Options")
-        }
-    }
+    interactive: true
 
-    ListItem {
-        ListItemLayout {
-            id: datestampSwitchLayout
-            title.text: i18n.tr("Add date stamp on captured images")
-            title.color: UbuntuColors.slate
-            Switch {
-                SlotsLayout.position: SlotsLayout.Last
-                checked: settings.dateStampImages
-                onClicked: settings.dateStampImages = checked
+    Column {
+
+        anchors.fill: parent
+
+        ListItem {
+            Label {
+                color: UbuntuColors.slate
+                text: i18n.tr("Advnaced Options")
             }
         }
-        divider.visible: false
-        height: datestampSwitchLayout.height
-    }
 
+        ListItem {
+            ListItemLayout {
+                id: datestampSwitchLayout
+                title.text: i18n.tr("Add date stamp on captured images")
+                title.color: UbuntuColors.slate
+                Switch {
+                    SlotsLayout.position: SlotsLayout.Last
+                    checked: advancedOptions.settings.dateStampImages
+                    onClicked: advancedOptions.settings.dateStampImages = checked
+                }
+            }
+            divider.visible: false
+            height: datestampSwitchLayout.height
+        }
+
+    }
 }

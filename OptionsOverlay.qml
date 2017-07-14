@@ -128,7 +128,7 @@ Item {
 
     OptionValueButton {
         id:advancedOptionsToggle
-        anchors.left: optionsOverlay.left
+        anchors.right: optionsOverlay.right
         anchors.bottom: optionsOverlay.bottom
         columnWidth: optionValueSelector.childrenRect.width
         iconName:  "settings"
@@ -141,6 +141,6 @@ Item {
     AdvancedOptions {
         id:advancedOptions
         anchors.top :optionsGrid.bottom
-        anchors.topMargin: units.gu(2)
+        anchors.topMargin: units.gu(4)
     }
 }
