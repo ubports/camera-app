@@ -337,29 +337,6 @@ Item {
             property real progress: opened ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
             property list<ListModel> options: [
                 ListModel {
-                    id: dateStampImagesModel
-
-                    property string settingsProperty: "dateStampImages"
-                    property string icon: "calendar"
-                    property string label: ""
-                    property bool isToggle: true
-                    property int selectedIndex: bottomEdge.indexForValue(dateStampImagesModel, settings.dateStampImages)
-                    property bool available: true
-                    property bool visible: true
-                    property bool showInIndicators: false
-
-                    ListElement {
-                        icon: ""
-                        label: QT_TR_NOOP("On")
-                        value: true
-                    }
-                    ListElement {
-                        icon: ""
-                        label: QT_TR_NOOP("Off")
-                        value: false
-                    }
-                },
-                ListModel {
                     id: gpsOptionsModel
 
                     property string settingsProperty: "gpsEnabled"
