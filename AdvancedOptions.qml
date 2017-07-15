@@ -25,7 +25,7 @@ Flickable {
 
         ListItem {
             Label {
-                color: UbuntuColors.slate
+                color: "white"
                 text: i18n.tr("Advnaced Options")
             }
         }
@@ -34,7 +34,7 @@ Flickable {
             ListItemLayout {
                 id: datestampSwitchLayout
                 title.text: i18n.tr("Add date stamp on captured images")
-                title.color: UbuntuColors.slate
+                title.color: "white"
                 Switch {
                     SlotsLayout.position: SlotsLayout.Last
                     checked: advancedOptions.settings.dateStampImages

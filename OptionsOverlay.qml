@@ -25,6 +25,7 @@ Item {
 
     function closeValueSelector() {
         optionValueSelector.hide();
+        advancedOptionsToggle.selected = false;
     }
 
     height: optionsGrid.height + optionsGrid.rowSpacing + (advancedOptionsToggle.selected ?  advancedOptions.height : 0)
