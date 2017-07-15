@@ -13,10 +13,10 @@
     "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
     "name": "com.ubuntu.camera",
     "title": "Camera",
-    "version": "3.0.0.@BZR_REVNO@",
+    "version": "3.0.0.@REVNO@",
     "x-source": {
-        "vcs-bzr": "@BZR_SOURCE@",
-        "vcs-bzr-revno": "@BZR_REVNO@"
+        "vcs-bzr": "@SOURCE@",
+        "vcs-bzr-revno": "@REVNO@"
     },
     "x-test": {
         "autopilot": {

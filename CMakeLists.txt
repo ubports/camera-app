@@ -28,9 +28,7 @@ set(DESKTOP_FILE camera-app.desktop)
 set(UBUNTU_MANIFEST_PATH "manifest.json.in" CACHE INTERNAL "Tells QtCreator location and name of the manifest file")
 
 if(CLICK_MODE)
-    if(NOT DEFINED BZR_SOURCE)
-        set(BZR_SOURCE "lp:camera-app")
-    endif(NOT DEFINED BZR_SOURCE)
+
     set(CMAKE_INSTALL_PREFIX /)
     set(CAMERA_APP_DIR /)
     set(CMAKE_INSTALL_BINDIR /)
@@ -41,9 +39,45 @@ if(CLICK_MODE)
   	install(FILES camera-app.png DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
     add_definitions("-DCLICK_MODE=1")
 
-    if(NOT BZR_REVNO)
-        set(BZR_REVNO "latest")
-    endif(NOT BZR_REVNO)
+	# Case of git source control
+    if(NOT REVNO)
+      execute_process(
+            COMMAND git rev-list --count --first-parent HEAD
+            OUTPUT_VARIABLE REVNO
+            RESULT_VARIABLE res
+            WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+        message("-- Setting REVNO to ${REVNO} with result of : ${res}")
+    endif(NOT REVNO)
+    if(NOT SOURCE)
+        execute_process(
+            COMMAND git remote -v
+            COMMAND grep origin
+            COMMAND grep push
+            COMMAND awk "{print $2}"
+            OUTPUT_VARIABLE SOURCE
+            RESULT_VARIABLE res
+            WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+      message("-- Setting SOURCE to ${SOURCE} with result of : ${res}")
+    endif(NOT SOURCE)
+   # Case of bzr source control
+    if(NOT REVNO)
+    execute_process(
+      COMMAND bzr revno
+              OUTPUT_VARIABLE REVNO
+              WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+              OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+        message("-- Setting REVNO to ${REVNO}")
+    endif(NOT REVNO)
+    if(NOT SOURCE)
+        set(SOURCE lp:${APP_HARDCODE})
+        message("-- Setting SOURCE to ${SOURCE}")
+    endif(NOT SOURCE)
+
 else(CLICK_MODE)
     set(CAMERA_ICON "camera-app")
     set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/${CAMERA_APP})
