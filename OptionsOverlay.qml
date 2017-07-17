@@ -25,9 +25,10 @@ Item {
 
     function closeValueSelector() {
         optionValueSelector.hide();
+        advancedOptionsToggle.selected = false;
     }
 
-    height: optionsGrid.height + optionsGrid.rowSpacing
+    height: optionsGrid.height + optionsGrid.rowSpacing + (advancedOptionsToggle.selected ?  advancedOptions.height : 0)
 
     Grid {
         id: optionsGrid
@@ -124,5 +125,23 @@ Item {
                 }
             }
         }
+    }
+
+    OptionValueButton {
+        id:advancedOptionsToggle
+        anchors.right: optionsOverlay.right
+        anchors.bottom: optionsOverlay.bottom
+        columnWidth: optionValueSelector.childrenRect.width
+        iconName:  "settings"
+        isLast: true
+        onClicked: {
+            selected = !selected;
+        }
+    }
+
+    AdvancedOptions {
+        id:advancedOptions
+        anchors.top :optionsGrid.bottom
+        anchors.topMargin: units.gu(4)
     }
 }
