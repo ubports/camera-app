@@ -6,16 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2016-01-21 13:56+0000\n"
-"Last-Translator: Ivo Xavier <ivoxavier.8@gmail.com>\n"
-"Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2017-07-19 14:52+0000\n"
+"Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
+"Language-Team: Portuguese <https://ubpweblate.tnvcomp.com/projects/ubports"
+"/camera-app/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -23,7 +26,7 @@ msgstr "Quer mesmo apagar?"
 
 #: ../DeleteDialog.qml:34 ../PhotogridView.qml:52 ../SlideshowView.qml:58
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Eliminar"
 
 #: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:971
 #: ../ViewFinderOverlay.qml:1010
@@ -52,7 +55,7 @@ msgstr "Rolo da câmara"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr "Sem espaço no dispostivo, liberte algum para continuar."
+msgstr "Sem espaço no dispositivo, liberte algum para continuar."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
