@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-19 16:08+0000\n"
+"PO-Revision-Date: 2017-07-20 06:09+0000\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
 "Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/es/>\n"
@@ -35,7 +35,7 @@ msgstr "Cancelar"
 
 #: ../GalleryView.qml:194
 msgid "No media available."
-msgstr "No hay elementos disponibles."
+msgstr "No hay medios disponibles."
 
 #: ../GalleryView.qml:228
 msgid "Scanning for content..."
@@ -180,7 +180,7 @@ msgstr "Frontal;Trasera"
 
 #: ../camera-app.qml:45
 msgid "Shutter"
-msgstr "Disparador"
+msgstr "Obturador"
 
 #: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
