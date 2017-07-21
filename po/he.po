@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-13 13:36+0000\n"
+"PO-Revision-Date: 2017-07-21 08:40+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
-"Language-Team: Hebrew <https://ubpweblate.tnvcomp.com/projects/ubports/"
-"camera-app/he/>\n"
+"Language-Team: Hebrew <https://ubpweblate.tnvcomp.com/projects/ubports"
+"/camera-app/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,7 +118,7 @@ msgstr "איכות בסיסית"
 
 #: ../ViewFinderOverlay.qml:492
 msgid "SD"
-msgstr "אחסון חיצוני"
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:500
 msgid "Save to SD Card"
