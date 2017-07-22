@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-20 06:09+0000\n"
+"PO-Revision-Date: 2017-07-22 07:39+0000\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
 "Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/es/>\n"
@@ -116,7 +116,7 @@ msgstr "Calidad normal"
 
 #: ../ViewFinderOverlay.qml:460
 msgid "Basic Quality"
-msgstr "Calidad baja"
+msgstr "Calidad básica"
 
 #: ../ViewFinderOverlay.qml:492
 msgid "SD"
