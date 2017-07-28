@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-17 18:15+0000\n"
+"PO-Revision-Date: 2017-07-28 15:07+0000\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/ca/>\n"
@@ -43,7 +43,7 @@ msgstr "S'està cercant contingut multimèdia..."
 
 #: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
 msgid "Select"
-msgstr "Seleccioneu"
+msgstr "Selecciona"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
