@@ -516,6 +516,7 @@ Item {
 
                     property string settingsProperty: "preferRemovableStorage"
                     property string icon: ""
+                    // TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
                     property string label: i18n.tr("SD")
                     property bool isToggle: true
                     property int selectedIndex: bottomEdge.indexForValue(removableStorageOptionsModel, settings.preferRemovableStorage)
@@ -833,7 +834,7 @@ Item {
                 }
             }
             onImageSaved : {
-                if(path && settings.dateStampImages) {
+                if(path && settings.dateStampImages && !main.contentExportMode) {
                     postProcessOperations.addDateStamp(path);
                 }
             }
