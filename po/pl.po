@@ -7,16 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
-"PO-Revision-Date: 2016-02-01 07:42+0000\n"
-"Last-Translator: Krzysztof Tataradziński <Unknown>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"POT-Creation-Date: 2016-01-14 16:57+0100\n"
+"PO-Revision-Date: 2017-07-14 14:34+0000\n"
+"Last-Translator: Andrzej Stamburski <stambur@wp.pl>\n"
+"Language-Team: Polish <https://ubpweblate.tnvcomp.com/projects/ubports/"
+"camera-app/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
 msgid "Advnaced Options"
@@ -54,7 +57,7 @@ msgstr "Wybierz"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
-msgstr "Edycja zdjęcia"
+msgstr "Edytuj zdjęcie"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
