@@ -567,7 +567,7 @@ Item {
                     }
 
                     property string icon: ""
-                    property string label: "%1MP)".arg(sizeToMegapixels(stringToSize(settings.photoResolutions[camera.deviceId]))
+                    property string label: "%1mp".arg(sizeToMegapixels(stringToSize(settings.photoResolutions[camera.deviceId])))
                     property bool isToggle: false
                     property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolutions[camera.deviceId])
                     property bool available: true
