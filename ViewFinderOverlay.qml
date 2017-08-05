@@ -54,6 +54,7 @@ Item {
         property string videoResolution: "1920x1080"
         property bool playShutterSound: true
         property var photoResolutions
+        property var photoResolution : "1920x1080"
         property bool dateStampImages: false
 
         Component.onCompleted: if (!photoResolutions) photoResolutions = {}
@@ -82,7 +83,7 @@ Item {
     }
 
     Binding {
-        target: camera.advanced
+        target: camera.imageCapture.resolution
         property: "encodingQuality"
         value: settings.encodingQuality
     }
@@ -201,24 +202,12 @@ Item {
         // Clear and refill photoResolutionOptionsModel with available resolutions
         photoResolutionOptionsModel.clear();
 
-        var optionMaximum = {"icon": "",
-                             "label": "%1 (%2MP)".arg(sizeToAspectRatio(camera.advanced.maximumResolution))
-                                                 .arg(sizeToMegapixels(camera.advanced.maximumResolution)),
-                             "value": sizeToString(camera.advanced.maximumResolution)};
-
-        var optionFitting = {"icon": "",
-                             "label": "%1 (%2MP)".arg(sizeToAspectRatio(camera.advanced.fittingResolution))
-                                                 .arg(sizeToMegapixels(camera.advanced.fittingResolution)),
-                             "value": sizeToString(camera.advanced.fittingResolution)};
-
-        photoResolutionOptionsModel.insert(0, optionMaximum);
-
-        // Only show optionFitting if it's greater than 50% of the maximum available resolution
-        var fittingSize = camera.advanced.fittingResolution.width * camera.advanced.fittingResolution.height;
-        var maximumSize = camera.advanced.maximumResolution.width * camera.advanced.maximumResolution.height;
-        if (camera.advanced.fittingResolution != camera.advanced.maximumResolution &&
-            fittingSize / maximumSize >= 0.5) {
-            photoResolutionOptionsModel.insert(1, optionFitting);
+        for(var i in camera.advanced.imageSupportedResolutions) {
+            var res = stringToSize(camera.advanced.imageSupportedResolutions[i]);
+            photoResolutionOptionsModel.insert(i,{"icon": "",
+                                                   "label": "%1 (%2MP)".arg(sizeToAspectRatio(res))
+                                                                       .arg(sizeToMegapixels(res)),
+                                                   "value": sizeToString(res)});
         }
 
         // If resolution setting is not supported select the resolution automatically
@@ -226,6 +215,7 @@ Item {
         if (!isResolutionAnOption(photoResolution)) {
             setPhotoResolution(getAutomaticResolution());
         }
+
     }
 
     function setPhotoResolution(resolution) {
@@ -577,7 +567,7 @@ Item {
                     }
 
                     property string icon: ""
-                    property string label: sizeToAspectRatio(stringToSize(settings.photoResolutions[camera.deviceId]))
+                    property string label: "%1MP)".arg(sizeToMegapixels(stringToSize(settings.photoResolutions[camera.deviceId]))
                     property bool isToggle: false
                     property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolutions[camera.deviceId])
                     property bool available: true
