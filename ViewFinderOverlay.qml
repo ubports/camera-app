@@ -54,7 +54,6 @@ Item {
         property string videoResolution: "1920x1080"
         property bool playShutterSound: true
         property var photoResolutions
-        property var photoResolution : "1920x1080"
         property bool dateStampImages: false
 
         Component.onCompleted: if (!photoResolutions) photoResolutions = {}
