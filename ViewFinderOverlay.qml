@@ -171,6 +171,10 @@ Item {
         return parseFloat(megapixels.toFixed(1))
     }
 
+    function trimNumberToFit(numberStr, digits) {
+        return (""+numberStr).substr(0,digits).replace(/\.$/,"");
+    }
+
     function updateVideoResolutionOptions() {
         // Clear and refill videoResolutionOptionsModel with available resolutions
         // Try to only display well known resolutions: 1080p, 720p and 480p
@@ -567,7 +571,7 @@ Item {
                     }
 
                     property string icon: ""
-                    property string label: "%1mp".arg(sizeToMegapixels(stringToSize(settings.photoResolutions[camera.deviceId])))
+                    property string label: "%1MP".arg(trimNumberToFit(sizeToMegapixels(stringToSize(settings.photoResolutions[camera.deviceId])),3))
                     property bool isToggle: false
                     property int selectedIndex: bottomEdge.indexForValue(photoResolutionOptionsModel, settings.photoResolutions[camera.deviceId])
                     property bool available: true
