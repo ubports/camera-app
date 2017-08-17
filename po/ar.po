@@ -15,8 +15,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
 msgid "Advnaced Options"
@@ -74,7 +76,7 @@ msgstr "مشاركة"
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"

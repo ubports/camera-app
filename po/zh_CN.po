@@ -15,8 +15,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
 msgid "Advnaced Options"
@@ -50,7 +51,7 @@ msgstr "内容扫描中..."
 
 #: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
 msgid "Select"
-msgstr "选定"
+msgstr "选择"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
