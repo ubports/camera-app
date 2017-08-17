@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-08-17 23:17+0000\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"PO-Revision-Date: 2017-08-18 19:57+0000\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
 "Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
+msgid "Advanced Options"
 msgstr "Opciones avanzadas"
 
 #: ../AdvancedOptions.qml:36
@@ -36,8 +36,8 @@ msgstr "¿Eliminar el elemento?"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Cancelar"
@@ -94,7 +94,7 @@ msgstr "Aceptar"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -104,7 +104,7 @@ msgstr "Encendido"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -139,23 +139,24 @@ msgstr "Calidad normal"
 msgid "Basic Quality"
 msgstr "Calidad básica"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "Guardar en tarjeta SD"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
 msgstr "Guardar internamente"
 
-#: ../ViewFinderOverlay.qml:1048
+#: ../ViewFinderOverlay.qml:1049
 msgid "Low storage space"
 msgstr "Poco espacio de almacenamiento"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -163,11 +164,11 @@ msgstr ""
 "Se está agotando el espacio de almacenamiento. Para continuar sin "
 "interrupciones, libere algo de espacio ahora."
 
-#: ../ViewFinderOverlay.qml:1062
+#: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
 msgstr "El almacenamiento externo es no grabable"
 
-#: ../ViewFinderOverlay.qml:1063
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -177,11 +178,11 @@ msgstr ""
 "sacarlo e introducirlo de nuevo podría solucionar el problema o es posible "
 "que deba formatearlo."
 
-#: ../ViewFinderOverlay.qml:1101
+#: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
 msgstr "No se puede acceder a la cámara"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -193,7 +194,7 @@ msgstr ""
 "\n"
 "Si permitir el acceso no resuelve el problema, reinicie el teléfono."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
 msgstr "Editar permisos"
 
