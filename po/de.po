@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-14 16:57+0100\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
 "PO-Revision-Date: 2017-08-17 21:53+0000\n"
 "Last-Translator: Florian Leeber <flori@bin.org.in>\n"
-"Language-Team: German <https://ubpweblate.tnvcomp.com/projects/ubports"
-"/camera-app/de/>\n"
+"Language-Team: German <https://ubpweblate.tnvcomp.com/projects/ubports/"
+"camera-app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Erweiterte Einstellungen"
 
 #: ../AdvancedOptions.qml:36
@@ -36,8 +37,8 @@ msgstr "Medien löschen?"
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -94,7 +95,7 @@ msgstr "Ok"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -104,7 +105,7 @@ msgstr "An"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -139,23 +140,24 @@ msgstr "Normale Qualität"
 msgid "Basic Quality"
 msgstr "Einfache Qualität"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "Auf SD-Karte speichern"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
 msgstr "Intern speichern"
 
-#: ../ViewFinderOverlay.qml:1048
+#: ../ViewFinderOverlay.qml:1049
 msgid "Low storage space"
 msgstr "Geringer Speicherplatz"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -163,11 +165,11 @@ msgstr ""
 "Sie haben nur noch wenig freien Speicherplatz. Bitte Speicherplatz "
 "freigeben, um ohne Unterbrechungen fortzufahren."
 
-#: ../ViewFinderOverlay.qml:1062
+#: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
 msgstr "Externer Speicher nicht beschreibbar"
 
-#: ../ViewFinderOverlay.qml:1063
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -177,11 +179,11 @@ msgstr ""
 "Probieren Sie ihn auszuwerfen und wieder einzusetzen, das könnte das Problem "
 "beheben, oder er muß neu formatiert werden."
 
-#: ../ViewFinderOverlay.qml:1101
+#: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
 msgstr "Zugriff auf Kamera nicht möglich"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -194,7 +196,7 @@ msgstr ""
 "Sollte das Erteilen der Zugriffsrechte das Problem nicht beheben, bitte das "
 "Telefon neu starten."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
 msgstr "Zugriffsrechte bearbeiten"
 
