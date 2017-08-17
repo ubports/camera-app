@@ -20,25 +20,35 @@ msgstr ""
 "20)) ? 1 : 2;\n"
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
+
+#: ../AdvancedOptions.qml:29
+msgid "Advnaced Options"
+msgstr ""
+
+#: ../AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr ""
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "Ștergeți elementul media?"
 
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:52 ../SlideshowView.qml:58
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
 msgid "Delete"
 msgstr "Șterge"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:971
-#: ../ViewFinderOverlay.qml:1010
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
+#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Anulează"
 
-#: ../GalleryView.qml:194
+#: ../GalleryView.qml:195
 msgid "No media available."
 msgstr "Niciun element media disponibil."
 
-#: ../GalleryView.qml:228
+#: ../GalleryView.qml:230
 msgid "Scanning for content..."
 msgstr "Se scanează pentru conținut..."
 
@@ -71,70 +81,82 @@ msgstr "Partajare"
 msgid "Edit"
 msgstr "Editare"
 
-#: ../ViewFinderOverlay.qml:327 ../ViewFinderOverlay.qml:350
-#: ../ViewFinderOverlay.qml:378 ../ViewFinderOverlay.qml:401
-#: ../ViewFinderOverlay.qml:478 ../ViewFinderOverlay.qml:535
+#: ../UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr ""
+
+#: ../UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr ""
+
+#: ../UnableShareDialog.qml:30
+msgid "Ok"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
+#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
 msgstr "Activat"
 
-#: ../ViewFinderOverlay.qml:332 ../ViewFinderOverlay.qml:360
-#: ../ViewFinderOverlay.qml:383 ../ViewFinderOverlay.qml:406
-#: ../ViewFinderOverlay.qml:425 ../ViewFinderOverlay.qml:483
-#: ../ViewFinderOverlay.qml:540
+#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
+#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
+#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
+#: ../ViewFinderOverlay.qml:567
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
 msgstr "Oprit"
 
-#: ../ViewFinderOverlay.qml:355
+#: ../ViewFinderOverlay.qml:382
 msgid "Auto"
 msgstr "Automat"
 
-#: ../ViewFinderOverlay.qml:392
+#: ../ViewFinderOverlay.qml:419
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:430
+#: ../ViewFinderOverlay.qml:457
 msgid "5 seconds"
 msgstr "5 secunde"
 
-#: ../ViewFinderOverlay.qml:435
+#: ../ViewFinderOverlay.qml:462
 msgid "15 seconds"
 msgstr "15 secunde"
 
-#: ../ViewFinderOverlay.qml:452
+#: ../ViewFinderOverlay.qml:479
 msgid "Fine Quality"
 msgstr "Calitate ridicată"
 
-#: ../ViewFinderOverlay.qml:456
+#: ../ViewFinderOverlay.qml:483
 msgid "Normal Quality"
 msgstr "Calitate normală"
 
-#: ../ViewFinderOverlay.qml:460
+#: ../ViewFinderOverlay.qml:487
 msgid "Basic Quality"
 msgstr "Calitate joasă"
 
-#: ../ViewFinderOverlay.qml:492
+#: ../ViewFinderOverlay.qml:519
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:500
+#: ../ViewFinderOverlay.qml:527
 msgid "Save to SD Card"
 msgstr "Salvează pe cardul SD"
 
-#: ../ViewFinderOverlay.qml:505
+#: ../ViewFinderOverlay.qml:532
 msgid "Save internally"
 msgstr "Salvează în memoria internă"
 
-#: ../ViewFinderOverlay.qml:968
+#: ../ViewFinderOverlay.qml:1048
 msgid "Low storage space"
 msgstr "Spațiu redus de stocare"
 
-#: ../ViewFinderOverlay.qml:969
+#: ../ViewFinderOverlay.qml:1049
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -142,11 +164,22 @@ msgstr ""
 "Rămâneri fără spațiu de stocare. Pentru a continua fără intreruperi, "
 "eliberați acum spațiul de stocare."
 
-#: ../ViewFinderOverlay.qml:1007
+#: ../ViewFinderOverlay.qml:1062
+msgid "External storage not writeable"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1063
+msgid ""
+"It does not seem possible to write to your external storage media. Trying to "
+"eject and insert it again might solve the issue, or you might need to format "
+"it."
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1101
 msgid "Cannot access camera"
 msgstr "Nu pot să accesez camera"
 
-#: ../ViewFinderOverlay.qml:1008
+#: ../ViewFinderOverlay.qml:1102
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -154,65 +187,79 @@ msgid ""
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1017
+#: ../ViewFinderOverlay.qml:1111
 msgid "Edit Permissions"
 msgstr ""
 
-#: ../camera-app.qml:37
+#: ../ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr ""
+
+#: ../ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+
+#: ../ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr ""
+
+#: ../camera-app.qml:57
 msgid "Flash"
 msgstr "Bliț"
 
-#: ../camera-app.qml:38
+#: ../camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Luminos;Întunecat"
 
-#: ../camera-app.qml:41
+#: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Întoarce aparatul foto"
 
-#: ../camera-app.qml:42
+#: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Pe față;Pe dos"
 
-#: ../camera-app.qml:45
+#: ../camera-app.qml:65
 msgid "Shutter"
 msgstr "Obturator"
 
-#: ../camera-app.qml:46
+#: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Fotografiază;Clic;Înregistrare"
 
-#: ../camera-app.qml:49
+#: ../camera-app.qml:69
 msgid "Mode"
 msgstr "Mod"
 
-#: ../camera-app.qml:50
+#: ../camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Fotografii;Video"
 
-#: ../camera-app.qml:54
+#: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "Balanță de alb"
 
-#: ../camera-app.qml:55
+#: ../camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Luminozitate;Zi;Înnorat;Interior"
 
-#: ../camera-app.qml:335
+#: ../camera-app.qml:379
 #, qt-format
 msgid "<b>%1</b> photos taken today"
 msgstr "<b>%1</b> fotografii făcute astăzi"
 
-#: ../camera-app.qml:336
+#: ../camera-app.qml:380
 msgid "No photos taken today"
 msgstr "Nicio fotografie făcută astăzi"
 
-#: ../camera-app.qml:346
+#: ../camera-app.qml:390
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
 msgstr "<b>%1</b> clipuri video înregistrate astăzi"
 
-#: ../camera-app.qml:347
+#: ../camera-app.qml:391
 msgid "No videos recorded today"
 msgstr "Niciun clip video înregistrat astăzi"
 

@@ -5,6 +5,7 @@ set(plugin_SRCS
     components.cpp
     advancedcamerasettings.cpp
     fileoperations.cpp
+    postprocessoperations.cpp
     foldersmodel.cpp
     storagemonitor.cpp
     storagelocations.cpp
@@ -14,6 +15,7 @@ set(plugin_HDRS
     components.h
     advancedcamerasettings.h
     fileoperations.h
+    postprocessoperations.h
     foldersmodel.h
     storagemonitor.h
     storagelocations.h

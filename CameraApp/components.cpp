@@ -25,6 +25,7 @@
 #include "foldersmodel.h"
 #include "storagemonitor.h"
 #include "storagelocations.h"
+#include "postprocessoperations.h"
 
 static QObject* StorageLocations_singleton_factory(QQmlEngine* engine, QJSEngine* scriptEngine)
 {
@@ -42,6 +43,7 @@ void Components::registerTypes(const char *uri)
     qmlRegisterType<FileOperations>(uri, 0, 1, "FileOperations");
     qmlRegisterType<FoldersModel>(uri, 0, 1, "FoldersModel");
     qmlRegisterType<StorageMonitor>(uri, 0, 1, "StorageMonitor");
+    qmlRegisterType<PostProcessOperations>(uri, 0, 1, "PostProcessOperations");
     qmlRegisterSingletonType<StorageLocations>(uri, 0, 1, "StorageLocations", StorageLocations_singleton_factory);
 }
 
