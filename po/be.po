@@ -158,8 +158,6 @@ msgid ""
 msgstr ""
 "Скончваецца вольнае месца для захоўваньня дадзеных. Каб пазьбегнуць гэтага "
 "-  вызваліце месца."
-<<<<<<< HEAD
-=======
 
 #: ../ViewFinderOverlay.qml:1062
 msgid "External storage not writeable"
@@ -171,7 +169,6 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
->>>>>>> 85ec14a27ae2cfe0b0b711e5b77ce20b6abffe25
 
 #: ../ViewFinderOverlay.qml:1101
 msgid "Cannot access camera"
