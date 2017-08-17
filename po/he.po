@@ -140,7 +140,7 @@ msgstr "איכות בסיסית"
 msgid "SD"
 msgstr "SD"
 
- #: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:527
 msgid "Save to SD Card"
 msgstr "שמירה לאחסון חיצוני"
 
