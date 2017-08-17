@@ -156,13 +156,10 @@ msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr "Dochází vám volné místo. Pro bezproblémové pokračování uvolněte místo."
-<<<<<<< HEAD
-=======
 
 #: ../ViewFinderOverlay.qml:1062
 msgid "External storage not writeable"
 msgstr ""
->>>>>>> 85ec14a27ae2cfe0b0b711e5b77ce20b6abffe25
 
 #: ../ViewFinderOverlay.qml:1063
 msgid ""
