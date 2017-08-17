@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
+msgid "Advnaced Options"
 msgstr ""
 
 #: ../AdvancedOptions.qml:36

@@ -21,7 +21,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
+msgid "Advnaced Options"
 msgstr ""
 
 #: ../AdvancedOptions.qml:36
