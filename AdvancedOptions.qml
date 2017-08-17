@@ -26,7 +26,7 @@ Flickable {
         ListItem {
             Label {
                 color: "white"
-                text: i18n.tr("Advnaced Options")
+                text: i18n.tr("Advanced Options")
             }
         }
 
