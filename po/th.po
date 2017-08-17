@@ -1,39 +1,37 @@
-# Khmer translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
-# This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Canonical Ltd.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2014-07-22 02:39+0000\n"
-"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
-"Language-Team: Khmer <km@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
-msgstr "លុប​មេឌៀ?"
+msgstr ""
 
 #: ../DeleteDialog.qml:34 ../PhotogridView.qml:52 ../SlideshowView.qml:58
 msgid "Delete"
-msgstr "លុប"
+msgstr ""
 
 #: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:971
 #: ../ViewFinderOverlay.qml:1010
 msgid "Cancel"
-msgstr "បោះ​បង់"
+msgstr ""
 
 #: ../GalleryView.qml:194
 msgid "No media available."
-msgstr "មិនមាន​មេឌៀ"
+msgstr ""
 
 #: ../GalleryView.qml:228
 msgid "Scanning for content..."
@@ -49,7 +47,7 @@ msgstr ""
 
 #: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
-msgstr "បណ្ដុំ​រូបថត"
+msgstr ""
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -61,7 +59,7 @@ msgstr ""
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
-msgstr "ចែក​រំលែក"
+msgstr ""
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
@@ -154,69 +152,69 @@ msgstr ""
 
 #: ../camera-app.qml:37
 msgid "Flash"
-msgstr "បាញ់​ពន្លឺ"
+msgstr ""
 
 #: ../camera-app.qml:38
 msgid "Light;Dark"
-msgstr "ភ្លឺ;ងងឹត"
+msgstr ""
 
 #: ../camera-app.qml:41
 msgid "Flip Camera"
-msgstr "ត្រឡប់​ម៉ាស៊ីន​ថត"
+msgstr ""
 
 #: ../camera-app.qml:42
 msgid "Front Facing;Back Facing"
-msgstr "មុខ;ក្រោយ"
+msgstr ""
 
 #: ../camera-app.qml:45
 msgid "Shutter"
-msgstr "គម្រប"
+msgstr ""
 
 #: ../camera-app.qml:46
 msgid "Take a Photo;Snap;Record"
-msgstr "ថត​រូប;ថត;ថត"
+msgstr ""
 
 #: ../camera-app.qml:49
 msgid "Mode"
-msgstr "របៀប"
+msgstr ""
 
 #: ../camera-app.qml:50
 msgid "Stills;Video"
-msgstr "រូប​ថេរ;វីដេអូ"
+msgstr ""
 
 #: ../camera-app.qml:54
 msgid "White Balance"
-msgstr "តុល្យភាព​ពណ៌ស"
+msgstr ""
 
 #: ../camera-app.qml:55
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "លក្ខខណ្ឌ​ពន្លឺ;ថ្ងៃ;ពពក;ខាង​ក្នុង"
+msgstr ""
 
 #: ../camera-app.qml:335
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "រូបថត <b>%1</b> បាន​ថត​នៅ​ថ្ងៃ​នេះ"
+msgstr ""
 
 #: ../camera-app.qml:336
 msgid "No photos taken today"
-msgstr "មិន​មាន​រូបថត​បាន​ថត​នៅ​ថ្ងៃ​នេះ"
+msgstr ""
 
 #: ../camera-app.qml:346
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "វីដេអូ <b>%1</b> បាន​ថត​នៅ​ថ្ងៃ​នេះ"
+msgstr ""
 
 #: ../camera-app.qml:347
 msgid "No videos recorded today"
-msgstr "មិន​មាន​វីដេអូ​បាន​ថត​នៅ​ថ្ងៃ​នេះ"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr "ម៉ាស៊ីន​ថ​ត"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "កម្មវិធី​ម៉ាស៊ីន​ថត"
+msgstr ""
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
