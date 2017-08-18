@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-08-18 09:37+0000\n"
+"PO-Revision-Date: 2017-08-18 09:38+0000\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/ca/>\n"
@@ -44,7 +44,7 @@ msgstr "Cancel·la"
 
 #: ../GalleryView.qml:195
 msgid "No media available."
-msgstr "No hi ha cap element multimèdia disponible"
+msgstr "No hi ha cap element multimèdia disponible."
 
 #: ../GalleryView.qml:230
 msgid "Scanning for content..."
