@@ -205,8 +205,16 @@ Item {
         // Clear and refill photoResolutionOptionsModel with available resolutions
         photoResolutionOptionsModel.clear();
 
+
+        //Change to Size object and sort the resolutions by megapixel ( in reverse order so it goes from top high to  bottom low )
+        var sortedResolutions = [];
         for(var i in camera.advanced.imageSupportedResolutions) {
-            var res = stringToSize(camera.advanced.imageSupportedResolutions[i]);
+            sortedResolutions.push( stringToSize(camera.advanced.imageSupportedResolutions[i]) );
+        }
+        sortedResolutions.sort(function(a, b) { return sizeToMegapixels(b) - sizeToMegapixels(a) });
+
+        for(var i in sortedResolutions) {
+            var res = sortedResolutions[i];
             photoResolutionOptionsModel.insert(i,{"icon": "",
                                                    "label": "%1 (%2MP)".arg(sizeToAspectRatio(res))
                                                                        .arg(sizeToMegapixels(res)),

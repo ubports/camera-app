@@ -15,6 +15,7 @@
  */
 
 import QtQuick 2.4
+import QtQuick.Window 2.2
 import Ubuntu.Components 1.3
 
 Item {
@@ -57,7 +58,7 @@ Item {
         id: optionValueSelector
         objectName: "optionValueSelector"
 
-        height: Math.min( contentHeight, parent.height )
+        height: Math.min( contentHeight, Screen.height / 2 )
         snapMode: ListView.SnapToItem
         clip: true
         interactive: true
@@ -79,6 +80,7 @@ Item {
             optionValueSelector.model = model;
             alignWith(callerButton);
             optionValueSelectorVisible = true;
+            positionViewAtIndex(model.selectedIndex, ListView.Contain);
 
         }
 
@@ -116,6 +118,14 @@ Item {
         opacity: optionValueSelectorVisible ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}}
 
+        headerPositioning:  ListView.OverlayHeader
+        header: Icon {
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: units.gu(3)
+            visible: !optionValueSelector.atYBeginning
+            name:"go-up"
+        }
+
         delegate: OptionValueButton {
             anchors.left: optionValueSelector.left
             columnWidth: optionValueSelector.width
@@ -132,6 +142,13 @@ Item {
                     settings[optionValueSelector.model.settingsProperty] = optionValueSelector.model.get(index).value;
                 }
             }
+        }
+        footerPositioning: ListView.OverlayFooter
+        footer: Icon {
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: units.gu(3)
+            visible: !optionValueSelector.atYEnd
+            name:"go-down"
         }
     }
 
