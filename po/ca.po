@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-14 16:57+0100\n"
-"PO-Revision-Date: 2017-07-28 15:07+0000\n"
+"PO-Revision-Date: 2017-08-18 09:37+0000\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/ca/>\n"
@@ -19,15 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
 msgid "Advnaced Options"
-msgstr ""
+msgstr "Opcions avançades"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Afegeix la data a les imatges capturades"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -81,15 +80,15 @@ msgstr "Edita"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "No es pot compartir"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "No es poden compartir fotos i vídeos a l'hora"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "D'acord"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
@@ -164,7 +163,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1062
 msgid "External storage not writeable"
-msgstr ""
+msgstr "No es pot escriure a l'emmagatzemament extern"
 
 #: ../ViewFinderOverlay.qml:1063
 msgid ""
@@ -172,6 +171,9 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"No sembla possible escriure al vostre mitjà extern d'emmagatzemat. Podeu "
+"provar d'expulsar-lo i inserir-lo un altre cop, o potser us caldria formatar-"
+"lo."
 
 #: ../ViewFinderOverlay.qml:1101
 msgid "Cannot access camera"
@@ -196,17 +198,19 @@ msgstr "Edita els permisos"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Ha fallat la captura"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"El reemplaçament del vostre mitjà extern, formatar-lo, o reiniciar el "
+"dispositiu podria arreglar el problema."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "El reinici del vostre dispositiu podria arreglar el problema."
 
 #: ../camera-app.qml:57
 msgid "Flash"
