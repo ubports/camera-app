@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
 "PO-Revision-Date: 2016-03-14 09:41+0000\n"
 "Last-Translator: P_E_T_O <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
+msgid "Advanced Options"
 msgstr ""
 
 #: ../AdvancedOptions.qml:36
@@ -35,8 +35,8 @@ msgstr "Vymazať médiá?"
 msgid "Delete"
 msgstr "Vymazať"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -91,7 +91,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -101,7 +101,7 @@ msgstr "Zapnuté"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -136,23 +136,24 @@ msgstr "Normálna kvalita"
 msgid "Basic Quality"
 msgstr "Základná kvalita"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "Uložiť na SD kartu"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
 msgstr "Uložiť interne"
 
-#: ../ViewFinderOverlay.qml:1048
+#: ../ViewFinderOverlay.qml:1049
 msgid "Low storage space"
 msgstr "Málo miesta na úložisku"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -160,22 +161,22 @@ msgstr ""
 "Zmenšuje sa vám úložiskový priestor. Pre pokračovanie bez prerušení, "
 "uvoľnite miesto na úložisku."
 
-#: ../ViewFinderOverlay.qml:1062
+#: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1063
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1101
+#: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
 msgstr "Nemožno získať prístup k fotoaparátu"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -186,7 +187,7 @@ msgstr ""
 "inej chybe.\n"
 "Ak pridanie oprávnenia nevyrieši tento problém, reštartujte telefón."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
 msgstr "Upraviť oprávnenia"
 
