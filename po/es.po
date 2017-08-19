@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-18 19:57+0000\n"
+"PO-Revision-Date: 2017-08-19 14:49+0000\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
 "Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/es/>\n"
@@ -65,7 +65,7 @@ msgstr "Carrete"
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
 msgstr ""
-"No queda espacio en el dispositivo. Debe liberar algo de espacio para "
+"No queda espacio en el dispositivo, debe liberar algo de espacio para "
 "continuar."
 
 #: ../PhotoRollHint.qml:69
