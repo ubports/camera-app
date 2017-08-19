@@ -37,7 +37,6 @@ Item {
             horizontalCenter: parent.horizontalCenter
         }
 
-
         columns: 3
         columnSpacing: units.gu(9.5)
         rowSpacing: units.gu(3)
