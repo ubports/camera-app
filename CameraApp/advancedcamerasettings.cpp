@@ -230,6 +230,7 @@ void AdvancedCameraSettings::onSelectedDeviceChanged(int index)
     Q_UNUSED(index);
 
     m_videoSupportedResolutions.clear();
+    m_imageSupportedResolutions.clear();
 
     Q_EMIT resolutionChanged();
     Q_EMIT maximumResolutionChanged();
@@ -270,6 +271,7 @@ void AdvancedCameraSettings::readCapabilities()
     m_videoEncoderControl = videoEncoderControlFromCamera(m_camera);
     m_cameraInfoControl = cameraInfoControlFromCamera(m_camera);
     m_videoSupportedResolutions.clear();
+    m_imageSupportedResolutions.clear();
 
     Q_EMIT resolutionChanged();
     Q_EMIT maximumResolutionChanged();
@@ -356,6 +358,22 @@ float AdvancedCameraSettings::getScreenAspectRatio() const
         ((float)kScreenWidth / (float)kScreenHeight) : ((float)kScreenHeight / (float)kScreenWidth);
 
     return screenAspectRatio;
+}
+
+QStringList AdvancedCameraSettings::imageSupportedResolutions()
+{
+    if (!m_imageEncoderControl) {
+        return QStringList();
+    }
+
+    if(m_imageSupportedResolutions.isEmpty()) {
+        QList<QSize> sizes = m_imageEncoderControl->supportedResolutions(m_imageEncoderControl->imageSettings());
+        Q_FOREACH(QSize size, sizes) {
+            m_imageSupportedResolutions.append(QString("%1x%2").arg(size.width()).arg(size.height()));
+        }
+    }
+
+    return m_imageSupportedResolutions;
 }
 
 QSize AdvancedCameraSettings::fittingResolution() const
