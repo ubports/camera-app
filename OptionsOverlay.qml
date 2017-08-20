@@ -57,8 +57,7 @@ Item {
     ListView {
         id: optionValueSelector
         objectName: "optionValueSelector"
-
-        height: Math.min( contentHeight, Screen.height / 2 )
+        height: Math.min( contentHeight, screenHeight / 2  )
         snapMode: ListView.SnapToItem
         clip: true
         interactive: true
@@ -66,6 +65,7 @@ Item {
         boundsBehavior: Flickable.DragAndOvershootBounds
 
         property OptionButton caller
+        property int screenHeight: (Screen.orientation == Screen.primaryOrientation ? Screen.height : Screen.width)
 
         function toggle(model, callerButton) {
             if (optionValueSelectorVisible && optionValueSelector.model === model) {
@@ -110,13 +110,18 @@ Item {
             }
 
             // vertically position the options above the caller button
-            y = Qt.binding(function() { return optionsGrid.y + item.y - height - units.gu(2) });
+            y = Qt.binding(function() { return Math.max(-(screenHeight - (optionsOverlay.height - item.y) - units.gu(2)), optionsGrid.y + item.y - height - units.gu(2)) });
         }
 
         visible: opacity !== 0.0
         onVisibleChanged: if (!visible) model = null;
         opacity: optionValueSelectorVisible ? 1.0 : 0.0
         Behavior on opacity {UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration}}
+
+        Connections {
+            target: parent
+            onWidthChanged: {console.log("Flipped"); optionValueSelector.alignWith(optionValueSelector.caller);}
+        }
 
         headerPositioning:  ListView.OverlayHeader
         header: Icon {

@@ -477,14 +477,17 @@ Item {
                     property bool showInIndicators: false
 
                     ListElement {
+                        icon: ""
                         label: QT_TR_NOOP("Fine Quality")
                         value: 4 // QMultimedia.VeryHighQuality
                     }
                     ListElement {
+                        icon: ""
                         label: QT_TR_NOOP("Normal Quality")
                         value: 2 // QMultimedia.NormalQuality
                     }
                     ListElement {
+                        icon: ""
                         label: QT_TR_NOOP("Basic Quality")
                         value: 1 // QMultimedia.LowQuality
                     }
