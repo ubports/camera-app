@@ -7,24 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
-"PO-Revision-Date: 2016-02-09 09:20+0000\n"
-"Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
-"Language-Team: Italian\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"PO-Revision-Date: 2017-08-21 15:59+0000\n"
+"Last-Translator: Gabriele <gabrielemartelli@tiscali.it>\n"
+"Language-Team: Italian <https://ubpweblate.tnvcomp.com/projects/ubports"
+"/camera-app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
-msgstr ""
+msgid "Advanced Options"
+msgstr "Opzioni avanzate"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Aggiungi la data sulle immagini scattate"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -34,8 +36,8 @@ msgstr "Eliminare contenuto multimediale?"
 msgid "Delete"
 msgstr "Elimina"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Annulla"
@@ -78,19 +80,19 @@ msgstr "Modifica"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Impossibile condividere"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Impossibile condividere foto e video contemporaneamente"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -100,7 +102,7 @@ msgstr "Attivato"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -135,23 +137,24 @@ msgstr "Qualità normale"
 msgid "Basic Quality"
 msgstr "Qualità di base"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "Salva sulla scheda SD"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
 msgstr "Salva internamente"
 
-#: ../ViewFinderOverlay.qml:1048
+#: ../ViewFinderOverlay.qml:1049
 msgid "Low storage space"
 msgstr "Spazio in esaurimento"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -159,22 +162,25 @@ msgstr ""
 "Lo spazio disponibile sul dispositivo si sta esaurendo: per continuare senza "
 "interruzioni, liberare dello spazio."
 
-#: ../ViewFinderOverlay.qml:1062
-msgid "External storage not writeable"
-msgstr ""
-
 #: ../ViewFinderOverlay.qml:1063
+msgid "External storage not writeable"
+msgstr "Memoria esterna non scrivibile"
+
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Non sembra possibile scrivere sul tuo supporto di memorizzazione esterno. "
+"Provare ad espellerlo e inserirlo nuovamente potrebbe risolvere il problema, "
+"o potrebbe essere necessario formattarlo."
 
-#: ../ViewFinderOverlay.qml:1101
+#: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
 msgstr "Impossibile accedere alla fotocamera"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -187,23 +193,25 @@ msgstr ""
 "Se anche concedendo i permessi di accesso il problema persiste, riavviare il "
 "telefono."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
 msgstr "Modifica permessi"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Cattura fallita"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Sostituire la scheda esterna, formattarla o riavviare il dispositivo "
+"potrebbe risolvere il problema."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Riavviare il dispositivo potrebbe risolvere il problema."
 
 #: ../camera-app.qml:57
 msgid "Flash"
