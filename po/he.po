@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-18 19:42+0000\n"
+"PO-Revision-Date: 2017-08-23 13:39+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
 "Language-Team: Hebrew <https://ubpweblate.tnvcomp.com/projects/ubports"
 "/camera-app/he/>\n"
@@ -171,6 +171,8 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"נראה שלא ניתן לכתוב  לאחסון החיצוני. הוצאה והכנסה מחדש של המדיה אולי תפתור "
+"את הבעיה, או שאולי יש צורך לפרמט את המדיה החיצונית."
 
 #: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
@@ -196,11 +198,11 @@ msgstr "לכידה נכשלה"
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
-msgstr ""
+msgstr "החלפת המדיה החיצונית, פרמוט המדיה או אתחול המכשיר אולי יפתור את ה בעיה."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "אתחול המכשיר אולי יפתור את הבעיה."
 
 #: ../camera-app.qml:57
 msgid "Flash"
