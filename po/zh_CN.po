@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2017-08-26 13:20+0000\n"
 "Last-Translator: Mutse Young <yyhoo2.young@gmail.com>\n"
-"Language-Team: Chinese (Simplified) "
-"<https://ubpweblate.tnvcomp.com/projects/ubports/camera-app/zh_Hans/>\n"
+"Language-Team: Chinese (Simplified) <https://ubpweblate.tnvcomp.com/projects/"
+"ubports/camera-app/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,162 +20,90 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr "高级选项"
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr "在拍摄的图像中添加日期戳"
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "删除媒体文件？"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "删除"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
-#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "取消"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "没有可用的媒体文件。"
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "内容扫描中..."
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "选择"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "编辑照片"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "相机胶卷"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "设备上已无空间，请清理出剩余空间后继续。"
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "删除媒体文件？"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "删除"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "取消"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr "拍摄失败"
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr "请更换外部媒体，并格式化它，或者重启设备可能会解决这个问题。"
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr "重启设备可能会修复这个问题。"
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "向左滑动切换到影集"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "分享"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "编辑"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "无法分享"
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "无法同时分享照片和视频"
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "确定"
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "开启"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:568
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "关闭"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "自动"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "5 秒"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "15 秒"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "高品质"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "普通品质"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "基本品质"
-
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:520
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:528
-msgid "Save to SD Card"
-msgstr "保存到SD卡"
-
-#: ../ViewFinderOverlay.qml:533
-msgid "Save internally"
-msgstr "保存到手机"
-
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "存储空间紧张"
 
-#: ../ViewFinderOverlay.qml:1050
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr "您的存储空间已告罄。为了能不中断操作，请即刻清理释放存储空间。"
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr "外部存储不可写"
 
-#: ../ViewFinderOverlay.qml:1064
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
-msgstr "它似乎不可能写入外部存储介质。请尝试弹出并插入它可能会解决问题，或者可能需要格式化它。"
+msgstr ""
+"它似乎不可能写入外部存储介质。请尝试弹出并插入它可能会解决问题，或者可能需要"
+"格式化它。"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "无法访问相机"
 
-#: ../ViewFinderOverlay.qml:1103
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -186,90 +114,154 @@ msgstr ""
 "\n"
 "如果授予它访问权限未能解决这个问题，请重启你的手机。"
 
-#: ../ViewFinderOverlay.qml:1112
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "编辑权限"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr "拍摄失败"
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "编辑"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr "请更换外部媒体，并格式化它，或者重启设备可能会解决这个问题。"
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr "重启设备可能会修复这个问题。"
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "闪光灯"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "亮;暗"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "切换摄像头"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "前置镜头;后置镜头"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "快门"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "拍一张照片;拍照;记录"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "模式"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "静止;视频"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "白平衡"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "光照条件;白天;多云;室内"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "无法分享"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "无法同时分享照片和视频"
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "确定"
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "设备上已无空间，请清理出剩余空间后继续。"
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr ""
+
+#: Information.qml:71
+msgid "App Information"
+msgstr ""
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "今天拍了 <b>%1</b> 张照片"
+msgid "Version %1"
+msgstr ""
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "今天没拍任何照片"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr "高级选项"
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "今天拍了 <b>%1</b> 个录像"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr "在拍摄的图像中添加日期戳"
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "今天没拍任何录像"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "没有可用的媒体文件。"
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "相机"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "内容扫描中..."
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "相机应用程序"
+#~ msgid "On"
+#~ msgstr "开启"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "照片；视频；拍照；连拍；快拍；录像"
+#~ msgid "Off"
+#~ msgstr "关闭"
+
+#~ msgid "Auto"
+#~ msgstr "自动"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 秒"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 秒"
+
+#~ msgid "Fine Quality"
+#~ msgstr "高品质"
+
+#~ msgid "Normal Quality"
+#~ msgstr "普通品质"
+
+#~ msgid "Basic Quality"
+#~ msgstr "基本品质"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "保存到SD卡"
+
+#~ msgid "Save internally"
+#~ msgstr "保存到手机"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "今天拍了 <b>%1</b> 张照片"
+
+#~ msgid "No photos taken today"
+#~ msgstr "今天没拍任何照片"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "今天拍了 <b>%1</b> 个录像"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "今天没拍任何录像"
+
+#~ msgid "Camera"
+#~ msgstr "相机"
+
+#~ msgid "Camera application"
+#~ msgstr "相机应用程序"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr "照片；视频；拍照；连拍；快拍；录像"
