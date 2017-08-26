@@ -200,6 +200,8 @@ Item {
             left:parent.left
             right:parent.right
             topMargin: units.gu(4)
+            leftMargin: units.gu(4)
+            rightMargin: units.gu(4)
         }
         visible: infoPageToggle.selected
     }
