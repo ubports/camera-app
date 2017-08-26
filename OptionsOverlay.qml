@@ -27,9 +27,12 @@ Item {
     function closeValueSelector() {
         optionValueSelector.hide();
         advancedOptionsToggle.selected = false;
+        infoPageToggle.selected = false;
     }
 
-    height: optionsGrid.height + optionsGrid.rowSpacing + (advancedOptionsToggle.selected ?  advancedOptions.height : 0)
+    height: optionsGrid.height + optionsGrid.rowSpacing
+            + (infoPage.visible ? infoPage.height : 0)
+            + (advancedOptions.visible ? advancedOptions.height : 0)
 
     Grid {
         id: optionsGrid
@@ -159,12 +162,27 @@ Item {
 
     OptionValueButton {
         id:advancedOptionsToggle
+        z:1
         anchors.right: optionsOverlay.right
         anchors.bottom: optionsOverlay.bottom
         iconName:  "settings"
         isLast: true
         onClicked: {
             selected = !selected;
+            infoPageToggle.selected = false;
+        }
+    }
+
+    OptionValueButton {
+        id:infoPageToggle
+        z:1
+        anchors.left: optionsOverlay.left
+        anchors.bottom: optionsOverlay.bottom
+        iconName:  "info"
+        isLast: true
+        onClicked: {
+            selected = !selected
+            advancedOptionsToggle.selected = false;
         }
     }
 
@@ -172,5 +190,20 @@ Item {
         id:advancedOptions
         anchors.top :optionsGrid.bottom
         anchors.topMargin: units.gu(4)
+        visible: advancedOptionsToggle.selected
     }
+
+    Information {
+        id:infoPage
+        anchors {
+            top : optionsGrid.bottom
+            left:parent.left
+            right:parent.right
+            topMargin: units.gu(4)
+            leftMargin: units.gu(4)
+            rightMargin: units.gu(4)
+        }
+        visible: infoPageToggle.selected
+    }
+
 }

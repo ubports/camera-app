@@ -13,8 +13,8 @@ Flickable {
     anchors {
         left: parent.left
         right: parent.right
-        leftMargin: units.gu(5)
-        rightMargin: units.gu(5)
+        leftMargin: units.gu(4)
+        rightMargin: units.gu(4)
     }
 
     interactive: true
