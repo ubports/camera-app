@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-28 07:23+0000\n"
+"PO-Revision-Date: 2017-08-28 07:28+0000\n"
 "Last-Translator: Milan Korecký <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://ubpweblate.tnvcomp.com/projects/ubports/camera-"
 "app/cs/>\n"
@@ -26,7 +26,7 @@ msgstr "Pokročilá nastavení"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr "Přidat datum na pořízené obrázky"
+msgstr "Přidat datum na pořízené fotky"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -60,7 +60,7 @@ msgstr "Upravit fotku"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
-msgstr "Fotoaparát"
+msgstr "Fotografie"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
