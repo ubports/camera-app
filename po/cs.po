@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-28 07:28+0000\n"
+"PO-Revision-Date: 2017-09-07 21:36+0000\n"
 "Last-Translator: Milan Korecký <milan.korecky@gmail.com>\n"
-"Language-Team: Czech <https://ubpweblate.tnvcomp.com/projects/ubports/camera-"
+"Language-Team: Czech <https://translate.ubports.com/projects/ubports/camera-"
 "app/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "Ve stejný okamžik nelze sdílet fotky a videa"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr "Přijmout"
+msgstr "Ok"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
