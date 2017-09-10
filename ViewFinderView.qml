@@ -456,7 +456,7 @@ FocusScope {
         id: viewFinderExportConfirmation
         anchors.fill: parent
 
-        isVideo: main.transfer.contentType == ContentType.Videos
+        isVideo: main.transfer && main.transfer.contentType == ContentType.Videos
         viewFinderGeometry: viewFinderGeometry
 
         onShowRequested: {
