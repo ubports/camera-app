@@ -673,7 +673,7 @@ Item {
         y: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation) == 0 ? bottomEdge.position - bottomEdge.height : 0
         opacity: 1 - bottomEdge.progress
         visible: opacity != 0.0
-        enabled: visible
+        enabled: !bottomEdge.progress
 
         Behavior on opacity { UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration}}
 
