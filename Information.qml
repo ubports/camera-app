@@ -28,7 +28,7 @@ Item {
 
             PropertyChanges {
                 target: _infoPage
-               height:infoHeader.height + aboutCloumn.height
+                height:infoHeader.height + aboutCloumn.height
             }
 
             AnchorChanges {

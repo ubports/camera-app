@@ -675,6 +675,8 @@ Item {
         visible: opacity != 0.0
         enabled: visible
 
+        Behavior on opacity { UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration}}
+
         function timedShoot(secs) {
             camera.timedCaptureInProgress = true;
             timedShootFeedback.start();
