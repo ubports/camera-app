@@ -414,8 +414,9 @@ FocusScope {
         property real finalOpacity: 0.7
         radius: photoRollHint.visible ? finalRadius : viewFinderOverlay.revealProgress * finalRadius
         opacity: photoRollHint.visible ? finalOpacity : (1.0 - viewFinderOverlay.revealProgress) * finalOpacity + finalOpacity
-        source: radius !== 0 ? viewFinderSwitcher : null
+        source: viewFinderSwitcher !== null ? viewFinderSwitcher : null
         visible: radius !== 0
+        Behavior on radius { UbuntuNumberAnimation { duration: UbuntuAnimation.SnapDuration} }
     }
 
     PhotoRollHint {
@@ -456,7 +457,7 @@ FocusScope {
         id: viewFinderExportConfirmation
         anchors.fill: parent
 
-        isVideo: main.transfer.contentType == ContentType.Videos
+        isVideo: main.transfer && main.transfer.contentType == ContentType.Videos
         viewFinderGeometry: viewFinderGeometry
 
         onShowRequested: {

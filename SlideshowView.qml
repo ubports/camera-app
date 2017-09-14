@@ -374,7 +374,7 @@ FocusScope {
     }
 
     Binding { target: header; property: "editMode"; value: editor.active }
-    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active && editor.item }
 
     function reloadImage(image) {
         var async = image.asynchronous;

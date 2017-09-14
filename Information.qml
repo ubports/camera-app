@@ -28,7 +28,7 @@ Item {
 
             PropertyChanges {
                 target: _infoPage
-               height:infoHeader.height + aboutCloumn.height
+                height:infoHeader.height + aboutCloumn.height
             }
 
             AnchorChanges {
@@ -102,7 +102,7 @@ Item {
             width: parent.width
             color: UbuntuColors.ash
             horizontalAlignment: Text.AlignHCenter
-            text: i18n.tr("Version %1").arg("3.0.0.741")
+            text: i18n.tr("Version %1").arg("3.0.0.748")
         }
 
     }
