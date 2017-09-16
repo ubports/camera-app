@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-07-14 14:34+0000\n"
-"Last-Translator: Andrzej Stamburski <stambur@wp.pl>\n"
-"Language-Team: Polish <https://ubpweblate.tnvcomp.com/projects/ubports/"
-"camera-app/pl/>\n"
+"PO-Revision-Date: 2017-09-16 23:44+0000\n"
+"Last-Translator: Beton <betonn@protonmail.com>\n"
+"Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
+"app/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 
 #: ../AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "Zaawansowane opcje"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Dodawaj datę do zdjęć"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -81,15 +81,15 @@ msgstr "Edytuj"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Nie można udostępnić"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Nie można udostępnić jednocześnie zdjęć i wideo"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
@@ -165,7 +165,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
-msgstr ""
+msgstr "Nośnik zewnętrzny nie jest zapisywalny"
 
 #: ../ViewFinderOverlay.qml:1064
 msgid ""
@@ -173,6 +173,9 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Wygląda na to, że zapis na nośniku zewnętrznym nie jest możliwy. Spróbuj "
+"wyjąć i włożyć ponownie nośnik. Jeżeli to nie pomoże, prawdopodobnie nośnik "
+"wymaga formatowania."
 
 #: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
@@ -195,17 +198,19 @@ msgstr "Edytuj uprawnienia"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Robienie zdjęcia nie powiodło się"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Restart urządzenia, formatowanie, lub wymiana nośnika zewnętrznego może "
+"rozwiązać ten problem."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Restart urządzenia może rozwiązać ten problem."
 
 #: ../camera-app.qml:57
 msgid "Flash"
