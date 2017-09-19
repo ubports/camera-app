@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-16 23:44+0000\n"
-"Last-Translator: Beton <betonn@protonmail.com>\n"
+"PO-Revision-Date: 2017-09-19 10:52+0000\n"
+"Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
 "app/pl/>\n"
 "Language: pl\n"
@@ -98,7 +98,7 @@ msgstr "OK"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr "Wł."
+msgstr "Włączone"
 
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
@@ -108,7 +108,7 @@ msgstr "Wł."
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
-msgstr "Wył."
+msgstr "Wyłączone"
 
 #: ../ViewFinderOverlay.qml:382
 msgid "Auto"
