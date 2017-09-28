@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-28 08:31+0000\n"
-"Last-Translator: Philipp Leibelt <dickerwels@gmail.com>\n"
+"PO-Revision-Date: 2017-10-05 19:54+0000\n"
+"Last-Translator: Florian Leeber <flori@bin.org.in>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
 "app/de/>\n"
 "Language: de\n"
@@ -73,7 +73,6 @@ msgid "Swipe left for photo roll"
 msgstr "Zur Fotoliste nach links wischen"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
-#, fuzzy
 msgid "Share"
 msgstr "Teilen"
 
