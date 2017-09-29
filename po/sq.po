@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-13 21:07+0000\n"
+"PO-Revision-Date: 2017-09-29 07:36+0000\n"
 "Last-Translator: Jeff <jeffi27@live.at>\n"
 "Language-Team: Albanian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sq/>\n"
@@ -77,7 +77,7 @@ msgstr "Shpërndajë"
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
-msgstr "Redakto"
+msgstr "Ndrysho"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
