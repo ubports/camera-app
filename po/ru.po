@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-03 19:29+0000\n"
-"Last-Translator: Ivan Semkin <ivan@semkin.ru>\n"
-"Language-Team: Russian <https://ubpweblate.tnvcomp.com/projects/ubports"
+"PO-Revision-Date: 2017-09-30 14:37+0000\n"
+"Last-Translator: Nelly Simkova <stylinsonnelly@gmail.com>\n"
+"Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/camera-app/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -84,12 +84,13 @@ msgid "Unable to share"
 msgstr "Не удалось поделиться"
 
 #: ../UnableShareDialog.qml:26
+#, fuzzy
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Нельзя делиться фото и видео в одно время"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "Хорошо"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
