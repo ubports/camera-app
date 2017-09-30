@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-22 18:39+0000\n"
-"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
-"Language-Team: Catalan <https://ubpweblate.tnvcomp.com/projects/ubports"
+"PO-Revision-Date: 2017-09-30 18:52+0000\n"
+"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
+"Language-Team: Catalan <https://translate.ubports.com/projects/ubports"
 "/camera-app/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Voleu suprimir-ho?"
 
 #: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
 msgid "Delete"
-msgstr "Suprimeix-lo"
+msgstr "Suprimeix"
 
 #: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
 #: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
