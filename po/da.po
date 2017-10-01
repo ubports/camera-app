@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-28 20:15+0000\n"
+"PO-Revision-Date: 2017-10-01 18:10+0000\n"
 "Last-Translator: Henrik Holm <hbir@post10.tele.dk>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/camera-"
 "app/da/>\n"
@@ -57,7 +57,7 @@ msgstr "Vælg"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
-msgstr ""
+msgstr "Ret Billede"
 
 # ?
 #: ../GalleryViewHeader.qml:82
@@ -82,11 +82,11 @@ msgstr "Redigér"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Deling ikke mulig"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Deling af billede og video på samme tid ikke muligt"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
