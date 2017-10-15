@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-30 14:37+0000\n"
-"Last-Translator: Nelly Simkova <stylinsonnelly@gmail.com>\n"
+"PO-Revision-Date: 2017-10-15 10:12+0000\n"
+"Last-Translator: Ivan Semkin <ivan@semkin.ru>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/camera-app/ru/>\n"
 "Language: ru\n"
@@ -73,7 +73,7 @@ msgstr "Смахните влево для перехода к фотолент�
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
-msgstr "Опубликовать"
+msgstr "Поделиться"
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
