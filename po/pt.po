@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-10-18 11:24+0000\n"
+"PO-Revision-Date: 2017-10-19 12:19+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.ubports.com/projects/ubports"
 "/camera-app/pt/>\n"
@@ -84,7 +84,7 @@ msgstr "Incapaz de partilhar"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr "Incapaz para partilhar fotos e vídeos ao mesmo tempo"
+msgstr "Incapaz de partilhar fotos e vídeos ao mesmo tempo"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
