@@ -5,7 +5,7 @@ import QtSensors 5.4
 
 Item {
     id:_infoPage
-    height:infoHeader.height + aboutCloumn.height + infoLinksList.height
+    height: infoHeader.height + aboutCloumn.height + infoLinksList.height
 
     property bool portrait: (Screen.orientation == Screen.primaryOrientation)
 
