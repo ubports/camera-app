@@ -71,7 +71,7 @@ Item {
     Binding {
         target: camera.flash
         property: "mode"
-        value: settings.videoFlashMode
+        value: viewFinderView.inView ?  settings.videoFlashMode : Camera.FlashOff
         when: camera.captureMode == Camera.CaptureVideo
     }
 
