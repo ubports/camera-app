@@ -123,7 +123,10 @@ Item {
 
         Connections {
             target: parent
-            onWidthChanged: {console.log("Flipped"); optionValueSelector.alignWith(optionValueSelector.caller);}
+            onWidthChanged: {
+                console.log("Flipped");
+                if(optionValueSelector.caller) { optionValueSelector.alignWith(optionValueSelector.caller); }
+            }
         }
 
         headerPositioning:  ListView.OverlayHeader
@@ -135,7 +138,7 @@ Item {
         }
 
         delegate: OptionValueButton {
-            anchors.left: optionValueSelector.left
+            anchors.left: parent.left
             columnWidth: optionValueSelector.width
 
             label: (model && model.label) ? i18n.tr(model.label) : ""
