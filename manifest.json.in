@@ -13,7 +13,7 @@
     "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
     "name": "com.ubuntu.camera",
     "title": "Camera",
-    "version": "3.0.0.@REVNO@",
+    "version": "3.0.1.@REVNO@",
     "x-source": {
         "vcs-bzr": "@SOURCE@",
         "vcs-bzr-revno": "@REVNO@"
@@ -21,7 +21,10 @@
     "x-test": {
         "autopilot": {
             "autopilot_module": "@AUTOPILOT_DIR@",
-            "depends": ["python3-wand", "python3-mediainfodll"]
+            "depends": [
+                "python3-wand",
+                "python3-mediainfodll"
+            ]
         }
     }
 }
