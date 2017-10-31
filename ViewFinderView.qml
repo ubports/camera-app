@@ -387,7 +387,7 @@ FocusScope {
         Rectangle {
             id: shootFeedback
             anchors.fill: parent
-            color: "white"
+            color: "black"
             visible: opacity != 0.0
             opacity: 0.0
 
