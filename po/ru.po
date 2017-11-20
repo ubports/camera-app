@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-11-20 22:43+0000\n"
-"Last-Translator: Ivan Semkin <ivan@semkin.ru>\n"
+"PO-Revision-Date: 2017-11-20 22:51+0000\n"
+"Last-Translator: Alexey Balmashnov <a.balmashnov@gmail.com>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/camera-app/ru/>\n"
 "Language: ru\n"
@@ -27,7 +27,7 @@ msgstr "Дополнительные настройки"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Добавлять дату и время на отснятые изображения"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -84,9 +84,8 @@ msgid "Unable to share"
 msgstr "Не удалось поделиться"
 
 #: ../UnableShareDialog.qml:26
-#, fuzzy
 msgid "Unable to share photos and videos at the same time"
-msgstr "Нельзя делиться фото и видео в одно время"
+msgstr "Нельзя делиться фото и видео одновременно"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
@@ -166,7 +165,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
-msgstr ""
+msgstr "Запись на внешний носитель отключена"
 
 #: ../ViewFinderOverlay.qml:1064
 msgid ""
@@ -174,6 +173,8 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Не удаётся произвести запись на внешний носитель. Попробуйте извлечь и "
+"заново вставить его. Возможно необходимо форматирование носителя."
 
 #: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
@@ -197,13 +198,15 @@ msgstr "Изменить разрешения"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Не удалось сделать снимок"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Возможно проблему удастся исправить заменой внешнего носителя, его "
+"форматированием или перезагрузкой устройства."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
