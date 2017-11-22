@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-11-20 22:51+0000\n"
+"PO-Revision-Date: 2017-11-22 23:36+0000\n"
 "Last-Translator: Alexey Balmashnov <a.balmashnov@gmail.com>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/camera-app/ru/>\n"
@@ -69,7 +69,7 @@ msgstr "Не хватает свободного места; освободит�
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "Смахните влево для перехода к фотоленте"
+msgstr "Проведите влево для перехода к фотоленте"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -98,7 +98,7 @@ msgstr "Хорошо"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr "Вкл"
+msgstr "Включить"
 
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
@@ -108,7 +108,7 @@ msgstr "Вкл"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
-msgstr "Выкл"
+msgstr "Выключить"
 
 #: ../ViewFinderOverlay.qml:382
 msgid "Auto"
