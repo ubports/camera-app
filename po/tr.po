@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2017-11-25 21:54+0000\n"
 "Last-Translator: Arda Canbolat <oardacn@gmail.com>\n"
-"Language-Team: Turkish <https://translate.ubports.com/projects/ubports"
-"/camera-app/tr/>\n"
+"Language-Team: Turkish <https://translate.ubports.com/projects/ubports/"
+"camera-app/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,151 +20,79 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr "Gelişmiş Seçenekler"
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr "Yakalanan görüntülere tarih damgası ekleme"
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "Ortam silinsin mi?"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "Sil"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
-#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "İptal"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "Kullanılabilir ortam yok."
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "İçerik aranıyor..."
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "Seç"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "Fotoğrafı Düzenle"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "Fotoğraf Rulosu"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "Aygıtta yer kalmadı, devam etmek için yer açın."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Ortam silinsin mi?"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "Sil"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "İptal"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr "Yakalama Başarısız"
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"Harici ortamınızı değiştirmeniz, biçimlendirmeniz veya yeniden başlatmanız "
+"sorunu giderebilir."
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr "Cihazınızı yeniden başlatmanız sorunu çözebilir."
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "Film rulosu için sola kaydırın"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "Paylaş"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "Düzenle"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "Paylaşıma aç"
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "Fotoğraf ve videolar aynı anda paylaşılamıyor"
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "Tamam"
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "Açık"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:568
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "Kapalı"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "Otomatik"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "5 saniye"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "15 saniye"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "İyi Kalite"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "Normal Kalite"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "Temel Kalite"
-
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:520
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:528
-msgid "Save to SD Card"
-msgstr "SD Kartına kaydedildi"
-
-#: ../ViewFinderOverlay.qml:533
-msgid "Save internally"
-msgstr "Dahili olarak kaydedin"
-
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "Az depo alanı"
 
-#: ../ViewFinderOverlay.qml:1050
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr "Depo alanınız bitiyor. Kesilmeden devam etmek için, şimdi yer açın."
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr "Harici depolama yazılabilir değil"
 
-#: ../ViewFinderOverlay.qml:1064
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -173,11 +101,11 @@ msgstr ""
 "Harici depolama ortamınıza yazmak mümkün görünmüyor. Çıkartmak ve tekrar "
 "takmaya çalışmak sorunu çözebilir veya biçimlendirmeniz gerekebilir."
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "Kamera'ya erişilemiyor"
 
-#: ../ViewFinderOverlay.qml:1103
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -189,92 +117,154 @@ msgstr ""
 "\n"
 "İzin vermek bu sorunu çözmezse, telefonunuzu yeniden başlatın."
 
-#: ../ViewFinderOverlay.qml:1112
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "İzinleri Düzenle"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr "Yakalama Başarısız"
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "Düzenle"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-"Harici ortamınızı değiştirmeniz, biçimlendirmeniz veya yeniden başlatmanız "
-"sorunu giderebilir."
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr "Cihazınızı yeniden başlatmanız sorunu çözebilir."
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "Flaş"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Aydınlık;Karanlık"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Kamerayı Ters Çevir"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Ön Kamera:Arka Kamera"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "Deklanşör"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Fotoğraf Çek;Yakala;Kaydet"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "Kip"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Sabitler;Video"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "Beyaz Dengesi"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Işık Koşulu;Gün;Bulutlu;İçeride"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "Paylaşıma aç"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "Fotoğraf ve videolar aynı anda paylaşılamıyor"
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "Tamam"
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Aygıtta yer kalmadı, devam etmek için yer açın."
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr ""
+
+#: Information.qml:71
+msgid "App Information"
+msgstr ""
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "Bugün <b>%1</b> fotoğraf çekildi"
+msgid "Version %1"
+msgstr ""
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "Bugün fotoğraf çekilmedi"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr "Gelişmiş Seçenekler"
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "Bugün <b>%1</b> video kaydedildi"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr "Yakalanan görüntülere tarih damgası ekleme"
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "Bugün video kaydedilmedi"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "Kullanılabilir ortam yok."
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "Fotoğraf Makinesi"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "İçerik aranıyor..."
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "Kamera uygulaması"
+#~ msgid "On"
+#~ msgstr "Açık"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Fotoğraflar;Videolar;Yakalama;Çek;Anlık Çekim;Kayıt"
+#~ msgid "Off"
+#~ msgstr "Kapalı"
+
+#~ msgid "Auto"
+#~ msgstr "Otomatik"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 saniye"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 saniye"
+
+#~ msgid "Fine Quality"
+#~ msgstr "İyi Kalite"
+
+#~ msgid "Normal Quality"
+#~ msgstr "Normal Kalite"
+
+#~ msgid "Basic Quality"
+#~ msgstr "Temel Kalite"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "SD Kartına kaydedildi"
+
+#~ msgid "Save internally"
+#~ msgstr "Dahili olarak kaydedin"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "Bugün <b>%1</b> fotoğraf çekildi"
+
+#~ msgid "No photos taken today"
+#~ msgstr "Bugün fotoğraf çekilmedi"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "Bugün <b>%1</b> video kaydedildi"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "Bugün video kaydedilmedi"
+
+#~ msgid "Camera"
+#~ msgstr "Fotoğraf Makinesi"
+
+#~ msgid "Camera application"
+#~ msgstr "Kamera uygulaması"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr "Fotoğraflar;Videolar;Yakalama;Çek;Anlık Çekim;Kayıt"
