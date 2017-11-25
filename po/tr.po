@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-11-25 21:53+0000\n"
+"PO-Revision-Date: 2017-11-25 21:54+0000\n"
 "Last-Translator: Arda Canbolat <oardacn@gmail.com>\n"
 "Language-Team: Turkish <https://translate.ubports.com/projects/ubports"
 "/camera-app/tr/>\n"
@@ -68,7 +68,7 @@ msgstr "Aygıtta yer kalmadı, devam etmek için yer açın."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "Film rulosu için sola kaydırın."
+msgstr "Film rulosu için sola kaydırın"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
