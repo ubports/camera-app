@@ -7,24 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
-"PO-Revision-Date: 2015-03-22 15:47+0000\n"
-"Last-Translator: Arda Ünlü <aarda.uunlu@gmail.com>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"PO-Revision-Date: 2017-11-25 21:53+0000\n"
+"Last-Translator: Arda Canbolat <oardacn@gmail.com>\n"
+"Language-Team: Turkish <https://translate.ubports.com/projects/ubports"
+"/camera-app/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
-msgstr ""
+msgid "Advanced Options"
+msgstr "Gelişmiş Seçenekler"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Yakalanan görüntülere tarih damgası ekleme"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -34,8 +36,8 @@ msgstr "Ortam silinsin mi?"
 msgid "Delete"
 msgstr "Sil"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "İptal"
@@ -78,19 +80,19 @@ msgstr "Düzenle"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Paylaşıma aç"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Fotoğraf ve videolar aynı anda paylaşılamıyor"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "Tamam"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -100,7 +102,7 @@ msgstr "Açık"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -135,68 +137,77 @@ msgstr "Normal Kalite"
 msgid "Basic Quality"
 msgstr "Temel Kalite"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "SD Kartına kaydedildi"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
-msgstr ""
+msgstr "Dahili olarak kaydedin"
 
-#: ../ViewFinderOverlay.qml:1048
+#: ../ViewFinderOverlay.qml:1049
 msgid "Low storage space"
 msgstr "Az depo alanı"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr "Depo alanınız bitiyor. Kesilmeden devam etmek için, şimdi yer açın."
 
-#: ../ViewFinderOverlay.qml:1062
-msgid "External storage not writeable"
-msgstr ""
-
 #: ../ViewFinderOverlay.qml:1063
+msgid "External storage not writeable"
+msgstr "Harici depolama yazılabilir değil"
+
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
-
-#: ../ViewFinderOverlay.qml:1101
-msgid "Cannot access camera"
-msgstr ""
+"Harici depolama ortamınıza yazmak mümkün görünmüyor. Çıkartmak ve tekrar "
+"takmaya çalışmak sorunu çözebilir veya biçimlendirmeniz gerekebilir."
 
 #: ../ViewFinderOverlay.qml:1102
+msgid "Cannot access camera"
+msgstr "Kamera'ya erişilemiyor"
+
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"Kamera uygulamasının kamera donanımına erişim izni yok veya başka bir hata "
+"oluştu.\n"
+"\n"
+"İzin vermek bu sorunu çözmezse, telefonunuzu yeniden başlatın."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
-msgstr ""
+msgstr "İzinleri Düzenle"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Yakalama Başarısız"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Harici ortamınızı değiştirmeniz, biçimlendirmeniz veya yeniden başlatmanız "
+"sorunu giderebilir."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Cihazınızı yeniden başlatmanız sorunu çözebilir."
 
 #: ../camera-app.qml:57
 msgid "Flash"
@@ -266,4 +277,4 @@ msgstr "Kamera uygulaması"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Fotoğraflar;Videolar;Yakalama;Çek;Anlık Çekim;Kayıt"
