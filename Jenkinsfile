@@ -1,4 +1,3 @@
-Daltons Recruitment
 pipeline {
   agent any
   stages {
