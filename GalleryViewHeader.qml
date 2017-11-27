@@ -86,7 +86,6 @@ Item {
             Layout.fillWidth: true
         }
 
-
         IconButton {
             objectName: "galleryLink"
             anchors {
@@ -98,7 +97,6 @@ Item {
             iconName: "gallery-app-symbolic"
             iconColor: "white"
             onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version");//Qt.openUrlExternally('application:///')
-
         }
 
         IconButton {
