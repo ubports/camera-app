@@ -86,7 +86,6 @@ Item {
             Layout.fillWidth: true
         }
 
-
         IconButton {
             objectName: "galleryLink"
             anchors {
