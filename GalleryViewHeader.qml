@@ -96,8 +96,7 @@ Item {
             visible: !editMode && !userSelectionMode
             iconName: "gallery-app-symbolic"
             iconColor: "white"
-            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version");
-
+            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
         }
 
         IconButton {
