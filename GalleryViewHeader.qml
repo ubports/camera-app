@@ -97,7 +97,7 @@ Item {
             visible: !editMode && !userSelectionMode
             iconName: "gallery-app-symbolic"
             iconColor: "white"
-            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version");//Qt.openUrlExternally('application:///')
+            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version");
 
         }
 
