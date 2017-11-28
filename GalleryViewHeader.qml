@@ -93,7 +93,7 @@ Item {
                 bottom: parent.bottom
             }
             width: units.gu(8)
-            visible: !editMode && !userSelectionMode
+            visible: !editMode && !userSelectionMode && gridMode
             iconName: "gallery-app-symbolic"
             iconColor: "white"
             onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
@@ -127,7 +127,7 @@ Item {
                 top: parent.top
                 bottom: parent.bottom
             }
-            action: actionsDrawer.actions[0]
+            action: actionsDrawer.actions[0] ? actionsDrawer.actions[0] : null
             visible: actionsDrawer.actions.length == 1 && !editMode
             onTriggered: if (action) action.triggered()
         }

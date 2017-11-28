@@ -26,6 +26,7 @@ Item {
 
     signal exit
     property bool inView
+    property bool inTransition: false
     property bool touchAcquired: slideshowView.touchAcquired
     property bool userSelectionMode: false
     property Item currentView: state == "GRID" ? photogridView : slideshowView
@@ -74,7 +75,7 @@ Item {
             anchors.fill: parent
             model: galleryView.model
             visible: opacity != 0.0
-            inView: galleryView.inView && galleryView.currentView == slideshowView
+            inView: galleryView.inView &&  ( galleryView.currentView == slideshowView || galleryView.inTransition )
             focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onToggleSelection: model.toggleSelected(currentIndex)
@@ -88,11 +89,12 @@ Item {
             userSelectionMode: galleryView.userSelectionMode
             model: galleryView.model
             visible: opacity != 0.0
-            inView: galleryView.inView && galleryView.currentView == photogridView
+            inView: galleryView.inView && ( galleryView.currentView == photogridView || galleryView.inTransition )
             focus: inView
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
+                galleryView.inTransition = true;
                 galleryView.gridMode = false;
             }
             onPhotoPressAndHold: {
@@ -133,7 +135,7 @@ Item {
                     // position grid view so that the current photo in slideshow view is visible
                     photogridView.showPhotoAtIndex(slideshowView.currentIndex);
                 }
-
+                galleryView.inTransition = true;
                 galleryView.gridMode = !galleryView.gridMode
             }
             onToggleSelectAll: {
@@ -256,6 +258,7 @@ Item {
     }
 
     state: galleryView.gridMode ? "GRID" : "SLIDESHOW"
+    onStateChanged: inTransition = true;
     states: [
         State {
             name: "SLIDESHOW"
@@ -274,7 +277,7 @@ Item {
             name: "GRID"
             PropertyChanges {
                 target: slideshowView
-                scale: 1.4
+                scale: 0.4
                 opacity: 0.0
             }
             PropertyChanges {
@@ -287,8 +290,12 @@ Item {
 
     transitions: [
         Transition {
+            id:galleryViewTransition
             to: "*"
-            UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.SnapDuration }
+            UbuntuNumberAnimation { properties: "scale,opacity"; duration: UbuntuAnimation.BriskDuration }
+            onRunningChanged: {
+                inTransition = running;
+            }
         }
     ]
 }
