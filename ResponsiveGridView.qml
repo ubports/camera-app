@@ -75,7 +75,7 @@ Item {
         clip: parent.height != totalContentHeight
 
         function pixelToGU(value) {
-            return Math.floor(value / units.gu(1));
+            return (value / units.gu(1));
         }
 
         function spacingForColumns(columns) {

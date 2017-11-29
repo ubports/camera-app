@@ -115,6 +115,7 @@ Item {
         // FIXME: it would be better to use the standard header from the toolkit
         GalleryViewHeader {
             id: header
+            z:1
             actions: currentView.actions
             gridMode: galleryView.gridMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0 && galleryView.gridMode
