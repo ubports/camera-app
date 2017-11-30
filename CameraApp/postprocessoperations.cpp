@@ -27,7 +27,6 @@ PostProcessOperations::PostProcessOperations(QObject *parent) :
 
 bool PostProcessOperations::addDateStamp(const QString & path)
 {
-    //TODO run async
     class AddDateStamp : public QThread {
 
         QString path;
@@ -38,7 +37,7 @@ bool PostProcessOperations::addDateStamp(const QString & path)
           }
 
           void run() {
-              try {                  
+              try {
                   QImage image = QImage(path);
                   QDate now = QDate::currentDate();
                   QString currentDate = QString(now.toString(Qt::LocaleDate));
@@ -55,7 +54,7 @@ bool PostProcessOperations::addDateStamp(const QString & path)
                   return ;
               }
           }
-    } ;
+    };
 
     this->workingThread = new AddDateStamp(path);
     connect(this->workingThread, &AddDateStamp::finished, this->workingThread, &QObject::deleteLater);
