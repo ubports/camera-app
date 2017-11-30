@@ -20,6 +20,8 @@ import Ubuntu.Components.ListItems 1.3 as ListItems
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Content 1.3
 import Ubuntu.Thumbnailer 0.1
+import QtGraphicalEffects 1.0
+
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -29,12 +31,13 @@ FocusScope {
     property var model
     property int currentIndex: listView.currentIndex
     property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
-                                                        editor.active : false
+                                                        editor.active || photoBottomEdge.dragProgress != 0 : false
     property bool inView
     property bool editingAvailable: false
     property bool inSelectionMode: false
     signal toggleHeader
     signal toggleSelection
+    signal bottomEdgeCommit
     property var actions: inSelectionMode ? slideShowSelectionActions : slideShowActions
 
     property list<Action> slideShowSelectionActions: [
@@ -223,7 +226,7 @@ FocusScope {
 
                     Item {
                         id: media
-
+                        scale:1 - (photoBottomEdge.dragProgress*0.05)
                         width: flickable.width * flickable.sizeScale
                         height: flickable.height * flickable.sizeScale
 
@@ -403,5 +406,34 @@ FocusScope {
                 if (photoWasModified) listView.currentItem.reload();
             }
         }
+    }
+
+    BottomEdge {
+        id: photoBottomEdge
+        enabled: !editor.active
+        visible: enabled
+        height:parent.height / 2;
+        hint.text: i18n.tr("Back to Photo roll");
+        hint.deactivateTimeout: UbuntuAnimation.SlowDuration
+        hint.iconName: "go-up"
+        hint.visible:enabled
+
+        contentComponent: Page {
+            opacity: photoBottomEdge.dragProgress
+            header: PageHeader { opacity: 0 }
+
+             Rectangle {
+                width:photoBottomEdge.width
+                height:photoBottomEdge.height
+                color: Qt.rgba(0,0,0,0.2)
+                layer.enabled: true
+                layer.effect: FastBlur {
+                    radius: units.gu(2) * photoBottomEdge.dragProgress
+                    transparentBorder: true
+                }
+            }
+        }
+
+        onCommitCompleted:  { bottomEdgeCommit(); photoBottomEdge.collapse(); }
     }
 }

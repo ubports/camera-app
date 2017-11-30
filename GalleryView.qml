@@ -80,6 +80,7 @@ Item {
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onToggleSelection: model.toggleSelected(currentIndex)
             onToggleHeader: header.toggle();
+            onBottomEdgeCommit : galleryView.gridMode = true;
         }
 
         PhotogridView {
