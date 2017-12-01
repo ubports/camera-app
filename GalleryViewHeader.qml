@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 Item {
     id: header
@@ -38,6 +39,7 @@ Item {
     property bool editMode: false
     property bool validationVisible
     property bool userSelectionMode: false
+    property var backgroundItem: null
     signal exit
     signal exitEditor
     signal toggleViews
@@ -55,10 +57,15 @@ Item {
         shown = !shown;
     }
 
+    OverlayBlur {
+        backgroundItem : header.backgroundItem
+        overlayItem: headerBkRect
+    }
+
     Rectangle {
+        id:headerBkRect
         anchors.fill: parent
-        color: "black"
-        opacity: 0.6
+        color: Qt.rgba(0,0,0,0.6)
     }
 
     RowLayout {

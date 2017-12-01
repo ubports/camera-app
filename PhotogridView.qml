@@ -170,7 +170,7 @@ FocusScope {
                     }
 
                     asynchronous: true
-                    cache: status == Image.Ready
+                    cache: true
                     // The thumbnailer does not seem to check when an image has been changed on disk,
                     // so we use this hack to force it to check and refresh if necessary.
                     source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() + "?at=" + Date.now() : ""

@@ -121,6 +121,7 @@ Item {
             gridMode: galleryView.gridMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0 && galleryView.gridMode
             userSelectionMode: galleryView.userSelectionMode
+            backgroundItem: inTransition ? null : galleryView.currentView
             onExit: {
                 if ((main.contentExportMode || userSelectionMode) && !galleryView.gridMode) {
                     galleryView.gridMode = true;
