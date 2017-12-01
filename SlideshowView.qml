@@ -412,7 +412,7 @@ FocusScope {
         id: photoBottomEdge
         enabled: !editor.active
         visible: enabled
-        height:parent.height / 2;
+        height:units.gu(8)
         hint.text: i18n.tr("Back to Photo roll");
         hint.deactivateTimeout: UbuntuAnimation.SlowDuration
         hint.iconName: "go-up"
@@ -422,15 +422,28 @@ FocusScope {
             opacity: photoBottomEdge.dragProgress
             header: PageHeader { opacity: 0 }
 
-             Rectangle {
+            Rectangle {
+                id:photoBottomEdgeRect
                 width:photoBottomEdge.width
                 height:photoBottomEdge.height
-                color: Qt.rgba(0,0,0,0.2)
-                layer.enabled: true
-                layer.effect: FastBlur {
-                    radius: units.gu(2) * photoBottomEdge.dragProgress
-                    transparentBorder: true
-                }
+                color: Qt.rgba(0,0,0,0.6)
+            }
+            Icon {
+                id:bottomEdgeGoUpIcon
+                height:units.gu(3)
+                width:units.gu(3)
+                name:"go-up"
+                color: "white"
+                anchors.top:parent.top
+                anchors.horizontalCenter:parent.horizontalCenter
+            }
+            Label {
+                anchors.horizontalCenter:parent.horizontalCenter
+                verticalAlignment: Text.AlignVCenter
+                height:photoBottomEdge.height
+                text: i18n.tr("Back to Photo roll");
+                color:"white"
+                font.pointSize: units.gu(3)
             }
         }
 
