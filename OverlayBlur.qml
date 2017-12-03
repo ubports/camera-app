@@ -22,8 +22,6 @@ FastBlur {
     id: overlayBlurEffect
     property var overlayItem
     property var backgroundItem
-    property int offestX: 0
-    property int offestY: 0
 
     anchors.fill: overlayItem
 
@@ -31,11 +29,10 @@ FastBlur {
     source:  ShaderEffectSource {
         clip: true
         sourceItem: backgroundItem
-        sourceRect: Qt.rect( overlayItem.mapToItem(backgroundItem).x+offestX,
-                             overlayItem.mapToItem(backgroundItem).y+offestY,
+        sourceRect: Qt.rect( overlayItem.mapToItem(backgroundItem).x,
+                             overlayItem.mapToItem(backgroundItem).y,
                              overlayItem.width,
-                             overlayItem.height)
+                             overlayItem.height )
+        recursive: true
     }
-
-
 }

@@ -80,7 +80,7 @@ Item {
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onToggleSelection: model.toggleSelected(currentIndex)
             onToggleHeader: header.toggle();
-            onBottomEdgeCommit : galleryView.gridMode = true;
+            onBottomEdgeCommit : { galleryView.gridMode = true; header.show();}
         }
 
         PhotogridView {
@@ -121,7 +121,6 @@ Item {
             gridMode: galleryView.gridMode
             validationVisible: main.contentExportMode && model.selectedFiles.length > 0 && galleryView.gridMode
             userSelectionMode: galleryView.userSelectionMode
-            backgroundItem: inTransition ? null : galleryView.currentView
             onExit: {
                 if ((main.contentExportMode || userSelectionMode) && !galleryView.gridMode) {
                     galleryView.gridMode = true;

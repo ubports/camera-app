@@ -414,20 +414,20 @@ FocusScope {
         visible: enabled
         height:units.gu(8)
         hint.text: i18n.tr("Back to Photo roll");
-        hint.deactivateTimeout: UbuntuAnimation.SlowDuration
         hint.iconName: "go-up"
         hint.visible:enabled
 
         contentComponent: Page {
             opacity: photoBottomEdge.dragProgress
             header: PageHeader { opacity: 0 }
-
             Rectangle {
                 id:photoBottomEdgeRect
                 width:photoBottomEdge.width
                 height:photoBottomEdge.height
                 color: Qt.rgba(0,0,0,0.6)
             }
+
+
             Icon {
                 id:bottomEdgeGoUpIcon
                 height:units.gu(3)
@@ -441,9 +441,9 @@ FocusScope {
                 anchors.horizontalCenter:parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter
                 height:photoBottomEdge.height
-                text: i18n.tr("Back to Photo roll");
+                text: photoBottomEdge.hint.text
                 color:"white"
-                font.pointSize: units.gu(3)
+                fontSize: "x-large"
             }
         }
 

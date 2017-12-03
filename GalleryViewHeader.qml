@@ -39,7 +39,6 @@ Item {
     property bool editMode: false
     property bool validationVisible
     property bool userSelectionMode: false
-    property var backgroundItem: null
     signal exit
     signal exitEditor
     signal toggleViews
@@ -55,11 +54,6 @@ Item {
             actionsDrawer.close();
         }
         shown = !shown;
-    }
-
-    OverlayBlur {
-        backgroundItem : header.backgroundItem
-        overlayItem: headerBkRect
     }
 
     Rectangle {
