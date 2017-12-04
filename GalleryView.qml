@@ -95,6 +95,7 @@ Item {
             inSelectionMode: main.contentExportMode || galleryView.userSelectionMode
             onPhotoClicked: {
                 slideshowView.showPhotoAtIndex(index);
+                photogridView.showPhotoAtIndex(index);
                 galleryView.inTransition = true;
                 galleryView.gridMode = false;
             }

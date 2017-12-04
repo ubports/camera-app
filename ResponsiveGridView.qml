@@ -61,8 +61,18 @@ Item {
     }
 
     function positionViewAtIndex(index, mode) {
+        anim.running=false;
+        anim.from= gridView.contentY;
         gridView.positionViewAtIndex(index, mode);
+        anim.to= gridView.contentY;
+        anim.running=true;
     }
+
+    function indexAt(x,y) {
+        return gridView.indexAt(x,y);
+    }
+
+    NumberAnimation { id: anim; target: gridView; property: "contentY"; }
 
     GridView {
         id: gridView

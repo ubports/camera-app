@@ -99,14 +99,13 @@ FocusScope {
         pinch.dragAxis: Pinch.NoDrag
         pinch.minimumScale: 0.5
         pinch.maximumScale: 1.5
-        //FIXME  This is a a workaround to that remember the scale between pinches
+        //FIXME  This is a a workaround that remember the scale between pinches
         pinch.target: Item {
           width: galleryGridViewSettings.delegateWidth
           height: galleryGridViewSettings.delegateHeight
           scale:galleryGridViewSettings.currentScale
           visible:false
         }
-
 
         onPinchUpdated: {
             if( pinch.scale ) {
@@ -152,6 +151,9 @@ FocusScope {
 
                 width: gridView.cellWidth
                 height: gridView.cellHeight
+
+                Behavior on height { UbuntuNumberAnimation {} }
+                Behavior on width { UbuntuNumberAnimation {} }
 
                 property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
 
