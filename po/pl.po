@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-09-19 10:52+0000\n"
+"PO-Revision-Date: 2017-12-04 23:44+0000\n"
 "Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
 "app/pl/>\n"
@@ -27,7 +27,7 @@ msgstr "Zaawansowane opcje"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr "Dodawaj datę do zdjęć"
+msgstr "Dodaj stempel daty do zdjęć"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -160,7 +160,7 @@ msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
-"Kończy się miejsce na dysku. Aby uniknąć niespodziwanych problemów, zwolnij "
+"Kończy się miejsce na dysku. Aby uniknąć niespodziewanych problemów, zwolnij "
 "miejsce na dysku."
 
 #: ../ViewFinderOverlay.qml:1063
