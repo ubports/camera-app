@@ -88,19 +88,6 @@ Item {
         }
 
         IconButton {
-            objectName: "galleryLink"
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-            }
-            width: units.gu(8)
-            visible: !editMode && !userSelectionMode && gridMode
-            iconName: "gallery-app-symbolic"
-            iconColor: "white"
-            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
-        }
-
-        IconButton {
             objectName: "viewToggleButton"
             anchors {
                 top: parent.top

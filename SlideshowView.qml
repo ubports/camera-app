@@ -50,6 +50,13 @@ FocusScope {
 
     property list<Action> slideShowActions: [
         Action {
+            text: i18n.tr("Gallery")
+            objectName: "galleryLink"
+            enabled: !editor.active
+            iconName: "gallery-app-symbolic"
+            onTriggered: { Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version") }
+        },
+        Action {
             text: i18n.tr("Share")
             iconName: "share"
             onTriggered: {

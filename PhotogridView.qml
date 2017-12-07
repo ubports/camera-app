@@ -36,7 +36,7 @@ FocusScope {
     property bool inView
     property bool inSelectionMode
     property bool userSelectionMode: false
-    property var actions: userSelectionMode ? userSelectionActions : null
+    property var actions: userSelectionMode ? userSelectionActions : regularModeActions
     property list<Action> userSelectionActions: [
         Action {
             text: i18n.tr("Share")
@@ -62,6 +62,15 @@ FocusScope {
                 }
             }
         }
+    ]
+
+    property list<Action> regularModeActions: [
+            Action {
+                text: i18n.tr("Gallery")
+                objectName: "galleryLink"
+                iconName: "gallery-app-symbolic"
+                onTriggered: { Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version") }
+            }
     ]
 
     function selectionContainsMixedMedia() {
