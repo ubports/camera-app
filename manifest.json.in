@@ -10,7 +10,7 @@
         }
     },
     "icon": "@CAMERA_ICON@",
-    "maintainer": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>",
+    "maintainer": "UBports <community@ubports.com>",
     "name": "com.ubuntu.camera",
     "title": "Camera",
     "version": "3.0.0.@REVNO@",
@@ -21,7 +21,10 @@
     "x-test": {
         "autopilot": {
             "autopilot_module": "@AUTOPILOT_DIR@",
-            "depends": ["python3-wand", "python3-mediainfodll"]
+            "depends": [
+                "python3-wand",
+                "python3-mediainfodll"
+            ]
         }
     }
 }

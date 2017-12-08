@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 Item {
     id: header
@@ -56,9 +57,9 @@ Item {
     }
 
     Rectangle {
+        id:headerBkRect
         anchors.fill: parent
-        color: "black"
-        opacity: 0.6
+        color: Qt.rgba(0,0,0,0.6)
     }
 
     RowLayout {
@@ -84,19 +85,6 @@ Item {
             color: "white"
             elide: Text.ElideRight
             Layout.fillWidth: true
-        }
-
-        IconButton {
-            objectName: "galleryLink"
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-            }
-            width: units.gu(8)
-            visible: !editMode && !userSelectionMode
-            iconName: "gallery-app-symbolic"
-            iconColor: "white"
-            onClicked: Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version")
         }
 
         IconButton {
@@ -127,7 +115,7 @@ Item {
                 top: parent.top
                 bottom: parent.bottom
             }
-            action: actionsDrawer.actions[0]
+            action: actionsDrawer.actions[0] ? actionsDrawer.actions[0] : null
             visible: actionsDrawer.actions.length == 1 && !editMode
             onTriggered: if (action) action.triggered()
         }
