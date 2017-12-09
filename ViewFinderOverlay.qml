@@ -71,7 +71,7 @@ Item {
     Binding {
         target: camera.flash
         property: "mode"
-        value: settings.videoFlashMode
+        value: viewFinderView.inView ?  settings.videoFlashMode : Camera.FlashOff
         when: camera.captureMode == Camera.CaptureVideo
     }
 
@@ -673,7 +673,9 @@ Item {
         y: Screen.angleBetween(Screen.primaryOrientation, Screen.orientation) == 0 ? bottomEdge.position - bottomEdge.height : 0
         opacity: 1 - bottomEdge.progress
         visible: opacity != 0.0
-        enabled: visible
+        enabled: !bottomEdge.progress
+
+        Behavior on opacity { UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration}}
 
         function timedShoot(secs) {
             camera.timedCaptureInProgress = true;

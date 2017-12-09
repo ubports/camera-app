@@ -20,6 +20,8 @@ import Ubuntu.Components.ListItems 1.3 as ListItems
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Content 1.3
 import Ubuntu.Thumbnailer 0.1
+import QtGraphicalEffects 1.0
+
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -29,12 +31,13 @@ FocusScope {
     property var model
     property int currentIndex: listView.currentIndex
     property bool touchAcquired: listView.currentItem ? listView.currentItem.pinchInProgress ||
-                                                        editor.active : false
+                                                        editor.active || photoBottomEdge.dragProgress != 0 : false
     property bool inView
     property bool editingAvailable: false
     property bool inSelectionMode: false
     signal toggleHeader
     signal toggleSelection
+    signal bottomEdgeCommit
     property var actions: inSelectionMode ? slideShowSelectionActions : slideShowActions
 
     property list<Action> slideShowSelectionActions: [
@@ -46,6 +49,13 @@ FocusScope {
     ]
 
     property list<Action> slideShowActions: [
+        Action {
+            text: i18n.tr("Gallery")
+            objectName: "galleryLink"
+            enabled: !editor.active
+            iconName: "gallery-app-symbolic"
+            onTriggered: { Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version") }
+        },
         Action {
             text: i18n.tr("Share")
             iconName: "share"
@@ -223,7 +233,7 @@ FocusScope {
 
                     Item {
                         id: media
-
+                        scale:1 - (photoBottomEdge.dragProgress*0.05)
                         width: flickable.width * flickable.sizeScale
                         height: flickable.height * flickable.sizeScale
 
@@ -374,7 +384,7 @@ FocusScope {
     }
 
     Binding { target: header; property: "editMode"; value: editor.active }
-    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active }
+    Binding { target: header; property: "editModeActions"; value: editor.item.actions; when: editor.active && editor.item }
 
     function reloadImage(image) {
         var async = image.asynchronous;
@@ -403,5 +413,47 @@ FocusScope {
                 if (photoWasModified) listView.currentItem.reload();
             }
         }
+    }
+
+    BottomEdge {
+        id: photoBottomEdge
+        enabled: !editor.active
+        visible: enabled
+        height:units.gu(8)
+        hint.text: i18n.tr("Back to Photo roll");
+        hint.iconName: "go-up"
+        hint.visible:enabled
+
+        contentComponent: Page {
+            opacity: photoBottomEdge.dragProgress
+            header: PageHeader { opacity: 0 }
+            Rectangle {
+                id:photoBottomEdgeRect
+                width:photoBottomEdge.width
+                height:photoBottomEdge.height
+                color: Qt.rgba(0,0,0,0.6)
+            }
+
+
+            Icon {
+                id:bottomEdgeGoUpIcon
+                height:units.gu(3)
+                width:units.gu(3)
+                name:"go-up"
+                color: "white"
+                anchors.top:parent.top
+                anchors.horizontalCenter:parent.horizontalCenter
+            }
+            Label {
+                anchors.horizontalCenter:parent.horizontalCenter
+                verticalAlignment: Text.AlignVCenter
+                height:photoBottomEdge.height
+                text: photoBottomEdge.hint.text
+                color:"white"
+                fontSize: "x-large"
+            }
+        }
+
+        onCommitCompleted:  { bottomEdgeCommit(); photoBottomEdge.collapse(); }
     }
 }
