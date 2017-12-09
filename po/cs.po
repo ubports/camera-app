@@ -7,24 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
-"PO-Revision-Date: 2016-02-09 08:58+0000\n"
-"Last-Translator: Vojtěch Daněk <vdanek@outlook.com>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"PO-Revision-Date: 2017-10-02 12:58+0000\n"
+"Last-Translator: Milan Korecký <milan.korecky@gmail.com>\n"
+"Language-Team: Czech <https://translate.ubports.com/projects/ubports/camera-"
+"app/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
-msgstr ""
+msgid "Advanced Options"
+msgstr "Pokročilá nastavení"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Přidat datum na pořízené fotky"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -34,8 +36,8 @@ msgstr "Smazat média?"
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
+#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
 #: ../ViewFinderView.qml:489
 msgid "Cancel"
 msgstr "Zrušit"
@@ -58,7 +60,7 @@ msgstr "Upravit fotku"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Photo Roll"
-msgstr "Fotoaparát"
+msgstr "Fotografie"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -66,7 +68,7 @@ msgstr "Nedostatek paměti. Pro pokračování uvolněte místo."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "Táhněte doleva pro fotoaparát"
+msgstr "Přetáhněte doleva pro zobrazení fotografií"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
@@ -78,19 +80,19 @@ msgstr "Upravit"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Nelze sdílet"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Ve stejný okamžik nelze sdílet fotky a videa"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
+#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
@@ -100,7 +102,7 @@ msgstr "Zapnuto"
 #: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
 #: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
 #: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
+#: ../ViewFinderOverlay.qml:568
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
@@ -109,7 +111,7 @@ msgstr "Vypnuto"
 
 #: ../ViewFinderOverlay.qml:382
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatické"
 
 #: ../ViewFinderOverlay.qml:419
 msgid "HDR"
@@ -129,78 +131,85 @@ msgstr "Dobrá kvalita"
 
 #: ../ViewFinderOverlay.qml:483
 msgid "Normal Quality"
-msgstr "Normální kvalita"
+msgstr "Běžná kvalita"
 
 #: ../ViewFinderOverlay.qml:487
 msgid "Basic Quality"
 msgstr "Základní kvalita"
 
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ../ViewFinderOverlay.qml:520
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
+#: ../ViewFinderOverlay.qml:528
 msgid "Save to SD Card"
 msgstr "Uložit na SD kartu"
 
-#: ../ViewFinderOverlay.qml:532
+#: ../ViewFinderOverlay.qml:533
 msgid "Save internally"
-msgstr "Uložit interně"
-
-#: ../ViewFinderOverlay.qml:1048
-msgid "Low storage space"
-msgstr "Málo volného místa"
+msgstr "Uložit do vnitřní paměti"
 
 #: ../ViewFinderOverlay.qml:1049
+msgid "Low storage space"
+msgstr "Málo volné paměti"
+
+#: ../ViewFinderOverlay.qml:1050
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
-msgstr "Dochází vám volné místo. Pro bezproblémové pokračování uvolněte místo."
-
-#: ../ViewFinderOverlay.qml:1062
-msgid "External storage not writeable"
 msgstr ""
+"Dochází vám volné místo. Pro pokračování bez přerušení uvolněte nyní místo v "
+"paměti."
 
 #: ../ViewFinderOverlay.qml:1063
+msgid "External storage not writeable"
+msgstr "Externí úložiště není zapisovatelné"
+
+#: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Zdá se, že nelze zapisovat do externí úložné paměti. Vysunutí a zasunutí "
+"externí paměti může problém vyřešit, případně ji budete muset naformátovat."
 
-#: ../ViewFinderOverlay.qml:1101
+#: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
 msgstr "Fotoaparát není dostupný"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ../ViewFinderOverlay.qml:1103
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
-"Aplikace Fotoaparát nemá práva k využívání hardware nebo se objevil jiný "
-"problém.\n"
+"Aplikace Fotoaparát nemá práva k využívání hardware nebo se objevila jiná "
+"chyba.\n"
 "\n"
-"Pokud nevyřešení tento problém přidání práv, restartujte telefon."
+"Pokud tento problém nevyřeší přidání práv, restartujte telefon."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
 msgstr "Upravit práva"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Záznam se nezdařil"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Výměna externího média, jeho formátování nebo restartování zařízení může "
+"vyřešit problém."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Restartování zařízení může vyřešit problém."
 
 #: ../camera-app.qml:57
 msgid "Flash"
@@ -208,15 +217,15 @@ msgstr "Blesk"
 
 #: ../camera-app.qml:58
 msgid "Light;Dark"
-msgstr "Světlost;Tmavost"
+msgstr "Světlé;Tmavé"
 
 #: ../camera-app.qml:61
 msgid "Flip Camera"
-msgstr "Přepnout kameru"
+msgstr "Otočit fotoaparát"
 
 #: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "Přední kompozice;Zadní kompozice"
+msgstr "Přední;Zadní"
 
 #: ../camera-app.qml:65
 msgid "Shutter"
@@ -224,7 +233,7 @@ msgstr "Clona"
 
 #: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Vyfotit;Vyfotografovat;Nahrát"
+msgstr "Vyfotit;Momentka;Záznam"
 
 #: ../camera-app.qml:69
 msgid "Mode"
@@ -232,7 +241,7 @@ msgstr "Režim"
 
 #: ../camera-app.qml:70
 msgid "Stills;Video"
-msgstr "Obrázek;Video"
+msgstr "Fotografie;Video"
 
 #: ../camera-app.qml:74
 msgid "White Balance"
@@ -270,4 +279,4 @@ msgstr "Aplikace kamera"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Fotky;Videa;Zachyceno;Vyfoceno;Snapshot;Record"
+msgstr "Fotografie;Videa;Zachytit;Vyfotit;Momentka;Záznam"

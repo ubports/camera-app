@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-21 15:59+0000\n"
-"Last-Translator: Gabriele <gabrielemartelli@tiscali.it>\n"
-"Language-Team: Italian <https://ubpweblate.tnvcomp.com/projects/ubports"
+"PO-Revision-Date: 2017-09-28 07:35+0000\n"
+"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
+"Language-Team: Italian <https://translate.ubports.com/projects/ubports"
 "/camera-app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Opzioni avanzate"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr "Aggiungi la data sulle immagini scattate"
+msgstr "Aggiungi la data alle immagini scattate"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -48,7 +48,7 @@ msgstr "Nessun contenuto disponibile."
 
 #: ../GalleryView.qml:230
 msgid "Scanning for content..."
-msgstr "Ricerca contenuti..."
+msgstr "Ricerca contenuti in corso..."
 
 #: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
 msgid "Select"

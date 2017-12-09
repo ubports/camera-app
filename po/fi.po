@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-23 08:04+0000\n"
+"PO-Revision-Date: 2017-09-22 05:19+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://ubpweblate.tnvcomp.com/projects/ubports"
+"Language-Team: Finnish <https://translate.ubports.com/projects/ubports"
 "/camera-app/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -194,13 +194,15 @@ msgstr "Muokkaa oikeuksia"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Kuvan ottaminen epäonnistui"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Erillisen tallennustilan korvaaminen toisella vastaavalla, tai sen "
+"alustaminen, tai laitteen käynnistäminen uudelleen saattaa korjata ongelman."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."

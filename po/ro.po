@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-07-11 18:24+0000\n"
+"PO-Revision-Date: 2017-11-09 18:34+0000\n"
 "Last-Translator: Brînzariu Cristian <info@ebeton.ro>\n"
-"Language-Team: Romanian <https://ubpweblate.tnvcomp.com/projects/ubports/"
-"camera-app/ro/>\n"
+"Language-Team: Romanian <https://translate.ubports.com/projects/ubports"
+"/camera-app/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,15 +20,14 @@ msgstr ""
 "20)) ? 1 : 2;\n"
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opțiuni avansate"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Adaugă data pe imaginile capturate"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -54,7 +53,7 @@ msgstr "Se scanează pentru conținut..."
 
 #: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
 msgid "Select"
-msgstr "Selectați"
+msgstr "Selectează"
 
 #: ../GalleryViewHeader.qml:82
 msgid "Edit Photo"
@@ -75,7 +74,7 @@ msgstr "Glisați stânga pentru cadrele foto"
 
 #: ../PhotogridView.qml:41 ../SlideshowView.qml:50
 msgid "Share"
-msgstr "Partajare"
+msgstr "Partajează"
 
 #: ../SlideshowView.qml:69
 msgid "Edit"
@@ -83,15 +82,15 @@ msgstr "Editare"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Imposibil de partajat"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Nu este posibil să partajezi imagini și filme în același timp"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
@@ -167,7 +166,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
-msgstr ""
+msgstr "Nu se poate scrie în memoria externă"
 
 #: ../ViewFinderOverlay.qml:1064
 msgid ""
@@ -175,6 +174,9 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Se pare că nu se poate scrie pe dispozitivul tău de memorie externă. "
+"Încearcă să deconectezi dispozitivul iar apoi să îl conectezi din nou, sar "
+"putea să fie nevoie să formatezi dispozitivul."
 
 #: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
@@ -187,24 +189,31 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"Aplicația pentru cameră nu are permisiunea să acceseze camera hardware sau a "
+"intervenit o altă eroare.\n"
+"\n"
+"Dacă autorizarea aplicației nu rezolvă această problemă încearcă repornirea "
+"telefonului."
 
 #: ../ViewFinderOverlay.qml:1112
 msgid "Edit Permissions"
-msgstr ""
+msgstr "Modificare permisiuni"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "Capturarea a eșuat"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Înlocuirea dispozitivului extern, formatare sau repornirea dispozitivului s-"
+"ar putea să rezolve problema."
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Repornirea dispozitivului s-ar putea să rezolve problema."
 
 #: ../camera-app.qml:57
 msgid "Flash"

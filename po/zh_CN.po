@@ -8,10 +8,11 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2016-02-25 02:26+0000\n"
-"Last-Translator: Ian Li <Unknown>\n"
-"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2017-08-26 13:20+0000\n"
+"Last-Translator: Mutse Young <yyhoo2.young@gmail.com>\n"
+"Language-Team: Chinese (Simplified) "
+"<https://ubpweblate.tnvcomp.com/projects/ubports/camera-app/zh_Hans/>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,11 +22,11 @@ msgstr ""
 
 #: ../AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "高级选项"
 
 #: ../AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "在拍摄的图像中添加日期戳"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -79,15 +80,15 @@ msgstr "编辑"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "无法分享"
 
 #: ../UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "无法同时分享照片和视频"
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "确定"
 
 #: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
 #: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
@@ -161,14 +162,14 @@ msgstr "您的存储空间已告罄。为了能不中断操作，请即刻清理
 
 #: ../ViewFinderOverlay.qml:1063
 msgid "External storage not writeable"
-msgstr ""
+msgstr "外部存储不可写"
 
 #: ../ViewFinderOverlay.qml:1064
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
-msgstr ""
+msgstr "它似乎不可能写入外部存储介质。请尝试弹出并插入它可能会解决问题，或者可能需要格式化它。"
 
 #: ../ViewFinderOverlay.qml:1102
 msgid "Cannot access camera"
@@ -191,17 +192,17 @@ msgstr "编辑权限"
 
 #: ../ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "拍摄失败"
 
 #: ../ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
-msgstr ""
+msgstr "请更换外部媒体，并格式化它，或者重启设备可能会解决这个问题。"
 
 #: ../ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "重启设备可能会修复这个问题。"
 
 #: ../camera-app.qml:57
 msgid "Flash"
