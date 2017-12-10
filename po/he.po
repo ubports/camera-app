@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-08-23 13:39+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
+"PO-Revision-Date: 2017-12-10 10:38+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
-"Language-Team: Hebrew <https://ubpweblate.tnvcomp.com/projects/ubports"
-"/camera-app/he/>\n"
+"Language-Team: Hebrew <https://translate.ubports.com/projects/ubports/camera-"
+"app/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,152 +20,79 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr "אפשרויות מתקדמות"
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr "הוספת תאריך מודפס על התמונות שצולמו"
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "האם למחוק את המדיה?"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "מחיקה"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
-#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "ביטול"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "אין מדיה זמינה."
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "סורק אחר תוכן…"
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "בחירה"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "עריכת תמונה"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "סרט צילום"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "לא נשאר מקום במכשיר, אנא פנו קצת מקום על מנת להמשיך."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "האם למחוק את המדיה?"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "מחיקה"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "ביטול"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr "לכידה נכשלה"
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"החלפת המדיה החיצונית, פרמוט המדיה או אתחול המכשיר אולי יפתור את ה בעיה."
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr "אתחול המכשיר אולי יפתור את הבעיה."
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "החליקו שמאלה כדי לגשת לתמונות שצולמו"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "שיתוף"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "עריכה"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "לא ניתן לשתף"
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "לא ניתן לשתף תמונות ווידאו באותו הזמן"
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "אישור"
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "דלוק"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:568
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "מכובה"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "אוטומטי"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "5 שניות"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "15 שניות"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "איכות גבוהה"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "איכות רגילה"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "איכות בסיסית"
-
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:520
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:528
-msgid "Save to SD Card"
-msgstr "שמירה לאחסון חיצוני"
-
-#: ../ViewFinderOverlay.qml:533
-msgid "Save internally"
-msgstr "שמירה לאחסון פנימי"
-
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "מעט מקום אחסון"
 
-#: ../ViewFinderOverlay.qml:1050
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 "מקום האחסון הולך ונגמר. על מנת להמשיך ללא  הפרעות, אנא פנו מקום באחסון."
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr "אחסון חיצוני לא ניתן לכתיבה"
 
-#: ../ViewFinderOverlay.qml:1064
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -174,102 +101,167 @@ msgstr ""
 "נראה שלא ניתן לכתוב  לאחסון החיצוני. הוצאה והכנסה מחדש של המדיה אולי תפתור "
 "את הבעיה, או שאולי יש צורך לפרמט את המדיה החיצונית."
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "לא ניתן לגשת למצלמה"
 
-#: ../ViewFinderOverlay.qml:1103
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"לאפליקציית המצלמה אין גישה לחומרת המצלמה או שקרתה בעיה אחרת.\n"
+"\n"
+"אם  שינוי הרשאת גישה לחומרת המצלמה לא פתרה את הבעיה, אנא נסו להפעיל מחדש את "
+"המכשיר."
 
-#: ../ViewFinderOverlay.qml:1112
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "עריכת הרשאות"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr "לכידה נכשלה"
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "עריכה"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr "החלפת המדיה החיצונית, פרמוט המדיה או אתחול המכשיר אולי יפתור את ה בעיה."
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr "אתחול המכשיר אולי יפתור את הבעיה."
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "מבזק"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "בהיר;כהה"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "היפוך המצלמה"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "קדמית;אחורית"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "צמצם"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "צילום תמונה;צילום מסך;הקלטה"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "מצב"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "תמונה;וידאו"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "איזון צבע לבן"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "תנאי תאורה;יום;מעונן;בחוץ"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "לא ניתן לשתף"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "לא ניתן לשתף תמונות ווידאו באותו הזמן"
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "אישור"
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "לא נשאר מקום במכשיר, אנא פנו קצת מקום על מנת להמשיך."
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr "הורידו את הקוד"
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr "דווחו על בעיות"
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr "עיזרו לתרגם"
+
+#: Information.qml:71
+msgid "App Information"
+msgstr "אודות האפליקציה"
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> תמונות צולמו היום"
+msgid "Version %1"
+msgstr "גירסא %1"
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "לא צולמו תמונות היום"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr "אפשרויות מתקדמות"
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> סרטונים הוקלטו היום"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr "הוספת תאריך מודפס על התמונות שצולמו"
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "לא הוקלטו סרטונים היום"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "אין מדיה זמינה."
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "מצלמה"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "סורק אחר תוכן…"
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "יישום מצלמה"
+#~ msgid "On"
+#~ msgstr "דלוק"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+#~ msgid "Off"
+#~ msgstr "מכובה"
+
+#~ msgid "Auto"
+#~ msgstr "אוטומטי"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 שניות"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 שניות"
+
+#~ msgid "Fine Quality"
+#~ msgstr "איכות גבוהה"
+
+#~ msgid "Normal Quality"
+#~ msgstr "איכות רגילה"
+
+#~ msgid "Basic Quality"
+#~ msgstr "איכות בסיסית"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "שמירה לאחסון חיצוני"
+
+#~ msgid "Save internally"
+#~ msgstr "שמירה לאחסון פנימי"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "<b>%1</b> תמונות צולמו היום"
+
+#~ msgid "No photos taken today"
+#~ msgstr "לא צולמו תמונות היום"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "<b>%1</b> סרטונים הוקלטו היום"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "לא הוקלטו סרטונים היום"
+
+#~ msgid "Camera"
+#~ msgstr "מצלמה"
+
+#~ msgid "Camera application"
+#~ msgstr "יישום מצלמה"
