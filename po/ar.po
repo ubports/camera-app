@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 22:22+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2016-01-29 07:31+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -20,141 +20,67 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr ""
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr ""
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "حذف الملف؟"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "حذف"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
-#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "إلغاء"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "لا توجد وسائط متاحة."
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "يبحث عن محتوى..."
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "اختيار"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "تحرير الصورة"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "لف الصورة"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "لا توجد مساحة كافية في الجهاز، برجاء توفير بعض المساحة للمتابعة."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "حذف الملف؟"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "حذف"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr ""
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr ""
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "اسحب لليسار للف الصورة"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "مشاركة"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "تعديل"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr ""
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr ""
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "يعمل"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:568
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "متوقف"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "آلي"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "٥ ثواني"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "١٥ ثانية"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "جودة عالية"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "جودة عادية"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "جودة أساسية"
-
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:520
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:528
-msgid "Save to SD Card"
-msgstr "حفظ إلى بطاقة SD"
-
-#: ../ViewFinderOverlay.qml:533
-msgid "Save internally"
-msgstr "حفظ داخليا"
-
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "مساحة تخزين منخفضة"
 
-#: ../ViewFinderOverlay.qml:1050
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -162,22 +88,22 @@ msgstr ""
 "مساحة التخزين على وشك النفاذ. للمتابعة دون انقطاع، برجاء توفير بعض المساحة "
 "الآن."
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1064
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "لا يمكن الوصول للكاميرا"
 
-#: ../ViewFinderOverlay.qml:1103
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -189,90 +115,154 @@ msgstr ""
 "\n"
 "إذا تم منح الصلاحيات للتطبيق واستمرت المشكلة، برجاء إعادة تشغل الهاتف."
 
-#: ../ViewFinderOverlay.qml:1112
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "تعديل الأذونات"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr ""
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "تعديل"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr ""
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "الوميض"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "الإضاءة;الظلمة"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "قلب الكاميرا"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "المواجهة الأمامية;المواجهة الخلفية"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "إلتقاط"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "إلتقط صورة;سجل فيديو"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "الوضع"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "صور ثابتة;فيديو"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "موازنة اللون الأبيض"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "حالة الإضاءة;نهار;قاتم;في الداخل"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr ""
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr ""
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr ""
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "لا توجد مساحة كافية في الجهاز، برجاء توفير بعض المساحة للمتابعة."
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr ""
+
+#: Information.qml:71
+msgid "App Information"
+msgstr ""
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> صور(ة) التُقطت اليوم"
+msgid "Version %1"
+msgstr ""
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "لا صور تم إلتقاطها اليوم"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr ""
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> فيديو(هات) تم تسجيلها اليوم"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr ""
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "لا فيديوهات تم تسجيلها اليوم"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "لا توجد وسائط متاحة."
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "الكاميرا"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "يبحث عن محتوى..."
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "تطبيق الكاميرا"
+#~ msgid "On"
+#~ msgstr "يعمل"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "صور;فيديو;إلتقاط;التقاط;لقطة;تسجيل"
+#~ msgid "Off"
+#~ msgstr "متوقف"
+
+#~ msgid "Auto"
+#~ msgstr "آلي"
+
+#~ msgid "5 seconds"
+#~ msgstr "٥ ثواني"
+
+#~ msgid "15 seconds"
+#~ msgstr "١٥ ثانية"
+
+#~ msgid "Fine Quality"
+#~ msgstr "جودة عالية"
+
+#~ msgid "Normal Quality"
+#~ msgstr "جودة عادية"
+
+#~ msgid "Basic Quality"
+#~ msgstr "جودة أساسية"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "حفظ إلى بطاقة SD"
+
+#~ msgid "Save internally"
+#~ msgstr "حفظ داخليا"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "<b>%1</b> صور(ة) التُقطت اليوم"
+
+#~ msgid "No photos taken today"
+#~ msgstr "لا صور تم إلتقاطها اليوم"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "<b>%1</b> فيديو(هات) تم تسجيلها اليوم"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "لا فيديوهات تم تسجيلها اليوم"
+
+#~ msgid "Camera"
+#~ msgstr "الكاميرا"
+
+#~ msgid "Camera application"
+#~ msgstr "تطبيق الكاميرا"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr "صور;فيديو;إلتقاط;التقاط;لقطة;تسجيل"
