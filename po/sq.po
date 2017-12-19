@@ -1,71 +1,72 @@
-# Chinese (Simplified) translation for camera-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
-# This file is distributed under the same license as the camera-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Canonical Ltd.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2017-08-26 13:20+0000\n"
-"Last-Translator: Mutse Young <yyhoo2.young@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://ubpweblate.tnvcomp.com/projects/"
-"ubports/camera-app/zh_Hans/>\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2017-09-29 07:36+0000\n"
+"Last-Translator: Jeff <jeffi27@live.at>\n"
+"Language-Team: Albanian <https://translate.ubports.com/projects/ubports/"
+"camera-app/sq/>\n"
+"Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.15\n"
-"X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
-msgstr "选择"
+msgstr "Zgjidhë"
 
 #: GalleryViewHeader.qml:82
 msgid "Edit Photo"
-msgstr "编辑照片"
+msgstr "Redakto foton"
 
 #: GalleryViewHeader.qml:82
 msgid "Photo Roll"
-msgstr "相机胶卷"
+msgstr "Lista e fotove"
 
 #: DeleteDialog.qml:24
 msgid "Delete media?"
-msgstr "删除媒体文件？"
+msgstr "Fshijë mediat?"
 
 #: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
 msgid "Delete"
-msgstr "删除"
+msgstr "Fshijë"
 
 #: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
 #: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
 msgid "Cancel"
-msgstr "取消"
+msgstr "Anulo"
 
 #: ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr "拍摄失败"
+msgstr "Kapja dështoj"
 
 #: ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
-msgstr "请更换外部媒体，并格式化它，或者重启设备可能会解决这个问题。"
+msgstr ""
+"Zëvendësoni ose formatoni hapsirën e jashtme ose një lloj pajisjeje mund të "
+"zgjidhë problemin."
 
 #: ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr "重启设备可能会修复这个问题。"
+msgstr "Rinisja e pajisjes mund të zgjidhë problemin."
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "向左滑动切换到影集"
+msgstr "Rrëshqitni nga e majta tek lista e fotografive"
 
 #: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
-msgstr "分享"
+msgstr "Shpërndajë"
 
 #: ViewFinderOverlay.qml:420
 msgid "HDR"
@@ -78,17 +79,19 @@ msgstr "SD"
 
 #: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
-msgstr "存储空间紧张"
+msgstr "Hapsirë e pamjaftueshme"
 
 #: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
-msgstr "您的存储空间已告罄。为了能不中断操作，请即刻清理释放存储空间。"
+msgstr ""
+"Ju keni vetëm pak hapësirë të lirë. Ju lutemi të krijo hapësirën për të "
+"vazhduar pa ndërprerje."
 
 #: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
-msgstr "外部存储不可写"
+msgstr "Hapsira e jashtme nuk shkruhet"
 
 #: ViewFinderOverlay.qml:1068
 msgid ""
@@ -96,12 +99,13 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
-"它似乎不可能写入外部存储介质。请尝试弹出并插入它可能会解决问题，或者可能需要"
-"格式化它。"
+"Nuk duket e mundur që të shkruani në hapësiren tuaj të jashtme. Mundohuni të "
+"hiqni dhe ri-futur atë, kjo mund të zgjidhë problemin, ose ta riformulojë "
+"atë."
 
 #: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
-msgstr "无法访问相机"
+msgstr "Qasja në kamerë e pamundur"
 
 #: ViewFinderOverlay.qml:1107
 msgid ""
@@ -110,73 +114,75 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
-"相机应该没有存取相机硬件的权限或是发生了其他的错误。\n"
-"\n"
-"如果授予它访问权限未能解决这个问题，请重启你的手机。"
+"Aplikacioni i kamerës ose nuk ka të drejtat e kërkuara për qasje për të hyrë "
+"në kamera ose ndonjë gabim tjetër ka ndodhur.\n"
+"Nese të drejtat e qasjes nuk e zgjidhin problemin, rinisni telefonin."
 
 #: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
-msgstr "编辑权限"
+msgstr "Redakto të drejtat"
 
 #: SlideshowView.qml:69
 msgid "Edit"
-msgstr "编辑"
+msgstr "Ndrysho"
 
 #: camera-app.qml:57
 msgid "Flash"
-msgstr "闪光灯"
+msgstr "Vetëtima"
 
 #: camera-app.qml:58
 msgid "Light;Dark"
-msgstr "亮;暗"
+msgstr "Ndritëshëm;Errët"
 
 #: camera-app.qml:61
 msgid "Flip Camera"
-msgstr "切换摄像头"
+msgstr "Ano kameren"
 
 #: camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "前置镜头;后置镜头"
+msgstr "Përpara;Prapa"
 
 #: camera-app.qml:65
 msgid "Shutter"
-msgstr "快门"
+msgstr "Mbyllësi"
 
 #: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "拍一张照片;拍照;记录"
+msgstr "Merr foto;Foto e rastit;Ingjizim"
 
 #: camera-app.qml:69
 msgid "Mode"
-msgstr "模式"
+msgstr "Modaliteti"
 
 #: camera-app.qml:70
 msgid "Stills;Video"
-msgstr "静止;视频"
+msgstr "Foto;Video;Film"
 
 #: camera-app.qml:74
 msgid "White Balance"
-msgstr "白平衡"
+msgstr "Balanci i ndriçimit"
 
 #: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "光照条件;白天;多云;室内"
+msgstr "Ndriçimi;Ditë;I vrenjtur;Në shtëpi"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr "无法分享"
+msgstr "Shpërndarja e pamundur"
 
 #: UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr "无法同时分享照片和视频"
+msgstr "Nuk mund të ndahen në të njëjtën kohë fotot dhe videot"
 
 #: UnableShareDialog.qml:30
 msgid "Ok"
-msgstr "确定"
+msgstr "OK"
 
 #: NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr "设备上已无空间，请清理出剩余空间后继续。"
+msgstr ""
+"Nuk ka hapësirë të lirë në pajisje. Ju lutemi të krijoni hapësirën për të "
+"vazhduar."
 
 #: Information.qml:61
 msgid "Get the source"
@@ -201,67 +207,67 @@ msgstr ""
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr "高级选项"
+msgstr "Konfigurim i avancuar"
 
 #: AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr "在拍摄的图像中添加日期戳"
+msgstr "Fut vulën e datës në imazhin kapur"
 
 #: GalleryView.qml:195
 msgid "No media available."
-msgstr "没有可用的媒体文件。"
+msgstr "Ska media në disponim."
 
 #: GalleryView.qml:230
 msgid "Scanning for content..."
-msgstr "内容扫描中..."
+msgstr "Duke kërkuar për përmbajtje…"
 
 #~ msgid "On"
-#~ msgstr "开启"
+#~ msgstr "Aktiv"
 
 #~ msgid "Off"
-#~ msgstr "关闭"
+#~ msgstr "Fikur"
 
 #~ msgid "Auto"
-#~ msgstr "自动"
+#~ msgstr "Auto"
 
 #~ msgid "5 seconds"
-#~ msgstr "5 秒"
+#~ msgstr "5 sekonda"
 
 #~ msgid "15 seconds"
-#~ msgstr "15 秒"
+#~ msgstr "15 sekonda"
 
 #~ msgid "Fine Quality"
-#~ msgstr "高品质"
+#~ msgstr "Kualitet i lartë"
 
 #~ msgid "Normal Quality"
-#~ msgstr "普通品质"
+#~ msgstr "Kualitet normal"
 
 #~ msgid "Basic Quality"
-#~ msgstr "基本品质"
+#~ msgstr "Kualitet i thjeshtë"
 
 #~ msgid "Save to SD Card"
-#~ msgstr "保存到SD卡"
+#~ msgstr "Ruaj ne SD kartelë"
 
 #~ msgid "Save internally"
-#~ msgstr "保存到手机"
+#~ msgstr "Ruajë në hapsirën e brenshme"
 
 #~ msgid "<b>%1</b> photos taken today"
-#~ msgstr "今天拍了 <b>%1</b> 张照片"
+#~ msgstr "<b>%1</b> Foto nga sotë"
 
 #~ msgid "No photos taken today"
-#~ msgstr "今天没拍任何照片"
+#~ msgstr "Asnjë foto nga sotë"
 
 #~ msgid "<b>%1</b> videos recorded today"
-#~ msgstr "今天拍了 <b>%1</b> 个录像"
+#~ msgstr "<b>%1</b> videos nga sotë"
 
 #~ msgid "No videos recorded today"
-#~ msgstr "今天没拍任何录像"
+#~ msgstr "Asnjë video nga sotë"
 
 #~ msgid "Camera"
-#~ msgstr "相机"
+#~ msgstr "Kamera"
 
 #~ msgid "Camera application"
-#~ msgstr "相机应用程序"
+#~ msgstr "Aplikacioni i kamerës"
 
 #~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-#~ msgstr "照片；视频；拍照；连拍；快拍；录像"
+#~ msgstr "Fotografitë;videos;regjistrimi;rekord;Foto e rastit"

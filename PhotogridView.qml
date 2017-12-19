@@ -19,6 +19,7 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Thumbnailer 0.1
 import Ubuntu.Content 1.3
+import Qt.labs.settings 1.0
 import CameraApp 0.1
 import "MimeTypeMapper.js" as MimeTypeMapper
 
@@ -35,7 +36,7 @@ FocusScope {
     property bool inView
     property bool inSelectionMode
     property bool userSelectionMode: false
-    property var actions: userSelectionMode ? userSelectionActions : null
+    property var actions: userSelectionMode ? userSelectionActions : regularModeActions
     property list<Action> userSelectionActions: [
         Action {
             text: i18n.tr("Share")
@@ -63,6 +64,15 @@ FocusScope {
         }
     ]
 
+    property list<Action> regularModeActions: [
+            Action {
+                text: i18n.tr("Gallery")
+                objectName: "galleryLink"
+                iconName: "gallery-app-symbolic"
+                onTriggered: { Qt.openUrlExternally("appid://com.ubuntu.gallery/gallery/current-user-version") }
+            }
+    ]
+
     function selectionContainsMixedMedia() {
         var selection = model.selectedFiles;
         var lastType = model.get(selection[0], "fileType");
@@ -83,135 +93,175 @@ FocusScope {
     function exit() {
     }
 
-    ResponsiveGridView {
-        id: gridView
+    Settings {
+        id:galleryGridViewSettings
+        property var delegateWidth: gridView.baseDelegateWidth
+        property var delegateHeight: gridView.baseDelegateHeight
+        property real currentScale: 1
+    }
+
+    PinchArea {
+        id:galleryViewPinch
         anchors.fill: parent
-        // FIXME: prevent the header from overlapping the beginning of the grid
-        // when Qt 5.3 is landed, use property 'displayMarginBeginning' instead
-        // cf. http://qt-project.org/doc/qt-5/qml-qtquick-gridview.html#displayMarginBeginning-prop
-        header: Item {
-            width: gridView.width
-            height: headerHeight
+
+        property real currentScale: galleryGridViewSettings.currentScale
+        pinch.dragAxis: Pinch.NoDrag
+        pinch.minimumScale: 0.5
+        pinch.maximumScale: 1.5
+        //FIXME  This is a a workaround that remember the scale between pinches
+        pinch.target: Item {
+          width: galleryGridViewSettings.delegateWidth
+          height: galleryGridViewSettings.delegateHeight
+          scale:galleryGridViewSettings.currentScale
+          visible:false
         }
 
-        Component.onCompleted: {
-            // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
-            // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
-            var scaleFactor = units.gridUnit / 8;
-            maximumFlickVelocity = maximumFlickVelocity * scaleFactor;
-            flickDeceleration = flickDeceleration * scaleFactor;
+        onPinchUpdated: {
+            if( pinch.scale ) {
+                galleryGridViewSettings.currentScale = Math.min(2,Math.max(0.33,galleryViewPinch.pinch.target.scale))  ;
+                galleryGridViewSettings.delegateHeight = Math.floor(gridView.baseDelegateHeight * currentScale);
+                galleryGridViewSettings.delegateWidth =  Math.floor(gridView.baseDelegateWidth * currentScale);
+            }
         }
 
-        minimumHorizontalSpacing: units.dp(2)
-        maximumNumberOfColumns: 100
-        delegateWidth: units.gu(13)
-        delegateHeight: units.gu(13)
-
-        model: photogridView.model
-        delegate: Item {
-            id: cellDelegate
-            objectName: "mediaItem" + index
-            
-            width: gridView.cellWidth
-            height: gridView.cellHeight
-
-            property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
-
-            Image {
-                id: thumbnail
-                property real margin: units.dp(2)
-                anchors {
-                    top: parent.top
-                    topMargin: index < photogridView.columns ? 0 : margin/2
-                    bottom: parent.bottom
-                    bottomMargin: margin/2
-                    left: parent.left
-                    leftMargin: index % photogridView.columns == 0 ? 0 : margin/2
-                    right: parent.right
-                    rightMargin: index % photogridView.columns == photogridView.columns - 1 ? 0 : margin/2
-                }
-                
-                asynchronous: true
-                cache: false
-                // The thumbnailer does not seem to check when an image has been changed on disk,
-                // so we use this hack to force it to check and refresh if necessary.
-                source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() + "?at=" + Date.now() : ""
-                sourceSize {
-                    width: width
-                    height: height
-                }
-                fillMode: Image.PreserveAspectCrop
-                opacity: status == Image.Ready ? 1.0 : 0.0
-                Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
+        ResponsiveGridView {
+            id: gridView
+            anchors.fill: parent
+            // FIXME: prevent the header from overlapping the beginning of the grid
+            // when Qt 5.3 is landed, use property 'displayMarginBeginning' instead
+            // cf. http://qt-project.org/doc/qt-5/qml-qtquick-gridview.html#displayMarginBeginning-prop
+            header: Item {
+                width: gridView.width
+                height: headerHeight
             }
 
-            Icon {
-                width: units.gu(3)
-                height: units.gu(3)
-                anchors.centerIn: parent
-                name: "media-playback-start"
-                color: "white"
-                opacity: 0.8
-                visible: isVideo
-                asynchronous: true
+            property var baseDelegateWidth: units.gu(13)
+            property var baseDelegateHeight: units.gu(13)
+
+            Component.onCompleted: {
+                // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
+                // for Flickable.maximumFlickVelocity and Flickable.flickDeceleration
+                var scaleFactor = units.gridUnit / 8;
+                maximumFlickVelocity = maximumFlickVelocity * scaleFactor;
+                flickDeceleration = flickDeceleration * scaleFactor;
             }
 
-            Icon {
-                objectName: "thumbnailLoadingErrorIcon"
-                anchors.centerIn: parent
-                width: units.gu(6)
-                height: width
-                name: cellDelegate.isVideo ? "stock_video" : "stock_image"
-                color: "white"
-                opacity: thumbnail.status == Image.Error ? 1.0 : 0.0
-                asynchronous: true
-             }
+            minimumHorizontalSpacing: units.dp(2)
+            maximumNumberOfColumns: 100
+            delegateWidth: galleryGridViewSettings.delegateWidth
+            delegateHeight: galleryGridViewSettings.delegateHeight
+            StateSaver.properties:"delegateWidth,delegateHeight"
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: photogridView.photoClicked(index)
-                onPressAndHold: photogridView.photoPressAndHold(index)
-            }
+            model: photogridView.model
+            delegate: Item {
+                z:10
+                id: cellDelegate
+                objectName: "mediaItem" + index
 
-            Rectangle {
-                anchors {
-                    top: parent.top
-                    right: parent.right
-                    topMargin: units.gu(0.5)
-                    rightMargin: units.gu(0.5)
+                width: gridView.cellWidth
+                height: gridView.cellHeight
+
+                Behavior on height { UbuntuNumberAnimation {} }
+                Behavior on width { UbuntuNumberAnimation {} }
+
+                property bool isVideo: MimeTypeMapper.mimeTypeToContentType(fileType) === ContentType.Videos
+
+                Image {
+                    id: thumbnail
+                    property real margin: units.dp(2)
+                    anchors {
+                        top: parent.top
+                        topMargin: index < photogridView.columns ? 0 : margin/2
+                        bottom: parent.bottom
+                        bottomMargin: margin/2
+                        left: parent.left
+                        leftMargin: index % photogridView.columns == 0 ? 0 : margin/2
+                        right: parent.right
+                        rightMargin: index % photogridView.columns == photogridView.columns - 1 ? 0 : margin/2
+                    }
+
+                    asynchronous: true
+                    cache: true
+                    // The thumbnailer does not seem to check when an image has been changed on disk,
+                    // so we use this hack to force it to check and refresh if necessary.
+                    source: photogridView.inView ? "image://thumbnailer/" + fileURL.toString() + "?at=" + Date.now() : ""
+                    sourceSize {
+                        width: gridView.baseDelegateWidth
+                        height: gridView.baseDelegateHeight
+                    }
+                    fillMode: Image.PreserveAspectCrop
+                    opacity: status == Image.Ready ? 1.0 : 0.0
+                    Behavior on opacity { UbuntuNumberAnimation {duration: UbuntuAnimation.FastDuration} }
                 }
-                width: units.gu(4)
-                height: units.gu(4)
-                color: selected ? UbuntuColors.orange : UbuntuColors.coolGrey
-                radius: 10
-                opacity: selected ? 0.8 : 0.6
-                visible: inSelectionMode
 
                 Icon {
-                    objectName: "mediaItemCheckBox"
+                    width: units.gu(3)
+                    height: units.gu(3)
                     anchors.centerIn: parent
-                    width: parent.width * 0.8
-                    height: parent.height * 0.8
-                    name: "ok"
+                    name: "media-playback-start"
                     color: "white"
-                    visible: selected
+                    opacity: 0.8
+                    visible: isVideo
                     asynchronous: true
                 }
 
-            }
+                Icon {
+                    objectName: "thumbnailLoadingErrorIcon"
+                    anchors.centerIn: parent
+                    width: units.gu(6)
+                    height: width
+                    name: cellDelegate.isVideo ? "stock_video" : "stock_image"
+                    color: "white"
+                    opacity: thumbnail.status == Image.Error ? 1.0 : 0.0
+                    asynchronous: true
+                 }
 
-            MouseArea {
-                anchors {
-                    top: parent.top
-                    right: parent.right
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: photogridView.photoClicked(index)
+                    onPressAndHold: photogridView.photoPressAndHold(index)
                 }
-                width: parent.width * 0.5
-                height: parent.height * 0.5
-                enabled: inSelectionMode
- 
-                onClicked: {
-                    mouse.accepted = true;
-                    photogridView.photoSelectionAreaClicked(index)
+
+                Rectangle {
+                    anchors {
+                        top: parent.top
+                        right: parent.right
+                        topMargin: units.gu(0.5)
+                        rightMargin: units.gu(0.5)
+                    }
+                    width: units.gu(4)
+                    height: units.gu(4)
+                    color: selected ? UbuntuColors.orange : UbuntuColors.coolGrey
+                    radius: 10
+                    opacity: selected ? 0.8 : 0.6
+                    visible: inSelectionMode
+
+                    Icon {
+                        objectName: "mediaItemCheckBox"
+                        anchors.centerIn: parent
+                        width: parent.width * 0.8
+                        height: parent.height * 0.8
+                        name: "ok"
+                        color: "white"
+                        visible: selected
+                        asynchronous: true
+                    }
+
+                }
+
+                MouseArea {
+                    anchors {
+                        top: parent.top
+                        right: parent.right
+                    }
+                    width: parent.width * 0.5
+                    height: parent.height * 0.5
+                    enabled: inSelectionMode
+
+                    onClicked: {
+                        mouse.accepted = true;
+                        photogridView.photoSelectionAreaClicked(index)
+                    }
                 }
             }
         }
