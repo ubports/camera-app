@@ -41,7 +41,7 @@ bool PostProcessOperations::addDateStamp(const QString & path)
                   QImage image = QImage(path);
                   QDate now = QDate::currentDate();
                   QString currentDate = QString(now.toString(Qt::LocaleDate));
-                  int textPixelSize = ((image.width() / 3) / currentDate.length());
+                  int textPixelSize = ((std::min(image.width(),image.height()) / 3) / currentDate.length());
                   QFont font = QFont("Helvetica");
                   font.setPixelSize(textPixelSize);
                   QPainter* painter = new QPainter(&image);
