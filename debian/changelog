@@ -1,3 +1,10 @@
+
+camera-app (3.0.1+ubports) vivid; urgency=medium
+
+  * Imported to UBports
+
+ -- Florian Leeber <florian@ubports.com>  Thu, 28 Dec 2017 10:02:48 +0200
+
 camera-app (3.0.0+17.04.20161124.3-0ubuntu1) zesty; urgency=medium
 
   [ Florian Boucault, Renato Araujo Oliveira Filho ]
