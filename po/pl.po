@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2017-12-10 12:54+0000\n"
+"PO-Revision-Date: 2018-01-02 00:07+0000\n"
 "Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
 "app/pl/>\n"
@@ -207,7 +207,7 @@ msgstr "Wersja %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr "Zaawansowane opcje"
+msgstr "Opcje zaawansowane"
 
 #: AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
