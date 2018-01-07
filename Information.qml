@@ -102,7 +102,8 @@ Item {
             width: parent.width
             color: UbuntuColors.ash
             horizontalAlignment: Text.AlignHCenter
-            text: i18n.tr("Version %1").arg("3.0.0.748")
+            //TODO find a way to retirve the version from the manifest file
+            text: "";//i18n.tr("Version %1").arg("3.0.1.747")
         }
 
     }
