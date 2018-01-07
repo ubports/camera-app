@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2017-08-31 04:57+0000\n"
+"PO-Revision-Date: 2017-12-10 07:50+0000\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
-"Language-Team: Spanish <https://ubpweblate.tnvcomp.com/projects/ubports/"
-"camera-app/es/>\n"
+"Language-Team: Spanish <https://translate.ubports.com/projects/ubports"
+"/camera-app/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -188,24 +188,24 @@ msgstr ""
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "Obtener el código"
 
 #: Information.qml:62
 msgid "Report issues"
-msgstr ""
+msgstr "Informar de problemas"
 
 #: Information.qml:63
 msgid "Help translate"
-msgstr ""
+msgstr "Ayudar a traducir"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr ""
+msgstr "Información de la aplicación"
 
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr ""
+msgstr "Versión %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"

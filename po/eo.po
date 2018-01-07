@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 22:22+0000\n"
-"PO-Revision-Date: 2017-11-21 18:40+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
+"PO-Revision-Date: 2017-12-10 20:49+0000\n"
 "Last-Translator: Pablo Foche <pablo.foche@gmail.com>\n"
 "Language-Team: Esperanto <https://translate.ubports.com/projects/ubports"
 "/camera-app/eo/>\n"
@@ -20,141 +20,69 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr "Altnivelaj agordoj"
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr "Aldoni daton al la bildoj"
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "Ĉu forigi audovidaĵon?"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "Forigi"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1052
-#: ../ViewFinderOverlay.qml:1066 ../ViewFinderOverlay.qml:1105
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "Nuligi"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "Neniu aŭdovidaĵo disponebla."
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "Serĉante enhavon..."
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "Selekti"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "Redakti foton"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "Bobeno"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "Ne estas spaco en la aparato, liberigu iom da spaco por daŭrigi."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Ĉu forigi audovidaĵon?"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "Forigi"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "Nuligi"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr "Kapto malsukcesis"
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"Anstataŭigi vian eksteran memorilon, strukturi ĝin aŭ restartigi la aparaton "
+"povus solvi la problemon."
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr "Restartigi vian aparaton povus solvi la problemon."
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "Ŝovumu maldekstren por vidi la bobenon"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "Diskonigi"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "Redakti"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "Ne eblas diskonigi"
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "Ne eblas diskonigi fotojn kaj videojn samtempe"
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "Jes"
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:563
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "Ŝaltita"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:568
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "Malŝaltita"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "Aŭtomata"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "5 sekundoj"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "15 sekundoj"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "Alta kvalito"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "Normala kvalito"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "Baza kvalito"
-
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:520
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:528
-msgid "Save to SD Card"
-msgstr "Konservi en SD-Karto"
-
-#: ../ViewFinderOverlay.qml:533
-msgid "Save internally"
-msgstr "Konservi interne"
-
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "Malmulta disponebla spaco"
 
-#: ../ViewFinderOverlay.qml:1050
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -162,11 +90,11 @@ msgstr ""
 "La konservo-spaco elĉerpiĝas. Por daŭrigi sen interrompoj liberigu iom da "
 "spaco nun."
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr "La ekstera memorilo ne estas skribebla"
 
-#: ../ViewFinderOverlay.qml:1064
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -175,11 +103,11 @@ msgstr ""
 "Ne eblas skribi en via eksterna memorilo. Por eble solvi la problemon elĵetu "
 "kaj remetu ĝin, se tio ne funkcias eble vi devos strukturi ĝin."
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "Ne eblas aliri la kameraon"
 
-#: ../ViewFinderOverlay.qml:1103
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -191,92 +119,154 @@ msgstr ""
 "\n"
 "Se doni permeson ne solvas tiun problemon, restartigu vian telefonon."
 
-#: ../ViewFinderOverlay.qml:1112
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "Redakti permesojn"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr "Kapto malsukcesis"
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "Redakti"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-"Anstataŭigi vian eksteran memorilon, strukturi ĝin aŭ restartigi la aparaton "
-"povus solvi la problemon."
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr "Restartigi vian aparaton povus solvi la problemon."
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "Fulmolumo"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Luma;Malluma"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Inversigi la kameraon"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Antaŭ;Malantaŭ"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "Obturilo"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Fari foton;Kapti;Filmi"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "Reĝimo"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Foto;Video"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "Blanko-balanciĝo"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Lumigado;Tage;Nube;Ene"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "Ne eblas diskonigi"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "Ne eblas diskonigi fotojn kaj videojn samtempe"
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "Jes"
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Ne estas spaco en la aparato, liberigu iom da spaco por daŭrigi."
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr "Elŝuti la fonto-kodon"
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr "Sciigi problemojn"
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr "Helpi traduki"
+
+#: Information.qml:71
+msgid "App Information"
+msgstr "Informo pri la aplikaĵo"
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> fotoj faritaj hodiaŭ"
+msgid "Version %1"
+msgstr "Versio %1"
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "Neniu foto hodiaŭ"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr "Altnivelaj agordoj"
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> videoj filmitaj hodiaŭ"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr "Aldoni daton al la bildoj"
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "Neniu video filmita hodiaŭ"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "Neniu aŭdovidaĵo disponebla."
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "Kamerao"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "Serĉante enhavon..."
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "Kamerao-aplikaĵo"
+#~ msgid "On"
+#~ msgstr "Ŝaltita"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Fotoj;Videoj;Akiro;Fotado;Ekrankopio;Surbendigo"
+#~ msgid "Off"
+#~ msgstr "Malŝaltita"
+
+#~ msgid "Auto"
+#~ msgstr "Aŭtomata"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 sekundoj"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 sekundoj"
+
+#~ msgid "Fine Quality"
+#~ msgstr "Alta kvalito"
+
+#~ msgid "Normal Quality"
+#~ msgstr "Normala kvalito"
+
+#~ msgid "Basic Quality"
+#~ msgstr "Baza kvalito"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "Konservi en SD-Karto"
+
+#~ msgid "Save internally"
+#~ msgstr "Konservi interne"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "<b>%1</b> fotoj faritaj hodiaŭ"
+
+#~ msgid "No photos taken today"
+#~ msgstr "Neniu foto hodiaŭ"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "<b>%1</b> videoj filmitaj hodiaŭ"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "Neniu video filmita hodiaŭ"
+
+#~ msgid "Camera"
+#~ msgstr "Kamerao"
+
+#~ msgid "Camera application"
+#~ msgstr "Kamerao-aplikaĵo"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr "Fotoj;Videoj;Akiro;Fotado;Ekrankopio;Surbendigo"
