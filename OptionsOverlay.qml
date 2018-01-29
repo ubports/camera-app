@@ -163,32 +163,6 @@ Item {
         }
     }
 
-    OptionValueButton {
-        id:advancedOptionsToggle
-        z:1
-        anchors.right: optionsOverlay.right
-        anchors.bottom: optionsOverlay.bottom
-        iconName:  "settings"
-        isLast: true
-        onClicked: {
-            selected = !selected;
-            infoPageToggle.selected = false;
-        }
-    }
-
-    OptionValueButton {
-        id:infoPageToggle
-        z:1
-        anchors.left: optionsOverlay.left
-        anchors.bottom: optionsOverlay.bottom
-        iconName:  "info"
-        isLast: true
-        onClicked: {
-            selected = !selected
-            advancedOptionsToggle.selected = false;
-        }
-    }
-
     AdvancedOptions {
         id:advancedOptions
         anchors.top :optionsGrid.bottom

@@ -655,6 +655,37 @@ Item {
                 }
             }
         }
+
+        OptionValueButton {
+            id:advancedOptionsToggle
+            z:1
+            anchors.right: parent.right
+            anchors.top: parent.top
+            visible:bottomEdge.opened
+            iconName:  "settings"
+            isLast: true
+            onClicked: {
+                selected = !selected;
+                infoPageToggle.selected = false;
+                bottomEdge.open()
+            }
+        }
+
+
+        OptionValueButton {
+            id:infoPageToggle
+            z:1
+            anchors.right: advancedOptionsToggle.left
+            anchors.top: parent.top
+            visible:bottomEdge.opened
+            iconName:  "info"
+            isLast: true
+            onClicked: {
+                selected = !selected
+                advancedOptionsToggle.selected = false;
+                bottomEdge.open()
+            }
+        }
     }
 
     OrientationSensor {
