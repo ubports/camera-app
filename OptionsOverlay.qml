@@ -31,15 +31,14 @@ Item {
     }
 
     height: optionsGrid.height + optionsGrid.rowSpacing
-            + (infoPage.visible ? infoPage.height : 0)
-            + (advancedOptions.visible ? advancedOptions.height : 0)
+            + (infoPage.visible || advancedOptions.visible ? optionValueSelector.screenHeight - units.gu(5) : 0)
 
     Grid {
         id: optionsGrid
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
-
+        visible: !(infoPage.visible || advancedOptions.visible )
         columns: 3
         columnSpacing: units.gu(9.5)
         rowSpacing: units.gu(3)
