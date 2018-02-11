@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2016-01-29 07:31+0000\n"
-"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2018-02-01 13:36+0000\n"
+"Last-Translator: ubports_arabic <ubportsarabic@gmail.com>\n"
+"Language-Team: Arabic <https://translate.ubports.com/projects/ubports/camera-"
+"app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
-msgstr "اختيار"
+msgstr "تحديد"
 
 #: GalleryViewHeader.qml:82
 msgid "Edit Photo"
@@ -43,21 +44,23 @@ msgstr "حذف"
 #: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
 #: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
 msgid "Cancel"
-msgstr "إلغاء"
+msgstr "ألغاء"
 
 #: ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "أخفق الالتقاط"
 
 #: ViewFinderView.qml:485
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"قد يؤدي استبدال الوسائط الخارجية أو تنسيقها أو إعادة تشغيل الجهاز إلى حل "
+"المشكلة."
 
 #: ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "قد تؤدي إعادة تشغيل الجهاز إلى حل المشكلة."
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -90,7 +93,7 @@ msgstr ""
 
 #: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
-msgstr ""
+msgstr "التخزين الخارجي غير قابل للكتابة"
 
 #: ViewFinderOverlay.qml:1068
 msgid ""
@@ -98,6 +101,8 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"لا يبدو من الممكن الكتابة إلى وسائط التخزين الخارجية. قد يؤدي محاولة إخراجه "
+"وإضافته مرة أخرى إلى حل المشكلة، أو قد تحتاج إلى تنسيقه."
 
 #: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
@@ -121,7 +126,7 @@ msgstr "تعديل الأذونات"
 
 #: SlideshowView.qml:69
 msgid "Edit"
-msgstr "تعديل"
+msgstr "تحرير"
 
 #: camera-app.qml:57
 msgid "Flash"
@@ -165,15 +170,15 @@ msgstr "حالة الإضاءة;نهار;قاتم;في الداخل"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "تعذر المشاركة"
 
 #: UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "يتعذر مشاركة الصور ومقاطع الفيديو في الوقت نفسه"
 
 #: UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "تمام"
 
 #: NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -181,32 +186,32 @@ msgstr "لا توجد مساحة كافية في الجهاز، برجاء تو�
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "الحصول على المصدر"
 
 #: Information.qml:62
 msgid "Report issues"
-msgstr ""
+msgstr "الإبلاغ عن المشكلات"
 
 #: Information.qml:63
 msgid "Help translate"
-msgstr ""
+msgstr "مساعدة الترجمة"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr ""
+msgstr "معلومات التطبيق"
 
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr ""
+msgstr "النسخة 1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "خيارات متقدمة"
 
 #: AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "إضافة ختم التاريخ على الصور الملتقطة"
 
 #: GalleryView.qml:195
 msgid "No media available."
