@@ -67,7 +67,9 @@ Item {
         boundsBehavior: Flickable.DragAndOvershootBounds
 
         property OptionButton caller
-        property int screenHeight: (Screen.orientation == Screen.primaryOrientation ? Screen.height : Screen.width)
+        property int screenHeight: ( (Screen.orientation == Qt.PortraitOrientation || Screen.orientation == Qt.InvertedPortraitOrientation)
+                                            ? Screen.height
+                                            : Screen.width)
 
         function toggle(model, callerButton) {
             if (optionValueSelectorVisible && optionValueSelector.model === model) {
