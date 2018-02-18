@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2014-09-18 09:30+0000\n"
 "Last-Translator: Mitsuya Shibata <mty.shibata@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -18,161 +18,88 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 "X-Generator: Launchpad (build 18282)\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
-msgstr ""
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr ""
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "データを削除しますか？"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "削除"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "利用可能なメディアがありません。"
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr ""
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr ""
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr ""
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "フォトロール"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "データを削除しますか？"
+
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "削除"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
 msgstr ""
 
-#: ../PhotoRollHint.qml:69
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr ""
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr ""
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "共有"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr ""
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr ""
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr ""
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "オン"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "オフ"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "自動"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:527
-msgid "Save to SD Card"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:532
-msgid "Save internally"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:1048
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1062
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1101
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -180,92 +107,135 @@ msgid ""
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1111
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr ""
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
+#: SlideshowView.qml:69
+msgid "Edit"
 msgstr ""
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr ""
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "フラッシュ"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Light;Dark;明るく;暗く"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "カメラを反転"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Front Facing;Back Facing;前面カメラ;背面カメラ"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "シャッター"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Take a Photo;Snap;Record;写真;撮影;録画"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "モード"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Still;Video;写真;動画"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "ホワイトバランス"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Lighting Condition;Day;Cloudy;Inside;照明状態;晴天;くもり;室内"
 
-#: ../camera-app.qml:379
-#, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "本日は<b>%1</b>枚の写真を撮影しました"
-
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "本日は何も撮影していません"
-
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "本日は<b>%1</b>件の動画を撮影しました"
-
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "本日は何も録画していません"
-
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "カメラ"
-
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "カメラアプリ"
-
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
 msgstr ""
-"Photos;Videos;Capture;Shoot;Snapshot;Record;写真;ビデオ;キャプチャ;撮影;ス"
-"ナップショット;録画"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr ""
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr ""
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr ""
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr ""
+
+#: Information.qml:71
+msgid "App Information"
+msgstr ""
+
+#: Information.qml:105
+#, qt-format
+msgid "Version %1"
+msgstr ""
+
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr ""
+
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr ""
+
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "利用可能なメディアがありません。"
+
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr ""
+
+#~ msgid "On"
+#~ msgstr "オン"
+
+#~ msgid "Off"
+#~ msgstr "オフ"
+
+#~ msgid "Auto"
+#~ msgstr "自動"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "本日は<b>%1</b>枚の写真を撮影しました"
+
+#~ msgid "No photos taken today"
+#~ msgstr "本日は何も撮影していません"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "本日は<b>%1</b>件の動画を撮影しました"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "本日は何も録画していません"
+
+#~ msgid "Camera"
+#~ msgstr "カメラ"
+
+#~ msgid "Camera application"
+#~ msgstr "カメラアプリ"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr ""
+#~ "Photos;Videos;Capture;Shoot;Snapshot;Record;写真;ビデオ;キャプチャ;撮影;ス"
+#~ "ナップショット;録画"

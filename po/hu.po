@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 13:00+0000\n"
+"POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2016-01-18 18:20+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -18,140 +18,67 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 "X-Generator: Launchpad (build 18282)\n"
 
-#: ../AdvancedOptions.qml:29
-msgid "Advnaced Options"
-msgstr ""
-
-#: ../AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr ""
-
-#: ../DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "Média törlése?"
-
-#: ../DeleteDialog.qml:34 ../PhotogridView.qml:55 ../SlideshowView.qml:58
-msgid "Delete"
-msgstr "Törlés"
-
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1051
-#: ../ViewFinderOverlay.qml:1065 ../ViewFinderOverlay.qml:1104
-#: ../ViewFinderView.qml:489
-msgid "Cancel"
-msgstr "Mégse"
-
-#: ../GalleryView.qml:195
-msgid "No media available."
-msgstr "Nincs elérhető médiatartalom."
-
-#: ../GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "Tartalom keresése…"
-
-#: ../GalleryViewHeader.qml:81 ../SlideshowView.qml:42
+#: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
 msgstr "Kijelölés"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Edit Photo"
 msgstr "Szerkesztés"
 
-#: ../GalleryViewHeader.qml:82
+#: GalleryViewHeader.qml:82
 msgid "Photo Roll"
 msgstr "Fényképtekercs"
 
-#: ../NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "Nincs elég hely az eszközön, szabadítson fel helyet a folytatáshoz."
+#: DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Média törlése?"
 
-#: ../PhotoRollHint.qml:69
+#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+msgid "Delete"
+msgstr "Törlés"
+
+#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
+#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+msgid "Cancel"
+msgstr "Mégse"
+
+#: ViewFinderView.qml:480
+msgid "Capture failed"
+msgstr ""
+
+#: ViewFinderView.qml:485
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+
+#: ViewFinderView.qml:486
+msgid "Restarting your device might fix the problem."
+msgstr ""
+
+#: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "Csúsztasson balra a képek eléréshez"
 
-#: ../PhotogridView.qml:41 ../SlideshowView.qml:50
+#: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
 msgstr "Megosztás"
 
-#: ../SlideshowView.qml:69
-msgid "Edit"
-msgstr "Szerkesztés"
-
-#: ../UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr ""
-
-#: ../UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr ""
-
-#: ../UnableShareDialog.qml:30
-msgid "Ok"
-msgstr ""
-
-#: ../ViewFinderOverlay.qml:354 ../ViewFinderOverlay.qml:377
-#: ../ViewFinderOverlay.qml:405 ../ViewFinderOverlay.qml:428
-#: ../ViewFinderOverlay.qml:505 ../ViewFinderOverlay.qml:562
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
-msgid "On"
-msgstr "Be"
-
-#: ../ViewFinderOverlay.qml:359 ../ViewFinderOverlay.qml:387
-#: ../ViewFinderOverlay.qml:410 ../ViewFinderOverlay.qml:433
-#: ../ViewFinderOverlay.qml:452 ../ViewFinderOverlay.qml:510
-#: ../ViewFinderOverlay.qml:567
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
-#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
-msgid "Off"
-msgstr "Ki"
-
-#: ../ViewFinderOverlay.qml:382
-msgid "Auto"
-msgstr "Automatikus"
-
-#: ../ViewFinderOverlay.qml:419
+#: ViewFinderOverlay.qml:420
 msgid "HDR"
 msgstr "HDR"
 
-#: ../ViewFinderOverlay.qml:457
-msgid "5 seconds"
-msgstr "5 másodperc"
-
-#: ../ViewFinderOverlay.qml:462
-msgid "15 seconds"
-msgstr "15 másodperc"
-
-#: ../ViewFinderOverlay.qml:479
-msgid "Fine Quality"
-msgstr "Kiváló minőség"
-
-#: ../ViewFinderOverlay.qml:483
-msgid "Normal Quality"
-msgstr "Normál minőség"
-
-#: ../ViewFinderOverlay.qml:487
-msgid "Basic Quality"
-msgstr "Alap minőség"
-
-#: ../ViewFinderOverlay.qml:519
+#. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
+#: ViewFinderOverlay.qml:524
 msgid "SD"
 msgstr "SD"
 
-#: ../ViewFinderOverlay.qml:527
-msgid "Save to SD Card"
-msgstr "Mentés az SD kártyára"
-
-#: ../ViewFinderOverlay.qml:532
-msgid "Save internally"
-msgstr "Mentés a belső tárhelyre"
-
-#: ../ViewFinderOverlay.qml:1048
+#: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
 msgstr "Kevés a szabad hely"
 
-#: ../ViewFinderOverlay.qml:1049
+#: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -159,22 +86,22 @@ msgstr ""
 "Nemsokára elfogy a szabad hely. Azt ajánljuk, hogy a zökkenőmentes használat "
 "érdekében szabadítson fel valamennyit."
 
-#: ../ViewFinderOverlay.qml:1062
+#: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1063
+#: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1101
+#: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
 msgstr "Nem sikerül elérni a kamerát"
 
-#: ../ViewFinderOverlay.qml:1102
+#: ViewFinderOverlay.qml:1107
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -187,90 +114,154 @@ msgstr ""
 "Ha a jogosultság megadása nem oldja meg a problémát, próbálja újraindítani a "
 "telefonját."
 
-#: ../ViewFinderOverlay.qml:1111
+#: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
 msgstr "Jogosultságok szerkesztése"
 
-#: ../ViewFinderView.qml:480
-msgid "Capture failed"
-msgstr ""
+#: SlideshowView.qml:69
+msgid "Edit"
+msgstr "Szerkesztés"
 
-#: ../ViewFinderView.qml:485
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-
-#: ../ViewFinderView.qml:486
-msgid "Restarting your device might fix the problem."
-msgstr ""
-
-#: ../camera-app.qml:57
+#: camera-app.qml:57
 msgid "Flash"
 msgstr "Vaku"
 
-#: ../camera-app.qml:58
+#: camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Világos;Sötét"
 
-#: ../camera-app.qml:61
+#: camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Kamera váltása"
 
-#: ../camera-app.qml:62
+#: camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Előre néző;Hátra néző"
 
-#: ../camera-app.qml:65
+#: camera-app.qml:65
 msgid "Shutter"
 msgstr "Rekesz"
 
-#: ../camera-app.qml:66
+#: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Fotó készítése;Kattintás;Felvétel"
 
-#: ../camera-app.qml:69
+#: camera-app.qml:69
 msgid "Mode"
 msgstr "Mód"
 
-#: ../camera-app.qml:70
+#: camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Állóképek;Videó"
 
-#: ../camera-app.qml:74
+#: camera-app.qml:74
 msgid "White Balance"
 msgstr "Fehéregyensúly"
 
-#: ../camera-app.qml:75
+#: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Fényviszonyok;Napos;Felhős;Belső tér"
 
-#: ../camera-app.qml:379
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr ""
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr ""
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr ""
+
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Nincs elég hely az eszközön, szabadítson fel helyet a folytatáshoz."
+
+#: Information.qml:61
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:62
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:63
+msgid "Help translate"
+msgstr ""
+
+#: Information.qml:71
+msgid "App Information"
+msgstr ""
+
+#: Information.qml:105
 #, qt-format
-msgid "<b>%1</b> photos taken today"
-msgstr "<b>%1</b> fénykép készült ma"
+msgid "Version %1"
+msgstr ""
 
-#: ../camera-app.qml:380
-msgid "No photos taken today"
-msgstr "Ma nem készült fénykép"
+#: AdvancedOptions.qml:29
+msgid "Advanced Options"
+msgstr ""
 
-#: ../camera-app.qml:390
-#, qt-format
-msgid "<b>%1</b> videos recorded today"
-msgstr "<b>%1</b> videó lett rögzítve ma"
+#: AdvancedOptions.qml:36
+msgid "Add date stamp on captured images"
+msgstr ""
 
-#: ../camera-app.qml:391
-msgid "No videos recorded today"
-msgstr "Ma nem lett videó rögzítve"
+#: GalleryView.qml:195
+msgid "No media available."
+msgstr "Nincs elérhető médiatartalom."
 
-#: camera-app.desktop.in.in.h:1
-msgid "Camera"
-msgstr "Kamera"
+#: GalleryView.qml:230
+msgid "Scanning for content..."
+msgstr "Tartalom keresése…"
 
-#: camera-app.desktop.in.in.h:2
-msgid "Camera application"
-msgstr "Kamera alkalmazás"
+#~ msgid "On"
+#~ msgstr "Be"
 
-#: camera-app.desktop.in.in.h:3
-msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Fótok;Videók;Fotózás,Fényképezés;Felvétel"
+#~ msgid "Off"
+#~ msgstr "Ki"
+
+#~ msgid "Auto"
+#~ msgstr "Automatikus"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 másodperc"
+
+#~ msgid "15 seconds"
+#~ msgstr "15 másodperc"
+
+#~ msgid "Fine Quality"
+#~ msgstr "Kiváló minőség"
+
+#~ msgid "Normal Quality"
+#~ msgstr "Normál minőség"
+
+#~ msgid "Basic Quality"
+#~ msgstr "Alap minőség"
+
+#~ msgid "Save to SD Card"
+#~ msgstr "Mentés az SD kártyára"
+
+#~ msgid "Save internally"
+#~ msgstr "Mentés a belső tárhelyre"
+
+#~ msgid "<b>%1</b> photos taken today"
+#~ msgstr "<b>%1</b> fénykép készült ma"
+
+#~ msgid "No photos taken today"
+#~ msgstr "Ma nem készült fénykép"
+
+#~ msgid "<b>%1</b> videos recorded today"
+#~ msgstr "<b>%1</b> videó lett rögzítve ma"
+
+#~ msgid "No videos recorded today"
+#~ msgstr "Ma nem lett videó rögzítve"
+
+#~ msgid "Camera"
+#~ msgstr "Kamera"
+
+#~ msgid "Camera application"
+#~ msgstr "Kamera alkalmazás"
+
+#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+#~ msgstr "Fótok;Videók;Fotózás,Fényképezés;Felvétel"
