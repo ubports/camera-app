@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2015-03-01 11:22+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-02-23 03:34+0000\n"
+"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"Language-Team: Chinese (Traditional) "
+"<https://translate.ubports.com/projects/ubports/camera-app/zh_Hant/>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
@@ -45,7 +47,7 @@ msgstr "取消"
 
 #: ViewFinderView.qml:480
 msgid "Capture failed"
-msgstr ""
+msgstr "拍攝失敗"
 
 #: ViewFinderView.qml:485
 msgid ""
@@ -173,24 +175,24 @@ msgstr "裝置空間不足，請釋放空間以便繼續。"
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "取得原始碼"
 
 #: Information.qml:62
 msgid "Report issues"
-msgstr ""
+msgstr "回報問題"
 
 #: Information.qml:63
 msgid "Help translate"
-msgstr ""
+msgstr "協助翻譯"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr ""
+msgstr "應用程式資訊"
 
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr ""
+msgstr "版本 %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
