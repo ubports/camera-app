@@ -64,6 +64,6 @@ inline QString sourceQml() {
     if (isClick()) {
         return QDir::currentPath() + "/" + qmlFile;
     } else {
-        return qmlFile;
+        return cameraAppDirectory() + "/" + qmlFile;
     }
 }
