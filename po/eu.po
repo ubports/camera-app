@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2015-07-13 23:40+0000\n"
-"Last-Translator: Ibai Oihanguren Sala <Unknown>\n"
-"Language-Team: Basque <eu@li.org>\n"
+"PO-Revision-Date: 2018-03-11 18:59+0000\n"
+"Last-Translator: Aitzol Berasategi <aitzol76@gmail.com>\n"
+"Language-Team: Basque <https://translate.ubports.com/projects/ubports/camera-"
+"app/eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: GalleryViewHeader.qml:81 SlideshowView.qml:42
 msgid "Select"
@@ -159,15 +161,15 @@ msgstr "Argiztapenaren egoera;Egunez;Lainotuta;Barruan"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "Ezinezkoa partekatzea"
 
 #: UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "Ezinezkoa argazkiak eta bideoak aldi berean partekatzea"
 
 #: UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "Ados"
 
 #: NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -175,24 +177,24 @@ msgstr "Ez dago lekurik gailuan, egin lekua jarraitzeko."
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "Kode iturrira jo"
 
 #: Information.qml:62
 msgid "Report issues"
-msgstr ""
+msgstr "Arazoen berri eman"
 
 #: Information.qml:63
 msgid "Help translate"
-msgstr ""
+msgstr "Itzultzen lagundu"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr ""
+msgstr "Aplikazioaren informazioa"
 
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr ""
+msgstr "%1 Bertsioa"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
