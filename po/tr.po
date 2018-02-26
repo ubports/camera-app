@@ -200,7 +200,7 @@ msgstr "Uygulama Bilgileri"
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr "Versiyon %1"
+msgstr "Sürüm %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
