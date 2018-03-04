@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-02-23 03:34+0000\n"
+"PO-Revision-Date: 2018-03-02 08:45+0000\n"
 "Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
 "Language-Team: Chinese (Traditional) "
 "<https://translate.ubports.com/projects/ubports/camera-app/zh_Hant/>\n"
@@ -53,11 +53,11 @@ msgstr "拍攝失敗"
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
-msgstr ""
+msgstr "更換您的外部儲存媒體，將其格式化或重新啟動裝置可能可以解決此問題。"
 
 #: ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "重啟您的裝置可能可以解決此問題。"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -159,15 +159,15 @@ msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
-msgstr ""
+msgstr "無法分享"
 
 #: UnableShareDialog.qml:26
 msgid "Unable to share photos and videos at the same time"
-msgstr ""
+msgstr "無法同時分享相片與影片"
 
 #: UnableShareDialog.qml:30
 msgid "Ok"
-msgstr ""
+msgstr "確定"
 
 #: NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
