@@ -1106,7 +1106,7 @@ Item {
              id: noPermissionsDialog
              objectName: "noPermissionsDialog"
              title: i18n.tr("Cannot access camera")
-             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your phone.")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your device.")
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: {
