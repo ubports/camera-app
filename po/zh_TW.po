@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-03-02 08:45+0000\n"
+"PO-Revision-Date: 2018-03-06 07:56+0000\n"
 "Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
 "Language-Team: Chinese (Traditional) "
 "<https://translate.ubports.com/projects/ubports/camera-app/zh_Hant/>\n"
@@ -78,28 +78,28 @@ msgstr "SD"
 
 #: ViewFinderOverlay.qml:1053
 msgid "Low storage space"
-msgstr "可用儲存空間低落"
+msgstr "可用儲存空間過少"
 
 #: ViewFinderOverlay.qml:1054
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
-msgstr "您的儲存空間正逐漸耗盡。若要繼續使用不受干擾，請立刻釋放些空間。"
+msgstr "您的儲存空間正逐漸耗盡。若要繼續使用而不被中斷，請立刻釋放一些儲存空間。"
 
 #: ViewFinderOverlay.qml:1067
 msgid "External storage not writeable"
-msgstr ""
+msgstr "外部儲存裝置為不可寫入狀態"
 
 #: ViewFinderOverlay.qml:1068
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
-msgstr ""
+msgstr "無法寫入您的外部儲存裝置。請嘗試將其退出並重新插入來修正這個問題，或者您可能需要將其格式化。"
 
 #: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
-msgstr ""
+msgstr "無法存許相機"
 
 #: ViewFinderOverlay.qml:1107
 msgid ""
@@ -108,10 +108,13 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"相機應用程式沒有存許相機硬體的權限或是發生了其他的錯誤。\n"
+"\n"
+"如果在授予其權限後仍無法解決此問題，請重新啟動您的裝置。"
 
 #: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
-msgstr ""
+msgstr "編輯權限"
 
 #: SlideshowView.qml:69
 msgid "Edit"
@@ -127,11 +130,11 @@ msgstr "Light;Dark;亮;暗"
 
 #: camera-app.qml:61
 msgid "Flip Camera"
-msgstr "交換相機"
+msgstr "切換相機鏡頭"
 
 #: camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "前面;背面"
+msgstr "Front Facing;Back Facing;前鏡頭;後鏡頭"
 
 #: camera-app.qml:65
 msgid "Shutter"
@@ -139,7 +142,7 @@ msgstr "快門"
 
 #: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Take a Photo;Snap;Record;照相;快照;錄影"
+msgstr "Take a Photo;Snap;Record;照相;拍照;快照;錄影"
 
 #: camera-app.qml:69
 msgid "Mode"
@@ -147,7 +150,7 @@ msgstr "模式"
 
 #: camera-app.qml:70
 msgid "Stills;Video"
-msgstr "靜止圖像;影片"
+msgstr "Stills;Video;照片;相片;影片"
 
 #: camera-app.qml:74
 msgid "White Balance"
@@ -196,11 +199,11 @@ msgstr "版本 %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "進階選項"
 
 #: AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "在拍攝的影像中加上日期戳記"
 
 #: GalleryView.qml:195
 msgid "No media available."
