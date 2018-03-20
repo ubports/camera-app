@@ -82,7 +82,7 @@ Item {
     }
 
     Binding {
-        target: camera.imageCapture.resolution
+        target: camera.advanced
         property: "encodingQuality"
         value: settings.encodingQuality
     }
@@ -480,6 +480,11 @@ Item {
                         icon: ""
                         label: QT_TR_NOOP("Fine Quality")
                         value: 4 // QMultimedia.VeryHighQuality
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("High Quality")
+                        value: 3 // QMultimedia.HighQuality
                     }
                     ListElement {
                         icon: ""
