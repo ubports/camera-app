@@ -55,6 +55,10 @@ Item {
         property bool playShutterSound: true
         property var photoResolutions
         property bool dateStampImages: false
+        property string dateStampFormat: Qt.locale().dateFormat(Locale.ShortFormat)
+        property color dateStampColor: UbuntuColors.orange;
+        property real dateStampOpacity: 1.0;
+        property int dateStampAlign :  Qt.AlignBottom | Qt.AlignRight;
 
         Component.onCompleted: if (!photoResolutions) photoResolutions = {}
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
@@ -98,6 +102,7 @@ Item {
         property: "resolution"
         value: settings.photoResolutions[camera.deviceId]
     }
+
 
     Connections {
         target: camera.imageCapture
@@ -846,7 +851,11 @@ Item {
             }
             onImageSaved : {
                 if(path && settings.dateStampImages && !main.contentExportMode) {
-                    postProcessOperations.addDateStamp(path);
+                    postProcessOperations.addDateStamp(path,
+                                                       viewFinderOverlay.settings.dateStampFormat,
+                                                       viewFinderOverlay.settings.dateStampColor,
+                                                       viewFinderOverlay.settings.dateStampOpacity,
+                                                       viewFinderOverlay.settings.dateStampAlign);
                 }
             }
         }
