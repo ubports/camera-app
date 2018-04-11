@@ -26,7 +26,7 @@ Flickable {
         ListItem {
             Label {
                 color: "white"
-                text: i18n.tr("Advanced Options")
+                text: i18n.tr("Settings")
             }
         }
         ListItem {
@@ -69,8 +69,76 @@ Flickable {
                     }
                 }
             }
+            ListItems.Expandable {
+                id:dateStampFormatExpand
+                z:1
+                anchors {
+                    top:datestampFormatItem.bottom
+                    right: datestampFormatItem.right
+                    left:datestampFormatItem.left
+                    bottom: dateStampExpand.bottom
+                }
+                collapseOnClick: false
+                highlightWhenPressed: false
+                collapsedHeight: 0
+                expandedHeight: units.gu(20)
+                expanded: dateFormatText.activeFocus || dateStampFormatExpandFocus.activeFocus
+
+                Flickable {
+                    anchors.fill: parent
+                    flickableDirection: Flickable.VerticalFlick
+                    interactive: true
+
+                    FocusScope {
+                        id:dateStampFormatExpandFocus
+                        anchors.fill: parent
+
+                        Column {
+                            anchors.fill: parent
+                            Repeater {
+                                anchors.fill: parent
+
+                                model:[
+                                    { "seq" : "d", "desc" : i18n.tr("the day as number without a leading zero (1 to 31)") },
+                                    { "seq" : "dd", "desc" : i18n.tr("the day as number with a leading zero (01 to 31)") },
+                                    { "seq" : "ddd", "desc" : i18n.tr("the abbreviated localized day name (e.g. 'Mon' to 'Sun').") },
+                                    { "seq" : "dddd", "desc" : i18n.tr("the long localized day name (e.g. 'Monday' to 'Sunday').") },
+                                    { "seq" : "M", "desc" : i18n.tr("the month as number without a leading zero (1 to 12)") },
+                                    { "seq" : "MM", "desc" : i18n.tr("the month as number with a leading zero (01 to 12)") },
+                                    { "seq" : "MMM", "desc" : i18n.tr("the abbreviated localized month name (e.g. 'Jan' to 'Dec').") },
+                                    { "seq" : "MMMM", "desc" : i18n.tr("the long localized month name (e.g. 'January' to 'December').") },
+                                    { "seq" : "yy", "desc" : i18n.tr("the year as two digit number (00 to 99)") },
+                                    { "seq" : "yyyy", "desc" : i18n.tr("the year as four digit number. If the year is negative, a minus sign is prepended in addition.") },
+                                    { "seq" : "h", "desc" : i18n.tr("the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)") },
+                                    { "seq" : "hh", "desc" : i18n.tr("the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)") },
+                                    { "seq" : "H", "desc" : i18n.tr("the hour without a leading zero (0 to 23, even with AM/PM display)") },
+                                    { "seq" : "HH", "desc" : i18n.tr("the hour with a leading zero (00 to 23, even with AM/PM display)") },
+                                    { "seq" : "m", "desc" : i18n.tr("the minute without a leading zero (0 to 59)") },
+                                    { "seq" : "mm", "desc" : i18n.tr("the minute with a leading zero (00 to 59)") },
+                                    { "seq" : "s", "desc" : i18n.tr("the second without a leading zero (0 to 59)") },
+                                    { "seq" : "ss", "desc" : i18n.tr("the second with a leading zero (00 to 59)") },
+                                    { "seq" : "z", "desc" : i18n.tr("the milliseconds without leading zeroes (0 to 999)") },
+                                    { "seq" : "zzz", "desc" : i18n.tr("the milliseconds with leading zeroes (000 to 999)") },
+                                    { "seq" : "AP or A", "desc" : i18n.tr("use AM/PM display. AP will be replaced by either 'AM' or 'PM'.") },
+                                    { "seq" : "ap or a", "desc" : i18n.tr("use am/pm display. ap will be replaced by either 'am' or 'pm'.") },
+                                    { "seq" : "t", "desc" : i18n.tr("the timezone (for example 'CEST')") }
+                                ]
+                                delegate: ListItem {
+                                    divider.visible: false
+                                    color: "white"
+                                    ListItemLayout {
+                                        title.text: modelData.seq
+                                        summary.text: modelData.desc
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             ListItem {
-                anchors.top : datestampFormatItem.bottom
+                anchors.top : dateStampFormatExpand.bottom
                 anchors.margins:units.gu(1)
                 id:  dateStampColorItem
                 height:units.gu(5)
@@ -78,7 +146,7 @@ Flickable {
                 ListItemLayout {
                     id:  dateStampColorItemLayout
                     title.color: "white"
-                    title.text:i18n.tr("Stamp Color :")
+                    title.text:i18n.tr("Stamp Color")
                     ListView {
                         id:dateStampColor
                         width:dateStampColorItem.width - units.gu(18)
@@ -92,27 +160,30 @@ Flickable {
                         highlightFollowsCurrentItem: true
                         highlightMoveDuration: UbuntuAnimation.SnapDuration
                         clip:true
+
+                        function getSelectedColorIdx(item) {
+                            for(var i in model ) {
+                                if(item == model[i]) {
+                                  return i;
+                                }
+                            }
+                            return -1;
+                        }
+
                         Component.onCompleted: {
                             var newColors = [];
-                            var currItem = null;
-                            var idx =0;
                             for(var i in UbuntuColors) {
-                                idx += currItem ? 1 :0;
-                                if(typeof(UbuntuColors[i]) == "object" ) {
-                                    console.log(i)
-                                    console.log(UbuntuColors[i])
+                                if( typeof(UbuntuColors[i]) == "object" && !(UbuntuColors[i].stops) ) {
                                     newColors.push(UbuntuColors[i]);
-                                    if(advancedOptions.settings.dateStampColor == UbuntuColors[i]) {
-                                      currItem = UbuntuColors[i];
-                                    }
                                 }
                             }
                             model = newColors;
-                            currentIndex = idx;
-                            positionViewAtIndex(idx, ListView.Center);
+                            currentIndex = dateStampColor.getSelectedColorIdx( advancedOptions.settings.dateStampColor);
+                            positionViewAtIndex(currentIndex, ListView.Center);
                         }
-                        onWidthChanged: positionViewAtIndex(currentIndex, ListView.Center);
-                      //  onDataChanged: positionViewAtIndex(currentIndex, ListView.Center);
+
+                        onWidthChanged: if(currentIndex > 0 ) { positionViewAtIndex(currentIndex, ListView.Center); }
+
                         delegate: Button {
                             height:dateStampColorItem.height - units.gu(1)
                             width:height
@@ -137,7 +208,7 @@ Flickable {
                 ListItemLayout {
                     id:  dateStampOpacityItemLayout
                     title.color: "white"
-                    title.text:i18n.tr("Stamp Opacity :")
+                    title.text:i18n.tr("Stamp Opacity")
 
                     Slider {
                         id: dateStampOpacity
@@ -166,7 +237,7 @@ Flickable {
                 ListItemLayout {
                     id:  dateStampAlignmentItemLayout
                     title.color: "white"
-                    title.text:i18n.tr("Alignment :")
+                    title.text:i18n.tr("Alignment")
                     Row {
                         id:dateStampAlignment
                         SlotsLayout.position: SlotsLayout.Last
