@@ -62,8 +62,8 @@ Flickable {
                         width:units.gu(20)
                         text: advancedOptions.settings.dateStampFormat
                         placeholderText:  Qt.locale().dateFormat(Locale.ShortFormat)
+                        onActiveFocusChanged: if(!text) {text = Qt.locale().dateFormat(Locale.ShortFormat);}
                         onTextChanged: {
-                            if(!text) {text = Qt.locale().dateFormat(Locale.ShortFormat);}
                             advancedOptions.settings.dateStampFormat = text;
                         }
                     }
@@ -85,9 +85,16 @@ Flickable {
                 expanded: dateFormatText.activeFocus || dateStampFormatExpandFocus.activeFocus
 
                 Flickable {
+                     id:dateStampFormatFlick
                     anchors.fill: parent
                     flickableDirection: Flickable.VerticalFlick
                     interactive: true
+                    UbuntuShapeOverlay {
+                        width:dateStampFormatFlick.width
+                        height:dateStampFormatFlick.expandedHeight
+                        backgroundColor: "white"
+                        overlayRect: Qt.rect(0,0,1,1)
+                    }
 
                     FocusScope {
                         id:dateStampFormatExpandFocus
@@ -95,6 +102,7 @@ Flickable {
 
                         Column {
                             anchors.fill: parent
+
                             Repeater {
                                 anchors.fill: parent
 
@@ -125,11 +133,12 @@ Flickable {
                                 ]
                                 delegate: ListItem {
                                     divider.visible: false
-                                    color: "white"
+
                                     ListItemLayout {
                                         title.text: modelData.seq
                                         summary.text: modelData.desc
                                     }
+                                    onClicked: dateFormatText.text += modelData.seq;
                                 }
                             }
                         }
@@ -138,17 +147,20 @@ Flickable {
             }
 
             ListItem {
+                id:  dateStampColorItem
                 anchors.top : dateStampFormatExpand.bottom
                 anchors.margins:units.gu(1)
-                id:  dateStampColorItem
                 height:units.gu(5)
                 divider.visible: false
                 ListItemLayout {
                     id:  dateStampColorItemLayout
+
                     title.color: "white"
                     title.text:i18n.tr("Stamp Color")
+
                     ListView {
                         id:dateStampColor
+
                         width:dateStampColorItem.width - units.gu(18)
                         height:dateStampColorItem.height
                         SlotsLayout.position: SlotsLayout.Last
@@ -161,7 +173,7 @@ Flickable {
                         highlightMoveDuration: UbuntuAnimation.SnapDuration
                         clip:true
 
-                        function getSelectedColorIdx(item) {
+                        function getItemIdx(item) {
                             for(var i in model ) {
                                 if(item == model[i]) {
                                   return i;
@@ -178,7 +190,7 @@ Flickable {
                                 }
                             }
                             model = newColors;
-                            currentIndex = dateStampColor.getSelectedColorIdx( advancedOptions.settings.dateStampColor);
+                            currentIndex = dateStampColor.getItemIdx( advancedOptions.settings.dateStampColor);
                             positionViewAtIndex(currentIndex, ListView.Center);
                         }
 
@@ -198,38 +210,10 @@ Flickable {
                     }
                 }
             }
-            ListItem {
-                anchors.top : dateStampColorItem.bottom
-                anchors.margins:units.gu(1)
-                id:  dateStampOpacityItem
-                height:units.gu(5)
-                divider.visible: false
-                clip:false
-                ListItemLayout {
-                    id:  dateStampOpacityItemLayout
-                    title.color: "white"
-                    title.text:i18n.tr("Stamp Opacity")
 
-                    Slider {
-                        id: dateStampOpacity
-                        width:dateStampOpacityItem.width - units.gu(18)
-                        height:dateStampOpacityItem.height
-                        value:advancedOptions.settings.dateStampOpacity
-                        SlotsLayout.position: SlotsLayout.Last
-                        maximumValue: 1.0
-                        minimumValue: 0.25
-                        stepSize: 0.1
-                        live:true
-                        onValueChanged: {
-                             advancedOptions.settings.dateStampOpacity = dateStampColor.opacity = value;
-
-                        }
-                    }
-                }
-            }
             ListItem {
                 id:  dateStampAlignmentItem
-                anchors.top : dateStampOpacityItem.bottom
+                anchors.top : dateStampColorItem.bottom
                 anchors.margins:units.gu(1)
 
                 height:units.gu(6)
@@ -240,6 +224,7 @@ Flickable {
                     title.text:i18n.tr("Alignment")
                     Row {
                         id:dateStampAlignment
+                        anchors.topMargin:units.gu(1)
                         SlotsLayout.position: SlotsLayout.Last
                         width:dateStampAlignmentItem.width - units.gu(18)
                         height:dateStampAlignmentItem.height
@@ -256,6 +241,8 @@ Flickable {
                                 {"value" :Qt.AlignTop | Qt.AlignLeft,"icon":"assets/align_top_left.png"},
                             ]
                             delegate: CircleButton {
+                                height:dateStampAlignmentItem.height - units.gu(1)
+                                width:height
                                 automaticOrientation:false
                                 iconSource: Qt.resolvedUrl( modelData.icon )
                                 on:(modelData.value == advancedOptions.settings.dateStampAlign)
@@ -263,6 +250,36 @@ Flickable {
                                     advancedOptions.settings.dateStampAlign = modelData.value;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+
+            ListItem {
+                anchors.top : dateStampAlignmentItem.bottom
+                anchors.margins:units.gu(1)
+                id:  dateStampOpacityItem
+                height:units.gu(3)
+                divider.visible: false
+
+                ListItemLayout {
+                    id:  dateStampOpacityItemLayout
+                    height: dateStampOpacityItem.height
+                    title.color: "white"
+                    title.text:i18n.tr("Stamp Opacity")
+
+                    Slider {
+                        id: dateStampOpacity
+                        width:dateStampOpacityItem.width - units.gu(18)
+                        height:dateStampOpacityItem.height
+                        value:advancedOptions.settings.dateStampOpacity
+                        SlotsLayout.position: SlotsLayout.Last
+                        maximumValue: 1.0
+                        minimumValue: 0.25
+                        stepSize: 0.1
+                        live:true
+                        onValueChanged: {
+                             advancedOptions.settings.dateStampOpacity = dateStampColor.opacity = value;
                         }
                     }
                 }
