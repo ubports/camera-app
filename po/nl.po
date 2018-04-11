@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-02-23 10:47+0000\n"
-"Last-Translator: Stefan <spleyte@gmail.com>\n"
+"PO-Revision-Date: 2018-04-11 13:08+0000\n"
+"Last-Translator: Joeke de Graaf <mappack@null.net>\n"
 "Language-Team: Dutch <https://translate.ubports.com/projects/ubports/camera-"
 "app/nl/>\n"
 "Language: nl\n"
@@ -188,7 +188,7 @@ msgstr ""
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "Broncode"
 
 #: Information.qml:62
 msgid "Report issues"
@@ -200,7 +200,7 @@ msgstr "Help vertalen"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr "App informatie"
+msgstr "App-informatie"
 
 #: Information.qml:105
 #, qt-format
