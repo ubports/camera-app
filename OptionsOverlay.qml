@@ -31,15 +31,14 @@ Item {
     }
 
     height: optionsGrid.height + optionsGrid.rowSpacing
-            + (infoPage.visible ? infoPage.height : 0)
-            + (advancedOptions.visible ? advancedOptions.height : 0)
+            + (infoPage.visible || advancedOptions.visible ? optionValueSelector.screenHeight - units.gu(5) : 0)
 
     Grid {
         id: optionsGrid
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
-
+        visible: !(infoPage.visible || advancedOptions.visible )
         columns: 3
         columnSpacing: units.gu(9.5)
         rowSpacing: units.gu(3)
@@ -68,7 +67,9 @@ Item {
         boundsBehavior: Flickable.DragAndOvershootBounds
 
         property OptionButton caller
-        property int screenHeight: (Screen.orientation == Screen.primaryOrientation ? Screen.height : Screen.width)
+        property int screenHeight: ( (Screen.orientation == Qt.PortraitOrientation || Screen.orientation == Qt.InvertedPortraitOrientation)
+                                            ? Screen.height
+                                            : Screen.width)
 
         function toggle(model, callerButton) {
             if (optionValueSelectorVisible && optionValueSelector.model === model) {
@@ -160,32 +161,6 @@ Item {
             height: units.gu(3)
             visible: !optionValueSelector.atYEnd
             name:"go-down"
-        }
-    }
-
-    OptionValueButton {
-        id:advancedOptionsToggle
-        z:1
-        anchors.right: optionsOverlay.right
-        anchors.bottom: optionsOverlay.bottom
-        iconName:  "settings"
-        isLast: true
-        onClicked: {
-            selected = !selected;
-            infoPageToggle.selected = false;
-        }
-    }
-
-    OptionValueButton {
-        id:infoPageToggle
-        z:1
-        anchors.left: optionsOverlay.left
-        anchors.bottom: optionsOverlay.bottom
-        iconName:  "info"
-        isLast: true
-        onClicked: {
-            selected = !selected
-            advancedOptionsToggle.selected = false;
         }
     }
 

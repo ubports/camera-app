@@ -335,7 +335,7 @@ Item {
 
                Ref.: https://bugs.launchpad.net/ubuntu/+source/camera-app/+bug/1472903
             */
-            property real progress: opened ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
+            property real progress: bottomEdge.height ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
             property list<ListModel> options: [
                 ListModel {
                     id: gpsOptionsModel
@@ -658,6 +658,39 @@ Item {
                         bottomEdge.open();
                     }
                 }
+            }
+        }
+
+        OptionValueButton {
+            id:advancedOptionsToggle
+            z:1
+            anchors.right: parent.right
+            anchors.top: parent.top
+            opacity: bottomEdge.progress
+            visible:opacity != 0
+            iconName:  "settings"
+            isLast: true
+            onClicked: {
+                selected = !selected;
+                infoPageToggle.selected = false;
+                bottomEdge.open()
+            }
+        }
+
+
+        OptionValueButton {
+            id:infoPageToggle
+            z:1
+            anchors.right: advancedOptionsToggle.left
+            anchors.top: parent.top
+            opacity: bottomEdge.progress
+            visible:opacity != 0
+            iconName:  "info"
+            isLast: true
+            onClicked: {
+                selected = !selected
+                advancedOptionsToggle.selected = false;
+                bottomEdge.open()
             }
         }
     }
