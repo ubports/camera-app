@@ -7,7 +7,7 @@ Item {
     id:_infoPage
     height: infoHeader.height + aboutCloumn.height + infoLinksList.height
 
-    property bool portrait: (Screen.orientation == Screen.primaryOrientation)
+    property bool portrait: (Screen.orientation == Qt.PortraitOrientation || Screen.orientation == Qt.InvertedPortraitOrientation)
 
     transitions: [
         Transition {

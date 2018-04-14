@@ -65,6 +65,13 @@ FocusScope {
             }
         },
         Action {
+            text: i18n.tr("Image Info")
+            iconName: "info"
+            onTriggered: {
+                infoPopover.show()
+            }
+        },
+        Action {
             text: i18n.tr("Delete")
             iconName: "delete"
             onTriggered: {
@@ -91,7 +98,7 @@ FocusScope {
         editingAvailable = true;
         var newActions = [];
         for (var i = 0; i < slideShowActions.length; i++) newActions.push(slideShowActions[i]);
-        newActions.push(editAction);
+        newActions.unshift(editAction);
         slideShowActions = newActions;
     }
 
@@ -171,6 +178,10 @@ FocusScope {
             function reload() {
                 reloadImage(image);
                 reloadImage(highResolutionImage);
+            }
+
+            function getMedia() {
+                return  isVideo ? null : highResolutionImage;
             }
 
             width: ListView.view.width
@@ -260,12 +271,10 @@ FocusScope {
                             id: highResolutionImage
                             anchors.fill: parent
                             asynchronous: true
-                            cache: false
-                            source: flickable.sizeScale > 1.0 ? media.photoUrl : ""
-                            sourceSize {
-                                width: width
-                                height: height
-                            }
+                            cache: true
+                            source: slideshowView.inView && (flickable.sizeScale > 1.0 || infoPopover.visible) ?
+                                        media.photoUrl :
+                                        ""
                             fillMode: Image.PreserveAspectFit
                         }
 
@@ -356,6 +365,15 @@ FocusScope {
             transferContentType: MimeTypeMapper.mimeTypeToContentType(slideshowView.model.get(slideshowView.currentIndex, "fileType"));
         }
     }
+
+   MediaInfoPopover {
+        id: infoPopover
+       currentMedia: listView.currentItem.getMedia()
+       model:{
+            "fileName": slideshowView.model.get(slideshowView.currentIndex, "fileName"),
+            "fileType": slideshowView.model.get(slideshowView.currentIndex, "fileType"),
+        }
+     }
 
     Component {
         id: deleteDialogComponent
