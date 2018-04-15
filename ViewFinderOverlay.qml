@@ -34,6 +34,7 @@ Item {
     property var settings: settings
     property bool readyForCapture
     property int sensorOrientation
+    property bool overlayPageVisible : !(advancedOptionsToggle.selected || infoPageToggle.selected);
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
