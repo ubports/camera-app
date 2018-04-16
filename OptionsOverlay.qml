@@ -166,9 +166,16 @@ Item {
 
     AdvancedOptions {
         id:advancedOptions
-        anchors.top :optionsGrid.bottom
-        anchors.topMargin: units.gu(4)
+        anchors {
+            top : optionsGrid.bottom
+            left:parent.left
+            right:parent.right
+            topMargin: units.gu(4)
+            leftMargin: units.gu(4)
+            rightMargin: units.gu(4)
+        }
         visible: advancedOptionsToggle.selected
+        onBack: advancedOptionsToggle.selected = false;
     }
 
     Information {
@@ -182,6 +189,7 @@ Item {
             rightMargin: units.gu(4)
         }
         visible: infoPageToggle.selected
+        onBack: infoPageToggle.selected = false;
     }
 
 }

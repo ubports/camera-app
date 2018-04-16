@@ -19,36 +19,51 @@
 #include <QImage>
 #include <QPainter>
 #include <QDate>
+#include <QLocale>
 
 PostProcessOperations::PostProcessOperations(QObject *parent) :
     QObject(parent)
 {
 }
 
-bool PostProcessOperations::addDateStamp(const QString & path)
+bool PostProcessOperations::addDateStamp(const QString & path, QString dateFormat, QColor  stampColor,float   opacity, int alignment)
 {
     class AddDateStamp : public QThread {
-
+        const float MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE=0.04f;
+        const float MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE=0.02f;
         QString path;
+        QString dateFormat;
+        QColor  stampColor;
+        float   opacity;
+        int alignment;
 
         public:
-          AddDateStamp(QString inPath) {
+          AddDateStamp(QString inPath, QString dateFormat, QColor  stampColor, float   opacity, int alignment) {
               this->path = inPath;
+              this->dateFormat = dateFormat;
+              this->stampColor = stampColor;
+              this->opacity = opacity;
+              this->alignment = alignment;
           }
 
           void run() {
               try {
                   QImage image = QImage(path);
-                  QDate now = QDate::currentDate();
-                  QString currentDate = QString(now.toString(Qt::LocaleDate));
-                  int textPixelSize = ((std::min(image.width(),image.height()) / 3) / currentDate.length());
+                  QDateTime now = QDateTime::currentDateTime();
+                  QString currentDate = QString(now.toString(this->dateFormat));
+                  int imageHeight = std::max(image.width(),image.height());
+                  int imageWidth = std::min(image.width(),image.height());
+                  int textPixelSize = std::min( (int) ( imageHeight * this->MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE),
+                                                    std::max( (imageWidth / 3) / currentDate.length() ,
+                                                (int) ( imageHeight * this->MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE) )  );
                   QFont font = QFont("Helvetica");
                   font.setPixelSize(textPixelSize);
                   QPainter* painter = new QPainter(&image);
                   painter->setFont(font);
-                  painter->setPen(QColor("yellow"));
-                  QRect imageRect = QRect(0,0,image.width()-textPixelSize,image.height()-textPixelSize);
-                  painter->drawText(imageRect,Qt::AlignRight | Qt::AlignBottom,currentDate);
+                  painter->setOpacity(this->opacity);
+                  painter->setPen(this->stampColor);
+                  QRect imageRect = QRect(textPixelSize,textPixelSize,image.width()-textPixelSize*2,image.height()-textPixelSize*2);
+                  painter->drawText(imageRect,this->alignment,currentDate);
                   image.save(path);
               } catch (...) {
                   return ;
@@ -56,7 +71,7 @@ bool PostProcessOperations::addDateStamp(const QString & path)
           }
     };
 
-    this->workingThread = new AddDateStamp(path);
+    this->workingThread = new AddDateStamp(path, dateFormat, stampColor, opacity, alignment);
     connect(this->workingThread, &AddDateStamp::finished, this->workingThread, &QObject::deleteLater);
     this->workingThread->start();
 }
