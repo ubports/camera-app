@@ -29,7 +29,8 @@ PostProcessOperations::PostProcessOperations(QObject *parent) :
 bool PostProcessOperations::addDateStamp(const QString & path, QString dateFormat, QColor  stampColor,float   opacity, int alignment)
 {
     class AddDateStamp : public QThread {
-
+        const float MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE=0.04f;
+        const float MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE=0.02f;
         QString path;
         QString dateFormat;
         QColor  stampColor;
@@ -50,7 +51,11 @@ bool PostProcessOperations::addDateStamp(const QString & path, QString dateForma
                   QImage image = QImage(path);
                   QDateTime now = QDateTime::currentDateTime();
                   QString currentDate = QString(now.toString(this->dateFormat));
-                  int textPixelSize = ((std::min(image.width(),image.height()) / 3) / currentDate.length());
+                  int imageHeight = std::max(image.width(),image.height());
+                  int imageWidth = std::min(image.width(),image.height());
+                  int textPixelSize = std::min( (int) ( imageHeight * this->MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE),
+                                                    std::max( (imageWidth / 3) / currentDate.length() ,
+                                                (int) ( imageHeight * this->MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE) )  );
                   QFont font = QFont("Helvetica");
                   font.setPixelSize(textPixelSize);
                   QPainter* painter = new QPainter(&image);

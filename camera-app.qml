@@ -180,7 +180,7 @@ Window {
         interactive: !viewFinderView.touchAcquired && !galleryView.touchAcquired
                      && !viewFinderView.camera.photoCaptureInProgress
                      && !viewFinderView.camera.timedCaptureInProgress
-                     && !viewFinderView.overlayPageVisible
+                     && !(viewFinderView.overlayPageVisible && viewFinderView.optionValueSelectorVisible)
 
         Component.onCompleted: {
             // FIXME: workaround for qtubuntu not returning values depending on the grid unit definition
