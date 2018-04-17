@@ -453,7 +453,7 @@ FocusScope {
             enabled: photoRollHint.visible
         }
         onLoaded: {
-            overlayPageVisible = Qt.binding(function() { return item.overlayPageVisible;})
+            viewFinderView.overlayPageVisible = Qt.binding(function() { return item.overlayPageVisible;})
         }
     }
 
