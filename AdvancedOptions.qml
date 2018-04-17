@@ -71,7 +71,7 @@ Page {
                         TextField {
                             id:dateFormatText
                             SlotsLayout.position: SlotsLayout.Last
-                            autoScroll: true
+                            focus: true
                             width:units.gu(20)
                             text: advancedOptions.settings.dateStampFormat
                             placeholderText:  Qt.locale().dateFormat(Locale.ShortFormat)
@@ -156,7 +156,11 @@ Page {
                                         Action {
                                             text: i18n.tr("Add to Format")
                                             iconName:"add"
-                                            onTriggered:dateFormatText.text += modelData.seq;
+                                            onTriggered:{
+                                                var addSpace = dateFormatText.text.match(/\w$/);
+                                                dateFormatText.text += (addSpace ? " " : "") + modelData.seq;
+                                                dateFormatText.focus = true;
+                                            }
                                         }
                                     ]
 
