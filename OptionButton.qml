@@ -26,7 +26,10 @@ CircleButton {
     iconName: (!model.get(model.selectedIndex) || !model.get(model.selectedIndex).icon) ?
                                                     (model.icon ? model.icon : "") :
                                                     model.get(model.selectedIndex).icon
-    iconSource: (model && model.iconSource) ? model.iconSource : ""
+    iconSource: (!model.get(model.selectedIndex) || !model.get(model.selectedIndex).iconSource) ?
+                    ((model && model.iconSource) ? model.iconSource : "") :
+                    model.get(model.selectedIndex).iconSource
+
     on: model.isToggle ? model.get(model.selectedIndex).value : true
     enabled: model.visible && model.available
     label: model.label
