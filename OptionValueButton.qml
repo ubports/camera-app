@@ -24,6 +24,7 @@ AbstractButton {
 
     property alias label: label.text
     property alias iconName: icon.name
+    property alias iconSource: icon.source
     property bool selected
     property bool isLast
     property int columnWidth
@@ -32,14 +33,14 @@ AbstractButton {
     width: marginSize + iconLabelGroup.width + marginSize
 
     Item {
+        property bool showIcon:  iconName !== "" || (iconName == ""  && iconSource.toString().match(/^file:\/\//))
         id: iconLabelGroup
-        width: childrenRect.width
+        width: (icon.width * showIcon) + label.width
         height: icon.height
 
         anchors {
-            left: (iconName) ? undefined : parent.left
-            leftMargin: (iconName) ? undefined : marginSize
-            horizontalCenter: (iconName) ? parent.horizontalCenter : undefined
+            left:  parent.left
+            leftMargin: marginSize
             verticalCenter: parent.verticalCenter
             topMargin: marginSize
             bottomMargin: marginSize
@@ -54,14 +55,14 @@ AbstractButton {
             width: optionValueButton.height - optionValueButton.marginSize * 2
             color: "white"
             opacity: optionValueButton.selected ? 1.0 : 0.5
-            visible: name !== ""
+            visible: iconLabelGroup.showIcon
             asynchronous: true
         }
 
         Label {
             id: label
             anchors {
-                left: icon.name != "" ? icon.right : parent.left
+                left: iconLabelGroup.showIcon ? icon.right : parent.left
                 verticalCenter: parent.verticalCenter
             }
 
