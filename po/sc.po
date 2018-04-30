@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-04-23 14:50+0000\n"
-"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
+"PO-Revision-Date: 2018-04-30 15:02+0000\n"
+"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -49,16 +49,19 @@ msgid "Capture failed"
 msgstr "Faddina in s'istantànea"
 
 #: ViewFinderView.qml:485
+#, fuzzy
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
 
 #: ViewFinderView.qml:486
+#, fuzzy
 msgid "Restarting your device might fix the problem."
 msgstr ""
 
 #: PhotoRollHint.qml:69
+#, fuzzy
 msgid "Swipe left for photo roll"
 msgstr ""
 
@@ -80,6 +83,7 @@ msgid "Low storage space"
 msgstr "Pagu ispàtziu in sa memòria"
 
 #: ViewFinderOverlay.qml:1054
+#, fuzzy
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -91,6 +95,7 @@ msgid "External storage not writeable"
 msgstr "No si podet iscriere a sa memòria esterna"
 
 #: ViewFinderOverlay.qml:1068
+#, fuzzy
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -98,10 +103,12 @@ msgid ""
 msgstr ""
 
 #: ViewFinderOverlay.qml:1106
+#, fuzzy
 msgid "Cannot access camera"
 msgstr ""
 
 #: ViewFinderOverlay.qml:1107
+#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -118,6 +125,7 @@ msgid "Edit"
 msgstr "Modìfica"
 
 #: camera-app.qml:57
+#, fuzzy
 msgid "Flash"
 msgstr ""
 
@@ -126,18 +134,22 @@ msgid "Light;Dark"
 msgstr "Craru;Oscuru"
 
 #: camera-app.qml:61
+#, fuzzy
 msgid "Flip Camera"
 msgstr ""
 
 #: camera-app.qml:62
+#, fuzzy
 msgid "Front Facing;Back Facing"
 msgstr ""
 
 #: camera-app.qml:65
+#, fuzzy
 msgid "Shutter"
 msgstr ""
 
 #: camera-app.qml:66
+#, fuzzy
 msgid "Take a Photo;Snap;Record"
 msgstr ""
 
@@ -146,6 +158,7 @@ msgid "Mode"
 msgstr "Modalidade"
 
 #: camera-app.qml:70
+#, fuzzy
 msgid "Stills;Video"
 msgstr ""
 
@@ -154,6 +167,7 @@ msgid "White Balance"
 msgstr ""
 
 #: camera-app.qml:75
+#, fuzzy
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr ""
 
@@ -170,22 +184,27 @@ msgid "Ok"
 msgstr "AB"
 
 #: NoSpaceHint.qml:33
+#, fuzzy
 msgid "No space left on device, free up space to continue."
 msgstr ""
 
 #: Information.qml:61
+#, fuzzy
 msgid "Get the source"
 msgstr ""
 
 #: Information.qml:62
+#, fuzzy
 msgid "Report issues"
 msgstr ""
 
 #: Information.qml:63
+#, fuzzy
 msgid "Help translate"
 msgstr ""
 
 #: Information.qml:71
+#, fuzzy
 msgid "App Information"
 msgstr ""
 
@@ -195,10 +214,12 @@ msgid "Version %1"
 msgstr "Versione %1"
 
 #: AdvancedOptions.qml:29
+#, fuzzy
 msgid "Advanced Options"
 msgstr ""
 
 #: AdvancedOptions.qml:36
+#, fuzzy
 msgid "Add date stamp on captured images"
 msgstr ""
 
