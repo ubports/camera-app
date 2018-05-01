@@ -73,7 +73,7 @@ Page {
                             id:dateFormatText
                             SlotsLayout.position: SlotsLayout.Last
                             focus: true
-                            width:units.gu(20)
+                            width:datestampFormatItem.width - units.gu(18)
                             text: advancedOptions.settings.dateStampFormat
                             placeholderText:  Qt.locale().dateFormat(Locale.ShortFormat)
                             onActiveFocusChanged: if(!text) {text = Qt.locale().dateFormat(Locale.ShortFormat);}
@@ -191,7 +191,7 @@ Page {
                         ListView {
                             id:dateStampColor
 
-                            width:dateStampColorItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampColorItem.height
                             SlotsLayout.position: SlotsLayout.Last
 
@@ -257,7 +257,7 @@ Page {
                             id:dateStampAlignment
                             anchors.topMargin:units.gu(1)
                             SlotsLayout.position: SlotsLayout.Last
-                            width:dateStampAlignmentItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampAlignmentItem.height
                             spacing:units.gu(0.5)
                             layoutDirection: Qt.RightToLeft
@@ -302,7 +302,7 @@ Page {
 
                         Slider {
                             id: dateStampOpacity
-                            width:dateStampOpacityItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampOpacityItem.height
                             value:advancedOptions.settings.dateStampOpacity
                             SlotsLayout.position: SlotsLayout.Last
