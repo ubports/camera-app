@@ -1,4 +1,4 @@
 {
 	"template": "cmake",
-	"sdb": "ubuntu-sdk-16.04"
+	"sdk": "ubuntu-sdk-16.04"
 }
