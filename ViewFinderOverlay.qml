@@ -54,7 +54,6 @@ Item {
         property bool preferRemovableStorage: false
         property string videoResolution: "1920x1080"
         property bool playShutterSound: true
-        property bool shutterVibration: true
         property var photoResolutions
         property bool dateStampImages: false
         property string dateStampFormat: Qt.locale().dateFormat(Locale.ShortFormat)
@@ -118,11 +117,6 @@ Item {
             // - we need camera.viewfinder.resolution to hold the right
             //   value
             camera.viewfinder.resolution = camera.advanced.resolution;
-        }
-        onImageCaptured: {
-           if(settings.shutterVibration) {
-               Haptics.play({intensity:0.25,duration:UbuntuAnimation.SnapDuration/3});
-           }
         }
     }
 
@@ -570,16 +564,11 @@ Item {
                 ListModel {
                     id: shutterSoundOptionsModel
 
-                    function setSettingProperty(value) {
-                        settings.shutterVibration = value & 0x1;
-                        settings.playShutterSound = value & 0x2;
-                    }
-
                     property string settingsProperty: "playShutterSound"
                     property string icon: ""
                     property string label: ""
                     property bool isToggle: true
-                    property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, 2 * settings.playShutterSound  + settings.shutterVibration)
+                    property int selectedIndex: bottomEdge.indexForValue(shutterSoundOptionsModel, settings.playShutterSound)
                     property bool available: true
                     property bool visible: camera.captureMode === Camera.CaptureStillImage
                     property bool showInIndicators: false
@@ -587,17 +576,12 @@ Item {
                     ListElement {
                         icon: "audio-volume-high"
                         label: QT_TR_NOOP("On")
-                        value: 2
-                    }
-                    ListElement {
-                        iconSource: "assets/vibrate.png"
-                        label: QT_TR_NOOP("Vibrate")
-                        value: 1
+                        value: true
                     }
                     ListElement {
                         icon: "audio-volume-muted"
                         label: QT_TR_NOOP("Off")
-                        value: 0
+                        value: false
                     }
                 },
                 ListModel {
