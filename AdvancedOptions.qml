@@ -66,7 +66,8 @@ Page {
                     id: datestampFormatItem
                     divider.visible: false
                     ListItemLayout {
-                        title.text: i18n.tr("Date Format")
+                        // TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+                        title.text: i18n.tr("Format")
                         title.color: "white"
                         TextField {
                             id:dateFormatText
@@ -184,7 +185,8 @@ Page {
                         id:  dateStampColorItemLayout
 
                         title.color: "white"
-                        title.text:i18n.tr("Stamp Color")
+                        // TRANSLATORS: this refers to the color of date stamp added to captured images
+                        title.text:i18n.tr("Color")
 
                         ListView {
                             id:dateStampColor
@@ -249,6 +251,7 @@ Page {
                     ListItemLayout {
                         id:  dateStampAlignmentItemLayout
                         title.color: "white"
+                        // TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
                         title.text:i18n.tr("Alignment")
                         Row {
                             id:dateStampAlignment
@@ -294,7 +297,8 @@ Page {
                         id:  dateStampOpacityItemLayout
                         height: dateStampOpacityItem.height
                         title.color: "white"
-                        title.text:i18n.tr("Stamp Opacity")
+                        // TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+                        title.text:i18n.tr("Opacity")
 
                         Slider {
                             id: dateStampOpacity

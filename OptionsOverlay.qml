@@ -171,8 +171,8 @@ Item {
             left:parent.left
             right:parent.right
             topMargin: units.gu(4)
-            leftMargin: units.gu(4)
-            rightMargin: units.gu(4)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
         visible: advancedOptionsToggle.selected
         onBack: advancedOptionsToggle.selected = false;
@@ -185,8 +185,8 @@ Item {
             left:parent.left
             right:parent.right
             topMargin: units.gu(4)
-            leftMargin: units.gu(4)
-            rightMargin: units.gu(4)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
         visible: infoPageToggle.selected
         onBack: infoPageToggle.selected = false;
