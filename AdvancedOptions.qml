@@ -214,9 +214,11 @@ Page {
 
                             Component.onCompleted: {
                                 var newColors = [];
+                                var existingColors = {};
                                 for(var i in UbuntuColors) {
-                                    if( typeof(UbuntuColors[i]) == "object" && !(UbuntuColors[i].stops) ) {
+                                    if( typeof(UbuntuColors[i]) == "object" && !(UbuntuColors[i].stops) && !existingColors[UbuntuColors[i].toString()] ) {
                                         newColors.push(UbuntuColors[i]);
+                                        existingColors[UbuntuColors[i].toString()] = true;
                                     }
                                 }
                                 model = newColors;
