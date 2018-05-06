@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2018-05-06 12:48+0000\n"
-"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
+"Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
-msgstr "No si podet atzèdere a sa càmera"
+msgstr "Non si podet atzèdere a sa càmera"
 
 #: ViewFinderOverlay.qml:1107
 #, fuzzy
