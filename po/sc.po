@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-04-30 15:02+0000\n"
+"PO-Revision-Date: 2018-05-06 12:42+0000\n"
 "Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
@@ -49,11 +49,12 @@ msgid "Capture failed"
 msgstr "Faddina in s'istantànea"
 
 #: ViewFinderView.qml:485
-#, fuzzy
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Sostituire s'ischeda esterna, la formatare o torrare a aviare su dispositivu "
+"diat pòdere risòlvere su problema."
 
 #: ViewFinderView.qml:486
 #, fuzzy
