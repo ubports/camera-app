@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-05-06 12:46+0000\n"
-"Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
+"PO-Revision-Date: 2018-05-06 12:47+0000\n"
+"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -94,12 +94,14 @@ msgid "External storage not writeable"
 msgstr "Non si podet iscrìere in sa memòria esterna"
 
 #: ViewFinderOverlay.qml:1068
-#, fuzzy
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Paret chi no est possìbile iscrìere in s'elementu de memòria esternu. Proare "
+"a lu bogare e a lu torrare a pònnere diat pòdere risòlvere su problema. Si "
+"nono, podes proare a lu formatare. "
 
 #: ViewFinderOverlay.qml:1106
 #, fuzzy
