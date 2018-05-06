@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
 "PO-Revision-Date: 2018-05-06 17:41+0000\n"
-"Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -167,9 +167,8 @@ msgid "White Balance"
 msgstr "Bilantzu de su biancu"
 
 #: camera-app.qml:75
-#, fuzzy
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Illuminatzione;Lughe naturale;Annuadu;Aintro"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
