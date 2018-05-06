@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 02:48+0300\n"
+"POT-Creation-Date: 2018-05-02 16:30+0300\n"
 "PO-Revision-Date: 2013-10-25 06:43+0000\n"
 "Last-Translator: Arun Kumar - அருண் குமார் <thangam.arunx@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -18,101 +18,307 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 "X-Generator: Launchpad (build 18282)\n"
 
-#: GalleryViewHeader.qml:81 SlideshowView.qml:42
-msgid "Select"
-msgstr ""
-
-#: GalleryViewHeader.qml:82
-msgid "Edit Photo"
-msgstr ""
-
-#: GalleryViewHeader.qml:82
-msgid "Photo Roll"
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
 msgstr ""
 
 #: DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr ""
 
-#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
 msgid "Delete"
 msgstr ""
 
-#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
-#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
+#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
 msgid "Cancel"
 msgstr ""
 
-#: ViewFinderView.qml:480
-msgid "Capture failed"
+#: GalleryView.qml:200
+msgid "No media available."
+msgstr ""
+
+#: GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr ""
+
+#: GalleryViewHeader.qml:82 SlideshowView.qml:45
+msgid "Select"
+msgstr ""
+
+#: GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr ""
+
+#: GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr ""
+
+#: PhotogridView.qml:42 SlideshowView.qml:60
+msgid "Share"
+msgstr ""
+
+#: PhotogridView.qml:69 SlideshowView.qml:53
+msgid "Gallery"
+msgstr ""
+
+#: SlideshowView.qml:68
+msgid "Image Info"
+msgstr ""
+
+#: SlideshowView.qml:86
+msgid "Edit"
+msgstr ""
+
+#: SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr ""
+
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr ""
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr ""
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
 msgstr ""
 
 #: ViewFinderView.qml:485
+msgid "Capture failed"
+msgstr ""
+
+#: ViewFinderView.qml:490
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
 
-#: ViewFinderView.qml:486
+#: ViewFinderView.qml:491
 msgid "Restarting your device might fix the problem."
+msgstr ""
+
+#: Information.qml:20
+msgid "About"
+msgstr ""
+
+#: Information.qml:82
+msgid "Get the source"
+msgstr ""
+
+#: Information.qml:83
+msgid "Report issues"
+msgstr ""
+
+#: Information.qml:84
+msgid "Help translate"
+msgstr ""
+
+#: MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr ""
+
+#: MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr ""
+
+#: MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr ""
+
+#: MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr ""
+
+#: MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
 msgstr ""
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr ""
 
-#: PhotogridView.qml:41 SlideshowView.qml:50
-msgid "Share"
+#: AdvancedOptions.qml:16
+msgid "Settings"
 msgstr ""
 
-#: ViewFinderOverlay.qml:420
+#: AdvancedOptions.qml:48
+msgid "Add date stamp on captured images"
+msgstr ""
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: AdvancedOptions.qml:70
+msgid "Format"
+msgstr ""
+
+#: AdvancedOptions.qml:122
+msgid "Date formating keywords"
+msgstr ""
+
+#: AdvancedOptions.qml:127
+msgid "the day as number without a leading zero (1 to 31)"
+msgstr ""
+
+#: AdvancedOptions.qml:128
+msgid "the day as number with a leading zero (01 to 31)"
+msgstr ""
+
+#: AdvancedOptions.qml:129
+msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
+msgstr ""
+
+#: AdvancedOptions.qml:130
+msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
+msgstr ""
+
+#: AdvancedOptions.qml:131
+msgid "the month as number without a leading zero (1 to 12)"
+msgstr ""
+
+#: AdvancedOptions.qml:132
+msgid "the month as number with a leading zero (01 to 12)"
+msgstr ""
+
+#: AdvancedOptions.qml:133
+msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
+msgstr ""
+
+#: AdvancedOptions.qml:134
+msgid "the long localized month name (e.g. 'January' to 'December')."
+msgstr ""
+
+#: AdvancedOptions.qml:135
+msgid "the year as two digit number (00 to 99)"
+msgstr ""
+
+#: AdvancedOptions.qml:136
+msgid ""
+"the year as four digit number. If the year is negative, a minus sign is "
+"prepended in addition."
+msgstr ""
+
+#: AdvancedOptions.qml:137
+msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
+msgstr ""
+
+#: AdvancedOptions.qml:138
+msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
+msgstr ""
+
+#: AdvancedOptions.qml:139
+msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
+msgstr ""
+
+#: AdvancedOptions.qml:140
+msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
+msgstr ""
+
+#: AdvancedOptions.qml:141
+msgid "the minute without a leading zero (0 to 59)"
+msgstr ""
+
+#: AdvancedOptions.qml:142
+msgid "the minute with a leading zero (00 to 59)"
+msgstr ""
+
+#: AdvancedOptions.qml:143
+msgid "the second without a leading zero (0 to 59)"
+msgstr ""
+
+#: AdvancedOptions.qml:144
+msgid "the second with a leading zero (00 to 59)"
+msgstr ""
+
+#: AdvancedOptions.qml:145
+msgid "the milliseconds without leading zeroes (0 to 999)"
+msgstr ""
+
+#: AdvancedOptions.qml:146
+msgid "the milliseconds with leading zeroes (000 to 999)"
+msgstr ""
+
+#: AdvancedOptions.qml:147
+msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
+msgstr ""
+
+#: AdvancedOptions.qml:148
+msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
+msgstr ""
+
+#: AdvancedOptions.qml:149
+msgid "the timezone (for example 'CEST')"
+msgstr ""
+
+#: AdvancedOptions.qml:158
+msgid "Add to Format"
+msgstr ""
+
+#. TRANSLATORS: this refers to the color of date stamp added to captured images
+#: AdvancedOptions.qml:189
+msgid "Color"
+msgstr ""
+
+#. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
+#: AdvancedOptions.qml:257
+msgid "Alignment"
+msgstr ""
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: AdvancedOptions.qml:303
+msgid "Opacity"
+msgstr ""
+
+#: ViewFinderOverlay.qml:426
 msgid "HDR"
 msgstr ""
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:524
+#: ViewFinderOverlay.qml:535
 msgid "SD"
 msgstr ""
 
-#: ViewFinderOverlay.qml:1053
+#: ViewFinderOverlay.qml:1103
 msgid "Low storage space"
 msgstr ""
 
-#: ViewFinderOverlay.qml:1054
+#: ViewFinderOverlay.qml:1104
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 
-#: ViewFinderOverlay.qml:1067
+#: ViewFinderOverlay.qml:1117
 msgid "External storage not writeable"
 msgstr ""
 
-#: ViewFinderOverlay.qml:1068
+#: ViewFinderOverlay.qml:1118
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ViewFinderOverlay.qml:1106
+#: ViewFinderOverlay.qml:1156
 msgid "Cannot access camera"
 msgstr ""
 
-#: ViewFinderOverlay.qml:1107
+#: ViewFinderOverlay.qml:1157
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
-"If granting permission does not resolve this problem, reboot your phone."
+"If granting permission does not resolve this problem, reboot your device."
 msgstr ""
 
-#: ViewFinderOverlay.qml:1116
+#: ViewFinderOverlay.qml:1166
 msgid "Edit Permissions"
-msgstr ""
-
-#: SlideshowView.qml:69
-msgid "Edit"
 msgstr ""
 
 #: camera-app.qml:57
@@ -154,59 +360,6 @@ msgstr "வெள்ளை சமன்"
 #: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "வெளிச்ச நிலை; பகல் நேர; மேகமூட்ட; உள்ளே"
-
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr ""
-
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr ""
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr ""
-
-#: NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr ""
-
-#: Information.qml:61
-msgid "Get the source"
-msgstr ""
-
-#: Information.qml:62
-msgid "Report issues"
-msgstr ""
-
-#: Information.qml:63
-msgid "Help translate"
-msgstr ""
-
-#: Information.qml:71
-msgid "App Information"
-msgstr ""
-
-#: Information.qml:105
-#, qt-format
-msgid "Version %1"
-msgstr ""
-
-#: AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr ""
-
-#: AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr ""
-
-#: GalleryView.qml:195
-msgid "No media available."
-msgstr ""
-
-#: GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr ""
 
 #~ msgid "Camera"
 #~ msgstr "புகைப்பட கருவி"
