@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-05-06 17:43+0000\n"
-"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
+"PO-Revision-Date: 2018-05-06 17:46+0000\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -191,19 +191,16 @@ msgid "Get the source"
 msgstr "Otene su còdighe de orìgine"
 
 #: Information.qml:62
-#, fuzzy
 msgid "Report issues"
-msgstr ""
+msgstr "Signala faddinas"
 
 #: Information.qml:63
-#, fuzzy
 msgid "Help translate"
-msgstr ""
+msgstr "Agiuda a bortare"
 
 #: Information.qml:71
-#, fuzzy
 msgid "App Information"
-msgstr ""
+msgstr "Informatzione de s'aplicatzione"
 
 #: Information.qml:105
 #, qt-format
@@ -211,9 +208,8 @@ msgid "Version %1"
 msgstr "Versione %1"
 
 #: AdvancedOptions.qml:29
-#, fuzzy
 msgid "Advanced Options"
-msgstr ""
+msgstr "Séberos avantzados"
 
 #: AdvancedOptions.qml:36
 #, fuzzy
