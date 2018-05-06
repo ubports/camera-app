@@ -16,6 +16,7 @@ AddDateStamp::AddDateStamp(QString inPath, QString dateFormat, QColor  stampColo
 
 void AddDateStamp::run() {
   try {
+
       QImage image = QImage(path);
       QDateTime now = QDateTime::currentDateTime();
       QString currentDate = QString(now.toString(this->dateFormat));
@@ -32,7 +33,18 @@ void AddDateStamp::run() {
       painter->setPen(this->stampColor);
       QRect imageRect = QRect(textPixelSize,textPixelSize,image.width()-textPixelSize*2,image.height()-textPixelSize*2);
       painter->drawText(imageRect,this->alignment,currentDate);
-      image.save(path);
+
+      //Save to a temporary location and preform a filename swap in order to keep the file fully rendered
+      QString tmpPath = QString(path).replace(QRegExp("(\\.\\w+)$"),"_tmp\\1");
+      QString backupFilePath = QString(path).replace(QRegExp("(\\.\\w+)$"),"_old\\1");
+      image.save(tmpPath);
+      bool success = QFile::rename(path,backupFilePath);
+      success &= QFile::rename(tmpPath, path);
+      if(success) {
+          QFile::remove(backupFilePath);
+      } else { //try and move the backup file back to it original name
+          QFile::rename(backupFilePath, path);
+      }
   } catch (...) {
       return ;
   }

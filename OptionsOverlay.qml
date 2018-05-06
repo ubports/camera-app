@@ -143,14 +143,8 @@ Item {
             columnWidth: optionValueSelector.width
 
             label: (model && model.label) ? i18n.tr(model.label) : ""
-
             iconName: (model && model.icon) ? model.icon : ""
             selected: optionValueSelector.model.selectedIndex == index
-            Component.onCompleted: {
-                if (model && model.iconSource) {
-                    iconSource = model.iconSource
-                }
-            }
 
             isLast: index === optionValueSelector.count - 1
             onClicked: {
@@ -161,7 +155,6 @@ Item {
                 }
             }
         }
-
         footerPositioning: ListView.OverlayFooter
         footer: Icon {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -178,8 +171,8 @@ Item {
             left:parent.left
             right:parent.right
             topMargin: units.gu(4)
-            leftMargin: units.gu(4)
-            rightMargin: units.gu(4)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
         visible: advancedOptionsToggle.selected
         onBack: advancedOptionsToggle.selected = false;
@@ -192,8 +185,8 @@ Item {
             left:parent.left
             right:parent.right
             topMargin: units.gu(4)
-            leftMargin: units.gu(4)
-            rightMargin: units.gu(4)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
         visible: infoPageToggle.selected
         onBack: infoPageToggle.selected = false;

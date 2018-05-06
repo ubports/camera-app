@@ -66,13 +66,14 @@ Page {
                     id: datestampFormatItem
                     divider.visible: false
                     ListItemLayout {
-                        title.text: i18n.tr("Date Format")
+                        // TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+                        title.text: i18n.tr("Format")
                         title.color: "white"
                         TextField {
                             id:dateFormatText
                             SlotsLayout.position: SlotsLayout.Last
                             focus: true
-                            width:units.gu(20)
+                            width:datestampFormatItem.width - units.gu(18)
                             text: advancedOptions.settings.dateStampFormat
                             placeholderText:  Qt.locale().dateFormat(Locale.ShortFormat)
                             onActiveFocusChanged: if(!text) {text = Qt.locale().dateFormat(Locale.ShortFormat);}
@@ -184,12 +185,13 @@ Page {
                         id:  dateStampColorItemLayout
 
                         title.color: "white"
-                        title.text:i18n.tr("Stamp Color")
+                        // TRANSLATORS: this refers to the color of date stamp added to captured images
+                        title.text:i18n.tr("Color")
 
                         ListView {
                             id:dateStampColor
 
-                            width:dateStampColorItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampColorItem.height
                             SlotsLayout.position: SlotsLayout.Last
 
@@ -212,9 +214,11 @@ Page {
 
                             Component.onCompleted: {
                                 var newColors = [];
+                                var existingColors = {};
                                 for(var i in UbuntuColors) {
-                                    if( typeof(UbuntuColors[i]) == "object" && !(UbuntuColors[i].stops) ) {
+                                    if( typeof(UbuntuColors[i]) == "object" && !(UbuntuColors[i].stops) && !existingColors[UbuntuColors[i].toString()] ) {
                                         newColors.push(UbuntuColors[i]);
+                                        existingColors[UbuntuColors[i].toString()] = true;
                                     }
                                 }
                                 model = newColors;
@@ -249,12 +253,13 @@ Page {
                     ListItemLayout {
                         id:  dateStampAlignmentItemLayout
                         title.color: "white"
+                        // TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
                         title.text:i18n.tr("Alignment")
                         Row {
                             id:dateStampAlignment
                             anchors.topMargin:units.gu(1)
                             SlotsLayout.position: SlotsLayout.Last
-                            width:dateStampAlignmentItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampAlignmentItem.height
                             spacing:units.gu(0.5)
                             layoutDirection: Qt.RightToLeft
@@ -294,11 +299,12 @@ Page {
                         id:  dateStampOpacityItemLayout
                         height: dateStampOpacityItem.height
                         title.color: "white"
-                        title.text:i18n.tr("Stamp Opacity")
+                        // TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+                        title.text:i18n.tr("Opacity")
 
                         Slider {
                             id: dateStampOpacity
-                            width:dateStampOpacityItem.width - units.gu(18)
+                            width:dateFormatText.width
                             height:dateStampOpacityItem.height
                             value:advancedOptions.settings.dateStampOpacity
                             SlotsLayout.position: SlotsLayout.Last
