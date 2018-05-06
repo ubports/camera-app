@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-04-23 14:50+0000\n"
-"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
+"PO-Revision-Date: 2018-05-06 17:47+0000\n"
+"Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -53,14 +53,16 @@ msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Sostituire s'ischeda esterna, la formatare o torrare a aviare su dispositivu "
+"diat pòdere risòlvere su problema."
 
 #: ViewFinderView.qml:486
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "Torrare a aviare su dispositivu diat pòdere risòlvere su problema."
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Iscurre a manca pro bìdere su rullinu fotogràficu"
 
 #: PhotogridView.qml:41 SlideshowView.qml:50
 msgid "Share"
@@ -84,11 +86,12 @@ msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"S'ispàtziu in sa memòria s'est acabbende. Pro sighire chena interrutziones, "
+"lìbera ispàtziu de sa memòria."
 
 #: ViewFinderOverlay.qml:1067
-#, fuzzy
 msgid "External storage not writeable"
-msgstr "No si podet iscriere a sa memòria esterna"
+msgstr "Non si podet iscrìere in sa memòria esterna"
 
 #: ViewFinderOverlay.qml:1068
 msgid ""
@@ -96,10 +99,13 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Paret chi no est possìbile iscrìere in su dispositivu de memòria esternu. "
+"Proare a lu bogare e a lu torrare a pònnere diat pòdere risòlvere su "
+"problema. Si nono, podes proare a lu formatare."
 
 #: ViewFinderOverlay.qml:1106
 msgid "Cannot access camera"
-msgstr ""
+msgstr "Non si podet atzèdere a sa càmera"
 
 #: ViewFinderOverlay.qml:1107
 msgid ""
@@ -108,6 +114,11 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your phone."
 msgstr ""
+"S'aplicatzione Càmera non tenet su permissu de atzèdere a sa càmera o b'est "
+"istada un'àtera faddina.\n"
+"\n"
+"Si puru cuntzedende is permissos de atzessu su problema persistet, torra a "
+"aviare su telèfonu."
 
 #: ViewFinderOverlay.qml:1116
 msgid "Edit Permissions"
@@ -119,7 +130,7 @@ msgstr "Modìfica"
 
 #: camera-app.qml:57
 msgid "Flash"
-msgstr ""
+msgstr "Flash"
 
 #: camera-app.qml:58
 msgid "Light;Dark"
@@ -127,19 +138,21 @@ msgstr "Craru;Oscuru"
 
 #: camera-app.qml:61
 msgid "Flip Camera"
-msgstr ""
+msgstr "Fùrria sa càmera"
 
 #: camera-app.qml:62
+#, fuzzy
 msgid "Front Facing;Back Facing"
 msgstr ""
 
 #: camera-app.qml:65
+#, fuzzy
 msgid "Shutter"
 msgstr ""
 
 #: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Iscata una fotografia;Catura;Registra"
 
 #: camera-app.qml:69
 msgid "Mode"
@@ -147,15 +160,15 @@ msgstr "Modalidade"
 
 #: camera-app.qml:70
 msgid "Stills;Video"
-msgstr ""
+msgstr "Imàgine istàtica;Vìdeu"
 
 #: camera-app.qml:74
 msgid "White Balance"
-msgstr ""
+msgstr "Bilantzu de su biancu"
 
 #: camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr ""
+msgstr "Cunditzione de illuminatzione;Lughe naturale;Annuadu;Interiore"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -171,23 +184,23 @@ msgstr "AB"
 
 #: NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "S'ispàtziu in su dispositivu est finidu: lìbera ispàtziu pro sighire."
 
 #: Information.qml:61
 msgid "Get the source"
-msgstr ""
+msgstr "Otene su còdighe de orìgine"
 
 #: Information.qml:62
 msgid "Report issues"
-msgstr ""
+msgstr "Signala faddinas"
 
 #: Information.qml:63
 msgid "Help translate"
-msgstr ""
+msgstr "Agiuda a bortare"
 
 #: Information.qml:71
 msgid "App Information"
-msgstr ""
+msgstr "Informatzione de s'aplicatzione"
 
 #: Information.qml:105
 #, qt-format
@@ -196,11 +209,11 @@ msgstr "Versione %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
-msgstr ""
+msgstr "Optziones avantzadas"
 
 #: AdvancedOptions.qml:36
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Agiunghe sa data a is imàgines iscatadas"
 
 #: GalleryView.qml:195
 msgid "No media available."

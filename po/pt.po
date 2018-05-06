@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2017-12-12 12:10+0000\n"
+"PO-Revision-Date: 2018-05-02 17:49+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.ubports.com/projects/ubports"
 "/camera-app/pt/>\n"
@@ -203,7 +203,7 @@ msgstr "Informação da App"
 #: Information.qml:105
 #, qt-format
 msgid "Version %1"
-msgstr "Versão %1"
+msgstr "Versão: %1"
 
 #: AdvancedOptions.qml:29
 msgid "Advanced Options"
