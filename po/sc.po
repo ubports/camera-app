@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2018-05-06 17:33+0000\n"
-"Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
+"PO-Revision-Date: 2018-05-06 17:39+0000\n"
+"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -151,9 +151,8 @@ msgid "Shutter"
 msgstr ""
 
 #: camera-app.qml:66
-#, fuzzy
 msgid "Take a Photo;Snap;Record"
-msgstr ""
+msgstr "Iscata una fotografia;Registra "
 
 #: camera-app.qml:69
 msgid "Mode"
