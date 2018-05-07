@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2017-12-09 23:22+0000\n"
-"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
-"Language-Team: Italian <https://translate.ubports.com/projects/ubports/"
-"camera-app/it/>\n"
+"PO-Revision-Date: 2018-05-07 09:26+0000\n"
+"Last-Translator: Mike <miguel2000@livecom.it>\n"
+"Language-Team: Italian <https://translate.ubports.com/projects/ubports"
+"/camera-app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,11 +63,11 @@ msgstr "Condividi"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galleria"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Informazioni immagine"
 
 #: SlideshowView.qml:86
 msgid "Edit"
@@ -130,12 +130,12 @@ msgstr "Informazioni della applicazione"
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nome : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Tipo : %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
