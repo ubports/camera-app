@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2017-12-10 09:20+0000\n"
+"PO-Revision-Date: 2018-05-07 21:05+0000\n"
 "Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
@@ -65,20 +65,19 @@ msgstr "Partager"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galerie"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Informations sur l'image"
 
 #: SlideshowView.qml:86
 msgid "Edit"
 msgstr "Modifier"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Pellicule"
+msgstr "Revenir à la pellicule"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -110,7 +109,7 @@ msgstr "Le redémarrage de votre appareil pourrait résoudre le problème."
 
 #: Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: Information.qml:82
 msgid "Get the source"
@@ -125,29 +124,28 @@ msgid "Help translate"
 msgstr "Aider à traduire"
 
 #: MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "Informations sur l'application"
+msgstr "Informations sur le média"
 
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nom : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Type : %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Largeur : %1"
 
 #: MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Hauteur : %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -155,7 +153,7 @@ msgstr "Faites glisser sur la gauche pour faire défiler les photos"
 
 #: AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
@@ -164,124 +162,141 @@ msgstr "Ajouter l'heure et la date aux images prises"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
-msgstr ""
+msgstr "Mots-clés pour le formatage de la date"
 
 #: AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "le jour sous la forme d'un nombre sans zéro initial (1 à 31)"
 
 #: AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "le jour sous la forme d'un nombre avec un zéro initial (01 à 31)"
 
 #: AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
 msgstr ""
+"le nom de la journée sous sa forme localisée et abrégée (« Lun » à « Dim »)"
 
 #: AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
 msgstr ""
+"le nom de la journée sous sa forme localisée et complète (« Lundi » à « "
+"Dimanche »)"
 
 #: AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "le mois sous la forme d'un nombre sans zéro initial (1 à 12)"
 
 #: AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "le mois sous la forme d'un nombre avec un zéro initial (01 à 12)"
 
 #: AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "le nom du mois sous sa forme localisée et abrégée (« Jan » à « Déc »)"
 
 #: AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
+"le nom du mois sous sa forme localisée et complète (« Janvier » à « Décembre "
+"»)"
 
 #: AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "l'année sous la forme d'un nombre à deux chiffres (00 à 99)"
 
 #: AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"l'année sous la forme d'un nombre à quatre chiffres (si l'année est "
+"négative, le signe moins est ajouté en préfixe)"
 
 #: AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
+"l'heure sans zéro initial (0 à 23 ou 1 à 12 avec un affichage en notation "
+"anglo-saxonne)"
 
 #: AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
+"l'heure avec un zéro initial (00 à 23 ou 01 à 12 avec un affichage en "
+"notation anglo-saxonne)"
 
 #: AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
 msgstr ""
+"l'heure sans zéro initial (0 à 23, même avec un l'affichage en notation "
+"anglo-saxonne)"
 
 #: AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
 msgstr ""
+"l'heure avec un zéro initial (00 à 23, même avec un affichage en notation "
+"anglo-saxonne)"
 
 #: AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "la minute sans zéro initial (0 à 59)"
 
 #: AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "la minute avec un zéro initial (00 à 59)"
 
 #: AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "la seconde sans zéro initial (0 à 59)"
 
 #: AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "la seconde avec un zéro initial (00 à 59)"
 
 #: AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "la milliseconde sans zéros initiaux (0 à 999)"
 
 #: AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "la milliseconde avec zéros initiaux (000 à 999)"
 
 #: AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
 msgstr ""
+"utiliser l'affichage anglo-saxon (AP sera remplacé par « AM » ou « PM »)"
 
 #: AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
 msgstr ""
+"utiliser l'affichage anglo-saxon (AP sera remplacé par « AM » ou « PM »)"
 
 #: AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "le fuseau horaire (par exemple « CEST »)"
 
 #: AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Ajouter au format"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Alignement"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Opacité"
 
 #: ViewFinderOverlay.qml:426
 msgid "HDR"
@@ -323,15 +338,14 @@ msgid "Cannot access camera"
 msgstr "Accès à la camera refusé"
 
 #: ViewFinderOverlay.qml:1157
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
-"L'application Camera n'est pas autorisée à accéder à la caméra ou une autre "
-"erreur a eu lieu.\n"
+"L'application Caméra n'est pas autorisée à accéder à la caméra ou bien une "
+"autre erreur a eu lieu.\n"
 "\n"
 "Si autoriser l'accès à la caméra ne résout pas ce problème, redémarrez votre "
 "téléphone."
