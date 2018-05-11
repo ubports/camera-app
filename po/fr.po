@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-07 21:05+0000\n"
+"PO-Revision-Date: 2018-05-11 20:00+0000\n"
 "Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
@@ -37,7 +37,9 @@ msgstr "Supprimer"
 #: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
 #: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
+"La couleur du texte est déterminée en fonction de l'arrière-plan, donc "
+"définie à partir du HTML"
 
 #: GalleryView.qml:200
 msgid "No media available."
@@ -335,7 +337,7 @@ msgstr ""
 
 #: ViewFinderOverlay.qml:1156
 msgid "Cannot access camera"
-msgstr "Accès à la camera refusé"
+msgstr "Accès à la caméra refusé"
 
 #: ViewFinderOverlay.qml:1157
 msgid ""
@@ -368,7 +370,7 @@ msgstr "Changer d'objectif"
 
 #: camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "Optique avant;Optique arrière"
+msgstr "Objectif avant;Objectif arrière"
 
 #: camera-app.qml:65
 msgid "Shutter"
