@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2017-12-11 06:50+0000\n"
-"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
-"Language-Team: Catalan <https://translate.ubports.com/projects/ubports/"
-"camera-app/ca/>\n"
+"PO-Revision-Date: 2018-05-11 15:09+0000\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan <https://translate.ubports.com/projects/ubports"
+"/camera-app/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,20 +63,19 @@ msgstr "Comparteix"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galeria"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Informació de la imatge"
 
 #: SlideshowView.qml:86
 msgid "Edit"
 msgstr "Edita"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Rotlle de fotos"
+msgstr "Enrere al rotlle de fotos"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -108,7 +107,7 @@ msgstr "El reinici del vostre dispositiu podria arreglar el problema."
 
 #: Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Quant a"
 
 #: Information.qml:82
 msgid "Get the source"
@@ -123,29 +122,28 @@ msgid "Help translate"
 msgstr "Ajudeu amb la traducció"
 
 #: MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "Informació de l'aplicació"
+msgstr "Informació del mitjà"
 
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nom: %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Tipus: %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Amplada: %1"
 
 #: MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Alçada: %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -153,7 +151,7 @@ msgstr "Feu lliscar el dit cap a l'esquerra per veure el rotlle de fotos"
 
 #: AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Configuració"
 
 #: AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
@@ -162,7 +160,7 @@ msgstr "Afegeix la data a les imatges capturades"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
@@ -269,7 +267,7 @@ msgstr ""
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
@@ -321,18 +319,17 @@ msgid "Cannot access camera"
 msgstr "No es pot accedir a la càmera"
 
 #: ViewFinderOverlay.qml:1157
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
-"O bé l'aplicació de la càmera no pot accedir al maquinari o bé s'ha produït "
-"un altre error.\n"
+"O bé l'aplicació de la càmera no té permís per accedir el maquinari de la "
+"càmera o bé s'ha produït un altre error.\n"
 "\n"
 "Si després d'atorgar permisos a l'aplicació no s'ha resolt el problema, "
-"caldrà que reinicieu el telèfon."
+"caldrà que reinicieu el vostre dispositiu."
 
 #: ViewFinderOverlay.qml:1166
 msgid "Edit Permissions"
