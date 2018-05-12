@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-12 09:29+0000\n"
-"Last-Translator: Jonathan A <jarmit55@gmail.com>\n"
+"PO-Revision-Date: 2018-05-12 20:16+0000\n"
+"Last-Translator: Simone <19simok89@gmail.com>\n"
 "Language-Team: English (United Kingdom) "
 "<https://translate.ubports.com/projects/ubports/camera-app/en_GB/>\n"
 "Language: en_GB\n"
@@ -91,7 +91,7 @@ msgstr "Ok"
 
 #: ViewFinderView.qml:485
 msgid "Capture failed"
-msgstr ""
+msgstr "Capture failed"
 
 #: ViewFinderView.qml:490
 msgid ""
