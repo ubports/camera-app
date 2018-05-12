@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-01-03 12:43+0000\n"
-"Last-Translator: Johannes Ledermüller <schwindelfrei@firemail.de>\n"
+"PO-Revision-Date: 2018-05-12 09:49+0000\n"
+"Last-Translator: Florian Leeber <flori@bin.org.in>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
 "app/de/>\n"
 "Language: de\n"
@@ -164,7 +164,7 @@ msgstr "Datumsstempel zu Aufnahmen hinzufügen"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Formatieren"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
@@ -271,7 +271,7 @@ msgstr ""
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Farbe"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
