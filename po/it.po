@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2017-12-09 23:22+0000\n"
-"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
-"Language-Team: Italian <https://translate.ubports.com/projects/ubports/"
-"camera-app/it/>\n"
+"PO-Revision-Date: 2018-05-11 22:38+0000\n"
+"Last-Translator: Simone <19simok89@gmail.com>\n"
+"Language-Team: Italian <https://translate.ubports.com/projects/ubports"
+"/camera-app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,20 +63,19 @@ msgstr "Condividi"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galleria"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Informazioni immagine"
 
 #: SlideshowView.qml:86
 msgid "Edit"
 msgstr "Modifica"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Rullino"
+msgstr "Indietro a rullino foto"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -130,22 +129,22 @@ msgstr "Informazioni della applicazione"
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nome : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Tipo : %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Larghezza :%1"
 
 #: MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Altezza : %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -153,7 +152,7 @@ msgstr "Scorrere a sinistra per il rullino"
 
 #: AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Settaggi"
 
 #: AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
@@ -161,16 +160,18 @@ msgstr "Aggiungi la data alle immagini scattate"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
+#, fuzzy
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
 msgstr ""
 
 #: AdvancedOptions.qml:127
+#, fuzzy
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "Numero del giorno senza zeri a sinistra ( 1 a 31 )"
 
 #: AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
@@ -202,7 +203,7 @@ msgstr ""
 
 #: AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "Anno con due cifre ( 00 a 99 )"
 
 #: AdvancedOptions.qml:136
 msgid ""
@@ -269,17 +270,17 @@ msgstr ""
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Colore"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Allineamento"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Opacità"
 
 #: ViewFinderOverlay.qml:426
 msgid "HDR"
@@ -328,11 +329,10 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
-"L'app non ha i permessi di accesso alla fotocamera oppure si è verificato un "
-"altro errore.\n"
+"Camera app doesn't have permission to access the camera hardware or another "
+"error occurred.\n"
 "\n"
-"Se anche concedendo i permessi di accesso il problema persiste, riavviare il "
-"telefono."
+"If granting permission does not resolve this problem, reboot your device."
 
 #: ViewFinderOverlay.qml:1166
 msgid "Edit Permissions"
