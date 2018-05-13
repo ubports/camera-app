@@ -192,7 +192,7 @@ msgstr "el mes com a número amb un zero endavant (01 a 12)"
 
 #: AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "el nom abreujat de mes traduït (p.ex. 'Gen' a 'Des'),"
+msgstr "el nom abreujat de mes traduït (p.ex. 'Gen' a 'Des')."
 
 #: AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
