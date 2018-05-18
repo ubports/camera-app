@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-12 12:39+0000\n"
-"Last-Translator: Alessandro Vinciguerra <alesvinciguerra@gmail.com>\n"
+"PO-Revision-Date: 2018-05-18 15:55+0000\n"
+"Last-Translator: Hugh Y <hugh_yan@live.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<https://translate.ubports.com/projects/ubports/camera-app/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -266,8 +266,9 @@ msgstr ""
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
+#, fuzzy
 msgid "Color"
-msgstr ""
+msgstr "有色打印"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
