@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-12 21:00+0000\n"
-"Last-Translator: Veli-Matti Rautiainen <velraut@gmail.com>\n"
+"PO-Revision-Date: 2018-05-19 13:02+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://translate.ubports.com/projects/ubports"
 "/camera-app/fi/>\n"
 "Language: fi\n"
@@ -67,16 +67,15 @@ msgstr "Galleria"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Kuvan tiedot"
 
 #: SlideshowView.qml:86
 msgid "Edit"
 msgstr "Muokkaa"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Kuvarulla"
+msgstr "Takaisin kuvarullaan"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -108,7 +107,7 @@ msgstr "Laitteen käynnistäminen uudelleen saattaa korjata ongelman."
 
 #: Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Tietoja"
 
 #: Information.qml:82
 msgid "Get the source"
@@ -123,19 +122,18 @@ msgid "Help translate"
 msgstr "Osallistu lokalisointiin"
 
 #: MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "Sovellustietoja"
+msgstr "Median tiedot"
 
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nimi : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Tyyppi: %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
