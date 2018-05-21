@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-14 09:56+0000\n"
+"PO-Revision-Date: 2018-05-21 11:14+0000\n"
 "Last-Translator: Joachim Lazaroms <joachim.pc@gmail.com>\n"
 "Language-Team: Dutch <https://translate.ubports.com/projects/ubports/camera-"
 "app/nl/>\n"
@@ -89,7 +89,7 @@ msgstr "Niet mogelijk om tegelijkertijd foto's en video's te delen"
 
 #: UnableShareDialog.qml:30
 msgid "Ok"
-msgstr "Oké"
+msgstr "Ok"
 
 #: ViewFinderView.qml:485
 msgid "Capture failed"
