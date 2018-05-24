@@ -27,7 +27,7 @@ Popover {
                 color: theme.palette.normal.overlayText
             }
             Label {
-                text:i18n.tr("Name : %1".arg(infoPopover.model.fileName))
+                text:i18n.tr("Name: %1".arg(infoPopover.model.fileName))
             }
             Label {
                 text:i18n.tr("Type : %1").arg(infoPopover.model.fileType)
