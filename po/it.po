@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
 "PO-Revision-Date: 2018-05-24 13:08+0000\n"
-"Last-Translator: anonymous <noreply@weblate.org>\n"
+"Last-Translator: Alessandro Vinciguerra <alesvinciguerra@gmail.com>\n"
 "Language-Team: Italian <https://translate.ubports.com/projects/ubports"
 "/camera-app/it/>\n"
 "Language: it\n"
@@ -164,7 +164,7 @@ msgstr "Formatta"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
-msgstr ""
+msgstr "Parole chiavi per formattare la data"
 
 #: AdvancedOptions.qml:127
 #, fuzzy
