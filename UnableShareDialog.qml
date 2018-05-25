@@ -27,7 +27,7 @@ Dialog {
 
     Button {
         objectName: "unableShareDialogOk"
-        text: i18n.tr("Ok")
+        text: i18n.tr("OK")
         color: UbuntuColors.orange
         onClicked: PopupUtils.close(dialog);
     }
