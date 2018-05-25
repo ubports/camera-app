@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
 "PO-Revision-Date: 2018-05-25 09:53+0000\n"
-"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -361,7 +361,7 @@ msgstr "Oturadore"
 
 #: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Iscata una fotografia;Catura;Registra"
+msgstr "Iscatta una foto;Registra"
 
 #: camera-app.qml:69
 msgid "Mode"
