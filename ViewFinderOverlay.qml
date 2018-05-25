@@ -34,6 +34,7 @@ Item {
     property var settings: settings
     property bool readyForCapture
     property int sensorOrientation
+    property bool overlayPageVisible : (advancedOptionsToggle.selected || infoPageToggle.selected);
 
     function showFocusRing(x, y) {
         focusRing.center = Qt.point(x, y);
@@ -55,6 +56,10 @@ Item {
         property bool playShutterSound: true
         property var photoResolutions
         property bool dateStampImages: false
+        property string dateStampFormat: Qt.locale().dateFormat(Locale.ShortFormat)
+        property color dateStampColor: UbuntuColors.orange;
+        property real dateStampOpacity: 1.0;
+        property int dateStampAlign :  Qt.AlignBottom | Qt.AlignRight;
 
         Component.onCompleted: if (!photoResolutions) photoResolutions = {}
         onFlashModeChanged: if (flashMode != Camera.FlashOff) hdrEnabled = false;
@@ -82,7 +87,7 @@ Item {
     }
 
     Binding {
-        target: camera.imageCapture.resolution
+        target: camera.advanced
         property: "encodingQuality"
         value: settings.encodingQuality
     }
@@ -98,6 +103,7 @@ Item {
         property: "resolution"
         value: settings.photoResolutions[camera.deviceId]
     }
+
 
     Connections {
         target: camera.imageCapture
@@ -335,7 +341,7 @@ Item {
 
                Ref.: https://bugs.launchpad.net/ubuntu/+source/camera-app/+bug/1472903
             */
-            property real progress: opened ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
+            property real progress: bottomEdge.height ? (bottomEdge.height - bottomEdge.position) / bottomEdge.height : 0
             property list<ListModel> options: [
                 ListModel {
                     id: gpsOptionsModel
@@ -480,6 +486,11 @@ Item {
                         icon: ""
                         label: QT_TR_NOOP("Fine Quality")
                         value: 4 // QMultimedia.VeryHighQuality
+                    }
+                    ListElement {
+                        icon: ""
+                        label: QT_TR_NOOP("High Quality")
+                        value: 3 // QMultimedia.HighQuality
                     }
                     ListElement {
                         icon: ""
@@ -653,6 +664,39 @@ Item {
                         bottomEdge.open();
                     }
                 }
+            }
+        }
+
+        OptionValueButton {
+            id:advancedOptionsToggle
+            z:1
+            anchors.right: parent.right
+            anchors.top: parent.top
+            opacity: bottomEdge.progress
+            visible:opacity != 0
+            iconName:  "settings"
+            isLast: true
+            onClicked: {
+                selected = !selected;
+                infoPageToggle.selected = false;
+                bottomEdge.open()
+            }
+        }
+
+
+        OptionValueButton {
+            id:infoPageToggle
+            z:1
+            anchors.right: advancedOptionsToggle.left
+            anchors.top: parent.top
+            opacity: bottomEdge.progress
+            visible:opacity != 0
+            iconName:  "info"
+            isLast: true
+            onClicked: {
+                selected = !selected
+                advancedOptionsToggle.selected = false;
+                bottomEdge.open()
             }
         }
     }
@@ -841,7 +885,11 @@ Item {
             }
             onImageSaved : {
                 if(path && settings.dateStampImages && !main.contentExportMode) {
-                    postProcessOperations.addDateStamp(path);
+                    postProcessOperations.addDateStamp(path,
+                                                       viewFinderOverlay.settings.dateStampFormat,
+                                                       viewFinderOverlay.settings.dateStampColor,
+                                                       viewFinderOverlay.settings.dateStampOpacity,
+                                                       viewFinderOverlay.settings.dateStampAlign);
                 }
             }
         }
@@ -1106,7 +1154,7 @@ Item {
              id: noPermissionsDialog
              objectName: "noPermissionsDialog"
              title: i18n.tr("Cannot access camera")
-             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your phone.")
+             text: i18n.tr("Camera app doesn't have permission to access the camera hardware or another error occurred.\n\nIf granting permission does not resolve this problem, reboot your device.")
              Button {
                  text: i18n.tr("Cancel")
                  onClicked: {

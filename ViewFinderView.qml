@@ -27,6 +27,7 @@ FocusScope {
     id: viewFinderView
 
     property bool overlayVisible: true
+    property bool overlayPageVisible: false
     property bool optionValueSelectorVisible: false
     property bool touchAcquired: viewFinderOverlay.touchAcquired || camera.videoRecorder.recorderState == CameraRecorder.RecordingState
     property bool inView
@@ -450,6 +451,9 @@ FocusScope {
         MouseArea {
             anchors.fill: parent
             enabled: photoRollHint.visible
+        }
+        onLoaded: {
+            viewFinderView.overlayPageVisible = Qt.binding(function() { return item.overlayPageVisible;})
         }
     }
 

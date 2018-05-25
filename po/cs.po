@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 02:48+0300\n"
-"PO-Revision-Date: 2017-12-09 23:53+0000\n"
+"POT-Creation-Date: 2018-05-02 16:30+0300\n"
+"PO-Revision-Date: 2018-05-11 11:52+0000\n"
 "Last-Translator: Milan Korecký <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://translate.ubports.com/projects/ubports/camera-"
 "app/cs/>\n"
@@ -20,36 +20,80 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: GalleryViewHeader.qml:81 SlideshowView.qml:42
-msgid "Select"
-msgstr "Vybrat"
-
-#: GalleryViewHeader.qml:82
-msgid "Edit Photo"
-msgstr "Upravit fotku"
-
-#: GalleryViewHeader.qml:82
-msgid "Photo Roll"
-msgstr "Fotografie"
+#: NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "Nedostatek paměti. Pro pokračování uvolněte místo."
 
 #: DeleteDialog.qml:24
 msgid "Delete media?"
 msgstr "Smazat média?"
 
-#: DeleteDialog.qml:34 PhotogridView.qml:55 SlideshowView.qml:58
+#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
 msgid "Delete"
 msgstr "Smazat"
 
-#: DeleteDialog.qml:40 ViewFinderView.qml:489 ViewFinderOverlay.qml:1056
-#: ViewFinderOverlay.qml:1070 ViewFinderOverlay.qml:1109
+#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
+#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ViewFinderView.qml:480
+#: GalleryView.qml:200
+msgid "No media available."
+msgstr "Nejsou dostupná žádná média."
+
+#: GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr "Hledání obsahu..."
+
+#: GalleryViewHeader.qml:82 SlideshowView.qml:45
+msgid "Select"
+msgstr "Vybrat"
+
+#: GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr "Upravit fotku"
+
+#: GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr "Fotografie"
+
+#: PhotogridView.qml:42 SlideshowView.qml:60
+msgid "Share"
+msgstr "Sdílet"
+
+#: PhotogridView.qml:69 SlideshowView.qml:53
+msgid "Gallery"
+msgstr "Galerie"
+
+#: SlideshowView.qml:68
+msgid "Image Info"
+msgstr "Informace o obrázku"
+
+#: SlideshowView.qml:86
+msgid "Edit"
+msgstr "Upravit"
+
+#: SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr "Zpět na fotografie"
+
+#: UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "Nelze sdílet"
+
+#: UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "Ve stejný okamžik nelze sdílet fotky a videa"
+
+#: UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "OK"
+
+#: ViewFinderView.qml:485
 msgid "Capture failed"
 msgstr "Záznam se nezdařil"
 
-#: ViewFinderView.qml:485
+#: ViewFinderView.qml:490
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
@@ -57,32 +101,202 @@ msgstr ""
 "Výměna externího média, jeho formátování nebo restartování zařízení může "
 "vyřešit problém."
 
-#: ViewFinderView.qml:486
+#: ViewFinderView.qml:491
 msgid "Restarting your device might fix the problem."
 msgstr "Restartování zařízení může vyřešit problém."
+
+#: Information.qml:20
+msgid "About"
+msgstr "O aplikaci"
+
+#: Information.qml:82
+msgid "Get the source"
+msgstr "Získat zdrojový kód"
+
+#: Information.qml:83
+msgid "Report issues"
+msgstr "Nahlásit chyby"
+
+#: Information.qml:84
+msgid "Help translate"
+msgstr "Pomozte s překladem"
+
+#: MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr "Informace o médiu"
+
+#: MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr "Název : %1"
+
+#: MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr "Typ : %1"
+
+#: MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr "Šířka : %1"
+
+#: MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
+msgstr "Výška : %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "Přetáhněte doleva pro zobrazení fotografií"
 
-#: PhotogridView.qml:41 SlideshowView.qml:50
-msgid "Share"
-msgstr "Sdílet"
+#: AdvancedOptions.qml:16
+msgid "Settings"
+msgstr "Nastavení"
 
-#: ViewFinderOverlay.qml:420
+#: AdvancedOptions.qml:48
+msgid "Add date stamp on captured images"
+msgstr "Přidat datum na pořízené fotky"
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: AdvancedOptions.qml:70
+msgid "Format"
+msgstr "Formát"
+
+#: AdvancedOptions.qml:122
+msgid "Date formating keywords"
+msgstr "Klíčová slova pro formát data"
+
+#: AdvancedOptions.qml:127
+msgid "the day as number without a leading zero (1 to 31)"
+msgstr "den jako číslo bez nuly na začátku (1 až 31)"
+
+#: AdvancedOptions.qml:128
+msgid "the day as number with a leading zero (01 to 31)"
+msgstr "den jako číslo s nulou na začátku (01 až 31)"
+
+#: AdvancedOptions.qml:129
+msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
+msgstr "zkrácený název lokalizovaného dne (např. 'Po' až 'Ne')."
+
+#: AdvancedOptions.qml:130
+msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
+msgstr "celý název lokalizovaného dne (např. \"Pondělí\" až \"Neděle\")."
+
+#: AdvancedOptions.qml:131
+msgid "the month as number without a leading zero (1 to 12)"
+msgstr "měsíc jako číslo bez nuly na začátku (1 až 12)"
+
+#: AdvancedOptions.qml:132
+msgid "the month as number with a leading zero (01 to 12)"
+msgstr "měsíc jako číslo s nulou na začátku (01 až 12)"
+
+#: AdvancedOptions.qml:133
+msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
+msgstr "zkrácený název lokalizovaného měsíce (např. 'Led' až 'Pros')."
+
+#: AdvancedOptions.qml:134
+msgid "the long localized month name (e.g. 'January' to 'December')."
+msgstr "dlouhý název lokalizovaného měsíce (např. \"Leden\" až \"Prosinec\")."
+
+#: AdvancedOptions.qml:135
+msgid "the year as two digit number (00 to 99)"
+msgstr "rok jako dvoumístné číslo (00 až 99)"
+
+#: AdvancedOptions.qml:136
+msgid ""
+"the year as four digit number. If the year is negative, a minus sign is "
+"prepended in addition."
+msgstr ""
+"rok jako čtyřmístné číslo. Je-li rok záporný, je navíc doplněn o znaménko "
+"mínus."
+
+#: AdvancedOptions.qml:137
+msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
+msgstr ""
+"hodina bez nuly na začátku (0 až 23 nebo 1 až 12, pokud je zobrazeno AM/PM)"
+
+#: AdvancedOptions.qml:138
+msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
+msgstr ""
+"hodina s nulou na začátku (00 až 23 nebo 01 až 12, pokud je zobrazeno AM/PM)"
+
+#: AdvancedOptions.qml:139
+msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
+msgstr "hodina bez nuly na začátku (0 až 23, i při zobrazení AM/PM)"
+
+#: AdvancedOptions.qml:140
+msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
+msgstr "hodina s nulou na začátku (0 až 23, i při zobrazení AM/PM)"
+
+#: AdvancedOptions.qml:141
+msgid "the minute without a leading zero (0 to 59)"
+msgstr "minuty bez nuly na začátku (0 až 59)"
+
+#: AdvancedOptions.qml:142
+msgid "the minute with a leading zero (00 to 59)"
+msgstr "minuty s nulou na začátku (0 až 59)"
+
+#: AdvancedOptions.qml:143
+msgid "the second without a leading zero (0 to 59)"
+msgstr "sekundy bez nuly na začátku (0 až 59)"
+
+#: AdvancedOptions.qml:144
+msgid "the second with a leading zero (00 to 59)"
+msgstr "sekundy s nulou na začátku (0 až 59)"
+
+#: AdvancedOptions.qml:145
+msgid "the milliseconds without leading zeroes (0 to 999)"
+msgstr "milisekundy bez nuly na začátku (000 až 999)"
+
+#: AdvancedOptions.qml:146
+msgid "the milliseconds with leading zeroes (000 to 999)"
+msgstr "milisekundy s nulou na začátku (000 až 999)"
+
+#: AdvancedOptions.qml:147
+msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
+msgstr "použít AM/PM zobrazení. AP bude nahrazeno buď 'AM' nebo 'PM'."
+
+#: AdvancedOptions.qml:148
+msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
+msgstr "použijte zobrazení am/pm. ap bude nahrazeno buď 'am' nebo 'pm'."
+
+#: AdvancedOptions.qml:149
+msgid "the timezone (for example 'CEST')"
+msgstr "časové pásmo (například \"CEST\")"
+
+#: AdvancedOptions.qml:158
+msgid "Add to Format"
+msgstr "Přidat formát"
+
+#. TRANSLATORS: this refers to the color of date stamp added to captured images
+#: AdvancedOptions.qml:189
+msgid "Color"
+msgstr "Barva"
+
+#. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
+#: AdvancedOptions.qml:257
+msgid "Alignment"
+msgstr "Zarovnání"
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: AdvancedOptions.qml:303
+msgid "Opacity"
+msgstr "Neprůhlednost"
+
+#: ViewFinderOverlay.qml:426
 msgid "HDR"
 msgstr "HDR"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:524
+#: ViewFinderOverlay.qml:535
 msgid "SD"
 msgstr "SD"
 
-#: ViewFinderOverlay.qml:1053
+#: ViewFinderOverlay.qml:1103
 msgid "Low storage space"
 msgstr "Málo volné paměti"
 
-#: ViewFinderOverlay.qml:1054
+#: ViewFinderOverlay.qml:1104
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -90,11 +304,11 @@ msgstr ""
 "Dochází vám volné místo. Pro pokračování bez přerušení uvolněte nyní místo v "
 "paměti."
 
-#: ViewFinderOverlay.qml:1067
+#: ViewFinderOverlay.qml:1117
 msgid "External storage not writeable"
 msgstr "Externí úložiště není zapisovatelné"
 
-#: ViewFinderOverlay.qml:1068
+#: ViewFinderOverlay.qml:1118
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -103,29 +317,26 @@ msgstr ""
 "Zdá se, že nelze zapisovat do externí úložné paměti. Vysunutí a zasunutí "
 "externí paměti může problém vyřešit, případně ji budete muset naformátovat."
 
-#: ViewFinderOverlay.qml:1106
+#: ViewFinderOverlay.qml:1156
 msgid "Cannot access camera"
 msgstr "Fotoaparát není dostupný"
 
-#: ViewFinderOverlay.qml:1107
+#: ViewFinderOverlay.qml:1157
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
 "\n"
-"If granting permission does not resolve this problem, reboot your phone."
+"If granting permission does not resolve this problem, reboot your device."
 msgstr ""
-"Aplikace Fotoaparát nemá práva k využívání hardware nebo se objevila jiná "
-"chyba.\n"
+"Aplikace Fotoaparát nemá oprávnění k přístupu k hardwaru kamery nebo došlo k "
+"jiné chybě.\n"
 "\n"
-"Pokud tento problém nevyřeší přidání práv, restartujte telefon."
+"\n"
+"Pokud udělení oprávnění nevyřeší tento problém, restartujte zařízení."
 
-#: ViewFinderOverlay.qml:1116
+#: ViewFinderOverlay.qml:1166
 msgid "Edit Permissions"
 msgstr "Upravit práva"
-
-#: SlideshowView.qml:69
-msgid "Edit"
-msgstr "Upravit"
 
 #: camera-app.qml:57
 msgid "Flash"
@@ -167,58 +378,11 @@ msgstr "Vyvážení bílé"
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Světelné podmínky;Den;Oblačno;Uvnitř"
 
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "Nelze sdílet"
+#~ msgid "Version %1"
+#~ msgstr "Verze %1"
 
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "Ve stejný okamžik nelze sdílet fotky a videa"
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "OK"
-
-#: NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "Nedostatek paměti. Pro pokračování uvolněte místo."
-
-#: Information.qml:61
-msgid "Get the source"
-msgstr "Získat zdrojový kód"
-
-#: Information.qml:62
-msgid "Report issues"
-msgstr "Nahlásit chyby"
-
-#: Information.qml:63
-msgid "Help translate"
-msgstr "Pomozte s překladem"
-
-#: Information.qml:71
-msgid "App Information"
-msgstr "Informace o aplikaci"
-
-#: Information.qml:105
-#, qt-format
-msgid "Version %1"
-msgstr "Verze %1"
-
-#: AdvancedOptions.qml:29
-msgid "Advanced Options"
-msgstr "Pokročilá nastavení"
-
-#: AdvancedOptions.qml:36
-msgid "Add date stamp on captured images"
-msgstr "Přidat datum na pořízené fotky"
-
-#: GalleryView.qml:195
-msgid "No media available."
-msgstr "Nejsou dostupná žádná média."
-
-#: GalleryView.qml:230
-msgid "Scanning for content..."
-msgstr "Hledání obsahu..."
+#~ msgid "Advanced Options"
+#~ msgstr "Pokročilá nastavení"
 
 #~ msgid "On"
 #~ msgstr "Zapnuto"

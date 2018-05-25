@@ -3,11 +3,32 @@ import Ubuntu.Components 1.3
 import QtQuick.Window 2.2
 import QtSensors 5.4
 
-Item {
+Page {
     id:_infoPage
+
+    signal back();
+
     height: infoHeader.height + aboutCloumn.height + infoLinksList.height
 
-    property bool portrait: (Screen.orientation == Screen.primaryOrientation)
+    header: PageHeader {
+        id:infoHeader
+        StyleHints {
+            backgroundColor:"transparent"
+            foregroundColor:"white"
+        }
+
+        title: i18n.tr("About")
+
+        leadingActionBar.actions: [
+               Action {
+                   iconName: "down"
+                   text: "Back"
+                   onTriggered: _infoPage.back();
+               }
+           ]
+    }
+
+    property bool portrait: (Screen.orientation == Qt.PortraitOrientation || Screen.orientation == Qt.InvertedPortraitOrientation)
 
     transitions: [
         Transition {
@@ -61,14 +82,6 @@ Item {
         infoModel.append({ name: i18n.tr("Get the source"), url: "https://github.com/ubports/camera-app" })
         infoModel.append({ name: i18n.tr("Report issues"), url: "https://github.com/ubports/camera-app/issues/" })
         infoModel.append({ name: i18n.tr("Help translate"), url: "https://translate.ubports.com/projects/ubports/camera-app/" })
-    }
-
-    Label {
-        id:infoHeader
-        height:units.gu(3)
-        width:parent.width
-        color: "white"
-        text: i18n.tr("App Information")
     }
 
     Column {

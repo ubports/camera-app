@@ -79,8 +79,8 @@ if(CLICK_MODE)
     endif(NOT SOURCE)
 
 else(CLICK_MODE)
-    set(CAMERA_ICON "camera-app")
     set(CAMERA_APP_DIR ${CMAKE_INSTALL_DATADIR}/${CAMERA_APP})
+    set(CAMERA_ICON ${CMAKE_INSTALL_PREFIX}/${CAMERA_APP_DIR}/camera-app.png)
     set(PLUGIN_BASE ${CMAKE_INSTALL_LIBDIR}/${CAMERA_APP})
     set(PLUGIN_DIR ${PLUGIN_BASE}/CameraApp)
     set(DESKTOP_EXEC ${CAMERA_APP})
@@ -123,7 +123,7 @@ install(TARGETS ${CAMERA_APP}
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 
-file(GLOB QML_JS_FILES *.qml *.js)
+file(GLOB QML_JS_FILES *.qml *.js *.png)
 
 install(FILES ${QML_JS_FILES}
     DESTINATION ${CAMERA_APP_DIR}
