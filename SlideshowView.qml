@@ -438,7 +438,7 @@ FocusScope {
         enabled: !editor.active
         visible: enabled
         height:units.gu(8)
-        hint.text: i18n.tr("Back to Photo roll");
+        hint.text: i18n.tr("Back to photo roll");
         hint.iconName: "go-up"
         hint.visible:enabled
 
