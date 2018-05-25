@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-25 10:58+0000\n"
-"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
+"PO-Revision-Date: 2018-05-25 10:59+0000\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -73,9 +73,8 @@ msgid "Edit"
 msgstr "Modìfica"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Rullinu fotogràficu"
+msgstr "Torra a su rullinu fotogràficu"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
