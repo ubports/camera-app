@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-25 10:59+0000\n"
-"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
+"PO-Revision-Date: 2018-05-25 11:00+0000\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -168,7 +168,7 @@ msgstr "Craes de formatatzione de sa data"
 
 #: AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr "Sa die comente a nùmeru sena zero initziale (dae 1 a 31)"
+msgstr "sa die comente a nùmeru sena zero initziale (dae 1 a 31)"
 
 #: AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
