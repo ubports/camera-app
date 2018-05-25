@@ -22,7 +22,7 @@ Popover {
 
             spacing:units.gu(1)
             Label {
-                text:i18n.tr("Media Information");
+                text:i18n.tr("Media info");
                 textSize: Label.Large
                 color: theme.palette.normal.overlayText
             }
