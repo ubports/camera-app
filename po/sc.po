@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
 "PO-Revision-Date: 2018-05-30 09:48+0000\n"
-"Last-Translator: Flavia <flavia.efloris@gmail.com>\n"
+"Last-Translator: Matteo Mandis <mandismatteo@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
 "Language: sc\n"
@@ -265,7 +265,7 @@ msgstr "su fusu oràriu (pro esempru 'CEST')"
 
 #: AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Agiunghe a sa formatatzione"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
