@@ -10,7 +10,7 @@
         }
     },
     "icon": "@CAMERA_ICON@",
-    "maintainer": "UBports <community@ubports.com>",
+    "maintainer": "UBports <dev@ubports.com>",
     "name": "com.ubuntu.camera",
     "title": "Camera",
     "version": "3.0.1.@REVNO@",
