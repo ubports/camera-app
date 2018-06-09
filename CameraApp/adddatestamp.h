@@ -5,8 +5,8 @@
 
 class AddDateStamp : public QThread
 {
-    static const float MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE = 0.04f;
-    static const float MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE = 0.02f;
+    static constexpr float MAXIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE = 0.04f;
+    static constexpr float MINIMUM_TEXT_HEIGHT_PECENT_OF_IMAGE = 0.02f;
 
 public:
     AddDateStamp(QString inPath, QString dateFormat, QColor  stampColor, float   opacity, int alignment);
