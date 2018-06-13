@@ -119,7 +119,7 @@ Page {
 
                             header:Label {
                                 anchors.horizontalCenter: parent.horizontalCenter
-                                text:i18n.tr("Date formating keywords")
+                                text:i18n.tr("Date formatting keywords")
                                 horizontalAlignment: Text.horizontalCenter
                             }
 
