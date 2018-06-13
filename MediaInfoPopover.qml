@@ -22,12 +22,12 @@ Popover {
 
             spacing:units.gu(1)
             Label {
-                text:i18n.tr("Media Information");
+                text:i18n.tr("Media info");
                 textSize: Label.Large
                 color: theme.palette.normal.overlayText
             }
             Label {
-                text:i18n.tr("Name : %1".arg(infoPopover.model.fileName))
+                text:i18n.tr("Name: %1".arg(infoPopover.model.fileName))
             }
             Label {
                 text:i18n.tr("Type : %1").arg(infoPopover.model.fileType)

@@ -124,29 +124,29 @@ Page {
                             }
 
                             model:[
-                                { "seq" : "d", "desc" : i18n.tr("the day as number without a leading zero (1 to 31)") },
-                                { "seq" : "dd", "desc" : i18n.tr("the day as number with a leading zero (01 to 31)") },
+                                { "seq" : "d", "desc" : i18n.tr("the day as number without a leading zero (1 to 31).") },
+                                { "seq" : "dd", "desc" : i18n.tr("the day as number with a leading zero (01 to 31).") },
                                 { "seq" : "ddd", "desc" : i18n.tr("the abbreviated localized day name (e.g. 'Mon' to 'Sun').") },
                                 { "seq" : "dddd", "desc" : i18n.tr("the long localized day name (e.g. 'Monday' to 'Sunday').") },
-                                { "seq" : "M", "desc" : i18n.tr("the month as number without a leading zero (1 to 12)") },
-                                { "seq" : "MM", "desc" : i18n.tr("the month as number with a leading zero (01 to 12)") },
+                                { "seq" : "M", "desc" : i18n.tr("the month as number without a leading zero (1 to 12).") },
+                                { "seq" : "MM", "desc" : i18n.tr("the month as number with a leading zero (01 to 12).") },
                                 { "seq" : "MMM", "desc" : i18n.tr("the abbreviated localized month name (e.g. 'Jan' to 'Dec').") },
                                 { "seq" : "MMMM", "desc" : i18n.tr("the long localized month name (e.g. 'January' to 'December').") },
-                                { "seq" : "yy", "desc" : i18n.tr("the year as two digit number (00 to 99)") },
+                                { "seq" : "yy", "desc" : i18n.tr("the year as two digit number (00 to 99).") },
                                 { "seq" : "yyyy", "desc" : i18n.tr("the year as four digit number. If the year is negative, a minus sign is prepended in addition.") },
-                                { "seq" : "h", "desc" : i18n.tr("the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)") },
-                                { "seq" : "hh", "desc" : i18n.tr("the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)") },
-                                { "seq" : "H", "desc" : i18n.tr("the hour without a leading zero (0 to 23, even with AM/PM display)") },
-                                { "seq" : "HH", "desc" : i18n.tr("the hour with a leading zero (00 to 23, even with AM/PM display)") },
-                                { "seq" : "m", "desc" : i18n.tr("the minute without a leading zero (0 to 59)") },
-                                { "seq" : "mm", "desc" : i18n.tr("the minute with a leading zero (00 to 59)") },
-                                { "seq" : "s", "desc" : i18n.tr("the second without a leading zero (0 to 59)") },
-                                { "seq" : "ss", "desc" : i18n.tr("the second with a leading zero (00 to 59)") },
-                                { "seq" : "z", "desc" : i18n.tr("the milliseconds without leading zeroes (0 to 999)") },
-                                { "seq" : "zzz", "desc" : i18n.tr("the milliseconds with leading zeroes (000 to 999)") },
+                                { "seq" : "h", "desc" : i18n.tr("the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display).") },
+                                { "seq" : "hh", "desc" : i18n.tr("the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display).") },
+                                { "seq" : "H", "desc" : i18n.tr("the hour without a leading zero (0 to 23, even with AM/PM display).") },
+                                { "seq" : "HH", "desc" : i18n.tr("the hour with a leading zero (00 to 23, even with AM/PM display).") },
+                                { "seq" : "m", "desc" : i18n.tr("the minute without a leading zero (0 to 59).") },
+                                { "seq" : "mm", "desc" : i18n.tr("the minute with a leading zero (00 to 59).") },
+                                { "seq" : "s", "desc" : i18n.tr("the second without a leading zero (0 to 59).") },
+                                { "seq" : "ss", "desc" : i18n.tr("the second with a leading zero (00 to 59).") },
+                                { "seq" : "z", "desc" : i18n.tr("the milliseconds without leading zeroes (0 to 999).") },
+                                { "seq" : "zzz", "desc" : i18n.tr("the milliseconds with leading zeroes (000 to 999).") },
                                 { "seq" : "AP", "desc" : i18n.tr("use AM/PM display. AP will be replaced by either 'AM' or 'PM'.") },
-                                { "seq" : "ap", "desc" : i18n.tr("use am/pm display. ap will be replaced by either 'am' or 'pm'.") },
-                                { "seq" : "t", "desc" : i18n.tr("the timezone (for example 'CEST')") }
+                                { "seq" : "ap", "desc" : i18n.tr("use AM/PM display. AP will be replaced by either 'AM' or 'PM'.") },
+                                { "seq" : "t", "desc" : i18n.tr("the timezone (for example 'CEST').") }
                             ]
                             delegate: ListItem {
                                 height:units.gu(8)
