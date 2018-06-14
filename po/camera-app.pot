@@ -71,7 +71,7 @@ msgid "Edit"
 msgstr ""
 
 #: SlideshowView.qml:441
-msgid "Back to Photo roll"
+msgid "Back to photo roll"
 msgstr ""
 
 #: UnableShareDialog.qml:25
@@ -83,7 +83,7 @@ msgid "Unable to share photos and videos at the same time"
 msgstr ""
 
 #: UnableShareDialog.qml:30
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 #: ViewFinderView.qml:485
@@ -117,12 +117,12 @@ msgid "Help translate"
 msgstr ""
 
 #: MediaInfoPopover.qml:25
-msgid "Media Information"
+msgid "Media Info"
 msgstr ""
 
 #: MediaInfoPopover.qml:30
 #, qt-format
-msgid "Name : %1"
+msgid "Name: %1"
 msgstr ""
 
 #: MediaInfoPopover.qml:33
@@ -162,11 +162,11 @@ msgid "Date formating keywords"
 msgstr ""
 
 #: AdvancedOptions.qml:127
-msgid "the day as number without a leading zero (1 to 31)"
+msgid "the day as number without a leading zero (1 to 31)."
 msgstr ""
 
 #: AdvancedOptions.qml:128
-msgid "the day as number with a leading zero (01 to 31)"
+msgid "the day as number with a leading zero (01 to 31)."
 msgstr ""
 
 #: AdvancedOptions.qml:129
@@ -178,11 +178,11 @@ msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
 msgstr ""
 
 #: AdvancedOptions.qml:131
-msgid "the month as number without a leading zero (1 to 12)"
+msgid "the month as number without a leading zero (1 to 12)."
 msgstr ""
 
 #: AdvancedOptions.qml:132
-msgid "the month as number with a leading zero (01 to 12)"
+msgid "the month as number with a leading zero (01 to 12)."
 msgstr ""
 
 #: AdvancedOptions.qml:133
@@ -194,7 +194,7 @@ msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
 
 #: AdvancedOptions.qml:135
-msgid "the year as two digit number (00 to 99)"
+msgid "the year as two digit number (00 to 99)."
 msgstr ""
 
 #: AdvancedOptions.qml:136
@@ -204,43 +204,43 @@ msgid ""
 msgstr ""
 
 #: AdvancedOptions.qml:137
-msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
+msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)."
 msgstr ""
 
 #: AdvancedOptions.qml:138
-msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
+msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)."
 msgstr ""
 
 #: AdvancedOptions.qml:139
-msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
+msgid "the hour without a leading zero (0 to 23, even with AM/PM display)."
 msgstr ""
 
 #: AdvancedOptions.qml:140
-msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
+msgid "the hour with a leading zero (00 to 23, even with AM/PM display)."
 msgstr ""
 
 #: AdvancedOptions.qml:141
-msgid "the minute without a leading zero (0 to 59)"
+msgid "the minute without a leading zero (0 to 59)."
 msgstr ""
 
 #: AdvancedOptions.qml:142
-msgid "the minute with a leading zero (00 to 59)"
+msgid "the minute with a leading zero (00 to 59)."
 msgstr ""
 
 #: AdvancedOptions.qml:143
-msgid "the second without a leading zero (0 to 59)"
+msgid "the second without a leading zero (0 to 59)."
 msgstr ""
 
 #: AdvancedOptions.qml:144
-msgid "the second with a leading zero (00 to 59)"
+msgid "the second with a leading zero (00 to 59)."
 msgstr ""
 
 #: AdvancedOptions.qml:145
-msgid "the milliseconds without leading zeroes (0 to 999)"
+msgid "the milliseconds without leading zeroes (0 to 999)."
 msgstr ""
 
 #: AdvancedOptions.qml:146
-msgid "the milliseconds with leading zeroes (000 to 999)"
+msgid "the milliseconds with leading zeroes (000 to 999)."
 msgstr ""
 
 #: AdvancedOptions.qml:147
@@ -248,11 +248,11 @@ msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
 msgstr ""
 
 #: AdvancedOptions.qml:148
-msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
+msgid "use AM/PM display. ap will be replaced by either 'AM' or 'PM'."
 msgstr ""
 
 #: AdvancedOptions.qml:149
-msgid "the timezone (for example 'CEST')"
+msgid "the timezone (for example 'CEST')."
 msgstr ""
 
 #: AdvancedOptions.qml:158
@@ -310,7 +310,7 @@ msgstr ""
 
 #: ViewFinderOverlay.qml:1157
 msgid ""
-"Camera app doesn't have permission to access the camera hardware or another "
+"The camera app either lacks permission to access the camera hardware, or another "
 "error occurred.\n"
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
