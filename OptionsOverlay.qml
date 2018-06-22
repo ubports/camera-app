@@ -143,8 +143,14 @@ Item {
             columnWidth: optionValueSelector.width
 
             label: (model && model.label) ? i18n.tr(model.label) : ""
+
             iconName: (model && model.icon) ? model.icon : ""
             selected: optionValueSelector.model.selectedIndex == index
+            Component.onCompleted: {
+                if (model && model.iconSource) {
+                    iconSource = model.iconSource
+                }
+            }
 
             isLast: index === optionValueSelector.count - 1
             onClicked: {
@@ -155,6 +161,7 @@ Item {
                 }
             }
         }
+
         footerPositioning: ListView.OverlayFooter
         footer: Icon {
             anchors.horizontalCenter: parent.horizontalCenter

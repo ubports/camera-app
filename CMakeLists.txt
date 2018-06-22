@@ -1,5 +1,7 @@
 project(camera-app)
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.1.0)
+set (CMAKE_CXX_STANDARD 11)
+
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 
 # Find includes in corresponding build directories
@@ -39,17 +41,6 @@ if(CLICK_MODE)
   	install(FILES camera-app.png DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
     add_definitions("-DCLICK_MODE=1")
 
-	# Case of git source control
-    if(NOT REVNO)
-      execute_process(
-            COMMAND git rev-list --count --first-parent HEAD
-            OUTPUT_VARIABLE REVNO
-            RESULT_VARIABLE res
-            WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-            OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-        message("-- Setting REVNO to ${REVNO} with result of : ${res}")
-    endif(NOT REVNO)
     if(NOT SOURCE)
         execute_process(
             COMMAND git remote -v
@@ -63,16 +54,7 @@ if(CLICK_MODE)
         )
       message("-- Setting SOURCE to ${SOURCE} with result of : ${res}")
     endif(NOT SOURCE)
-   # Case of bzr source control
-    if(NOT REVNO)
-    execute_process(
-      COMMAND bzr revno
-              OUTPUT_VARIABLE REVNO
-              WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-              OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
-        message("-- Setting REVNO to ${REVNO}")
-    endif(NOT REVNO)
+
     if(NOT SOURCE)
         set(SOURCE lp:${APP_HARDCODE})
         message("-- Setting SOURCE to ${SOURCE}")
