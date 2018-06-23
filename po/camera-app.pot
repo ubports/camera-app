@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 20:25+0000\n"
+"POT-Creation-Date: 2018-06-23 17:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgid "Format"
 msgstr ""
 
 #: ../AdvancedOptions.qml:122
-msgid "Date formating keywords"
+msgid "Date formatting keywords"
 msgstr ""
 
 #: ../AdvancedOptions.qml:127
@@ -155,8 +155,8 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1106
-#: ../ViewFinderOverlay.qml:1120 ../ViewFinderOverlay.qml:1159
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
+#: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
 #: ../ViewFinderView.qml:494
 msgid "Cancel"
 msgstr ""
@@ -261,96 +261,100 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:361 ../ViewFinderOverlay.qml:384
-#: ../ViewFinderOverlay.qml:412 ../ViewFinderOverlay.qml:435
-#: ../ViewFinderOverlay.qml:520 ../ViewFinderOverlay.qml:578
+#: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
+#: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
+#: ../ViewFinderOverlay.qml:526 ../ViewFinderOverlay.qml:589
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:366 ../ViewFinderOverlay.qml:394
-#: ../ViewFinderOverlay.qml:417 ../ViewFinderOverlay.qml:440
-#: ../ViewFinderOverlay.qml:459 ../ViewFinderOverlay.qml:525
-#: ../ViewFinderOverlay.qml:583
+#: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
+#: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
+#: ../ViewFinderOverlay.qml:465 ../ViewFinderOverlay.qml:531
+#: ../ViewFinderOverlay.qml:599
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:389
+#: ../ViewFinderOverlay.qml:395
 msgid "Auto"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:426
+#: ../ViewFinderOverlay.qml:432
 msgid "HDR"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:464
+#: ../ViewFinderOverlay.qml:470
 msgid "5 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:469
+#: ../ViewFinderOverlay.qml:475
 msgid "15 seconds"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:487
+#: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:492
+#: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:497
+#: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:502
+#: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
 msgstr ""
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ../ViewFinderOverlay.qml:535
+#: ../ViewFinderOverlay.qml:541
 msgid "SD"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:543
+#: ../ViewFinderOverlay.qml:549
 msgid "Save to SD Card"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:548
+#: ../ViewFinderOverlay.qml:554
 msgid "Save internally"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1103
+#: ../ViewFinderOverlay.qml:594
+msgid "Vibrate"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1104
+#: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1117
+#: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1118
+#: ../ViewFinderOverlay.qml:1134
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1156
+#: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1157
+#: ../ViewFinderOverlay.qml:1173
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -358,7 +362,7 @@ msgid ""
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
 
-#: ../ViewFinderOverlay.qml:1166
+#: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
 msgstr ""
 
