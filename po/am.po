@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-02 16:30+0300\n"
+"POT-Creation-Date: 2018-06-23 17:57+0000\n"
 "PO-Revision-Date: 2018-05-22 04:25+0000\n"
 "Last-Translator: Samson <sambelet@yahoo.com>\n"
-"Language-Team: Amharic <https://translate.ubports.com/projects/ubports"
-"/camera-app/am/>\n"
+"Language-Team: Amharic <https://translate.ubports.com/projects/ubports/"
+"camera-app/am/>\n"
 "Language: am\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,288 +20,335 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "በ አካሉ ላይ ምንም የቀረ ቦታ የለም: ለ መቀጠል ትንሽ ቦታ ነፃ ያድርጉ:"
-
-#: DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "መገናኛውን ላጥፋው?"
-
-#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
-msgid "Delete"
-msgstr "ማጥፊያ"
-
-#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
-#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
-msgid "Cancel"
-msgstr "መሰረዣ"
-
-#: GalleryView.qml:200
-msgid "No media available."
-msgstr "ምንም መገናኛ አልተገኘም:"
-
-#: GalleryView.qml:235
-msgid "Scanning for content..."
-msgstr "ይዞታዎችን በማሰስ ላይ..."
-
-#: GalleryViewHeader.qml:82 SlideshowView.qml:45
-msgid "Select"
-msgstr "ይምረጡ"
-
-#: GalleryViewHeader.qml:83
-msgid "Edit Photo"
-msgstr "ፎቶ ማረሚያ"
-
-#: GalleryViewHeader.qml:83
-msgid "Photo Roll"
-msgstr "የ ፎቶ ጥቅል"
-
-#: PhotogridView.qml:42 SlideshowView.qml:60
-msgid "Share"
-msgstr "ማካፈያ"
-
-#: PhotogridView.qml:69 SlideshowView.qml:53
-msgid "Gallery"
-msgstr "አዳራሽ"
-
-#: SlideshowView.qml:68
-msgid "Image Info"
-msgstr "የ ምስል መረጃ"
-
-#: SlideshowView.qml:86
-msgid "Edit"
-msgstr "ማረሚያ"
-
-#: SlideshowView.qml:441
-msgid "Back to Photo roll"
-msgstr "ወደ ፎቶ ጥቅል መመለሻ"
-
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "ማካፈል አልተቻለም"
-
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "ፎቶ እና ቪዲዮ በ እንድ ጊዜ ማካፈል አልተቻለም"
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "እሺ"
-
-#: ViewFinderView.qml:485
-msgid "Capture failed"
-msgstr "መያዝ አልተቻለም"
-
-#: ViewFinderView.qml:490
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-"የ እርስዎን የ ውጪ መገናኛ መቀየር: ማሰናዳት ወይንም አካሉን እንደገና ማስነሳት ምናልባት ችግሩን ሊፈታው ይችላል:"
-
-#: ViewFinderView.qml:491
-msgid "Restarting your device might fix the problem."
-msgstr "የ እርስዎን አካል እንደገና ማስነሳት ይህን ችግር ሊፈታው ይችል ይሆናል"
-
-#: Information.qml:20
-msgid "About"
-msgstr "ስለ"
-
-#: Information.qml:82
-msgid "Get the source"
-msgstr "ምንጩን ያግኙ"
-
-#: Information.qml:83
-msgid "Report issues"
-msgstr "ችግሩን ያመልክቱ"
-
-#: Information.qml:84
-msgid "Help translate"
-msgstr "በ መተርጎም ይርዱ"
-
-#: MediaInfoPopover.qml:25
-msgid "Media Information"
-msgstr "የ መገናኛ መረጃ"
-
-#: MediaInfoPopover.qml:30
-#, qt-format
-msgid "Name : %1"
-msgstr "ስም : %1"
-
-#: MediaInfoPopover.qml:33
-#, qt-format
-msgid "Type : %1"
-msgstr "አይነት : %1"
-
-#: MediaInfoPopover.qml:37
-#, qt-format
-msgid "Width : %1"
-msgstr "ስፋት : %1"
-
-#: MediaInfoPopover.qml:41
-#, qt-format
-msgid "Height : %1"
-msgstr "እርዝመት : %1"
-
-#: PhotoRollHint.qml:69
-msgid "Swipe left for photo roll"
-msgstr "ወደ ግራ ይጥረጉ ፎቶ ለመመልከት"
-
-#: AdvancedOptions.qml:16
+#: ../AdvancedOptions.qml:16
 msgid "Settings"
 msgstr "ማሰናጃ"
 
-#: AdvancedOptions.qml:48
+#: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
 msgstr "በ ተያዘው ምስል ላይ የ ቀን ማህተም ያድርጉ"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:70
+#: ../AdvancedOptions.qml:70
 msgid "Format"
 msgstr "አቀራረብ"
 
-#: AdvancedOptions.qml:122
-msgid "Date formating keywords"
+#: ../AdvancedOptions.qml:122
+#, fuzzy
+msgid "Date formatting keywords"
 msgstr "የ ቀን አቀራረብ ቁልፍ ቃል"
 
-#: AdvancedOptions.qml:127
+#: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
 msgstr "የ ቀን ቁጥር ያለ ቀዳሚ ዜሮ ከ (1 እስከ 31)"
 
-#: AdvancedOptions.qml:128
+#: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
 msgstr "የ ቀን ቁጥር ከ ቀዳሚ ዜሮ ጋር ከ (1 እስከ 31)"
 
-#: AdvancedOptions.qml:129
+#: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
 msgstr "የ ቀን ስም በ አኅጽሮተ ቃል (ለምሳሌ:  'ሰኞ' እስከ 'እሑ')."
 
-#: AdvancedOptions.qml:130
+#: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
 msgstr "የ ቀን ስም በ እረጅም ቃል (ለምሳሌ:  'ሰኞ' እስከ 'እሑ')."
 
-#: AdvancedOptions.qml:131
+#: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
 msgstr "ወር እንደ ቁጥር ያለ ቀዳሚ ዜሮ ከ (1 እስከ 12)"
 
-#: AdvancedOptions.qml:132
+#: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
 msgstr ""
 
-#: AdvancedOptions.qml:133
+#: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
 msgstr ""
 
-#: AdvancedOptions.qml:134
+#: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
 
-#: AdvancedOptions.qml:135
+#: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
 msgstr "አመት እንደ ሁለት አሀዝ ቁጥር (00 እስከ 99)"
 
-#: AdvancedOptions.qml:136
+#: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
 
-#: AdvancedOptions.qml:137
+#: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:138
+#: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:139
+#: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:140
+#: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:141
+#: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
 msgstr ""
 
-#: AdvancedOptions.qml:142
+#: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
 msgstr ""
 
-#: AdvancedOptions.qml:143
+#: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
 msgstr ""
 
-#: AdvancedOptions.qml:144
+#: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
 msgstr ""
 
-#: AdvancedOptions.qml:145
+#: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
 msgstr ""
 
-#: AdvancedOptions.qml:146
+#: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
 msgstr ""
 
-#: AdvancedOptions.qml:147
+#: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
 msgstr ""
 
-#: AdvancedOptions.qml:148
+#: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
 msgstr ""
 
-#: AdvancedOptions.qml:149
+#: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
 msgstr ""
 
-#: AdvancedOptions.qml:158
+#: ../AdvancedOptions.qml:158
 msgid "Add to Format"
 msgstr ""
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
-#: AdvancedOptions.qml:189
+#: ../AdvancedOptions.qml:189
 msgid "Color"
 msgstr "ቀለም"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
-#: AdvancedOptions.qml:257
+#: ../AdvancedOptions.qml:257
 msgid "Alignment"
 msgstr ""
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:303
+#: ../AdvancedOptions.qml:303
 msgid "Opacity"
 msgstr ""
 
-#: ViewFinderOverlay.qml:426
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "መገናኛውን ላጥፋው?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:56 ../SlideshowView.qml:75
+msgid "Delete"
+msgstr "ማጥፊያ"
+
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
+#: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
+#: ../ViewFinderView.qml:494
+msgid "Cancel"
+msgstr "መሰረዣ"
+
+#: ../GalleryView.qml:200
+msgid "No media available."
+msgstr "ምንም መገናኛ አልተገኘም:"
+
+#: ../GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr "ይዞታዎችን በማሰስ ላይ..."
+
+#: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
+msgid "Select"
+msgstr "ይምረጡ"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr "ፎቶ ማረሚያ"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr "የ ፎቶ ጥቅል"
+
+#: ../Information.qml:20
+msgid "About"
+msgstr "ስለ"
+
+#: ../Information.qml:82
+msgid "Get the source"
+msgstr "ምንጩን ያግኙ"
+
+#: ../Information.qml:83
+msgid "Report issues"
+msgstr "ችግሩን ያመልክቱ"
+
+#: ../Information.qml:84
+msgid "Help translate"
+msgstr "በ መተርጎም ይርዱ"
+
+#: ../MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr "የ መገናኛ መረጃ"
+
+#: ../MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr "ስም : %1"
+
+#: ../MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr "አይነት : %1"
+
+#: ../MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr "ስፋት : %1"
+
+#: ../MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
+msgstr "እርዝመት : %1"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "በ አካሉ ላይ ምንም የቀረ ቦታ የለም: ለ መቀጠል ትንሽ ቦታ ነፃ ያድርጉ:"
+
+#: ../PhotoRollHint.qml:69
+msgid "Swipe left for photo roll"
+msgstr "ወደ ግራ ይጥረጉ ፎቶ ለመመልከት"
+
+#: ../PhotogridView.qml:42 ../SlideshowView.qml:60
+msgid "Share"
+msgstr "ማካፈያ"
+
+#: ../PhotogridView.qml:69 ../SlideshowView.qml:53
+msgid "Gallery"
+msgstr "አዳራሽ"
+
+#: ../SlideshowView.qml:68
+msgid "Image Info"
+msgstr "የ ምስል መረጃ"
+
+#: ../SlideshowView.qml:86
+msgid "Edit"
+msgstr "ማረሚያ"
+
+#: ../SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr "ወደ ፎቶ ጥቅል መመለሻ"
+
+#: ../UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "ማካፈል አልተቻለም"
+
+#: ../UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "ፎቶ እና ቪዲዮ በ እንድ ጊዜ ማካፈል አልተቻለም"
+
+#: ../UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "እሺ"
+
+#: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
+#: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
+#: ../ViewFinderOverlay.qml:526 ../ViewFinderOverlay.qml:589
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
+msgid "On"
+msgstr "ማብሪያ"
+
+#: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
+#: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
+#: ../ViewFinderOverlay.qml:465 ../ViewFinderOverlay.qml:531
+#: ../ViewFinderOverlay.qml:599
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
+msgid "Off"
+msgstr "ማጥፊያ"
+
+#: ../ViewFinderOverlay.qml:395
+msgid "Auto"
+msgstr "በራሱ"
+
+#: ../ViewFinderOverlay.qml:432
 msgid "HDR"
 msgstr "ትእይንት ማግኛ"
 
+#: ../ViewFinderOverlay.qml:470
+msgid "5 seconds"
+msgstr "5 ሰከንዶች"
+
+#: ../ViewFinderOverlay.qml:475
+msgid "15 seconds"
+msgstr "15 ሰከንዶች"
+
+#: ../ViewFinderOverlay.qml:493
+msgid "Fine Quality"
+msgstr "ጥሩ ጥራት"
+
+#: ../ViewFinderOverlay.qml:498
+#, fuzzy
+msgid "High Quality"
+msgstr "ጥሩ ጥራት"
+
+#: ../ViewFinderOverlay.qml:503
+msgid "Normal Quality"
+msgstr "መደበኛ ጥራት"
+
+#: ../ViewFinderOverlay.qml:508
+msgid "Basic Quality"
+msgstr "መሰረታዊ ጥራት"
+
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:535
+#: ../ViewFinderOverlay.qml:541
 msgid "SD"
 msgstr "ማጠራቀሚያ ካርድ"
 
-#: ViewFinderOverlay.qml:1103
+#: ../ViewFinderOverlay.qml:549
+msgid "Save to SD Card"
+msgstr "ማጠራቀሚያ ካርድ ውስጥ ማስቀመጫ"
+
+#: ../ViewFinderOverlay.qml:554
+msgid "Save internally"
+msgstr "በ አካሉ ውስጥ ማስቀመጫ"
+
+#: ../ViewFinderOverlay.qml:594
+msgid "Vibrate"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
 msgstr "አነስተኛ የማጠራቀሚያ ቦታ"
 
-#: ViewFinderOverlay.qml:1104
+#: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr "እርስዎ ማጠራቀሚያ ላይ ባዶ ቦታ የለም: ሳይቋረጥ ለ መቀጠል: ትንሽ ቦታ ነፃ ያድርጉ:"
 
-#: ViewFinderOverlay.qml:1117
+#: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
 msgstr "የ ውስጥ ማጠራቀሚያ ላይ መጻፍ አይቻልም"
 
-#: ViewFinderOverlay.qml:1118
+#: ../ViewFinderOverlay.qml:1134
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -310,11 +357,11 @@ msgstr ""
 "በ እርስዎ የ ውጪ ማጠራቀሚያ መገናኛ ላይ መጻፍ አልተቻለም:  እንደገና ያውጡት እና ያስገቡት: ይህ ችግሩን ካልፈታው: "
 "እርስዎ አካሉን እንደገና ማዘጋጀት አለብዎት:"
 
-#: ViewFinderOverlay.qml:1156
+#: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
 msgstr "ካሜራው ጋር መድረስ አልተቻለም"
 
-#: ViewFinderOverlay.qml:1157
+#: ../ViewFinderOverlay.qml:1173
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -325,103 +372,97 @@ msgstr ""
 "\n"
 "ችግሩን ፍቃድ መስጠት ካልፈታው: እባክዎን ስልኩን አጥፍተው እንደገና ያብሩ:"
 
-#: ViewFinderOverlay.qml:1166
+#: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
 msgstr "ፍቃዶች ማረሚያ"
 
-#: camera-app.qml:57
+#: ../ViewFinderView.qml:485
+msgid "Capture failed"
+msgstr "መያዝ አልተቻለም"
+
+#: ../ViewFinderView.qml:490
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"የ እርስዎን የ ውጪ መገናኛ መቀየር: ማሰናዳት ወይንም አካሉን እንደገና ማስነሳት ምናልባት ችግሩን ሊፈታው ይችላል:"
+
+#: ../ViewFinderView.qml:491
+msgid "Restarting your device might fix the problem."
+msgstr "የ እርስዎን አካል እንደገና ማስነሳት ይህን ችግር ሊፈታው ይችል ይሆናል"
+
+#: ../camera-app.qml:57
 msgid "Flash"
 msgstr "ፍላሽ"
 
-#: camera-app.qml:58
+#: ../camera-app.qml:58
 msgid "Light;Dark"
 msgstr "ብርሀን፡ጨለማ"
 
-#: camera-app.qml:61
+#: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "ካሜራ መገልበጫ"
 
-#: camera-app.qml:62
+#: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "ከ ፊት ለፊት: ከ ጀርባ"
 
-#: camera-app.qml:65
+#: ../camera-app.qml:65
 msgid "Shutter"
 msgstr "ሸተር"
 
-#: camera-app.qml:66
+#: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "ፎቶ ማንሻ:ፎቶ ማንሻ:መቅረጫ"
 
-#: camera-app.qml:69
+#: ../camera-app.qml:69
 msgid "Mode"
 msgstr "ዘዴ"
 
-#: camera-app.qml:70
+#: ../camera-app.qml:70
 msgid "Stills;Video"
 msgstr "ድምፅ የሌለው: ቪዲዮ"
 
-#: camera-app.qml:74
+#: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "ነጭ ማስተካከያ"
 
-#: camera-app.qml:75
+#: ../camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "የብርሀን ሁኔታ: ቀን: ደመናማ: ቤት ውስጥ"
+
+#: ../camera-app.qml:380
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "<b>%1</b> ዛሬ የተነሱ ፎቶዎች"
+
+#: ../camera-app.qml:381
+msgid "No photos taken today"
+msgstr "ዛሬ ፎቶ አላነሱም"
+
+#: ../camera-app.qml:391
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "<b>%1</b> ዘሬ የተቀረጸ ቪዲዮ"
+
+#: ../camera-app.qml:392
+msgid "No videos recorded today"
+msgstr "ዘሬ የተቀረጸ ቪዲዮ የለም"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "ካሜራ"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "የ ካሜራ መተግበሪያ"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "ፎቶዎች: ቪዲዮዎች: መያዣ: ማንሻ: ፎቶ ማንሻ: መቅረጫ:"
 
 #~ msgid "Version %1"
 #~ msgstr "እትም  %1"
 
 #~ msgid "Advanced Options"
 #~ msgstr "የ ረቀቀ ምርጫ"
-
-#~ msgid "On"
-#~ msgstr "ማብሪያ"
-
-#~ msgid "Off"
-#~ msgstr "ማጥፊያ"
-
-#~ msgid "Auto"
-#~ msgstr "በራሱ"
-
-#~ msgid "5 seconds"
-#~ msgstr "5 ሰከንዶች"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 ሰከንዶች"
-
-#~ msgid "Fine Quality"
-#~ msgstr "ጥሩ ጥራት"
-
-#~ msgid "Normal Quality"
-#~ msgstr "መደበኛ ጥራት"
-
-#~ msgid "Basic Quality"
-#~ msgstr "መሰረታዊ ጥራት"
-
-#~ msgid "Save to SD Card"
-#~ msgstr "ማጠራቀሚያ ካርድ ውስጥ ማስቀመጫ"
-
-#~ msgid "Save internally"
-#~ msgstr "በ አካሉ ውስጥ ማስቀመጫ"
-
-#~ msgid "<b>%1</b> photos taken today"
-#~ msgstr "<b>%1</b> ዛሬ የተነሱ ፎቶዎች"
-
-#~ msgid "No photos taken today"
-#~ msgstr "ዛሬ ፎቶ አላነሱም"
-
-#~ msgid "<b>%1</b> videos recorded today"
-#~ msgstr "<b>%1</b> ዘሬ የተቀረጸ ቪዲዮ"
-
-#~ msgid "No videos recorded today"
-#~ msgstr "ዘሬ የተቀረጸ ቪዲዮ የለም"
-
-#~ msgid "Camera"
-#~ msgstr "ካሜራ"
-
-#~ msgid "Camera application"
-#~ msgstr "የ ካሜራ መተግበሪያ"
-
-#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-#~ msgstr "ፎቶዎች: ቪዲዮዎች: መያዣ: ማንሻ: ፎቶ ማንሻ: መቅረጫ:"
