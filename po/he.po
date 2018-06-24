@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-11 20:53+0000\n"
+"PO-Revision-Date: 2018-06-10 19:58+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.ubports.com/projects/ubports/camera-"
 "app/he/>\n"
@@ -63,11 +63,11 @@ msgstr "שיתוף"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "גלריה"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "פרטי תמונה"
 
 #: SlideshowView.qml:86
 msgid "Edit"
@@ -107,7 +107,7 @@ msgstr "אתחול המכשיר אולי יפתור את הבעיה."
 
 #: Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "אודות"
 
 #: Information.qml:82
 msgid "Get the source"
@@ -129,22 +129,22 @@ msgstr "מידע על היישומון"
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "שם : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "סוג : %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "רוחב : %1"
 
 #: MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "גובה : %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -152,7 +152,7 @@ msgstr "החליקו שמאלה כדי לגשת לתמונות שצולמו"
 
 #: AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות"
 
 #: AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
@@ -161,11 +161,11 @@ msgstr "הוספת תאריך מודפס על התמונות שצולמו"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "פורמט"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
-msgstr ""
+msgstr "מילות מפתח לפורמט הזמן"
 
 #: AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-09 21:09+0000\n"
+"PO-Revision-Date: 2018-06-04 12:34+0000\n"
 "Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
@@ -62,20 +62,19 @@ msgstr "Cumpartzi"
 
 #: PhotogridView.qml:69 SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galleria"
 
 #: SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Informatziones de s'immàgine"
 
 #: SlideshowView.qml:86
 msgid "Edit"
 msgstr "Modìfica"
 
 #: SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Rullinu fotogràficu"
+msgstr "Torra a su rullinu fotogràficu"
 
 #: UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -107,7 +106,7 @@ msgstr "Torrare a aviare su dispositivu diat pòdere risòlvere su problema."
 
 #: Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Informatziones"
 
 #: Information.qml:82
 msgid "Get the source"
@@ -122,29 +121,28 @@ msgid "Help translate"
 msgstr "Agiuda a bortare"
 
 #: MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "Informatzione de s'aplicatzione"
+msgstr "Informatzione de su cuntenutu multimediale"
 
 #: MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Nùmene : %1"
 
 #: MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Genia : %1"
 
 #: MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Larghesa : %1"
 
 #: MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Artària : %1"
 
 #: PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
@@ -156,98 +154,101 @@ msgstr "Cunfiguratzione"
 
 #: AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
-msgstr "Agiunghe sa data a is imàgines iscatadas"
+msgstr "Agiunghe sa data a is immàgines iscatadas"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Formata"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
-msgstr ""
+msgstr "Craes de formatatzione de sa data"
 
 #: AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "sa die comente a nùmeru sena zero initziale (dae 1 a 31)"
 
 #: AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "sa die comente a nùmeru cun zero initziale (dae 01 a 31)"
 
 #: AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "su nùmene abbreviadu de sa die localizada (es. dae 'Lun' a 'Dom')."
 
 #: AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "su nùmene intreu de sa die localizada (es. dae Lunis a Domìniga)."
 
 #: AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "su mese comente a nùmeru sena zero initziale (dae 1 a 12)"
 
 #: AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "su mese comente a nùmeru cun zero initziale (dae 01 a 12)"
 
 #: AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "su nùmene abbreviadu de su mese localizadu (es. dae 'Ghen' a 'Nad')."
 
 #: AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
+"su nùmene intreu de su mese localizadu (es. dae 'Ghennàrgiu' a 'Nadale')."
 
 #: AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "s'annu comente a nùmeru a duas tzifras"
 
 #: AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"s'annu comente a nùmeru a bator tzifras. Si s'annu est negativu, b'est "
+"agiuntu su sìmbulu de mancu."
 
 #: AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
-msgstr ""
+msgstr "s'ora sena zero initziale (dae 0 a 23 o dae 1 a 12 in ischermu AM/PM)"
 
 #: AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
-msgstr ""
+msgstr "s'ora cun zero initziale (dae 00 a 23 o dae 01 a 12 in ischermu AM/PM)"
 
 #: AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "s'ora sena zero initziale (dae 0 a 23 in ischermu AM/PM puru)"
 
 #: AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "s'ora cun zero initziale (dae 00 a 23 in ischermu AM/PM puru)"
 
 #: AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "su minutu sena zero initziale (dae 0 a 59)"
 
 #: AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "su minutu cun zero initziale (dae 00 a 59)"
 
 #: AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "su segundu sena zero initziale (dae 0 a 59)"
 
 #: AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "su segundu cun zero initziale (dae 00 a 59)"
 
 #: AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "is millisegundos sena zero initziale (dae 0 a 999)"
 
 #: AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "is millisegundos cun zero initziales (dae 000 a 999)"
 
 #: AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
@@ -259,26 +260,26 @@ msgstr ""
 
 #: AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "su fusu oràriu (pro esempru 'CEST')"
 
 #: AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Agiunghe a sa formatatzione"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Colore"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Afiladura"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Annapadura"
 
 #: ViewFinderOverlay.qml:426
 msgid "HDR"
@@ -311,8 +312,8 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
-"Paret chi no est possìbile iscrìere in su dispositivu de memòria esternu. "
-"Proare a lu bogare e a lu torrare a pònnere diat pòdere risòlvere su "
+"Paret chi no siat possìbile iscrìere in su dispositivu de memòria esternu. "
+"Proare a lu tirare e a lu torrare a insertare diat pòdere risòlvere su "
 "problema. Si nono, podes proare a lu formatare."
 
 #: ViewFinderOverlay.qml:1156
@@ -350,15 +351,15 @@ msgstr "Fùrria sa càmera"
 
 #: camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Sa de in antis;Sa de a palas"
 
 #: camera-app.qml:65
 msgid "Shutter"
-msgstr ""
+msgstr "Oturadore"
 
 #: camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Iscata una fotografia;Catura;Registra"
+msgstr "Iscata una foto;Catura;Registra"
 
 #: camera-app.qml:69
 msgid "Mode"
@@ -366,7 +367,7 @@ msgstr "Modalidade"
 
 #: camera-app.qml:70
 msgid "Stills;Video"
-msgstr "Imàgine istàtica;Vìdeu"
+msgstr "Fotografia;Vìdeu"
 
 #: camera-app.qml:74
 msgid "White Balance"

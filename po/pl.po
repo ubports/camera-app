@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-06 20:37+0000\n"
+"PO-Revision-Date: 2018-05-12 20:33+0000\n"
 "Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
 "app/pl/>\n"
@@ -354,7 +354,7 @@ msgstr "Odwróć aparat"
 
 #: camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "Na przodzie;Z tyłu"
+msgstr "Z przodu;Z tyłu"
 
 #: camera-app.qml:65
 msgid "Shutter"

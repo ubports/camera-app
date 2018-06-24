@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-11 20:00+0000\n"
+"PO-Revision-Date: 2018-05-20 13:36+0000\n"
 "Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
@@ -37,9 +37,7 @@ msgstr "Supprimer"
 #: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
 #: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
 msgid "Cancel"
-msgstr ""
-"La couleur du texte est déterminée en fonction de l'arrière-plan, donc "
-"définie à partir du HTML"
+msgstr "Annuler"
 
 #: GalleryView.qml:200
 msgid "No media available."
@@ -164,7 +162,7 @@ msgstr "Ajouter l'heure et la date aux images prises"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: AdvancedOptions.qml:70
 msgid "Format"
-msgstr "Format"
+msgstr "Formater"
 
 #: AdvancedOptions.qml:122
 msgid "Date formating keywords"
@@ -199,13 +197,13 @@ msgstr "le mois sous la forme d'un nombre avec un zéro initial (01 à 12)"
 
 #: AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "le nom du mois sous sa forme localisée et abrégée (« Jan » à « Déc »)"
+msgstr "le nom du mois sous sa forme localisée et abrégée (« Jan » à « Déc »)."
 
 #: AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
 "le nom du mois sous sa forme localisée et complète (« Janvier » à « Décembre "
-"»)"
+"»)."
 
 #: AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -350,7 +348,7 @@ msgstr ""
 "autre erreur a eu lieu.\n"
 "\n"
 "Si autoriser l'accès à la caméra ne résout pas ce problème, redémarrez votre "
-"téléphone."
+"appareil."
 
 #: ViewFinderOverlay.qml:1166
 msgid "Edit Permissions"
