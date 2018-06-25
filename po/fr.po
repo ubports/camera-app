@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-06-25 17:15+0000\n"
+"PO-Revision-Date: 2018-06-25 17:18+0000\n"
 "Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
@@ -474,11 +474,11 @@ msgstr "Aucune vidéo enregistrée aujourd'hui"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr "Appareil photo"
+msgstr "Caméra"
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "Application photo"
+msgstr "Application caméra"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
