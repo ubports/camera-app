@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
 "PO-Revision-Date: 2018-06-28 18:00+0000\n"
-"Last-Translator: robin <musicfree@wanadoo.fr>\n"
+"Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
 "Language: fr\n"
@@ -59,7 +59,7 @@ msgstr "le mois sous la forme d'un nombre sans zéro initial (1 à 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr "le mois sous la forme d'un nombre adeux chiffres (01 à 12)"
+msgstr "le mois sous la forme d'un nombre à deux chiffres (01 à 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
