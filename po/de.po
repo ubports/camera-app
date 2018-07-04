@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-04 12:12+0000\n"
-"Last-Translator: konrad <kohofer@gmail.com>\n"
+"PO-Revision-Date: 2018-07-04 20:27+0000\n"
+"Last-Translator: Rüdiger Kupper <ruediger.kupper+launchpad@gmail.com>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
 "app/de/>\n"
 "Language: de\n"
@@ -412,6 +412,7 @@ msgid "Light;Dark"
 msgstr "Hell;Dunkel"
 
 #: ../camera-app.qml:61
+#, fuzzy
 msgid "Flip Camera"
 msgstr "Kamera kippen"
 
