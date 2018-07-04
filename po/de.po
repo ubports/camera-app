@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-04 12:09+0000\n"
+"PO-Revision-Date: 2018-07-04 12:12+0000\n"
 "Last-Translator: konrad <kohofer@gmail.com>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
 "app/de/>\n"
@@ -59,11 +59,11 @@ msgstr "den Monat als Nummer ohne führende Null (1 bis 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr "den Monat als Nummer mit führender Null (01 bis 12)"
+msgstr "der Monat als Zahl mit einer führenden Null (01 bis 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "den abgekürzten lokalisierten Monatsnamen („Jan“ bis „Dez“)."
+msgstr "den abgekürzten lokalisierten Monatsnamen (z.B. „Jan“ bis „Dez“)."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
