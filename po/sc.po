@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-05 15:53+0000\n"
+"PO-Revision-Date: 2018-07-05 15:56+0000\n"
 "Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
@@ -46,7 +46,7 @@ msgstr "sa die comente a nùmeru cun zero initziale (dae 01 a 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr "su nùmene abbreviadu de sa die localizada (es. dae 'Lun' a 'Dom')."
+msgstr "su nùmene abbreviadu de sa die localizada (es. dae 'lun' a 'dom')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
@@ -343,7 +343,7 @@ msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
-"S'ispàtziu in sa memòria s'est acabbende. Pro sighire chena interrutziones, "
+"S'ispàtziu in sa memòria s'est acabbende. Pro sighire sena interrutziones, "
 "lìbera ispàtziu de sa memòria."
 
 #: ../ViewFinderOverlay.qml:1133
