@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-12 20:33+0000\n"
+"PO-Revision-Date: 2018-06-24 09:51+0000\n"
 "Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports/camera-"
 "app/pl/>\n"
@@ -35,7 +35,6 @@ msgid "Format"
 msgstr "Format"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
 msgstr "Słowa kluczowe formatowania daty"
 
@@ -312,9 +311,8 @@ msgid "Fine Quality"
 msgstr "Najlepsza jakość"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
-msgstr "Najlepsza jakość"
+msgstr "Wysoka jakość"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
@@ -339,7 +337,7 @@ msgstr "Zapisuj w pamięci urządzenia"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Wibruj"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"

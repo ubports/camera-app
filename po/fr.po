@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-20 13:36+0000\n"
+"PO-Revision-Date: 2018-06-28 18:00+0000\n"
 "Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
 "Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
 "app/fr/>\n"
@@ -34,7 +34,6 @@ msgid "Format"
 msgstr "Formater"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
 msgstr "Mots-clés pour le formatage de la date"
 
@@ -44,18 +43,15 @@ msgstr "le jour sous la forme d'un nombre sans zéro initial (1 à 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr "le jour sous la forme d'un nombre avec un zéro initial (01 à 31)"
+msgstr "le jour sous la forme d'un nombre à deux chiffres  (01 à 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
-"le nom de la journée sous sa forme localisée et abrégée (« Lun » à « Dim »)"
+msgstr "le nom du jour sous sa forme abrégée (« Lun » à « Dim »)"
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
-"le nom de la journée sous sa forme localisée et complète (« Lundi » à « "
-"Dimanche »)"
+msgstr "le nom du  jour sous sa forme complète (« Lundi » à « Dimanche »)"
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
@@ -63,17 +59,15 @@ msgstr "le mois sous la forme d'un nombre sans zéro initial (1 à 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr "le mois sous la forme d'un nombre avec un zéro initial (01 à 12)"
+msgstr "le mois sous la forme d'un nombre à deux chiffres (01 à 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "le nom du mois sous sa forme localisée et abrégée (« Jan » à « Déc »)."
+msgstr "le nom du mois sous sa forme abrégée (« Jan » à « Déc »)."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
-"le nom du mois sous sa forme localisée et complète (« Janvier » à « Décembre "
-"»)."
+msgstr "le nom du mois sous sa forme complète (« Janvier » à « Décembre »)."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -96,8 +90,8 @@ msgstr ""
 #: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
-"l'heure avec un zéro initial (00 à 23 ou 01 à 12 avec un affichage en "
-"notation anglo-saxonne)"
+"l'heure avec un numéro a deux chiffres  (00 à 23 ou 01 à 12 avec un "
+"affichage en notation anglo-saxonne)"
 
 #: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
@@ -108,8 +102,8 @@ msgstr ""
 #: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
 msgstr ""
-"l'heure avec un zéro initial (00 à 23, même avec un affichage en notation "
-"anglo-saxonne)"
+"l'heure avec un numéro a deux chiffres  (00 à 23, même avec un affichage en "
+"notation anglo-saxonne)"
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
@@ -117,7 +111,7 @@ msgstr "la minute sans zéro initial (0 à 59)"
 
 #: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr "la minute avec un zéro initial (00 à 59)"
+msgstr "la minute avec un numéro a deux chiffres (00 à 59)"
 
 #: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
@@ -125,7 +119,7 @@ msgstr "la seconde sans zéro initial (0 à 59)"
 
 #: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr "la seconde avec un zéro initial (00 à 59)"
+msgstr "la seconde avec un numéroa deux chiffres (00 à 59)"
 
 #: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
@@ -133,7 +127,7 @@ msgstr "la milliseconde sans zéros initiaux (0 à 999)"
 
 #: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr "la milliseconde avec zéros initiaux (000 à 999)"
+msgstr "la milliseconde avec un numéro a trois chiffres (000 à 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
@@ -324,7 +318,6 @@ msgid "Fine Quality"
 msgstr "Qualité supérieure"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
 msgstr "Qualité supérieure"
 
@@ -351,7 +344,7 @@ msgstr "Enregistrer localement"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Vibrer"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
@@ -476,11 +469,11 @@ msgstr "Aucune vidéo enregistrée aujourd'hui"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
-msgstr "Appareil photo"
+msgstr "Caméra"
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr "Application photo"
+msgstr "Application caméra"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"

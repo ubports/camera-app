@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-06-02 23:17+0000\n"
-"Last-Translator: Simone <19simok89@gmail.com>\n"
-"Language-Team: Italian <https://translate.ubports.com/projects/ubports/"
-"camera-app/it/>\n"
+"PO-Revision-Date: 2018-07-05 21:23+0000\n"
+"Last-Translator: konrad <kohofer@gmail.com>\n"
+"Language-Team: Italian <https://translate.ubports.com/projects/ubports"
+"/camera-app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,6 @@ msgid "Format"
 msgstr "Formatta"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
 msgstr "Parole chiavi per formattare la data"
 
@@ -309,9 +308,8 @@ msgid "Fine Quality"
 msgstr "Qualità elevata"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
-msgstr "Qualità elevata"
+msgstr "Qualità alta"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
@@ -336,7 +334,7 @@ msgstr "Salva internamente"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Vibra"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
