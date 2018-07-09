@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-06-10 19:58+0000\n"
+"PO-Revision-Date: 2018-07-07 18:43+0000\n"
 "Last-Translator: Eran <etherpulse@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.ubports.com/projects/ubports/camera-"
 "app/he/>\n"
@@ -34,51 +34,50 @@ msgid "Format"
 msgstr "פורמט"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
 msgstr "מילות מפתח לפורמט הזמן"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "מספר היום בחודש ללא אפס מוביל (1 עד 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "מספר היום בחודש עם אפס מוביל (01 עד 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "שם מקוצר ליום בשבוע (א' עד ש')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "שם ארוך ליום בשבוע ( 'ראשון' עד 'שבת' )."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "מספר החודש בשנה ללא אפס מוביל (1 עד 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "מספר  החודש בשנה עם אפס מוביל ( 01 עד 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "שם מקוצר לחודש ('ינוא' עד 'דצמב')."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
+msgstr "שם מלא לחודש ('ינואר' עד 'דצמבר')."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "שני הספרות האחרונות של השנה (00 עד 99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
-msgstr ""
+msgstr "השנה בייצוג של ארבעה ספרות."
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
@@ -144,12 +143,12 @@ msgstr "צבע"
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "מיקום"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "שקיפות"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -171,7 +170,7 @@ msgstr "אין מדיה זמינה."
 
 #: ../GalleryView.qml:235
 msgid "Scanning for content..."
-msgstr "מתבצעת סריקת תוכן…"
+msgstr "סריקת תוכן מתבצעת…"
 
 #: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
 msgid "Select"
@@ -202,9 +201,8 @@ msgid "Help translate"
 msgstr "סיוע בתרגום"
 
 #: ../MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "מידע על היישומון"
+msgstr "מידע על המדיה"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
@@ -251,9 +249,8 @@ msgid "Edit"
 msgstr "עריכה"
 
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "סרט צילום"
+msgstr "החזרה לסרט צילום"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -307,7 +304,6 @@ msgid "Fine Quality"
 msgstr "איכות גבוהה"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
 msgstr "איכות גבוהה"
 
@@ -365,7 +361,6 @@ msgid "Cannot access camera"
 msgstr "לא ניתן לגשת למצלמה"
 
 #: ../ViewFinderOverlay.qml:1173
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -374,7 +369,7 @@ msgid ""
 msgstr ""
 "לאפליקציית המצלמה אין גישה לחומרת המצלמה או שקרתה בעיה אחרת.\n"
 "\n"
-"אם  שינוי הרשאת גישה לחומרת המצלמה לא פתרה את הבעיה, אנא נסו להפעיל מחדש את "
+"אם שינוי הרשאת גישה לחומרת המצלמה לא פתרה את הבעיה, אנא נסו להפעיל מחדש את "
 "המכשיר."
 
 #: ../ViewFinderOverlay.qml:1182
