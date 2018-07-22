@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-06 07:57+0000\n"
+"PO-Revision-Date: 2018-07-21 09:05+0000\n"
 "Last-Translator: ierihon <idekovets@mail.ru>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/camera-app/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 2.17\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -36,50 +36,63 @@ msgstr "Формат даты"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr ""
+msgstr "Ключевые слова форматирования даты"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
 msgstr ""
+"1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, "
+"22, 23, 24, 25, 26, 27, 28, 29, 30, 31"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
 msgstr ""
+"01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, "
+"20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31"
 
 #: ../AdvancedOptions.qml:129
-#, fuzzy
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr "Пн, Вт, Ср, Чт, Пт, Сб, Вс"
+msgstr "Пн, Вт, Ср, Чт, Пт, Сб, Вс."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "янв, фев, мар, апр, май, июнь, июль, авг, сен, окт, ноя, дек."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
+"Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, "
+"Ноябрь, Декабрь."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
 msgstr ""
+"00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, "
+"19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, "
+"38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, "
+"57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, "
+"76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, "
+"95, 96, 97, 98, 99"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"год в виде четырехзначного числа. Если год отрицательный, дополнительно "
+"добавляется знак минус."
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
@@ -131,11 +144,11 @@ msgstr ""
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "часовой пояс (например 'CEST')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Добавить в формат"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -145,12 +158,12 @@ msgstr "Цвет"
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Положение"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Прозрачность"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -188,44 +201,43 @@ msgstr "Фотопленка"
 
 #: ../Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Сведения"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr ""
+msgstr "Получить источник"
 
 #: ../Information.qml:83
 msgid "Report issues"
-msgstr ""
+msgstr "Сообщить о проблеме"
 
 #: ../Information.qml:84
 msgid "Help translate"
-msgstr ""
+msgstr "Помочь с переводом"
 
 #: ../MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "Информация о приложении"
+msgstr "Информация о носителе"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Название : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Тип : %1"
 
 #: ../MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Ширина : %1"
 
 #: ../MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Высота : %1"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -241,20 +253,19 @@ msgstr "Поделиться"
 
 #: ../PhotogridView.qml:69 ../SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Галерея"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Информация об изображении"
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
 msgstr "Правка"
 
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Фотопленка"
+msgstr "Вернуться к фото"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -266,7 +277,7 @@ msgstr "Нельзя делиться фото и видео одновреме�
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr "Хорошо"
+msgstr "ОК"
 
 #: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
 #: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
@@ -335,7 +346,7 @@ msgstr "Сохранить локально"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Вибрировать"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
@@ -367,7 +378,6 @@ msgid "Cannot access camera"
 msgstr "Нет доступа к камере"
 
 #: ../ViewFinderOverlay.qml:1173
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
