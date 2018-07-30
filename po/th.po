@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2018-08-05 14:58+0000\n"
+"Last-Translator: thanakit srisearmpok <thanakit.ssp@gmail.com>\n"
+"Language-Team: Thai <https://translate.ubports.com/projects/ubports/"
+"camera-app/th/>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.20\n"
 
 #: ../AdvancedOptions.qml:16
 msgid "Settings"
@@ -152,13 +155,13 @@ msgstr ""
 
 #: ../DeleteDialog.qml:34 ../PhotogridView.qml:56 ../SlideshowView.qml:75
 msgid "Delete"
-msgstr ""
+msgstr "ลบ"
 
 #: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
 #: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
 #: ../ViewFinderView.qml:494
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #: ../GalleryView.qml:200
 msgid "No media available."
@@ -242,7 +245,7 @@ msgstr ""
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
-msgstr ""
+msgstr "แก้ไข"
 
 #: ../SlideshowView.qml:441
 msgid "Back to Photo roll"
