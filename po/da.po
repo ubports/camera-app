@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-05 14:58+0000\n"
+"PO-Revision-Date: 2018-08-07 15:23+0000\n"
 "Last-Translator: Tom Rausner <tomrausner@gmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -129,11 +129,11 @@ msgstr "Brug AM/PM visning. AP vil blive erstattet af enten 'AM' eller 'PM'."
 
 #: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "brug am/pm visning. ap vil blive erstattet af enten 'am' eller 'pm'."
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "tidszonen (f.eks 'UTC')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
@@ -147,12 +147,12 @@ msgstr "Farve"
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Justering"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Uigennemsigtighed"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -174,7 +174,7 @@ msgstr "Intet medie tilgængeligt."
 
 #: ../GalleryView.qml:235
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Søger efter indhold..."
 
 #: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
 msgid "Select"
@@ -191,51 +191,51 @@ msgstr "Fotorulle"
 
 #: ../Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr ""
+msgstr "Hent kilden"
 
 #: ../Information.qml:83
 msgid "Report issues"
-msgstr ""
+msgstr "Raportér problemer"
 
 #: ../Information.qml:84
 msgid "Help translate"
-msgstr ""
+msgstr "Hjælp med at oversætte"
 
 #: ../MediaInfoPopover.qml:25
 msgid "Media Information"
-msgstr ""
+msgstr "Medie information"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Navn : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Type : %1"
 
 #: ../MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Bredde : %1"
 
 #: ../MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Højde : %1"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Ikke mere plads på enheden, frigør plads for at fortsætte."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Stryg mod venstre for foto rulle"
 
 #: ../PhotogridView.qml:42 ../SlideshowView.qml:60
 msgid "Share"
@@ -247,7 +247,7 @@ msgstr "Galleri"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Billed info"
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
@@ -255,9 +255,8 @@ msgstr "Redigér"
 
 # ?
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Fotorulle"
+msgstr "Tilbage til Fotorulle"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -278,7 +277,7 @@ msgstr "OK"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr ""
+msgstr "Tændt"
 
 #: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
 #: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
@@ -292,11 +291,11 @@ msgstr "Sluk"
 
 #: ../ViewFinderOverlay.qml:395
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 #: ../ViewFinderOverlay.qml:432
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:470
 msgid "5 seconds"
@@ -308,7 +307,7 @@ msgstr "15 sekunder"
 
 #: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
-msgstr ""
+msgstr "Høj Kvalitet"
 
 #: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
@@ -458,4 +457,4 @@ msgstr "Kameraprogram"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Billeder;Videoer;Optagelse;Snapshot;Optagelse"
