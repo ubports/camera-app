@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-07 15:43+0000\n"
+"PO-Revision-Date: 2018-08-12 06:20+0000\n"
 "Last-Translator: Tom Rausner <tomrausner@gmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -398,7 +398,7 @@ msgstr ""
 
 #: ../ViewFinderView.qml:491
 msgid "Restarting your device might fix the problem."
-msgstr "En genstart af din enhed vil måske løse problemet"
+msgstr "En genstart af din enhed vil måske løse problemet."
 
 #: ../camera-app.qml:57
 msgid "Flash"
@@ -414,7 +414,7 @@ msgstr "Vend kamera"
 
 #: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr "Forud;Bagud"
+msgstr "Fremad;Bagud"
 
 #: ../camera-app.qml:65
 msgid "Shutter"
