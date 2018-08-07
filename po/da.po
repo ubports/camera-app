@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-07 15:23+0000\n"
+"PO-Revision-Date: 2018-08-07 15:43+0000\n"
 "Last-Translator: Tom Rausner <tomrausner@gmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -307,50 +307,52 @@ msgstr "15 sekunder"
 
 #: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
-msgstr "Høj Kvalitet"
+msgstr "God Kvalitet"
 
 #: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
-msgstr ""
+msgstr "Høj Kvalitet"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
-msgstr ""
+msgstr "Normal Kvalitet"
 
 #: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
-msgstr ""
+msgstr "Grundlæggende Kvalitet"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
 #: ../ViewFinderOverlay.qml:541
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:549
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Gem på SD Kort"
 
 #: ../ViewFinderOverlay.qml:554
 msgid "Save internally"
-msgstr ""
+msgstr "Gem internt"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Vibrér"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
-msgstr ""
+msgstr "Sparsom lagerplads"
 
 #: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Du er ved at løbe tør for lagerplads. For at fortsætte uden afbrydelser, må "
+"du frigøre lagerplads nu."
 
 #: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
-msgstr ""
+msgstr "Externt lager er ikke skrivbart"
 
 #: ../ViewFinderOverlay.qml:1134
 msgid ""
@@ -358,10 +360,13 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Det er øjensynligt ikke muligt at skrive til dit eksterne lagermedie. At "
+"afmontere enheden og montere den igen vil måske løse problemet, hvis ikke "
+"skal du muligvis formattere den."
 
 #: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
-msgstr ""
+msgstr "Kan ikke tilgå kamera"
 
 #: ../ViewFinderOverlay.qml:1173
 msgid ""
@@ -370,24 +375,30 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
+"Kamera appen har ikke tilladelse til at tilgå kamera hardwaren, eller en "
+"anden fejl opstod.\n"
+"\n"
+"Hvis det ikke hjælper at give tilladelse, så genstart din enhed."
 
 #: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
-msgstr ""
+msgstr "Redigér Tilladelser"
 
 #: ../ViewFinderView.qml:485
 msgid "Capture failed"
-msgstr ""
+msgstr "Optagelse fejlede"
 
 #: ../ViewFinderView.qml:490
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Udskiftning af dit eksterne medie, formattering eller en genstart af enheden "
+"vil måske løse problemet."
 
 #: ../ViewFinderView.qml:491
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "En genstart af din enhed vil måske løse problemet"
 
 #: ../camera-app.qml:57
 msgid "Flash"
