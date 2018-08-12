@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-29 08:33+0000\n"
+"PO-Revision-Date: 2018-08-07 15:43+0000\n"
 "Last-Translator: Tom Rausner <tomrausner@gmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19.1\n"
+"X-Generator: Weblate 2.20\n"
 "X-Launchpad-Export-Date: 2016-12-16 05:42+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -129,11 +129,11 @@ msgstr "Brug AM/PM visning. AP vil blive erstattet af enten 'AM' eller 'PM'."
 
 #: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "brug am/pm visning. ap vil blive erstattet af enten 'am' eller 'pm'."
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "tidszonen (f.eks 'UTC')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
@@ -142,17 +142,17 @@ msgstr ""
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Farve"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Justering"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Uigennemsigtighed"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -174,7 +174,7 @@ msgstr "Intet medie tilgængeligt."
 
 #: ../GalleryView.qml:235
 msgid "Scanning for content..."
-msgstr ""
+msgstr "Søger efter indhold..."
 
 #: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
 msgid "Select"
@@ -191,51 +191,51 @@ msgstr "Fotorulle"
 
 #: ../Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr ""
+msgstr "Hent kilden"
 
 #: ../Information.qml:83
 msgid "Report issues"
-msgstr ""
+msgstr "Raportér problemer"
 
 #: ../Information.qml:84
 msgid "Help translate"
-msgstr ""
+msgstr "Hjælp med at oversætte"
 
 #: ../MediaInfoPopover.qml:25
 msgid "Media Information"
-msgstr ""
+msgstr "Medie information"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Navn : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Type : %1"
 
 #: ../MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Bredde : %1"
 
 #: ../MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Højde : %1"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
-msgstr ""
+msgstr "Ikke mere plads på enheden, frigør plads for at fortsætte."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr ""
+msgstr "Stryg mod venstre for foto rulle"
 
 #: ../PhotogridView.qml:42 ../SlideshowView.qml:60
 msgid "Share"
@@ -243,11 +243,11 @@ msgstr "Del"
 
 #: ../PhotogridView.qml:69 ../SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galleri"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Billed info"
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
@@ -255,9 +255,8 @@ msgstr "Redigér"
 
 # ?
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Fotorulle"
+msgstr "Tilbage til Fotorulle"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -278,7 +277,7 @@ msgstr "OK"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr ""
+msgstr "Tændt"
 
 #: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
 #: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
@@ -292,11 +291,11 @@ msgstr "Sluk"
 
 #: ../ViewFinderOverlay.qml:395
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 #: ../ViewFinderOverlay.qml:432
 msgid "HDR"
-msgstr ""
+msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:470
 msgid "5 seconds"
@@ -308,50 +307,52 @@ msgstr "15 sekunder"
 
 #: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
-msgstr ""
+msgstr "God Kvalitet"
 
 #: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
-msgstr ""
+msgstr "Høj Kvalitet"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
-msgstr ""
+msgstr "Normal Kvalitet"
 
 #: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
-msgstr ""
+msgstr "Grundlæggende Kvalitet"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
 #: ../ViewFinderOverlay.qml:541
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:549
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Gem på SD Kort"
 
 #: ../ViewFinderOverlay.qml:554
 msgid "Save internally"
-msgstr ""
+msgstr "Gem internt"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Vibrér"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
-msgstr ""
+msgstr "Sparsom lagerplads"
 
 #: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
+"Du er ved at løbe tør for lagerplads. For at fortsætte uden afbrydelser, må "
+"du frigøre lagerplads nu."
 
 #: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
-msgstr ""
+msgstr "Externt lager er ikke skrivbart"
 
 #: ../ViewFinderOverlay.qml:1134
 msgid ""
@@ -359,10 +360,13 @@ msgid ""
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
+"Det er øjensynligt ikke muligt at skrive til dit eksterne lagermedie. At "
+"afmontere enheden og montere den igen vil måske løse problemet, hvis ikke "
+"skal du muligvis formattere den."
 
 #: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
-msgstr ""
+msgstr "Kan ikke tilgå kamera"
 
 #: ../ViewFinderOverlay.qml:1173
 msgid ""
@@ -371,24 +375,30 @@ msgid ""
 "\n"
 "If granting permission does not resolve this problem, reboot your device."
 msgstr ""
+"Kamera appen har ikke tilladelse til at tilgå kamera hardwaren, eller en "
+"anden fejl opstod.\n"
+"\n"
+"Hvis det ikke hjælper at give tilladelse, så genstart din enhed."
 
 #: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
-msgstr ""
+msgstr "Redigér Tilladelser"
 
 #: ../ViewFinderView.qml:485
 msgid "Capture failed"
-msgstr ""
+msgstr "Optagelse fejlede"
 
 #: ../ViewFinderView.qml:490
 msgid ""
 "Replacing your external media, formatting it, or restarting the device might "
 "fix the problem."
 msgstr ""
+"Udskiftning af dit eksterne medie, formattering eller en genstart af enheden "
+"vil måske løse problemet."
 
 #: ../ViewFinderView.qml:491
 msgid "Restarting your device might fix the problem."
-msgstr ""
+msgstr "En genstart af din enhed vil måske løse problemet"
 
 #: ../camera-app.qml:57
 msgid "Flash"
@@ -458,4 +468,4 @@ msgstr "Kameraprogram"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Billeder;Videoer;Optagelse;Snapshot;Optagelse"
