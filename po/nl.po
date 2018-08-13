@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
 "PO-Revision-Date: 2018-08-13 16:29+0000\n"
-"Last-Translator: Joachim Lazaroms <joachim.pc@gmail.com>\n"
+"Last-Translator: Sander <sander.k1007@kpnmail.nl>\n"
 "Language-Team: Dutch <https://translate.ubports.com/projects/ubports/"
 "camera-app/nl/>\n"
 "Language: nl\n"
@@ -35,105 +35,115 @@ msgstr "Formaat"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr ""
+msgstr "Datum formaat sleutelwoorden"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "de dag als getal zonder voorloopnul (1 tot 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "de dag als getal met een voorloopnul (01 tot 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "de afgekorte gelokaliseerde dagnaam (bijvoorbeeld 'Maan' tot 'Zon')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
 msgstr ""
+"de volledige gelokaliseerde dagnaam (bijvoorbeeld 'Maandag' tot 'Zondag')."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "de maand als getal zonder voorloopnul (1 tot 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "de maand als getal met een voorloopnul (01 tot 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "de afgekorte gelokaliseerde maandnaam (bijvoorbeeld 'Jan' tot 'Dec')."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
+"de volledige gelokaliseerde maandnaam (bijvoorbeeld 'Januari' tot "
+"'December')."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "het jaar als tweecijferig getal (00 tot 99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"het jaar als viercijferig getal. Als het jaartal negatief is, wordt "
+"daarnaast een minteken toegevoegd."
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
+"het uur zonder voorloopnul (0 tot 23 of 1 tot 12 wanneer AM/PM wordt getoond)"
 
 #: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
+"het uur met een voorloopnul (00 tot 23 of 01 tot 12 wanneer AM/PM wordt "
+"getoond)"
 
 #: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
 msgstr ""
+"het uur zonder voorloopnul (0 tot 23, zelfs wanneer AM/PM wordt getoond)"
 
 #: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
 msgstr ""
+"het uur met een voorloopnul (00 tot 23, zelfs wanneer AM/PM wordt getoond)"
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "de minuut zonder voorloopnul (0 tot 59)"
 
 #: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "de minuut met een voorloopnul (00 tot 59)"
 
 #: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "de seconde zonder voorloopnul (0 tot 59)"
 
 #: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "de seconde met een voorloopnul (00 tot 59)"
 
 #: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "de milliseconden zonder voorloopnullen (0 tot 999)"
 
 #: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "de milliseconden met voorloopnullen (000 tot 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
-msgstr ""
+msgstr "toon AM/PM. AP zal vervangen worden door 'AM' of 'PM'."
 
 #: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "toon am/pm. ap zal vervangen worden door 'am' of 'pm'."
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "de tijdzone (bijvoorbeeld 'CEST')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Voeg toe aan Formaat"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -143,12 +153,12 @@ msgstr "Kleur"
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Uitlijning"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Zichtbaarheid"
 
 #: ../DeleteDialog.qml:24
 msgid "Delete media?"
@@ -186,7 +196,7 @@ msgstr "Fotorol"
 
 #: ../Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #: ../Information.qml:82
 msgid "Get the source"
@@ -201,29 +211,28 @@ msgid "Help translate"
 msgstr "Help vertalen"
 
 #: ../MediaInfoPopover.qml:25
-#, fuzzy
 msgid "Media Information"
-msgstr "App-informatie"
+msgstr "Media Informatie"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr ""
+msgstr "Naam : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
 msgid "Type : %1"
-msgstr ""
+msgstr "Type : %1"
 
 #: ../MediaInfoPopover.qml:37
 #, qt-format
 msgid "Width : %1"
-msgstr ""
+msgstr "Breedte : %1"
 
 #: ../MediaInfoPopover.qml:41
 #, qt-format
 msgid "Height : %1"
-msgstr ""
+msgstr "Hoogte : %1"
 
 #: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
@@ -240,20 +249,19 @@ msgstr "Delen"
 
 #: ../PhotogridView.qml:69 ../SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galerij"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
-msgstr ""
+msgstr "Afbeelding Informatie"
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
 msgstr "Bewerken"
 
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Fotorol"
+msgstr "Terug naar Fotorol"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -307,9 +315,8 @@ msgid "Fine Quality"
 msgstr "Goede kwaliteit"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
-msgstr "Goede kwaliteit"
+msgstr "Hoge Kwaliteit"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
@@ -334,7 +341,7 @@ msgstr "Intern opslaan"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Trillen"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
@@ -367,7 +374,6 @@ msgid "Cannot access camera"
 msgstr "Kan geen toegang krijgen tot de camera"
 
 #: ../ViewFinderOverlay.qml:1173
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
