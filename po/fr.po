@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-06-28 18:00+0000\n"
-"Last-Translator: Anne Onyme <anneonyme017@openmailbox.org>\n"
-"Language-Team: French <https://translate.ubports.com/projects/ubports/camera-"
-"app/fr/>\n"
+"PO-Revision-Date: 2018-08-19 01:00+0000\n"
+"Last-Translator: Ernesst <slash.tux@gmail.com>\n"
+"Language-Team: French <https://translate.ubports.com/projects/ubports/"
+"camera-app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 2.20\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -35,7 +35,7 @@ msgstr "Formater"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr "Mots-clés pour le formatage de la date"
+msgstr "Mots-clés pour le format de la date"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
