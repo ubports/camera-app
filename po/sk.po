@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-11 21:44+0000\n"
-"Last-Translator: jEzEk <jezek@chicki.sk>\n"
-"Language-Team: Slovak <https://translate.ubports.com/projects/ubports/camera-"
-"app/sk/>\n"
+"PO-Revision-Date: 2018-08-23 19:19+0000\n"
+"Last-Translator: P_E_T_O <peto.bena@gmail.com>\n"
+"Language-Team: Slovak <https://translate.ubports.com/projects/ubports/"
+"camera-app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 2.20\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Nastavenia"
 
 #: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
@@ -31,39 +31,39 @@ msgstr "Pridať dátum na fotky"
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Formát"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr ""
+msgstr "Formátovanie kľúčových slov dátumu"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "deň ako číslo bez nuly na začiatku (1 až 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "deň ako číslo s nulou na začiatku (01 až 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "skrátený názov lokalizovaného dňa (napr. 'Pon' až 'Ned')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "dlhý lokalizovaný názov dňa (napr. \"Pondelok\" až \"Nedeľa\")."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "mesiac ako číslo bez nuly na začiatku (1 až 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "mesiac ako číslo s nulou na začiatku (01 až 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "skrátený názov lokalizovaného mesiaca (napr. \"Jan\" až \"Dec\")."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
@@ -186,19 +186,19 @@ msgstr "Galéria"
 
 #: ../Information.qml:20
 msgid "About"
-msgstr ""
+msgstr "O Aplikácii"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr ""
+msgstr "Získať zdroj"
 
 #: ../Information.qml:83
 msgid "Report issues"
-msgstr ""
+msgstr "Nahlásiť chyby"
 
 #: ../Information.qml:84
 msgid "Help translate"
-msgstr ""
+msgstr "Pomôcť s prekladom"
 
 #: ../MediaInfoPopover.qml:25
 msgid "Media Information"
@@ -238,7 +238,7 @@ msgstr "Zdieľať"
 
 #: ../PhotogridView.qml:69 ../SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "Galéria"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
@@ -249,9 +249,8 @@ msgid "Edit"
 msgstr "Upraviť"
 
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
-msgstr "Galéria"
+msgstr "Späť do galérie"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -305,7 +304,6 @@ msgid "Fine Quality"
 msgstr "Výborná kvalita"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
 msgstr "Výborná kvalita"
 
@@ -364,7 +362,6 @@ msgid "Cannot access camera"
 msgstr "Nemožno získať prístup k fotoaparátu"
 
 #: ../ViewFinderOverlay.qml:1173
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -373,6 +370,7 @@ msgid ""
 msgstr ""
 "Aplikácia Fotoaparát nemá oprávnenie pre prístup k hardvéru alebo došlo k "
 "inej chybe.\n"
+"\n"
 "Ak pridanie oprávnenia nevyrieši tento problém, reštartujte telefón."
 
 #: ../ViewFinderOverlay.qml:1182
