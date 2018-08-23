@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-23 19:19+0000\n"
+"PO-Revision-Date: 2018-09-01 19:36+0000\n"
 "Last-Translator: P_E_T_O <peto.bena@gmail.com>\n"
 "Language-Team: Slovak <https://translate.ubports.com/projects/ubports/"
 "camera-app/sk/>\n"
@@ -51,7 +51,7 @@ msgstr "skrátený názov lokalizovaného dňa (napr. 'Pon' až 'Ned')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr "dlhý lokalizovaný názov dňa (napr. \"Pondelok\" až \"Nedeľa\")."
+msgstr "dlhý názov lokalizovaného dňa (napr. \"Pondelok\" až \"Nedeľa\")."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
@@ -67,41 +67,44 @@ msgstr "skrátený názov lokalizovaného mesiaca (napr. \"Jan\" až \"Dec\")."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
+msgstr "dlhý názov lokalizovaného mesiaca (napr. \"Január\" až \"December\")."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "rok ako dvojciferné číslo (00 až 99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"rok ako štvorciferné číslo. Ak je rok záporný, na začiatku je znak mínus."
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
+"hodina bez nuly na začiatku (0 až 23 alebo 1 až 12, ak je zobrazenie AM/PM)"
 
 #: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
+"hodina s nulou na začiatku (00 až 23 alebo 01 až 12, ak je zobrazenie AM/PM)"
 
 #: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "hodina bez nuly na začiatku (0 až 23, dokonca aj s displejom AM/PM)"
 
 #: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "hodina s nulou na začiatku (00 až 23, dokonca aj s displejom AM/PM)"
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "minúta bez nuly na začiatku (0 až 59)"
 
 #: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "minúta s nulou na začiatku (00 až 59)"
 
 #: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
