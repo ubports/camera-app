@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-26 13:04+0000\n"
+"PO-Revision-Date: 2018-08-26 13:06+0000\n"
 "Last-Translator: Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -48,7 +48,7 @@ msgstr "Dagen som nummer med foranstillet nul (01 til 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr "Det forkortede lokaliserede dagsnavn (altså 'Man' til 'Søn')"
+msgstr "Det forkortede lokaliserede dagsnavn (altså 'Man' til 'Søn')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
