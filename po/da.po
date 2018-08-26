@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-26 13:06+0000\n"
+"PO-Revision-Date: 2018-09-01 19:36+0000\n"
 "Last-Translator: Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "camera-app/da/>\n"
@@ -36,15 +36,15 @@ msgstr "Format"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr "Dato formaterings nøgleord"
+msgstr "Datoformaterings nøgleord"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr "Dagen som nummer uden foranstillet nul (1 til 31)"
+msgstr "Dagen som nummer, uden foranstillet nul (1 til 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr "Dagen som nummer med foranstillet nul (01 til 31)"
+msgstr "Dagen som nummer, med foranstillet nul (01 til 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
@@ -56,19 +56,19 @@ msgstr "Det lange lokaliserede dagsnavn (altså 'Mandag' til 'Søndag')."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr "Måneden som nummer uden foranstillet nul (1 til 12)"
+msgstr "Måneden som nummer, uden foranstillet nul (1 til 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr "Måneden som nummer med foranstillet nul (01 til 12)"
+msgstr "Måneden som nummer, med foranstillet nul (01 til 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "Det forkortede lokaliserede månedsnavn (altså 'Jan' til 'Dec')."
+msgstr "Det forkortede lokaliserede månedsnavn (altså 'jan' til 'dec')."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr "Det lange lokaliserede månedsnavn (altså 'Januar' til 'December)."
+msgstr "Det lange lokaliserede månedsnavn (altså 'januar' til 'december)."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -121,7 +121,7 @@ msgstr "Millisekunderne uden foranstillede nuller (0 til 999)"
 
 #: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr "Millisekunderne med foranstillede nuller 000 til 999)"
+msgstr "Millisekunderne med foranstillede nuller (000 til 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
@@ -166,7 +166,7 @@ msgstr "Slet"
 #: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
 #: ../ViewFinderView.qml:494
 msgid "Cancel"
-msgstr "Annullér"
+msgstr "Annuller"
 
 #: ../GalleryView.qml:200
 msgid "No media available."
@@ -207,7 +207,7 @@ msgstr "Hjælp med at oversætte"
 
 #: ../MediaInfoPopover.qml:25
 msgid "Media Information"
-msgstr "Medie information"
+msgstr "Medieinformation"
 
 #: ../MediaInfoPopover.qml:30
 #, qt-format
@@ -235,7 +235,7 @@ msgstr "Ikke mere plads på enheden, frigør plads for at fortsætte."
 
 #: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
-msgstr "Stryg mod venstre for foto rulle"
+msgstr "Stryg mod venstre for fotorulle"
 
 #: ../PhotogridView.qml:42 ../SlideshowView.qml:60
 msgid "Share"
@@ -247,7 +247,7 @@ msgstr "Galleri"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
-msgstr "Billed info"
+msgstr "Billed-info"
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
@@ -256,7 +256,7 @@ msgstr "Redigér"
 # ?
 #: ../SlideshowView.qml:441
 msgid "Back to Photo roll"
-msgstr "Tilbage til Fotorulle"
+msgstr "Tilbage til fotorulle"
 
 #: ../UnableShareDialog.qml:25
 msgid "Unable to share"
@@ -311,15 +311,15 @@ msgstr "God Kvalitet"
 
 #: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
-msgstr "Høj Kvalitet"
+msgstr "Høj kvalitet"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
-msgstr "Normal Kvalitet"
+msgstr "Normal kvalitet"
 
 #: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
-msgstr "Grundlæggende Kvalitet"
+msgstr "Grundlæggende kvalitet"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
 #: ../ViewFinderOverlay.qml:541
