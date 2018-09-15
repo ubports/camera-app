@@ -10,14 +10,10 @@
         }
     },
     "icon": "@CAMERA_ICON@",
-    "maintainer": "UBports <community@ubports.com>",
+    "maintainer": "UBports <dev@ubports.com>",
     "name": "com.ubuntu.camera",
     "title": "Camera",
-    "version": "3.0.1.@REVNO@",
-    "x-source": {
-        "vcs-bzr": "@SOURCE@",
-        "vcs-bzr-revno": "@REVNO@"
-    },
+    "version": "3.0.2",
     "x-test": {
         "autopilot": {
             "autopilot_module": "@AUTOPILOT_DIR@",

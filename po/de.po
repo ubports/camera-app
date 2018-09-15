@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-12 09:49+0000\n"
-"Last-Translator: Florian Leeber <flori@bin.org.in>\n"
+"POT-Creation-Date: 2018-06-23 17:57+0000\n"
+"PO-Revision-Date: 2018-07-05 21:22+0000\n"
+"Last-Translator: konrad <kohofer@gmail.com>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
 "app/de/>\n"
 "Language: de\n"
@@ -20,283 +20,331 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: NoSpaceHint.qml:33
+#: ../AdvancedOptions.qml:16
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../AdvancedOptions.qml:48
+msgid "Add date stamp on captured images"
+msgstr "Datumsstempel zu Aufnahmen hinzufügen"
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: ../AdvancedOptions.qml:70
+msgid "Format"
+msgstr "Formatieren"
+
+#: ../AdvancedOptions.qml:122
+msgid "Date formatting keywords"
+msgstr "Datums Formatierungsschlüsselwörter"
+
+#: ../AdvancedOptions.qml:127
+msgid "the day as number without a leading zero (1 to 31)"
+msgstr "den Tag als Nummer ohne führende Null (1 bis 31)"
+
+#: ../AdvancedOptions.qml:128
+msgid "the day as number with a leading zero (01 to 31)"
+msgstr "den Tag als Nummer mit führender Null (01 bis 31)"
+
+#: ../AdvancedOptions.qml:129
+msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
+msgstr "den abgekürzten, lokalisierten Tagesnamen ('Mon' bis 'Son')."
+
+#: ../AdvancedOptions.qml:130
+msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
+msgstr "den langen, lokalisierten Tagesnamen („Montag“ bis „Sonntag“)."
+
+#: ../AdvancedOptions.qml:131
+msgid "the month as number without a leading zero (1 to 12)"
+msgstr "den Monat als Nummer ohne führende Null (1 bis 12)"
+
+#: ../AdvancedOptions.qml:132
+msgid "the month as number with a leading zero (01 to 12)"
+msgstr "der Monat als Zahl mit einer führenden Null (01 bis 12)"
+
+#: ../AdvancedOptions.qml:133
+msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
+msgstr "den abgekürzten lokalisierten Monatsnamen (z.B. „Jan“ bis „Dez“)."
+
+#: ../AdvancedOptions.qml:134
+msgid "the long localized month name (e.g. 'January' to 'December')."
+msgstr "den vollen lokalisierten Monatsnamen („Januar“ bis „Dezember“)."
+
+#: ../AdvancedOptions.qml:135
+msgid "the year as two digit number (00 to 99)"
+msgstr "Das Jahr als zweistellige Nummer (00 bis 99)"
+
+#: ../AdvancedOptions.qml:136
+msgid ""
+"the year as four digit number. If the year is negative, a minus sign is "
+"prepended in addition."
+msgstr ""
+"Das Jahr als vierstellige Nummer. Wenn das Jahr negativ ist, wird ein Minus "
+"davor hinzugefügt."
+
+#: ../AdvancedOptions.qml:137
+msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
+msgstr ""
+"die Stunde ohne führende Null (0 bis 23 oder 1 bis 12 falls AM/PM im Display)"
+
+#: ../AdvancedOptions.qml:138
+msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
+msgstr ""
+"die Stunde mit einer führenden Null (00 bis 23 oder 01 bis 12 falls AM/PM im "
+"Display)"
+
+#: ../AdvancedOptions.qml:139
+msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
+msgstr "die Stunde ohne führende Null (0 bis 23,  sogar mit AM/PM im Display)"
+
+#: ../AdvancedOptions.qml:140
+msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
+msgstr ""
+"die Stunde mit einer führenden Null (00 bis 23, sogar mit AM/PM im Display)"
+
+#: ../AdvancedOptions.qml:141
+msgid "the minute without a leading zero (0 to 59)"
+msgstr "die Minute ohne führender Null (0 bis 59)"
+
+#: ../AdvancedOptions.qml:142
+msgid "the minute with a leading zero (00 to 59)"
+msgstr "die Minute mit einer führenden Null (00 bis 59)"
+
+#: ../AdvancedOptions.qml:143
+msgid "the second without a leading zero (0 to 59)"
+msgstr "die Sekunde ohne führende Null (0 bis 59)"
+
+#: ../AdvancedOptions.qml:144
+msgid "the second with a leading zero (00 to 59)"
+msgstr "die Sekunde mit einer führenden Null (00 bis 59)"
+
+#: ../AdvancedOptions.qml:145
+msgid "the milliseconds without leading zeroes (0 to 999)"
+msgstr "die Millisekunde ohne einer führenden Null (0 bis 59)"
+
+#: ../AdvancedOptions.qml:146
+msgid "the milliseconds with leading zeroes (000 to 999)"
+msgstr "die Millisekunde mit einer führenden Null (000 bis 999)"
+
+#: ../AdvancedOptions.qml:147
+msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
+msgstr "benutze AM/PM Display. AP wird entweder durch 'AM' oder 'PM' ersetzt."
+
+#: ../AdvancedOptions.qml:148
+msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
+msgstr "benutze am/pm display. ap wird entweder durch 'am' oder 'pm' ersetzt."
+
+#: ../AdvancedOptions.qml:149
+msgid "the timezone (for example 'CEST')"
+msgstr "Die Zeitzone (zum Beispiel 'CEST')"
+
+#: ../AdvancedOptions.qml:158
+msgid "Add to Format"
+msgstr "Zu Format hinzufügen"
+
+#. TRANSLATORS: this refers to the color of date stamp added to captured images
+#: ../AdvancedOptions.qml:189
+msgid "Color"
+msgstr "Farbe"
+
+#. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
+#: ../AdvancedOptions.qml:257
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
+#: ../AdvancedOptions.qml:303
+msgid "Opacity"
+msgstr "Opazität"
+
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Medien löschen?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:56 ../SlideshowView.qml:75
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
+#: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
+#: ../ViewFinderView.qml:494
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../GalleryView.qml:200
+msgid "No media available."
+msgstr "Keine Medien verfügbar."
+
+#: ../GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr "Nach Inhalten wird gesucht …"
+
+#: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
+msgid "Select"
+msgstr "Auswählen"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr "Foto bearbeiten"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr "Fotoliste"
+
+#: ../Information.qml:20
+msgid "About"
+msgstr "Über"
+
+#: ../Information.qml:82
+msgid "Get the source"
+msgstr "Hol dir den Quellcode"
+
+#: ../Information.qml:83
+msgid "Report issues"
+msgstr "Probleme melden"
+
+#: ../Information.qml:84
+msgid "Help translate"
+msgstr "Übersetzen helfen"
+
+#: ../MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr "Medieninformationen"
+
+#: ../MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr "Name : %1"
+
+#: ../MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr "Typ : %1"
+
+#: ../MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr "Breite : %1"
+
+#: ../MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
+msgstr "Höhe : %1"
+
+#: ../NoSpaceHint.qml:33
 msgid "No space left on device, free up space to continue."
 msgstr ""
 "Kein freier Speicherplatz auf dem Gerät. Bitte Speicherplatz freigeben, um "
 "fortzufahren."
 
-#: DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "Medien löschen?"
-
-#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
-msgid "Delete"
-msgstr "Löschen"
-
-#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
-#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: GalleryView.qml:200
-msgid "No media available."
-msgstr "Keine Medien verfügbar."
-
-#: GalleryView.qml:235
-msgid "Scanning for content..."
-msgstr "Nach Inhalten wird gesucht …"
-
-#: GalleryViewHeader.qml:82 SlideshowView.qml:45
-msgid "Select"
-msgstr "Auswählen"
-
-#: GalleryViewHeader.qml:83
-msgid "Edit Photo"
-msgstr "Foto bearbeiten"
-
-#: GalleryViewHeader.qml:83
-msgid "Photo Roll"
-msgstr "Fotoliste"
-
-#: PhotogridView.qml:42 SlideshowView.qml:60
-msgid "Share"
-msgstr "Teilen"
-
-#: PhotogridView.qml:69 SlideshowView.qml:53
-msgid "Gallery"
-msgstr ""
-
-#: SlideshowView.qml:68
-msgid "Image Info"
-msgstr ""
-
-#: SlideshowView.qml:86
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: SlideshowView.qml:441
-#, fuzzy
-msgid "Back to Photo roll"
-msgstr "Fotoliste"
-
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "Teilen nicht möglich"
-
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "Kann Fotos und Videos nicht gleichzeitig teilen"
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "Ok"
-
-#: ViewFinderView.qml:485
-msgid "Capture failed"
-msgstr "Erfassung fehlgeschlagen"
-
-#: ViewFinderView.qml:490
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-"Das Ersetzen oder Formatieren des externen Speichers oder ein Geräteneustart "
-"könnten das Problem beheben."
-
-#: ViewFinderView.qml:491
-msgid "Restarting your device might fix the problem."
-msgstr "Ein Geräteneustart könnte das Problem beheben."
-
-#: Information.qml:20
-msgid "About"
-msgstr ""
-
-#: Information.qml:82
-msgid "Get the source"
-msgstr "Hol dir den Quellcode"
-
-#: Information.qml:83
-msgid "Report issues"
-msgstr "Probleme melden"
-
-#: Information.qml:84
-msgid "Help translate"
-msgstr "Übersetzen helfen"
-
-#: MediaInfoPopover.qml:25
-#, fuzzy
-msgid "Media Information"
-msgstr "App-Informationen"
-
-#: MediaInfoPopover.qml:30
-#, qt-format
-msgid "Name : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:33
-#, qt-format
-msgid "Type : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:37
-#, qt-format
-msgid "Width : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:41
-#, qt-format
-msgid "Height : %1"
-msgstr ""
-
-#: PhotoRollHint.qml:69
+#: ../PhotoRollHint.qml:69
 msgid "Swipe left for photo roll"
 msgstr "Zur Fotoliste nach links wischen"
 
-#: AdvancedOptions.qml:16
-msgid "Settings"
-msgstr ""
+#: ../PhotogridView.qml:42 ../SlideshowView.qml:60
+msgid "Share"
+msgstr "Teilen"
 
-#: AdvancedOptions.qml:48
-msgid "Add date stamp on captured images"
-msgstr "Datumsstempel zu Aufnahmen hinzufügen"
+#: ../PhotogridView.qml:69 ../SlideshowView.qml:53
+msgid "Gallery"
+msgstr "Galerie"
 
-#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:70
-msgid "Format"
-msgstr "Formatieren"
+#: ../SlideshowView.qml:68
+msgid "Image Info"
+msgstr "Bildinformationen"
 
-#: AdvancedOptions.qml:122
-msgid "Date formating keywords"
-msgstr ""
+#: ../SlideshowView.qml:86
+msgid "Edit"
+msgstr "Bearbeiten"
 
-#: AdvancedOptions.qml:127
-msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+#: ../SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr "Zurück zur Fotoliste"
 
-#: AdvancedOptions.qml:128
-msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+#: ../UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "Teilen nicht möglich"
 
-#: AdvancedOptions.qml:129
-msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+#: ../UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "Kann Fotos und Videos nicht gleichzeitig teilen"
 
-#: AdvancedOptions.qml:130
-msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+#: ../UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "Ok"
 
-#: AdvancedOptions.qml:131
-msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+#: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
+#: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
+#: ../ViewFinderOverlay.qml:526 ../ViewFinderOverlay.qml:589
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
+msgid "On"
+msgstr "An"
 
-#: AdvancedOptions.qml:132
-msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+#: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
+#: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
+#: ../ViewFinderOverlay.qml:465 ../ViewFinderOverlay.qml:531
+#: ../ViewFinderOverlay.qml:599
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
+msgid "Off"
+msgstr "Aus"
 
-#: AdvancedOptions.qml:133
-msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+#: ../ViewFinderOverlay.qml:395
+msgid "Auto"
+msgstr "Autom."
 
-#: AdvancedOptions.qml:134
-msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
-
-#: AdvancedOptions.qml:135
-msgid "the year as two digit number (00 to 99)"
-msgstr ""
-
-#: AdvancedOptions.qml:136
-msgid ""
-"the year as four digit number. If the year is negative, a minus sign is "
-"prepended in addition."
-msgstr ""
-
-#: AdvancedOptions.qml:137
-msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
-msgstr ""
-
-#: AdvancedOptions.qml:138
-msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
-msgstr ""
-
-#: AdvancedOptions.qml:139
-msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
-
-#: AdvancedOptions.qml:140
-msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
-
-#: AdvancedOptions.qml:141
-msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
-
-#: AdvancedOptions.qml:142
-msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
-
-#: AdvancedOptions.qml:143
-msgid "the second without a leading zero (0 to 59)"
-msgstr ""
-
-#: AdvancedOptions.qml:144
-msgid "the second with a leading zero (00 to 59)"
-msgstr ""
-
-#: AdvancedOptions.qml:145
-msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
-
-#: AdvancedOptions.qml:146
-msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
-
-#: AdvancedOptions.qml:147
-msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
-msgstr ""
-
-#: AdvancedOptions.qml:148
-msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
-
-#: AdvancedOptions.qml:149
-msgid "the timezone (for example 'CEST')"
-msgstr ""
-
-#: AdvancedOptions.qml:158
-msgid "Add to Format"
-msgstr ""
-
-#. TRANSLATORS: this refers to the color of date stamp added to captured images
-#: AdvancedOptions.qml:189
-msgid "Color"
-msgstr "Farbe"
-
-#. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
-#: AdvancedOptions.qml:257
-msgid "Alignment"
-msgstr ""
-
-#. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:303
-msgid "Opacity"
-msgstr ""
-
-#: ViewFinderOverlay.qml:426
+#: ../ViewFinderOverlay.qml:432
 msgid "HDR"
 msgstr "HDR"
 
+#: ../ViewFinderOverlay.qml:470
+msgid "5 seconds"
+msgstr "5 Sekunden"
+
+#: ../ViewFinderOverlay.qml:475
+msgid "15 seconds"
+msgstr "15 Sekunden"
+
+#: ../ViewFinderOverlay.qml:493
+msgid "Fine Quality"
+msgstr "Feine Qualität"
+
+#: ../ViewFinderOverlay.qml:498
+msgid "High Quality"
+msgstr "Hohe Qualität"
+
+#: ../ViewFinderOverlay.qml:503
+msgid "Normal Quality"
+msgstr "Normale Qualität"
+
+#: ../ViewFinderOverlay.qml:508
+msgid "Basic Quality"
+msgstr "Einfache Qualität"
+
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:535
+#: ../ViewFinderOverlay.qml:541
 msgid "SD"
 msgstr "SD"
 
-#: ViewFinderOverlay.qml:1103
+#: ../ViewFinderOverlay.qml:549
+msgid "Save to SD Card"
+msgstr "Auf SD-Karte speichern"
+
+#: ../ViewFinderOverlay.qml:554
+msgid "Save internally"
+msgstr "Intern speichern"
+
+#: ../ViewFinderOverlay.qml:594
+msgid "Vibrate"
+msgstr "Vibrieren"
+
+#: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
 msgstr "Geringer Speicherplatz"
 
-#: ViewFinderOverlay.qml:1104
+#: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
@@ -304,11 +352,11 @@ msgstr ""
 "Sie haben nur noch wenig freien Speicherplatz. Bitte Speicherplatz "
 "freigeben, um ohne Unterbrechungen fortzufahren."
 
-#: ViewFinderOverlay.qml:1117
+#: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
 msgstr "Externer Speicher nicht beschreibbar"
 
-#: ViewFinderOverlay.qml:1118
+#: ../ViewFinderOverlay.qml:1134
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -318,12 +366,11 @@ msgstr ""
 "Probieren Sie ihn auszuwerfen und wieder einzusetzen, das könnte das Problem "
 "beheben, oder er muss neu formatiert werden."
 
-#: ViewFinderOverlay.qml:1156
+#: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
 msgstr "Zugriff auf Kamera nicht möglich"
 
-#: ViewFinderOverlay.qml:1157
-#, fuzzy
+#: ../ViewFinderOverlay.qml:1173
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -336,103 +383,98 @@ msgstr ""
 "Sollte das Erteilen der Zugriffsrechte das Problem nicht beheben, bitte das "
 "Telefon neu starten."
 
-#: ViewFinderOverlay.qml:1166
+#: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
 msgstr "Zugriffsrechte bearbeiten"
 
-#: camera-app.qml:57
+#: ../ViewFinderView.qml:485
+msgid "Capture failed"
+msgstr "Erfassung fehlgeschlagen"
+
+#: ../ViewFinderView.qml:490
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"Das Ersetzen oder Formatieren des externen Speichers oder ein Geräteneustart "
+"könnten das Problem beheben."
+
+#: ../ViewFinderView.qml:491
+msgid "Restarting your device might fix the problem."
+msgstr "Ein Geräteneustart könnte das Problem beheben."
+
+#: ../camera-app.qml:57
 msgid "Flash"
 msgstr "Blitz"
 
-#: camera-app.qml:58
+#: ../camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Hell;Dunkel"
 
-#: camera-app.qml:61
+#: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Kamera kippen"
 
-#: camera-app.qml:62
+#: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Vorderseite;Rückseite"
 
-#: camera-app.qml:65
+#: ../camera-app.qml:65
 msgid "Shutter"
 msgstr "Verschluss"
 
-#: camera-app.qml:66
+#: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Ein Foto machen;Schnappschuss;Aufnehmen"
 
-#: camera-app.qml:69
+#: ../camera-app.qml:69
 msgid "Mode"
 msgstr "Modus"
 
-#: camera-app.qml:70
+#: ../camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Standbild;Video;Film"
 
-#: camera-app.qml:74
+#: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "Weißabgleich"
 
-#: camera-app.qml:75
+#: ../camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Belichtung;Tag;Wolkig;Drinnen"
+
+#: ../camera-app.qml:380
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "<b>%1</b> Fotos von heute"
+
+#: ../camera-app.qml:381
+msgid "No photos taken today"
+msgstr "Keine Fotos von heute"
+
+#: ../camera-app.qml:391
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "<b>%1</b> Videos von heute"
+
+#: ../camera-app.qml:392
+msgid "No videos recorded today"
+msgstr "Keine Videos von heute"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Kamera"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Kameraanwendung"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Fotos;Videos;Aufzeichnen;Aufnehmen;Schnappschuss"
 
 #~ msgid "Version %1"
 #~ msgstr "Version %1"
 
 #~ msgid "Advanced Options"
 #~ msgstr "Erweiterte Einstellungen"
-
-#~ msgid "On"
-#~ msgstr "An"
-
-#~ msgid "Off"
-#~ msgstr "Aus"
-
-#~ msgid "Auto"
-#~ msgstr "Autom."
-
-#~ msgid "5 seconds"
-#~ msgstr "5 Sekunden"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 Sekunden"
-
-#~ msgid "Fine Quality"
-#~ msgstr "Feine Qualität"
-
-#~ msgid "Normal Quality"
-#~ msgstr "Normale Qualität"
-
-#~ msgid "Basic Quality"
-#~ msgstr "Einfache Qualität"
-
-#~ msgid "Save to SD Card"
-#~ msgstr "Auf SD-Karte speichern"
-
-#~ msgid "Save internally"
-#~ msgstr "Intern speichern"
-
-#~ msgid "<b>%1</b> photos taken today"
-#~ msgstr "<b>%1</b> Fotos von heute"
-
-#~ msgid "No photos taken today"
-#~ msgstr "Keine Fotos von heute"
-
-#~ msgid "<b>%1</b> videos recorded today"
-#~ msgstr "<b>%1</b> Videos von heute"
-
-#~ msgid "No videos recorded today"
-#~ msgstr "Keine Videos von heute"
-
-#~ msgid "Camera"
-#~ msgstr "Kamera"
-
-#~ msgid "Camera application"
-#~ msgstr "Kameraanwendung"
-
-#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-#~ msgstr "Fotos;Videos;Aufzeichnen;Aufnehmen;Schnappschuss"

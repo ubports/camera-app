@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-02 16:30+0300\n"
-"PO-Revision-Date: 2018-05-09 21:09+0000\n"
+"POT-Creation-Date: 2018-06-23 17:57+0000\n"
+"PO-Revision-Date: 2018-07-05 15:56+0000\n"
 "Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
 "/camera-app/sc/>\n"
@@ -19,307 +19,352 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.15\n"
 
-#: NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "S'ispàtziu in su dispositivu est finidu: lìbera ispàtziu pro sighire."
-
-#: DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "Boles cantzellare custu elementu?"
-
-#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
-msgid "Delete"
-msgstr "Cantzella"
-
-#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
-#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
-msgid "Cancel"
-msgstr "Annulla"
-
-#: GalleryView.qml:200
-msgid "No media available."
-msgstr "Perunu elementu a disponimentu."
-
-#: GalleryView.qml:235
-msgid "Scanning for content..."
-msgstr "Chirchende cuntenutos..."
-
-#: GalleryViewHeader.qml:82 SlideshowView.qml:45
-msgid "Select"
-msgstr "Seletziona"
-
-#: GalleryViewHeader.qml:83
-msgid "Edit Photo"
-msgstr "Modìfica sa fotografia"
-
-#: GalleryViewHeader.qml:83
-msgid "Photo Roll"
-msgstr "Rullinu fotogràficu"
-
-#: PhotogridView.qml:42 SlideshowView.qml:60
-msgid "Share"
-msgstr "Cumpartzi"
-
-#: PhotogridView.qml:69 SlideshowView.qml:53
-msgid "Gallery"
-msgstr ""
-
-#: SlideshowView.qml:68
-msgid "Image Info"
-msgstr ""
-
-#: SlideshowView.qml:86
-msgid "Edit"
-msgstr "Modìfica"
-
-#: SlideshowView.qml:441
-#, fuzzy
-msgid "Back to Photo roll"
-msgstr "Rullinu fotogràficu"
-
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "Non faghet a cumpartzire"
-
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "Non faghet a cumpartzire fotografias e vìdeos impares"
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "AB"
-
-#: ViewFinderView.qml:485
-msgid "Capture failed"
-msgstr "Faddina in s'istantànea"
-
-#: ViewFinderView.qml:490
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr ""
-"Sostituire s'ischeda esterna, la formatare o torrare a aviare su dispositivu "
-"diat pòdere risòlvere su problema."
-
-#: ViewFinderView.qml:491
-msgid "Restarting your device might fix the problem."
-msgstr "Torrare a aviare su dispositivu diat pòdere risòlvere su problema."
-
-#: Information.qml:20
-msgid "About"
-msgstr ""
-
-#: Information.qml:82
-msgid "Get the source"
-msgstr "Otene su còdighe de orìgine"
-
-#: Information.qml:83
-msgid "Report issues"
-msgstr "Signala faddinas"
-
-#: Information.qml:84
-msgid "Help translate"
-msgstr "Agiuda a bortare"
-
-#: MediaInfoPopover.qml:25
-#, fuzzy
-msgid "Media Information"
-msgstr "Informatzione de s'aplicatzione"
-
-#: MediaInfoPopover.qml:30
-#, qt-format
-msgid "Name : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:33
-#, qt-format
-msgid "Type : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:37
-#, qt-format
-msgid "Width : %1"
-msgstr ""
-
-#: MediaInfoPopover.qml:41
-#, qt-format
-msgid "Height : %1"
-msgstr ""
-
-#: PhotoRollHint.qml:69
-msgid "Swipe left for photo roll"
-msgstr "Iscurre a manca pro bìdere su rullinu fotogràficu"
-
-#: AdvancedOptions.qml:16
+#: ../AdvancedOptions.qml:16
 msgid "Settings"
 msgstr "Cunfiguratzione"
 
-#: AdvancedOptions.qml:48
+#: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
-msgstr "Agiunghe sa data a is imàgines iscatadas"
+msgstr "Agiunghe sa data a is immàgines iscatadas"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:70
+#: ../AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Formata"
 
-#: AdvancedOptions.qml:122
-msgid "Date formating keywords"
-msgstr ""
+#: ../AdvancedOptions.qml:122
+msgid "Date formatting keywords"
+msgstr "Paràulas crae de sa formatatzione de sa data"
 
-#: AdvancedOptions.qml:127
+#: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "sa die comente a nùmeru sena zero initziale (dae 1 a 31)"
 
-#: AdvancedOptions.qml:128
+#: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "sa die comente a nùmeru cun zero initziale (dae 01 a 31)"
 
-#: AdvancedOptions.qml:129
+#: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "su nùmene abbreviadu de sa die localizada (es. dae 'lun' a 'dom')."
 
-#: AdvancedOptions.qml:130
+#: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "su nùmene intreu de sa die localizada (es. dae Lunis a Domìniga)."
 
-#: AdvancedOptions.qml:131
+#: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "su mese comente a nùmeru sena zero initziale (dae 1 a 12)"
 
-#: AdvancedOptions.qml:132
+#: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "su mese comente a nùmeru cun zero initziale (dae 01 a 12)"
 
-#: AdvancedOptions.qml:133
+#: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "su nùmene abbreviadu de su mese localizadu (es. dae 'Ghen' a 'Nad')."
 
-#: AdvancedOptions.qml:134
+#: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
+"su nùmene intreu de su mese localizadu (es. dae 'Ghennàrgiu' a 'Nadale')."
 
-#: AdvancedOptions.qml:135
+#: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "s'annu comente a nùmeru a duas tzifras"
 
-#: AdvancedOptions.qml:136
+#: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"s'annu comente a nùmeru a bator tzifras. Si s'annu est negativu, b'est "
+"agiuntu su sìmbulu de mancu."
 
-#: AdvancedOptions.qml:137
+#: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
-msgstr ""
+msgstr "s'ora sena zero initziale (dae 0 a 23 o dae 1 a 12 in ischermu AM/PM)"
 
-#: AdvancedOptions.qml:138
+#: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
-msgstr ""
+msgstr "s'ora cun zero initziale (dae 00 a 23 o dae 01 a 12 in ischermu AM/PM)"
 
-#: AdvancedOptions.qml:139
+#: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "s'ora sena zero initziale (dae 0 a 23 in ischermu AM/PM puru)"
 
-#: AdvancedOptions.qml:140
+#: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "s'ora cun zero initziale (dae 00 a 23 in ischermu AM/PM puru)"
 
-#: AdvancedOptions.qml:141
+#: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "su minutu sena zero initziale (dae 0 a 59)"
 
-#: AdvancedOptions.qml:142
+#: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "su minutu cun zero initziale (dae 00 a 59)"
 
-#: AdvancedOptions.qml:143
+#: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "su segundu sena zero initziale (dae 0 a 59)"
 
-#: AdvancedOptions.qml:144
+#: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "su segundu cun zero initziale (dae 00 a 59)"
 
-#: AdvancedOptions.qml:145
+#: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "is millisegundos sena zero initziale (dae 0 a 999)"
 
-#: AdvancedOptions.qml:146
+#: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "is millisegundos cun zero initziales (dae 000 a 999)"
 
-#: AdvancedOptions.qml:147
+#: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
-msgstr ""
+msgstr "imprea sistema oràriu AM/PM. AP at a èssere sostituidu cun 'AM' o 'PM'."
 
-#: AdvancedOptions.qml:148
+#: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "imprea sistema oràriu am/pm. ap at a èssere sostituidu cun 'am' o 'pm'."
 
-#: AdvancedOptions.qml:149
+#: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "su fusu oràriu (pro esempru 'CEST')"
 
-#: AdvancedOptions.qml:158
+#: ../AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "Agiunghe a sa formatatzione"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
-#: AdvancedOptions.qml:189
+#: ../AdvancedOptions.qml:189
 msgid "Color"
-msgstr ""
+msgstr "Colore"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
-#: AdvancedOptions.qml:257
+#: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "Afiladura"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:303
+#: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr ""
+msgstr "Annapadura"
 
-#: ViewFinderOverlay.qml:426
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "Boles cantzellare custu elementu?"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:56 ../SlideshowView.qml:75
+msgid "Delete"
+msgstr "Cantzella"
+
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
+#: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
+#: ../ViewFinderView.qml:494
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../GalleryView.qml:200
+msgid "No media available."
+msgstr "Perunu elementu a disponimentu."
+
+#: ../GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr "Chirchende cuntenutos..."
+
+#: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
+msgid "Select"
+msgstr "Seletziona"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr "Modìfica sa fotografia"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr "Rullinu fotogràficu"
+
+#: ../Information.qml:20
+msgid "About"
+msgstr "Informatziones"
+
+#: ../Information.qml:82
+msgid "Get the source"
+msgstr "Otene su còdighe de orìgine"
+
+#: ../Information.qml:83
+msgid "Report issues"
+msgstr "Signala faddinas"
+
+#: ../Information.qml:84
+msgid "Help translate"
+msgstr "Agiuda a bortare"
+
+#: ../MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr "Informatzione de su cuntenutu multimediale"
+
+#: ../MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr "Nùmene : %1"
+
+#: ../MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr "Genia : %1"
+
+#: ../MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr "Larghesa : %1"
+
+#: ../MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
+msgstr "Artària : %1"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "S'ispàtziu in su dispositivu est finidu: lìbera ispàtziu pro sighire."
+
+#: ../PhotoRollHint.qml:69
+msgid "Swipe left for photo roll"
+msgstr "Iscurre a manca pro bìdere su rullinu fotogràficu"
+
+#: ../PhotogridView.qml:42 ../SlideshowView.qml:60
+msgid "Share"
+msgstr "Cumpartzi"
+
+#: ../PhotogridView.qml:69 ../SlideshowView.qml:53
+msgid "Gallery"
+msgstr "Galleria"
+
+#: ../SlideshowView.qml:68
+msgid "Image Info"
+msgstr "Informatziones de s'immàgine"
+
+#: ../SlideshowView.qml:86
+msgid "Edit"
+msgstr "Modìfica"
+
+#: ../SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr "Torra a su rullinu fotogràficu"
+
+#: ../UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "Non faghet a cumpartzire"
+
+#: ../UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "Non faghet a cumpartzire fotografias e vìdeos impares"
+
+#: ../UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "AB"
+
+#: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
+#: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
+#: ../ViewFinderOverlay.qml:526 ../ViewFinderOverlay.qml:589
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
+msgid "On"
+msgstr "Ativu"
+
+#: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
+#: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
+#: ../ViewFinderOverlay.qml:465 ../ViewFinderOverlay.qml:531
+#: ../ViewFinderOverlay.qml:599
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
+msgid "Off"
+msgstr "Inativu"
+
+#: ../ViewFinderOverlay.qml:395
+msgid "Auto"
+msgstr "Automàticu"
+
+#: ../ViewFinderOverlay.qml:432
 msgid "HDR"
 msgstr "HDR"
 
+#: ../ViewFinderOverlay.qml:470
+msgid "5 seconds"
+msgstr "5 segundos"
+
+#: ../ViewFinderOverlay.qml:475
+msgid "15 seconds"
+msgstr "15 segundos"
+
+#: ../ViewFinderOverlay.qml:493
+msgid "Fine Quality"
+msgstr "Calidade arta"
+
+#: ../ViewFinderOverlay.qml:498
+msgid "High Quality"
+msgstr "Calidade arta"
+
+#: ../ViewFinderOverlay.qml:503
+msgid "Normal Quality"
+msgstr "Calidade normale"
+
+#: ../ViewFinderOverlay.qml:508
+msgid "Basic Quality"
+msgstr "Calidade bàsica"
+
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:535
+#: ../ViewFinderOverlay.qml:541
 msgid "SD"
 msgstr "SD"
 
-#: ViewFinderOverlay.qml:1103
+#: ../ViewFinderOverlay.qml:549
+msgid "Save to SD Card"
+msgstr "Sarva in sa carta SD"
+
+#: ../ViewFinderOverlay.qml:554
+msgid "Save internally"
+msgstr "Sarva in sa memòria interna"
+
+#: ../ViewFinderOverlay.qml:594
+msgid "Vibrate"
+msgstr "Vibra"
+
+#: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
 msgstr "Pagu ispàtziu in sa memòria"
 
-#: ViewFinderOverlay.qml:1104
+#: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
-"S'ispàtziu in sa memòria s'est acabbende. Pro sighire chena interrutziones, "
+"S'ispàtziu in sa memòria s'est acabbende. Pro sighire sena interrutziones, "
 "lìbera ispàtziu de sa memòria."
 
-#: ViewFinderOverlay.qml:1117
+#: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
 msgstr "Non si podet iscrìere in sa memòria esterna"
 
-#: ViewFinderOverlay.qml:1118
+#: ../ViewFinderOverlay.qml:1134
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
 "it."
 msgstr ""
-"Paret chi no est possìbile iscrìere in su dispositivu de memòria esternu. "
-"Proare a lu bogare e a lu torrare a pònnere diat pòdere risòlvere su "
+"Paret chi no siat possìbile iscrìere in su dispositivu de memòria esternu. "
+"Proare a lu tirare e a lu torrare a insertare diat pòdere risòlvere su "
 "problema. Si nono, podes proare a lu formatare."
 
-#: ViewFinderOverlay.qml:1156
+#: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
 msgstr "Non si podet atzèdere a sa càmera"
 
-#: ViewFinderOverlay.qml:1157
+#: ../ViewFinderOverlay.qml:1173
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -332,97 +377,98 @@ msgstr ""
 "Si puru cuntzedende is permissos de atzessu su problema persistet, torra a "
 "aviare su telèfonu."
 
-#: ViewFinderOverlay.qml:1166
+#: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
 msgstr "Modìfica permissos"
 
-#: camera-app.qml:57
+#: ../ViewFinderView.qml:485
+msgid "Capture failed"
+msgstr "Faddina in s'istantànea"
+
+#: ../ViewFinderView.qml:490
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr ""
+"Sostituire s'ischeda esterna, la formatare o torrare a aviare su dispositivu "
+"diat pòdere risòlvere su problema."
+
+#: ../ViewFinderView.qml:491
+msgid "Restarting your device might fix the problem."
+msgstr "Torrare a aviare su dispositivu diat pòdere risòlvere su problema."
+
+#: ../camera-app.qml:57
 msgid "Flash"
 msgstr "Flash"
 
-#: camera-app.qml:58
+#: ../camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Craru;Oscuru"
 
-#: camera-app.qml:61
+#: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "Fùrria sa càmera"
 
-#: camera-app.qml:62
+#: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
-msgstr ""
+msgstr "Sa de in antis;Sa de a palas"
 
-#: camera-app.qml:65
+#: ../camera-app.qml:65
 msgid "Shutter"
-msgstr ""
+msgstr "Oturadore"
 
-#: camera-app.qml:66
+#: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Iscata una fotografia;Catura;Registra"
+msgstr "Iscata una foto;Catura;Registra"
 
-#: camera-app.qml:69
+#: ../camera-app.qml:69
 msgid "Mode"
 msgstr "Modalidade"
 
-#: camera-app.qml:70
+#: ../camera-app.qml:70
 msgid "Stills;Video"
-msgstr "Imàgine istàtica;Vìdeu"
+msgstr "Fotografia;Vìdeu"
 
-#: camera-app.qml:74
+#: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "Bilantzu de su biancu"
 
-#: camera-app.qml:75
+#: ../camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Cunditzione de illuminatzione;Lughe naturale;Annuadu;Interiore"
+
+#: ../camera-app.qml:380
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "Oe as fatu <b>%1</b> fotografias"
+
+#: ../camera-app.qml:381
+msgid "No photos taken today"
+msgstr "Oe no as fatu peruna fotografia"
+
+#: ../camera-app.qml:391
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "Oe as registradu <b>%1</b> vìdeos"
+
+#: ../camera-app.qml:392
+msgid "No videos recorded today"
+msgstr "Oe no as registradu perunu vìdeu"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "Fotocàmera"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "Aplicatzione de càmera"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Fotografias;Vìdeos;Istantànea;Catura;Registra"
 
 #~ msgid "Version %1"
 #~ msgstr "Versione %1"
 
 #~ msgid "Advanced Options"
 #~ msgstr "Optziones avantzadas"
-
-#~ msgid "On"
-#~ msgstr "Ativu"
-
-#~ msgid "Off"
-#~ msgstr "Inativu"
-
-#~ msgid "Auto"
-#~ msgstr "Automàticu"
-
-#~ msgid "5 seconds"
-#~ msgstr "5 segundos"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 segundos"
-
-#~ msgid "Fine Quality"
-#~ msgstr "Calidade arta"
-
-#~ msgid "Normal Quality"
-#~ msgstr "Calidade normale"
-
-#~ msgid "Basic Quality"
-#~ msgstr "Calidade bàsica"
-
-#~ msgid "Save to SD Card"
-#~ msgstr "Sarva in sa carta SD"
-
-#~ msgid "Save internally"
-#~ msgstr "Sarva in sa memòria interna"
-
-#~ msgid "<b>%1</b> photos taken today"
-#~ msgstr "Oe as fatu <b>%1</b> fotografias"
-
-#~ msgid "No photos taken today"
-#~ msgstr "Oe no as fatu peruna fotografia"
-
-#~ msgid "<b>%1</b> videos recorded today"
-#~ msgstr "Oe as registradu <b>%1</b> vìdeos"
-
-#~ msgid "No videos recorded today"
-#~ msgstr "Oe no as registradu perunu vìdeu"
-
-#~ msgid "Camera"
-#~ msgstr "Fotocàmera"
