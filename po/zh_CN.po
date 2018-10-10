@@ -38,11 +38,11 @@ msgstr "日期格式关键字"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr "除零以外的数字表示日期（1到31）"
+msgstr "数字前不补零的数字表示日期（1到31）"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "数字前补零的数字表示日期（1到31）"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
