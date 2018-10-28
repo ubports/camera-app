@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-08 09:05+0000\n"
-"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"PO-Revision-Date: 2018-10-28 00:00+0000\n"
+"Last-Translator: Louies <louies0623@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
 "ubports/camera-app/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -26,16 +26,17 @@ msgstr "設定"
 
 #: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
-msgstr "在拍攝的影像中加上日期戳記"
+msgstr "在拍攝的影像中加上日期標記"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "格式"
 
 #: ../AdvancedOptions.qml:122
+#, fuzzy
 msgid "Date formatting keywords"
-msgstr ""
+msgstr "日期格式關鍵字"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
@@ -47,11 +48,11 @@ msgstr "以前面補零的數字表示日期 (01 到 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "縮寫的當地語系日期名稱(例如'Mon'到'Sun')。"
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "長的當地語系日期名稱(例如“星期一”到“星期日”)。"
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
@@ -63,11 +64,11 @@ msgstr "以前面補零的數字表示月份 (01 到 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "縮寫的當地語系月份名稱(例如'Jan'到'Dec')。"
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
+msgstr "長的當地語系月份名稱(例如“1月”到“12月”)。"
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -77,23 +78,23 @@ msgstr "以兩位數字表示年份 (00 到 99)"
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
-msgstr ""
+msgstr "年份為四位數字。如果年份是負數，則另外添加減號。"
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
-msgstr ""
+msgstr "沒有前置字元為零的小時(如果顯示AM / PM，則為0到23或1到12)"
 
 #: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
-msgstr ""
+msgstr "字元為零的小時 (如果 AM/PM 顯示為00至23或01至 12)"
 
 #: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "沒有前置字元為零的小時 (0 到 23, 即使是 AM/PM 顯示)"
 
 #: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "帶前置字元為零的小時 (00 到 23, 即使是 AM/PM 顯示)"
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
@@ -121,19 +122,21 @@ msgstr "數字前面補零的毫秒 (000 到 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
-msgstr ""
+msgstr "使用 AM/PM 顯示。AP 將被替換為 \"AM\" 或 \"PM\"。"
 
 #: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "使用 am/pm 顯示。ap 將被替換為 \"am\" 或 \"pm\"。"
 
 #: ../AdvancedOptions.qml:149
+#, fuzzy
 msgid "the timezone (for example 'CEST')"
 msgstr "時區 (例如 'CEST')"
 
 #: ../AdvancedOptions.qml:158
+#, fuzzy
 msgid "Add to Format"
-msgstr ""
+msgstr "格式化加入"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -142,15 +145,17 @@ msgstr "顏色"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
+#, fuzzy
 msgid "Alignment"
 msgstr "對齊"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
 msgid "Opacity"
-msgstr "透明度"
+msgstr "不透明度"
 
 #: ../DeleteDialog.qml:24
+#, fuzzy
 msgid "Delete media?"
 msgstr "要刪除媒體？"
 
@@ -181,6 +186,7 @@ msgid "Edit Photo"
 msgstr "編輯相片"
 
 #: ../GalleryViewHeader.qml:83
+#, fuzzy
 msgid "Photo Roll"
 msgstr "相片膠卷"
 
@@ -249,10 +255,12 @@ msgid "Edit"
 msgstr "編輯"
 
 #: ../SlideshowView.qml:441
+#, fuzzy
 msgid "Back to Photo roll"
 msgstr "回到相片膠卷"
 
 #: ../UnableShareDialog.qml:25
+#, fuzzy
 msgid "Unable to share"
 msgstr "無法分享"
 
@@ -306,7 +314,7 @@ msgstr "精細品質"
 #: ../ViewFinderOverlay.qml:498
 #, fuzzy
 msgid "High Quality"
-msgstr "精細品質"
+msgstr "高畫質"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
@@ -330,8 +338,9 @@ msgid "Save internally"
 msgstr "儲存到內部空間"
 
 #: ../ViewFinderOverlay.qml:594
+#, fuzzy
 msgid "Vibrate"
-msgstr ""
+msgstr "振動"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
@@ -362,7 +371,6 @@ msgid "Cannot access camera"
 msgstr "無法存許相機"
 
 #: ../ViewFinderOverlay.qml:1173
-#, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
 "error occurred.\n"
@@ -396,6 +404,7 @@ msgid "Flash"
 msgstr "閃光燈"
 
 #: ../camera-app.qml:58
+#, fuzzy
 msgid "Light;Dark"
 msgstr "Light;Dark;亮;暗"
 
@@ -404,6 +413,7 @@ msgid "Flip Camera"
 msgstr "切換相機鏡頭"
 
 #: ../camera-app.qml:62
+#, fuzzy
 msgid "Front Facing;Back Facing"
 msgstr "Front Facing;Back Facing;前鏡頭;後鏡頭"
 
@@ -420,6 +430,7 @@ msgid "Mode"
 msgstr "模式"
 
 #: ../camera-app.qml:70
+#, fuzzy
 msgid "Stills;Video"
 msgstr "Stills;Video;照片;相片;影片"
 
@@ -428,6 +439,7 @@ msgid "White Balance"
 msgstr "白平衡"
 
 #: ../camera-app.qml:75
+#, fuzzy
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
 
@@ -458,8 +470,9 @@ msgid "Camera application"
 msgstr "相機應用程式"
 
 #: camera-app.desktop.in.in.h:3
+#, fuzzy
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "照片;視頻;捕獲;拍攝;快照;錄影"
 
 #~ msgid "Version %1"
 #~ msgstr "版本 %1"
