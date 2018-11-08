@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-02 16:30+0300\n"
+"POT-Creation-Date: 2018-06-23 17:57+0000\n"
 "PO-Revision-Date: 2018-05-08 09:05+0000\n"
 "Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
-"Language-Team: Chinese (Traditional) "
-"<https://translate.ubports.com/projects/ubports/camera-app/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
+"ubports/camera-app/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,288 +20,335 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
-#: NoSpaceHint.qml:33
-msgid "No space left on device, free up space to continue."
-msgstr "裝置空間不足，請釋放空間以便繼續。"
-
-#: DeleteDialog.qml:24
-msgid "Delete media?"
-msgstr "要刪除媒體？"
-
-#: DeleteDialog.qml:34 PhotogridView.qml:56 SlideshowView.qml:75
-msgid "Delete"
-msgstr "刪除"
-
-#: DeleteDialog.qml:40 ViewFinderView.qml:494 ViewFinderOverlay.qml:1106
-#: ViewFinderOverlay.qml:1120 ViewFinderOverlay.qml:1159
-msgid "Cancel"
-msgstr "取消"
-
-#: GalleryView.qml:200
-msgid "No media available."
-msgstr "沒有可用的媒體。"
-
-#: GalleryView.qml:235
-msgid "Scanning for content..."
-msgstr "正在掃描內容…"
-
-#: GalleryViewHeader.qml:82 SlideshowView.qml:45
-msgid "Select"
-msgstr "選取"
-
-#: GalleryViewHeader.qml:83
-msgid "Edit Photo"
-msgstr "編輯相片"
-
-#: GalleryViewHeader.qml:83
-msgid "Photo Roll"
-msgstr "相片膠卷"
-
-#: PhotogridView.qml:42 SlideshowView.qml:60
-msgid "Share"
-msgstr "分享"
-
-#: PhotogridView.qml:69 SlideshowView.qml:53
-msgid "Gallery"
-msgstr "相簿"
-
-#: SlideshowView.qml:68
-msgid "Image Info"
-msgstr "影像資訊"
-
-#: SlideshowView.qml:86
-msgid "Edit"
-msgstr "編輯"
-
-#: SlideshowView.qml:441
-msgid "Back to Photo roll"
-msgstr "回到相片膠卷"
-
-#: UnableShareDialog.qml:25
-msgid "Unable to share"
-msgstr "無法分享"
-
-#: UnableShareDialog.qml:26
-msgid "Unable to share photos and videos at the same time"
-msgstr "無法同時分享相片與影片"
-
-#: UnableShareDialog.qml:30
-msgid "Ok"
-msgstr "確定"
-
-#: ViewFinderView.qml:485
-msgid "Capture failed"
-msgstr "拍攝失敗"
-
-#: ViewFinderView.qml:490
-msgid ""
-"Replacing your external media, formatting it, or restarting the device might "
-"fix the problem."
-msgstr "更換您的外部儲存媒體，將其格式化或重新啟動裝置可能可以解決此問題。"
-
-#: ViewFinderView.qml:491
-msgid "Restarting your device might fix the problem."
-msgstr "重啟您的裝置可能可以解決此問題。"
-
-#: Information.qml:20
-msgid "About"
-msgstr "關於"
-
-#: Information.qml:82
-msgid "Get the source"
-msgstr "取得原始碼"
-
-#: Information.qml:83
-msgid "Report issues"
-msgstr "回報問題"
-
-#: Information.qml:84
-msgid "Help translate"
-msgstr "協助翻譯"
-
-#: MediaInfoPopover.qml:25
-msgid "Media Information"
-msgstr "媒體資訊"
-
-#: MediaInfoPopover.qml:30
-#, qt-format
-msgid "Name : %1"
-msgstr "名稱：%1"
-
-#: MediaInfoPopover.qml:33
-#, qt-format
-msgid "Type : %1"
-msgstr "類型：%1"
-
-#: MediaInfoPopover.qml:37
-#, qt-format
-msgid "Width : %1"
-msgstr "寬度：%1"
-
-#: MediaInfoPopover.qml:41
-#, qt-format
-msgid "Height : %1"
-msgstr "高度：%1"
-
-#: PhotoRollHint.qml:69
-msgid "Swipe left for photo roll"
-msgstr "滑向左方觀看膠卷"
-
-#: AdvancedOptions.qml:16
+#: ../AdvancedOptions.qml:16
 msgid "Settings"
 msgstr "設定"
 
-#: AdvancedOptions.qml:48
+#: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
 msgstr "在拍攝的影像中加上日期戳記"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:70
+#: ../AdvancedOptions.qml:70
 msgid "Format"
 msgstr ""
 
-#: AdvancedOptions.qml:122
-msgid "Date formating keywords"
+#: ../AdvancedOptions.qml:122
+msgid "Date formatting keywords"
 msgstr ""
 
-#: AdvancedOptions.qml:127
+#: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
 msgstr "以前面不補零的數字表示日期 (1 到 31)"
 
-#: AdvancedOptions.qml:128
+#: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
 msgstr "以前面補零的數字表示日期 (01 到 31)"
 
-#: AdvancedOptions.qml:129
+#: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
 msgstr ""
 
-#: AdvancedOptions.qml:130
+#: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
 msgstr ""
 
-#: AdvancedOptions.qml:131
+#: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
 msgstr "以前面不補零的數字表示月份 (1 到 12)"
 
-#: AdvancedOptions.qml:132
+#: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
 msgstr "以前面補零的數字表示月份 (01 到 12)"
 
-#: AdvancedOptions.qml:133
+#: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
 msgstr ""
 
-#: AdvancedOptions.qml:134
+#: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
 
-#: AdvancedOptions.qml:135
+#: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
 msgstr "以兩位數字表示年份 (00 到 99)"
 
-#: AdvancedOptions.qml:136
+#: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
 
-#: AdvancedOptions.qml:137
+#: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:138
+#: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:139
+#: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:140
+#: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
 msgstr ""
 
-#: AdvancedOptions.qml:141
+#: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
 msgstr "數字前面不補零的分 (0 到 59)"
 
-#: AdvancedOptions.qml:142
+#: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
 msgstr "數字前面補零的分 (00 到 59)"
 
-#: AdvancedOptions.qml:143
+#: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
 msgstr "數字前面不補零的秒 (0 到 59)"
 
-#: AdvancedOptions.qml:144
+#: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
 msgstr "數字前面補零的秒 (00 到 59)"
 
-#: AdvancedOptions.qml:145
+#: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
 msgstr "數字前面不補零的毫秒 (0 到 999)"
 
-#: AdvancedOptions.qml:146
+#: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
 msgstr "數字前面補零的毫秒 (000 到 999)"
 
-#: AdvancedOptions.qml:147
+#: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
 msgstr ""
 
-#: AdvancedOptions.qml:148
+#: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
 msgstr ""
 
-#: AdvancedOptions.qml:149
+#: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
 msgstr "時區 (例如 'CEST')"
 
-#: AdvancedOptions.qml:158
+#: ../AdvancedOptions.qml:158
 msgid "Add to Format"
 msgstr ""
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
-#: AdvancedOptions.qml:189
+#: ../AdvancedOptions.qml:189
 msgid "Color"
 msgstr "顏色"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
-#: AdvancedOptions.qml:257
+#: ../AdvancedOptions.qml:257
 msgid "Alignment"
 msgstr "對齊"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
-#: AdvancedOptions.qml:303
+#: ../AdvancedOptions.qml:303
 msgid "Opacity"
 msgstr "透明度"
 
-#: ViewFinderOverlay.qml:426
+#: ../DeleteDialog.qml:24
+msgid "Delete media?"
+msgstr "要刪除媒體？"
+
+#: ../DeleteDialog.qml:34 ../PhotogridView.qml:56 ../SlideshowView.qml:75
+msgid "Delete"
+msgstr "刪除"
+
+#: ../DeleteDialog.qml:40 ../ViewFinderOverlay.qml:1122
+#: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
+#: ../ViewFinderView.qml:494
+msgid "Cancel"
+msgstr "取消"
+
+#: ../GalleryView.qml:200
+msgid "No media available."
+msgstr "沒有可用的媒體。"
+
+#: ../GalleryView.qml:235
+msgid "Scanning for content..."
+msgstr "正在掃描內容…"
+
+#: ../GalleryViewHeader.qml:82 ../SlideshowView.qml:45
+msgid "Select"
+msgstr "選取"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Edit Photo"
+msgstr "編輯相片"
+
+#: ../GalleryViewHeader.qml:83
+msgid "Photo Roll"
+msgstr "相片膠卷"
+
+#: ../Information.qml:20
+msgid "About"
+msgstr "關於"
+
+#: ../Information.qml:82
+msgid "Get the source"
+msgstr "取得原始碼"
+
+#: ../Information.qml:83
+msgid "Report issues"
+msgstr "回報問題"
+
+#: ../Information.qml:84
+msgid "Help translate"
+msgstr "協助翻譯"
+
+#: ../MediaInfoPopover.qml:25
+msgid "Media Information"
+msgstr "媒體資訊"
+
+#: ../MediaInfoPopover.qml:30
+#, qt-format
+msgid "Name : %1"
+msgstr "名稱：%1"
+
+#: ../MediaInfoPopover.qml:33
+#, qt-format
+msgid "Type : %1"
+msgstr "類型：%1"
+
+#: ../MediaInfoPopover.qml:37
+#, qt-format
+msgid "Width : %1"
+msgstr "寬度：%1"
+
+#: ../MediaInfoPopover.qml:41
+#, qt-format
+msgid "Height : %1"
+msgstr "高度：%1"
+
+#: ../NoSpaceHint.qml:33
+msgid "No space left on device, free up space to continue."
+msgstr "裝置空間不足，請釋放空間以便繼續。"
+
+#: ../PhotoRollHint.qml:69
+msgid "Swipe left for photo roll"
+msgstr "滑向左方觀看膠卷"
+
+#: ../PhotogridView.qml:42 ../SlideshowView.qml:60
+msgid "Share"
+msgstr "分享"
+
+#: ../PhotogridView.qml:69 ../SlideshowView.qml:53
+msgid "Gallery"
+msgstr "相簿"
+
+#: ../SlideshowView.qml:68
+msgid "Image Info"
+msgstr "影像資訊"
+
+#: ../SlideshowView.qml:86
+msgid "Edit"
+msgstr "編輯"
+
+#: ../SlideshowView.qml:441
+msgid "Back to Photo roll"
+msgstr "回到相片膠卷"
+
+#: ../UnableShareDialog.qml:25
+msgid "Unable to share"
+msgstr "無法分享"
+
+#: ../UnableShareDialog.qml:26
+msgid "Unable to share photos and videos at the same time"
+msgstr "無法同時分享相片與影片"
+
+#: ../UnableShareDialog.qml:30
+msgid "Ok"
+msgstr "確定"
+
+#: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
+#: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
+#: ../ViewFinderOverlay.qml:526 ../ViewFinderOverlay.qml:589
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:42
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
+msgid "On"
+msgstr "開"
+
+#: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
+#: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
+#: ../ViewFinderOverlay.qml:465 ../ViewFinderOverlay.qml:531
+#: ../ViewFinderOverlay.qml:599
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:47
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
+#: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
+msgid "Off"
+msgstr "關"
+
+#: ../ViewFinderOverlay.qml:395
+msgid "Auto"
+msgstr "自動"
+
+#: ../ViewFinderOverlay.qml:432
 msgid "HDR"
 msgstr "HDR"
 
+#: ../ViewFinderOverlay.qml:470
+msgid "5 seconds"
+msgstr "5 秒"
+
+#: ../ViewFinderOverlay.qml:475
+msgid "15 seconds"
+msgstr "15 秒"
+
+#: ../ViewFinderOverlay.qml:493
+msgid "Fine Quality"
+msgstr "精細品質"
+
+#: ../ViewFinderOverlay.qml:498
+#, fuzzy
+msgid "High Quality"
+msgstr "精細品質"
+
+#: ../ViewFinderOverlay.qml:503
+msgid "Normal Quality"
+msgstr "一般品質"
+
+#: ../ViewFinderOverlay.qml:508
+msgid "Basic Quality"
+msgstr "基本品質"
+
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
-#: ViewFinderOverlay.qml:535
+#: ../ViewFinderOverlay.qml:541
 msgid "SD"
 msgstr "SD"
 
-#: ViewFinderOverlay.qml:1103
+#: ../ViewFinderOverlay.qml:549
+msgid "Save to SD Card"
+msgstr "儲存到 SD 卡"
+
+#: ../ViewFinderOverlay.qml:554
+msgid "Save internally"
+msgstr "儲存到內部空間"
+
+#: ../ViewFinderOverlay.qml:594
+msgid "Vibrate"
+msgstr ""
+
+#: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
 msgstr "可用儲存空間過少"
 
-#: ViewFinderOverlay.qml:1104
+#: ../ViewFinderOverlay.qml:1120
 msgid ""
 "You are running out of storage space. To continue without interruptions, "
 "free up storage space now."
 msgstr ""
 "您的儲存空間正逐漸耗盡。若要繼續使用而不被中斷，請立刻釋放一些儲存空間。"
 
-#: ViewFinderOverlay.qml:1117
+#: ../ViewFinderOverlay.qml:1133
 msgid "External storage not writeable"
 msgstr "外部儲存裝置為不可寫入狀態"
 
-#: ViewFinderOverlay.qml:1118
+#: ../ViewFinderOverlay.qml:1134
 msgid ""
 "It does not seem possible to write to your external storage media. Trying to "
 "eject and insert it again might solve the issue, or you might need to format "
@@ -310,11 +357,11 @@ msgstr ""
 "無法寫入您的外部儲存裝置。請嘗試將其退出並重新插入來修正這個問題，或者您可能"
 "需要將其格式化。"
 
-#: ViewFinderOverlay.qml:1156
+#: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
 msgstr "無法存許相機"
 
-#: ViewFinderOverlay.qml:1157
+#: ../ViewFinderOverlay.qml:1173
 #, fuzzy
 msgid ""
 "Camera app doesn't have permission to access the camera hardware or another "
@@ -326,103 +373,96 @@ msgstr ""
 "\n"
 "如果在授予其權限後仍無法解決此問題，請重新啟動您的裝置。"
 
-#: ViewFinderOverlay.qml:1166
+#: ../ViewFinderOverlay.qml:1182
 msgid "Edit Permissions"
 msgstr "編輯權限"
 
-#: camera-app.qml:57
+#: ../ViewFinderView.qml:485
+msgid "Capture failed"
+msgstr "拍攝失敗"
+
+#: ../ViewFinderView.qml:490
+msgid ""
+"Replacing your external media, formatting it, or restarting the device might "
+"fix the problem."
+msgstr "更換您的外部儲存媒體，將其格式化或重新啟動裝置可能可以解決此問題。"
+
+#: ../ViewFinderView.qml:491
+msgid "Restarting your device might fix the problem."
+msgstr "重啟您的裝置可能可以解決此問題。"
+
+#: ../camera-app.qml:57
 msgid "Flash"
 msgstr "閃光燈"
 
-#: camera-app.qml:58
+#: ../camera-app.qml:58
 msgid "Light;Dark"
 msgstr "Light;Dark;亮;暗"
 
-#: camera-app.qml:61
+#: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "切換相機鏡頭"
 
-#: camera-app.qml:62
+#: ../camera-app.qml:62
 msgid "Front Facing;Back Facing"
 msgstr "Front Facing;Back Facing;前鏡頭;後鏡頭"
 
-#: camera-app.qml:65
+#: ../camera-app.qml:65
 msgid "Shutter"
 msgstr "快門"
 
-#: camera-app.qml:66
+#: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
 msgstr "Take a Photo;Snap;Record;照相;拍照;快照;錄影"
 
-#: camera-app.qml:69
+#: ../camera-app.qml:69
 msgid "Mode"
 msgstr "模式"
 
-#: camera-app.qml:70
+#: ../camera-app.qml:70
 msgid "Stills;Video"
 msgstr "Stills;Video;照片;相片;影片"
 
-#: camera-app.qml:74
+#: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "白平衡"
 
-#: camera-app.qml:75
+#: ../camera-app.qml:75
 msgid "Lighting Condition;Day;Cloudy;Inside"
 msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
+
+#: ../camera-app.qml:380
+#, qt-format
+msgid "<b>%1</b> photos taken today"
+msgstr "今日已拍攝 <b>%1</b> 張相片"
+
+#: ../camera-app.qml:381
+msgid "No photos taken today"
+msgstr "今日尚未拍攝相片"
+
+#: ../camera-app.qml:391
+#, qt-format
+msgid "<b>%1</b> videos recorded today"
+msgstr "今日已錄製 <b>%1</b> 卷影片"
+
+#: ../camera-app.qml:392
+msgid "No videos recorded today"
+msgstr "今日尚未錄製影片"
+
+#: camera-app.desktop.in.in.h:1
+msgid "Camera"
+msgstr "相機"
+
+#: camera-app.desktop.in.in.h:2
+msgid "Camera application"
+msgstr "相機應用程式"
+
+#: camera-app.desktop.in.in.h:3
+msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
+msgstr "Photos;Videos;Capture;Shoot;Snapshot;Record"
 
 #~ msgid "Version %1"
 #~ msgstr "版本 %1"
 
 #~ msgid "Advanced Options"
 #~ msgstr "進階選項"
-
-#~ msgid "On"
-#~ msgstr "開"
-
-#~ msgid "Off"
-#~ msgstr "關"
-
-#~ msgid "Auto"
-#~ msgstr "自動"
-
-#~ msgid "5 seconds"
-#~ msgstr "5 秒"
-
-#~ msgid "15 seconds"
-#~ msgstr "15 秒"
-
-#~ msgid "Fine Quality"
-#~ msgstr "精細品質"
-
-#~ msgid "Normal Quality"
-#~ msgstr "一般品質"
-
-#~ msgid "Basic Quality"
-#~ msgstr "基本品質"
-
-#~ msgid "Save to SD Card"
-#~ msgstr "儲存到 SD 卡"
-
-#~ msgid "Save internally"
-#~ msgstr "儲存到內部空間"
-
-#~ msgid "<b>%1</b> photos taken today"
-#~ msgstr "今日已拍攝 <b>%1</b> 張相片"
-
-#~ msgid "No photos taken today"
-#~ msgstr "今日尚未拍攝相片"
-
-#~ msgid "<b>%1</b> videos recorded today"
-#~ msgstr "今日已錄製 <b>%1</b> 卷影片"
-
-#~ msgid "No videos recorded today"
-#~ msgstr "今日尚未錄製影片"
-
-#~ msgid "Camera"
-#~ msgstr "相機"
-
-#~ msgid "Camera application"
-#~ msgstr "相機應用程式"
-
-#~ msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-#~ msgstr "Photos;Videos;Capture;Shoot;Snapshot;Record"

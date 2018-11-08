@@ -73,7 +73,7 @@ Item {
                 bottom: parent.bottom
             }
             width: units.gu(8)
-            iconName: "back"
+            iconName: editMode ? "save" : "back"
             iconColor: "white"
             onClicked: editMode ? header.exitEditor() : header.exit()
         }
