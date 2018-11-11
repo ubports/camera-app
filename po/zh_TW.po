@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-10-28 00:00+0000\n"
+"PO-Revision-Date: 2018-11-05 14:53+0000\n"
 "Last-Translator: Louies <louies0623@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
 "ubports/camera-app/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -34,9 +34,8 @@ msgid "Format"
 msgstr "格式"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
-msgstr "日期格式關鍵字"
+msgstr "日期格式表示"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
@@ -72,7 +71,7 @@ msgstr "長的當地語系月份名稱(例如“1月”到“12月”)。"
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr "以兩位數字表示年份 (00 到 99)"
+msgstr "以兩位數字表示年份 (00到99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
@@ -129,14 +128,12 @@ msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
 msgstr "使用 am/pm 顯示。ap 將被替換為 \"am\" 或 \"pm\"。"
 
 #: ../AdvancedOptions.qml:149
-#, fuzzy
 msgid "the timezone (for example 'CEST')"
 msgstr "時區 (例如 'CEST')"
 
 #: ../AdvancedOptions.qml:158
-#, fuzzy
 msgid "Add to Format"
-msgstr "格式化加入"
+msgstr "添加到格式"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -145,7 +142,6 @@ msgstr "顏色"
 
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
-#, fuzzy
 msgid "Alignment"
 msgstr "對齊"
 
@@ -155,7 +151,6 @@ msgid "Opacity"
 msgstr "不透明度"
 
 #: ../DeleteDialog.qml:24
-#, fuzzy
 msgid "Delete media?"
 msgstr "要刪除媒體？"
 
@@ -186,7 +181,6 @@ msgid "Edit Photo"
 msgstr "編輯相片"
 
 #: ../GalleryViewHeader.qml:83
-#, fuzzy
 msgid "Photo Roll"
 msgstr "相片膠卷"
 
@@ -255,12 +249,10 @@ msgid "Edit"
 msgstr "編輯"
 
 #: ../SlideshowView.qml:441
-#, fuzzy
 msgid "Back to Photo roll"
 msgstr "回到相片膠卷"
 
 #: ../UnableShareDialog.qml:25
-#, fuzzy
 msgid "Unable to share"
 msgstr "無法分享"
 
@@ -309,25 +301,24 @@ msgstr "15 秒"
 
 #: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
-msgstr "精細品質"
+msgstr "精細畫質"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
-msgstr "高畫質"
+msgstr "高清畫質"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
-msgstr "一般品質"
+msgstr "一般畫質"
 
 #: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
-msgstr "基本品質"
+msgstr "基本畫質"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
 #: ../ViewFinderOverlay.qml:541
 msgid "SD"
-msgstr "SD"
+msgstr "SD 卡"
 
 #: ../ViewFinderOverlay.qml:549
 msgid "Save to SD Card"
@@ -338,7 +329,6 @@ msgid "Save internally"
 msgstr "儲存到內部空間"
 
 #: ../ViewFinderOverlay.qml:594
-#, fuzzy
 msgid "Vibrate"
 msgstr "振動"
 
@@ -368,7 +358,7 @@ msgstr ""
 
 #: ../ViewFinderOverlay.qml:1172
 msgid "Cannot access camera"
-msgstr "無法存許相機"
+msgstr "無法存取相機"
 
 #: ../ViewFinderOverlay.qml:1173
 msgid ""
@@ -404,18 +394,16 @@ msgid "Flash"
 msgstr "閃光燈"
 
 #: ../camera-app.qml:58
-#, fuzzy
 msgid "Light;Dark"
-msgstr "Light;Dark;亮;暗"
+msgstr "亮;暗"
 
 #: ../camera-app.qml:61
 msgid "Flip Camera"
 msgstr "切換相機鏡頭"
 
 #: ../camera-app.qml:62
-#, fuzzy
 msgid "Front Facing;Back Facing"
-msgstr "Front Facing;Back Facing;前鏡頭;後鏡頭"
+msgstr "前置鏡頭;後置鏡頭"
 
 #: ../camera-app.qml:65
 msgid "Shutter"
@@ -423,25 +411,23 @@ msgstr "快門"
 
 #: ../camera-app.qml:66
 msgid "Take a Photo;Snap;Record"
-msgstr "Take a Photo;Snap;Record;照相;拍照;快照;錄影"
+msgstr "拍一張照片;快照;錄影"
 
 #: ../camera-app.qml:69
 msgid "Mode"
 msgstr "模式"
 
 #: ../camera-app.qml:70
-#, fuzzy
 msgid "Stills;Video"
-msgstr "Stills;Video;照片;相片;影片"
+msgstr "寫照;影片"
 
 #: ../camera-app.qml:74
 msgid "White Balance"
 msgstr "白平衡"
 
 #: ../camera-app.qml:75
-#, fuzzy
 msgid "Lighting Condition;Day;Cloudy;Inside"
-msgstr "Lighting Condition;Day;Cloudy;Inside;光照情況;日光;陰天;室內"
+msgstr "光線照明情況;日光;陰天;室內"
 
 #: ../camera-app.qml:380
 #, qt-format
@@ -470,9 +456,8 @@ msgid "Camera application"
 msgstr "相機應用程式"
 
 #: camera-app.desktop.in.in.h:3
-#, fuzzy
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr "照片;視頻;捕獲;拍攝;快照;錄影"
+msgstr "照片;影片;捕獲;拍攝;快照;錄影"
 
 #~ msgid "Version %1"
 #~ msgstr "版本 %1"
