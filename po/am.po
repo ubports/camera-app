@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-22 04:25+0000\n"
+"PO-Revision-Date: 2018-11-18 18:13+0000\n"
 "Last-Translator: Samson <sambelet@yahoo.com>\n"
 "Language-Team: Amharic <https://translate.ubports.com/projects/ubports/"
 "camera-app/am/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -34,7 +34,6 @@ msgid "Format"
 msgstr "አቀራረብ"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
 msgstr "የ ቀን አቀራረብ ቁልፍ ቃል"
 
@@ -60,15 +59,15 @@ msgstr "ወር እንደ ቁጥር ያለ ቀዳሚ ዜሮ ከ (1 እስከ 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "ወር እንደ ቁጥር ከ ቀዳሚ ዜሮ ጋር ከ (01 እስከ 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "የ ወር ስም በ አኅጽሮተ ቃል (ለምሳሌ:  'መስ' እስከ 'ጳጉሜ')."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
+msgstr "ሙሉ የ ወር ስም  (ለምሳሌ:  'መስከረም' እስከ 'ጳጉሜ')."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -98,27 +97,27 @@ msgstr ""
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "ደቂቃ ያለ ቀዳሚ ዜሮ ከ (0 እስከ 59)"
 
 #: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "ደቂቃ ከ ቀዳሚ ዜሮ ጋር ከ (00 እስከ 59)"
 
 #: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "ሰከንድ ያለ ቀዳሚ ዜሮ ከ (0 እስከ 59)"
 
 #: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "ሰከንድ ከ ቀዳሚ ዜሮ ጋር ከ (0 እስከ 59)"
 
 #: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "ሚሊ ሰከንድ ያለ ቀዳሚ ዜሮ ጋር ከ (0 እስከ 999)"
 
 #: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "ሚሊ ሰከንድ ከ ቀዳሚ ዜሮ ጋር ከ (0 እስከ 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
@@ -130,11 +129,11 @@ msgstr ""
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
-msgstr ""
+msgstr "የ ሰአት ክልል (ለምሳሌ 'CEST')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr ""
+msgstr "ወደ አቀራረብ መጨመሪያ"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -144,7 +143,7 @@ msgstr "ቀለም"
 #. TRANSLATORS: this refers to the alignment of date stamp within captured images (bottom left, top right,etc..)
 #: ../AdvancedOptions.qml:257
 msgid "Alignment"
-msgstr ""
+msgstr "ማሰለፊያ"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:303
@@ -305,9 +304,8 @@ msgid "Fine Quality"
 msgstr "ጥሩ ጥራት"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
-msgstr "ጥሩ ጥራት"
+msgstr "ከፍተኛ ጥራት"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
