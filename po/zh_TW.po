@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-11-05 14:53+0000\n"
+"PO-Revision-Date: 2018-11-18 18:13+0000\n"
 "Last-Translator: Louies <louies0623@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
 "ubports/camera-app/zh_Hant/>\n"
@@ -26,7 +26,7 @@ msgstr "設定"
 
 #: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
-msgstr "在拍攝的影像中加上日期標記"
+msgstr "在拍攝的影像中加入日期標記"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:70
@@ -133,7 +133,7 @@ msgstr "時區 (例如 'CEST')"
 
 #: ../AdvancedOptions.qml:158
 msgid "Add to Format"
-msgstr "添加到格式"
+msgstr "加入到格式"
 
 #. TRANSLATORS: this refers to the color of date stamp added to captured images
 #: ../AdvancedOptions.qml:189
@@ -190,7 +190,7 @@ msgstr "關於"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr "取得原始碼"
+msgstr "獲得原始碼"
 
 #: ../Information.qml:83
 msgid "Report issues"
@@ -432,20 +432,20 @@ msgstr "光線照明情況;日光;陰天;室內"
 #: ../camera-app.qml:380
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr "今日已拍攝 <b>%1</b> 張相片"
+msgstr "今天已拍攝 <b>%1</b> 張相片"
 
 #: ../camera-app.qml:381
 msgid "No photos taken today"
-msgstr "今日尚未拍攝相片"
+msgstr "今天尚未拍攝相片"
 
 #: ../camera-app.qml:391
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr "今日已錄製 <b>%1</b> 卷影片"
+msgstr "今天已錄製 <b>%1</b> 卷影片"
 
 #: ../camera-app.qml:392
 msgid "No videos recorded today"
-msgstr "今日尚未錄製影片"
+msgstr "今天尚未錄製影片"
 
 #: camera-app.desktop.in.in.h:1
 msgid "Camera"
