@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-08-08 13:26+0000\n"
+"PO-Revision-Date: 2018-11-19 14:16+0000\n"
 "Last-Translator: ierihon <idekovets@mail.ru>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports/"
 "camera-app/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.20\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -68,23 +68,15 @@ msgstr "01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "янв, фев, мар, апр, май, июнь, июль, авг, сен, окт, ноя, дек."
+msgstr "сокращенное название месяца (например, от «Янв» до «Дек»)."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
-"Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, "
-"Ноябрь, Декабрь."
+msgstr "полное название месяца (например, от «Январь» до «Декабрь»)."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
-"00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, "
-"19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, "
-"38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, "
-"57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, "
-"76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, "
-"95, 96, 97, 98, 99"
+msgstr "год в виде двухзначного числа (от 00 до 99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
@@ -97,50 +89,52 @@ msgstr ""
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
 msgstr ""
+"час без начального нуля (от 0 до 23 или от 1 до 12 при отображении ДП/ПП)"
 
 #: ../AdvancedOptions.qml:138
 msgid "the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)"
 msgstr ""
+"час с начальным нулем (от 00 до 23 или от 01 до 12, если отображается ДП/ПП)"
 
 #: ../AdvancedOptions.qml:139
 msgid "the hour without a leading zero (0 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "час без начального нуля (от 0 до 23, даже с отображением ДП/ПП)"
 
 #: ../AdvancedOptions.qml:140
 msgid "the hour with a leading zero (00 to 23, even with AM/PM display)"
-msgstr ""
+msgstr "час с начальным нулем (от 00 до 23, даже с отображением ДП/ПП)"
 
 #: ../AdvancedOptions.qml:141
 msgid "the minute without a leading zero (0 to 59)"
-msgstr ""
+msgstr "минуты без начального нуля (от 0 до 59)"
 
 #: ../AdvancedOptions.qml:142
 msgid "the minute with a leading zero (00 to 59)"
-msgstr ""
+msgstr "минуты с начальным нулем (от 00 до 59)"
 
 #: ../AdvancedOptions.qml:143
 msgid "the second without a leading zero (0 to 59)"
-msgstr ""
+msgstr "секунды без начального нуля (от 0 до 59)"
 
 #: ../AdvancedOptions.qml:144
 msgid "the second with a leading zero (00 to 59)"
-msgstr ""
+msgstr "секунды с начальным нулем (от 00 до 59)"
 
 #: ../AdvancedOptions.qml:145
 msgid "the milliseconds without leading zeroes (0 to 999)"
-msgstr ""
+msgstr "миллисекунды без начальных нулей (от 0 до 999)"
 
 #: ../AdvancedOptions.qml:146
 msgid "the milliseconds with leading zeroes (000 to 999)"
-msgstr ""
+msgstr "миллисекунды с начальными нулями (от 000 до 999)"
 
 #: ../AdvancedOptions.qml:147
 msgid "use AM/PM display. AP will be replaced by either 'AM' or 'PM'."
-msgstr ""
+msgstr "отображать ДП/ПП. AP будет заменен либо «ДП», либо «ПП»."
 
 #: ../AdvancedOptions.qml:148
 msgid "use am/pm display. ap will be replaced by either 'am' or 'pm'."
-msgstr ""
+msgstr "отображать дп/пп. ap будет заменен либо «дп», либо «пп»."
 
 #: ../AdvancedOptions.qml:149
 msgid "the timezone (for example 'CEST')"
@@ -205,7 +199,7 @@ msgstr "Сведения"
 
 #: ../Information.qml:82
 msgid "Get the source"
-msgstr "Получить источник"
+msgstr "Получить исходный код"
 
 #: ../Information.qml:83
 msgid "Report issues"
@@ -319,7 +313,6 @@ msgid "Fine Quality"
 msgstr "Высокое качество"
 
 #: ../ViewFinderOverlay.qml:498
-#, fuzzy
 msgid "High Quality"
 msgstr "Высокое качество"
 
