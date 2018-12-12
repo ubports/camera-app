@@ -8,74 +8,79 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2016-02-08 18:51+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"PO-Revision-Date: 2018-12-09 00:00+0000\n"
+"Last-Translator: Dmytro Gladkyi <gladimdim@gmail.com>\n"
+"Language-Team: Ukrainian <https://translate.ubports.com/projects/ubports/"
+"camera-app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: ../AdvancedOptions.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Налаштування"
 
 #: ../AdvancedOptions.qml:48
 msgid "Add date stamp on captured images"
-msgstr ""
+msgstr "Додавати дату до фотографій"
 
 #. TRANSLATORS: this refers to the opacity  of date stamp added to captured images
 #: ../AdvancedOptions.qml:70
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 #: ../AdvancedOptions.qml:122
 msgid "Date formatting keywords"
-msgstr ""
+msgstr "Ключові слова для форматування дати"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
-msgstr ""
+msgstr "день як число без першого нуля (від 1 до 31)"
 
 #: ../AdvancedOptions.qml:128
 msgid "the day as number with a leading zero (01 to 31)"
-msgstr ""
+msgstr "день як число з нулем попереду (від 01 до 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr ""
+msgstr "абревіатура локалізованої назви для (наприклад 'Пон' або 'Нед')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr ""
+msgstr "повна локалізована назва дня (наприклад 'Понеділок', 'Неділя')."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
-msgstr ""
+msgstr "місяць як число без першого нуля (від 1 до 12)"
 
 #: ../AdvancedOptions.qml:132
 msgid "the month as number with a leading zero (01 to 12)"
-msgstr ""
+msgstr "місяць як число з нулем попереду (від 01 до 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr ""
+msgstr "скорочена локалізована назва місяця (наприклад \"Січ\" або \"Тра\")."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
-msgstr ""
+msgstr "повна локалізована назва місяця (наприклад \"Січень\" або \"Травень\")."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
-msgstr ""
+msgstr "рік у вигляді двух чисел (від 00 до 99)"
 
 #: ../AdvancedOptions.qml:136
 msgid ""
 "the year as four digit number. If the year is negative, a minus sign is "
 "prepended in addition."
 msgstr ""
+"рік у вигляді чотирьох чисел.  Якщо число негативне, то додається знак "
+"мінуса попереду."
 
 #: ../AdvancedOptions.qml:137
 msgid "the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)"
@@ -244,7 +249,7 @@ msgstr ""
 
 #: ../SlideshowView.qml:86
 msgid "Edit"
-msgstr "Змінити"
+msgstr "Редагувати"
 
 #: ../SlideshowView.qml:441
 #, fuzzy
