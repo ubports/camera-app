@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-09-01 19:36+0000\n"
-"Last-Translator: Ahmed Suliman <ahmedselaman@gmail.com>\n"
+"PO-Revision-Date: 2018-12-23 00:00+0000\n"
+"Last-Translator: Hussain Hashem Aljafri <baddea14@gmail.com>\n"
 "Language-Team: Arabic <https://translate.ubports.com/projects/ubports/"
 "camera-app/ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2.20\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -163,7 +163,7 @@ msgstr "حذف"
 #: ../ViewFinderOverlay.qml:1136 ../ViewFinderOverlay.qml:1175
 #: ../ViewFinderView.qml:494
 msgid "Cancel"
-msgstr "ألغاء"
+msgstr "إلغاء;الإلغاء"
 
 #: ../GalleryView.qml:200
 msgid "No media available."
@@ -240,7 +240,7 @@ msgstr "مشاركة"
 
 #: ../PhotogridView.qml:69 ../SlideshowView.qml:53
 msgid "Gallery"
-msgstr ""
+msgstr "المعرض"
 
 #: ../SlideshowView.qml:68
 msgid "Image Info"
@@ -265,7 +265,7 @@ msgstr "يتعذر مشاركة الصور ومقاطع الفيديو في ال
 
 #: ../UnableShareDialog.qml:30
 msgid "Ok"
-msgstr "تمام"
+msgstr "موافق"
 
 #: ../ViewFinderOverlay.qml:367 ../ViewFinderOverlay.qml:390
 #: ../ViewFinderOverlay.qml:418 ../ViewFinderOverlay.qml:441
