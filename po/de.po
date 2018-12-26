@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-05 21:22+0000\n"
-"Last-Translator: konrad <kohofer@gmail.com>\n"
-"Language-Team: German <https://translate.ubports.com/projects/ubports/camera-"
-"app/de/>\n"
+"PO-Revision-Date: 2018-12-26 10:49+0000\n"
+"Last-Translator: Rüdiger Kupper <ruediger.kupper+launchpad@gmail.com>\n"
+"Language-Team: German <https://translate.ubports.com/projects/ubports/"
+"camera-app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -47,7 +47,7 @@ msgstr "den Tag als Nummer mit führender Null (01 bis 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr "den abgekürzten, lokalisierten Tagesnamen ('Mon' bis 'Son')."
+msgstr "den abgekürzten, lokalisierten Tagesnamen („Mo“ bis „So“).\n"
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
