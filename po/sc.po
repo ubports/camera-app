@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-12-28 09:14+0000\n"
+"PO-Revision-Date: 2018-12-30 00:00+0000\n"
 "Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
 "Language-Team: Sardinian <https://translate.ubports.com/projects/ubports/"
 "camera-app/sc/>\n"
@@ -209,7 +209,7 @@ msgstr "Informatzione de su cuntenutu multimediale"
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr "Nùmene : %1"
+msgstr "Nòmine : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
