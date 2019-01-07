@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-05-09 07:01+0000\n"
+"PO-Revision-Date: 2018-12-23 04:32+0000\n"
 "Last-Translator: Dito Kurnia P <ditokpl@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.ubports.com/projects/ubports/"
 "camera-app/id/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2016-12-01 04:53+0000\n"
 
 #: ../AdvancedOptions.qml:16
@@ -34,9 +34,8 @@ msgid "Format"
 msgstr "Format"
 
 #: ../AdvancedOptions.qml:122
-#, fuzzy
 msgid "Date formatting keywords"
-msgstr "Tanggal pemformatan kata kunci"
+msgstr "Kata kunci format tanggal"
 
 #: ../AdvancedOptions.qml:127
 msgid "the day as number without a leading zero (1 to 31)"
@@ -285,7 +284,7 @@ msgstr "Oke"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr ""
+msgstr "Nyalakan"
 
 #: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
 #: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446
@@ -295,11 +294,11 @@ msgstr ""
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:70
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:91
 msgid "Off"
-msgstr ""
+msgstr "Matikan"
 
 #: ../ViewFinderOverlay.qml:395
 msgid "Auto"
-msgstr ""
+msgstr "Otomatis"
 
 #: ../ViewFinderOverlay.qml:432
 msgid "HDR"
@@ -307,27 +306,27 @@ msgstr "HDR"
 
 #: ../ViewFinderOverlay.qml:470
 msgid "5 seconds"
-msgstr ""
+msgstr "5 detik"
 
 #: ../ViewFinderOverlay.qml:475
 msgid "15 seconds"
-msgstr ""
+msgstr "15 detik"
 
 #: ../ViewFinderOverlay.qml:493
 msgid "Fine Quality"
-msgstr ""
+msgstr "Kualitas Bagus"
 
 #: ../ViewFinderOverlay.qml:498
 msgid "High Quality"
-msgstr ""
+msgstr "Kualitas Tinggi"
 
 #: ../ViewFinderOverlay.qml:503
 msgid "Normal Quality"
-msgstr ""
+msgstr "Kualitas Normal"
 
 #: ../ViewFinderOverlay.qml:508
 msgid "Basic Quality"
-msgstr ""
+msgstr "Kualitas Dasar"
 
 #. TRANSLATORS: this will be displayed on an small button so for it to fit it should be less then 3 characters long.
 #: ../ViewFinderOverlay.qml:541
@@ -336,15 +335,15 @@ msgstr "SD"
 
 #: ../ViewFinderOverlay.qml:549
 msgid "Save to SD Card"
-msgstr ""
+msgstr "Simpan ke Kartu SD"
 
 #: ../ViewFinderOverlay.qml:554
 msgid "Save internally"
-msgstr ""
+msgstr "Simpan secara internal"
 
 #: ../ViewFinderOverlay.qml:594
 msgid "Vibrate"
-msgstr ""
+msgstr "Getaran"
 
 #: ../ViewFinderOverlay.qml:1119
 msgid "Low storage space"
@@ -451,33 +450,32 @@ msgstr "Kondisi Cahaya;Cerah;Berawan;Dalam Ruangan"
 #: ../camera-app.qml:380
 #, qt-format
 msgid "<b>%1</b> photos taken today"
-msgstr ""
+msgstr "<b>%1</b> foto diambil hari ini"
 
 #: ../camera-app.qml:381
 msgid "No photos taken today"
-msgstr ""
+msgstr "Tidak ada foto yang diambil hari ini"
 
 #: ../camera-app.qml:391
 #, qt-format
 msgid "<b>%1</b> videos recorded today"
-msgstr ""
+msgstr "<b>%1</b> video direkam hari ini"
 
 #: ../camera-app.qml:392
 msgid "No videos recorded today"
-msgstr ""
+msgstr "Tidak ada video yang direkam hari ini"
 
 #: camera-app.desktop.in.in.h:1
-#, fuzzy
 msgid "Camera"
-msgstr "Putar Kamera"
+msgstr "Kamera"
 
 #: camera-app.desktop.in.in.h:2
 msgid "Camera application"
-msgstr ""
+msgstr "Aplikasi kamera"
 
 #: camera-app.desktop.in.in.h:3
 msgid "Photos;Videos;Capture;Shoot;Snapshot;Record"
-msgstr ""
+msgstr "Foto;Video;Capture;Shoot;Snapshot;Merekam"
 
 #~ msgid "Version %1"
 #~ msgstr "Versi %1"

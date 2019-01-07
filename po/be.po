@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-11-18 18:13+0000\n"
+"PO-Revision-Date: 2018-12-26 10:49+0000\n"
 "Last-Translator: ierihon <idekovets@mail.ru>\n"
 "Language-Team: Belarusian <https://translate.ubports.com/projects/ubports/"
 "camera-app/be/>\n"
@@ -273,7 +273,7 @@ msgstr "ОК"
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:65
 #: ../tests/unittests/tst_BottomEdgeIndicators.qml:86
 msgid "On"
-msgstr "УЛ"
+msgstr "Укл."
 
 #: ../ViewFinderOverlay.qml:372 ../ViewFinderOverlay.qml:400
 #: ../ViewFinderOverlay.qml:423 ../ViewFinderOverlay.qml:446

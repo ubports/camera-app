@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: camera-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-23 17:57+0000\n"
-"PO-Revision-Date: 2018-07-05 15:56+0000\n"
+"PO-Revision-Date: 2018-12-30 00:00+0000\n"
 "Last-Translator: Adrià <adriamartinmor@gmail.com>\n"
-"Language-Team: Sardinian <https://translate.ubports.com/projects/ubports"
-"/camera-app/sc/>\n"
+"Language-Team: Sardinian <https://translate.ubports.com/projects/ubports/"
+"camera-app/sc/>\n"
 "Language: sc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.1.1\n"
 
 #: ../AdvancedOptions.qml:16
 msgid "Settings"
@@ -46,11 +46,11 @@ msgstr "sa die comente a nùmeru cun zero initziale (dae 01 a 31)"
 
 #: ../AdvancedOptions.qml:129
 msgid "the abbreviated localized day name (e.g. 'Mon' to 'Sun')."
-msgstr "su nùmene abbreviadu de sa die localizada (es. dae 'lun' a 'dom')."
+msgstr "su nòmine abbreviadu de sa die localizada (es. dae 'lun' a 'dom')."
 
 #: ../AdvancedOptions.qml:130
 msgid "the long localized day name (e.g. 'Monday' to 'Sunday')."
-msgstr "su nùmene intreu de sa die localizada (es. dae Lunis a Domìniga)."
+msgstr "su nòmine intreu de sa die localizada (es. dae lunis a domìniga)."
 
 #: ../AdvancedOptions.qml:131
 msgid "the month as number without a leading zero (1 to 12)"
@@ -62,12 +62,12 @@ msgstr "su mese comente a nùmeru cun zero initziale (dae 01 a 12)"
 
 #: ../AdvancedOptions.qml:133
 msgid "the abbreviated localized month name (e.g. 'Jan' to 'Dec')."
-msgstr "su nùmene abbreviadu de su mese localizadu (es. dae 'Ghen' a 'Nad')."
+msgstr "su nòmine abbreviadu de su mese localizadu (es. dae 'ghen' a 'nad')."
 
 #: ../AdvancedOptions.qml:134
 msgid "the long localized month name (e.g. 'January' to 'December')."
 msgstr ""
-"su nùmene intreu de su mese localizadu (es. dae 'Ghennàrgiu' a 'Nadale')."
+"su nòmine intreu de su mese localizadu (es. dae 'ghennàrgiu' a 'nadale')."
 
 #: ../AdvancedOptions.qml:135
 msgid "the year as two digit number (00 to 99)"
@@ -209,7 +209,7 @@ msgstr "Informatzione de su cuntenutu multimediale"
 #: ../MediaInfoPopover.qml:30
 #, qt-format
 msgid "Name : %1"
-msgstr "Nùmene : %1"
+msgstr "Nòmine : %1"
 
 #: ../MediaInfoPopover.qml:33
 #, qt-format
